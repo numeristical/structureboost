@@ -1,7 +1,7 @@
 """Setup for the structureboost package."""
 
 import setuptools
-
+import numpy
 
 with open('README.md') as f:
     README = f.read()
@@ -11,18 +11,21 @@ setuptools.setup(
     author_email="brianlucena@gmail.com",
     name='structureboost',
     license="MIT",
-    description='structureboost is a Python package for gradient boosting usin categorical structure',
-    version='0.0.1',
+    description='structureboost is a Python package for gradient boosting using categorical structure',
+    version='0.0.2',
     long_description=README,
     url='https://github.com/numeristical/structureboost',
-    packages=setuptools.find_packages('structureboost/__init__.py'),
+    packages=['structureboost'],
     package_dir={'structureboost':
                  'structureboost'},
     python_requires=">=3.5",
     install_requires=[
-        "pandas",
-        "numpy"],
-    ext_modules = [setuptools.Extension("graphs", ["structureboost/graphs.c"])],
+        "pandas>=1.0",
+        "numpy>=1.16",
+        "scipy>=1.3"],
+    ext_modules = [setuptools.Extension("graphs", ["structureboost/graphs.c"], include_dirs=[numpy.get_include()]),
+                   setuptools.Extension("structure_dt", ["structureboost/structure_dt.c"], include_dirs=[numpy.get_include()]),
+                    setuptools.Extension("structure_gb", ["structureboost/structure_gb.c"], include_dirs=[numpy.get_include()])],
     classifiers=[
         'Development Status :: 2 - Pre-Alpha',
         'Intended Audience :: Developers',
