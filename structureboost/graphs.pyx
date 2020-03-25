@@ -1,17 +1,34 @@
-# cython: profile=True
-
-
+"""Undirected graph package to represent categorical structure"""
 import numpy as np
 import random
 
 
 class graph_undirected(object):
-    """This is a class to handle undirected graphs.
-        Defines a graph by a set of vertices
-    and a set of "frozensets" representing the edges.
+    """Undirected graph represented by vertices and edges.
+
+    Defines a graph by a set of vertices and a set of "frozensets"
+    representing the edges.
+
+    Intended use is for representing connected graphs.
     """
 
     def __init__(self, edges, vertices=set()):
+        """Create a graph from a set of edges.
+
+        Parameters
+        ----------
+        edges : iterable containing pairs of items (the edges).
+        For example: a list of lists or a set of tuples.
+        The inner containers should be of length 2.
+
+        vertices : the vertex set will default to being the unique
+        members of edges.  If you have isolated nodes, you can explicitly
+        give the vertex set. However, lots of functionality implies
+        that the set is connected.
+
+        For best results, it is advised that the vertices are all either
+        of type str or type int.
+        """
         self.edges = {frozenset(edge) for edge in edges if len(edge) > 1}
         if vertices == set():
             self.vertices = set().union(*list(self.edges))
@@ -23,25 +40,44 @@ class graph_undirected(object):
         self.vertex_to_edges_dict = {}
 
     def precompute_neighbors(self):
+        """Computes and caches neighboring edges and vertices
+
+        Since the primary representation of the graph is via
+        sets of vertices and edges, looking up a neighbor requires
+        iterating through edges.  This will do this in advance to
+        reduce lookup time."""
         for vertex in self.vertices:
             self.adjacent_vertices(vertex)
 
     def adjacent_edges(self, target_vertex):
+        """Return the edges incident to a given vertex.
+
+        Parameters
+        ----------
+        target_vertex: a vertex in the graph.
+        """
         if target_vertex in self.vertex_to_edges_dict.keys():
             return self.vertex_to_edges_dict[target_vertex]
         else:
-            adjacent_edge_set = {x for x in self.edges if target_vertex in x}
+            adjacent_edge_set = self.compute_adjacent_edges(target_vertex)
             self.vertex_to_edges_dict[target_vertex] = adjacent_edge_set
             return adjacent_edge_set
+
+    def compute_adjacent_edges(self, target_vertex):
+        return {x for x in self.edges if target_vertex in x}
 
     def adjacent_vertices(self, target_vertex):
         if target_vertex in self.vertex_to_neighbors_dict.keys():
             return self.vertex_to_neighbors_dict[target_vertex]
         else:
-            neighbors_and_self = set().union(
-                            *list(self.adjacent_edges(target_vertex)))
-            out_set = neighbors_and_self-set([target_vertex])
+            out_set = self.compute_adjacent_vertices(target_vertex)
             self.vertex_to_neighbors_dict[target_vertex] = out_set
+        return out_set
+
+    def compute_adjacent_vertices(self, target_vertex):
+        neighbors_and_self = set().union(*list(
+                              self.adjacent_edges(target_vertex)))
+        out_set = neighbors_and_self-set([target_vertex])
         return out_set
 
     def adjacent_vertices_to_set(self, target_vertex_set):
@@ -754,47 +790,3 @@ def CA_county_graph():
                          ]
     CA_58_county_graph = graph_undirected(CA_county_graph_edges)
     return CA_58_county_graph
-
-
-# @cython.boundscheck(False)
-# @cython.wraparound(False)
-# def get_unique_elements(cnp.ndarray[long] my_array, long vec_len, cnp.ndarray[long] unique_vec):
-#     cdef int i,j,k, is_match = 0
-#     cdef long curr_val, check_val
-    
-#     unique_vec[0]=my_array[0]
-#     j=1
-#     for i in range(1,vec_len):
-#         curr_val = my_array[i]
-#         no_match_found = 1
-#         for k in range(j):
-#             check_val = unique_vec[k]
-#             if check_val==curr_val:
-#                 no_match_found = 0
-#                 break
-#         if no_match_found:
-#             unique_vec[j] = curr_val
-#             j+=1
-#     return unique_vec[:j]
-
-# @cython.boundscheck(False)
-# @cython.wraparound(False)
-# def get_num_unique_elements(cnp.ndarray[long] my_array, long vec_len, cnp.ndarray[long] unique_vec):
-#     cdef int i,j,k, is_match = 0
-#     cdef long curr_val, check_val
-    
-#     unique_vec[0]=my_array[0]
-#     j=1
-#     for i in range(1,vec_len):
-#         curr_val = my_array[i]
-#         no_match_found = 1
-#         for k in range(j):
-#             check_val = unique_vec[k]
-#             if check_val==curr_val:
-#                 no_match_found = 0
-#                 break
-#         if no_match_found:
-#             unique_vec[j] = curr_val
-#             j+=1
-#     return j
-

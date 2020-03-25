@@ -1,5 +1,3 @@
-# cython: profile=True
-
 """Decision Tree based on Discrete Graph structure"""
 import graphs
 import copy
@@ -15,18 +13,19 @@ cimport cython
 
 
 class StructureDecisionTree(object):
-    """fill in
+    """Decision Tree using graphical structure.
+
+    Uses Newton steps based on first and second derivatives of loss fn.
     """
 
     def __init__(self, feature_configs, feature_graphs, min_size_split=2,
-                 min_leaf_size=1, max_depth=3, gamma=0, feat_sample_by_node=1,
+                 max_depth=3, gamma=0, feat_sample_by_node=1,
                  reg_lambda=1):
         self.dec_tree = {}
         self.feature_configs = feature_configs
         self.dec_tree['feature_graphs'] = feature_graphs
         self.num_leafs = 0
         self.min_size_split = min_size_split
-        self.min_leaf_size = min_leaf_size
         self.max_depth = max_depth
         self.gamma = gamma
         self.feat_sample_by_node = feat_sample_by_node
@@ -59,7 +58,8 @@ class StructureDecisionTree(object):
     def predict(self, X_test):
         col_list = list(X_test.columns)
         column_to_int_dict = {col_list[i]: i for i in range(len(col_list))}
-        return get_prediction(self.dec_tree, X_test.values, column_to_int_dict)
+        return get_prediction(self.dec_tree, X_test.to_numpy(),
+                              column_to_int_dict)
 
     def _process_tree_node(self, curr_node):
         # Restrict to relevant data for the node in question
@@ -109,7 +109,8 @@ class StructureDecisionTree(object):
 
     def _get_features_to_search(self):
         if self.feat_sample_by_node < 1:
-            feat_set_size = self.feat_sample_by_node * len(self.feature_sublist)
+            feat_set_size = self.feat_sample_by_node * len(
+                                                self.feature_sublist)
             feat_set_size = int(np.maximum(feat_set_size, 1))
             np.random.shuffle(self.feature_sublist)
             features_to_search = self.feature_sublist[:feat_set_size]
@@ -150,7 +151,7 @@ class StructureDecisionTree(object):
         curr_feat = best_split_dict['split_feature']
         split_val = best_split_dict['left_split']
         if pd.isnull(split_val):
-            if best_split_dict['na_left']==1:
+            if best_split_dict['na_left'] == 1:
                 left_mask = pd.isnull(self.X_train[curr_feat])
             else:
                 left_mask = np.logical_not(np.isnan(self.X_train[curr_feat]))
@@ -201,7 +202,8 @@ class StructureDecisionTree(object):
         feat_vec_train = self.X_train[best_split_dict['split_feature']]
         left_mask = feat_vec_train.isin(
                         best_split_dict['left_split']).values
-        if ('na_left' in best_split_dict.keys()) and (best_split_dict['na_left']==1):
+        if ('na_left' in best_split_dict.keys()) and (
+                            best_split_dict['na_left'] == 1):
             na_left_override = pd.isnull(feat_vec_train)
             left_mask = left_mask | na_left_override
 
@@ -217,7 +219,7 @@ class StructureDecisionTree(object):
         if 'na_left' in best_split_dict.keys():
             curr_node['na_left'] = best_split_dict['na_left']
         else:
-            curr_node['na_left'] = int(random.random()>.5)
+            curr_node['na_left'] = int(random.random() < .5)
         if 'na_dir_random' in best_split_dict.keys():
             curr_node['na_dir_random'] = best_split_dict['na_dir_random']
         else:
@@ -299,9 +301,9 @@ def root_mean_squared_error(vec1, vec2):
 
 def _get_gh_score_num(double g_left,  double g_right,
                       double h_left, double h_right,
-                      double gamma, double reg_lambda, tol =1e-12):
+                      double gamma, double reg_lambda, tol=1e-12):
     loss_val = -1.0 * (.5*(((g_left*g_left)/(h_left+reg_lambda)) +
-                   ((g_right*g_right)/(h_right+reg_lambda)) -
+                       ((g_right*g_right)/(h_right+reg_lambda)) -
                    (((g_left + g_right)*(g_left + g_right)) /
                     (h_left + h_right+reg_lambda)))-gamma)
     if loss_val >= -tol:
@@ -309,8 +311,10 @@ def _get_gh_score_num(double g_left,  double g_right,
     return(loss_val)
 
 
-def _get_gh_score_array(cnp.ndarray[double] g_left, cnp.ndarray[double] g_right,
-                        cnp.ndarray[double] h_left, cnp.ndarray[double] h_right,
+def _get_gh_score_array(cnp.ndarray[double] g_left,
+                        cnp.ndarray[double] g_right,
+                        cnp.ndarray[double] h_left,
+                        cnp.ndarray[double] h_right,
                         double gamma, double reg_lambda):
     return(.5*(((g_left*g_left)/(h_left+reg_lambda)) +
                ((g_right*g_right)/(h_right+reg_lambda)) -
@@ -319,7 +323,7 @@ def _get_gh_score_array(cnp.ndarray[double] g_left, cnp.ndarray[double] g_right,
 
 
 def _node_summary_gh(y_vec_g, y_vec_h, reg_lambda):
-    if (len(y_vec_g)==0) or (len(y_vec_h)==0):
+    if (len(y_vec_g) == 0) or (len(y_vec_h) == 0):
         print('warning got 0 length vec in node summary')
         return 0
     else:
@@ -332,8 +336,6 @@ def evaluate_feature(feature_config, feature_graphs, feature_name,
                      gamma, reg_lambda, uv_dict):
 
     ft = feature_config['feature_type']
-    # if (ft!='graphical_voronoi') and (len(pd.unique(X_train_node[feature_name]))<=1):
-    #     return(_initialize_best_split_dict())
 
     if ft == 'numerical':
         return _evaluate_feature_numerical(
@@ -358,7 +360,9 @@ def evaluate_feature(feature_config, feature_graphs, feature_name,
                             X_train_node[feature_name].values,
                             g_train_node, h_train_node, gamma, reg_lambda)
         else:
-            warnings.warn('Unknown split method "{}" - ignoring feature'.format(split_method))
+            w_str = 'Unknown split method "{}" - ignoring feature'.format(
+                                                                split_method)
+            warnings.warn(w_str)
     elif ft == 'graphical_voronoi':
         return _evaluate_feature_voronoi(
                         feature_config, X_train_node,
@@ -370,7 +374,7 @@ def evaluate_feature(feature_config, feature_graphs, feature_name,
 def _evaluate_feature_numerical(feature_config, feature_vec,
                                 g_vec, h_vec, gamma, reg_lambda, uv_array):
     interp_mode = ('random' if 'interp_mode' not in feature_config.keys()
-                            else feature_config['interp_mode'])
+                   else feature_config['interp_mode'])
     splits_to_eval = _get_numerical_splits(feature_vec, uv_array,
                                            interp_mode=interp_mode)
     if len(splits_to_eval) == 0:
@@ -378,12 +382,12 @@ def _evaluate_feature_numerical(feature_config, feature_vec,
     else:
         splits_to_eval = _subset_splits(splits_to_eval, feature_config)
 
-        best_loss, best_split_val, na_left, na_rnd = _evaluate_numerical_splits(
+        best_loss, best_spl_val, na_left, na_rnd = _evaluate_numerical_splits(
                                         feature_vec, g_vec, h_vec,
                                         splits_to_eval, gamma, reg_lambda)
         best_split_of_feat = {}
         best_split_of_feat['loss_score'] = best_loss
-        best_split_of_feat['left_split'] = best_split_val
+        best_split_of_feat['left_split'] = best_spl_val
         best_split_of_feat['feature_type'] = 'numerical'
         best_split_of_feat['na_left'] = na_left
         best_split_of_feat['na_dir_random'] = na_rnd
@@ -391,33 +395,35 @@ def _evaluate_feature_numerical(feature_config, feature_vec,
 
 
 def _subset_splits(splits_to_eval, feature_config):
-        split_res = (feature_config['max_splits_to_search']
-                     if 'max_splits_to_search' in feature_config.keys()
-                        else np.Inf)
-        split_count = len(splits_to_eval)
-        if split_res < split_count:
-            split_indices = np.random.choice(split_count, size=split_res)
-            sorted_split_indices = np.sort(split_indices)
-            # Make sure we include the largest val for NA handling
-            if sorted_split_indices[-1] != split_count-1:
-                sorted_split_indices = np.concatenate((split_indices, [split_count-1]))
-            splits_to_eval = splits_to_eval[sorted_split_indices]
-        return splits_to_eval
+    split_res = (feature_config['max_splits_to_search']
+                 if 'max_splits_to_search' in feature_config.keys()
+                    else np.Inf)
+    split_count = len(splits_to_eval)
+    if split_res < split_count:
+        split_indices = np.random.choice(split_count, size=split_res)
+        sorted_split_indices = np.sort(split_indices)
+        # Make sure we include the largest val for NA handling
+        if sorted_split_indices[-1] != split_count-1:
+            sorted_split_indices = np.concatenate((sorted_split_indices,
+                                                  [split_count-1]))
+        splits_to_eval = splits_to_eval[sorted_split_indices]
+    return splits_to_eval
 
 
 def _get_numerical_splits(feature_vec, uv_array, interp_mode='random',
                           prec_digits=16):
-    #unique_vals = np.sort(pd.unique(feature_vec))
-    # could optimize this to use one pass over vectore
+    # unique_vals = np.sort(pd.unique(feature_vec))
     with warnings.catch_warnings():
         warnings.simplefilter("ignore")
-        min_val, max_val, has_na = max_min_hasnan(feature_vec.astype(float), len(feature_vec))
+        min_val, max_val, has_na = max_min_hasnan(feature_vec.astype(float),
+                                                  len(feature_vec))
         # min_val = np.nanmin(feature_vec)
         # max_val = np.nanmax(feature_vec)
         # has_na = np.any(np.isnan(feature_vec))
-        unique_vals = uv_array[(uv_array>=min_val) & (uv_array<=max_val)]
+        unique_vals = uv_array[(uv_array >= min_val) & (
+                                uv_array <= max_val)]
         if has_na and not np.isnan(max_val):
-            unique_vals = np.concatenate((unique_vals,[np.nan]))
+            unique_vals = np.concatenate((unique_vals, [np.nan]))
     if len(unique_vals) <= 1:
         return []
     else:
@@ -441,12 +447,12 @@ def _evaluate_numerical_splits(feature_vec, g_vec, h_vec,
                                          gamma, reg_lambda)
 
     best_loss, best_split_val = _get_best_vals(score_vec, split_vec)
-    if has_na_vals and (len(split_vec)>2):
+    if has_na_vals and (len(split_vec) > 2):
         g_sum_left_nal = (g_sum_left + (g_sum_total - g_sum_left[-1]))[:-1]
         h_sum_left_nal = (h_sum_left + (h_sum_total - h_sum_left[-1]))[:-1]
         g_sum_right_nal = g_sum_total - g_sum_left_nal
         h_sum_right_nal = h_sum_total - h_sum_left_nal
-        
+
         score_vec_nal = (-1)*_get_gh_score_array(g_sum_left_nal,
                                                  g_sum_right_nal,
                                                  h_sum_left_nal,
@@ -454,7 +460,7 @@ def _evaluate_numerical_splits(feature_vec, g_vec, h_vec,
                                                  gamma, reg_lambda)
         best_loss_nal, best_split_val_nal = _get_best_vals(score_vec_nal,
                                                            split_vec)
-        if best_loss_nal<best_loss:
+        if best_loss_nal < best_loss:
             # NAs go left by design
             return best_loss_nal, best_split_val_nal, 1, 0
         else:
@@ -462,7 +468,8 @@ def _evaluate_numerical_splits(feature_vec, g_vec, h_vec,
             return best_loss, best_split_val, 0, 0
     else:
         # If no NAs at training, randomly choose side for NAs at this node
-        return best_loss, best_split_val, int(random.random()>.5), 1
+        # adjust here if we want coin flip to be other than .5
+        return best_loss, best_split_val, int(random.random() < .5), 1
 
 
 def _get_best_vals(score_vec, split_vec):
@@ -568,9 +575,11 @@ def _evaluate_feature_multitree(feature_config, feature_graph,
     best_split_of_feat = _eval_multiple_span_trees(g_sum, h_sum,
                                                    g_val_arr, h_val_arr,
                                                    map_dict,
-                                                   feature_config['num_span_trees'],
+                                                   feature_config[
+                                                    'num_span_trees'],
                                                    feature_graph,
-                                                   feature_config['feature_type'],
+                                                   feature_config[
+                                                    'feature_type'],
                                                    gamma, reg_lambda)
     return(best_split_of_feat)
 
@@ -613,7 +622,7 @@ def _eval_multiple_span_trees(g_sum, h_sum, g_val_arr, h_val_arr, map_dict,
         g_accum_array = g_val_arr.copy()
         h_accum_array = h_val_arr.copy()
         curr_span_tree, drd = feature_graph.get_uniform_random_spanning_tree()
-        root_dist_list = [(a,b) for a,b in drd.items()]
+        root_dist_list = [(a, b) for a, b in drd.items()]
         vertex_arr = np.array([x[0] for x in root_dist_list])
         dist_arr = np.array([x[1] for x in root_dist_list])
         vertex_order = vertex_arr[np.argsort(-dist_arr)]
@@ -644,8 +653,8 @@ def _eval_span_tree(span_tree, g_accum_array, h_accum_array,
         g_na = g_accum_array[map_dict[np.nan]]
         h_na = h_accum_array[map_dict[np.nan]]
         na_vs_loss = _get_gh_score_num(g_na, g_sum-g_na,
-                                              h_na, h_sum-h_na,
-                                              gamma, reg_lambda)
+                                       h_na, h_sum-h_na,
+                                       gamma, reg_lambda)
         if na_vs_loss < best_split_of_feat['loss_score']:
             best_split_of_feat['loss_score'] = na_vs_loss
             best_split_of_feat['left_split'] = set()
@@ -655,7 +664,8 @@ def _eval_span_tree(span_tree, g_accum_array, h_accum_array,
 
     # Go through the order of the tree comparing toward root vs away root
     for leaf_vertex_raw in vertex_order[:-1]:
-        leaf_neighbor_raw = next(iter(span_tree.adjacent_vertices(leaf_vertex_raw)))
+        leaf_neighbor_raw = next(iter(span_tree.adjacent_vertices(
+                                                    leaf_vertex_raw)))
         if map_dict is not None:
             leaf_vertex_ind = map_dict[leaf_vertex_raw]
             leaf_neighbor_ind = map_dict[leaf_neighbor_raw]
@@ -665,24 +675,20 @@ def _eval_span_tree(span_tree, g_accum_array, h_accum_array,
 
         g_left = g_accum_array[leaf_vertex_ind]
         h_left = h_accum_array[leaf_vertex_ind]
-        ## Not sure if this short circuit works with NAs
-        # if (((g_left == 0) and (h_left == 0)) or
-        #    (((g_sum-g_left) == 0) and ((h_sum-h_left) == 0))):
-        #     curr_loss = np.Inf
-        # else:
-            # when NAs are present, this will be loss with NA -> right
         curr_loss = _get_gh_score_num(g_left, g_sum-g_left,
-                                             h_left, h_sum-h_left,
-                                             gamma, reg_lambda)
+                                      h_left, h_sum-h_left,
+                                      gamma, reg_lambda)
         if na_pres:
             curr_loss_nal = _get_gh_score_num(g_left+g_na,
-                                                    g_sum-g_left-g_na,
-                                                    h_left+h_na,
-                                                    h_sum-h_left-h_na,
-                                                    gamma, reg_lambda)
+                                              g_sum-g_left-g_na,
+                                              h_left+h_na,
+                                              h_sum-h_left-h_na,
+                                              gamma, reg_lambda)
             na_left, na_rnd = 0, 0
         else:
-            na_left, na_rnd = int(random.random()>.5), 1
+            # Could adjust here to make coin flip weighted (on number of obs)
+            left_prob = .5
+            na_left, na_rnd = int(random.random() < left_prob), 1
             curr_loss_nal = np.Inf
         if curr_loss_nal < curr_loss:
             curr_loss, na_left, na_rnd = curr_loss_nal, 1, 0
@@ -820,21 +826,20 @@ def _eval_split_set(feature_vec_node, g_train_node, h_train_node,
                 best_split_of_feat['na_left'] = 0
                 best_split_of_feat['na_dir_random'] = 1
             else:
-                best_split_of_feat['na_left'] = int(random.random()<.5)
+                best_split_of_feat['na_left'] = int(random.random() < .5)
                 best_split_of_feat['na_dir_random'] = 1
 
         if na_pres:
             g_masked_na = g_train_node[mask_left | na_mask]
             h_masked_na = h_train_node[mask_left | na_mask]
             curr_loss = _score_split(g_masked_na, h_masked_na, g_sum, h_sum,
-                                 gamma, reg_lambda)
+                                     gamma, reg_lambda)
             if curr_loss < best_split_of_feat['loss_score']:
                 best_split_of_feat['loss_score'] = curr_loss
                 best_split_of_feat['left_split'] = left_split
                 best_split_of_feat['feature_type'] = feature_type
                 best_split_of_feat['na_left'] = 1
                 best_split_of_feat['na_dir_random'] = 0
-
 
     return(best_split_of_feat)
 
@@ -876,7 +881,7 @@ cdef _score_split(g_masked, h_masked, g_sum, h_sum, gamma, reg_lambda):
     h_left = np.sum(h_masked)
     h_right = h_sum - h_left
     loss_score = _get_gh_score_num(g_left, g_right, h_left,
-                                          h_right, gamma, reg_lambda)
+                                   h_right, gamma, reg_lambda)
     # if loss_score >= 0:
     #     loss_score = np.inf
     return loss_score
@@ -902,9 +907,10 @@ def get_mask_int_c_alt(long[::1] feature_vec_node, long[::1] left_split,
 
 @cython.boundscheck(False)  # Deactivate bounds checking
 @cython.wraparound(False)   # Deactivate negative indexing.
-def get_mask_int_c(cnp.ndarray[long] feature_vec_node, cnp.ndarray[long] left_split,
-                       long vec_len, long lsplit_len,
-                       cnp.ndarray[long] mask_vec):
+def get_mask_int_c(cnp.ndarray[long] feature_vec_node,
+                   cnp.ndarray[long] left_split,
+                   long vec_len, long lsplit_len,
+                   cnp.ndarray[long] mask_vec):
     cdef int i, j
     for i in range(vec_len):
         for j in range(lsplit_len):
@@ -916,23 +922,23 @@ def get_mask_int_c(cnp.ndarray[long] feature_vec_node, cnp.ndarray[long] left_sp
 
 @cython.boundscheck(False)
 @cython.wraparound(False)
-def separate_indices(cnp.ndarray[long] a, cnp.ndarray[long] b, cnp.ndarray[long] c,
-                 long vec_len):
-    cdef long ind_a=0, ind_b=0, i
+def separate_indices(cnp.ndarray[long] a, cnp.ndarray[long] b,
+                     cnp.ndarray[long] c, long vec_len):
+    cdef long ind_a = 0, ind_b = 0, i
     for i in range(vec_len):
-        if c[i]==0:
+        if c[i] == 0:
             b[ind_b] = i
             ind_b = ind_b+1
         else:
             a[ind_a] = i
             ind_a = ind_a+1
-    return a,b,ind_a
+    return a, b, ind_a
+
 
 def _evaluate_feature_onehot(feature_config, feature_graph,
                              feature_vec_node, g_train_node,
                              h_train_node, gamma, reg_lambda):
 
-    # NOTE: need to incorporate min_leaf_size restriction
     feature_type = feature_config['feature_type']
     best_split_of_feat = {}
     best_split_of_feat['loss_score'] = np.Inf
@@ -974,22 +980,24 @@ def get_prediction(tree_node, X_te, dict col_to_int_dict):
         ind_subset_left = np.zeros(vec_len, dtype=np.int64)
         ind_subset_right = np.zeros(vec_len, dtype=np.int64)
         ind_subset_left, ind_subset_right, lsize = separate_indices(
-                                                            ind_subset_left,
-                                                            ind_subset_right,
-                                                            split_bool.astype(np.int64),
-                                                            vec_len)
+                                                ind_subset_left,
+                                                ind_subset_right,
+                                                split_bool.astype(np.int64),
+                                                vec_len)
         ind_subset_left = ind_subset_left[:lsize]
         ind_subset_right = ind_subset_right[:(vec_len-lsize)]
 
         if lsize > 0:
             next_vec[ind_subset_left] = get_prediction(tree_node['left_child'],
-                                                  X_te[ind_subset_left, :],
-                                                  col_to_int_dict)
+                                                       X_te[
+                                                       ind_subset_left, :],
+                                                       col_to_int_dict)
 
         if lsize < vec_len:
-            next_vec[ind_subset_right] = get_prediction(tree_node['right_child'],
-                                                      X_te[ind_subset_right, :],
-                                                      col_to_int_dict)
+            next_vec[ind_subset_right] = get_prediction(
+                                            tree_node['right_child'],
+                                            X_te[ind_subset_right, :],
+                                            col_to_int_dict)
         return next_vec
 
 
@@ -997,14 +1005,13 @@ def get_node_response_graphical_int(feature_vec, node):
     # fs_array = np.array(list(node['left_split'])).astype(np.int64)
     cdef int vec_len, lsplit_len
 
-    fs_array = np.fromiter(node['left_split'], int,
-                               len(node['left_split']))
+    fs_array = np.fromiter(node['left_split'], int, len(node['left_split']))
     vec_len = len(feature_vec)
     lsplit_len = len(fs_array)
     mask_vec = np.zeros(vec_len, dtype=np.int64)
     mask_vec = get_mask_int_c(feature_vec.astype(np.int64),
-                                  fs_array, vec_len,
-                                  lsplit_len, mask_vec)
+                              fs_array, vec_len,
+                              lsplit_len, mask_vec)
     return mask_vec
 
 
@@ -1078,20 +1085,21 @@ def ridge_points_to_edge_set(rpl):
             for i in range(-1, len(sublist) - 1)
             if (sublist[i] != -1 and sublist[i+1] != -1)}
 
+
 @cython.boundscheck(False)  # Deactivate bounds checking
 @cython.wraparound(False)   # Deactivate negative indexing.
 def max_min_hasnan(cnp.ndarray[double] my_array, long vec_len):
     cdef long i
     cdef double curr_max, curr_min, curr_val
-    cdef bint has_nan=False
+    cdef bint has_nan = False
     curr_max = my_array[0]
     curr_min = my_array[0]
-    for i in range(1,vec_len):
+    for i in range(1, vec_len):
         curr_val = my_array[i]
-        if curr_val>curr_max:
+        if curr_val > curr_max:
             curr_max = curr_val
-        if curr_val<curr_min:
+        if curr_val < curr_min:
             curr_min = curr_val
         if isnan(curr_val):
-            has_nan=True
+            has_nan = True
     return curr_min, curr_max, has_nan

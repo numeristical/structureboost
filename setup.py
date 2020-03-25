@@ -12,7 +12,7 @@ setuptools.setup(
     name='structureboost',
     license="MIT",
     description='structureboost is a Python package for gradient boosting using categorical structure',
-    version='0.0.2',
+    version='0.0.3',
     long_description=README,
     url='https://github.com/numeristical/structureboost',
     packages=['structureboost'],
