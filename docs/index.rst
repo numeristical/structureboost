@@ -13,7 +13,7 @@ What sets StructureBoost apart is its ability to exploit the **structure** of ca
 .. toctree::
    :maxdepth: 3
 
-   install
+   get_started
    overview
    stb_faq
    examples

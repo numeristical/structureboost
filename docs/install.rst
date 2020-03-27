@@ -1,5 +1,6 @@
 Installation
 ============
+   
 
 Installing StructureBoost is straightforward using pip::
 

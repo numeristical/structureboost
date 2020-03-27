@@ -1,3 +1,5 @@
+.. _example-notebooks:
+
 Examples
 ========
 
@@ -14,4 +16,4 @@ The full set of examples can be found `here`_.  The descriptions are below.
 .. _CA_County_Classification: https://github.com/numeristical/structureboost/tree/master/examples/CA_County_Classification.ipynb
 .. _CA_County_Regression: https://github.com/numeristical/structureboost/tree/master/examples/CA_County_Regression.ipynb
 .. _CA_County_Deep_Dive: https://github.com/numeristical/structureboost/tree/master/examples/CA_County_Deep_Dive.ipynb
-.. _here: http://github.com/numeristical/structureboost/examples
+.. _here: https://github.com/numeristical/structureboost/tree/master/examples
