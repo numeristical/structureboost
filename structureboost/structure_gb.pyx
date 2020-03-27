@@ -211,7 +211,7 @@ class StructureBoost(object):
         else:
             return(out_vec)
 
-    def predict_proba(self, X_test, int num_trees_to_use=0):
+    def predict_proba(self, X_test, int num_trees_to_use=-1):
         """Returns a n x 2 matrix of class probabilities (as in
         other packages)"""
         pred_probs = self.predict(X_test, num_trees_to_use)

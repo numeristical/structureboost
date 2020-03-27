@@ -344,7 +344,7 @@ def evaluate_feature(feature_config, feature_graphs, feature_name,
                         uv_dict[feature_name])
     elif ((ft == 'categorical_int') or (ft == 'categorical_str')):
         split_method = feature_config['split_method']
-        if split_method == 'contract_enum':
+        if split_method == 'contraction':
             return _evaluate_feature_enum_contr(
                         feature_config, feature_graphs[feature_name],
                         X_train_node[feature_name].values,
@@ -529,7 +529,7 @@ def _evaluate_feature_voronoi(feature_config, X_train_node, g_train_node,
                                                          g_train_node,
                                                          h_train_node,
                                                          gamma, reg_lambda)
-    elif feature_config['split_method'] == 'contract_enum':
+    elif feature_config['split_method'] == 'contraction':
         best_split_of_feat = _evaluate_feature_enum_contr(feature_config,
                                                           feature_graph,
                                                           feature_vec_node,

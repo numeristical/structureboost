@@ -13,11 +13,11 @@ def get_basic_config_series(feature_vec, default_config):
                                                      feature_vec.dropna()))
         categorical_method = default_config['default_categorical_method']
         config_dict['split_method'] = categorical_method
-        if categorical_method == 'contract_enum':
+        if categorical_method == 'contraction':
             config_dict['contraction_size'] = default_config[
                                                 'default_contraction_size']
             config_dict['max_splits_to_search'] = default_config[
-                                'default_contract_enum_max_splits_to_search']
+                                'default_contraction_max_splits_to_search']
         if categorical_method == 'span_tree':
             config_dict['num_span_trees'] = default_config[
                                                     'default_num_span_trees']
@@ -47,7 +47,7 @@ def default_config_dict():
     config_dict['default_categorical_method'] = 'span_tree'
     config_dict['default_num_span_trees'] = 1
     config_dict['default_contraction_size'] = 9
-    config_dict['default_contract_enum_max_splits_to_search'] = 25
+    config_dict['default_contraction_max_splits_to_search'] = 25
     config_dict['default_numerical_max_splits_to_search'] = 25
     return config_dict
 
@@ -69,7 +69,7 @@ def apply_defaults_featurewise(feature_config_dict, default_conf):
             if 'num_span_tree' not in feature_config_dict.keys():
                 feature_config_dict['num_span_trees'] = default_conf[
                                             'default_num_span_trees']
-        if method == 'contract_enum':
+        if method == 'contraction':
             if 'contraction_size' not in feature_config_dict.keys():
                 feature_config_dict['contraction_size'] = default_conf[
                                             'default_contraction_size']

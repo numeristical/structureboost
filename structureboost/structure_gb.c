@@ -6806,7 +6806,7 @@ static PyObject *__pyx_pf_12structure_gb_14StructureBoost_4predict(CYTHON_UNUSED
  *         else:
  *             return(out_vec)             # <<<<<<<<<<<<<<
  * 
- *     def predict_proba(self, X_test, int num_trees_to_use=0):
+ *     def predict_proba(self, X_test, int num_trees_to_use=-1):
  */
   /*else*/ {
     __Pyx_XDECREF(__pyx_r);
@@ -6842,7 +6842,7 @@ static PyObject *__pyx_pf_12structure_gb_14StructureBoost_4predict(CYTHON_UNUSED
 /* "structure_gb.pyx":214
  *             return(out_vec)
  * 
- *     def predict_proba(self, X_test, int num_trees_to_use=0):             # <<<<<<<<<<<<<<
+ *     def predict_proba(self, X_test, int num_trees_to_use=-1):             # <<<<<<<<<<<<<<
  *         """Returns a n x 2 matrix of class probabilities (as in
  *         other packages)"""
  */
@@ -6910,7 +6910,7 @@ static PyObject *__pyx_pw_12structure_gb_14StructureBoost_7predict_proba(PyObjec
     if (values[2]) {
       __pyx_v_num_trees_to_use = __Pyx_PyInt_As_int(values[2]); if (unlikely((__pyx_v_num_trees_to_use == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 214, __pyx_L3_error)
     } else {
-      __pyx_v_num_trees_to_use = ((int)((int)0));
+      __pyx_v_num_trees_to_use = ((int)((int)-1));
     }
   }
   goto __pyx_L4_argument_unpacking_done;
@@ -7050,7 +7050,7 @@ static PyObject *__pyx_pf_12structure_gb_14StructureBoost_6predict_proba(CYTHON_
   /* "structure_gb.pyx":214
  *             return(out_vec)
  * 
- *     def predict_proba(self, X_test, int num_trees_to_use=0):             # <<<<<<<<<<<<<<
+ *     def predict_proba(self, X_test, int num_trees_to_use=-1):             # <<<<<<<<<<<<<<
  *         """Returns a n x 2 matrix of class probabilities (as in
  *         other packages)"""
  */
@@ -27637,7 +27637,7 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
   /* "structure_gb.pyx":214
  *             return(out_vec)
  * 
- *     def predict_proba(self, X_test, int num_trees_to_use=0):             # <<<<<<<<<<<<<<
+ *     def predict_proba(self, X_test, int num_trees_to_use=-1):             # <<<<<<<<<<<<<<
  *         """Returns a n x 2 matrix of class probabilities (as in
  *         other packages)"""
  */
@@ -28400,11 +28400,11 @@ if (!__Pyx_RefNanny) {
   /* "structure_gb.pyx":214
  *             return(out_vec)
  * 
- *     def predict_proba(self, X_test, int num_trees_to_use=0):             # <<<<<<<<<<<<<<
+ *     def predict_proba(self, X_test, int num_trees_to_use=-1):             # <<<<<<<<<<<<<<
  *         """Returns a n x 2 matrix of class probabilities (as in
  *         other packages)"""
  */
-  __pyx_t_3 = __Pyx_PyInt_From_int(((int)0)); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 214, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyInt_From_int(((int)-1)); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 214, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __pyx_t_4 = PyTuple_New(1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 214, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);

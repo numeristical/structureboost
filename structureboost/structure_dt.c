@@ -2691,6 +2691,7 @@ static const char __pyx_k_ImportError[] = "ImportError";
 static const char __pyx_k_MemoryError[] = "MemoryError";
 static const char __pyx_k_PickleError[] = "PickleError";
 static const char __pyx_k_concatenate[] = "concatenate";
+static const char __pyx_k_contraction[] = "contraction";
 static const char __pyx_k_feature_mat[] = "feature_mat";
 static const char __pyx_k_feature_vec[] = "feature_vec";
 static const char __pyx_k_g_masked_na[] = "g_masked_na";
@@ -2733,7 +2734,6 @@ static const char __pyx_k_sub_features[] = "sub_features";
 static const char __pyx_k_vertex_order[] = "vertex_order";
 static const char __pyx_k_wrap_up_node[] = "_wrap_up_node";
 static const char __pyx_k_best_loss_nal[] = "best_loss_nal";
-static const char __pyx_k_contract_enum[] = "contract_enum";
 static const char __pyx_k_curr_loss_nal[] = "curr_loss_nal";
 static const char __pyx_k_execute_split[] = "_execute_split";
 static const char __pyx_k_feat_set_size[] = "feat_set_size";
@@ -3025,7 +3025,7 @@ static PyObject *__pyx_n_s_columns;
 static PyObject *__pyx_n_s_concatenate;
 static PyObject *__pyx_kp_s_contiguous_and_direct;
 static PyObject *__pyx_kp_s_contiguous_and_indirect;
-static PyObject *__pyx_n_s_contract_enum;
+static PyObject *__pyx_n_s_contraction;
 static PyObject *__pyx_n_s_contraction_size;
 static PyObject *__pyx_n_s_copy;
 static PyObject *__pyx_n_s_corner_mat;
@@ -10879,7 +10879,7 @@ static PyObject *__pyx_pf_12structure_dt_10evaluate_feature(CYTHON_UNUSED PyObje
  *                         uv_dict[feature_name])
  *     elif ((ft == 'categorical_int') or (ft == 'categorical_str')):             # <<<<<<<<<<<<<<
  *         split_method = feature_config['split_method']
- *         if split_method == 'contract_enum':
+ *         if split_method == 'contraction':
  */
   __pyx_t_9 = (__Pyx_PyString_Equals(__pyx_v_ft, __pyx_n_s_categorical_int, Py_EQ)); if (unlikely(__pyx_t_9 < 0)) __PYX_ERR(0, 345, __pyx_L1_error)
   if (!__pyx_t_9) {
@@ -10896,7 +10896,7 @@ static PyObject *__pyx_pf_12structure_dt_10evaluate_feature(CYTHON_UNUSED PyObje
  *                         uv_dict[feature_name])
  *     elif ((ft == 'categorical_int') or (ft == 'categorical_str')):
  *         split_method = feature_config['split_method']             # <<<<<<<<<<<<<<
- *         if split_method == 'contract_enum':
+ *         if split_method == 'contraction':
  *             return _evaluate_feature_enum_contr(
  */
     __pyx_t_1 = __Pyx_PyObject_Dict_GetItem(__pyx_v_feature_config, __pyx_n_s_split_method); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 346, __pyx_L1_error)
@@ -10907,16 +10907,16 @@ static PyObject *__pyx_pf_12structure_dt_10evaluate_feature(CYTHON_UNUSED PyObje
     /* "structure_dt.pyx":347
  *     elif ((ft == 'categorical_int') or (ft == 'categorical_str')):
  *         split_method = feature_config['split_method']
- *         if split_method == 'contract_enum':             # <<<<<<<<<<<<<<
+ *         if split_method == 'contraction':             # <<<<<<<<<<<<<<
  *             return _evaluate_feature_enum_contr(
  *                         feature_config, feature_graphs[feature_name],
  */
-    __pyx_t_2 = (__Pyx_PyString_Equals(__pyx_v_split_method, __pyx_n_s_contract_enum, Py_EQ)); if (unlikely(__pyx_t_2 < 0)) __PYX_ERR(0, 347, __pyx_L1_error)
+    __pyx_t_2 = (__Pyx_PyString_Equals(__pyx_v_split_method, __pyx_n_s_contraction, Py_EQ)); if (unlikely(__pyx_t_2 < 0)) __PYX_ERR(0, 347, __pyx_L1_error)
     if (__pyx_t_2) {
 
       /* "structure_dt.pyx":348
  *         split_method = feature_config['split_method']
- *         if split_method == 'contract_enum':
+ *         if split_method == 'contraction':
  *             return _evaluate_feature_enum_contr(             # <<<<<<<<<<<<<<
  *                         feature_config, feature_graphs[feature_name],
  *                         X_train_node[feature_name].values,
@@ -10926,7 +10926,7 @@ static PyObject *__pyx_pf_12structure_dt_10evaluate_feature(CYTHON_UNUSED PyObje
       __Pyx_GOTREF(__pyx_t_3);
 
       /* "structure_dt.pyx":349
- *         if split_method == 'contract_enum':
+ *         if split_method == 'contraction':
  *             return _evaluate_feature_enum_contr(
  *                         feature_config, feature_graphs[feature_name],             # <<<<<<<<<<<<<<
  *                         X_train_node[feature_name].values,
@@ -11026,7 +11026,7 @@ static PyObject *__pyx_pf_12structure_dt_10evaluate_feature(CYTHON_UNUSED PyObje
       /* "structure_dt.pyx":347
  *     elif ((ft == 'categorical_int') or (ft == 'categorical_str')):
  *         split_method = feature_config['split_method']
- *         if split_method == 'contract_enum':             # <<<<<<<<<<<<<<
+ *         if split_method == 'contraction':             # <<<<<<<<<<<<<<
  *             return _evaluate_feature_enum_contr(
  *                         feature_config, feature_graphs[feature_name],
  */
@@ -11359,7 +11359,7 @@ static PyObject *__pyx_pf_12structure_dt_10evaluate_feature(CYTHON_UNUSED PyObje
  *                         uv_dict[feature_name])
  *     elif ((ft == 'categorical_int') or (ft == 'categorical_str')):             # <<<<<<<<<<<<<<
  *         split_method = feature_config['split_method']
- *         if split_method == 'contract_enum':
+ *         if split_method == 'contraction':
  */
     goto __pyx_L3;
   }
@@ -15700,7 +15700,7 @@ static PyObject *__pyx_pf_12structure_dt_26_evaluate_feature_voronoi(CYTHON_UNUS
  *                                                          g_train_node,
  *                                                          h_train_node,
  *                                                          gamma, reg_lambda)             # <<<<<<<<<<<<<<
- *     elif feature_config['split_method'] == 'contract_enum':
+ *     elif feature_config['split_method'] == 'contraction':
  *         best_split_of_feat = _evaluate_feature_enum_contr(feature_config,
  */
     __pyx_t_4 = NULL;
@@ -15779,19 +15779,19 @@ static PyObject *__pyx_pf_12structure_dt_26_evaluate_feature_voronoi(CYTHON_UNUS
   /* "structure_dt.pyx":532
  *                                                          h_train_node,
  *                                                          gamma, reg_lambda)
- *     elif feature_config['split_method'] == 'contract_enum':             # <<<<<<<<<<<<<<
+ *     elif feature_config['split_method'] == 'contraction':             # <<<<<<<<<<<<<<
  *         best_split_of_feat = _evaluate_feature_enum_contr(feature_config,
  *                                                           feature_graph,
  */
   __pyx_t_1 = __Pyx_PyObject_Dict_GetItem(__pyx_v_feature_config, __pyx_n_s_split_method); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 532, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_3 = (__Pyx_PyString_Equals(__pyx_t_1, __pyx_n_s_contract_enum, Py_EQ)); if (unlikely(__pyx_t_3 < 0)) __PYX_ERR(0, 532, __pyx_L1_error)
+  __pyx_t_3 = (__Pyx_PyString_Equals(__pyx_t_1, __pyx_n_s_contraction, Py_EQ)); if (unlikely(__pyx_t_3 < 0)) __PYX_ERR(0, 532, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   if (__pyx_t_3) {
 
     /* "structure_dt.pyx":533
  *                                                          gamma, reg_lambda)
- *     elif feature_config['split_method'] == 'contract_enum':
+ *     elif feature_config['split_method'] == 'contraction':
  *         best_split_of_feat = _evaluate_feature_enum_contr(feature_config,             # <<<<<<<<<<<<<<
  *                                                           feature_graph,
  *                                                           feature_vec_node,
@@ -15872,7 +15872,7 @@ static PyObject *__pyx_pf_12structure_dt_26_evaluate_feature_voronoi(CYTHON_UNUS
     /* "structure_dt.pyx":532
  *                                                          h_train_node,
  *                                                          gamma, reg_lambda)
- *     elif feature_config['split_method'] == 'contract_enum':             # <<<<<<<<<<<<<<
+ *     elif feature_config['split_method'] == 'contraction':             # <<<<<<<<<<<<<<
  *         best_split_of_feat = _evaluate_feature_enum_contr(feature_config,
  *                                                           feature_graph,
  */
@@ -45458,7 +45458,7 @@ static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {&__pyx_n_s_concatenate, __pyx_k_concatenate, sizeof(__pyx_k_concatenate), 0, 0, 1, 1},
   {&__pyx_kp_s_contiguous_and_direct, __pyx_k_contiguous_and_direct, sizeof(__pyx_k_contiguous_and_direct), 0, 0, 1, 0},
   {&__pyx_kp_s_contiguous_and_indirect, __pyx_k_contiguous_and_indirect, sizeof(__pyx_k_contiguous_and_indirect), 0, 0, 1, 0},
-  {&__pyx_n_s_contract_enum, __pyx_k_contract_enum, sizeof(__pyx_k_contract_enum), 0, 0, 1, 1},
+  {&__pyx_n_s_contraction, __pyx_k_contraction, sizeof(__pyx_k_contraction), 0, 0, 1, 1},
   {&__pyx_n_s_contraction_size, __pyx_k_contraction_size, sizeof(__pyx_k_contraction_size), 0, 0, 1, 1},
   {&__pyx_n_s_copy, __pyx_k_copy, sizeof(__pyx_k_copy), 0, 0, 1, 1},
   {&__pyx_n_s_corner_mat, __pyx_k_corner_mat, sizeof(__pyx_k_corner_mat), 0, 0, 1, 1},
