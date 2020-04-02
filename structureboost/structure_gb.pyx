@@ -335,7 +335,7 @@ def c_entropy_link_der_2(cnp.ndarray[double] y_true,
 def my_log_loss(y_true, y_pred, eps=10e-16):
     y_pred = np.minimum(y_pred, (1-eps))
     y_pred = np.maximum(y_pred, eps)
-    out_val = -np.mean(y_true*(np.log(y_pred) + (1-y_true)*np.log(1-y_pred)))
+    out_val = -np.mean(y_true*(np.log(y_pred)) + (1-y_true)*np.log(1-y_pred))
     return out_val
 
 

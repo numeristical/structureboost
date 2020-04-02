@@ -11,7 +11,7 @@ In addition to the feature-specific configurations, there are additional paramet
 
 * **max_depth**: The maximum depth to build the trees.  The larger the number, the more likely you are to overfit, and the less likely to underfit.  Default is 3.
 
-* **learning_rate**: The "step size" to use when adding each tree.  The default is .02.  We recommend erring on the side of having smaller steps and more trees (and using early stopping with an eval_set to optimize model size).  StructureBoost works particularly well under these conditions since it will have multiple opportunities to visit the space of possible splits.
+* **learning_rate**: The "step size" to use when adding each tree.  We recommend erring on the side of having smaller steps and more trees (and using early stopping with an eval_set to optimize model size).  StructureBoost works particularly well under these conditions since it will have multiple opportunities to visit the space of possible splits.
 
 * **subsample**: How much of the training data to use at each tree.  Will be interpreted as a number of rows if given an integer >1 and a percentage of the data if given a float between 0 and 1.  Rows can be chosen with or without replacement, depending on the value of `replace`.
 
