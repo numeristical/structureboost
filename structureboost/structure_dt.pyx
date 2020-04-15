@@ -264,7 +264,7 @@ class StructureDecisionTree(object):
         vec_len = len(feat_vec)
         lsplit_len = len(fs_array)
         left_mask = np.zeros(vec_len, dtype=np.int64)
-        left_mask = get_mask_int_c_alt(feat_vec, fs_array, vec_len,
+        left_mask = get_mask_int_c(feat_vec, fs_array, vec_len,
                                        lsplit_len, left_mask)
 
         # record info about current node
@@ -548,10 +548,16 @@ def _evaluate_feature_voronoi(feature_config, X_train_node, g_train_node,
 def _get_graph_kd_tree(X_train_node, sub_features, vor_sample_size):
     data_array = X_train_node.loc[:, sub_features].values
     cm = get_corner_mat(data_array)
+    ndim = data_array.shape[1]
     voronoi_sample_mat = X_train_node.loc[:, sub_features].sample(
                                 vor_sample_size, replace=True).values
-    voronoi_sample_mat = np.concatenate((voronoi_sample_mat, cm), axis=0)
-
+    if ndim <= 4:
+        voronoi_sample_mat = np.concatenate((voronoi_sample_mat, cm), axis=0)
+    else:
+        num_add_corners = np.maximum(ndim, 10)
+        inds = np.random.choice(cm.shape[0], num_add_corners, replace=False)
+        cm = cm[inds, :]
+        voronoi_sample_mat = np.concatenate((voronoi_sample_mat, cm), axis=0)
     vor_obj = sp.spatial.Voronoi(voronoi_sample_mat)
     voronoi_kdtree = sp.spatial.cKDTree(voronoi_sample_mat)
     feature_graph = graphs.graph_undirected(
@@ -808,7 +814,7 @@ def _eval_split_set(feature_vec_node, g_train_node, h_train_node,
             vec_len = len(feature_vec_node)
             lsplit_len = len(fs_array)
             mask_left = np.zeros(vec_len, dtype=np.int64)
-            mask_left = get_mask_int_c_alt(feature_vec_node.astype(np.int64),
+            mask_left = get_mask_int_c(feature_vec_node.astype(np.int64),
                                            fs_array, vec_len, lsplit_len,
                                            mask_left)
         else:
