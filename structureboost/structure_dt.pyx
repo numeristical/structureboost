@@ -265,7 +265,7 @@ class StructureDecisionTree(object):
         lsplit_len = len(fs_array)
         left_mask = np.zeros(vec_len, dtype=np.int64)
         left_mask = get_mask_int_c(feat_vec, fs_array, vec_len,
-                                       lsplit_len, left_mask)
+                                   lsplit_len, left_mask)
 
         # record info about current node
         curr_node['left_split'] = best_split_dict['left_split']
@@ -324,7 +324,7 @@ def _get_gh_score_array(cnp.ndarray[double] g_left,
 
 def _node_summary_gh(y_vec_g, y_vec_h, reg_lambda):
     if (len(y_vec_g) == 0) or (len(y_vec_h) == 0):
-        print('warning got 0 length vec in node summary')
+        # print('warning got 0 length vec in node summary')
         return 0
     else:
         out_val = -((np.sum(y_vec_g))/(np.sum(y_vec_h)+reg_lambda))
@@ -334,7 +334,6 @@ def _node_summary_gh(y_vec_g, y_vec_h, reg_lambda):
 def evaluate_feature(feature_config, feature_graphs, feature_name,
                      X_train_node, g_train_node, h_train_node,
                      gamma, reg_lambda, uv_dict):
-
     ft = feature_config['feature_type']
 
     if ft == 'numerical':
@@ -763,9 +762,12 @@ def _evaluate_feature_enum_contr(feature_config, feature_graph,
                                  feature_vec_node, g_train_node,
                                  h_train_node, gamma, reg_lambda):
 
+    # possible_splits = _get_possible_splits(feature_graph,
+    #                                        feature_config['feature_type'],
+    #                                        feature_config['contraction_size'])
+
     possible_splits = _get_possible_splits(feature_graph,
-                                           feature_config['feature_type'],
-                                           feature_config['contraction_size'])
+                                           feature_config)
 
     splits_to_eval = _choose_split_subset(possible_splits,
                                           feature_config[
@@ -862,8 +864,15 @@ def _choose_split_subset(possible_splits, msts, replace=True):
         return(possible_splits)
 
 
-def _get_possible_splits(feature_graph, feature_type, msac):
+def _get_possible_splits(feature_graph, feature_config):
     # Query the graph structure to get the possible splits
+    msac = feature_config['contraction_size']
+    feature_type = feature_config['feature_type']
+    if 'edge_method' in feature_config.keys():
+        esm = feature_config['edge_method']
+        feature_config['edge_method_used'] = esm
+    else:
+        esm = 'random_edge'
     if (len(feature_graph.vertices) < msac):
         possible_splits = feature_graph.return_mc_partitions()
     else:
@@ -873,7 +882,8 @@ def _get_possible_splits(feature_graph, feature_type, msac):
                                   max_size_after_contraction=msac)
         else:
             possible_splits = feature_graph.return_contracted_partitions(
-                                  max_size_after_contraction=msac)
+                                  max_size_after_contraction=msac,
+                                  edge_selection=esm)
     return possible_splits
 
 
@@ -1109,3 +1119,119 @@ def max_min_hasnan(cnp.ndarray[double] my_array, long vec_len):
         if isnan(curr_val):
             has_nan = True
     return curr_min, curr_max, has_nan
+
+
+from copy import deepcopy
+
+def ts_extend(m_list, pz, po, feature_name):
+    m_len = len(m_list)
+    new_m = deepcopy(m_list)
+    new_m.append({})
+    new_m[m_len]['feature_name'] = feature_name
+    new_m[m_len]['z_info'] = pz
+    new_m[m_len]['o_info'] = po
+    new_m[m_len]['w_info'] = 1 if m_len==0 else 0
+    for i in range(m_len-1,-1,-1):
+        new_m[i+1]['w_info'] += po*new_m[i]['w_info']*(i+1)/(m_len+1)
+        new_m[i]['w_info'] = pz*new_m[i]['w_info']*(m_len-i)/(m_len+1)
+    return new_m
+
+
+def ts_unwind(m_list, i):
+    m_len = len(m_list)
+    n = m_list[m_len-1]['w_info']
+    new_m = deepcopy(m_list)
+    for j in range(m_len-1,0,-1):
+        if m_list[i-1]['o_info']!=0:
+            t = new_m[j-1]['w_info']
+            new_m[j-1]['w_info'] = n*m_len/(j*m_list[i-1]['o_info'])
+            n = t - new_m[j-1]['w_info']*m_list[i-1]['z_info']*((m_len-j)/m_len)
+        else:
+            new_m[j-1]['w_info'] = (new_m[j-1]['w_info'] * m_len)/(m_list[i-1]['z_info']*(m_len - j))
+    if ((i-1)<=(m_len-1)):
+        for j in range(i-1, m_len-1):
+            new_m[j-1]['feature_name'] = new_m[j]['feature_name']
+            new_m[j-1]['z_info'] = new_m[j]['z_info']
+            new_m[j-1]['o_info'] = new_m[j]['o_info']
+    return new_m
+
+def ts_unwind_2(m_list, i):
+    m_len = len(m_list)
+    n = m_list[m_len-1]['w_info']
+    for j in range(m_len-1,0,-1):
+        if m_list[i-1]['o_info']!=0:
+            t = m_list[j-1]['w_info']
+            m_list[j-1]['w_info'] = n*m_len/(j*m_list[i-1]['o_info'])
+            n = t - m_list[j-1]['w_info']*m_list[i-1]['z_info']*((m_len-j)/m_len)
+        else:
+            m_list[j-1]['w_info'] = (m_list[j-1]['w_info'] * m_len)/(m_list[i-1]['z_info']*(m_len - j))
+    if ((i-1)<=(m_len-1)):
+        for j in range(i-1, m_len-1):
+            m_list[j-1]['feature_name'] = m_list[j]['feature_name']
+            m_list[j-1]['z_info'] = m_list[j]['z_info']
+            m_list[j-1]['o_info'] = m_list[j]['o_info']
+#     return new_m
+
+
+def ts_unwind_sum(m_list, i):
+    m_len = len(m_list)
+    n = m_list[m_len-1]['w_info']
+    out_val = 0
+    for j in range(m_len-1,0,-1):
+        if m_list[i-1]['o_info']!=0:
+            tmp = n*m_len/(j*m_list[i-1]['o_info'])
+            out_val+=tmp
+            n = m_list[j-1]['w_info'] - tmp*m_list[i-1]['z_info']*((m_len-j)/m_len)
+        else:
+            tmp = (m_list[j-1]['w_info'] * m_len)/(m_list[i-1]['z_info']*(m_len - j))
+            out_val += (m_list[j-1]['w_info'] * m_len)/(m_list[i-1]['z_info']*(m_len - j))
+    return out_val
+
+
+
+
+def ts_recurse(phi_dict, curr_node, data_point, m_list, pz, po, sf='intercept'):
+    m_list = ts_extend(m_list, pz, po, sf)
+    if curr_node['node_type']!= 'interior':
+        print(m_list)
+        print(phi_dict)
+        for i in range(2, len(m_list)+1):
+            temp_m = ts_unwind(m_list,i)
+            w = ts_unwind_sum(m_list,i)
+            # w = np.sum(np.array([temp_m[k]['w_info'] for k in range(len(temp_m)-1)]))         
+            increment = w*(m_list[i-1]['o_info']-m_list[i-1]['z_info'])*curr_node['node_summary_val']
+            phi_dict[m_list[i-1]['feature_name']] = phi_dict[m_list[i-1]['feature_name']] + increment
+    else:
+        gl = go_left(data_point, curr_node)
+        if gl:
+            h = curr_node['left_child']
+            c = curr_node['right_child']
+        else:
+            c = curr_node['left_child']
+            h = curr_node['right_child']
+        iz, io = 1,1
+        feature_path = [m_list[q]['feature_name'] for q in range(len(m_list))]
+        first_occ = next((q for q in range(len(feature_path)-1) if feature_path[q]==curr_node['split_feature']), np.nan)
+        if not (np.isnan(first_occ)):
+            iz, io = m_list[first_occ]['z_info'], m_list[first_occ]['o_info']
+            print('unwinding repeat')
+            # m_list = ts_unwind(m_list,first_occ)
+            ts_unwind_2(m_list)
+        rh = h['num_data_points']
+        rc = c['num_data_points']
+        rj = curr_node['num_data_points']
+        sf = curr_node['split_feature']
+        ts_recurse(phi_dict, h, data_point, m_list, iz*(rh/rj), io, sf)
+        ts_recurse(phi_dict, c, data_point, m_list, iz*(rc/rj), 0, sf) # not sure if last arg should be 0 or io
+
+def single_tree_shap(data_point, curr_tree, feature_list):
+    phi_dict = {feature_list[i]:0 for i in range(len(feature_list))}
+    phi_dict['intercept']=curr_tree['node_summary_val']
+    ts_recurse(phi_dict, curr_tree, data_point, [], 1, 1)
+    return phi_dict
+
+def go_left(data_point, curr_node):
+    if curr_node['feature_type']=='numerical':
+        return(data_point[curr_node['split_feature']]<curr_node['split_val'])
+    if (curr_node['feature_type'] in ['categorical_str', 'categorical_int']):
+        return(data_point[curr_node['split_feature']] in curr_node['left_split'])

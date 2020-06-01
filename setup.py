@@ -14,7 +14,7 @@ setuptools.setup(
     description="""StructureBoost is a Python package for gradient boosting
                    using categorical structure.  See documentation at:
                    https://structureboost.readthedocs.io/""",
-    version='0.0.6',
+    version='0.0.7',
     long_description=README,
     url='https://github.com/numeristical/structureboost',
     packages=['structureboost'],
@@ -32,12 +32,19 @@ setuptools.setup(
                                       include_dirs=[numpy.get_include()]),
                  setuptools.Extension("structure_gb",
                                       ["structureboost/structure_gb.c"],
+                                      include_dirs=[numpy.get_include()]),
+                 setuptools.Extension("structure_gb_mc",
+                                      ["structureboost/structure_gb_mc.c"],
+                                      include_dirs=[numpy.get_include()]),
+                 setuptools.Extension("structure_gb_multiclass",
+                                      ["structureboost/structure_gb_multiclass.c"],
                                       include_dirs=[numpy.get_include()])],
     classifiers=[
         'Development Status :: 2 - Pre-Alpha',
         'Intended Audience :: Developers',
         'License :: OSI Approved :: MIT License',
         'Natural Language :: English',
+        'Programming Language :: Python :: 3',
         'Programming Language :: Python :: 3.5',
         'Programming Language :: Python :: 3.6',
         'Programming Language :: Python :: 3.7',

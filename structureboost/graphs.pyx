@@ -1,6 +1,7 @@
 """Undirected graph package to represent categorical structure"""
 import numpy as np
 import random
+import warnings
 
 
 class graph_undirected(object):
@@ -123,10 +124,16 @@ class graph_undirected(object):
         loop_erased_walk = erase_loops_from_walk(walk)
         return loop_erased_walk
 
-    def get_uniform_random_spanning_tree(self):
+    def get_uniform_random_spanning_tree(self, root_vertex=None):
+        # NOTE - need to investigate if starting at specific root
+        # hurts the "uniform" property of the spanning tree.
+
         root_dist_dict = {}
         num_vertices = len(self.vertices)
-        start_vertex = tuple(self.vertices)[int(num_vertices*random.random())]
+        if root_vertex is None:
+            start_vertex = tuple(self.vertices)[int(num_vertices*random.random())]
+        else:
+            start_vertex = root_vertex
         root_dist_dict[start_vertex] = 0
         included_vertices = set([start_vertex])
         edge_set = set()
@@ -310,17 +317,29 @@ class graph_undirected(object):
                                        for conn_set in templist]))
         self.mc_partitions_max_size = max_size
 
-    def return_contracted_partitions(self, max_size_after_contraction=13):
+    def return_contracted_partitions(self, max_size_after_contraction=13,
+                                     edge_selection='random_edge'):
         new_graph = graph_undirected(self.edges, self.vertices)
         while (len(new_graph.vertices) > max_size_after_contraction):
-            vertex_list = list(new_graph.vertices)
-            rand_vertex = vertex_list[random.randint(0, len(vertex_list)-1)]
-            rand_vertex_neighbor_list = list(new_graph.
-                                             adjacent_vertices(rand_vertex))
-            rand_neighbor = rand_vertex_neighbor_list[random.randint(
-                                        0, len(rand_vertex_neighbor_list)-1)]
-            new_graph = new_graph.contract_edge([rand_vertex,
-                                                 rand_neighbor], sep_str='_|_')
+            if edge_selection == 'random_vertex':
+                vertex_list = list(new_graph.vertices)
+                rand_vertex = vertex_list[random.randint(
+                                            0, len(vertex_list)-1)]
+                vert_neigh_list = list(new_graph.adjacent_vertices(
+                                                    rand_vertex))
+                rand_neighbor = vert_neigh_list[random.randint(
+                                                0, len(vert_neigh_list)-1)]
+                new_graph = new_graph.contract_edge([rand_vertex,
+                                                     rand_neighbor],
+                                                    sep_str='_|_')
+            elif edge_selection == 'random_edge':
+                edge_list = list(new_graph.edges)
+                rand_edge = edge_list[random.randint(0, len(edge_list)-1)]
+                new_graph = new_graph.contract_edge(rand_edge,
+                                                    sep_str='_|_')
+            else:
+                raise Exception("unknown edge selection method")
+
         new_graph.enumerate_mc_partitions()
         self.contracted_partitions = transform_partition_list(
                                         new_graph.mc_partitions, sep='_|_')
@@ -351,8 +370,9 @@ def contract_edge(graph, edge, sep_str='_|_'):
     contracted_vertex = sep_str.join((edge_alph))
     new_edges = [[contracted_vertex if y == edge_alph[0] or y == edge_alph[1]
                   else y for y in this_edge]
-                 if edge_alph[0] in this_edge or edge_alph[1] in this_edge
-                 else this_edge for this_edge in graph.edges]
+                 if (edge_alph[0] in this_edge) or (edge_alph[1] in this_edge)
+                 else this_edge for this_edge in graph.edges
+                 if this_edge != frozenset(edge_alph)]
     return graph_undirected(new_edges)
 
 
