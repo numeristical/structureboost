@@ -29,6 +29,49 @@ def get_basic_config_series(feature_vec, default_config):
 
 
 def get_basic_config(X_tr, default_config, X_te=None):
+    """Returns a feature_configs based on a training set and some defaults.
+
+    This is a tool to avoid constructing the feature_configs from scratch.
+    Call `get_basic_config` with the results of `default_config_dict()`
+    as the second argument.
+    Then modify the resulting config to your liking.
+
+    Parameters
+    ----------
+
+    X_tr : DataFrame
+        A dataframe containing the features you plan to train on.  The function
+        will analyze the values, make some assumptions, and apply the defaults
+        to give a starting configuration dict, which can either be used directly
+        of further modified.
+
+    default_config : dict
+        This should usually be the output of the `default_config_dict` (or a 
+        modified version of it).
+
+    Examples
+    --------
+    >>> def_set = stb.default_config_dict()
+    >>> def_set
+    {'default_categorical_method': 'span_tree',
+    'default_num_span_trees': 1,
+    'default_contraction_size': 9,
+    'default_contraction_max_splits_to_search': 25,
+    'default_numerical_max_splits_to_search': 25}
+    >>> feat_cfg = stb.get_basic_config(X_train, def_set)
+    >>> feat_cfg
+    {'county': {'feature_type': 'categorical_str',
+      'graph': <graphs.graph_undirected at 0x10ea75860>,
+      'split_method': 'span_tree',
+      'num_span_trees': 1},
+     'month': {'feature_type': 'numerical', 'max_splits_to_search': 25}}
+    >>> stb_model = stb.StructureBoost(num_trees = 2500,
+                                    learning_rate=.02,
+                                    feature_configs=feat_cfg, 
+                                    max_depth=2,
+                                    mode='classification')
+    >>> stb_model.fit(X_train, y_train)
+"""
     feature_config_dict = {}
     for colname in X_tr.columns:
         if X_te is not None:
@@ -43,6 +86,41 @@ def get_basic_config(X_tr, default_config, X_te=None):
 
 
 def default_config_dict():
+    """Returns a dict of defaults to be used with `get_basic_config`
+
+    The dictionary returned will contain a set of default values.
+    These can be modified before the dictionary is used with the 
+    `get_basic_config` function.
+
+    Returns
+    -------
+
+    config_dict : dict
+        A dictionary containing defaults to be used in `get_basic_config()`
+
+    Examples
+    --------
+    >>> def_set = stb.default_config_dict()
+    >>> def_set
+    {'default_categorical_method': 'span_tree',
+    'default_num_span_trees': 1,
+    'default_contraction_size': 9,
+    'default_contraction_max_splits_to_search': 25,
+    'default_numerical_max_splits_to_search': 25}
+    >>> feat_cfg = stb.get_basic_config(X_train, def_set)
+    >>> feat_cfg
+    {'county': {'feature_type': 'categorical_str',
+      'graph': <graphs.graph_undirected at 0x10ea75860>,
+      'split_method': 'span_tree',
+      'num_span_trees': 1},
+     'month': {'feature_type': 'numerical', 'max_splits_to_search': 25}}
+    >>> stb_model = stb.StructureBoost(num_trees = 2500,
+                                    learning_rate=.02,
+                                    feature_configs=feat_cfg, 
+                                    max_depth=2,
+                                    mode='classification')
+    >>> stb_model.fit(X_train, y_train)
+    """
     config_dict = {}
     config_dict['default_categorical_method'] = 'span_tree'
     config_dict['default_num_span_trees'] = 1

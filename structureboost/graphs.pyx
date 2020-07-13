@@ -1,3 +1,5 @@
+# cython: profile=True
+
 """Undirected graph package to represent categorical structure"""
 import numpy as np
 import random

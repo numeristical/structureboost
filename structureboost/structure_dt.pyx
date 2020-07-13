@@ -1,3 +1,5 @@
+# cython: profile=True
+
 """Decision Tree based on Discrete Graph structure"""
 import graphs
 import copy
@@ -257,7 +259,7 @@ class StructureDecisionTree(object):
                               for colname in best_split_dict[
                                                 'subfeature_list']]
         data_array = self.X_train.values[:, subfeature_indices]
-        tmp_tr = best_split_dict['voronoi_kdtree'].query(data_array)
+        tmp_tr = best_split_dict['voronoi_kdtree'].query(data_array, n_jobs=-1)
         feat_vec = tmp_tr[1].astype(np.int64)
         fs_array = np.fromiter(best_split_dict['left_split'], int,
                                len(best_split_dict['left_split']))
@@ -518,8 +520,9 @@ def _evaluate_feature_voronoi(feature_config, X_train_node, g_train_node,
                                                                sub_features,
                                                                vor_sample_size)
     # Map data points to regions
-    tmp_tr = vor_kdtree.query(data_array)
-    feature_vec_node = tmp_tr[1].astype(np.int64)
+    feature_vec_node = apply_kd_tree(vor_kdtree, data_array)
+    # tmp_tr = vor_kdtree.query(data_array)
+    # feature_vec_node = tmp_tr[1].astype(np.int64)
 
     if feature_config['split_method'] == 'span_tree':
         best_split_of_feat = _evaluate_feature_multitree(feature_config,
@@ -544,12 +547,21 @@ def _evaluate_feature_voronoi(feature_config, X_train_node, g_train_node,
     return(best_split_of_feat)
 
 
+def apply_kd_tree(vor_kdtree, data_array):
+    tmp_tr = vor_kdtree.query(data_array, n_jobs=-1)
+    return(tmp_tr[1].astype(np.int64))
+
+
 def _get_graph_kd_tree(X_train_node, sub_features, vor_sample_size):
-    data_array = X_train_node.loc[:, sub_features].values
+    data_array = get_data_array(X_train_node, sub_features)
+    # data_array = X_train_node.loc[:, sub_features].values
     cm = get_corner_mat(data_array)
-    ndim = data_array.shape[1]
-    voronoi_sample_mat = X_train_node.loc[:, sub_features].sample(
-                                vor_sample_size, replace=True).values
+    npts, ndim = data_array.shape
+    voronoi_sample_mat = sample_voronoi_pts(data_array, npts, vor_sample_size)
+    
+
+    # voronoi_sample_mat = X_train_node.loc[:, sub_features].sample(
+    #                             vor_sample_size, replace=True).values
     if ndim <= 4:
         voronoi_sample_mat = np.concatenate((voronoi_sample_mat, cm), axis=0)
     else:
@@ -557,11 +569,24 @@ def _get_graph_kd_tree(X_train_node, sub_features, vor_sample_size):
         inds = np.random.choice(cm.shape[0], num_add_corners, replace=False)
         cm = cm[inds, :]
         voronoi_sample_mat = np.concatenate((voronoi_sample_mat, cm), axis=0)
-    vor_obj = sp.spatial.Voronoi(voronoi_sample_mat)
-    voronoi_kdtree = sp.spatial.cKDTree(voronoi_sample_mat)
+    vor_obj = get_voronoi_obj(voronoi_sample_mat)
+    voronoi_kdtree = get_ckd_tree(voronoi_sample_mat)
     feature_graph = graphs.graph_undirected(
                         ridge_points_to_edge_set(vor_obj.ridge_points))
     return feature_graph, voronoi_kdtree, data_array
+
+
+def sample_voronoi_pts(data_array, npts, vor_sample_size):
+    return(data_array[np.random.randint(0, npts, vor_sample_size),:])
+
+def get_data_array(X_train_node, sub_features):
+    return(X_train_node.loc[:, sub_features].values)
+
+def get_ckd_tree(voronoi_sample_mat):
+    return(sp.spatial.cKDTree(voronoi_sample_mat))
+
+def get_voronoi_obj(voronoi_sample_mat):
+    return(sp.spatial.Voronoi(voronoi_sample_mat))
 
 
 def _evaluate_feature_multitree(feature_config, feature_graph,
@@ -1032,7 +1057,7 @@ def get_node_response_graphical_int(feature_vec, node):
 
 
 def get_node_response_graphical_vor(feature_mat, node):
-    tmp_tr = node['voronoi_kdtree'].query(feature_mat)
+    tmp_tr = node['voronoi_kdtree'].query(feature_mat, n_jobs=-1)
     feature_vec = tmp_tr[1]
     return get_node_response_graphical_int(feature_vec, node)
 
@@ -1081,11 +1106,13 @@ def get_node_response_df_val(X_te, node, col_to_int_dict):
 
 def get_corner_mat(data_array):
     ndim = data_array.shape[1]
-    max_vec = np.zeros(ndim)
-    min_vec = np.zeros(ndim)
-    for i in range(ndim):
-        max_vec[i] = np.max(data_array[:, i])
-        min_vec[i] = np.min(data_array[:, i])
+    # max_vec = np.zeros(ndim)
+    # min_vec = np.zeros(ndim)
+    # for i in range(ndim):
+    #     max_vec[i] = np.max(data_array[:, i])
+    #     min_vec[i] = np.min(data_array[:, i])
+    max_vec = np.max(data_array, axis=0)
+    min_vec = np.min(data_array, axis=0)
     corner_mat = np.zeros((2**ndim, ndim))
     for i in range(2**ndim):
         base_num = i
@@ -1096,10 +1123,14 @@ def get_corner_mat(data_array):
     return corner_mat
 
 
+# def ridge_points_to_edge_set(rpl):
+#     return {frozenset([sublist[i], sublist[i+1]]) for sublist in rpl
+#             for i in range(-1, len(sublist) - 1)
+#             if (sublist[i] != -1 and sublist[i+1] != -1)}
+
+
 def ridge_points_to_edge_set(rpl):
-    return {frozenset([sublist[i], sublist[i+1]]) for sublist in rpl
-            for i in range(-1, len(sublist) - 1)
-            if (sublist[i] != -1 and sublist[i+1] != -1)}
+    return(rpl[np.min(rpl, axis=1)>=0])
 
 
 @cython.boundscheck(False)  # Deactivate bounds checking
