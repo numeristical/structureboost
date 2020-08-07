@@ -1,5 +1,3 @@
-# cython: profile=True
-
 """Decision Tree based on Discrete Graph structure"""
 import graphs
 import copy
@@ -449,7 +447,9 @@ def _evaluate_numerical_splits(feature_vec, g_vec, h_vec,
                                split_vec, gamma, reg_lambda):
 
     has_na_vals = np.isnan(split_vec[-1])
-    bin_result_vec = np.searchsorted(split_vec, feature_vec, side='right')
+    bin_result_vec = np.searchsorted(split_vec,
+                                     feature_vec,
+                                     side='right').astype(np.int64)
     g_sum_bins, h_sum_bins = get_bin_sums_c(g_vec, h_vec,
                                             bin_result_vec,
                                             len(split_vec)+1)
@@ -492,9 +492,12 @@ def _get_best_vals(score_vec, split_vec):
     best_split_val = split_vec[best_split_index]
     return best_loss, best_split_val
 
+ctypedef cnp.int64_t dtype_int64_t 
 
+@cython.boundscheck(False)  # Deactivate bounds checking
+@cython.wraparound(False)   # Deactivate negative indexing.
 def get_bin_sums_c(cnp.ndarray[double] g_vec, cnp.ndarray[double] h_vec,
-                   cnp.ndarray[long] bin_result_vec, long out_vec_size):
+                   cnp.ndarray[dtype_int64_t] bin_result_vec, long out_vec_size):
     cdef int i
     cdef int m = bin_result_vec.shape[0]
 
