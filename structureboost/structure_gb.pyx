@@ -1,3 +1,5 @@
+# cython: profile=True
+
 """Structured Gradient Boosting using graphs"""
 import warnings
 import numpy as np
@@ -213,7 +215,7 @@ class StructureBoost(object):
         np.random.seed(self.random_seed)
         random.seed(self.random_seed)
         if type(y_train) == pd.Series:
-            y_train = y_train.values.astype(float)
+            y_train = y_train.to_numpy().astype(float)
         elif type(y_train) == np.ndarray:
             y_train = y_train.astype(float)
         self.eval_freq = eval_freq

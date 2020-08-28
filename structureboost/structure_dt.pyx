@@ -1,3 +1,5 @@
+# cython: profile=True
+
 """Decision Tree based on Discrete Graph structure"""
 import graphs
 import copy
@@ -11,6 +13,7 @@ from libc.math cimport isnan
 cimport numpy as cnp
 cimport cython
 
+ctypedef cnp.int64_t dtype_int64_t
 
 class StructureDecisionTree(object):
     """Decision Tree using graphical structure.
@@ -159,7 +162,7 @@ class StructureDecisionTree(object):
             else:
                 left_mask = np.logical_not(np.isnan(self.X_train[curr_feat]))
         else:
-            left_mask = (self.X_train[curr_feat] <= split_val).values
+            left_mask = (self.X_train[curr_feat] <= split_val).to_numpy()
 
         # left_mask = (self.X_train[best_split_dict['split_feature']] <=
         #              best_split_dict['left_split']).values
@@ -204,7 +207,7 @@ class StructureDecisionTree(object):
 
         feat_vec_train = self.X_train[best_split_dict['split_feature']]
         left_mask = feat_vec_train.isin(
-                        best_split_dict['left_split']).values
+                        best_split_dict['left_split']).to_numpy()
         if ('na_left' in best_split_dict.keys()) and (
                             best_split_dict['na_left'] == 1):
             na_left_override = pd.isnull(feat_vec_train)
@@ -259,7 +262,7 @@ class StructureDecisionTree(object):
         subfeature_indices = [self.train_column_to_int_dict[colname]
                               for colname in best_split_dict[
                                                 'subfeature_list']]
-        data_array = self.X_train.values[:, subfeature_indices]
+        data_array = self.X_train.to_numpy()[:, subfeature_indices]
         num_query_pts = data_array.shape[0]
         num_vor_dims = data_array.shape[1]
         feat_vec = np.zeros(num_query_pts,dtype=np.int64)
@@ -271,7 +274,7 @@ class StructureDecisionTree(object):
         # tmp_tr = best_split_dict['voronoi_kdtree'].query(data_array, n_jobs=-1)
         # feat_vec = tmp_tr[1].astype(np.int64)
         fs_array = np.fromiter(best_split_dict['left_split'], int,
-                               len(best_split_dict['left_split']))
+                               len(best_split_dict['left_split'])).astype(np.int64)
         vec_len = len(feat_vec)
         lsplit_len = len(fs_array)
         left_mask = np.zeros(vec_len, dtype=np.int64)
@@ -282,6 +285,7 @@ class StructureDecisionTree(object):
         curr_node['left_split'] = best_split_dict['left_split']
         curr_node['right_split'] = (best_split_dict['voronoi_graph'].vertices -
                                     best_split_dict['left_split'])
+        curr_node['num_voronoi_edges'] = len(best_split_dict['voronoi_graph'].edges)
         curr_node['loss_score'] = best_split_dict['loss_score']
         curr_node['split_feature'] = best_split_dict['split_feature']
         curr_node['subfeature_list'] = best_split_dict['subfeature_list']
@@ -350,7 +354,7 @@ def evaluate_feature(feature_config, feature_graphs, feature_name,
 
     if ft == 'numerical':
         return _evaluate_feature_numerical(
-                        feature_config, X_train_node[feature_name].values,
+                        feature_config, X_train_node[feature_name].to_numpy(),
                         g_train_node, h_train_node, gamma, reg_lambda,
                         uv_dict[feature_name])
     elif ((ft == 'categorical_int') or (ft == 'categorical_str')):
@@ -358,17 +362,17 @@ def evaluate_feature(feature_config, feature_graphs, feature_name,
         if split_method == 'contraction':
             return _evaluate_feature_enum_contr(
                         feature_config, feature_graphs[feature_name],
-                        X_train_node[feature_name].values,
+                        X_train_node[feature_name].to_numpy(),
                         g_train_node, h_train_node, gamma, reg_lambda)
         elif split_method == 'span_tree':
             return _evaluate_feature_multitree(
                         feature_config, feature_graphs[feature_name],
-                        X_train_node[feature_name].values,
+                        X_train_node[feature_name].to_numpy(),
                         g_train_node, h_train_node, gamma, reg_lambda)
         elif split_method == 'onehot':
             return _evaluate_feature_onehot(
                             feature_config, feature_graphs[feature_name],
-                            X_train_node[feature_name].values,
+                            X_train_node[feature_name].to_numpy(),
                             g_train_node, h_train_node, gamma, reg_lambda)
         else:
             w_str = 'Unknown split method "{}" - ignoring feature'.format(
@@ -492,7 +496,6 @@ def _get_best_vals(score_vec, split_vec):
     best_split_val = split_vec[best_split_index]
     return best_loss, best_split_val
 
-ctypedef cnp.int64_t dtype_int64_t 
 
 @cython.boundscheck(False)  # Deactivate bounds checking
 @cython.wraparound(False)   # Deactivate negative indexing.
@@ -610,7 +613,14 @@ def sample_voronoi_pts(data_array, npts, vor_sample_size):
     return(data_array[np.random.randint(0, npts, vor_sample_size),:])
 
 def get_data_array(X_train_node, sub_features):
-    return(X_train_node.loc[:, sub_features].values)
+    return(X_train_node.loc[:, sub_features].to_numpy())
+
+# def get_data_array(X_train_node, sub_features):
+#     m = len(sub_features)
+#     out_mat = np.zeros((X_train_node.shape[0],m))
+#     for i in range(m):
+#         out_mat[:,i] = X_train_node[sub_features[i]].to_numpy()
+#     return(X_train_node.loc[:, sub_features].to_numpy())
 
 def get_ckd_tree(voronoi_sample_mat):
     return(sp.spatial.cKDTree(voronoi_sample_mat))
@@ -663,7 +673,7 @@ def _init_for_span_trees(feature_vec_node, g_train_node, h_train_node,
     h_val_arr = np.zeros(max_num_vertices)
     if is_integer_valued:
         g_val_arr, h_val_arr = get_g_h_feature_sum_arrays(
-                                        feature_vec_node,
+                                        feature_vec_node.astype(np.int64),
                                         g_train_node, h_train_node,
                                         g_val_arr, h_val_arr)
     else:
@@ -781,7 +791,7 @@ def _eval_span_tree(span_tree, g_accum_array, h_accum_array,
 
 @cython.boundscheck(False)  # Deactivate bounds checking
 @cython.wraparound(False)   # Deactivate negative indexing.
-def get_g_h_feature_sum_arrays(cnp.ndarray[long] feature_vec_node,
+def get_g_h_feature_sum_arrays(cnp.ndarray[dtype_int64_t] feature_vec_node,
                                cnp.ndarray[double] g_train_node,
                                cnp.ndarray[double] h_train_node,
                                cnp.ndarray[double] g_val_arr,
@@ -867,7 +877,8 @@ def _eval_split_set(feature_vec_node, g_train_node, h_train_node,
         left_split = curr_partition[0]
         right_split = curr_partition[1]
         if is_integer_valued:
-            fs_array = np.fromiter(left_split, int, len(left_split))
+            fs_array = np.fromiter(left_split, int,
+                                   len(left_split)).astype(np.int64)
             vec_len = len(feature_vec_node)
             lsplit_len = len(fs_array)
             mask_left = np.zeros(vec_len, dtype=np.int64)
@@ -962,26 +973,26 @@ def get_mask(feature_vec_node, left_split):
     return np.array([x in left_split for x in feature_vec_node])
 
 
-@cython.boundscheck(False)  # Deactivate bounds checking
-@cython.wraparound(False)   # Deactivate negative indexing.
-def get_mask_int_c_alt(long[::1] feature_vec_node, long[::1] left_split,
-                       long vec_len, long lsplit_len,
-                       cnp.ndarray[long] mask_vec):
-    cdef int i, j
-    for i in range(vec_len):
-        for j in range(lsplit_len):
-            if feature_vec_node[i] == left_split[j]:
-                mask_vec[i] = 1
-                break
-    return mask_vec.astype(bool)
+# @cython.boundscheck(False)  # Deactivate bounds checking
+# @cython.wraparound(False)   # Deactivate negative indexing.
+# def get_mask_int_c_alt(long[::1] feature_vec_node, long[::1] left_split,
+#                        long vec_len, long lsplit_len,
+#                        cnp.ndarray[long] mask_vec):
+#     cdef int i, j
+#     for i in range(vec_len):
+#         for j in range(lsplit_len):
+#             if feature_vec_node[i] == left_split[j]:
+#                 mask_vec[i] = 1
+#                 break
+#     return mask_vec.astype(bool)
 
 
 @cython.boundscheck(False)  # Deactivate bounds checking
 @cython.wraparound(False)   # Deactivate negative indexing.
-def get_mask_int_c(cnp.ndarray[long] feature_vec_node,
-                   cnp.ndarray[long] left_split,
+def get_mask_int_c(cnp.ndarray[dtype_int64_t] feature_vec_node,
+                   cnp.ndarray[dtype_int64_t] left_split,
                    long vec_len, long lsplit_len,
-                   cnp.ndarray[long] mask_vec):
+                   cnp.ndarray[dtype_int64_t] mask_vec):
     cdef int i, j
     for i in range(vec_len):
         for j in range(lsplit_len):
@@ -993,8 +1004,8 @@ def get_mask_int_c(cnp.ndarray[long] feature_vec_node,
 
 @cython.boundscheck(False)
 @cython.wraparound(False)
-def separate_indices(cnp.ndarray[long] a, cnp.ndarray[long] b,
-                     cnp.ndarray[long] c, long vec_len):
+def separate_indices(cnp.ndarray[dtype_int64_t] a, cnp.ndarray[dtype_int64_t] b,
+                     cnp.ndarray[dtype_int64_t] c, long vec_len):
     cdef long ind_a = 0, ind_b = 0, i
     for i in range(vec_len):
         if c[i] == 0:
@@ -1038,7 +1049,7 @@ def _evaluate_feature_onehot(feature_config, feature_graph,
 
 
 def get_prediction(tree_node, X_te, dict col_to_int_dict):
-    cdef cnp.ndarray[long] ind_subset_left, ind_subset_right
+    cdef cnp.ndarray[dtype_int64_t] ind_subset_left, ind_subset_right
     cdef long vec_len, lsize
     cdef cnp.ndarray[double] next_vec
 
@@ -1076,7 +1087,8 @@ def get_node_response_graphical_int(feature_vec, node):
     # fs_array = np.array(list(node['left_split'])).astype(np.int64)
     cdef int vec_len, lsplit_len
 
-    fs_array = np.fromiter(node['left_split'], int, len(node['left_split']))
+    fs_array = np.fromiter(node['left_split'], int,
+                           len(node['left_split'])).astype(np.int64)
     vec_len = len(feature_vec)
     lsplit_len = len(fs_array)
     mask_vec = np.zeros(vec_len, dtype=np.int64)
@@ -1167,7 +1179,7 @@ def ridge_points_to_edge_set(rpl):
 @cython.boundscheck(False)  # Deactivate bounds checking
 @cython.wraparound(False)   # Deactivate negative indexing.
 def map_to_nn_point_index(double[:,:] core_pts, double[:,:] query_pts,
-                          cnp.ndarray[long] out_mat, long num_core_pts,
+                          cnp.ndarray[dtype_int64_t] out_mat, long num_core_pts,
                           long num_query_pts, long ndim):
     cdef double curr_dist, tnum, best_dist
     cdef int i,j, best_j
@@ -1179,12 +1191,12 @@ def map_to_nn_point_index(double[:,:] core_pts, double[:,:] query_pts,
             for k in range(ndim):
                 tnum = (query_pts[i,k] - core_pts[j,k])
                 curr_dist += tnum*tnum
-                if curr_dist>best_dist:
-                    continue
+                # if curr_dist>best_dist:
+                #     break
             if curr_dist<best_dist:
                 best_dist = curr_dist
                 best_j = j
-            out_mat[i] = best_j
+        out_mat[i] = best_j
     return(out_mat)
 
 @cython.boundscheck(False)  # Deactivate bounds checking
