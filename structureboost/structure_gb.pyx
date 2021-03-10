@@ -107,7 +107,10 @@ class StructureBoost(object):
 
     random_state : int default=42
         A random seed that can be fixed for replicability purposes.
-
+    
+    verbose : int default=1
+        Controls the verbosity when fitting and predicting. To suppress all output, 
+        set verbose=0. Otherwise, set verbose to any nonzero int.
 
     References
     ----------
@@ -123,7 +126,7 @@ class StructureBoost(object):
                  replace=True, min_size_split=2, max_depth=3,
                  gamma=0, reg_lambda=1, feat_sample_by_tree=1,
                  feat_sample_by_node=1, learning_rate=.02,
-                 random_seed=0, na_unseen_action='weighted_random'):
+                 random_seed=0, verbose=1, na_unseen_action='weighted_random'):
         self.num_trees = num_trees
         self.num_trees_for_prediction = num_trees
         self.dec_tree_list = []
@@ -141,6 +144,7 @@ class StructureBoost(object):
         self.subsample = subsample
         self.replace = replace
         self.random_seed = random_seed
+        self.verbose = verbose
         self.na_unseen_action = na_unseen_action
         self.mode = mode
         if mode not in ['classification', 'regression']:
@@ -245,7 +249,7 @@ class StructureBoost(object):
             y_valid = eval_set[1].astype(float)
             curr_valid_answer = self.initial_pred * np.ones(len(y_valid))
             curr_valid_loss = _output_loss(y_valid, curr_valid_answer,
-                                           0, self.mode)
+                                           0, self.mode, verbose=self.verbose)
 
         # Main loop to build trees
         for i in range(self.num_trees):
@@ -263,7 +267,7 @@ class StructureBoost(object):
                                             X_valid))
                     if ((i+1) % self.eval_freq == 1):
                         curr_loss = _output_loss(y_valid, curr_valid_answer,
-                                                 i, self.mode)
+                                                 i, self.mode, verbose=self.verbose)
                         curr_step = np.floor((i+1) /
                                              self.eval_freq).astype(int)-1
                         self.eval_results[curr_step] = curr_loss
@@ -272,9 +276,10 @@ class StructureBoost(object):
                                            curr_step-early_stop_past_steps+1)])
                             if (curr_loss > compare_loss):
                                 stop_now = True
-                                print("""Stopping early: curr_loss of {}
+                                if self.verbose:
+                                    print("""Stopping early: curr_loss of {}
                                         exceeds compare_loss of {}"""
-                                      .format(curr_loss, compare_loss))
+                                          .format(curr_loss, compare_loss))
                 if stop_now:
                     if choose_best_eval:
                         self.num_trees_for_prediction = ((
@@ -432,13 +437,15 @@ def _get_rows_for_tree(num_rows, subsample, replace):
         return np.random.choice(num_rows, rows_to_return, replace=False)
 
 
-def _output_loss(y_true, pred, ind, mode):
+def _output_loss(y_true, pred, ind, mode, verbose=1):
     if mode == 'classification':
         curr_loss = my_log_loss(y_true, 1/(1+np.exp(-pred)))
-        print("i={}, eval_set_log_loss = {}".format(ind, curr_loss))
+        if verbose:
+            print("i={}, eval_set_log_loss = {}".format(ind, curr_loss))
     else:
         curr_loss = my_mean_squared_error(y_true, pred)
-        print("i={}, eval_set_mse = {}".format(ind, curr_loss))
+        if verbose:
+            print("i={}, eval_set_mse = {}".format(ind, curr_loss))
     return curr_loss
 
 
