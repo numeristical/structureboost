@@ -1,4 +1,5 @@
 # cython: profile=True
+# cython: language_level=3
 
 """Undirected graph package to represent categorical structure"""
 import numpy as np
@@ -127,8 +128,19 @@ class graph_undirected(object):
         return loop_erased_walk
 
     def get_uniform_random_spanning_tree(self, root_vertex=None):
-        # NOTE - need to investigate if starting at specific root
-        # hurts the "uniform" property of the spanning tree.
+        """Uses Wilson's algorithm to generate a random spanning tree.
+
+        This outputs a tuple, where the first element is a `graph_undirected`
+        and the second element is a dictionary where the keys are the vertices
+        and the values are the distances to the root_vertex (i.e. the starting
+        vertex of the algorithm).
+
+        Parameters
+        ----------
+
+        root_vertex: a vertex in the graph
+        Default is None, meaning that the starting vertex will be chosen at random.
+        """
 
         root_dist_dict = {}
         num_vertices = len(self.vertices)
@@ -319,29 +331,11 @@ class graph_undirected(object):
                                        for conn_set in templist]))
         self.mc_partitions_max_size = max_size
 
+
     def return_contracted_partitions(self, max_size_after_contraction=13,
                                      edge_selection='random_edge'):
-        new_graph = graph_undirected(self.edges, self.vertices)
-        while (len(new_graph.vertices) > max_size_after_contraction):
-            if edge_selection == 'random_vertex':
-                vertex_list = list(new_graph.vertices)
-                rand_vertex = vertex_list[random.randint(
-                                            0, len(vertex_list)-1)]
-                vert_neigh_list = list(new_graph.adjacent_vertices(
-                                                    rand_vertex))
-                rand_neighbor = vert_neigh_list[random.randint(
-                                                0, len(vert_neigh_list)-1)]
-                new_graph = new_graph.contract_edge([rand_vertex,
-                                                     rand_neighbor],
-                                                    sep_str='_|_')
-            elif edge_selection == 'random_edge':
-                edge_list = list(new_graph.edges)
-                rand_edge = edge_list[random.randint(0, len(edge_list)-1)]
-                new_graph = new_graph.contract_edge(rand_edge,
-                                                    sep_str='_|_')
-            else:
-                raise Exception("unknown edge selection method")
-
+        new_graph = random_contraction(self, max_size_after_contraction,
+                                        edge_selection)
         new_graph.enumerate_mc_partitions()
         self.contracted_partitions = transform_partition_list(
                                         new_graph.mc_partitions, sep='_|_')
@@ -365,8 +359,98 @@ class graph_undirected(object):
                                                 new_graph.mc_partitions)
         return reassembled_partition_list
 
+    def random_partition(self, num_parts, method):
+        if method=='span_tree':
+            return get_random_partition_st(self, num_parts)
+        elif method=='contraction':
+            return get_random_partition_contract_intset(self, num_parts)
+        else:
+            raise Exception("unknown edge selection method")
+
+
+def random_contraction(graph, target_size, method='random_edge',sep='_|_'):
+    new_graph = graph_undirected(graph.edges, graph.vertices)
+    while (len(new_graph.vertices) > target_size):
+        if method == 'random_vertex':
+            vertex_list = list(new_graph.vertices)
+            rand_vertex = vertex_list[random.randint(
+                                        0, len(vertex_list)-1)]
+            vert_neigh_list = list(new_graph.adjacent_vertices(
+                                                rand_vertex))
+            rand_neighbor = vert_neigh_list[random.randint(
+                                            0, len(vert_neigh_list)-1)]
+            new_graph = new_graph.contract_edge([rand_vertex,
+                                                 rand_neighbor],
+                                                sep_str=sep)
+        elif method == 'random_edge':
+            edge_list = list(new_graph.edges)
+            rand_edge = edge_list[random.randint(0, len(edge_list)-1)]
+            new_graph = new_graph.contract_edge(rand_edge,
+                                                sep_str=sep)
+        else:
+            raise Exception("unknown edge selection method")
+    return(new_graph)
+
+
+def random_contraction_intset(graph, target_size, method='random_vertex'):
+    new_vertices = {frozenset([vertex]) for vertex in graph.vertices}
+    new_edges = {frozenset([frozenset([list(edge)[0]]),
+                            frozenset([list(edge)[1]])])
+                 for edge in graph.edges}
+    new_graph = graph_undirected(new_edges, new_vertices)
+    while (len(new_graph.vertices) > target_size):
+        if method=='random_vertex':
+            rand_vertex = random.choice(tuple(new_graph.vertices))
+            rand_neighbor = random.choice(tuple(
+                                    new_graph.adjacent_vertices(rand_vertex)))
+            new_graph = contract_edge_intset(new_graph,
+                                             [rand_vertex, rand_neighbor])
+        elif method=='random_edge':
+            rand_edge = random.choice(tuple(new_graph.edges))
+            new_graph = contract_edge_intset(new_graph,
+                                             rand_edge)
+    return new_graph
+
+def get_random_partition_contract_intset(graph,
+                                   part_size):
+
+    new_vertices = {frozenset([vertex]) for vertex in graph.vertices}
+    new_edges = {frozenset([frozenset([list(edge)[0]]),
+                            frozenset([list(edge)[1]])])
+                 for edge in graph.edges}
+
+    new_graph = random_contraction_intset(
+                        graph = graph_undirected(new_edges, new_vertices),
+                        target_size = part_size)
+    return([list(frozenset().union(*list(vl))) for vl in new_graph.vertices])
+
+
+
+
 
 def contract_edge(graph, edge, sep_str='_|_'):
+    """Contract an edge in a graph to form a new graph.
+    This is intended for use on graphs were the vertices are names by strings.
+    For graphs where the vertices are integers, consider the function
+    `contract_edge_intset`.
+
+    Parameters
+    ----------
+
+    graph: graph_undirected
+    The graph on which we wish to contract an edge.
+
+    edge: list, (or list-like)
+    The edge we wish to contract.  Specifically, the edge should contain
+    exactly two vertices in graph that are already adjacent.  However,
+    the function currently does not check that the edge already exists
+    in the graph.
+
+    sep_str: str, default = '_|_'
+    The separator used to name the new contracted vertex.  For example,
+    under the default, the new vertex will be named "vert1_|_vert2" where
+    "vert1" is the vertex name which comes first when sorted.
+    """
     edge_alph = list(edge)
     edge_alph.sort()
     contracted_vertex = sep_str.join((edge_alph))
@@ -430,6 +514,7 @@ def get_induced_subgraph_intset(graph, vertex_set):
 
 
 def is_connected(graph):
+    """Function to determine if a graph_undirected is connected or not."""
     cdef set visited_vertices, unexplored_vertices, new_vertices
     initial_vertex = next(iter(graph.vertices))
     visited_vertices = set([initial_vertex])
@@ -444,6 +529,7 @@ def is_connected(graph):
 
 
 def num_connected_comp(graph):
+    """Returns the number of connected components in a graph."""
     initial_vertex = list(graph.vertices)[0]
     visited_vertices = [initial_vertex]
     unexplored_vertices = list(graph.adjacent_vertices(initial_vertex))
@@ -464,6 +550,10 @@ def num_connected_comp(graph):
 
 
 def connected_comp_list(graph):
+    """Returns a list of the connected components of a graph.
+
+    Given a graph, it will output a list of graphs where each entry
+    is a maximal connected subgraph of the original graph."""
     initial_vertex = list(graph.vertices)[0]
     visited_vertices = [initial_vertex]
     unexplored_vertices = list(graph.adjacent_vertices(initial_vertex))
@@ -487,6 +577,13 @@ def connected_comp_list(graph):
                                 graph_undirected(
                                     remainder_edges, remainder_vertices))
 
+
+def get_random_partition_st(my_graph, part_size):
+    st, extra = my_graph.get_uniform_random_spanning_tree()
+    edges_to_remove = np.random.choice(list(st.edges), size=part_size-1, replace=False)
+    st.edges = st.edges - set(edges_to_remove)
+    part = connected_comp_list(st)
+    return([list(a.vertices) for a in part])
 
 def get_all_distances_from_vertex(graph, start_vertex):
     vertex_path_dist_dict = set()
@@ -535,6 +632,19 @@ def get_vertex_int_mapping(graph):
 
 
 def integerize_graph_from_dict(graph, mapping_dict):
+    """Given a graph and a mapping dictionary, return a graph with renamed vertices.
+
+    This is useful if you have a graph where the vertices are strings
+    and you wish to have the vertices be integers (e.g. for efficiency reasons).
+
+    If you already have a convenient mapping from the current vertex names to
+    the integers, this function will apply it to the graph and make a new graph
+    with the new names.
+
+    If you do not already have such a mapping the function `integerize_graph`
+    is more convenient as it will create a mapping to the integers (starting at 0)
+    and return both the new graph and the mapping dictionary used"""
+
     new_vertices = {mapping_dict[i] for i in graph.vertices}
     new_edges = {frozenset([mapping_dict[i] for i in edge])
                  for edge in graph.edges}
@@ -542,6 +652,26 @@ def integerize_graph_from_dict(graph, mapping_dict):
 
 
 def integerize_graph(graph):
+    """Given a graph, return equivalent graph with integer vertices and a mapping dict.
+
+    This is useful if you have a graph where the vertices are strings
+    and you wish to have the vertices be integers (e.g. for efficiency reasons).
+
+
+    If you do not already have such a mapping this function will return both
+    the new graph (with integer vertices starting at 0) as well as a dictionary
+    that maps the old names into the new integers.  The dictionary can then
+    be used to translate a data column into integer format.  See example below.
+
+    If you already have a mapping from the current vertex names to
+    the integers, consider using the function `integerize_graph_from_dict`.
+
+    Example:
+    
+    > state_graph = stb.graphs.US_48_and_DC_graph()
+    > state_graph_int, map_dict = stb.graphs.integerize_graph(state_graph)
+    > df['state_int'] = df.state.apply(lambda x: map_dict[x])
+    """
     out_dict_int = get_vertex_int_mapping(graph)
     new_graph = integerize_graph_from_dict(graph, out_dict_int)
     return(new_graph,  out_dict_int)
@@ -594,6 +724,8 @@ def shuffle_graph(my_graph, shuffle_dict=None):
 
 
 def erase_loops_from_walk(walk):
+    cdef long i
+
     while len(walk) > len(set(walk)):
         duplicate_found = False
         i = 0
@@ -812,3 +944,7 @@ def CA_county_graph():
                          ]
     CA_58_county_graph = graph_undirected(CA_county_graph_edges)
     return CA_58_county_graph
+
+def mod_CA_57_county_graph():
+    """Modified CA county graph where Sutter and Yuba counties are grouped together"""
+    return(contract_edge(CA_county_graph(), ['Sutter','Yuba'], sep_str='_'))

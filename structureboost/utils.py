@@ -179,3 +179,60 @@ def ice_plot(model, data_row, column, range_pts, add_nan=True):
                    xmin=range_pts[0],
                    xmax=range_pts[int(np.floor(len(range_pts)/4+1))],
                    linestyle='dotted', color=p[0].get_color())
+
+def log_loss(truth, preds, eps=1e-15, rtol=1e-05, atol=1e-08):
+    """A log_loss that does not complain if some classes are missing.
+    
+    Parameters
+    ----------
+
+    truth : numpy array or Series
+        The true values of the observations
+
+    preds : numpy array
+        Generally a 2d array, but a 1d array for binary problems is
+        permissible and will be interpreted as the probabilities that
+        the case in question is 1 (positive).
+
+    eps : float, default is 1e-15
+        The preds will be "clipped" to eps, 1-eps to avoid issues with
+        taking the logarithm of zero.
+
+    rtol, atol : floats
+        These are passed to the numpy.allclose function for checking
+        that the rows of `preds` sum to one.
+
+    """
+    if (type(preds)==pd.Series):
+        preds = preds.to_numpy()
+    if (type(truth)==pd.Series):
+        truth = truth.to_numpy()
+    if (preds.ndim == 2) and (preds.shape[1]==1):
+        preds = preds.reshape(-1)
+    if (truth.ndim == 2) and (truth.shape[1]==1):
+        truth = truth.reshape(-1)
+    preds = np.clip(preds, eps, 1-eps)
+    if (preds.ndim==1):
+        return (-np.mean(truth*np.log(preds) + (1-truth)*np.log(1-preds)))
+    elif (preds.ndim==2):
+        row_sums = np.sum(preds, axis=1)
+        close_to_one = np.allclose(row_sums, np.ones(len(row_sums)), rtol=rtol, atol=atol)
+        if not close_to_one:
+            w_str = "rows do not sum to one within specified tolerance (rtol, atol)"
+            warnings.warn(w_str)
+        truth = truth.astype(np.int64)
+        highest_val = np.max(truth)
+        if (highest_val > preds.shape[1]):
+            w_str = 'Value of {} found in truth, but preds has only {} columns'.format(
+                                        highest_val, preds.shape[1])
+            warnings.warn(w_str)
+            return None
+        else:
+            prob_of_pred_vec = np.array([preds[i,truth[i]] for i in range(preds.shape[0])])
+            return(-np.mean(np.log(prob_of_pred_vec)))
+    else:
+        w_str = "preds has more than 2 dimensions"
+        warnings.warn(w_str)
+        return None
+
+
