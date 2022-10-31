@@ -133,7 +133,7 @@ class StructureBoost(object):
                  random_seed=0, na_unseen_action='weighted_random'):
         self.num_trees = num_trees
         self.num_trees_for_prediction = num_trees
-        self.feature_configs = feature_configs
+        self.feature_configs = feature_configs.copy()
         self._process_feature_configs()
         self.feat_list_full = list(self.feature_configs.keys())
         self.min_size_split = min_size_split
@@ -270,7 +270,7 @@ class StructureBoost(object):
 
 
     def fit(self, X_train, y_train, eval_set=None, eval_freq=10,
-            early_stop_past_steps=0, choose_best_eval=True):
+            early_stop_past_steps=0, choose_best_eval=True, verbose=1):
         """Fits the model given training features and labels.
 
         Parameters
@@ -300,9 +300,10 @@ class StructureBoost(object):
 
         early_stop_past_steps : int, default is 0
             How far back to look to determine early stopping. Default is 0,
-            which turns off early_stopping. If set at m, it will
-            compare current loss to loss m "steps" ago to decide whether or
-            not to stop. (Note that a "step" here means `eval_freq` number
+            which means it will stop immediately if the loss increases on the
+            eval set. If set at m, it will stop if it has been m steps since
+            the last "new low" was achieved. If set to -1, will deactivate
+            early stopping. (Note that a "step" here means `eval_freq` number
             of trees). Larger numbers give more room for allowing temporary
             increases in the loss before giving up and stopping.
 
@@ -351,7 +352,8 @@ class StructureBoost(object):
             # otherwise we use the marginal averages from y_train
             curr_valid_answer = self._get_initial_pred(X_valid, y_train)
             curr_valid_loss = self._compute_loss(y_valid, curr_valid_answer)
-            print("i={}, eval_set_loss = {}".format(0, curr_valid_loss))
+            if verbose:
+                print("i={}, eval_set_loss = {}".format(0, curr_valid_loss))
 
         # Main loop to build trees
         stop_now = False
@@ -370,18 +372,30 @@ class StructureBoost(object):
                                             X_valid))
                     if ((i+1) % eval_freq == 1):
                         curr_loss = self._compute_loss(y_valid, curr_valid_answer)
-                        print("i={}, eval_set_loss = {}".format(i, curr_loss))
+                        if verbose:
+                            print("i={}, eval_set_loss = {}".format(i, curr_loss))
                         curr_step = np.floor((i+1) /
                                              eval_freq).astype(int)-1
                         self.eval_results[curr_step] = curr_loss
-                        if curr_step > early_stop_past_steps:
-                            compare_loss = np.min(self.eval_results[:(
-                                           curr_step-early_stop_past_steps+1)])
-                            if (curr_loss > compare_loss):
+                        if ((early_stop_past_steps>=0) and 
+                                (curr_step > early_stop_past_steps)):
+                            best_step = np.argmin(self.eval_results[:(curr_step+1)])
+                            if ((curr_step-best_step) >= early_stop_past_steps):
                                 stop_now = True
-                                print("""Stopping early: curr_loss of {}
-                                        exceeds compare_loss of {}"""
-                                      .format(curr_loss, compare_loss))
+                                if verbose:
+                                    print("""Stopping early: low pt was {} steps ago"""
+                                        .format((curr_step-best_step)))
+                            # compare_loss = np.min(self.eval_results[:(
+                            #                curr_step-early_stop_past_steps+1)])
+                            # if (curr_loss > compare_loss):
+                            #     stop_now = True
+                            #     print("""Stopping early: curr_loss of {}
+                            #             exceeds compare_loss of {}"""
+                            #           .format(curr_loss, compare_loss))
+                elif ((i+1) % eval_freq == 1):
+                    if verbose:
+                        print("i={}".format(i))
+
                 if stop_now:
                     if choose_best_eval:
                         self.num_trees_for_prediction = ((

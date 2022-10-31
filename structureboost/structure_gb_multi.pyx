@@ -284,13 +284,14 @@ class StructureBoostMulti(StructureBoost):
             prob_est_vec = np.clip(np.mean(y_train, axis=0), 1e-15, 1-1e-15)
             return(np.tile(np.log(prob_est_vec), (X_train.shape[0],1)))
 
-    def _output_loss(y_true, pred, ind, mode):
-        expphi = np.exp(pred)
-        expphisum = np.sum(expphi, axis=1)
-        probs = (expphi.T/expphisum.T).T
-        curr_loss = my_log_loss_vec(y_true, probs)
-        print("i={}, eval_set_log_loss = {}".format(ind, curr_loss))
-        return curr_loss
+    # def _output_loss(y_true, pred, ind, mode, verbose=1):
+    #     expphi = np.exp(pred)
+    #     expphisum = np.sum(expphi, axis=1)
+    #     probs = (expphi.T/expphisum.T).T
+    #     curr_loss = my_log_loss_vec(y_true, probs)
+    #     if verbose:
+    #         print("i={}, eval_set_log_loss = {}".format(ind, curr_loss))
+    #     return curr_loss
 
     def _add_train_next_tree(self, features_for_tree, X_train, y_g_h_train, index):
         self.dec_tree_list.append(StructureDecisionTreeMulti(

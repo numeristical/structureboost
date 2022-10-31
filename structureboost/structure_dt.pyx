@@ -143,7 +143,6 @@ class StructureDecisionTree(object):
 
     def _node_summary_gh(self, y_g_h_mat):
         if (y_g_h_mat.shape[0] == 0):
-            # print('warning got 0 length vec in node summary')
             return 0
         else:
             out_val = -((np.sum(y_g_h_mat[:,0]))/(np.sum(y_g_h_mat[:,1])+self.reg_lambda))
@@ -184,7 +183,7 @@ class StructureDecisionTree(object):
             self._execute_split_voronoi(curr_node, best_split_dict,
                                         feature_graphs_node)
         else:
-            print("Unknown feature type")
+            warnings.warn("Unknown feature type")
 
     def _execute_split_numerical(self, curr_node, best_split_dict,
                                  feature_graphs_node):
@@ -549,7 +548,7 @@ class StructureDecisionTree(object):
                                                               feature_vec_node,
                                                               g_h_train_node)
         else:
-            print('Unknown method for splitting feature')
+            warnings.warn('Unknown method for splitting feature')
 
         best_split_of_feat['vor_pts'] = vor_pts
         best_split_of_feat['voronoi_graph'] = feature_graph
@@ -658,7 +657,6 @@ class StructureDecisionTree(object):
                 leaf_neighbor_ind = leaf_neighbor_raw
 
             left_feat_values = vertex_to_split_dict[leaf_vertex_raw]
-            # print(left_feat_values)
             curr_loss = self.get_loss_in_span_tree(feature_vec_node, g_h_train_node,
                                                    g_h_accum_array,
                                                    g_h_sum,
@@ -702,8 +700,10 @@ class StructureDecisionTree(object):
                                       self.gamma, self.reg_lambda)
         return(curr_loss)
 
-
-    def update_g_h_accum(self, g_h_accum_array, lni, lvi):
+    @cython.boundscheck(False)  # Deactivate bounds checking
+    @cython.wraparound(False)   # Deactivate negative indexing.
+    def update_g_h_accum(self, np.ndarray[double, ndim=2] g_h_accum_array,
+        long lni, long lvi):
         g_h_accum_array[lni,0] +=  g_h_accum_array[lvi,0]
         g_h_accum_array[lni,1] += g_h_accum_array[lvi,1]
         return g_h_accum_array
@@ -1282,8 +1282,8 @@ def ts_unwind_sum(m_list, i):
 def ts_recurse(phi_dict, curr_node, data_point, m_list, pz, po, sf='intercept'):
     m_list = ts_extend(m_list, pz, po, sf)
     if curr_node['node_type']!= 'interior':
-        print(m_list)
-        print(phi_dict)
+        # print(m_list)
+        # print(phi_dict)
         for i in range(2, len(m_list)+1):
             temp_m = ts_unwind(m_list,i)
             w = ts_unwind_sum(m_list,i)
@@ -1303,7 +1303,7 @@ def ts_recurse(phi_dict, curr_node, data_point, m_list, pz, po, sf='intercept'):
         first_occ = next((q for q in range(len(feature_path)-1) if feature_path[q]==curr_node['split_feature']), np.nan)
         if not (np.isnan(first_occ)):
             iz, io = m_list[first_occ]['z_info'], m_list[first_occ]['o_info']
-            print('unwinding repeat')
+            # print('unwinding repeat')
             # m_list = ts_unwind(m_list,first_occ)
             ts_unwind_2(m_list)
         rh = h['num_data_points']

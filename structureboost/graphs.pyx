@@ -130,7 +130,7 @@ class graph_undirected(object):
     def get_uniform_random_spanning_tree(self, root_vertex=None):
         """Uses Wilson's algorithm to generate a random spanning tree.
 
-        This outputs a tuple, where the first element is a `graph_undirected`
+        This outputs a tuple, where the first element is the `graph_undirected`
         and the second element is a dictionary where the keys are the vertices
         and the values are the distances to the root_vertex (i.e. the starting
         vertex of the algorithm).
@@ -149,6 +149,30 @@ class graph_undirected(object):
         else:
             start_vertex = root_vertex
         root_dist_dict[start_vertex] = 0
+
+        # We assume the input graph is connected
+        # so first we check to see if it is already a tree
+        # or a cycle to simplify the procedure if that is the case
+
+        num_edges = len(self.edges)
+        if num_edges == num_vertices-1: # i.e. graph is already a tree
+            included_vertices = set([start_vertex])
+            new_vertices = self.adjacent_vertices(start_vertex)
+            dist = 1
+            for vertex in new_vertices:
+                root_dist_dict[vertex] = dist
+
+            included_vertices = included_vertices.union(new_vertices)
+            while len(included_vertices) < num_vertices:
+                dist+=1
+                new_vertices = (self.adjacent_vertices_to_set(new_vertices) -
+                                included_vertices)
+                for vertex in new_vertices:
+                    root_dist_dict[vertex] = dist
+                included_vertices = included_vertices.union(new_vertices)
+
+            return(graph_undirected(self.edges), root_dist_dict)
+
         included_vertices = set([start_vertex])
         edge_set = set()
         while len(included_vertices) < num_vertices:
@@ -518,7 +542,7 @@ def is_connected(graph):
     cdef set visited_vertices, unexplored_vertices, new_vertices
     initial_vertex = next(iter(graph.vertices))
     visited_vertices = set([initial_vertex])
-    unexplored_vertices = graph.adjacent_vertices(initial_vertex)
+    unexplored_vertices = graph.adjacent_vertices(initial_vertex).copy()
     while unexplored_vertices:
         curr_vertex = unexplored_vertices.pop()
         visited_vertices.add(curr_vertex)
@@ -532,7 +556,7 @@ def num_connected_comp(graph):
     """Returns the number of connected components in a graph."""
     initial_vertex = list(graph.vertices)[0]
     visited_vertices = [initial_vertex]
-    unexplored_vertices = list(graph.adjacent_vertices(initial_vertex))
+    unexplored_vertices = list(graph.adjacent_vertices(initial_vertex)).copy()
     while unexplored_vertices:
         curr_vertex = unexplored_vertices.pop(0)
         visited_vertices.append(curr_vertex)
@@ -556,7 +580,7 @@ def connected_comp_list(graph):
     is a maximal connected subgraph of the original graph."""
     initial_vertex = list(graph.vertices)[0]
     visited_vertices = [initial_vertex]
-    unexplored_vertices = list(graph.adjacent_vertices(initial_vertex))
+    unexplored_vertices = list(graph.adjacent_vertices(initial_vertex)).copy()
     while unexplored_vertices:
         curr_vertex = unexplored_vertices.pop(0)
         visited_vertices.append(curr_vertex)
@@ -588,7 +612,7 @@ def get_random_partition_st(my_graph, part_size):
 def get_all_distances_from_vertex(graph, start_vertex):
     vertex_path_dist_dict = set()
     vertex_path_dist_dict[start_vertex] = 0
-    unexplored_vertices = list(graph.adjacent_vertices(start_vertex))
+    unexplored_vertices = list(graph.adjacent_vertices(start_vertex)).copy()
     for vert in unexplored_vertices:
         vertex_path_dist_dict[vert] = 1
     visited_vertices = [start_vertex]
@@ -747,6 +771,12 @@ def separate_by_two_vertices(graph, vert_1, vert_2):
                  if dict_2[vert] < dict_1[vert]])
     comp_1 = graph.vertices - comp_2
     return comp_1, comp_2
+
+
+def chain_int_graph(range_low, range_high):
+    edge_set = set([frozenset([i, i+1])
+                    for i in range(range_low, range_high)])
+    return(graph_undirected(edge_set))
 
 
 def cycle_int_graph(range_low, range_high):

@@ -38,7 +38,6 @@ class StructureDecisionTreeMulti(StructureDecisionTree):
 
     def _node_summary_gh(self, g_h_mat):
         if (g_h_mat.shape[0] == 0):
-            print('warning got 0 length vec in node summary')
             return np.zeros(self.num_classes)
         else:
             g_vec = np.sum(g_h_mat[:,:self.num_classes], axis=0)
@@ -97,8 +96,13 @@ class StructureDecisionTreeMulti(StructureDecisionTree):
                                         g_h_val_arr, self.num_classes)
         return g_h_val_arr
 
-
-    def update_g_h_accum(self, g_h_accum_array, lni, lvi):
+    @cython.boundscheck(False)  # Deactivate bounds checking
+    @cython.wraparound(False)   # Deactivate negative indexing.
+    def update_g_h_accum(self, np.ndarray[double, ndim=2] g_h_accum_array,
+        long lni, long lvi):
+        ## TODO: make this more efficient (cython)
+        cdef long j
+        cdef long limit = 2*self.num_classes
         for j in range(2*self.num_classes):
             g_h_accum_array[lni,j] +=  g_h_accum_array[lvi,j]
         return g_h_accum_array
