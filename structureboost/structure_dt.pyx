@@ -107,7 +107,7 @@ class StructureDecisionTree(object):
         wrap_up_now = self._check_stopping_condition(
                             num_dp, curr_node['depth'], g_h_train_node)
         if wrap_up_now:
-            self._wrap_up_node(curr_node, g_h_train_node)
+            self._wrap_up_node(curr_node, g_h_train_node.shape[0])
             return None
 
         features_to_search = self._get_features_to_search()
@@ -131,7 +131,7 @@ class StructureDecisionTree(object):
             self._execute_split(curr_node, best_split_dict,
                                 curr_node['feature_graphs'])
         else:
-            self._wrap_up_node(curr_node, g_h_train_node)
+            self._wrap_up_node(curr_node, g_h_train_node.shape[0])
 
     def _check_stopping_condition(self, num_dp, depth, g_h_train_node):
         cond = ((num_dp < self.min_size_split) or
@@ -163,10 +163,10 @@ class StructureDecisionTree(object):
             features_to_search = self.feature_sublist
         return features_to_search
 
-    def _wrap_up_node(self, curr_node, g_h_train_node):
+    def _wrap_up_node(self, curr_node, node_size):
         # Compute summary stats of node and mark it as a leaf
         # curr_node['node_summary_val'] = self._node_summary_gh(g_h_train_node)
-        curr_node['num_data_points'] = g_h_train_node.shape[0]
+        curr_node['num_data_points'] = node_size
         curr_node['node_type'] = 'leaf'
         curr_node.pop('mask')
 
@@ -197,24 +197,31 @@ class StructureDecisionTree(object):
         else:
             left_mask = (self.X_train[curr_feat] <= split_val).to_numpy()
 
-        curr_node['split_val'] = split_val
-        curr_node['loss_score'] = best_split_dict['loss_score']
-        split_feat = best_split_dict['split_feature']
-        curr_node['split_feature'] = split_feat
-        curr_node['train_feat_col'] = self.train_column_to_int_dict[split_feat]
-        curr_node['node_type'] = 'interior'
-        curr_node['feature_type'] = best_split_dict['feature_type']
-        curr_node['na_left'] = best_split_dict['na_left']
-        curr_node['na_dir_random'] = best_split_dict['na_dir_random']
-        curr_mask = curr_node.pop('mask')
+        num_left = np.sum(left_mask & curr_node['mask'])
+        num_here = np.sum(curr_node['mask'])
+        # Check that this split send nodes to both sides
+        if (num_left>0) and (num_left<num_here):
+            curr_node['split_val'] = split_val
+            curr_node['loss_score'] = best_split_dict['loss_score']
+            split_feat = best_split_dict['split_feature']
+            curr_node['split_feature'] = split_feat
+            curr_node['train_feat_col'] = self.train_column_to_int_dict[split_feat]
+            curr_node['node_type'] = 'interior'
+            curr_node['feature_type'] = best_split_dict['feature_type']
+            curr_node['na_left'] = best_split_dict['na_left']
+            curr_node['na_dir_random'] = best_split_dict['na_dir_random']
+            curr_mask = curr_node.pop('mask')
 
-        # Create feature graphs for children
-        feature_graphs_left = feature_graphs_node.copy()
-        feature_graphs_right = feature_graphs_node.copy()
+            # Create feature graphs for children
+            feature_graphs_left = feature_graphs_node.copy()
+            feature_graphs_right = feature_graphs_node.copy()
 
-        self._create_children_nodes(curr_node, feature_graphs_left,
-                                    feature_graphs_right,
-                                    curr_mask, left_mask)
+            self._create_children_nodes(curr_node, feature_graphs_left,
+                                        feature_graphs_right,
+                                        curr_mask, left_mask)
+        else:
+            self.num_nodes-=2
+            self._wrap_up_node(curr_node, num_here)
 
     def _create_children_nodes(self, curr_node, feature_graphs_left,
                                feature_graphs_right,
@@ -347,7 +354,7 @@ class StructureDecisionTree(object):
         if ft == 'numerical':
             return self._evaluate_feature_numerical(
                             feature_config, X_train_node[feature_name].to_numpy(),
-                            g_h_train_node, uv_dict[feature_name])
+                            g_h_train_node, uv_dict[feature_name], feature_name)
         elif ((ft == 'categorical_int') or (ft == 'categorical_str')):
             split_method = feature_config['split_method']
             if split_method == 'contraction':
@@ -378,12 +385,12 @@ class StructureDecisionTree(object):
 
 
     def _evaluate_feature_numerical(self, feature_config, feature_vec,
-                                    g_h_mat, uv_array):
+                                    g_h_mat, uv_array, feature_name):
         interp_mode = ('random' if 'interp_mode' not in feature_config.keys()
                        else feature_config['interp_mode'])
         # May be slightly more efficient to reduce to number of splits needed
         # and then calculate them. (Don't have to interpolate as much)
-        splits_to_eval = _get_numerical_splits(feature_vec, uv_array,
+        splits_to_eval = self._get_numerical_splits(feature_vec, uv_array,
                                                interp_mode=interp_mode)
         if len(splits_to_eval) == 0:
             return(_initialize_best_split_dict())
@@ -400,6 +407,28 @@ class StructureDecisionTree(object):
             best_split_of_feat['na_left'] = na_left
             best_split_of_feat['na_dir_random'] = na_rnd
             return(best_split_of_feat)
+
+    def _get_numerical_splits(self, feature_vec, uv_array, interp_mode='random'):
+        with warnings.catch_warnings():
+            warnings.simplefilter("ignore")
+            if self.num_nodes==1:
+                unique_vals = uv_array
+                has_na = np.any(np.isnan(feature_vec))
+                max_val = 0 # dummy val - just to be something other than nan
+            else:
+                min_val, max_val, has_na = max_min_hasnan(feature_vec.astype(float),
+                                                          len(feature_vec))
+                unique_vals = _get_unique_vals(uv_array, min_val, max_val)
+                # unique_vals = np.sort(pd.unique(np.round(feature_vec, decimals=6)))
+                # max_val = 0 # dummy val - just to be something other than nan
+            if has_na and not np.isnan(max_val):
+                unique_vals = np.concatenate((unique_vals, [np.nan]))
+        if len(unique_vals) <= 1:
+            return []
+        else:
+            weight = .5 if interp_mode == 'mid' else random.random()
+            splits = (weight * unique_vals[1:]) + ((1-weight) * unique_vals[:-1])
+            return splits
 
 
     def _evaluate_numerical_splits(self, feature_vec, g_h_mat,
@@ -847,25 +876,13 @@ def _subset_splits(splits_to_eval, feature_config):
     return splits_to_eval
 
 
-def _get_numerical_splits(feature_vec, uv_array, interp_mode='random',
-                          prec_digits=16):
-    with warnings.catch_warnings():
-        warnings.simplefilter("ignore")
-        min_val, max_val, has_na = max_min_hasnan(feature_vec.astype(float),
-                                                  len(feature_vec))
-        unique_vals = _get_unique_vals(uv_array, min_val, max_val)
-        if has_na and not np.isnan(max_val):
-            unique_vals = np.concatenate((unique_vals, [np.nan]))
-    if len(unique_vals) <= 1:
-        return []
-    else:
-        weight = .5 if interp_mode == 'mid' else random.random()
-        splits = (weight * unique_vals[1:]) + ((1-weight) * unique_vals[:-1])
-        return splits
 
 def _get_unique_vals(uv_array, min_val, max_val):
-    return(uv_array[(uv_array >= min_val) & (
-                                uv_array <= max_val)])
+    min_i,max_i = np.searchsorted(a=uv_array, v=[min_val, max_val])
+    return(uv_array[min_i:max_i])
+
+    # return(uv_array[(uv_array >= min_val) & (
+    #                             uv_array <= max_val)])
 
 
 def _get_best_vals(score_vec, split_vec):
@@ -967,24 +984,6 @@ def get_g_h_feature_sum_arrays(np.ndarray[dtype_int64_t] feature_vec_node,
     return g_h_val_arr
 
 
-# @cython.boundscheck(False)  # Deactivate bounds checking
-# @cython.wraparound(False)   # Deactivate negative indexing.
-# def get_g_h_feature_sum_arrays_gen(feature_vec_node, dict mapping_dict,
-#                                    np.ndarray[double, ndim=2] g_h_train_node,
-#                                    np.ndarray[double, ndim=2] g_h_val_arr):
-#     cdef long i, ind
-#     cdef long array_size = len(feature_vec_node)
-#     for i in range(array_size):
-#         ind = mapping_dict[feature_vec_node[i]]
-#         g_h_val_arr[ind,0] = g_h_val_arr[ind,0]+g_h_train_node[i,0]
-#         g_h_val_arr[ind,1] = g_h_val_arr[ind,1]+g_h_train_node[i,1]
-#     return g_h_val_arr
-
-
-
-
-
-
 
 def _choose_split_subset(possible_splits, msts, replace=True):
     nps = len(possible_splits)
@@ -1040,9 +1039,6 @@ cdef _score_split(g_masked, h_masked, g_sum, h_sum, gamma, reg_lambda):
 def get_mask(feature_vec_node, left_split):
     return np.array([x in left_split for x in feature_vec_node])
 
-# def get_mask(feature_vec_node, left_split):
-#     return np.isin(feature_vec_node,list(left_split))
-
 
 @cython.boundscheck(False)  # Deactivate bounds checking
 @cython.wraparound(False)   # Deactivate negative indexing.
@@ -1072,10 +1068,6 @@ def separate_indices(np.ndarray[dtype_int64_t] a, np.ndarray[dtype_int64_t] b,
             a[ind_a] = i
             ind_a = ind_a+1
     return a, b, ind_a
-
-
-
-
 
 
 def get_node_response_graphical_int(feature_vec, node):
@@ -1208,121 +1200,4 @@ def max_min_hasnan(np.ndarray[double] my_array, long vec_len):
         if isnan(curr_val):
             has_nan = True
     return curr_min, curr_max, has_nan
-
-
-from copy import deepcopy
-
-def ts_extend(m_list, pz, po, feature_name):
-    m_len = len(m_list)
-    new_m = deepcopy(m_list)
-    new_m.append({})
-    new_m[m_len]['feature_name'] = feature_name
-    new_m[m_len]['z_info'] = pz
-    new_m[m_len]['o_info'] = po
-    new_m[m_len]['w_info'] = 1 if m_len==0 else 0
-    for i in range(m_len-1,-1,-1):
-        new_m[i+1]['w_info'] += po*new_m[i]['w_info']*(i+1)/(m_len+1)
-        new_m[i]['w_info'] = pz*new_m[i]['w_info']*(m_len-i)/(m_len+1)
-    return new_m
-
-
-def ts_unwind(m_list, i):
-    m_len = len(m_list)
-    n = m_list[m_len-1]['w_info']
-    new_m = deepcopy(m_list)
-    for j in range(m_len-1,0,-1):
-        if m_list[i-1]['o_info']!=0:
-            t = new_m[j-1]['w_info']
-            new_m[j-1]['w_info'] = n*m_len/(j*m_list[i-1]['o_info'])
-            n = t - new_m[j-1]['w_info']*m_list[i-1]['z_info']*((m_len-j)/m_len)
-        else:
-            new_m[j-1]['w_info'] = (new_m[j-1]['w_info'] * m_len)/(m_list[i-1]['z_info']*(m_len - j))
-    if ((i-1)<=(m_len-1)):
-        for j in range(i-1, m_len-1):
-            new_m[j-1]['feature_name'] = new_m[j]['feature_name']
-            new_m[j-1]['z_info'] = new_m[j]['z_info']
-            new_m[j-1]['o_info'] = new_m[j]['o_info']
-    return new_m
-
-def ts_unwind_2(m_list, i):
-    m_len = len(m_list)
-    n = m_list[m_len-1]['w_info']
-    for j in range(m_len-1,0,-1):
-        if m_list[i-1]['o_info']!=0:
-            t = m_list[j-1]['w_info']
-            m_list[j-1]['w_info'] = n*m_len/(j*m_list[i-1]['o_info'])
-            n = t - m_list[j-1]['w_info']*m_list[i-1]['z_info']*((m_len-j)/m_len)
-        else:
-            m_list[j-1]['w_info'] = (m_list[j-1]['w_info'] * m_len)/(m_list[i-1]['z_info']*(m_len - j))
-    if ((i-1)<=(m_len-1)):
-        for j in range(i-1, m_len-1):
-            m_list[j-1]['feature_name'] = m_list[j]['feature_name']
-            m_list[j-1]['z_info'] = m_list[j]['z_info']
-            m_list[j-1]['o_info'] = m_list[j]['o_info']
-#     return new_m
-
-
-def ts_unwind_sum(m_list, i):
-    m_len = len(m_list)
-    n = m_list[m_len-1]['w_info']
-    out_val = 0
-    for j in range(m_len-1,0,-1):
-        if m_list[i-1]['o_info']!=0:
-            tmp = n*m_len/(j*m_list[i-1]['o_info'])
-            out_val+=tmp
-            n = m_list[j-1]['w_info'] - tmp*m_list[i-1]['z_info']*((m_len-j)/m_len)
-        else:
-            tmp = (m_list[j-1]['w_info'] * m_len)/(m_list[i-1]['z_info']*(m_len - j))
-            out_val += (m_list[j-1]['w_info'] * m_len)/(m_list[i-1]['z_info']*(m_len - j))
-    return out_val
-
-
-
-
-def ts_recurse(phi_dict, curr_node, data_point, m_list, pz, po, sf='intercept'):
-    m_list = ts_extend(m_list, pz, po, sf)
-    if curr_node['node_type']!= 'interior':
-        # print(m_list)
-        # print(phi_dict)
-        for i in range(2, len(m_list)+1):
-            temp_m = ts_unwind(m_list,i)
-            w = ts_unwind_sum(m_list,i)
-            # w = np.sum(np.array([temp_m[k]['w_info'] for k in range(len(temp_m)-1)]))         
-            increment = w*(m_list[i-1]['o_info']-m_list[i-1]['z_info'])*curr_node['node_summary_val']
-            phi_dict[m_list[i-1]['feature_name']] = phi_dict[m_list[i-1]['feature_name']] + increment
-    else:
-        gl = go_left(data_point, curr_node)
-        if gl:
-            h = curr_node['left_child']
-            c = curr_node['right_child']
-        else:
-            c = curr_node['left_child']
-            h = curr_node['right_child']
-        iz, io = 1,1
-        feature_path = [m_list[q]['feature_name'] for q in range(len(m_list))]
-        first_occ = next((q for q in range(len(feature_path)-1) if feature_path[q]==curr_node['split_feature']), np.nan)
-        if not (np.isnan(first_occ)):
-            iz, io = m_list[first_occ]['z_info'], m_list[first_occ]['o_info']
-            # print('unwinding repeat')
-            # m_list = ts_unwind(m_list,first_occ)
-            ts_unwind_2(m_list)
-        rh = h['num_data_points']
-        rc = c['num_data_points']
-        rj = curr_node['num_data_points']
-        sf = curr_node['split_feature']
-        ts_recurse(phi_dict, h, data_point, m_list, iz*(rh/rj), io, sf)
-        ts_recurse(phi_dict, c, data_point, m_list, iz*(rc/rj), 0, sf) # not sure if last arg should be 0 or io
-
-def single_tree_shap(data_point, curr_tree, feature_list):
-    phi_dict = {feature_list[i]:0 for i in range(len(feature_list))}
-    phi_dict['intercept']=curr_tree['node_summary_val']
-    ts_recurse(phi_dict, curr_tree, data_point, [], 1, 1)
-    return phi_dict
-
-def go_left(data_point, curr_node):
-    if curr_node['feature_type']=='numerical':
-        return(data_point[curr_node['split_feature']]<curr_node['split_val'])
-    if (curr_node['feature_type'] in ['categorical_str', 'categorical_int']):
-        return(data_point[curr_node['split_feature']] in curr_node['left_split'])
-
 

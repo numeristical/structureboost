@@ -48,6 +48,9 @@ class PdfSet(object):
     # def cdf():
     #     return()
 
+    def bins_to_probs(self, new_binpt_vec):
+        return(np.array([pdf.bins_to_probs(new_binpt_vec) for pdf in self.pdf_list]))
+
 def test_in_pred_regions(test_vals, regions):
     return(np.array([np.any([((test_vals[i]>=interval[0]) and (test_vals[i]<=interval[1]))
                      for interval in regions[i]]) 

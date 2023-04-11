@@ -372,7 +372,7 @@ class StructureRF(object):
             num_dt = len(self.dec_tree_list)
             max_nodes = np.max(np.array([dt.num_nodes for dt in self.dec_tree_list]))
             self.pred_tens_int = np.zeros((num_dt, max_nodes, cat_size+6), dtype=np.int64)-1
-            self.pred_tens_float = np.zeros((num_dt, max_nodes, 2))
+            self.pred_tens_float = np.zeros((num_dt, max_nodes, 3))
             for i in range(num_dt):
                 self.convert_dt_to_matrix(i)
             self.optimized=True
@@ -407,8 +407,10 @@ class StructureRF(object):
         ni = node['node_index']
         if node['node_type']=='leaf':
             self.pred_tens_int[dt_num, ni, 0]= 0
-            self.pred_tens_float[dt_num, ni, 1] = node['node_summary_val']
+            self.pred_tens_float[dt_num, ni, 1] = float(node['num_data_points'])
+            self.pred_tens_float[dt_num, ni, 2] = node['node_summary_val']
         else:
+            self.pred_tens_float[dt_num, ni, 1] = float(node['num_data_points'])
             if node['feature_type']=='numerical':
                 self.pred_tens_float[dt_num, ni, 0] = node['split_val']
                 self.pred_tens_int[dt_num, ni, 0]= 1

@@ -12,6 +12,7 @@ from structure_gb import StructureBoost
 from libc.math cimport log as clog
 from libc.math cimport exp
 from structure_dt_multi import StructureDecisionTreeMulti
+from scipy.special import softmax
 cimport numpy as np
 cimport cython
 
@@ -126,15 +127,16 @@ class StructureBoostMulti(StructureBoost):
     Lucena, B. StructureBoost: Efficient Gradient Boosting for Structured
     Categorical Variables. https://arxiv.org/abs/2007.04446
     """
-    def __init__(self, num_trees, feature_configs,
-                 num_classes,
+    def __init__(self, num_trees,
+                 num_classes,  feature_configs=None,
                  target_structure=None,
                  loss_fn=None, subsample=1,
                  initial_model=None,
                  replace=True, min_size_split=25, max_depth=3,
                  gamma=0, reg_lambda=1, feat_sample_by_tree=1,
                  feat_sample_by_node=1, learning_rate=.02,
-                 random_seed=0, na_unseen_action='weighted_random'):
+                 random_seed=0, na_unseen_action='weighted_random',
+                 prec_digits=6, default_configs=None):
         super().__init__(num_trees, feature_configs,
                  'classification',
                  loss_fn, subsample,
@@ -142,7 +144,7 @@ class StructureBoostMulti(StructureBoost):
                  replace, min_size_split, max_depth,
                  gamma, reg_lambda, feat_sample_by_tree,
                  feat_sample_by_node, learning_rate,
-                 random_seed, na_unseen_action)
+                 random_seed, na_unseen_action, prec_digits, default_configs)
         self.num_classes = num_classes
         self.ts_dict = target_structure
         if self.ts_dict is not None:
@@ -154,8 +156,6 @@ class StructureBoostMulti(StructureBoost):
             self._process_fixed_partition()
         elif (pt in ['variable','random']):
             self._process_variable_partition()
-            
-
             # Generate first random partition
         else:
             warnings.warn('Unknown partition_type in target_structure')
@@ -191,7 +191,6 @@ class StructureBoostMulti(StructureBoost):
             print("'rp_method' not configured. Defaulting to 'span_tree'")
             self.rp_method='span_tree'
 
-
     def _generate_random_partitions(self):
         if self.num_partitions==1:
             rp_list = [self.ts_dict['target_graph'].random_partition(
@@ -201,7 +200,6 @@ class StructureBoostMulti(StructureBoost):
                         self.random_partition_size[i], self.rp_method) 
                         for i in range(len(self.random_partition_size))]
         self.rpt = self._create_rpt_from_list(rp_list)
-
 
     def _process_fixed_partition(self):
         self._process_singleton_weight()
@@ -247,6 +245,7 @@ class StructureBoostMulti(StructureBoost):
                                 frozenset(np.arange(self.num_classes))):
                 w_str = "Vertices of graph should be the integers 0,1,...,num_classes-1"
                 w_str+= ". May cause unexpected results if this is not the case."
+                warnings.warn(w_str)
 
 
     def _create_rpt_from_list(self, partition_list):
@@ -270,7 +269,7 @@ class StructureBoostMulti(StructureBoost):
             y_data = y_data.to_numpy().astype(np.int64)
         elif type(y_data) == np.ndarray:
             y_data = y_data.astype(np.int64)
-        y_data = get_one_hot_mat(y_data, self.num_classes)
+        #y_data = get_one_hot_mat(y_data, self.num_classes)
         return(y_data)
 
     def _get_initial_pred(self, X_train, y_train):
@@ -281,17 +280,8 @@ class StructureBoostMulti(StructureBoost):
         else:
             # Improve error checking on values of y_train
             # Also, should they be forced to ints?
-            prob_est_vec = np.clip(np.mean(y_train, axis=0), 1e-15, 1-1e-15)
+            prob_est_vec = np.clip(np.mean(get_one_hot_mat(y_train, self.num_classes), axis=0), 1e-15, 1-1e-15)
             return(np.tile(np.log(prob_est_vec), (X_train.shape[0],1)))
-
-    # def _output_loss(y_true, pred, ind, mode, verbose=1):
-    #     expphi = np.exp(pred)
-    #     expphisum = np.sum(expphi, axis=1)
-    #     probs = (expphi.T/expphisum.T).T
-    #     curr_loss = my_log_loss_vec(y_true, probs)
-    #     if verbose:
-    #         print("i={}, eval_set_log_loss = {}".format(ind, curr_loss))
-    #     return curr_loss
 
     def _add_train_next_tree(self, features_for_tree, X_train, y_g_h_train, index):
         self.dec_tree_list.append(StructureDecisionTreeMulti(
@@ -313,28 +303,29 @@ class StructureBoostMulti(StructureBoost):
         return curr_answer
 
 
-    def compute_gh_mat(self, y_train, curr_answer):
+    def compute_gh_mat(self, y_train, curr_answer, index):
         if self.ts_dict is None:
             exp_phi_mat=np.exp(curr_answer)
             exp_phi_mat_sum_vec=np.sum(exp_phi_mat, axis=1)
-            y_g_h_mat = c_entropy_link_der_12_vec(y_train, exp_phi_mat, exp_phi_mat_sum_vec)
+            y_g_h_mat = c_entropy_link_der_12_vec_sp(y_train, exp_phi_mat, exp_phi_mat_sum_vec)
             return y_g_h_mat
         else:
             if (self.ts_dict['partition_type'] == 'variable'):
                 self._generate_random_partitions()
             exp_phi_mat=np.exp(curr_answer)
             exp_phi_mat_sum_vec=np.sum(exp_phi_mat, axis=1)
-            y_g_h_mat = c_str_entropy_link_der_12_vec(y_train, exp_phi_mat,
+            y_g_h_mat = c_str_entropy_link_der_12_vec_sp(y_train, exp_phi_mat,
                                         exp_phi_mat_sum_vec,
                                         self.part_weight_vec, self.rpt)
             if self.singleton_weight>0:
-                y_g_h_mat_reg = c_entropy_link_der_12_vec(y_train, exp_phi_mat, exp_phi_mat_sum_vec)
-                y_g_h_mat = y_g_h_mat + y_g_h_mat_reg
+                y_g_h_mat_reg = c_entropy_link_der_12_vec_sp(y_train, exp_phi_mat, exp_phi_mat_sum_vec)
+                y_g_h_mat = y_g_h_mat + self.singleton_weight * y_g_h_mat_reg
             return y_g_h_mat
 
 
     def _compute_loss(self, y_true, pred):
-        return(my_log_loss_vec(y_true, self.softmax_mat(pred)))
+        return(my_log_loss_vec(get_one_hot_mat(y_true, self.num_classes),
+                               self.softmax_mat(pred)))
 
 
     def _predict_py(self, X_test, int num_trees_to_use=-1):
@@ -409,12 +400,15 @@ class StructureBoostMulti(StructureBoost):
         return(self.predict(X_test, num_trees_to_use))
 
 
+    # def softmax_mat(self, phi_mat):
+    #     max_phi_mat = np.max(phi_mat) #.reshape(-1,1)
+    #     phi_mat = phi_mat - max_phi_mat
+    #     exp_mat = np.exp(phi_mat)
+    #     exp_sum_vec = np.sum(exp_mat, axis=1)
+    #     return(exp_mat/(exp_sum_vec.reshape(-1,1)))
+
     def softmax_mat(self, phi_mat):
-        max_phi_mat = np.max(phi_mat).reshape(-1,1)
-        phi_mat = phi_mat - max_phi_mat
-        exp_mat = np.exp(phi_mat)
-        exp_sum_vec = np.sum(exp_mat, axis=1)
-        return((exp_mat.T/exp_sum_vec).T)
+        return(softmax(phi_mat, axis=1))
 
     def get_tensors_for_predict(self):
         if self.optimizable:
@@ -422,20 +416,18 @@ class StructureBoostMulti(StructureBoost):
             num_dt = len(self.dec_tree_list)
             max_nodes = np.max(np.array([dt.num_nodes for dt in self.dec_tree_list]))
             self.pred_tens_int = np.zeros((num_dt, max_nodes, cat_size+6), dtype=np.int64)-1
-            self.pred_tens_float = np.zeros((num_dt, max_nodes, self.num_classes+1))
-
+            self.pred_tens_float = np.zeros((num_dt, max_nodes, self.num_classes+2))
+            for i in range(num_dt):
+                self.convert_dt_to_matrix(i)
+            self.optimized=True
         else:
             print("Model not optimizable for predict due to string or voronoi variable.")
 
-        for i in range(num_dt):
-            self.convert_dt_to_matrix(i)
-
-        self.optimized=True
-
     # # These are in dtm_float
     # cdef long THRESH = 0
-    # cdef long NODE_VALUE_START = 1
-    # vector output from 1 to num_classes
+    # cdef long NODE_WEIGHT = 1
+    # cdef long NODE_VALUE_START = 2
+    # vector output from 2 to num_classes+1 inclusive
 
     # # These are in dtm_int
     # cdef long NODE_TYPE = 0
@@ -460,8 +452,10 @@ class StructureBoostMulti(StructureBoost):
         ni = node['node_index']
         if node['node_type']=='leaf':
             self.pred_tens_int[dt_num, ni, 0]= 0
-            self.pred_tens_float[dt_num, ni, 1:self.num_classes+1] = node['node_summary_val']
+            self.pred_tens_float[dt_num, ni, 1] = float(node['num_data_points'])
+            self.pred_tens_float[dt_num, ni, 2:self.num_classes+2] = node['node_summary_val']
         else:
+            self.pred_tens_float[dt_num, ni, 1] = float(node['num_data_points'])
             if node['feature_type']=='numerical':
                 self.pred_tens_float[dt_num, ni, 0] = node['split_val']
                 self.pred_tens_int[dt_num, ni, 0]= 1
@@ -482,7 +476,7 @@ class StructureBoostMulti(StructureBoost):
 def predict_with_tensor_c_mc(np.ndarray[double, ndim=3] dtm_float,
                       np.ndarray[long, ndim=3] dtm,
                       np.ndarray[double, ndim=2] feat_array,
-                      num_classes):
+                      long num_classes):
     
     cdef long cat_vals_end
     cdef np.ndarray[double, ndim=3] res_tens = np.zeros((
@@ -494,7 +488,8 @@ def predict_with_tensor_c_mc(np.ndarray[double, ndim=3] dtm_float,
     
     # These are in dtm_float
     cdef long THRESH = 0
-    cdef long NODE_VALUE_START = 1
+    cdef long NODE_WEIGHT = 1
+    cdef long NODE_VALUE_START = 2
 
     # These are in dtm_int
     cdef long NODE_TYPE = 0
@@ -543,21 +538,24 @@ def predict_with_tensor_c_mc(np.ndarray[double, ndim=3] dtm_float,
 
 ctypedef np.int64_t dtype_int64_t 
 
+
+
 @cython.boundscheck(False)  # Deactivate bounds checking
 @cython.wraparound(False)   # Deactivate negative indexing.
 @cython.nonecheck(False)
 @cython.cdivision(True)
-def c_entropy_link_der_12_vec(np.ndarray[dtype_int64_t, ndim=2] y_true,
+def c_entropy_link_der_12_vec_sp(np.ndarray[dtype_int64_t] y_true,
                          double[:,:] exp_phi_pred,
                          double[:] exp_phi_sum_vec):
-    cdef long N = y_true.shape[0]
+    """In this variant, y_true is just a vector of correct classes (not one hot)"""
+    cdef long N = len(y_true)
     cdef long m = exp_phi_pred.shape[1]
     cdef double[:,:] Y = np.zeros((N,m+m))
     cdef long i,j,k
 
     for i in range(N):
         for j in range(m):
-            if y_true[i,j]==1:
+            if y_true[i]==j:
                 Y[i,j]=(exp_phi_pred[i,j]/exp_phi_sum_vec[i])-1
             else:
                 Y[i,j]=(exp_phi_pred[i,j]/exp_phi_sum_vec[i])
@@ -565,17 +563,16 @@ def c_entropy_link_der_12_vec(np.ndarray[dtype_int64_t, ndim=2] y_true,
                                              (exp_phi_sum_vec[i]*exp_phi_sum_vec[i]))
     return np.asarray(Y)
 
-
 @cython.boundscheck(False)  # Deactivate bounds checking
 @cython.wraparound(False)   # Deactivate negative indexing.
 @cython.nonecheck(False)
 @cython.cdivision(True)
-def c_str_entropy_link_der_12_vec(np.ndarray[dtype_int64_t, ndim=2] y_true,
+def c_str_entropy_link_der_12_vec_sp(np.ndarray[dtype_int64_t] y_true,
                                  double[:,:] exp_phi_pred,
                                  double[:] exp_phi_sum_vec, 
                                  double[:] weight_vec, 
                                  dtype_int64_t[:,:,:] rp_tensor):
-    cdef long N = y_true.shape[0]
+    cdef long N = len(y_true)
     cdef long m = exp_phi_pred.shape[1]
     cdef long ind = 0
     cdef long qqq, xyz
@@ -590,13 +587,10 @@ def c_str_entropy_link_der_12_vec(np.ndarray[dtype_int64_t, ndim=2] y_true,
 
     for qqq in range(num_part):
         curr_wt = weight_vec[ind]
-        
         for i in range(N):
             xyz=0
             # get y_true value from y_true onehot (passed in)
-            yval = 0
-            while(y_true[i,yval] == 0):
-                yval+=1
+            yval = y_true[i]
             while (rp_tensor[qqq,xyz,yval]==0):
                 xyz+=1
             set_sum = 0
@@ -604,9 +598,9 @@ def c_str_entropy_link_der_12_vec(np.ndarray[dtype_int64_t, ndim=2] y_true,
                 if (rp_tensor[qqq,xyz,t]==1):
                     set_sum+=exp_phi_pred[i,t]
             for j in range(m):
-                # if j in set containing y_true
                 jt = (exp_phi_pred[i,j]/set_sum)
                 jk = (exp_phi_pred[i,j]/exp_phi_sum_vec[i])
+                # if j in set containing y_true
                 if (rp_tensor[qqq,xyz,j]==1):
                     #Y[i,j]+= value when j in T * weight
                     Y[i,j]+=(-curr_wt * (exp_phi_pred[i,j]*(exp_phi_sum_vec[i]-set_sum)/
@@ -629,7 +623,7 @@ def get_one_hot_mat(np.ndarray[dtype_int64_t] y_true,
     cdef np.ndarray[dtype_int64_t, ndim=2] Y = np.zeros((N,num_classes), dtype=np.int64)
     
     for i in range(N):
-        Y[i,y_true[i]]= 1               
+        Y[i,y_true[i]]= 1
     return(Y)
 
 
@@ -660,3 +654,79 @@ def randomize_node_na_dir_weighted(curr_node):
             randomize_node_na_dir_weighted(curr_node['left_child'])
         if curr_node['right_child']['node_type'] == 'interior':
             randomize_node_na_dir_weighted(curr_node['right_child'])
+
+# @cython.boundscheck(False)  # Deactivate bounds checking
+# @cython.wraparound(False)   # Deactivate negative indexing.
+# @cython.nonecheck(False)
+# @cython.cdivision(True)
+# def c_entropy_link_der_12_vec(np.ndarray[dtype_int64_t, ndim=2] y_true,
+#                          double[:,:] exp_phi_pred,
+#                          double[:] exp_phi_sum_vec):
+#     cdef long N = y_true.shape[0]
+#     cdef long m = exp_phi_pred.shape[1]
+#     cdef double[:,:] Y = np.zeros((N,m+m))
+#     cdef long i,j,k
+
+#     for i in range(N):
+#         for j in range(m):
+#             if y_true[i,j]==1:
+#                 Y[i,j]=(exp_phi_pred[i,j]/exp_phi_sum_vec[i])-1
+#             else:
+#                 Y[i,j]=(exp_phi_pred[i,j]/exp_phi_sum_vec[i])
+#             Y[i,j+m]=-(exp_phi_pred[i,j]*(exp_phi_pred[i,j]-exp_phi_sum_vec[i])/
+#                                              (exp_phi_sum_vec[i]*exp_phi_sum_vec[i]))
+#     return np.asarray(Y)
+
+
+# @cython.boundscheck(False)  # Deactivate bounds checking
+# @cython.wraparound(False)   # Deactivate negative indexing.
+# @cython.nonecheck(False)
+# @cython.cdivision(True)
+# def c_str_entropy_link_der_12_vec(np.ndarray[dtype_int64_t, ndim=2] y_true,
+#                                  double[:,:] exp_phi_pred,
+#                                  double[:] exp_phi_sum_vec, 
+#                                  double[:] weight_vec, 
+#                                  dtype_int64_t[:,:,:] rp_tensor):
+#     cdef long N = y_true.shape[0]
+#     cdef long m = exp_phi_pred.shape[1]
+#     cdef long ind = 0
+#     cdef long qqq, xyz
+#     cdef long yval = 0
+#     cdef double curr_wt
+#     cdef double[:,:] Y = np.zeros((N,2*m))
+#     cdef double all_sum = 0
+#     cdef double set_sum = 0
+#     cdef long num_part = rp_tensor.shape[0]
+#     cdef long i,j,k,t
+#     cdef double jt, jk
+
+#     for qqq in range(num_part):
+#         curr_wt = weight_vec[ind]
+        
+#         for i in range(N):
+#             xyz=0
+#             # get y_true value from y_true onehot (passed in)
+#             yval = 0
+#             while(y_true[i,yval] == 0):
+#                 yval+=1
+#             while (rp_tensor[qqq,xyz,yval]==0):
+#                 xyz+=1
+#             set_sum = 0
+#             for t in range(m):
+#                 if (rp_tensor[qqq,xyz,t]==1):
+#                     set_sum+=exp_phi_pred[i,t]
+#             for j in range(m):
+#                 # if j in set containing y_true
+#                 jt = (exp_phi_pred[i,j]/set_sum)
+#                 jk = (exp_phi_pred[i,j]/exp_phi_sum_vec[i])
+#                 if (rp_tensor[qqq,xyz,j]==1):
+#                     #Y[i,j]+= value when j in T * weight
+#                     Y[i,j]+=(-curr_wt * (exp_phi_pred[i,j]*(exp_phi_sum_vec[i]-set_sum)/
+#                                         (set_sum*exp_phi_sum_vec[i])))
+#                     Y[i,j+m]+=(curr_wt * (jt-jk+jk*jk-jt*jt))
+#                 else:
+#                     #Y[i,j]+= value when j not in T * weight
+#                     Y[i,j]+=curr_wt * exp_phi_pred[i,j]/exp_phi_sum_vec[i]
+#                     Y[i,j+m]+=(-curr_wt * (-jk+jk*jk))
+#     return np.asarray(Y)
+

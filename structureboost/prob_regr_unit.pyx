@@ -1,10 +1,11 @@
 # cython: profile=True
 # cython: language_level=3
 
-from structure_gb_multi import StructureBoostMulti
-from pdf_discrete import PdfDiscrete, get_part, chain_partition, density_plot
 import numpy as np
 import pandas as pd
+from structure_gb_multi import StructureBoostMulti
+from pdf_discrete import PdfDiscrete, get_part, chain_partition
+from pdf_group import PdfGroup
 import warnings
 
 class ProbRegressorUnit(object):
@@ -15,7 +16,8 @@ class ProbRegressorUnit(object):
                  replace=True, min_size_split=25, max_depth=3,
                  gamma=0, reg_lambda=1, feat_sample_by_tree=1,
                  feat_sample_by_node=1, learning_rate=.02,
-                 random_seed=0, na_unseen_action='weighted_random', sw=.01, lp=2, hp=5):
+                 random_seed=0, na_unseen_action='weighted_random', sw=.01, lp=2, hp=5,
+                 prec_digits=6, default_configs=None):
         self.bin_vec = bin_vec
         self.num_classes = len(self.bin_vec)-1
         if (type(structure_strides)==str) and (structure_strides=='auto'):
@@ -44,15 +46,17 @@ class ProbRegressorUnit(object):
                             feat_sample_by_node=feat_sample_by_node,
                             learning_rate=learning_rate,
                             random_seed=random_seed,
-                            na_unseen_action=na_unseen_action)
+                            na_unseen_action=na_unseen_action,
+                            prec_digits=prec_digits, default_configs=default_configs)
 
     def fit(self, X_train, y_train, eval_set=None, eval_freq=10,
             early_stop_past_steps=1, choose_best_eval=True, verbose=1):
-        y_bin = np.digitize(y_train,self.bin_vec[:-1]) -1
-        if np.min(y_bin)<0:
+        y_bin = np.digitize(y_train,self.bin_vec) -1 - (y_train==self.bin_vec[-1])
+        if (np.min(y_bin)<0) or (np.max(y_bin)>len(self.bin_vec)-2):
             warnings.warn('Target training values must be inside of range designated by bin_vec')
         if eval_set is not None:
-            y_bin_eval = np.digitize(eval_set[1],self.bin_vec[:-1]) -1
+            y_bin_eval = (np.digitize(eval_set[1],self.bin_vec[:-1]) -1 - 
+                            (eval_set[1]==self.bin_vec[-1]))
             self.gbtmodel.fit(X_train, y_bin, eval_set=(eval_set[0],y_bin_eval), 
                                 eval_freq=eval_freq,
                                 early_stop_past_steps=early_stop_past_steps,
@@ -68,5 +72,6 @@ class ProbRegressorUnit(object):
         else:
             prob_mat = calibrator.calibrate(self.gbtmodel.predict(X_test, num_trees_to_use))
         self.prob_mat = prob_mat
-        self.pred_dists = [PdfDiscrete(self.bin_vec, prob_mat[i,:]) for i in range(prob_mat.shape[0])]
-        return self.pred_dists
+        # self.pred_dists = [PdfDiscrete(self.bin_vec, prob_mat[i,:]) for i in range(prob_mat.shape[0])]
+        return PdfGroup(self.bin_vec, prob_mat)
+

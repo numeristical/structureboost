@@ -7641,7 +7641,7 @@ static PyObject *__pyx_pf_14structureboost_12structure_rf_11StructureRF_16get_te
  *             num_dt = len(self.dec_tree_list)
  *             max_nodes = np.max(np.array([dt.num_nodes for dt in self.dec_tree_list]))             # <<<<<<<<<<<<<<
  *             self.pred_tens_int = np.zeros((num_dt, max_nodes, cat_size+6), dtype=np.int64)-1
- *             self.pred_tens_float = np.zeros((num_dt, max_nodes, 2))
+ *             self.pred_tens_float = np.zeros((num_dt, max_nodes, 3))
  */
     __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_n_s_np); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 373, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
@@ -7752,7 +7752,7 @@ static PyObject *__pyx_pf_14structureboost_12structure_rf_11StructureRF_16get_te
  *             num_dt = len(self.dec_tree_list)
  *             max_nodes = np.max(np.array([dt.num_nodes for dt in self.dec_tree_list]))
  *             self.pred_tens_int = np.zeros((num_dt, max_nodes, cat_size+6), dtype=np.int64)-1             # <<<<<<<<<<<<<<
- *             self.pred_tens_float = np.zeros((num_dt, max_nodes, 2))
+ *             self.pred_tens_float = np.zeros((num_dt, max_nodes, 3))
  *             for i in range(num_dt):
  */
     __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_np); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 374, __pyx_L1_error)
@@ -7803,7 +7803,7 @@ static PyObject *__pyx_pf_14structureboost_12structure_rf_11StructureRF_16get_te
     /* "structureboost/structure_rf.pyx":375
  *             max_nodes = np.max(np.array([dt.num_nodes for dt in self.dec_tree_list]))
  *             self.pred_tens_int = np.zeros((num_dt, max_nodes, cat_size+6), dtype=np.int64)-1
- *             self.pred_tens_float = np.zeros((num_dt, max_nodes, 2))             # <<<<<<<<<<<<<<
+ *             self.pred_tens_float = np.zeros((num_dt, max_nodes, 3))             # <<<<<<<<<<<<<<
  *             for i in range(num_dt):
  *                 self.convert_dt_to_matrix(i)
  */
@@ -7821,9 +7821,9 @@ static PyObject *__pyx_pf_14structureboost_12structure_rf_11StructureRF_16get_te
     __Pyx_INCREF(__pyx_v_max_nodes);
     __Pyx_GIVEREF(__pyx_v_max_nodes);
     PyTuple_SET_ITEM(__pyx_t_3, 1, __pyx_v_max_nodes);
-    __Pyx_INCREF(__pyx_int_2);
-    __Pyx_GIVEREF(__pyx_int_2);
-    PyTuple_SET_ITEM(__pyx_t_3, 2, __pyx_int_2);
+    __Pyx_INCREF(__pyx_int_3);
+    __Pyx_GIVEREF(__pyx_int_3);
+    PyTuple_SET_ITEM(__pyx_t_3, 2, __pyx_int_3);
     __pyx_t_6 = 0;
     __pyx_t_6 = NULL;
     if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_4))) {
@@ -7846,7 +7846,7 @@ static PyObject *__pyx_pf_14structureboost_12structure_rf_11StructureRF_16get_te
 
     /* "structureboost/structure_rf.pyx":376
  *             self.pred_tens_int = np.zeros((num_dt, max_nodes, cat_size+6), dtype=np.int64)-1
- *             self.pred_tens_float = np.zeros((num_dt, max_nodes, 2))
+ *             self.pred_tens_float = np.zeros((num_dt, max_nodes, 3))
  *             for i in range(num_dt):             # <<<<<<<<<<<<<<
  *                 self.convert_dt_to_matrix(i)
  *             self.optimized=True
@@ -7857,7 +7857,7 @@ static PyObject *__pyx_pf_14structureboost_12structure_rf_11StructureRF_16get_te
       __pyx_v_i = __pyx_t_14;
 
       /* "structureboost/structure_rf.pyx":377
- *             self.pred_tens_float = np.zeros((num_dt, max_nodes, 2))
+ *             self.pred_tens_float = np.zeros((num_dt, max_nodes, 3))
  *             for i in range(num_dt):
  *                 self.convert_dt_to_matrix(i)             # <<<<<<<<<<<<<<
  *             self.optimized=True
@@ -8265,7 +8265,7 @@ static PyObject *__pyx_pf_14structureboost_12structure_rf_11StructureRF_20conver
  *         ni = node['node_index']
  *         if node['node_type']=='leaf':             # <<<<<<<<<<<<<<
  *             self.pred_tens_int[dt_num, ni, 0]= 0
- *             self.pred_tens_float[dt_num, ni, 1] = node['node_summary_val']
+ *             self.pred_tens_float[dt_num, ni, 1] = float(node['num_data_points'])
  */
   __pyx_t_1 = __Pyx_PyObject_Dict_GetItem(__pyx_v_node, __pyx_n_u_node_type); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 408, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
@@ -8277,8 +8277,8 @@ static PyObject *__pyx_pf_14structureboost_12structure_rf_11StructureRF_20conver
  *         ni = node['node_index']
  *         if node['node_type']=='leaf':
  *             self.pred_tens_int[dt_num, ni, 0]= 0             # <<<<<<<<<<<<<<
- *             self.pred_tens_float[dt_num, ni, 1] = node['node_summary_val']
- *         else:
+ *             self.pred_tens_float[dt_num, ni, 1] = float(node['num_data_points'])
+ *             self.pred_tens_float[dt_num, ni, 2] = node['node_summary_val']
  */
     __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_pred_tens_int); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 409, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
@@ -8300,14 +8300,17 @@ static PyObject *__pyx_pf_14structureboost_12structure_rf_11StructureRF_20conver
     /* "structureboost/structure_rf.pyx":410
  *         if node['node_type']=='leaf':
  *             self.pred_tens_int[dt_num, ni, 0]= 0
- *             self.pred_tens_float[dt_num, ni, 1] = node['node_summary_val']             # <<<<<<<<<<<<<<
+ *             self.pred_tens_float[dt_num, ni, 1] = float(node['num_data_points'])             # <<<<<<<<<<<<<<
+ *             self.pred_tens_float[dt_num, ni, 2] = node['node_summary_val']
  *         else:
- *             if node['feature_type']=='numerical':
  */
-    __pyx_t_3 = __Pyx_PyObject_Dict_GetItem(__pyx_v_node, __pyx_n_u_node_summary_val); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 410, __pyx_L1_error)
+    __pyx_t_3 = __Pyx_PyObject_Dict_GetItem(__pyx_v_node, __pyx_n_u_num_data_points); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 410, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
-    __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_pred_tens_float); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 410, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyNumber_Float(__pyx_t_3); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 410, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
+    __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+    __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_pred_tens_float); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 410, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_3);
     __pyx_t_4 = PyTuple_New(3); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 410, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
     __Pyx_INCREF(__pyx_v_dt_num);
@@ -8319,47 +8322,104 @@ static PyObject *__pyx_pf_14structureboost_12structure_rf_11StructureRF_20conver
     __Pyx_INCREF(__pyx_int_1);
     __Pyx_GIVEREF(__pyx_int_1);
     PyTuple_SET_ITEM(__pyx_t_4, 2, __pyx_int_1);
-    if (unlikely(PyObject_SetItem(__pyx_t_1, __pyx_t_4, __pyx_t_3) < 0)) __PYX_ERR(0, 410, __pyx_L1_error)
+    if (unlikely(PyObject_SetItem(__pyx_t_3, __pyx_t_4, __pyx_t_1) < 0)) __PYX_ERR(0, 410, __pyx_L1_error)
+    __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+    __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+
+    /* "structureboost/structure_rf.pyx":411
+ *             self.pred_tens_int[dt_num, ni, 0]= 0
+ *             self.pred_tens_float[dt_num, ni, 1] = float(node['num_data_points'])
+ *             self.pred_tens_float[dt_num, ni, 2] = node['node_summary_val']             # <<<<<<<<<<<<<<
+ *         else:
+ *             self.pred_tens_float[dt_num, ni, 1] = float(node['num_data_points'])
+ */
+    __pyx_t_1 = __Pyx_PyObject_Dict_GetItem(__pyx_v_node, __pyx_n_u_node_summary_val); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 411, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_1);
+    __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_pred_tens_float); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 411, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_4);
+    __pyx_t_3 = PyTuple_New(3); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 411, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_3);
+    __Pyx_INCREF(__pyx_v_dt_num);
+    __Pyx_GIVEREF(__pyx_v_dt_num);
+    PyTuple_SET_ITEM(__pyx_t_3, 0, __pyx_v_dt_num);
+    __Pyx_INCREF(__pyx_v_ni);
+    __Pyx_GIVEREF(__pyx_v_ni);
+    PyTuple_SET_ITEM(__pyx_t_3, 1, __pyx_v_ni);
+    __Pyx_INCREF(__pyx_int_2);
+    __Pyx_GIVEREF(__pyx_int_2);
+    PyTuple_SET_ITEM(__pyx_t_3, 2, __pyx_int_2);
+    if (unlikely(PyObject_SetItem(__pyx_t_4, __pyx_t_3, __pyx_t_1) < 0)) __PYX_ERR(0, 411, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+    __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
     /* "structureboost/structure_rf.pyx":408
  *     def convert_subtree(self, node, dt_num):
  *         ni = node['node_index']
  *         if node['node_type']=='leaf':             # <<<<<<<<<<<<<<
  *             self.pred_tens_int[dt_num, ni, 0]= 0
- *             self.pred_tens_float[dt_num, ni, 1] = node['node_summary_val']
+ *             self.pred_tens_float[dt_num, ni, 1] = float(node['num_data_points'])
  */
     goto __pyx_L3;
   }
 
-  /* "structureboost/structure_rf.pyx":412
- *             self.pred_tens_float[dt_num, ni, 1] = node['node_summary_val']
+  /* "structureboost/structure_rf.pyx":413
+ *             self.pred_tens_float[dt_num, ni, 2] = node['node_summary_val']
  *         else:
+ *             self.pred_tens_float[dt_num, ni, 1] = float(node['num_data_points'])             # <<<<<<<<<<<<<<
+ *             if node['feature_type']=='numerical':
+ *                 self.pred_tens_float[dt_num, ni, 0] = node['split_val']
+ */
+  /*else*/ {
+    __pyx_t_1 = __Pyx_PyObject_Dict_GetItem(__pyx_v_node, __pyx_n_u_num_data_points); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 413, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_1);
+    __pyx_t_3 = __Pyx_PyNumber_Float(__pyx_t_1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 413, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_3);
+    __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+    __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_pred_tens_float); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 413, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_1);
+    __pyx_t_4 = PyTuple_New(3); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 413, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_4);
+    __Pyx_INCREF(__pyx_v_dt_num);
+    __Pyx_GIVEREF(__pyx_v_dt_num);
+    PyTuple_SET_ITEM(__pyx_t_4, 0, __pyx_v_dt_num);
+    __Pyx_INCREF(__pyx_v_ni);
+    __Pyx_GIVEREF(__pyx_v_ni);
+    PyTuple_SET_ITEM(__pyx_t_4, 1, __pyx_v_ni);
+    __Pyx_INCREF(__pyx_int_1);
+    __Pyx_GIVEREF(__pyx_int_1);
+    PyTuple_SET_ITEM(__pyx_t_4, 2, __pyx_int_1);
+    if (unlikely(PyObject_SetItem(__pyx_t_1, __pyx_t_4, __pyx_t_3) < 0)) __PYX_ERR(0, 413, __pyx_L1_error)
+    __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+    __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+    __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+
+    /* "structureboost/structure_rf.pyx":414
+ *         else:
+ *             self.pred_tens_float[dt_num, ni, 1] = float(node['num_data_points'])
  *             if node['feature_type']=='numerical':             # <<<<<<<<<<<<<<
  *                 self.pred_tens_float[dt_num, ni, 0] = node['split_val']
  *                 self.pred_tens_int[dt_num, ni, 0]= 1
  */
-  /*else*/ {
-    __pyx_t_3 = __Pyx_PyObject_Dict_GetItem(__pyx_v_node, __pyx_n_u_feature_type); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 412, __pyx_L1_error)
+    __pyx_t_3 = __Pyx_PyObject_Dict_GetItem(__pyx_v_node, __pyx_n_u_feature_type); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 414, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
-    __pyx_t_2 = (__Pyx_PyUnicode_Equals(__pyx_t_3, __pyx_n_u_numerical, Py_EQ)); if (unlikely(__pyx_t_2 < 0)) __PYX_ERR(0, 412, __pyx_L1_error)
+    __pyx_t_2 = (__Pyx_PyUnicode_Equals(__pyx_t_3, __pyx_n_u_numerical, Py_EQ)); if (unlikely(__pyx_t_2 < 0)) __PYX_ERR(0, 414, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
     if (__pyx_t_2) {
 
-      /* "structureboost/structure_rf.pyx":413
- *         else:
+      /* "structureboost/structure_rf.pyx":415
+ *             self.pred_tens_float[dt_num, ni, 1] = float(node['num_data_points'])
  *             if node['feature_type']=='numerical':
  *                 self.pred_tens_float[dt_num, ni, 0] = node['split_val']             # <<<<<<<<<<<<<<
  *                 self.pred_tens_int[dt_num, ni, 0]= 1
  *             elif node['feature_type']=='categorical_int':
  */
-      __pyx_t_3 = __Pyx_PyObject_Dict_GetItem(__pyx_v_node, __pyx_n_u_split_val); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 413, __pyx_L1_error)
+      __pyx_t_3 = __Pyx_PyObject_Dict_GetItem(__pyx_v_node, __pyx_n_u_split_val); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 415, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_3);
-      __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_pred_tens_float); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 413, __pyx_L1_error)
+      __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_pred_tens_float); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 415, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_4);
-      __pyx_t_1 = PyTuple_New(3); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 413, __pyx_L1_error)
+      __pyx_t_1 = PyTuple_New(3); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 415, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
       __Pyx_INCREF(__pyx_v_dt_num);
       __Pyx_GIVEREF(__pyx_v_dt_num);
@@ -8370,21 +8430,21 @@ static PyObject *__pyx_pf_14structureboost_12structure_rf_11StructureRF_20conver
       __Pyx_INCREF(__pyx_int_0);
       __Pyx_GIVEREF(__pyx_int_0);
       PyTuple_SET_ITEM(__pyx_t_1, 2, __pyx_int_0);
-      if (unlikely(PyObject_SetItem(__pyx_t_4, __pyx_t_1, __pyx_t_3) < 0)) __PYX_ERR(0, 413, __pyx_L1_error)
+      if (unlikely(PyObject_SetItem(__pyx_t_4, __pyx_t_1, __pyx_t_3) < 0)) __PYX_ERR(0, 415, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
       __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
       __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-      /* "structureboost/structure_rf.pyx":414
+      /* "structureboost/structure_rf.pyx":416
  *             if node['feature_type']=='numerical':
  *                 self.pred_tens_float[dt_num, ni, 0] = node['split_val']
  *                 self.pred_tens_int[dt_num, ni, 0]= 1             # <<<<<<<<<<<<<<
  *             elif node['feature_type']=='categorical_int':
  *                 setlen = len(node['left_split'])
  */
-      __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_pred_tens_int); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 414, __pyx_L1_error)
+      __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_pred_tens_int); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 416, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_3);
-      __pyx_t_1 = PyTuple_New(3); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 414, __pyx_L1_error)
+      __pyx_t_1 = PyTuple_New(3); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 416, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
       __Pyx_INCREF(__pyx_v_dt_num);
       __Pyx_GIVEREF(__pyx_v_dt_num);
@@ -8395,13 +8455,13 @@ static PyObject *__pyx_pf_14structureboost_12structure_rf_11StructureRF_20conver
       __Pyx_INCREF(__pyx_int_0);
       __Pyx_GIVEREF(__pyx_int_0);
       PyTuple_SET_ITEM(__pyx_t_1, 2, __pyx_int_0);
-      if (unlikely(PyObject_SetItem(__pyx_t_3, __pyx_t_1, __pyx_int_1) < 0)) __PYX_ERR(0, 414, __pyx_L1_error)
+      if (unlikely(PyObject_SetItem(__pyx_t_3, __pyx_t_1, __pyx_int_1) < 0)) __PYX_ERR(0, 416, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
       __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-      /* "structureboost/structure_rf.pyx":412
- *             self.pred_tens_float[dt_num, ni, 1] = node['node_summary_val']
+      /* "structureboost/structure_rf.pyx":414
  *         else:
+ *             self.pred_tens_float[dt_num, ni, 1] = float(node['num_data_points'])
  *             if node['feature_type']=='numerical':             # <<<<<<<<<<<<<<
  *                 self.pred_tens_float[dt_num, ni, 0] = node['split_val']
  *                 self.pred_tens_int[dt_num, ni, 0]= 1
@@ -8409,48 +8469,48 @@ static PyObject *__pyx_pf_14structureboost_12structure_rf_11StructureRF_20conver
       goto __pyx_L4;
     }
 
-    /* "structureboost/structure_rf.pyx":415
+    /* "structureboost/structure_rf.pyx":417
  *                 self.pred_tens_float[dt_num, ni, 0] = node['split_val']
  *                 self.pred_tens_int[dt_num, ni, 0]= 1
  *             elif node['feature_type']=='categorical_int':             # <<<<<<<<<<<<<<
  *                 setlen = len(node['left_split'])
  *                 self.pred_tens_int[dt_num, ni, 6:6+setlen] = np.fromiter(node['left_split'], int, setlen)
  */
-    __pyx_t_1 = __Pyx_PyObject_Dict_GetItem(__pyx_v_node, __pyx_n_u_feature_type); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 415, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyObject_Dict_GetItem(__pyx_v_node, __pyx_n_u_feature_type); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 417, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
-    __pyx_t_2 = (__Pyx_PyUnicode_Equals(__pyx_t_1, __pyx_n_u_categorical_int, Py_EQ)); if (unlikely(__pyx_t_2 < 0)) __PYX_ERR(0, 415, __pyx_L1_error)
+    __pyx_t_2 = (__Pyx_PyUnicode_Equals(__pyx_t_1, __pyx_n_u_categorical_int, Py_EQ)); if (unlikely(__pyx_t_2 < 0)) __PYX_ERR(0, 417, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
     if (__pyx_t_2) {
 
-      /* "structureboost/structure_rf.pyx":416
+      /* "structureboost/structure_rf.pyx":418
  *                 self.pred_tens_int[dt_num, ni, 0]= 1
  *             elif node['feature_type']=='categorical_int':
  *                 setlen = len(node['left_split'])             # <<<<<<<<<<<<<<
  *                 self.pred_tens_int[dt_num, ni, 6:6+setlen] = np.fromiter(node['left_split'], int, setlen)
  *                 self.pred_tens_int[dt_num, ni, 0]= 2
  */
-      __pyx_t_1 = __Pyx_PyObject_Dict_GetItem(__pyx_v_node, __pyx_n_u_left_split); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 416, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyObject_Dict_GetItem(__pyx_v_node, __pyx_n_u_left_split); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 418, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
-      __pyx_t_5 = PyObject_Length(__pyx_t_1); if (unlikely(__pyx_t_5 == ((Py_ssize_t)-1))) __PYX_ERR(0, 416, __pyx_L1_error)
+      __pyx_t_5 = PyObject_Length(__pyx_t_1); if (unlikely(__pyx_t_5 == ((Py_ssize_t)-1))) __PYX_ERR(0, 418, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-      __pyx_t_1 = PyInt_FromSsize_t(__pyx_t_5); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 416, __pyx_L1_error)
+      __pyx_t_1 = PyInt_FromSsize_t(__pyx_t_5); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 418, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
       __pyx_v_setlen = __pyx_t_1;
       __pyx_t_1 = 0;
 
-      /* "structureboost/structure_rf.pyx":417
+      /* "structureboost/structure_rf.pyx":419
  *             elif node['feature_type']=='categorical_int':
  *                 setlen = len(node['left_split'])
  *                 self.pred_tens_int[dt_num, ni, 6:6+setlen] = np.fromiter(node['left_split'], int, setlen)             # <<<<<<<<<<<<<<
  *                 self.pred_tens_int[dt_num, ni, 0]= 2
  *                 self.pred_tens_int[dt_num, ni, 5]= setlen
  */
-      __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_n_s_np); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 417, __pyx_L1_error)
+      __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_n_s_np); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 419, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_3);
-      __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_fromiter); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 417, __pyx_L1_error)
+      __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_fromiter); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 419, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_4);
       __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-      __pyx_t_3 = __Pyx_PyObject_Dict_GetItem(__pyx_v_node, __pyx_n_u_left_split); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 417, __pyx_L1_error)
+      __pyx_t_3 = __Pyx_PyObject_Dict_GetItem(__pyx_v_node, __pyx_n_u_left_split); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 419, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_3);
       __pyx_t_6 = NULL;
       __pyx_t_7 = 0;
@@ -8467,7 +8527,7 @@ static PyObject *__pyx_pf_14structureboost_12structure_rf_11StructureRF_20conver
       #if CYTHON_FAST_PYCALL
       if (PyFunction_Check(__pyx_t_4)) {
         PyObject *__pyx_temp[4] = {__pyx_t_6, __pyx_t_3, ((PyObject *)(&PyInt_Type)), __pyx_v_setlen};
-        __pyx_t_1 = __Pyx_PyFunction_FastCall(__pyx_t_4, __pyx_temp+1-__pyx_t_7, 3+__pyx_t_7); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 417, __pyx_L1_error)
+        __pyx_t_1 = __Pyx_PyFunction_FastCall(__pyx_t_4, __pyx_temp+1-__pyx_t_7, 3+__pyx_t_7); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 419, __pyx_L1_error)
         __Pyx_XDECREF(__pyx_t_6); __pyx_t_6 = 0;
         __Pyx_GOTREF(__pyx_t_1);
         __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
@@ -8476,14 +8536,14 @@ static PyObject *__pyx_pf_14structureboost_12structure_rf_11StructureRF_20conver
       #if CYTHON_FAST_PYCCALL
       if (__Pyx_PyFastCFunction_Check(__pyx_t_4)) {
         PyObject *__pyx_temp[4] = {__pyx_t_6, __pyx_t_3, ((PyObject *)(&PyInt_Type)), __pyx_v_setlen};
-        __pyx_t_1 = __Pyx_PyCFunction_FastCall(__pyx_t_4, __pyx_temp+1-__pyx_t_7, 3+__pyx_t_7); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 417, __pyx_L1_error)
+        __pyx_t_1 = __Pyx_PyCFunction_FastCall(__pyx_t_4, __pyx_temp+1-__pyx_t_7, 3+__pyx_t_7); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 419, __pyx_L1_error)
         __Pyx_XDECREF(__pyx_t_6); __pyx_t_6 = 0;
         __Pyx_GOTREF(__pyx_t_1);
         __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
       } else
       #endif
       {
-        __pyx_t_8 = PyTuple_New(3+__pyx_t_7); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 417, __pyx_L1_error)
+        __pyx_t_8 = PyTuple_New(3+__pyx_t_7); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 419, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_8);
         if (__pyx_t_6) {
           __Pyx_GIVEREF(__pyx_t_6); PyTuple_SET_ITEM(__pyx_t_8, 0, __pyx_t_6); __pyx_t_6 = NULL;
@@ -8497,19 +8557,19 @@ static PyObject *__pyx_pf_14structureboost_12structure_rf_11StructureRF_20conver
         __Pyx_GIVEREF(__pyx_v_setlen);
         PyTuple_SET_ITEM(__pyx_t_8, 2+__pyx_t_7, __pyx_v_setlen);
         __pyx_t_3 = 0;
-        __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_4, __pyx_t_8, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 417, __pyx_L1_error)
+        __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_4, __pyx_t_8, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 419, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_1);
         __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
       }
       __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-      __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_pred_tens_int); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 417, __pyx_L1_error)
+      __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_pred_tens_int); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 419, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_4);
-      __pyx_t_8 = __Pyx_PyInt_AddCObj(__pyx_int_6, __pyx_v_setlen, 6, 0, 0); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 417, __pyx_L1_error)
+      __pyx_t_8 = __Pyx_PyInt_AddCObj(__pyx_int_6, __pyx_v_setlen, 6, 0, 0); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 419, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_8);
-      __pyx_t_3 = PySlice_New(__pyx_int_6, __pyx_t_8, Py_None); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 417, __pyx_L1_error)
+      __pyx_t_3 = PySlice_New(__pyx_int_6, __pyx_t_8, Py_None); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 419, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_3);
       __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
-      __pyx_t_8 = PyTuple_New(3); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 417, __pyx_L1_error)
+      __pyx_t_8 = PyTuple_New(3); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 419, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_8);
       __Pyx_INCREF(__pyx_v_dt_num);
       __Pyx_GIVEREF(__pyx_v_dt_num);
@@ -8520,21 +8580,21 @@ static PyObject *__pyx_pf_14structureboost_12structure_rf_11StructureRF_20conver
       __Pyx_GIVEREF(__pyx_t_3);
       PyTuple_SET_ITEM(__pyx_t_8, 2, __pyx_t_3);
       __pyx_t_3 = 0;
-      if (unlikely(PyObject_SetItem(__pyx_t_4, __pyx_t_8, __pyx_t_1) < 0)) __PYX_ERR(0, 417, __pyx_L1_error)
+      if (unlikely(PyObject_SetItem(__pyx_t_4, __pyx_t_8, __pyx_t_1) < 0)) __PYX_ERR(0, 419, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
       __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
       __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-      /* "structureboost/structure_rf.pyx":418
+      /* "structureboost/structure_rf.pyx":420
  *                 setlen = len(node['left_split'])
  *                 self.pred_tens_int[dt_num, ni, 6:6+setlen] = np.fromiter(node['left_split'], int, setlen)
  *                 self.pred_tens_int[dt_num, ni, 0]= 2             # <<<<<<<<<<<<<<
  *                 self.pred_tens_int[dt_num, ni, 5]= setlen
  *             self.pred_tens_int[dt_num, ni, 1]=self.column_to_int_dict[node['split_feature']]
  */
-      __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_pred_tens_int); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 418, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_pred_tens_int); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 420, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
-      __pyx_t_8 = PyTuple_New(3); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 418, __pyx_L1_error)
+      __pyx_t_8 = PyTuple_New(3); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 420, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_8);
       __Pyx_INCREF(__pyx_v_dt_num);
       __Pyx_GIVEREF(__pyx_v_dt_num);
@@ -8545,20 +8605,20 @@ static PyObject *__pyx_pf_14structureboost_12structure_rf_11StructureRF_20conver
       __Pyx_INCREF(__pyx_int_0);
       __Pyx_GIVEREF(__pyx_int_0);
       PyTuple_SET_ITEM(__pyx_t_8, 2, __pyx_int_0);
-      if (unlikely(PyObject_SetItem(__pyx_t_1, __pyx_t_8, __pyx_int_2) < 0)) __PYX_ERR(0, 418, __pyx_L1_error)
+      if (unlikely(PyObject_SetItem(__pyx_t_1, __pyx_t_8, __pyx_int_2) < 0)) __PYX_ERR(0, 420, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
       __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
 
-      /* "structureboost/structure_rf.pyx":419
+      /* "structureboost/structure_rf.pyx":421
  *                 self.pred_tens_int[dt_num, ni, 6:6+setlen] = np.fromiter(node['left_split'], int, setlen)
  *                 self.pred_tens_int[dt_num, ni, 0]= 2
  *                 self.pred_tens_int[dt_num, ni, 5]= setlen             # <<<<<<<<<<<<<<
  *             self.pred_tens_int[dt_num, ni, 1]=self.column_to_int_dict[node['split_feature']]
  *             self.pred_tens_int[dt_num, ni, 2]=node['left_child']['node_index']
  */
-      __pyx_t_8 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_pred_tens_int); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 419, __pyx_L1_error)
+      __pyx_t_8 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_pred_tens_int); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 421, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_8);
-      __pyx_t_1 = PyTuple_New(3); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 419, __pyx_L1_error)
+      __pyx_t_1 = PyTuple_New(3); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 421, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
       __Pyx_INCREF(__pyx_v_dt_num);
       __Pyx_GIVEREF(__pyx_v_dt_num);
@@ -8569,11 +8629,11 @@ static PyObject *__pyx_pf_14structureboost_12structure_rf_11StructureRF_20conver
       __Pyx_INCREF(__pyx_int_5);
       __Pyx_GIVEREF(__pyx_int_5);
       PyTuple_SET_ITEM(__pyx_t_1, 2, __pyx_int_5);
-      if (unlikely(PyObject_SetItem(__pyx_t_8, __pyx_t_1, __pyx_v_setlen) < 0)) __PYX_ERR(0, 419, __pyx_L1_error)
+      if (unlikely(PyObject_SetItem(__pyx_t_8, __pyx_t_1, __pyx_v_setlen) < 0)) __PYX_ERR(0, 421, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
       __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-      /* "structureboost/structure_rf.pyx":415
+      /* "structureboost/structure_rf.pyx":417
  *                 self.pred_tens_float[dt_num, ni, 0] = node['split_val']
  *                 self.pred_tens_int[dt_num, ni, 0]= 1
  *             elif node['feature_type']=='categorical_int':             # <<<<<<<<<<<<<<
@@ -8583,24 +8643,24 @@ static PyObject *__pyx_pf_14structureboost_12structure_rf_11StructureRF_20conver
     }
     __pyx_L4:;
 
-    /* "structureboost/structure_rf.pyx":420
+    /* "structureboost/structure_rf.pyx":422
  *                 self.pred_tens_int[dt_num, ni, 0]= 2
  *                 self.pred_tens_int[dt_num, ni, 5]= setlen
  *             self.pred_tens_int[dt_num, ni, 1]=self.column_to_int_dict[node['split_feature']]             # <<<<<<<<<<<<<<
  *             self.pred_tens_int[dt_num, ni, 2]=node['left_child']['node_index']
  *             self.pred_tens_int[dt_num, ni, 3]=node['right_child']['node_index']
  */
-    __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_column_to_int_dict); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 420, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_column_to_int_dict); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 422, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
-    __pyx_t_8 = __Pyx_PyObject_Dict_GetItem(__pyx_v_node, __pyx_n_u_split_feature); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 420, __pyx_L1_error)
+    __pyx_t_8 = __Pyx_PyObject_Dict_GetItem(__pyx_v_node, __pyx_n_u_split_feature); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 422, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_8);
-    __pyx_t_4 = __Pyx_PyObject_GetItem(__pyx_t_1, __pyx_t_8); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 420, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_PyObject_GetItem(__pyx_t_1, __pyx_t_8); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 422, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
     __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
-    __pyx_t_8 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_pred_tens_int); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 420, __pyx_L1_error)
+    __pyx_t_8 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_pred_tens_int); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 422, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_8);
-    __pyx_t_1 = PyTuple_New(3); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 420, __pyx_L1_error)
+    __pyx_t_1 = PyTuple_New(3); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 422, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_INCREF(__pyx_v_dt_num);
     __Pyx_GIVEREF(__pyx_v_dt_num);
@@ -8611,26 +8671,26 @@ static PyObject *__pyx_pf_14structureboost_12structure_rf_11StructureRF_20conver
     __Pyx_INCREF(__pyx_int_1);
     __Pyx_GIVEREF(__pyx_int_1);
     PyTuple_SET_ITEM(__pyx_t_1, 2, __pyx_int_1);
-    if (unlikely(PyObject_SetItem(__pyx_t_8, __pyx_t_1, __pyx_t_4) < 0)) __PYX_ERR(0, 420, __pyx_L1_error)
+    if (unlikely(PyObject_SetItem(__pyx_t_8, __pyx_t_1, __pyx_t_4) < 0)) __PYX_ERR(0, 422, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
 
-    /* "structureboost/structure_rf.pyx":421
+    /* "structureboost/structure_rf.pyx":423
  *                 self.pred_tens_int[dt_num, ni, 5]= setlen
  *             self.pred_tens_int[dt_num, ni, 1]=self.column_to_int_dict[node['split_feature']]
  *             self.pred_tens_int[dt_num, ni, 2]=node['left_child']['node_index']             # <<<<<<<<<<<<<<
  *             self.pred_tens_int[dt_num, ni, 3]=node['right_child']['node_index']
  *             self.pred_tens_int[dt_num, ni, 4]=node['na_left']
  */
-    __pyx_t_4 = __Pyx_PyObject_Dict_GetItem(__pyx_v_node, __pyx_n_u_left_child); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 421, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_PyObject_Dict_GetItem(__pyx_v_node, __pyx_n_u_left_child); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 423, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
-    __pyx_t_1 = __Pyx_PyObject_Dict_GetItem(__pyx_t_4, __pyx_n_u_node_index); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 421, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyObject_Dict_GetItem(__pyx_t_4, __pyx_n_u_node_index); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 423, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-    __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_pred_tens_int); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 421, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_pred_tens_int); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 423, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
-    __pyx_t_8 = PyTuple_New(3); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 421, __pyx_L1_error)
+    __pyx_t_8 = PyTuple_New(3); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 423, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_8);
     __Pyx_INCREF(__pyx_v_dt_num);
     __Pyx_GIVEREF(__pyx_v_dt_num);
@@ -8641,26 +8701,26 @@ static PyObject *__pyx_pf_14structureboost_12structure_rf_11StructureRF_20conver
     __Pyx_INCREF(__pyx_int_2);
     __Pyx_GIVEREF(__pyx_int_2);
     PyTuple_SET_ITEM(__pyx_t_8, 2, __pyx_int_2);
-    if (unlikely(PyObject_SetItem(__pyx_t_4, __pyx_t_8, __pyx_t_1) < 0)) __PYX_ERR(0, 421, __pyx_L1_error)
+    if (unlikely(PyObject_SetItem(__pyx_t_4, __pyx_t_8, __pyx_t_1) < 0)) __PYX_ERR(0, 423, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
     __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-    /* "structureboost/structure_rf.pyx":422
+    /* "structureboost/structure_rf.pyx":424
  *             self.pred_tens_int[dt_num, ni, 1]=self.column_to_int_dict[node['split_feature']]
  *             self.pred_tens_int[dt_num, ni, 2]=node['left_child']['node_index']
  *             self.pred_tens_int[dt_num, ni, 3]=node['right_child']['node_index']             # <<<<<<<<<<<<<<
  *             self.pred_tens_int[dt_num, ni, 4]=node['na_left']
  *             self.convert_subtree(node['left_child'], dt_num)
  */
-    __pyx_t_1 = __Pyx_PyObject_Dict_GetItem(__pyx_v_node, __pyx_n_u_right_child); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 422, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyObject_Dict_GetItem(__pyx_v_node, __pyx_n_u_right_child); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 424, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
-    __pyx_t_8 = __Pyx_PyObject_Dict_GetItem(__pyx_t_1, __pyx_n_u_node_index); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 422, __pyx_L1_error)
+    __pyx_t_8 = __Pyx_PyObject_Dict_GetItem(__pyx_t_1, __pyx_n_u_node_index); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 424, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_8);
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-    __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_pred_tens_int); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 422, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_pred_tens_int); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 424, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
-    __pyx_t_4 = PyTuple_New(3); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 422, __pyx_L1_error)
+    __pyx_t_4 = PyTuple_New(3); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 424, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
     __Pyx_INCREF(__pyx_v_dt_num);
     __Pyx_GIVEREF(__pyx_v_dt_num);
@@ -8671,23 +8731,23 @@ static PyObject *__pyx_pf_14structureboost_12structure_rf_11StructureRF_20conver
     __Pyx_INCREF(__pyx_int_3);
     __Pyx_GIVEREF(__pyx_int_3);
     PyTuple_SET_ITEM(__pyx_t_4, 2, __pyx_int_3);
-    if (unlikely(PyObject_SetItem(__pyx_t_1, __pyx_t_4, __pyx_t_8) < 0)) __PYX_ERR(0, 422, __pyx_L1_error)
+    if (unlikely(PyObject_SetItem(__pyx_t_1, __pyx_t_4, __pyx_t_8) < 0)) __PYX_ERR(0, 424, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
     __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
 
-    /* "structureboost/structure_rf.pyx":423
+    /* "structureboost/structure_rf.pyx":425
  *             self.pred_tens_int[dt_num, ni, 2]=node['left_child']['node_index']
  *             self.pred_tens_int[dt_num, ni, 3]=node['right_child']['node_index']
  *             self.pred_tens_int[dt_num, ni, 4]=node['na_left']             # <<<<<<<<<<<<<<
  *             self.convert_subtree(node['left_child'], dt_num)
  *             self.convert_subtree(node['right_child'], dt_num)
  */
-    __pyx_t_8 = __Pyx_PyObject_Dict_GetItem(__pyx_v_node, __pyx_n_u_na_left); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 423, __pyx_L1_error)
+    __pyx_t_8 = __Pyx_PyObject_Dict_GetItem(__pyx_v_node, __pyx_n_u_na_left); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 425, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_8);
-    __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_pred_tens_int); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 423, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_pred_tens_int); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 425, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
-    __pyx_t_1 = PyTuple_New(3); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 423, __pyx_L1_error)
+    __pyx_t_1 = PyTuple_New(3); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 425, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_INCREF(__pyx_v_dt_num);
     __Pyx_GIVEREF(__pyx_v_dt_num);
@@ -8698,21 +8758,21 @@ static PyObject *__pyx_pf_14structureboost_12structure_rf_11StructureRF_20conver
     __Pyx_INCREF(__pyx_int_4);
     __Pyx_GIVEREF(__pyx_int_4);
     PyTuple_SET_ITEM(__pyx_t_1, 2, __pyx_int_4);
-    if (unlikely(PyObject_SetItem(__pyx_t_4, __pyx_t_1, __pyx_t_8) < 0)) __PYX_ERR(0, 423, __pyx_L1_error)
+    if (unlikely(PyObject_SetItem(__pyx_t_4, __pyx_t_1, __pyx_t_8) < 0)) __PYX_ERR(0, 425, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
     __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
 
-    /* "structureboost/structure_rf.pyx":424
+    /* "structureboost/structure_rf.pyx":426
  *             self.pred_tens_int[dt_num, ni, 3]=node['right_child']['node_index']
  *             self.pred_tens_int[dt_num, ni, 4]=node['na_left']
  *             self.convert_subtree(node['left_child'], dt_num)             # <<<<<<<<<<<<<<
  *             self.convert_subtree(node['right_child'], dt_num)
  * 
  */
-    __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_convert_subtree); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 424, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_convert_subtree); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 426, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
-    __pyx_t_4 = __Pyx_PyObject_Dict_GetItem(__pyx_v_node, __pyx_n_u_left_child); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 424, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_PyObject_Dict_GetItem(__pyx_v_node, __pyx_n_u_left_child); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 426, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
     __pyx_t_3 = NULL;
     __pyx_t_7 = 0;
@@ -8729,7 +8789,7 @@ static PyObject *__pyx_pf_14structureboost_12structure_rf_11StructureRF_20conver
     #if CYTHON_FAST_PYCALL
     if (PyFunction_Check(__pyx_t_1)) {
       PyObject *__pyx_temp[3] = {__pyx_t_3, __pyx_t_4, __pyx_v_dt_num};
-      __pyx_t_8 = __Pyx_PyFunction_FastCall(__pyx_t_1, __pyx_temp+1-__pyx_t_7, 2+__pyx_t_7); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 424, __pyx_L1_error)
+      __pyx_t_8 = __Pyx_PyFunction_FastCall(__pyx_t_1, __pyx_temp+1-__pyx_t_7, 2+__pyx_t_7); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 426, __pyx_L1_error)
       __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
       __Pyx_GOTREF(__pyx_t_8);
       __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
@@ -8738,14 +8798,14 @@ static PyObject *__pyx_pf_14structureboost_12structure_rf_11StructureRF_20conver
     #if CYTHON_FAST_PYCCALL
     if (__Pyx_PyFastCFunction_Check(__pyx_t_1)) {
       PyObject *__pyx_temp[3] = {__pyx_t_3, __pyx_t_4, __pyx_v_dt_num};
-      __pyx_t_8 = __Pyx_PyCFunction_FastCall(__pyx_t_1, __pyx_temp+1-__pyx_t_7, 2+__pyx_t_7); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 424, __pyx_L1_error)
+      __pyx_t_8 = __Pyx_PyCFunction_FastCall(__pyx_t_1, __pyx_temp+1-__pyx_t_7, 2+__pyx_t_7); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 426, __pyx_L1_error)
       __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
       __Pyx_GOTREF(__pyx_t_8);
       __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
     } else
     #endif
     {
-      __pyx_t_6 = PyTuple_New(2+__pyx_t_7); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 424, __pyx_L1_error)
+      __pyx_t_6 = PyTuple_New(2+__pyx_t_7); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 426, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_6);
       if (__pyx_t_3) {
         __Pyx_GIVEREF(__pyx_t_3); PyTuple_SET_ITEM(__pyx_t_6, 0, __pyx_t_3); __pyx_t_3 = NULL;
@@ -8756,23 +8816,23 @@ static PyObject *__pyx_pf_14structureboost_12structure_rf_11StructureRF_20conver
       __Pyx_GIVEREF(__pyx_v_dt_num);
       PyTuple_SET_ITEM(__pyx_t_6, 1+__pyx_t_7, __pyx_v_dt_num);
       __pyx_t_4 = 0;
-      __pyx_t_8 = __Pyx_PyObject_Call(__pyx_t_1, __pyx_t_6, NULL); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 424, __pyx_L1_error)
+      __pyx_t_8 = __Pyx_PyObject_Call(__pyx_t_1, __pyx_t_6, NULL); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 426, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_8);
       __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
     }
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
     __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
 
-    /* "structureboost/structure_rf.pyx":425
+    /* "structureboost/structure_rf.pyx":427
  *             self.pred_tens_int[dt_num, ni, 4]=node['na_left']
  *             self.convert_subtree(node['left_child'], dt_num)
  *             self.convert_subtree(node['right_child'], dt_num)             # <<<<<<<<<<<<<<
  * 
  * 
  */
-    __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_convert_subtree); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 425, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_convert_subtree); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 427, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
-    __pyx_t_6 = __Pyx_PyObject_Dict_GetItem(__pyx_v_node, __pyx_n_u_right_child); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 425, __pyx_L1_error)
+    __pyx_t_6 = __Pyx_PyObject_Dict_GetItem(__pyx_v_node, __pyx_n_u_right_child); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 427, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_6);
     __pyx_t_4 = NULL;
     __pyx_t_7 = 0;
@@ -8789,7 +8849,7 @@ static PyObject *__pyx_pf_14structureboost_12structure_rf_11StructureRF_20conver
     #if CYTHON_FAST_PYCALL
     if (PyFunction_Check(__pyx_t_1)) {
       PyObject *__pyx_temp[3] = {__pyx_t_4, __pyx_t_6, __pyx_v_dt_num};
-      __pyx_t_8 = __Pyx_PyFunction_FastCall(__pyx_t_1, __pyx_temp+1-__pyx_t_7, 2+__pyx_t_7); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 425, __pyx_L1_error)
+      __pyx_t_8 = __Pyx_PyFunction_FastCall(__pyx_t_1, __pyx_temp+1-__pyx_t_7, 2+__pyx_t_7); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 427, __pyx_L1_error)
       __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
       __Pyx_GOTREF(__pyx_t_8);
       __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
@@ -8798,14 +8858,14 @@ static PyObject *__pyx_pf_14structureboost_12structure_rf_11StructureRF_20conver
     #if CYTHON_FAST_PYCCALL
     if (__Pyx_PyFastCFunction_Check(__pyx_t_1)) {
       PyObject *__pyx_temp[3] = {__pyx_t_4, __pyx_t_6, __pyx_v_dt_num};
-      __pyx_t_8 = __Pyx_PyCFunction_FastCall(__pyx_t_1, __pyx_temp+1-__pyx_t_7, 2+__pyx_t_7); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 425, __pyx_L1_error)
+      __pyx_t_8 = __Pyx_PyCFunction_FastCall(__pyx_t_1, __pyx_temp+1-__pyx_t_7, 2+__pyx_t_7); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 427, __pyx_L1_error)
       __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
       __Pyx_GOTREF(__pyx_t_8);
       __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
     } else
     #endif
     {
-      __pyx_t_3 = PyTuple_New(2+__pyx_t_7); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 425, __pyx_L1_error)
+      __pyx_t_3 = PyTuple_New(2+__pyx_t_7); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 427, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_3);
       if (__pyx_t_4) {
         __Pyx_GIVEREF(__pyx_t_4); PyTuple_SET_ITEM(__pyx_t_3, 0, __pyx_t_4); __pyx_t_4 = NULL;
@@ -8816,7 +8876,7 @@ static PyObject *__pyx_pf_14structureboost_12structure_rf_11StructureRF_20conver
       __Pyx_GIVEREF(__pyx_v_dt_num);
       PyTuple_SET_ITEM(__pyx_t_3, 1+__pyx_t_7, __pyx_v_dt_num);
       __pyx_t_6 = 0;
-      __pyx_t_8 = __Pyx_PyObject_Call(__pyx_t_1, __pyx_t_3, NULL); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 425, __pyx_L1_error)
+      __pyx_t_8 = __Pyx_PyObject_Call(__pyx_t_1, __pyx_t_3, NULL); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 427, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_8);
       __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
     }
@@ -8853,7 +8913,7 @@ static PyObject *__pyx_pf_14structureboost_12structure_rf_11StructureRF_20conver
   return __pyx_r;
 }
 
-/* "structureboost/structure_rf.pyx":428
+/* "structureboost/structure_rf.pyx":430
  * 
  * 
  * def _get_rows_for_tree(num_rows, subsample, replace):             # <<<<<<<<<<<<<<
@@ -8899,17 +8959,17 @@ static PyObject *__pyx_pw_14structureboost_12structure_rf_1_get_rows_for_tree(Py
         case  1:
         if (likely((values[1] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_subsample)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("_get_rows_for_tree", 1, 3, 3, 1); __PYX_ERR(0, 428, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("_get_rows_for_tree", 1, 3, 3, 1); __PYX_ERR(0, 430, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  2:
         if (likely((values[2] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_replace)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("_get_rows_for_tree", 1, 3, 3, 2); __PYX_ERR(0, 428, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("_get_rows_for_tree", 1, 3, 3, 2); __PYX_ERR(0, 430, __pyx_L3_error)
         }
       }
       if (unlikely(kw_args > 0)) {
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "_get_rows_for_tree") < 0)) __PYX_ERR(0, 428, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "_get_rows_for_tree") < 0)) __PYX_ERR(0, 430, __pyx_L3_error)
       }
     } else if (PyTuple_GET_SIZE(__pyx_args) != 3) {
       goto __pyx_L5_argtuple_error;
@@ -8924,7 +8984,7 @@ static PyObject *__pyx_pw_14structureboost_12structure_rf_1_get_rows_for_tree(Py
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("_get_rows_for_tree", 1, 3, 3, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 428, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("_get_rows_for_tree", 1, 3, 3, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 430, __pyx_L3_error)
   __pyx_L3_error:;
   __Pyx_AddTraceback("structureboost.structure_rf._get_rows_for_tree", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
@@ -8955,31 +9015,31 @@ static PyObject *__pyx_pf_14structureboost_12structure_rf__get_rows_for_tree(CYT
   int __pyx_clineno = 0;
   __Pyx_TraceFrameInit(__pyx_codeobj__15)
   __Pyx_RefNannySetupContext("_get_rows_for_tree", 0);
-  __Pyx_TraceCall("_get_rows_for_tree", __pyx_f[0], 428, 0, __PYX_ERR(0, 428, __pyx_L1_error));
+  __Pyx_TraceCall("_get_rows_for_tree", __pyx_f[0], 430, 0, __PYX_ERR(0, 430, __pyx_L1_error));
 
-  /* "structureboost/structure_rf.pyx":429
+  /* "structureboost/structure_rf.pyx":431
  * 
  * def _get_rows_for_tree(num_rows, subsample, replace):
  *     if (subsample == 1) and (not replace):             # <<<<<<<<<<<<<<
  *         return np.arange(num_rows)
  *     rows_to_return = int(np.ceil(num_rows*subsample))
  */
-  __pyx_t_2 = __Pyx_PyInt_EqObjC(__pyx_v_subsample, __pyx_int_1, 1, 0); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 429, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyInt_EqObjC(__pyx_v_subsample, __pyx_int_1, 1, 0); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 431, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_3 = __Pyx_PyObject_IsTrue(__pyx_t_2); if (unlikely(__pyx_t_3 < 0)) __PYX_ERR(0, 429, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyObject_IsTrue(__pyx_t_2); if (unlikely(__pyx_t_3 < 0)) __PYX_ERR(0, 431, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   if (__pyx_t_3) {
   } else {
     __pyx_t_1 = __pyx_t_3;
     goto __pyx_L4_bool_binop_done;
   }
-  __pyx_t_3 = __Pyx_PyObject_IsTrue(__pyx_v_replace); if (unlikely(__pyx_t_3 < 0)) __PYX_ERR(0, 429, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyObject_IsTrue(__pyx_v_replace); if (unlikely(__pyx_t_3 < 0)) __PYX_ERR(0, 431, __pyx_L1_error)
   __pyx_t_4 = ((!__pyx_t_3) != 0);
   __pyx_t_1 = __pyx_t_4;
   __pyx_L4_bool_binop_done:;
   if (__pyx_t_1) {
 
-    /* "structureboost/structure_rf.pyx":430
+    /* "structureboost/structure_rf.pyx":432
  * def _get_rows_for_tree(num_rows, subsample, replace):
  *     if (subsample == 1) and (not replace):
  *         return np.arange(num_rows)             # <<<<<<<<<<<<<<
@@ -8987,9 +9047,9 @@ static PyObject *__pyx_pf_14structureboost_12structure_rf__get_rows_for_tree(CYT
  *     if replace:
  */
     __Pyx_XDECREF(__pyx_r);
-    __Pyx_GetModuleGlobalName(__pyx_t_5, __pyx_n_s_np); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 430, __pyx_L1_error)
+    __Pyx_GetModuleGlobalName(__pyx_t_5, __pyx_n_s_np); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 432, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_5);
-    __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_t_5, __pyx_n_s_arange); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 430, __pyx_L1_error)
+    __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_t_5, __pyx_n_s_arange); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 432, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_6);
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
     __pyx_t_5 = NULL;
@@ -9004,14 +9064,14 @@ static PyObject *__pyx_pf_14structureboost_12structure_rf__get_rows_for_tree(CYT
     }
     __pyx_t_2 = (__pyx_t_5) ? __Pyx_PyObject_Call2Args(__pyx_t_6, __pyx_t_5, __pyx_v_num_rows) : __Pyx_PyObject_CallOneArg(__pyx_t_6, __pyx_v_num_rows);
     __Pyx_XDECREF(__pyx_t_5); __pyx_t_5 = 0;
-    if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 430, __pyx_L1_error)
+    if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 432, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
     __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
     __pyx_r = __pyx_t_2;
     __pyx_t_2 = 0;
     goto __pyx_L0;
 
-    /* "structureboost/structure_rf.pyx":429
+    /* "structureboost/structure_rf.pyx":431
  * 
  * def _get_rows_for_tree(num_rows, subsample, replace):
  *     if (subsample == 1) and (not replace):             # <<<<<<<<<<<<<<
@@ -9020,19 +9080,19 @@ static PyObject *__pyx_pf_14structureboost_12structure_rf__get_rows_for_tree(CYT
  */
   }
 
-  /* "structureboost/structure_rf.pyx":431
+  /* "structureboost/structure_rf.pyx":433
  *     if (subsample == 1) and (not replace):
  *         return np.arange(num_rows)
  *     rows_to_return = int(np.ceil(num_rows*subsample))             # <<<<<<<<<<<<<<
  *     if replace:
  *         return np.random.randint(0, num_rows, rows_to_return)
  */
-  __Pyx_GetModuleGlobalName(__pyx_t_6, __pyx_n_s_np); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 431, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_6, __pyx_n_s_np); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 433, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_6);
-  __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_t_6, __pyx_n_s_ceil); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 431, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_t_6, __pyx_n_s_ceil); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 433, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
   __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
-  __pyx_t_6 = PyNumber_Multiply(__pyx_v_num_rows, __pyx_v_subsample); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 431, __pyx_L1_error)
+  __pyx_t_6 = PyNumber_Multiply(__pyx_v_num_rows, __pyx_v_subsample); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 433, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_6);
   __pyx_t_7 = NULL;
   if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_5))) {
@@ -9047,26 +9107,26 @@ static PyObject *__pyx_pf_14structureboost_12structure_rf__get_rows_for_tree(CYT
   __pyx_t_2 = (__pyx_t_7) ? __Pyx_PyObject_Call2Args(__pyx_t_5, __pyx_t_7, __pyx_t_6) : __Pyx_PyObject_CallOneArg(__pyx_t_5, __pyx_t_6);
   __Pyx_XDECREF(__pyx_t_7); __pyx_t_7 = 0;
   __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
-  if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 431, __pyx_L1_error)
+  if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 433, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-  __pyx_t_5 = __Pyx_PyNumber_Int(__pyx_t_2); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 431, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_PyNumber_Int(__pyx_t_2); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 433, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __pyx_v_rows_to_return = __pyx_t_5;
   __pyx_t_5 = 0;
 
-  /* "structureboost/structure_rf.pyx":432
+  /* "structureboost/structure_rf.pyx":434
  *         return np.arange(num_rows)
  *     rows_to_return = int(np.ceil(num_rows*subsample))
  *     if replace:             # <<<<<<<<<<<<<<
  *         return np.random.randint(0, num_rows, rows_to_return)
  *     else:
  */
-  __pyx_t_1 = __Pyx_PyObject_IsTrue(__pyx_v_replace); if (unlikely(__pyx_t_1 < 0)) __PYX_ERR(0, 432, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_IsTrue(__pyx_v_replace); if (unlikely(__pyx_t_1 < 0)) __PYX_ERR(0, 434, __pyx_L1_error)
   if (__pyx_t_1) {
 
-    /* "structureboost/structure_rf.pyx":433
+    /* "structureboost/structure_rf.pyx":435
  *     rows_to_return = int(np.ceil(num_rows*subsample))
  *     if replace:
  *         return np.random.randint(0, num_rows, rows_to_return)             # <<<<<<<<<<<<<<
@@ -9074,12 +9134,12 @@ static PyObject *__pyx_pf_14structureboost_12structure_rf__get_rows_for_tree(CYT
  *         return np.random.choice(num_rows, rows_to_return, replace=False)
  */
     __Pyx_XDECREF(__pyx_r);
-    __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_np); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 433, __pyx_L1_error)
+    __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_np); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 435, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
-    __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_random); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 433, __pyx_L1_error)
+    __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_random); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 435, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_6);
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-    __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_6, __pyx_n_s_randint); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 433, __pyx_L1_error)
+    __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_6, __pyx_n_s_randint); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 435, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
     __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
     __pyx_t_6 = NULL;
@@ -9097,7 +9157,7 @@ static PyObject *__pyx_pf_14structureboost_12structure_rf__get_rows_for_tree(CYT
     #if CYTHON_FAST_PYCALL
     if (PyFunction_Check(__pyx_t_2)) {
       PyObject *__pyx_temp[4] = {__pyx_t_6, __pyx_int_0, __pyx_v_num_rows, __pyx_v_rows_to_return};
-      __pyx_t_5 = __Pyx_PyFunction_FastCall(__pyx_t_2, __pyx_temp+1-__pyx_t_8, 3+__pyx_t_8); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 433, __pyx_L1_error)
+      __pyx_t_5 = __Pyx_PyFunction_FastCall(__pyx_t_2, __pyx_temp+1-__pyx_t_8, 3+__pyx_t_8); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 435, __pyx_L1_error)
       __Pyx_XDECREF(__pyx_t_6); __pyx_t_6 = 0;
       __Pyx_GOTREF(__pyx_t_5);
     } else
@@ -9105,13 +9165,13 @@ static PyObject *__pyx_pf_14structureboost_12structure_rf__get_rows_for_tree(CYT
     #if CYTHON_FAST_PYCCALL
     if (__Pyx_PyFastCFunction_Check(__pyx_t_2)) {
       PyObject *__pyx_temp[4] = {__pyx_t_6, __pyx_int_0, __pyx_v_num_rows, __pyx_v_rows_to_return};
-      __pyx_t_5 = __Pyx_PyCFunction_FastCall(__pyx_t_2, __pyx_temp+1-__pyx_t_8, 3+__pyx_t_8); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 433, __pyx_L1_error)
+      __pyx_t_5 = __Pyx_PyCFunction_FastCall(__pyx_t_2, __pyx_temp+1-__pyx_t_8, 3+__pyx_t_8); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 435, __pyx_L1_error)
       __Pyx_XDECREF(__pyx_t_6); __pyx_t_6 = 0;
       __Pyx_GOTREF(__pyx_t_5);
     } else
     #endif
     {
-      __pyx_t_7 = PyTuple_New(3+__pyx_t_8); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 433, __pyx_L1_error)
+      __pyx_t_7 = PyTuple_New(3+__pyx_t_8); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 435, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_7);
       if (__pyx_t_6) {
         __Pyx_GIVEREF(__pyx_t_6); PyTuple_SET_ITEM(__pyx_t_7, 0, __pyx_t_6); __pyx_t_6 = NULL;
@@ -9125,7 +9185,7 @@ static PyObject *__pyx_pf_14structureboost_12structure_rf__get_rows_for_tree(CYT
       __Pyx_INCREF(__pyx_v_rows_to_return);
       __Pyx_GIVEREF(__pyx_v_rows_to_return);
       PyTuple_SET_ITEM(__pyx_t_7, 2+__pyx_t_8, __pyx_v_rows_to_return);
-      __pyx_t_5 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_7, NULL); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 433, __pyx_L1_error)
+      __pyx_t_5 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_7, NULL); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 435, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_5);
       __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
     }
@@ -9134,7 +9194,7 @@ static PyObject *__pyx_pf_14structureboost_12structure_rf__get_rows_for_tree(CYT
     __pyx_t_5 = 0;
     goto __pyx_L0;
 
-    /* "structureboost/structure_rf.pyx":432
+    /* "structureboost/structure_rf.pyx":434
  *         return np.arange(num_rows)
  *     rows_to_return = int(np.ceil(num_rows*subsample))
  *     if replace:             # <<<<<<<<<<<<<<
@@ -9143,7 +9203,7 @@ static PyObject *__pyx_pf_14structureboost_12structure_rf__get_rows_for_tree(CYT
  */
   }
 
-  /* "structureboost/structure_rf.pyx":435
+  /* "structureboost/structure_rf.pyx":437
  *         return np.random.randint(0, num_rows, rows_to_return)
  *     else:
  *         return np.random.choice(num_rows, rows_to_return, replace=False)             # <<<<<<<<<<<<<<
@@ -9152,15 +9212,15 @@ static PyObject *__pyx_pf_14structureboost_12structure_rf__get_rows_for_tree(CYT
  */
   /*else*/ {
     __Pyx_XDECREF(__pyx_r);
-    __Pyx_GetModuleGlobalName(__pyx_t_5, __pyx_n_s_np); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 435, __pyx_L1_error)
+    __Pyx_GetModuleGlobalName(__pyx_t_5, __pyx_n_s_np); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 437, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_5);
-    __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_5, __pyx_n_s_random); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 435, __pyx_L1_error)
+    __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_5, __pyx_n_s_random); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 437, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-    __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_choice); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 435, __pyx_L1_error)
+    __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_choice); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 437, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_5);
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-    __pyx_t_2 = PyTuple_New(2); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 435, __pyx_L1_error)
+    __pyx_t_2 = PyTuple_New(2); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 437, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
     __Pyx_INCREF(__pyx_v_num_rows);
     __Pyx_GIVEREF(__pyx_v_num_rows);
@@ -9168,10 +9228,10 @@ static PyObject *__pyx_pf_14structureboost_12structure_rf__get_rows_for_tree(CYT
     __Pyx_INCREF(__pyx_v_rows_to_return);
     __Pyx_GIVEREF(__pyx_v_rows_to_return);
     PyTuple_SET_ITEM(__pyx_t_2, 1, __pyx_v_rows_to_return);
-    __pyx_t_7 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 435, __pyx_L1_error)
+    __pyx_t_7 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 437, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_7);
-    if (PyDict_SetItem(__pyx_t_7, __pyx_n_s_replace, Py_False) < 0) __PYX_ERR(0, 435, __pyx_L1_error)
-    __pyx_t_6 = __Pyx_PyObject_Call(__pyx_t_5, __pyx_t_2, __pyx_t_7); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 435, __pyx_L1_error)
+    if (PyDict_SetItem(__pyx_t_7, __pyx_n_s_replace, Py_False) < 0) __PYX_ERR(0, 437, __pyx_L1_error)
+    __pyx_t_6 = __Pyx_PyObject_Call(__pyx_t_5, __pyx_t_2, __pyx_t_7); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 437, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_6);
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
@@ -9181,7 +9241,7 @@ static PyObject *__pyx_pf_14structureboost_12structure_rf__get_rows_for_tree(CYT
     goto __pyx_L0;
   }
 
-  /* "structureboost/structure_rf.pyx":428
+  /* "structureboost/structure_rf.pyx":430
  * 
  * 
  * def _get_rows_for_tree(num_rows, subsample, replace):             # <<<<<<<<<<<<<<
@@ -9205,7 +9265,7 @@ static PyObject *__pyx_pf_14structureboost_12structure_rf__get_rows_for_tree(CYT
   return __pyx_r;
 }
 
-/* "structureboost/structure_rf.pyx":440
+/* "structureboost/structure_rf.pyx":442
  * 
  * 
  * def randomize_node_na_dir_weighted(curr_node):             # <<<<<<<<<<<<<<
@@ -9245,16 +9305,16 @@ static PyObject *__pyx_pf_14structureboost_12structure_rf_2randomize_node_na_dir
   int __pyx_clineno = 0;
   __Pyx_TraceFrameInit(__pyx_codeobj__16)
   __Pyx_RefNannySetupContext("randomize_node_na_dir_weighted", 0);
-  __Pyx_TraceCall("randomize_node_na_dir_weighted", __pyx_f[0], 440, 0, __PYX_ERR(0, 440, __pyx_L1_error));
+  __Pyx_TraceCall("randomize_node_na_dir_weighted", __pyx_f[0], 442, 0, __PYX_ERR(0, 442, __pyx_L1_error));
 
-  /* "structureboost/structure_rf.pyx":441
+  /* "structureboost/structure_rf.pyx":443
  * 
  * def randomize_node_na_dir_weighted(curr_node):
  *     if (('node_type' in curr_node.keys()) and             # <<<<<<<<<<<<<<
  *                 (curr_node['node_type'] == 'interior')):
  *         if ('na_dir_random' in curr_node.keys()) and (
  */
-  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_curr_node, __pyx_n_s_keys); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 441, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_curr_node, __pyx_n_s_keys); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 443, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __pyx_t_4 = NULL;
   if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_3))) {
@@ -9268,10 +9328,10 @@ static PyObject *__pyx_pf_14structureboost_12structure_rf_2randomize_node_na_dir
   }
   __pyx_t_2 = (__pyx_t_4) ? __Pyx_PyObject_CallOneArg(__pyx_t_3, __pyx_t_4) : __Pyx_PyObject_CallNoArg(__pyx_t_3);
   __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
-  if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 441, __pyx_L1_error)
+  if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 443, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  __pyx_t_5 = (__Pyx_PySequence_ContainsTF(__pyx_n_u_node_type, __pyx_t_2, Py_EQ)); if (unlikely(__pyx_t_5 < 0)) __PYX_ERR(0, 441, __pyx_L1_error)
+  __pyx_t_5 = (__Pyx_PySequence_ContainsTF(__pyx_n_u_node_type, __pyx_t_2, Py_EQ)); if (unlikely(__pyx_t_5 < 0)) __PYX_ERR(0, 443, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __pyx_t_6 = (__pyx_t_5 != 0);
   if (__pyx_t_6) {
@@ -9280,21 +9340,21 @@ static PyObject *__pyx_pf_14structureboost_12structure_rf_2randomize_node_na_dir
     goto __pyx_L4_bool_binop_done;
   }
 
-  /* "structureboost/structure_rf.pyx":442
+  /* "structureboost/structure_rf.pyx":444
  * def randomize_node_na_dir_weighted(curr_node):
  *     if (('node_type' in curr_node.keys()) and
  *                 (curr_node['node_type'] == 'interior')):             # <<<<<<<<<<<<<<
  *         if ('na_dir_random' in curr_node.keys()) and (
  *              curr_node['na_dir_random'] == 1):
  */
-  __pyx_t_2 = __Pyx_PyObject_Dict_GetItem(__pyx_v_curr_node, __pyx_n_u_node_type); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 442, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_Dict_GetItem(__pyx_v_curr_node, __pyx_n_u_node_type); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 444, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_6 = (__Pyx_PyUnicode_Equals(__pyx_t_2, __pyx_n_u_interior, Py_EQ)); if (unlikely(__pyx_t_6 < 0)) __PYX_ERR(0, 442, __pyx_L1_error)
+  __pyx_t_6 = (__Pyx_PyUnicode_Equals(__pyx_t_2, __pyx_n_u_interior, Py_EQ)); if (unlikely(__pyx_t_6 < 0)) __PYX_ERR(0, 444, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __pyx_t_1 = __pyx_t_6;
   __pyx_L4_bool_binop_done:;
 
-  /* "structureboost/structure_rf.pyx":441
+  /* "structureboost/structure_rf.pyx":443
  * 
  * def randomize_node_na_dir_weighted(curr_node):
  *     if (('node_type' in curr_node.keys()) and             # <<<<<<<<<<<<<<
@@ -9303,14 +9363,14 @@ static PyObject *__pyx_pf_14structureboost_12structure_rf_2randomize_node_na_dir
  */
   if (__pyx_t_1) {
 
-    /* "structureboost/structure_rf.pyx":443
+    /* "structureboost/structure_rf.pyx":445
  *     if (('node_type' in curr_node.keys()) and
  *                 (curr_node['node_type'] == 'interior')):
  *         if ('na_dir_random' in curr_node.keys()) and (             # <<<<<<<<<<<<<<
  *              curr_node['na_dir_random'] == 1):
  *             lw = curr_node['left_child']['num_data_points']
  */
-    __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_curr_node, __pyx_n_s_keys); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 443, __pyx_L1_error)
+    __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_curr_node, __pyx_n_s_keys); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 445, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
     __pyx_t_4 = NULL;
     if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_3))) {
@@ -9324,10 +9384,10 @@ static PyObject *__pyx_pf_14structureboost_12structure_rf_2randomize_node_na_dir
     }
     __pyx_t_2 = (__pyx_t_4) ? __Pyx_PyObject_CallOneArg(__pyx_t_3, __pyx_t_4) : __Pyx_PyObject_CallNoArg(__pyx_t_3);
     __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
-    if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 443, __pyx_L1_error)
+    if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 445, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-    __pyx_t_6 = (__Pyx_PySequence_ContainsTF(__pyx_n_u_na_dir_random, __pyx_t_2, Py_EQ)); if (unlikely(__pyx_t_6 < 0)) __PYX_ERR(0, 443, __pyx_L1_error)
+    __pyx_t_6 = (__Pyx_PySequence_ContainsTF(__pyx_n_u_na_dir_random, __pyx_t_2, Py_EQ)); if (unlikely(__pyx_t_6 < 0)) __PYX_ERR(0, 445, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
     __pyx_t_5 = (__pyx_t_6 != 0);
     if (__pyx_t_5) {
@@ -9336,24 +9396,24 @@ static PyObject *__pyx_pf_14structureboost_12structure_rf_2randomize_node_na_dir
       goto __pyx_L7_bool_binop_done;
     }
 
-    /* "structureboost/structure_rf.pyx":444
+    /* "structureboost/structure_rf.pyx":446
  *                 (curr_node['node_type'] == 'interior')):
  *         if ('na_dir_random' in curr_node.keys()) and (
  *              curr_node['na_dir_random'] == 1):             # <<<<<<<<<<<<<<
  *             lw = curr_node['left_child']['num_data_points']
  *             rw = curr_node['right_child']['num_data_points']
  */
-    __pyx_t_2 = __Pyx_PyObject_Dict_GetItem(__pyx_v_curr_node, __pyx_n_u_na_dir_random); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 444, __pyx_L1_error)
+    __pyx_t_2 = __Pyx_PyObject_Dict_GetItem(__pyx_v_curr_node, __pyx_n_u_na_dir_random); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 446, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
-    __pyx_t_3 = __Pyx_PyInt_EqObjC(__pyx_t_2, __pyx_int_1, 1, 0); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 444, __pyx_L1_error)
+    __pyx_t_3 = __Pyx_PyInt_EqObjC(__pyx_t_2, __pyx_int_1, 1, 0); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 446, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-    __pyx_t_5 = __Pyx_PyObject_IsTrue(__pyx_t_3); if (unlikely(__pyx_t_5 < 0)) __PYX_ERR(0, 444, __pyx_L1_error)
+    __pyx_t_5 = __Pyx_PyObject_IsTrue(__pyx_t_3); if (unlikely(__pyx_t_5 < 0)) __PYX_ERR(0, 446, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
     __pyx_t_1 = __pyx_t_5;
     __pyx_L7_bool_binop_done:;
 
-    /* "structureboost/structure_rf.pyx":443
+    /* "structureboost/structure_rf.pyx":445
  *     if (('node_type' in curr_node.keys()) and
  *                 (curr_node['node_type'] == 'interior')):
  *         if ('na_dir_random' in curr_node.keys()) and (             # <<<<<<<<<<<<<<
@@ -9362,46 +9422,46 @@ static PyObject *__pyx_pf_14structureboost_12structure_rf_2randomize_node_na_dir
  */
     if (__pyx_t_1) {
 
-      /* "structureboost/structure_rf.pyx":445
+      /* "structureboost/structure_rf.pyx":447
  *         if ('na_dir_random' in curr_node.keys()) and (
  *              curr_node['na_dir_random'] == 1):
  *             lw = curr_node['left_child']['num_data_points']             # <<<<<<<<<<<<<<
  *             rw = curr_node['right_child']['num_data_points']
  *             curr_node['na_left'] = int(random.random() < (lw/(lw+rw)))
  */
-      __pyx_t_3 = __Pyx_PyObject_Dict_GetItem(__pyx_v_curr_node, __pyx_n_u_left_child); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 445, __pyx_L1_error)
+      __pyx_t_3 = __Pyx_PyObject_Dict_GetItem(__pyx_v_curr_node, __pyx_n_u_left_child); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 447, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_3);
-      __pyx_t_2 = __Pyx_PyObject_Dict_GetItem(__pyx_t_3, __pyx_n_u_num_data_points); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 445, __pyx_L1_error)
+      __pyx_t_2 = __Pyx_PyObject_Dict_GetItem(__pyx_t_3, __pyx_n_u_num_data_points); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 447, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_2);
       __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
       __pyx_v_lw = __pyx_t_2;
       __pyx_t_2 = 0;
 
-      /* "structureboost/structure_rf.pyx":446
+      /* "structureboost/structure_rf.pyx":448
  *              curr_node['na_dir_random'] == 1):
  *             lw = curr_node['left_child']['num_data_points']
  *             rw = curr_node['right_child']['num_data_points']             # <<<<<<<<<<<<<<
  *             curr_node['na_left'] = int(random.random() < (lw/(lw+rw)))
  *         if curr_node['left_child']['node_type'] == 'interior':
  */
-      __pyx_t_2 = __Pyx_PyObject_Dict_GetItem(__pyx_v_curr_node, __pyx_n_u_right_child); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 446, __pyx_L1_error)
+      __pyx_t_2 = __Pyx_PyObject_Dict_GetItem(__pyx_v_curr_node, __pyx_n_u_right_child); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 448, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_2);
-      __pyx_t_3 = __Pyx_PyObject_Dict_GetItem(__pyx_t_2, __pyx_n_u_num_data_points); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 446, __pyx_L1_error)
+      __pyx_t_3 = __Pyx_PyObject_Dict_GetItem(__pyx_t_2, __pyx_n_u_num_data_points); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 448, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_3);
       __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
       __pyx_v_rw = __pyx_t_3;
       __pyx_t_3 = 0;
 
-      /* "structureboost/structure_rf.pyx":447
+      /* "structureboost/structure_rf.pyx":449
  *             lw = curr_node['left_child']['num_data_points']
  *             rw = curr_node['right_child']['num_data_points']
  *             curr_node['na_left'] = int(random.random() < (lw/(lw+rw)))             # <<<<<<<<<<<<<<
  *         if curr_node['left_child']['node_type'] == 'interior':
  *             randomize_node_na_dir_weighted(curr_node['left_child'])
  */
-      __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_random); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 447, __pyx_L1_error)
+      __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_random); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 449, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_2);
-      __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_random); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 447, __pyx_L1_error)
+      __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_random); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 449, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_4);
       __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
       __pyx_t_2 = NULL;
@@ -9416,24 +9476,24 @@ static PyObject *__pyx_pf_14structureboost_12structure_rf_2randomize_node_na_dir
       }
       __pyx_t_3 = (__pyx_t_2) ? __Pyx_PyObject_CallOneArg(__pyx_t_4, __pyx_t_2) : __Pyx_PyObject_CallNoArg(__pyx_t_4);
       __Pyx_XDECREF(__pyx_t_2); __pyx_t_2 = 0;
-      if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 447, __pyx_L1_error)
+      if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 449, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_3);
       __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-      __pyx_t_4 = PyNumber_Add(__pyx_v_lw, __pyx_v_rw); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 447, __pyx_L1_error)
+      __pyx_t_4 = PyNumber_Add(__pyx_v_lw, __pyx_v_rw); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 449, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_4);
-      __pyx_t_2 = __Pyx_PyNumber_Divide(__pyx_v_lw, __pyx_t_4); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 447, __pyx_L1_error)
+      __pyx_t_2 = __Pyx_PyNumber_Divide(__pyx_v_lw, __pyx_t_4); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 449, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_2);
       __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-      __pyx_t_4 = PyObject_RichCompare(__pyx_t_3, __pyx_t_2, Py_LT); __Pyx_XGOTREF(__pyx_t_4); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 447, __pyx_L1_error)
+      __pyx_t_4 = PyObject_RichCompare(__pyx_t_3, __pyx_t_2, Py_LT); __Pyx_XGOTREF(__pyx_t_4); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 449, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
       __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-      __pyx_t_2 = __Pyx_PyNumber_Int(__pyx_t_4); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 447, __pyx_L1_error)
+      __pyx_t_2 = __Pyx_PyNumber_Int(__pyx_t_4); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 449, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_2);
       __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-      if (unlikely(PyObject_SetItem(__pyx_v_curr_node, __pyx_n_u_na_left, __pyx_t_2) < 0)) __PYX_ERR(0, 447, __pyx_L1_error)
+      if (unlikely(PyObject_SetItem(__pyx_v_curr_node, __pyx_n_u_na_left, __pyx_t_2) < 0)) __PYX_ERR(0, 449, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-      /* "structureboost/structure_rf.pyx":443
+      /* "structureboost/structure_rf.pyx":445
  *     if (('node_type' in curr_node.keys()) and
  *                 (curr_node['node_type'] == 'interior')):
  *         if ('na_dir_random' in curr_node.keys()) and (             # <<<<<<<<<<<<<<
@@ -9442,32 +9502,32 @@ static PyObject *__pyx_pf_14structureboost_12structure_rf_2randomize_node_na_dir
  */
     }
 
-    /* "structureboost/structure_rf.pyx":448
+    /* "structureboost/structure_rf.pyx":450
  *             rw = curr_node['right_child']['num_data_points']
  *             curr_node['na_left'] = int(random.random() < (lw/(lw+rw)))
  *         if curr_node['left_child']['node_type'] == 'interior':             # <<<<<<<<<<<<<<
  *             randomize_node_na_dir_weighted(curr_node['left_child'])
  *         if curr_node['right_child']['node_type'] == 'interior':
  */
-    __pyx_t_2 = __Pyx_PyObject_Dict_GetItem(__pyx_v_curr_node, __pyx_n_u_left_child); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 448, __pyx_L1_error)
+    __pyx_t_2 = __Pyx_PyObject_Dict_GetItem(__pyx_v_curr_node, __pyx_n_u_left_child); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 450, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
-    __pyx_t_4 = __Pyx_PyObject_Dict_GetItem(__pyx_t_2, __pyx_n_u_node_type); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 448, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_PyObject_Dict_GetItem(__pyx_t_2, __pyx_n_u_node_type); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 450, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-    __pyx_t_1 = (__Pyx_PyUnicode_Equals(__pyx_t_4, __pyx_n_u_interior, Py_EQ)); if (unlikely(__pyx_t_1 < 0)) __PYX_ERR(0, 448, __pyx_L1_error)
+    __pyx_t_1 = (__Pyx_PyUnicode_Equals(__pyx_t_4, __pyx_n_u_interior, Py_EQ)); if (unlikely(__pyx_t_1 < 0)) __PYX_ERR(0, 450, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
     if (__pyx_t_1) {
 
-      /* "structureboost/structure_rf.pyx":449
+      /* "structureboost/structure_rf.pyx":451
  *             curr_node['na_left'] = int(random.random() < (lw/(lw+rw)))
  *         if curr_node['left_child']['node_type'] == 'interior':
  *             randomize_node_na_dir_weighted(curr_node['left_child'])             # <<<<<<<<<<<<<<
  *         if curr_node['right_child']['node_type'] == 'interior':
  *             randomize_node_na_dir_weighted(curr_node['right_child'])
  */
-      __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_randomize_node_na_dir_weighted); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 449, __pyx_L1_error)
+      __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_randomize_node_na_dir_weighted); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 451, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_2);
-      __pyx_t_3 = __Pyx_PyObject_Dict_GetItem(__pyx_v_curr_node, __pyx_n_u_left_child); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 449, __pyx_L1_error)
+      __pyx_t_3 = __Pyx_PyObject_Dict_GetItem(__pyx_v_curr_node, __pyx_n_u_left_child); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 451, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_3);
       __pyx_t_7 = NULL;
       if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_2))) {
@@ -9482,12 +9542,12 @@ static PyObject *__pyx_pf_14structureboost_12structure_rf_2randomize_node_na_dir
       __pyx_t_4 = (__pyx_t_7) ? __Pyx_PyObject_Call2Args(__pyx_t_2, __pyx_t_7, __pyx_t_3) : __Pyx_PyObject_CallOneArg(__pyx_t_2, __pyx_t_3);
       __Pyx_XDECREF(__pyx_t_7); __pyx_t_7 = 0;
       __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-      if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 449, __pyx_L1_error)
+      if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 451, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_4);
       __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
       __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
 
-      /* "structureboost/structure_rf.pyx":448
+      /* "structureboost/structure_rf.pyx":450
  *             rw = curr_node['right_child']['num_data_points']
  *             curr_node['na_left'] = int(random.random() < (lw/(lw+rw)))
  *         if curr_node['left_child']['node_type'] == 'interior':             # <<<<<<<<<<<<<<
@@ -9496,32 +9556,32 @@ static PyObject *__pyx_pf_14structureboost_12structure_rf_2randomize_node_na_dir
  */
     }
 
-    /* "structureboost/structure_rf.pyx":450
+    /* "structureboost/structure_rf.pyx":452
  *         if curr_node['left_child']['node_type'] == 'interior':
  *             randomize_node_na_dir_weighted(curr_node['left_child'])
  *         if curr_node['right_child']['node_type'] == 'interior':             # <<<<<<<<<<<<<<
  *             randomize_node_na_dir_weighted(curr_node['right_child'])
  * 
  */
-    __pyx_t_4 = __Pyx_PyObject_Dict_GetItem(__pyx_v_curr_node, __pyx_n_u_right_child); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 450, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_PyObject_Dict_GetItem(__pyx_v_curr_node, __pyx_n_u_right_child); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 452, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
-    __pyx_t_2 = __Pyx_PyObject_Dict_GetItem(__pyx_t_4, __pyx_n_u_node_type); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 450, __pyx_L1_error)
+    __pyx_t_2 = __Pyx_PyObject_Dict_GetItem(__pyx_t_4, __pyx_n_u_node_type); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 452, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-    __pyx_t_1 = (__Pyx_PyUnicode_Equals(__pyx_t_2, __pyx_n_u_interior, Py_EQ)); if (unlikely(__pyx_t_1 < 0)) __PYX_ERR(0, 450, __pyx_L1_error)
+    __pyx_t_1 = (__Pyx_PyUnicode_Equals(__pyx_t_2, __pyx_n_u_interior, Py_EQ)); if (unlikely(__pyx_t_1 < 0)) __PYX_ERR(0, 452, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
     if (__pyx_t_1) {
 
-      /* "structureboost/structure_rf.pyx":451
+      /* "structureboost/structure_rf.pyx":453
  *             randomize_node_na_dir_weighted(curr_node['left_child'])
  *         if curr_node['right_child']['node_type'] == 'interior':
  *             randomize_node_na_dir_weighted(curr_node['right_child'])             # <<<<<<<<<<<<<<
  * 
  * @cython.boundscheck(False)
  */
-      __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_n_s_randomize_node_na_dir_weighted); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 451, __pyx_L1_error)
+      __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_n_s_randomize_node_na_dir_weighted); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 453, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_4);
-      __pyx_t_3 = __Pyx_PyObject_Dict_GetItem(__pyx_v_curr_node, __pyx_n_u_right_child); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 451, __pyx_L1_error)
+      __pyx_t_3 = __Pyx_PyObject_Dict_GetItem(__pyx_v_curr_node, __pyx_n_u_right_child); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 453, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_3);
       __pyx_t_7 = NULL;
       if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_4))) {
@@ -9536,12 +9596,12 @@ static PyObject *__pyx_pf_14structureboost_12structure_rf_2randomize_node_na_dir
       __pyx_t_2 = (__pyx_t_7) ? __Pyx_PyObject_Call2Args(__pyx_t_4, __pyx_t_7, __pyx_t_3) : __Pyx_PyObject_CallOneArg(__pyx_t_4, __pyx_t_3);
       __Pyx_XDECREF(__pyx_t_7); __pyx_t_7 = 0;
       __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-      if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 451, __pyx_L1_error)
+      if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 453, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_2);
       __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
       __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-      /* "structureboost/structure_rf.pyx":450
+      /* "structureboost/structure_rf.pyx":452
  *         if curr_node['left_child']['node_type'] == 'interior':
  *             randomize_node_na_dir_weighted(curr_node['left_child'])
  *         if curr_node['right_child']['node_type'] == 'interior':             # <<<<<<<<<<<<<<
@@ -9550,7 +9610,7 @@ static PyObject *__pyx_pf_14structureboost_12structure_rf_2randomize_node_na_dir
  */
     }
 
-    /* "structureboost/structure_rf.pyx":441
+    /* "structureboost/structure_rf.pyx":443
  * 
  * def randomize_node_na_dir_weighted(curr_node):
  *     if (('node_type' in curr_node.keys()) and             # <<<<<<<<<<<<<<
@@ -9559,7 +9619,7 @@ static PyObject *__pyx_pf_14structureboost_12structure_rf_2randomize_node_na_dir
  */
   }
 
-  /* "structureboost/structure_rf.pyx":440
+  /* "structureboost/structure_rf.pyx":442
  * 
  * 
  * def randomize_node_na_dir_weighted(curr_node):             # <<<<<<<<<<<<<<
@@ -9586,7 +9646,7 @@ static PyObject *__pyx_pf_14structureboost_12structure_rf_2randomize_node_na_dir
   return __pyx_r;
 }
 
-/* "structureboost/structure_rf.pyx":455
+/* "structureboost/structure_rf.pyx":457
  * @cython.boundscheck(False)
  * @cython.wraparound(False)
  * def predict_with_tensor_c(np.ndarray[double, ndim=3] dtm_float,             # <<<<<<<<<<<<<<
@@ -9632,17 +9692,17 @@ static PyObject *__pyx_pw_14structureboost_12structure_rf_5predict_with_tensor_c
         case  1:
         if (likely((values[1] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_dtm)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("predict_with_tensor_c", 1, 3, 3, 1); __PYX_ERR(0, 455, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("predict_with_tensor_c", 1, 3, 3, 1); __PYX_ERR(0, 457, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  2:
         if (likely((values[2] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_feat_array)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("predict_with_tensor_c", 1, 3, 3, 2); __PYX_ERR(0, 455, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("predict_with_tensor_c", 1, 3, 3, 2); __PYX_ERR(0, 457, __pyx_L3_error)
         }
       }
       if (unlikely(kw_args > 0)) {
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "predict_with_tensor_c") < 0)) __PYX_ERR(0, 455, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "predict_with_tensor_c") < 0)) __PYX_ERR(0, 457, __pyx_L3_error)
       }
     } else if (PyTuple_GET_SIZE(__pyx_args) != 3) {
       goto __pyx_L5_argtuple_error;
@@ -9657,15 +9717,15 @@ static PyObject *__pyx_pw_14structureboost_12structure_rf_5predict_with_tensor_c
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("predict_with_tensor_c", 1, 3, 3, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 455, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("predict_with_tensor_c", 1, 3, 3, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 457, __pyx_L3_error)
   __pyx_L3_error:;
   __Pyx_AddTraceback("structureboost.structure_rf.predict_with_tensor_c", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_dtm_float), __pyx_ptype_5numpy_ndarray, 1, "dtm_float", 0))) __PYX_ERR(0, 455, __pyx_L1_error)
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_dtm), __pyx_ptype_5numpy_ndarray, 1, "dtm", 0))) __PYX_ERR(0, 456, __pyx_L1_error)
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_feat_array), __pyx_ptype_5numpy_ndarray, 1, "feat_array", 0))) __PYX_ERR(0, 457, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_dtm_float), __pyx_ptype_5numpy_ndarray, 1, "dtm_float", 0))) __PYX_ERR(0, 457, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_dtm), __pyx_ptype_5numpy_ndarray, 1, "dtm", 0))) __PYX_ERR(0, 458, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_feat_array), __pyx_ptype_5numpy_ndarray, 1, "feat_array", 0))) __PYX_ERR(0, 459, __pyx_L1_error)
   __pyx_r = __pyx_pf_14structureboost_12structure_rf_4predict_with_tensor_c(__pyx_self, __pyx_v_dtm_float, __pyx_v_dtm, __pyx_v_feat_array);
 
   /* function exit code */
@@ -9740,7 +9800,7 @@ static PyObject *__pyx_pf_14structureboost_12structure_rf_4predict_with_tensor_c
   int __pyx_clineno = 0;
   __Pyx_TraceFrameInit(__pyx_codeobj__17)
   __Pyx_RefNannySetupContext("predict_with_tensor_c", 0);
-  __Pyx_TraceCall("predict_with_tensor_c", __pyx_f[0], 455, 0, __PYX_ERR(0, 455, __pyx_L1_error));
+  __Pyx_TraceCall("predict_with_tensor_c", __pyx_f[0], 457, 0, __PYX_ERR(0, 457, __pyx_L1_error));
   __pyx_pybuffer_res_mat.pybuffer.buf = NULL;
   __pyx_pybuffer_res_mat.refcount = 0;
   __pyx_pybuffernd_res_mat.data = NULL;
@@ -9763,37 +9823,37 @@ static PyObject *__pyx_pf_14structureboost_12structure_rf_4predict_with_tensor_c
   __pyx_pybuffernd_feat_array.rcbuffer = &__pyx_pybuffer_feat_array;
   {
     __Pyx_BufFmt_StackElem __pyx_stack[1];
-    if (unlikely(__Pyx_GetBufferAndValidate(&__pyx_pybuffernd_dtm_float.rcbuffer->pybuffer, (PyObject*)__pyx_v_dtm_float, &__Pyx_TypeInfo_double, PyBUF_FORMAT| PyBUF_STRIDES, 3, 0, __pyx_stack) == -1)) __PYX_ERR(0, 455, __pyx_L1_error)
+    if (unlikely(__Pyx_GetBufferAndValidate(&__pyx_pybuffernd_dtm_float.rcbuffer->pybuffer, (PyObject*)__pyx_v_dtm_float, &__Pyx_TypeInfo_double, PyBUF_FORMAT| PyBUF_STRIDES, 3, 0, __pyx_stack) == -1)) __PYX_ERR(0, 457, __pyx_L1_error)
   }
   __pyx_pybuffernd_dtm_float.diminfo[0].strides = __pyx_pybuffernd_dtm_float.rcbuffer->pybuffer.strides[0]; __pyx_pybuffernd_dtm_float.diminfo[0].shape = __pyx_pybuffernd_dtm_float.rcbuffer->pybuffer.shape[0]; __pyx_pybuffernd_dtm_float.diminfo[1].strides = __pyx_pybuffernd_dtm_float.rcbuffer->pybuffer.strides[1]; __pyx_pybuffernd_dtm_float.diminfo[1].shape = __pyx_pybuffernd_dtm_float.rcbuffer->pybuffer.shape[1]; __pyx_pybuffernd_dtm_float.diminfo[2].strides = __pyx_pybuffernd_dtm_float.rcbuffer->pybuffer.strides[2]; __pyx_pybuffernd_dtm_float.diminfo[2].shape = __pyx_pybuffernd_dtm_float.rcbuffer->pybuffer.shape[2];
   {
     __Pyx_BufFmt_StackElem __pyx_stack[1];
-    if (unlikely(__Pyx_GetBufferAndValidate(&__pyx_pybuffernd_dtm.rcbuffer->pybuffer, (PyObject*)__pyx_v_dtm, &__Pyx_TypeInfo_long, PyBUF_FORMAT| PyBUF_STRIDES, 3, 0, __pyx_stack) == -1)) __PYX_ERR(0, 455, __pyx_L1_error)
+    if (unlikely(__Pyx_GetBufferAndValidate(&__pyx_pybuffernd_dtm.rcbuffer->pybuffer, (PyObject*)__pyx_v_dtm, &__Pyx_TypeInfo_long, PyBUF_FORMAT| PyBUF_STRIDES, 3, 0, __pyx_stack) == -1)) __PYX_ERR(0, 457, __pyx_L1_error)
   }
   __pyx_pybuffernd_dtm.diminfo[0].strides = __pyx_pybuffernd_dtm.rcbuffer->pybuffer.strides[0]; __pyx_pybuffernd_dtm.diminfo[0].shape = __pyx_pybuffernd_dtm.rcbuffer->pybuffer.shape[0]; __pyx_pybuffernd_dtm.diminfo[1].strides = __pyx_pybuffernd_dtm.rcbuffer->pybuffer.strides[1]; __pyx_pybuffernd_dtm.diminfo[1].shape = __pyx_pybuffernd_dtm.rcbuffer->pybuffer.shape[1]; __pyx_pybuffernd_dtm.diminfo[2].strides = __pyx_pybuffernd_dtm.rcbuffer->pybuffer.strides[2]; __pyx_pybuffernd_dtm.diminfo[2].shape = __pyx_pybuffernd_dtm.rcbuffer->pybuffer.shape[2];
   {
     __Pyx_BufFmt_StackElem __pyx_stack[1];
-    if (unlikely(__Pyx_GetBufferAndValidate(&__pyx_pybuffernd_feat_array.rcbuffer->pybuffer, (PyObject*)__pyx_v_feat_array, &__Pyx_TypeInfo_double, PyBUF_FORMAT| PyBUF_STRIDES, 2, 0, __pyx_stack) == -1)) __PYX_ERR(0, 455, __pyx_L1_error)
+    if (unlikely(__Pyx_GetBufferAndValidate(&__pyx_pybuffernd_feat_array.rcbuffer->pybuffer, (PyObject*)__pyx_v_feat_array, &__Pyx_TypeInfo_double, PyBUF_FORMAT| PyBUF_STRIDES, 2, 0, __pyx_stack) == -1)) __PYX_ERR(0, 457, __pyx_L1_error)
   }
   __pyx_pybuffernd_feat_array.diminfo[0].strides = __pyx_pybuffernd_feat_array.rcbuffer->pybuffer.strides[0]; __pyx_pybuffernd_feat_array.diminfo[0].shape = __pyx_pybuffernd_feat_array.rcbuffer->pybuffer.shape[0]; __pyx_pybuffernd_feat_array.diminfo[1].strides = __pyx_pybuffernd_feat_array.rcbuffer->pybuffer.strides[1]; __pyx_pybuffernd_feat_array.diminfo[1].shape = __pyx_pybuffernd_feat_array.rcbuffer->pybuffer.shape[1];
 
-  /* "structureboost/structure_rf.pyx":460
+  /* "structureboost/structure_rf.pyx":462
  * 
  *     cdef long cat_vals_end
  *     cdef np.ndarray[double, ndim=2] res_mat = np.zeros((feat_array.shape[0], dtm.shape[0]))             # <<<<<<<<<<<<<<
  *     cdef long cn, ri, ind, j, k
  *     cdef double curr_val, ind_doub
  */
-  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_np); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 460, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_np); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 462, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_zeros); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 460, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_zeros); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 462, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __pyx_t_2 = __Pyx_PyInt_From_Py_intptr_t((__pyx_v_feat_array->dimensions[0])); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 460, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyInt_From_Py_intptr_t((__pyx_v_feat_array->dimensions[0])); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 462, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_4 = __Pyx_PyInt_From_Py_intptr_t((__pyx_v_dtm->dimensions[0])); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 460, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyInt_From_Py_intptr_t((__pyx_v_dtm->dimensions[0])); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 462, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
-  __pyx_t_5 = PyTuple_New(2); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 460, __pyx_L1_error)
+  __pyx_t_5 = PyTuple_New(2); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 462, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
   __Pyx_GIVEREF(__pyx_t_2);
   PyTuple_SET_ITEM(__pyx_t_5, 0, __pyx_t_2);
@@ -9814,16 +9874,16 @@ static PyObject *__pyx_pf_14structureboost_12structure_rf_4predict_with_tensor_c
   __pyx_t_1 = (__pyx_t_4) ? __Pyx_PyObject_Call2Args(__pyx_t_3, __pyx_t_4, __pyx_t_5) : __Pyx_PyObject_CallOneArg(__pyx_t_3, __pyx_t_5);
   __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-  if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 460, __pyx_L1_error)
+  if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 462, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  if (!(likely(((__pyx_t_1) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_1, __pyx_ptype_5numpy_ndarray))))) __PYX_ERR(0, 460, __pyx_L1_error)
+  if (!(likely(((__pyx_t_1) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_1, __pyx_ptype_5numpy_ndarray))))) __PYX_ERR(0, 462, __pyx_L1_error)
   __pyx_t_6 = ((PyArrayObject *)__pyx_t_1);
   {
     __Pyx_BufFmt_StackElem __pyx_stack[1];
     if (unlikely(__Pyx_GetBufferAndValidate(&__pyx_pybuffernd_res_mat.rcbuffer->pybuffer, (PyObject*)__pyx_t_6, &__Pyx_TypeInfo_double, PyBUF_FORMAT| PyBUF_STRIDES| PyBUF_WRITABLE, 2, 0, __pyx_stack) == -1)) {
       __pyx_v_res_mat = ((PyArrayObject *)Py_None); __Pyx_INCREF(Py_None); __pyx_pybuffernd_res_mat.rcbuffer->pybuffer.buf = NULL;
-      __PYX_ERR(0, 460, __pyx_L1_error)
+      __PYX_ERR(0, 462, __pyx_L1_error)
     } else {__pyx_pybuffernd_res_mat.diminfo[0].strides = __pyx_pybuffernd_res_mat.rcbuffer->pybuffer.strides[0]; __pyx_pybuffernd_res_mat.diminfo[0].shape = __pyx_pybuffernd_res_mat.rcbuffer->pybuffer.shape[0]; __pyx_pybuffernd_res_mat.diminfo[1].strides = __pyx_pybuffernd_res_mat.rcbuffer->pybuffer.strides[1]; __pyx_pybuffernd_res_mat.diminfo[1].shape = __pyx_pybuffernd_res_mat.rcbuffer->pybuffer.shape[1];
     }
   }
@@ -9831,16 +9891,16 @@ static PyObject *__pyx_pf_14structureboost_12structure_rf_4predict_with_tensor_c
   __pyx_v_res_mat = ((PyArrayObject *)__pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "structureboost/structure_rf.pyx":464
+  /* "structureboost/structure_rf.pyx":466
  *     cdef double curr_val, ind_doub
  *     cdef bint at_leaf, found_val
  *     cdef np.ndarray[long, ndim=2] isnan_array = np.isnan(feat_array).astype(int)             # <<<<<<<<<<<<<<
  * 
  *     # These are in dtm_float
  */
-  __Pyx_GetModuleGlobalName(__pyx_t_5, __pyx_n_s_np); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 464, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_5, __pyx_n_s_np); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 466, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
-  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_5, __pyx_n_s_isnan); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 464, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_5, __pyx_n_s_isnan); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 466, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
   __pyx_t_5 = NULL;
@@ -9855,10 +9915,10 @@ static PyObject *__pyx_pf_14structureboost_12structure_rf_4predict_with_tensor_c
   }
   __pyx_t_3 = (__pyx_t_5) ? __Pyx_PyObject_Call2Args(__pyx_t_4, __pyx_t_5, ((PyObject *)__pyx_v_feat_array)) : __Pyx_PyObject_CallOneArg(__pyx_t_4, ((PyObject *)__pyx_v_feat_array));
   __Pyx_XDECREF(__pyx_t_5); __pyx_t_5 = 0;
-  if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 464, __pyx_L1_error)
+  if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 466, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_astype); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 464, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_astype); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 466, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   __pyx_t_3 = NULL;
@@ -9873,16 +9933,16 @@ static PyObject *__pyx_pf_14structureboost_12structure_rf_4predict_with_tensor_c
   }
   __pyx_t_1 = (__pyx_t_3) ? __Pyx_PyObject_Call2Args(__pyx_t_4, __pyx_t_3, ((PyObject *)(&PyInt_Type))) : __Pyx_PyObject_CallOneArg(__pyx_t_4, ((PyObject *)(&PyInt_Type)));
   __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
-  if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 464, __pyx_L1_error)
+  if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 466, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-  if (!(likely(((__pyx_t_1) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_1, __pyx_ptype_5numpy_ndarray))))) __PYX_ERR(0, 464, __pyx_L1_error)
+  if (!(likely(((__pyx_t_1) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_1, __pyx_ptype_5numpy_ndarray))))) __PYX_ERR(0, 466, __pyx_L1_error)
   __pyx_t_7 = ((PyArrayObject *)__pyx_t_1);
   {
     __Pyx_BufFmt_StackElem __pyx_stack[1];
     if (unlikely(__Pyx_GetBufferAndValidate(&__pyx_pybuffernd_isnan_array.rcbuffer->pybuffer, (PyObject*)__pyx_t_7, &__Pyx_TypeInfo_long, PyBUF_FORMAT| PyBUF_STRIDES, 2, 0, __pyx_stack) == -1)) {
       __pyx_v_isnan_array = ((PyArrayObject *)Py_None); __Pyx_INCREF(Py_None); __pyx_pybuffernd_isnan_array.rcbuffer->pybuffer.buf = NULL;
-      __PYX_ERR(0, 464, __pyx_L1_error)
+      __PYX_ERR(0, 466, __pyx_L1_error)
     } else {__pyx_pybuffernd_isnan_array.diminfo[0].strides = __pyx_pybuffernd_isnan_array.rcbuffer->pybuffer.strides[0]; __pyx_pybuffernd_isnan_array.diminfo[0].shape = __pyx_pybuffernd_isnan_array.rcbuffer->pybuffer.shape[0]; __pyx_pybuffernd_isnan_array.diminfo[1].strides = __pyx_pybuffernd_isnan_array.rcbuffer->pybuffer.strides[1]; __pyx_pybuffernd_isnan_array.diminfo[1].shape = __pyx_pybuffernd_isnan_array.rcbuffer->pybuffer.shape[1];
     }
   }
@@ -9890,7 +9950,7 @@ static PyObject *__pyx_pf_14structureboost_12structure_rf_4predict_with_tensor_c
   __pyx_v_isnan_array = ((PyArrayObject *)__pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "structureboost/structure_rf.pyx":467
+  /* "structureboost/structure_rf.pyx":469
  * 
  *     # These are in dtm_float
  *     cdef long THRESH = 0             # <<<<<<<<<<<<<<
@@ -9899,7 +9959,7 @@ static PyObject *__pyx_pf_14structureboost_12structure_rf_4predict_with_tensor_c
  */
   __pyx_v_THRESH = 0;
 
-  /* "structureboost/structure_rf.pyx":468
+  /* "structureboost/structure_rf.pyx":470
  *     # These are in dtm_float
  *     cdef long THRESH = 0
  *     cdef long NODE_VALUE = 1             # <<<<<<<<<<<<<<
@@ -9908,7 +9968,7 @@ static PyObject *__pyx_pf_14structureboost_12structure_rf_4predict_with_tensor_c
  */
   __pyx_v_NODE_VALUE = 1;
 
-  /* "structureboost/structure_rf.pyx":471
+  /* "structureboost/structure_rf.pyx":473
  * 
  *     # These are in dtm_int
  *     cdef long NODE_TYPE = 0             # <<<<<<<<<<<<<<
@@ -9917,7 +9977,7 @@ static PyObject *__pyx_pf_14structureboost_12structure_rf_4predict_with_tensor_c
  */
   __pyx_v_NODE_TYPE = 0;
 
-  /* "structureboost/structure_rf.pyx":472
+  /* "structureboost/structure_rf.pyx":474
  *     # These are in dtm_int
  *     cdef long NODE_TYPE = 0
  *     cdef long FEATURE_COL = 1             # <<<<<<<<<<<<<<
@@ -9926,7 +9986,7 @@ static PyObject *__pyx_pf_14structureboost_12structure_rf_4predict_with_tensor_c
  */
   __pyx_v_FEATURE_COL = 1;
 
-  /* "structureboost/structure_rf.pyx":473
+  /* "structureboost/structure_rf.pyx":475
  *     cdef long NODE_TYPE = 0
  *     cdef long FEATURE_COL = 1
  *     cdef long LEFT_CHILD = 2             # <<<<<<<<<<<<<<
@@ -9935,7 +9995,7 @@ static PyObject *__pyx_pf_14structureboost_12structure_rf_4predict_with_tensor_c
  */
   __pyx_v_LEFT_CHILD = 2;
 
-  /* "structureboost/structure_rf.pyx":474
+  /* "structureboost/structure_rf.pyx":476
  *     cdef long FEATURE_COL = 1
  *     cdef long LEFT_CHILD = 2
  *     cdef long RIGHT_CHILD = 3             # <<<<<<<<<<<<<<
@@ -9944,7 +10004,7 @@ static PyObject *__pyx_pf_14structureboost_12structure_rf_4predict_with_tensor_c
  */
   __pyx_v_RIGHT_CHILD = 3;
 
-  /* "structureboost/structure_rf.pyx":475
+  /* "structureboost/structure_rf.pyx":477
  *     cdef long LEFT_CHILD = 2
  *     cdef long RIGHT_CHILD = 3
  *     cdef long NA_LEFT = 4             # <<<<<<<<<<<<<<
@@ -9953,7 +10013,7 @@ static PyObject *__pyx_pf_14structureboost_12structure_rf_4predict_with_tensor_c
  */
   __pyx_v_NA_LEFT = 4;
 
-  /* "structureboost/structure_rf.pyx":476
+  /* "structureboost/structure_rf.pyx":478
  *     cdef long RIGHT_CHILD = 3
  *     cdef long NA_LEFT = 4
  *     cdef long NUM_CAT_VALS = 5             # <<<<<<<<<<<<<<
@@ -9962,7 +10022,7 @@ static PyObject *__pyx_pf_14structureboost_12structure_rf_4predict_with_tensor_c
  */
   __pyx_v_NUM_CAT_VALS = 5;
 
-  /* "structureboost/structure_rf.pyx":477
+  /* "structureboost/structure_rf.pyx":479
  *     cdef long NA_LEFT = 4
  *     cdef long NUM_CAT_VALS = 5
  *     cdef long CAT_VALS_START = 6             # <<<<<<<<<<<<<<
@@ -9971,7 +10031,7 @@ static PyObject *__pyx_pf_14structureboost_12structure_rf_4predict_with_tensor_c
  */
   __pyx_v_CAT_VALS_START = 6;
 
-  /* "structureboost/structure_rf.pyx":480
+  /* "structureboost/structure_rf.pyx":482
  *     # categorical values for left: 6 ... whatever
  * 
  *     cdef long LEAF = 0             # <<<<<<<<<<<<<<
@@ -9980,7 +10040,7 @@ static PyObject *__pyx_pf_14structureboost_12structure_rf_4predict_with_tensor_c
  */
   __pyx_v_LEAF = 0;
 
-  /* "structureboost/structure_rf.pyx":481
+  /* "structureboost/structure_rf.pyx":483
  * 
  *     cdef long LEAF = 0
  *     cdef long NUMER = 1             # <<<<<<<<<<<<<<
@@ -9989,7 +10049,7 @@ static PyObject *__pyx_pf_14structureboost_12structure_rf_4predict_with_tensor_c
  */
   __pyx_v_NUMER = 1;
 
-  /* "structureboost/structure_rf.pyx":482
+  /* "structureboost/structure_rf.pyx":484
  *     cdef long LEAF = 0
  *     cdef long NUMER = 1
  *     cdef long CATEG = 2             # <<<<<<<<<<<<<<
@@ -9998,7 +10058,7 @@ static PyObject *__pyx_pf_14structureboost_12structure_rf_4predict_with_tensor_c
  */
   __pyx_v_CATEG = 2;
 
-  /* "structureboost/structure_rf.pyx":484
+  /* "structureboost/structure_rf.pyx":486
  *     cdef long CATEG = 2
  * 
  *     for k in range(dtm.shape[0]):             # <<<<<<<<<<<<<<
@@ -10010,7 +10070,7 @@ static PyObject *__pyx_pf_14structureboost_12structure_rf_4predict_with_tensor_c
   for (__pyx_t_10 = 0; __pyx_t_10 < __pyx_t_9; __pyx_t_10+=1) {
     __pyx_v_k = __pyx_t_10;
 
-    /* "structureboost/structure_rf.pyx":485
+    /* "structureboost/structure_rf.pyx":487
  * 
  *     for k in range(dtm.shape[0]):
  *         for ri in range(feat_array.shape[0]):             # <<<<<<<<<<<<<<
@@ -10022,7 +10082,7 @@ static PyObject *__pyx_pf_14structureboost_12structure_rf_4predict_with_tensor_c
     for (__pyx_t_13 = 0; __pyx_t_13 < __pyx_t_12; __pyx_t_13+=1) {
       __pyx_v_ri = __pyx_t_13;
 
-      /* "structureboost/structure_rf.pyx":486
+      /* "structureboost/structure_rf.pyx":488
  *     for k in range(dtm.shape[0]):
  *         for ri in range(feat_array.shape[0]):
  *             cn = 0             # <<<<<<<<<<<<<<
@@ -10031,7 +10091,7 @@ static PyObject *__pyx_pf_14structureboost_12structure_rf_4predict_with_tensor_c
  */
       __pyx_v_cn = 0;
 
-      /* "structureboost/structure_rf.pyx":487
+      /* "structureboost/structure_rf.pyx":489
  *         for ri in range(feat_array.shape[0]):
  *             cn = 0
  *             at_leaf = 0             # <<<<<<<<<<<<<<
@@ -10040,7 +10100,7 @@ static PyObject *__pyx_pf_14structureboost_12structure_rf_4predict_with_tensor_c
  */
       __pyx_v_at_leaf = 0;
 
-      /* "structureboost/structure_rf.pyx":488
+      /* "structureboost/structure_rf.pyx":490
  *             cn = 0
  *             at_leaf = 0
  *             while not at_leaf:             # <<<<<<<<<<<<<<
@@ -10051,7 +10111,7 @@ static PyObject *__pyx_pf_14structureboost_12structure_rf_4predict_with_tensor_c
         __pyx_t_14 = ((!(__pyx_v_at_leaf != 0)) != 0);
         if (!__pyx_t_14) break;
 
-        /* "structureboost/structure_rf.pyx":490
+        /* "structureboost/structure_rf.pyx":492
  *             while not at_leaf:
  *                 cn = int(cn)
  *                 if dtm[k,cn, NODE_TYPE]==LEAF:             # <<<<<<<<<<<<<<
@@ -10064,7 +10124,7 @@ static PyObject *__pyx_pf_14structureboost_12structure_rf_4predict_with_tensor_c
         __pyx_t_14 = (((*__Pyx_BufPtrStrided3d(long *, __pyx_pybuffernd_dtm.rcbuffer->pybuffer.buf, __pyx_t_15, __pyx_pybuffernd_dtm.diminfo[0].strides, __pyx_t_16, __pyx_pybuffernd_dtm.diminfo[1].strides, __pyx_t_17, __pyx_pybuffernd_dtm.diminfo[2].strides)) == __pyx_v_LEAF) != 0);
         if (__pyx_t_14) {
 
-          /* "structureboost/structure_rf.pyx":491
+          /* "structureboost/structure_rf.pyx":493
  *                 cn = int(cn)
  *                 if dtm[k,cn, NODE_TYPE]==LEAF:
  *                     at_leaf = 1             # <<<<<<<<<<<<<<
@@ -10073,7 +10133,7 @@ static PyObject *__pyx_pf_14structureboost_12structure_rf_4predict_with_tensor_c
  */
           __pyx_v_at_leaf = 1;
 
-          /* "structureboost/structure_rf.pyx":492
+          /* "structureboost/structure_rf.pyx":494
  *                 if dtm[k,cn, NODE_TYPE]==LEAF:
  *                     at_leaf = 1
  *                     res_mat[ri,k] = dtm_float[k,cn, NODE_VALUE]             # <<<<<<<<<<<<<<
@@ -10087,7 +10147,7 @@ static PyObject *__pyx_pf_14structureboost_12structure_rf_4predict_with_tensor_c
           __pyx_t_19 = __pyx_v_k;
           *__Pyx_BufPtrStrided2d(double *, __pyx_pybuffernd_res_mat.rcbuffer->pybuffer.buf, __pyx_t_18, __pyx_pybuffernd_res_mat.diminfo[0].strides, __pyx_t_19, __pyx_pybuffernd_res_mat.diminfo[1].strides) = (*__Pyx_BufPtrStrided3d(double *, __pyx_pybuffernd_dtm_float.rcbuffer->pybuffer.buf, __pyx_t_17, __pyx_pybuffernd_dtm_float.diminfo[0].strides, __pyx_t_16, __pyx_pybuffernd_dtm_float.diminfo[1].strides, __pyx_t_15, __pyx_pybuffernd_dtm_float.diminfo[2].strides));
 
-          /* "structureboost/structure_rf.pyx":490
+          /* "structureboost/structure_rf.pyx":492
  *             while not at_leaf:
  *                 cn = int(cn)
  *                 if dtm[k,cn, NODE_TYPE]==LEAF:             # <<<<<<<<<<<<<<
@@ -10097,7 +10157,7 @@ static PyObject *__pyx_pf_14structureboost_12structure_rf_4predict_with_tensor_c
           goto __pyx_L9;
         }
 
-        /* "structureboost/structure_rf.pyx":493
+        /* "structureboost/structure_rf.pyx":495
  *                     at_leaf = 1
  *                     res_mat[ri,k] = dtm_float[k,cn, NODE_VALUE]
  *                 elif dtm[k,cn, NODE_TYPE]==NUMER:             # <<<<<<<<<<<<<<
@@ -10110,7 +10170,7 @@ static PyObject *__pyx_pf_14structureboost_12structure_rf_4predict_with_tensor_c
         __pyx_t_14 = (((*__Pyx_BufPtrStrided3d(long *, __pyx_pybuffernd_dtm.rcbuffer->pybuffer.buf, __pyx_t_15, __pyx_pybuffernd_dtm.diminfo[0].strides, __pyx_t_16, __pyx_pybuffernd_dtm.diminfo[1].strides, __pyx_t_17, __pyx_pybuffernd_dtm.diminfo[2].strides)) == __pyx_v_NUMER) != 0);
         if (__pyx_t_14) {
 
-          /* "structureboost/structure_rf.pyx":494
+          /* "structureboost/structure_rf.pyx":496
  *                     res_mat[ri,k] = dtm_float[k,cn, NODE_VALUE]
  *                 elif dtm[k,cn, NODE_TYPE]==NUMER:
  *                     ind = dtm[k,cn, FEATURE_COL]             # <<<<<<<<<<<<<<
@@ -10122,7 +10182,7 @@ static PyObject *__pyx_pf_14structureboost_12structure_rf_4predict_with_tensor_c
           __pyx_t_15 = __pyx_v_FEATURE_COL;
           __pyx_v_ind = (*__Pyx_BufPtrStrided3d(long *, __pyx_pybuffernd_dtm.rcbuffer->pybuffer.buf, __pyx_t_17, __pyx_pybuffernd_dtm.diminfo[0].strides, __pyx_t_16, __pyx_pybuffernd_dtm.diminfo[1].strides, __pyx_t_15, __pyx_pybuffernd_dtm.diminfo[2].strides));
 
-          /* "structureboost/structure_rf.pyx":495
+          /* "structureboost/structure_rf.pyx":497
  *                 elif dtm[k,cn, NODE_TYPE]==NUMER:
  *                     ind = dtm[k,cn, FEATURE_COL]
  *                     if isnan_array[ri,ind]:             # <<<<<<<<<<<<<<
@@ -10134,7 +10194,7 @@ static PyObject *__pyx_pf_14structureboost_12structure_rf_4predict_with_tensor_c
           __pyx_t_14 = ((*__Pyx_BufPtrStrided2d(long *, __pyx_pybuffernd_isnan_array.rcbuffer->pybuffer.buf, __pyx_t_15, __pyx_pybuffernd_isnan_array.diminfo[0].strides, __pyx_t_16, __pyx_pybuffernd_isnan_array.diminfo[1].strides)) != 0);
           if (__pyx_t_14) {
 
-            /* "structureboost/structure_rf.pyx":496
+            /* "structureboost/structure_rf.pyx":498
  *                     ind = dtm[k,cn, FEATURE_COL]
  *                     if isnan_array[ri,ind]:
  *                         cn = dtm[k,cn, LEFT_CHILD] if dtm[k,cn, NA_LEFT] else dtm[k,cn, RIGHT_CHILD]             # <<<<<<<<<<<<<<
@@ -10157,7 +10217,7 @@ static PyObject *__pyx_pf_14structureboost_12structure_rf_4predict_with_tensor_c
             }
             __pyx_v_cn = __pyx_t_20;
 
-            /* "structureboost/structure_rf.pyx":495
+            /* "structureboost/structure_rf.pyx":497
  *                 elif dtm[k,cn, NODE_TYPE]==NUMER:
  *                     ind = dtm[k,cn, FEATURE_COL]
  *                     if isnan_array[ri,ind]:             # <<<<<<<<<<<<<<
@@ -10167,7 +10227,7 @@ static PyObject *__pyx_pf_14structureboost_12structure_rf_4predict_with_tensor_c
             goto __pyx_L10;
           }
 
-          /* "structureboost/structure_rf.pyx":498
+          /* "structureboost/structure_rf.pyx":500
  *                         cn = dtm[k,cn, LEFT_CHILD] if dtm[k,cn, NA_LEFT] else dtm[k,cn, RIGHT_CHILD]
  *                     else:
  *                         curr_val = feat_array[ri,ind]             # <<<<<<<<<<<<<<
@@ -10179,7 +10239,7 @@ static PyObject *__pyx_pf_14structureboost_12structure_rf_4predict_with_tensor_c
             __pyx_t_15 = __pyx_v_ind;
             __pyx_v_curr_val = (*__Pyx_BufPtrStrided2d(double *, __pyx_pybuffernd_feat_array.rcbuffer->pybuffer.buf, __pyx_t_17, __pyx_pybuffernd_feat_array.diminfo[0].strides, __pyx_t_15, __pyx_pybuffernd_feat_array.diminfo[1].strides));
 
-            /* "structureboost/structure_rf.pyx":499
+            /* "structureboost/structure_rf.pyx":501
  *                     else:
  *                         curr_val = feat_array[ri,ind]
  *                         cn = dtm[k,cn, LEFT_CHILD] if curr_val<dtm_float[k,cn, THRESH] else dtm[k,cn, RIGHT_CHILD]             # <<<<<<<<<<<<<<
@@ -10204,7 +10264,7 @@ static PyObject *__pyx_pf_14structureboost_12structure_rf_4predict_with_tensor_c
           }
           __pyx_L10:;
 
-          /* "structureboost/structure_rf.pyx":493
+          /* "structureboost/structure_rf.pyx":495
  *                     at_leaf = 1
  *                     res_mat[ri,k] = dtm_float[k,cn, NODE_VALUE]
  *                 elif dtm[k,cn, NODE_TYPE]==NUMER:             # <<<<<<<<<<<<<<
@@ -10214,7 +10274,7 @@ static PyObject *__pyx_pf_14structureboost_12structure_rf_4predict_with_tensor_c
           goto __pyx_L9;
         }
 
-        /* "structureboost/structure_rf.pyx":500
+        /* "structureboost/structure_rf.pyx":502
  *                         curr_val = feat_array[ri,ind]
  *                         cn = dtm[k,cn, LEFT_CHILD] if curr_val<dtm_float[k,cn, THRESH] else dtm[k,cn, RIGHT_CHILD]
  *                 elif dtm[k,cn, NODE_TYPE]==CATEG:             # <<<<<<<<<<<<<<
@@ -10227,7 +10287,7 @@ static PyObject *__pyx_pf_14structureboost_12structure_rf_4predict_with_tensor_c
         __pyx_t_14 = (((*__Pyx_BufPtrStrided3d(long *, __pyx_pybuffernd_dtm.rcbuffer->pybuffer.buf, __pyx_t_16, __pyx_pybuffernd_dtm.diminfo[0].strides, __pyx_t_17, __pyx_pybuffernd_dtm.diminfo[1].strides, __pyx_t_15, __pyx_pybuffernd_dtm.diminfo[2].strides)) == __pyx_v_CATEG) != 0);
         if (__pyx_t_14) {
 
-          /* "structureboost/structure_rf.pyx":501
+          /* "structureboost/structure_rf.pyx":503
  *                         cn = dtm[k,cn, LEFT_CHILD] if curr_val<dtm_float[k,cn, THRESH] else dtm[k,cn, RIGHT_CHILD]
  *                 elif dtm[k,cn, NODE_TYPE]==CATEG:
  *                     curr_val = feat_array[ri,dtm[k,cn, FEATURE_COL]]             # <<<<<<<<<<<<<<
@@ -10241,7 +10301,7 @@ static PyObject *__pyx_pf_14structureboost_12structure_rf_4predict_with_tensor_c
           __pyx_t_18 = (*__Pyx_BufPtrStrided3d(long *, __pyx_pybuffernd_dtm.rcbuffer->pybuffer.buf, __pyx_t_15, __pyx_pybuffernd_dtm.diminfo[0].strides, __pyx_t_17, __pyx_pybuffernd_dtm.diminfo[1].strides, __pyx_t_16, __pyx_pybuffernd_dtm.diminfo[2].strides));
           __pyx_v_curr_val = (*__Pyx_BufPtrStrided2d(double *, __pyx_pybuffernd_feat_array.rcbuffer->pybuffer.buf, __pyx_t_19, __pyx_pybuffernd_feat_array.diminfo[0].strides, __pyx_t_18, __pyx_pybuffernd_feat_array.diminfo[1].strides));
 
-          /* "structureboost/structure_rf.pyx":502
+          /* "structureboost/structure_rf.pyx":504
  *                 elif dtm[k,cn, NODE_TYPE]==CATEG:
  *                     curr_val = feat_array[ri,dtm[k,cn, FEATURE_COL]]
  *                     found_val = 0             # <<<<<<<<<<<<<<
@@ -10250,7 +10310,7 @@ static PyObject *__pyx_pf_14structureboost_12structure_rf_4predict_with_tensor_c
  */
           __pyx_v_found_val = 0;
 
-          /* "structureboost/structure_rf.pyx":503
+          /* "structureboost/structure_rf.pyx":505
  *                     curr_val = feat_array[ri,dtm[k,cn, FEATURE_COL]]
  *                     found_val = 0
  *                     j = CAT_VALS_START             # <<<<<<<<<<<<<<
@@ -10259,7 +10319,7 @@ static PyObject *__pyx_pf_14structureboost_12structure_rf_4predict_with_tensor_c
  */
           __pyx_v_j = __pyx_v_CAT_VALS_START;
 
-          /* "structureboost/structure_rf.pyx":504
+          /* "structureboost/structure_rf.pyx":506
  *                     found_val = 0
  *                     j = CAT_VALS_START
  *                     cat_vals_end = CAT_VALS_START + dtm[k, cn, NUM_CAT_VALS]             # <<<<<<<<<<<<<<
@@ -10271,7 +10331,7 @@ static PyObject *__pyx_pf_14structureboost_12structure_rf_4predict_with_tensor_c
           __pyx_t_15 = __pyx_v_NUM_CAT_VALS;
           __pyx_v_cat_vals_end = (__pyx_v_CAT_VALS_START + (*__Pyx_BufPtrStrided3d(long *, __pyx_pybuffernd_dtm.rcbuffer->pybuffer.buf, __pyx_t_16, __pyx_pybuffernd_dtm.diminfo[0].strides, __pyx_t_17, __pyx_pybuffernd_dtm.diminfo[1].strides, __pyx_t_15, __pyx_pybuffernd_dtm.diminfo[2].strides)));
 
-          /* "structureboost/structure_rf.pyx":505
+          /* "structureboost/structure_rf.pyx":507
  *                     j = CAT_VALS_START
  *                     cat_vals_end = CAT_VALS_START + dtm[k, cn, NUM_CAT_VALS]
  *                     while ((not found_val) & (j<cat_vals_end)):             # <<<<<<<<<<<<<<
@@ -10282,7 +10342,7 @@ static PyObject *__pyx_pf_14structureboost_12structure_rf_4predict_with_tensor_c
             __pyx_t_14 = (((!(__pyx_v_found_val != 0)) & (__pyx_v_j < __pyx_v_cat_vals_end)) != 0);
             if (!__pyx_t_14) break;
 
-            /* "structureboost/structure_rf.pyx":506
+            /* "structureboost/structure_rf.pyx":508
  *                     cat_vals_end = CAT_VALS_START + dtm[k, cn, NUM_CAT_VALS]
  *                     while ((not found_val) & (j<cat_vals_end)):
  *                         if curr_val==dtm[k,cn, j]:             # <<<<<<<<<<<<<<
@@ -10295,7 +10355,7 @@ static PyObject *__pyx_pf_14structureboost_12structure_rf_4predict_with_tensor_c
             __pyx_t_14 = ((__pyx_v_curr_val == (*__Pyx_BufPtrStrided3d(long *, __pyx_pybuffernd_dtm.rcbuffer->pybuffer.buf, __pyx_t_15, __pyx_pybuffernd_dtm.diminfo[0].strides, __pyx_t_17, __pyx_pybuffernd_dtm.diminfo[1].strides, __pyx_t_16, __pyx_pybuffernd_dtm.diminfo[2].strides))) != 0);
             if (__pyx_t_14) {
 
-              /* "structureboost/structure_rf.pyx":507
+              /* "structureboost/structure_rf.pyx":509
  *                     while ((not found_val) & (j<cat_vals_end)):
  *                         if curr_val==dtm[k,cn, j]:
  *                             found_val=1             # <<<<<<<<<<<<<<
@@ -10304,7 +10364,7 @@ static PyObject *__pyx_pf_14structureboost_12structure_rf_4predict_with_tensor_c
  */
               __pyx_v_found_val = 1;
 
-              /* "structureboost/structure_rf.pyx":506
+              /* "structureboost/structure_rf.pyx":508
  *                     cat_vals_end = CAT_VALS_START + dtm[k, cn, NUM_CAT_VALS]
  *                     while ((not found_val) & (j<cat_vals_end)):
  *                         if curr_val==dtm[k,cn, j]:             # <<<<<<<<<<<<<<
@@ -10314,7 +10374,7 @@ static PyObject *__pyx_pf_14structureboost_12structure_rf_4predict_with_tensor_c
               goto __pyx_L13;
             }
 
-            /* "structureboost/structure_rf.pyx":509
+            /* "structureboost/structure_rf.pyx":511
  *                             found_val=1
  *                         else:
  *                             j+=1             # <<<<<<<<<<<<<<
@@ -10327,7 +10387,7 @@ static PyObject *__pyx_pf_14structureboost_12structure_rf_4predict_with_tensor_c
             __pyx_L13:;
           }
 
-          /* "structureboost/structure_rf.pyx":510
+          /* "structureboost/structure_rf.pyx":512
  *                         else:
  *                             j+=1
  *                     cn = dtm[k,cn, LEFT_CHILD] if found_val else dtm[k,cn, RIGHT_CHILD]             # <<<<<<<<<<<<<<
@@ -10346,7 +10406,7 @@ static PyObject *__pyx_pf_14structureboost_12structure_rf_4predict_with_tensor_c
           }
           __pyx_v_cn = __pyx_t_20;
 
-          /* "structureboost/structure_rf.pyx":500
+          /* "structureboost/structure_rf.pyx":502
  *                         curr_val = feat_array[ri,ind]
  *                         cn = dtm[k,cn, LEFT_CHILD] if curr_val<dtm_float[k,cn, THRESH] else dtm[k,cn, RIGHT_CHILD]
  *                 elif dtm[k,cn, NODE_TYPE]==CATEG:             # <<<<<<<<<<<<<<
@@ -10359,7 +10419,7 @@ static PyObject *__pyx_pf_14structureboost_12structure_rf_4predict_with_tensor_c
     }
   }
 
-  /* "structureboost/structure_rf.pyx":511
+  /* "structureboost/structure_rf.pyx":513
  *                             j+=1
  *                     cn = dtm[k,cn, LEFT_CHILD] if found_val else dtm[k,cn, RIGHT_CHILD]
  *     return(res_mat)             # <<<<<<<<<<<<<<
@@ -10369,7 +10429,7 @@ static PyObject *__pyx_pf_14structureboost_12structure_rf_4predict_with_tensor_c
   __pyx_r = ((PyObject *)__pyx_v_res_mat);
   goto __pyx_L0;
 
-  /* "structureboost/structure_rf.pyx":455
+  /* "structureboost/structure_rf.pyx":457
  * @cython.boundscheck(False)
  * @cython.wraparound(False)
  * def predict_with_tensor_c(np.ndarray[double, ndim=3] dtm_float,             # <<<<<<<<<<<<<<
@@ -12001,41 +12061,41 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
   __Pyx_GIVEREF(__pyx_tuple__33);
   __pyx_codeobj__14 = (PyObject*)__Pyx_PyCode_New(3, 0, 5, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__33, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_structure_rf_pyx, __pyx_n_s_convert_subtree, 406, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__14)) __PYX_ERR(0, 406, __pyx_L1_error)
 
-  /* "structureboost/structure_rf.pyx":428
+  /* "structureboost/structure_rf.pyx":430
  * 
  * 
  * def _get_rows_for_tree(num_rows, subsample, replace):             # <<<<<<<<<<<<<<
  *     if (subsample == 1) and (not replace):
  *         return np.arange(num_rows)
  */
-  __pyx_tuple__34 = PyTuple_Pack(4, __pyx_n_s_num_rows, __pyx_n_s_subsample, __pyx_n_s_replace, __pyx_n_s_rows_to_return); if (unlikely(!__pyx_tuple__34)) __PYX_ERR(0, 428, __pyx_L1_error)
+  __pyx_tuple__34 = PyTuple_Pack(4, __pyx_n_s_num_rows, __pyx_n_s_subsample, __pyx_n_s_replace, __pyx_n_s_rows_to_return); if (unlikely(!__pyx_tuple__34)) __PYX_ERR(0, 430, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__34);
   __Pyx_GIVEREF(__pyx_tuple__34);
-  __pyx_codeobj__15 = (PyObject*)__Pyx_PyCode_New(3, 0, 4, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__34, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_structure_rf_pyx, __pyx_n_s_get_rows_for_tree, 428, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__15)) __PYX_ERR(0, 428, __pyx_L1_error)
+  __pyx_codeobj__15 = (PyObject*)__Pyx_PyCode_New(3, 0, 4, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__34, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_structure_rf_pyx, __pyx_n_s_get_rows_for_tree, 430, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__15)) __PYX_ERR(0, 430, __pyx_L1_error)
 
-  /* "structureboost/structure_rf.pyx":440
+  /* "structureboost/structure_rf.pyx":442
  * 
  * 
  * def randomize_node_na_dir_weighted(curr_node):             # <<<<<<<<<<<<<<
  *     if (('node_type' in curr_node.keys()) and
  *                 (curr_node['node_type'] == 'interior')):
  */
-  __pyx_tuple__35 = PyTuple_Pack(3, __pyx_n_s_curr_node, __pyx_n_s_lw, __pyx_n_s_rw); if (unlikely(!__pyx_tuple__35)) __PYX_ERR(0, 440, __pyx_L1_error)
+  __pyx_tuple__35 = PyTuple_Pack(3, __pyx_n_s_curr_node, __pyx_n_s_lw, __pyx_n_s_rw); if (unlikely(!__pyx_tuple__35)) __PYX_ERR(0, 442, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__35);
   __Pyx_GIVEREF(__pyx_tuple__35);
-  __pyx_codeobj__16 = (PyObject*)__Pyx_PyCode_New(1, 0, 3, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__35, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_structure_rf_pyx, __pyx_n_s_randomize_node_na_dir_weighted, 440, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__16)) __PYX_ERR(0, 440, __pyx_L1_error)
+  __pyx_codeobj__16 = (PyObject*)__Pyx_PyCode_New(1, 0, 3, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__35, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_structure_rf_pyx, __pyx_n_s_randomize_node_na_dir_weighted, 442, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__16)) __PYX_ERR(0, 442, __pyx_L1_error)
 
-  /* "structureboost/structure_rf.pyx":455
+  /* "structureboost/structure_rf.pyx":457
  * @cython.boundscheck(False)
  * @cython.wraparound(False)
  * def predict_with_tensor_c(np.ndarray[double, ndim=3] dtm_float,             # <<<<<<<<<<<<<<
  *                       np.ndarray[long, ndim=3] dtm,
  *                       np.ndarray[double, ndim=2] feat_array):
  */
-  __pyx_tuple__36 = PyTuple_Pack(27, __pyx_n_s_dtm_float, __pyx_n_s_dtm, __pyx_n_s_feat_array, __pyx_n_s_cat_vals_end, __pyx_n_s_res_mat, __pyx_n_s_cn, __pyx_n_s_ri, __pyx_n_s_ind, __pyx_n_s_j, __pyx_n_s_k, __pyx_n_s_curr_val, __pyx_n_s_ind_doub, __pyx_n_s_at_leaf, __pyx_n_s_found_val, __pyx_n_s_isnan_array, __pyx_n_s_THRESH, __pyx_n_s_NODE_VALUE, __pyx_n_s_NODE_TYPE, __pyx_n_s_FEATURE_COL, __pyx_n_s_LEFT_CHILD, __pyx_n_s_RIGHT_CHILD, __pyx_n_s_NA_LEFT, __pyx_n_s_NUM_CAT_VALS, __pyx_n_s_CAT_VALS_START, __pyx_n_s_LEAF, __pyx_n_s_NUMER, __pyx_n_s_CATEG); if (unlikely(!__pyx_tuple__36)) __PYX_ERR(0, 455, __pyx_L1_error)
+  __pyx_tuple__36 = PyTuple_Pack(27, __pyx_n_s_dtm_float, __pyx_n_s_dtm, __pyx_n_s_feat_array, __pyx_n_s_cat_vals_end, __pyx_n_s_res_mat, __pyx_n_s_cn, __pyx_n_s_ri, __pyx_n_s_ind, __pyx_n_s_j, __pyx_n_s_k, __pyx_n_s_curr_val, __pyx_n_s_ind_doub, __pyx_n_s_at_leaf, __pyx_n_s_found_val, __pyx_n_s_isnan_array, __pyx_n_s_THRESH, __pyx_n_s_NODE_VALUE, __pyx_n_s_NODE_TYPE, __pyx_n_s_FEATURE_COL, __pyx_n_s_LEFT_CHILD, __pyx_n_s_RIGHT_CHILD, __pyx_n_s_NA_LEFT, __pyx_n_s_NUM_CAT_VALS, __pyx_n_s_CAT_VALS_START, __pyx_n_s_LEAF, __pyx_n_s_NUMER, __pyx_n_s_CATEG); if (unlikely(!__pyx_tuple__36)) __PYX_ERR(0, 457, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__36);
   __Pyx_GIVEREF(__pyx_tuple__36);
-  __pyx_codeobj__17 = (PyObject*)__Pyx_PyCode_New(3, 0, 27, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__36, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_structure_rf_pyx, __pyx_n_s_predict_with_tensor_c, 455, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__17)) __PYX_ERR(0, 455, __pyx_L1_error)
+  __pyx_codeobj__17 = (PyObject*)__Pyx_PyCode_New(3, 0, 27, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__36, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_structure_rf_pyx, __pyx_n_s_predict_with_tensor_c, 457, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__17)) __PYX_ERR(0, 457, __pyx_L1_error)
   __Pyx_RefNannyFinishContext();
   return 0;
   __pyx_L1_error:;
@@ -12653,40 +12713,40 @@ if (!__Pyx_RefNanny) {
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "structureboost/structure_rf.pyx":428
+  /* "structureboost/structure_rf.pyx":430
  * 
  * 
  * def _get_rows_for_tree(num_rows, subsample, replace):             # <<<<<<<<<<<<<<
  *     if (subsample == 1) and (not replace):
  *         return np.arange(num_rows)
  */
-  __pyx_t_1 = PyCFunction_NewEx(&__pyx_mdef_14structureboost_12structure_rf_1_get_rows_for_tree, NULL, __pyx_n_s_structureboost_structure_rf); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 428, __pyx_L1_error)
+  __pyx_t_1 = PyCFunction_NewEx(&__pyx_mdef_14structureboost_12structure_rf_1_get_rows_for_tree, NULL, __pyx_n_s_structureboost_structure_rf); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 430, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_get_rows_for_tree, __pyx_t_1) < 0) __PYX_ERR(0, 428, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_get_rows_for_tree, __pyx_t_1) < 0) __PYX_ERR(0, 430, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "structureboost/structure_rf.pyx":440
+  /* "structureboost/structure_rf.pyx":442
  * 
  * 
  * def randomize_node_na_dir_weighted(curr_node):             # <<<<<<<<<<<<<<
  *     if (('node_type' in curr_node.keys()) and
  *                 (curr_node['node_type'] == 'interior')):
  */
-  __pyx_t_1 = PyCFunction_NewEx(&__pyx_mdef_14structureboost_12structure_rf_3randomize_node_na_dir_weighted, NULL, __pyx_n_s_structureboost_structure_rf); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 440, __pyx_L1_error)
+  __pyx_t_1 = PyCFunction_NewEx(&__pyx_mdef_14structureboost_12structure_rf_3randomize_node_na_dir_weighted, NULL, __pyx_n_s_structureboost_structure_rf); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 442, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_randomize_node_na_dir_weighted, __pyx_t_1) < 0) __PYX_ERR(0, 440, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_randomize_node_na_dir_weighted, __pyx_t_1) < 0) __PYX_ERR(0, 442, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "structureboost/structure_rf.pyx":455
+  /* "structureboost/structure_rf.pyx":457
  * @cython.boundscheck(False)
  * @cython.wraparound(False)
  * def predict_with_tensor_c(np.ndarray[double, ndim=3] dtm_float,             # <<<<<<<<<<<<<<
  *                       np.ndarray[long, ndim=3] dtm,
  *                       np.ndarray[double, ndim=2] feat_array):
  */
-  __pyx_t_1 = PyCFunction_NewEx(&__pyx_mdef_14structureboost_12structure_rf_5predict_with_tensor_c, NULL, __pyx_n_s_structureboost_structure_rf); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 455, __pyx_L1_error)
+  __pyx_t_1 = PyCFunction_NewEx(&__pyx_mdef_14structureboost_12structure_rf_5predict_with_tensor_c, NULL, __pyx_n_s_structureboost_structure_rf); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 457, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_predict_with_tensor_c, __pyx_t_1) < 0) __PYX_ERR(0, 455, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_predict_with_tensor_c, __pyx_t_1) < 0) __PYX_ERR(0, 457, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
   /* "structureboost/structure_rf.pyx":1

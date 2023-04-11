@@ -4,7 +4,7 @@
 import warnings
 from prob_regr_unit import ProbRegressorUnit
 from pdf_discrete import average_densities
-from pdf_set import PdfSet
+from pdf_group import PdfGroup
 import numpy as np
 import pandas as pd
 import ml_insights as mli
@@ -81,10 +81,10 @@ class PrestoBoost(object):
         square root of the number of intervals as the strides values.  The
         alternative is 'none' which will employ the standard cross-entropy loss.
 
-    singleton_weight : float, default is 0.1
+    singleton_weight : float, default is 0.5
         When using structured entropy loss, how much to weight the singleton 
         partition.  Setting this equal to 1 reverts to the cross-entropy loss.
-        Default is 0.1.
+        Default is 0.5.
 
     max_depth : int, default is 3
         The maximum depth to use when building trees for the coarse classifier.\
@@ -107,19 +107,20 @@ class PrestoBoost(object):
     https://arxiv.org/abs/2210.16247
 """
     def __init__(self, num_forests, num_trees,  
-                 feature_configs, binpt_method='auto',
+                 feature_configs=None, binpt_method='auto',
                  binpt_sample_size=20,
                  binpt_vec=None,
                  bin_interp='runif',
                  structure_strides='auto',
-                 singleton_weight=.1,
+                 singleton_weight=.5,
                  subsample=1,
                  range_extension='quantile_frac',
                  range_ext_param=(.25,.75,.25),
                  replace=True, min_size_split=25, max_depth=3,
                  gamma=0, reg_lambda=1, feat_sample_by_tree=1,
                  feat_sample_by_node=1, learning_rate=.05,
-                 random_seed=0, na_unseen_action='weighted_random'):
+                 random_seed=0, na_unseen_action='weighted_random',
+                 prec_digits=6, default_configs=None):
         self.num_forests = num_forests
         self.num_trees = num_trees
         self.binpt_sample_size = binpt_sample_size
@@ -149,7 +150,8 @@ class PrestoBoost(object):
         self.range_extension = range_extension
         self.range_ext_param = range_ext_param
         self.calibrator_list = None
-
+        self.prec_digits = prec_digits
+        self.default_configs = default_configs
         if self.binpt_method=='fixed':
             self.range_extension='none'
 
@@ -247,7 +249,9 @@ class PrestoBoost(object):
                                 structure_strides=self.structure_strides,
                                 random_seed = self.random_seed+i,
                                 sw=self.singleton_weight,
-                                lp=self.strides_lp, hp=self.strides_hp))
+                                lp=self.strides_lp, hp=self.strides_hp,
+                                prec_digits=self.prec_digits, 
+                                default_configs=self.default_configs))
 
 
         if n_jobs==1: # if not parallelizing
@@ -351,27 +355,13 @@ class PrestoBoost(object):
                                             )(delayed(fit_and_return)(f, X_train_val, y_train_val) 
                                             for f in self.forest_list)
 
-
-        # # If you want to refit on the combined training and validation data
-        # if refit_train_val:
-        #     num_trees_used = [self.forest_list[k].gbtmodel.num_trees_for_prediction 
-        #                         for k in range(self.num_forests)]
-        #     X_valid = eval_set[0]
-        #     y_valid = eval_set[1]
-        #     X_train_val = pd.concat((X_train, X_valid))
-        #     y_train_val = np.concatenate((y_train, y_valid))
-        #     self.num_trees = num_trees_used
-        #     self.fit(X_train_val, y_train_val, binpt_vec_list=self.binpt_vec_list)
-
-
-
     def analyze_y_train(self, y_train):
             self.unique_y = np.unique(y_train)
             self.num_uv = len(self.unique_y)
             self.y_max_train = np.max(y_train)
             self.y_min_train = np.min(y_train)
 
-    
+
     def get_bin_pts(self, y_train, random_seed=None):
         if random_seed is not None:
             np.random.seed(random_seed)
@@ -408,7 +398,7 @@ class PrestoBoost(object):
         return(binvec)
 
     def predict_distributions(self, X_test, num_forests_to_use=-1, use_calibrators=False,
-        calibrator_list=None):
+        calibrator_list=None, scaling='log'):
         if num_forests_to_use==-1:
             num_forests_to_use = self.num_forests
         elif (num_forests_to_use > self.num_forests):
@@ -429,9 +419,12 @@ class PrestoBoost(object):
 
             else:
                 predlist.append(self.forest_list[j].predict_distributions(X_test))
-        final_dists = [average_densities([predlist[i][j] for i in range(num_forests_to_use)])
+        final_dists = [average_densities([predlist[i][j] for i in range(num_forests_to_use)],
+                                            scaling=scaling)
                                            for j in range(X_test.shape[0])]
-        return(PdfSet(final_dists))
+        bv = final_dists[0].binvec
+        pm = np.array([pdf.probvec for pdf in final_dists])
+        return(PdfGroup(bv, pm))
 
 def fit_and_return(model, X_train, y_train):
     model.fit(X_train, y_train, verbose=0)

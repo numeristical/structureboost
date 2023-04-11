@@ -960,7 +960,7 @@ struct __pyx_obj_14structureboost_14prob_regressor___pyx_scope_struct_2_genexpr;
 struct __pyx_obj_14structureboost_14prob_regressor___pyx_scope_struct_3_genexpr;
 struct __pyx_obj_14structureboost_14prob_regressor___pyx_scope_struct_4_genexpr;
 
-/* "structureboost/prob_regressor.pyx":158
+/* "structureboost/prob_regressor.pyx":160
  *         # figure out method (here or in fit)
  * 
  *     def fit(self, X_train, y_train, eval_set=None, eval_freq=10,             # <<<<<<<<<<<<<<
@@ -983,7 +983,7 @@ struct __pyx_obj_14structureboost_14prob_regressor___pyx_scope_struct__fit {
 };
 
 
-/* "structureboost/prob_regressor.pyx":308
+/* "structureboost/prob_regressor.pyx":312
  *                 print('Training Forests')
  *                 self.forest_list = Parallel(n_jobs=n_jobs,
  *                                         )(delayed(fit_and_return)(f, X_train, y_train)             # <<<<<<<<<<<<<<
@@ -1000,7 +1000,7 @@ struct __pyx_obj_14structureboost_14prob_regressor___pyx_scope_struct_1_genexpr 
 };
 
 
-/* "structureboost/prob_regressor.pyx":313
+/* "structureboost/prob_regressor.pyx":317
  *                 print('Training Forests')
  *                 self.forest_list = Parallel(n_jobs=n_jobs,
  *                                         )(delayed(fit_and_return2)(f, X_train, y_train,             # <<<<<<<<<<<<<<
@@ -1017,7 +1017,7 @@ struct __pyx_obj_14structureboost_14prob_regressor___pyx_scope_struct_2_genexpr 
 };
 
 
-/* "structureboost/prob_regressor.pyx":323
+/* "structureboost/prob_regressor.pyx":327
  *                     y_calib = eval_set[1]
  *                     self.calibrator_list = Parallel(n_jobs=n_jobs,
  *                                         )(delayed(calib_parallel)(self.calibrator_list[i],             # <<<<<<<<<<<<<<
@@ -1034,7 +1034,7 @@ struct __pyx_obj_14structureboost_14prob_regressor___pyx_scope_struct_3_genexpr 
 };
 
 
-/* "structureboost/prob_regressor.pyx":351
+/* "structureboost/prob_regressor.pyx":355
  *                     y_train_val = np.concatenate((y_train, y_valid))
  *                     self.forest_list = Parallel(n_jobs=n_jobs,
  *                                             )(delayed(fit_and_return)(f, X_train_val, y_train_val)             # <<<<<<<<<<<<<<
@@ -1947,16 +1947,20 @@ static PyObject *__pyx_builtin_print;
 static const char __pyx_k_i[] = "i";
 static const char __pyx_k_j[] = "j";
 static const char __pyx_k_k[] = "k";
+static const char __pyx_k_bv[] = "bv";
 static const char __pyx_k_hp[] = "hp";
 static const char __pyx_k_lp[] = "lp";
 static const char __pyx_k_np[] = "np";
 static const char __pyx_k_pd[] = "pd";
+static const char __pyx_k_pm[] = "pm";
 static const char __pyx_k_sw[] = "sw";
 static const char __pyx_k_doc[] = "__doc__";
 static const char __pyx_k_fit[] = "fit";
+static const char __pyx_k_log[] = "log";
 static const char __pyx_k_max[] = "max";
 static const char __pyx_k_min[] = "min";
 static const char __pyx_k_mli[] = "mli";
+static const char __pyx_k_pdf[] = "pdf";
 static const char __pyx_k_args[] = "args";
 static const char __pyx_k_auto[] = "auto";
 static const char __pyx_k_copy[] = "copy";
@@ -1984,7 +1988,6 @@ static const char __pyx_k_round[] = "round";
 static const char __pyx_k_runif[] = "runif";
 static const char __pyx_k_shape[] = "shape";
 static const char __pyx_k_throw[] = "throw";
-static const char __pyx_k_PdfSet[] = "PdfSet";
 static const char __pyx_k_X_test[] = "X_test";
 static const char __pyx_k_append[] = "append";
 static const char __pyx_k_binvec[] = "binvec";
@@ -2006,17 +2009,19 @@ static const char __pyx_k_X_valid[] = "X_valid";
 static const char __pyx_k_bin_vec[] = "bin_vec";
 static const char __pyx_k_delayed[] = "delayed";
 static const char __pyx_k_genexpr[] = "genexpr";
-static const char __pyx_k_pdf_set[] = "pdf_set";
 static const char __pyx_k_prepare[] = "__prepare__";
+static const char __pyx_k_probvec[] = "probvec";
 static const char __pyx_k_q_range[] = "q_range";
 static const char __pyx_k_q_right[] = "q_right";
 static const char __pyx_k_replace[] = "replace";
+static const char __pyx_k_scaling[] = "scaling";
 static const char __pyx_k_uniform[] = "uniform";
 static const char __pyx_k_verbose[] = "verbose";
 static const char __pyx_k_y_calib[] = "y_calib";
 static const char __pyx_k_y_train[] = "y_train";
 static const char __pyx_k_y_valid[] = "y_valid";
 static const char __pyx_k_Parallel[] = "Parallel";
+static const char __pyx_k_PdfGroup[] = "PdfGroup";
 static const char __pyx_k_calib_pw[] = "calib_pw";
 static const char __pyx_k_digitize[] = "digitize";
 static const char __pyx_k_eval_set[] = "eval_set";
@@ -2033,6 +2038,7 @@ static const char __pyx_k_fixed_rss[] = "fixed_rss";
 static const char __pyx_k_max_depth[] = "max_depth";
 static const char __pyx_k_metaclass[] = "__metaclass__";
 static const char __pyx_k_num_trees[] = "num_trees";
+static const char __pyx_k_pdf_group[] = "pdf_group";
 static const char __pyx_k_subsample[] = "subsample";
 static const char __pyx_k_bin_interp[] = "bin_interp";
 static const char __pyx_k_calibrator[] = "calibrator";
@@ -2050,6 +2056,7 @@ static const char __pyx_k_get_bin_pts[] = "get_bin_pts";
 static const char __pyx_k_ml_insights[] = "ml_insights";
 static const char __pyx_k_mult_factor[] = "mult_factor";
 static const char __pyx_k_num_forests[] = "num_forests";
+static const char __pyx_k_prec_digits[] = "prec_digits";
 static const char __pyx_k_random_seed[] = "random_seed";
 static const char __pyx_k_unity_prior[] = "unity_prior";
 static const char __pyx_k_y_calib_bin[] = "y_calib_bin";
@@ -2076,6 +2083,7 @@ static const char __pyx_k_PrestoBoost_fit[] = "PrestoBoost.fit";
 static const char __pyx_k_Training_Forest[] = "Training Forest ";
 static const char __pyx_k_analyze_y_train[] = "analyze_y_train";
 static const char __pyx_k_calibrator_list[] = "calibrator_list";
+static const char __pyx_k_default_configs[] = "default_configs";
 static const char __pyx_k_feature_configs[] = "feature_configs";
 static const char __pyx_k_fit_and_return2[] = "fit_and_return2";
 static const char __pyx_k_fit_calibrators[] = "fit_calibrators";
@@ -2111,7 +2119,7 @@ static const char __pyx_k_PrestoBoost_analyze_y_train[] = "PrestoBoost.analyze_y
 static const char __pyx_k_structureboost_prob_regressor[] = "structureboost.prob_regressor";
 static const char __pyx_k_PrestoBoost_fit_locals_genexpr[] = "PrestoBoost.fit.<locals>.genexpr";
 static const char __pyx_k_Calibrators_not_trained_aborting[] = "Calibrators not trained - aborting prediction";
-static const char __pyx_k_Nonparametric_Probabilistic_Regr[] = "Nonparametric Probabilistic Regression using Coarse Learners.\n\n    This is to be used with a numerical target when you wish to have a\n    full predicted probability density conditional on the features.\n\n        Parameters\n    ----------\n\n    num_forests : integer, greater than zero\n        The number of forests to build.  Each forest fits a multiclass\n        model on a quantized version of the target and converts the\n        prediction to a probability density.\n\n    num_trees : integer, or list-like\n        The number of trees to use in each forest.  If a list, this can\n        specify different numbers of trees for each forest.  If used in\n        conjunction with early stopping, this will be the maximum number\n        of trees considered.\n\n    feature_configs : dict\n        A dictionary that contains the specifications for each feature in\n        the models (as in a standard StructureBoost model).  StructureBoost\n        allows an unusual amount of flexibility\n        which necessitates a more complicated configuration. See\n        https://structureboost.readthedocs.io/en/latest/feat_config.html\n        for details.\n\n    binpt_method : str, default is 'auto'\n        How to choose the intervals (bin endpoints) for the coarse learners.\n        Default is 'auto', which means a random set of quantiles (of size\n        binpt_sample_size) is chosen from the training data, and the interval \n        endpoints are chosen between those values (using the method indicated\n        by `bin_interp`).  Other options are `fixed` (a given set of intervals\n        is used for each forest) or `fixed-rss` (a random sample of a fixed\n        set of endpoints is used)\n\n    binpt_sample_size: int, default is 20\n        The number of points to use in creating intervals for the coarse\n        learners.  Ignored if the `binpt_method` is 'fixed'.\n\n    binpt_vec : list-like, default is None\n        The set of binpts to use for the 'fixed' or 'fixed-rs""s' methods\n        of bin point selection.  Ignored if `binpt_method` is 'auto'.\n\n    bin_interp : str, Default is'runif'\n        How to create the bin points from the randomly chosen target values\n        when `binpt_method` is 'auto'.  Default is 'runif' which means we\n        draw uniformly in the space between neighboring values.  Option 'midpt'\n        means you simply choose the midpoint between the two neighboring values.\n\n    range_extension : str, default is 'quantile_frac'\n        How (and if) to extend the range of support beyond the values seen in the \n        training data.  Considered only if `binpt_method` is 'auto'.  Default\n        is `quantile_frac` which means we find the size of the quantile range \n        determined by the first two values in `range_ext_param`, multiply that\n        value by the third given number, and add a bin of that size to either end.\n\n    range_ext_param : tuple/list of float, default is (.25,.75,.25)\n        Three values used to determine how large the additional bins should\n        be on each side.  Default is .25, .75, .25 which means that the IQR\n        (inter-quartile range) of the training data is computed, and its\n        width is multiplied by .25.\n\n    structure_strides : str, Default is 'auto'\n        Whether to use a structured entropy loss function or not.  Default is\n        'auto', meaning to use the structured entropy and use the (rounded)\n        square root of the number of intervals as the strides values.  The\n        alternative is 'none' which will employ the standard cross-entropy loss.\n\n    singleton_weight : float, default is 0.1\n        When using structured entropy loss, how much to weight the singleton \n        partition.  Setting this equal to 1 reverts to the cross-entropy loss.\n        Default is 0.1.\n\n    max_depth : int, default is 3\n        The maximum depth to use when building trees for the coarse classifier.        Smaller values are more likely to under""fit and \n        larger values more likely to overfit.\n\n    learning_rate : float, default is .05\n        The \"step size\" to take when adding each new tree to the model.\n        We recommend using a relatively low learning rate combined with\n        early stopping.\n\n    Other params are as in the main StructureBoost object and apply to the\n    coarse learners.\n\n\n    References\n    ----------\n\n    Lucena, B. \"Nonparametric Probabilistic Regression with Coarse Learners\"\n    https://arxiv.org/abs/2210.16247\n";
+static const char __pyx_k_Nonparametric_Probabilistic_Regr[] = "Nonparametric Probabilistic Regression using Coarse Learners.\n\n    This is to be used with a numerical target when you wish to have a\n    full predicted probability density conditional on the features.\n\n        Parameters\n    ----------\n\n    num_forests : integer, greater than zero\n        The number of forests to build.  Each forest fits a multiclass\n        model on a quantized version of the target and converts the\n        prediction to a probability density.\n\n    num_trees : integer, or list-like\n        The number of trees to use in each forest.  If a list, this can\n        specify different numbers of trees for each forest.  If used in\n        conjunction with early stopping, this will be the maximum number\n        of trees considered.\n\n    feature_configs : dict\n        A dictionary that contains the specifications for each feature in\n        the models (as in a standard StructureBoost model).  StructureBoost\n        allows an unusual amount of flexibility\n        which necessitates a more complicated configuration. See\n        https://structureboost.readthedocs.io/en/latest/feat_config.html\n        for details.\n\n    binpt_method : str, default is 'auto'\n        How to choose the intervals (bin endpoints) for the coarse learners.\n        Default is 'auto', which means a random set of quantiles (of size\n        binpt_sample_size) is chosen from the training data, and the interval \n        endpoints are chosen between those values (using the method indicated\n        by `bin_interp`).  Other options are `fixed` (a given set of intervals\n        is used for each forest) or `fixed-rss` (a random sample of a fixed\n        set of endpoints is used)\n\n    binpt_sample_size: int, default is 20\n        The number of points to use in creating intervals for the coarse\n        learners.  Ignored if the `binpt_method` is 'fixed'.\n\n    binpt_vec : list-like, default is None\n        The set of binpts to use for the 'fixed' or 'fixed-rs""s' methods\n        of bin point selection.  Ignored if `binpt_method` is 'auto'.\n\n    bin_interp : str, Default is'runif'\n        How to create the bin points from the randomly chosen target values\n        when `binpt_method` is 'auto'.  Default is 'runif' which means we\n        draw uniformly in the space between neighboring values.  Option 'midpt'\n        means you simply choose the midpoint between the two neighboring values.\n\n    range_extension : str, default is 'quantile_frac'\n        How (and if) to extend the range of support beyond the values seen in the \n        training data.  Considered only if `binpt_method` is 'auto'.  Default\n        is `quantile_frac` which means we find the size of the quantile range \n        determined by the first two values in `range_ext_param`, multiply that\n        value by the third given number, and add a bin of that size to either end.\n\n    range_ext_param : tuple/list of float, default is (.25,.75,.25)\n        Three values used to determine how large the additional bins should\n        be on each side.  Default is .25, .75, .25 which means that the IQR\n        (inter-quartile range) of the training data is computed, and its\n        width is multiplied by .25.\n\n    structure_strides : str, Default is 'auto'\n        Whether to use a structured entropy loss function or not.  Default is\n        'auto', meaning to use the structured entropy and use the (rounded)\n        square root of the number of intervals as the strides values.  The\n        alternative is 'none' which will employ the standard cross-entropy loss.\n\n    singleton_weight : float, default is 0.5\n        When using structured entropy loss, how much to weight the singleton \n        partition.  Setting this equal to 1 reverts to the cross-entropy loss.\n        Default is 0.5.\n\n    max_depth : int, default is 3\n        The maximum depth to use when building trees for the coarse classifier.        Smaller values are more likely to under""fit and \n        larger values more likely to overfit.\n\n    learning_rate : float, default is .05\n        The \"step size\" to take when adding each new tree to the model.\n        We recommend using a relatively low learning rate combined with\n        early stopping.\n\n    Other params are as in the main StructureBoost object and apply to the\n    coarse learners.\n\n\n    References\n    ----------\n\n    Lucena, B. \"Nonparametric Probabilistic Regression with Coarse Learners\"\n    https://arxiv.org/abs/2210.16247\n";
 static const char __pyx_k_PrestoBoost_predict_distribution[] = "PrestoBoost.predict_distributions";
 static const char __pyx_k_Training_Forests_on_combined_dat[] = "Training Forests on combined data";
 static PyObject *__pyx_kp_u_Calibrators_not_trained_aborting;
@@ -2119,7 +2127,7 @@ static PyObject *__pyx_kp_u_Fitting_Calibrator;
 static PyObject *__pyx_kp_u_Fitting_Calibrators;
 static PyObject *__pyx_kp_s_Nonparametric_Probabilistic_Regr;
 static PyObject *__pyx_n_s_Parallel;
-static PyObject *__pyx_n_s_PdfSet;
+static PyObject *__pyx_n_s_PdfGroup;
 static PyObject *__pyx_n_s_PrestoBoost;
 static PyObject *__pyx_n_s_PrestoBoost___init;
 static PyObject *__pyx_n_s_PrestoBoost_analyze_y_train;
@@ -2153,6 +2161,7 @@ static PyObject *__pyx_n_s_binpt_vec;
 static PyObject *__pyx_n_s_binpt_vec_list;
 static PyObject *__pyx_n_s_binvec;
 static PyObject *__pyx_n_s_binvec_start;
+static PyObject *__pyx_n_s_bv;
 static PyObject *__pyx_n_s_calib_parallel;
 static PyObject *__pyx_n_s_calib_pw;
 static PyObject *__pyx_n_s_calibrator;
@@ -2165,6 +2174,7 @@ static PyObject *__pyx_n_s_concat;
 static PyObject *__pyx_n_s_concatenate;
 static PyObject *__pyx_n_s_copy;
 static PyObject *__pyx_n_s_curr_binpt_vec;
+static PyObject *__pyx_n_s_default_configs;
 static PyObject *__pyx_n_s_delayed;
 static PyObject *__pyx_n_s_digitize;
 static PyObject *__pyx_n_s_doc;
@@ -2195,6 +2205,7 @@ static PyObject *__pyx_n_s_j;
 static PyObject *__pyx_n_s_joblib;
 static PyObject *__pyx_n_s_k;
 static PyObject *__pyx_n_s_learning_rate;
+static PyObject *__pyx_n_u_log;
 static PyObject *__pyx_n_s_lp;
 static PyObject *__pyx_n_s_main;
 static PyObject *__pyx_n_s_max;
@@ -2224,8 +2235,11 @@ static PyObject *__pyx_n_s_numpy;
 static PyObject *__pyx_n_s_object;
 static PyObject *__pyx_n_s_pandas;
 static PyObject *__pyx_n_s_pd;
+static PyObject *__pyx_n_s_pdf;
 static PyObject *__pyx_n_s_pdf_discrete;
-static PyObject *__pyx_n_s_pdf_set;
+static PyObject *__pyx_n_s_pdf_group;
+static PyObject *__pyx_n_s_pm;
+static PyObject *__pyx_n_s_prec_digits;
 static PyObject *__pyx_n_s_predict_distributions;
 static PyObject *__pyx_n_s_predict_proba;
 static PyObject *__pyx_n_s_predlist;
@@ -2233,6 +2247,7 @@ static PyObject *__pyx_n_s_prepare;
 static PyObject *__pyx_n_s_print;
 static PyObject *__pyx_n_s_prob_regr_unit;
 static PyObject *__pyx_kp_s_prob_regressor_pyx;
+static PyObject *__pyx_n_s_probvec;
 static PyObject *__pyx_n_s_q_left;
 static PyObject *__pyx_n_s_q_range;
 static PyObject *__pyx_n_s_q_right;
@@ -2249,6 +2264,7 @@ static PyObject *__pyx_n_s_reg_lambda;
 static PyObject *__pyx_n_s_replace;
 static PyObject *__pyx_n_s_round;
 static PyObject *__pyx_n_u_runif;
+static PyObject *__pyx_n_s_scaling;
 static PyObject *__pyx_n_s_seed;
 static PyObject *__pyx_n_s_self;
 static PyObject *__pyx_n_s_send;
@@ -2284,7 +2300,7 @@ static PyObject *__pyx_n_s_y_train;
 static PyObject *__pyx_n_s_y_train_val;
 static PyObject *__pyx_n_s_y_valid;
 static PyObject *__pyx_n_s_y_valid_bin;
-static PyObject *__pyx_pf_14structureboost_14prob_regressor_11PrestoBoost___init__(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self, PyObject *__pyx_v_num_forests, PyObject *__pyx_v_num_trees, PyObject *__pyx_v_feature_configs, PyObject *__pyx_v_binpt_method, PyObject *__pyx_v_binpt_sample_size, PyObject *__pyx_v_binpt_vec, PyObject *__pyx_v_bin_interp, PyObject *__pyx_v_structure_strides, PyObject *__pyx_v_singleton_weight, PyObject *__pyx_v_subsample, PyObject *__pyx_v_range_extension, PyObject *__pyx_v_range_ext_param, PyObject *__pyx_v_replace, PyObject *__pyx_v_min_size_split, PyObject *__pyx_v_max_depth, PyObject *__pyx_v_gamma, PyObject *__pyx_v_reg_lambda, PyObject *__pyx_v_feat_sample_by_tree, PyObject *__pyx_v_feat_sample_by_node, PyObject *__pyx_v_learning_rate, PyObject *__pyx_v_random_seed, PyObject *__pyx_v_na_unseen_action); /* proto */
+static PyObject *__pyx_pf_14structureboost_14prob_regressor_11PrestoBoost___init__(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self, PyObject *__pyx_v_num_forests, PyObject *__pyx_v_num_trees, PyObject *__pyx_v_feature_configs, PyObject *__pyx_v_binpt_method, PyObject *__pyx_v_binpt_sample_size, PyObject *__pyx_v_binpt_vec, PyObject *__pyx_v_bin_interp, PyObject *__pyx_v_structure_strides, PyObject *__pyx_v_singleton_weight, PyObject *__pyx_v_subsample, PyObject *__pyx_v_range_extension, PyObject *__pyx_v_range_ext_param, PyObject *__pyx_v_replace, PyObject *__pyx_v_min_size_split, PyObject *__pyx_v_max_depth, PyObject *__pyx_v_gamma, PyObject *__pyx_v_reg_lambda, PyObject *__pyx_v_feat_sample_by_tree, PyObject *__pyx_v_feat_sample_by_node, PyObject *__pyx_v_learning_rate, PyObject *__pyx_v_random_seed, PyObject *__pyx_v_na_unseen_action, PyObject *__pyx_v_prec_digits, PyObject *__pyx_v_default_configs); /* proto */
 static PyObject *__pyx_pf_14structureboost_14prob_regressor_11PrestoBoost_3fit_genexpr(PyObject *__pyx_self); /* proto */
 static PyObject *__pyx_pf_14structureboost_14prob_regressor_11PrestoBoost_3fit_3genexpr(PyObject *__pyx_self); /* proto */
 static PyObject *__pyx_pf_14structureboost_14prob_regressor_11PrestoBoost_3fit_6genexpr(PyObject *__pyx_self); /* proto */
@@ -2292,7 +2308,7 @@ static PyObject *__pyx_pf_14structureboost_14prob_regressor_11PrestoBoost_3fit_9
 static PyObject *__pyx_pf_14structureboost_14prob_regressor_11PrestoBoost_2fit(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self, PyObject *__pyx_v_X_train, PyObject *__pyx_v_y_train, PyObject *__pyx_v_eval_set, PyObject *__pyx_v_eval_freq, PyObject *__pyx_v_early_stop_past_steps, PyObject *__pyx_v_choose_best_eval, PyObject *__pyx_v_fit_calibrators, PyObject *__pyx_v_refit_train_val, PyObject *__pyx_v_binpt_vec_list, PyObject *__pyx_v_calib_pw, PyObject *__pyx_v_n_jobs, CYTHON_UNUSED PyObject *__pyx_v_verbose); /* proto */
 static PyObject *__pyx_pf_14structureboost_14prob_regressor_11PrestoBoost_4analyze_y_train(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self, PyObject *__pyx_v_y_train); /* proto */
 static PyObject *__pyx_pf_14structureboost_14prob_regressor_11PrestoBoost_6get_bin_pts(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self, PyObject *__pyx_v_y_train, PyObject *__pyx_v_random_seed); /* proto */
-static PyObject *__pyx_pf_14structureboost_14prob_regressor_11PrestoBoost_8predict_distributions(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self, PyObject *__pyx_v_X_test, PyObject *__pyx_v_num_forests_to_use, PyObject *__pyx_v_use_calibrators, PyObject *__pyx_v_calibrator_list); /* proto */
+static PyObject *__pyx_pf_14structureboost_14prob_regressor_11PrestoBoost_8predict_distributions(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self, PyObject *__pyx_v_X_test, PyObject *__pyx_v_num_forests_to_use, PyObject *__pyx_v_use_calibrators, PyObject *__pyx_v_calibrator_list, PyObject *__pyx_v_scaling); /* proto */
 static PyObject *__pyx_pf_14structureboost_14prob_regressor_fit_and_return(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_model, PyObject *__pyx_v_X_train, PyObject *__pyx_v_y_train); /* proto */
 static PyObject *__pyx_pf_14structureboost_14prob_regressor_2fit_and_return2(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_model, PyObject *__pyx_v_X_train, PyObject *__pyx_v_y_train, PyObject *__pyx_v_eval_set, PyObject *__pyx_v_eval_freq, PyObject *__pyx_v_early_stop_past_steps, PyObject *__pyx_v_choose_best_eval); /* proto */
 static PyObject *__pyx_pf_14structureboost_14prob_regressor_4calib_parallel(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_calibrator, PyObject *__pyx_v_binvec, PyObject *__pyx_v_model, PyObject *__pyx_v_X_calib, PyObject *__pyx_v_y_calib); /* proto */
@@ -2301,7 +2317,7 @@ static PyObject *__pyx_tp_new_14structureboost_14prob_regressor___pyx_scope_stru
 static PyObject *__pyx_tp_new_14structureboost_14prob_regressor___pyx_scope_struct_2_genexpr(PyTypeObject *t, PyObject *a, PyObject *k); /*proto*/
 static PyObject *__pyx_tp_new_14structureboost_14prob_regressor___pyx_scope_struct_3_genexpr(PyTypeObject *t, PyObject *a, PyObject *k); /*proto*/
 static PyObject *__pyx_tp_new_14structureboost_14prob_regressor___pyx_scope_struct_4_genexpr(PyTypeObject *t, PyObject *a, PyObject *k); /*proto*/
-static PyObject *__pyx_float__1;
+static PyObject *__pyx_float__5;
 static PyObject *__pyx_float__05;
 static PyObject *__pyx_float__25;
 static PyObject *__pyx_float__75;
@@ -2309,6 +2325,7 @@ static PyObject *__pyx_int_0;
 static PyObject *__pyx_int_1;
 static PyObject *__pyx_int_2;
 static PyObject *__pyx_int_3;
+static PyObject *__pyx_int_6;
 static PyObject *__pyx_int_10;
 static PyObject *__pyx_int_20;
 static PyObject *__pyx_int_25;
@@ -2348,7 +2365,7 @@ static PyObject *__pyx_codeobj__15;
  *     https://arxiv.org/abs/2210.16247
  * """
  *     def __init__(self, num_forests, num_trees,             # <<<<<<<<<<<<<<
- *                  feature_configs, binpt_method='auto',
+ *                  feature_configs=None, binpt_method='auto',
  *                  binpt_sample_size=20,
  */
 
@@ -2379,6 +2396,8 @@ static PyObject *__pyx_pw_14structureboost_14prob_regressor_11PrestoBoost_1__ini
   PyObject *__pyx_v_learning_rate = 0;
   PyObject *__pyx_v_random_seed = 0;
   PyObject *__pyx_v_na_unseen_action = 0;
+  PyObject *__pyx_v_prec_digits = 0;
+  PyObject *__pyx_v_default_configs = 0;
   int __pyx_lineno = 0;
   const char *__pyx_filename = NULL;
   int __pyx_clineno = 0;
@@ -2386,13 +2405,22 @@ static PyObject *__pyx_pw_14structureboost_14prob_regressor_11PrestoBoost_1__ini
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__init__ (wrapper)", 0);
   {
-    static PyObject **__pyx_pyargnames[] = {&__pyx_n_s_self,&__pyx_n_s_num_forests,&__pyx_n_s_num_trees,&__pyx_n_s_feature_configs,&__pyx_n_s_binpt_method,&__pyx_n_s_binpt_sample_size,&__pyx_n_s_binpt_vec,&__pyx_n_s_bin_interp,&__pyx_n_s_structure_strides,&__pyx_n_s_singleton_weight,&__pyx_n_s_subsample,&__pyx_n_s_range_extension,&__pyx_n_s_range_ext_param,&__pyx_n_s_replace,&__pyx_n_s_min_size_split,&__pyx_n_s_max_depth,&__pyx_n_s_gamma,&__pyx_n_s_reg_lambda,&__pyx_n_s_feat_sample_by_tree,&__pyx_n_s_feat_sample_by_node,&__pyx_n_s_learning_rate,&__pyx_n_s_random_seed,&__pyx_n_s_na_unseen_action,0};
-    PyObject* values[23] = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
+    static PyObject **__pyx_pyargnames[] = {&__pyx_n_s_self,&__pyx_n_s_num_forests,&__pyx_n_s_num_trees,&__pyx_n_s_feature_configs,&__pyx_n_s_binpt_method,&__pyx_n_s_binpt_sample_size,&__pyx_n_s_binpt_vec,&__pyx_n_s_bin_interp,&__pyx_n_s_structure_strides,&__pyx_n_s_singleton_weight,&__pyx_n_s_subsample,&__pyx_n_s_range_extension,&__pyx_n_s_range_ext_param,&__pyx_n_s_replace,&__pyx_n_s_min_size_split,&__pyx_n_s_max_depth,&__pyx_n_s_gamma,&__pyx_n_s_reg_lambda,&__pyx_n_s_feat_sample_by_tree,&__pyx_n_s_feat_sample_by_node,&__pyx_n_s_learning_rate,&__pyx_n_s_random_seed,&__pyx_n_s_na_unseen_action,&__pyx_n_s_prec_digits,&__pyx_n_s_default_configs,0};
+    PyObject* values[25] = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
+
+    /* "structureboost/prob_regressor.pyx":110
+ * """
+ *     def __init__(self, num_forests, num_trees,
+ *                  feature_configs=None, binpt_method='auto',             # <<<<<<<<<<<<<<
+ *                  binpt_sample_size=20,
+ *                  binpt_vec=None,
+ */
+    values[3] = ((PyObject *)((PyObject *)Py_None));
     values[4] = ((PyObject *)((PyObject*)__pyx_n_u_auto));
     values[5] = ((PyObject *)((PyObject *)__pyx_int_20));
 
     /* "structureboost/prob_regressor.pyx":112
- *                  feature_configs, binpt_method='auto',
+ *                  feature_configs=None, binpt_method='auto',
  *                  binpt_sample_size=20,
  *                  binpt_vec=None,             # <<<<<<<<<<<<<<
  *                  bin_interp='runif',
@@ -2401,7 +2429,7 @@ static PyObject *__pyx_pw_14structureboost_14prob_regressor_11PrestoBoost_1__ini
     values[6] = ((PyObject *)((PyObject *)Py_None));
     values[7] = ((PyObject *)((PyObject*)__pyx_n_u_runif));
     values[8] = ((PyObject *)((PyObject*)__pyx_n_u_auto));
-    values[9] = ((PyObject *)((PyObject*)__pyx_float__1));
+    values[9] = ((PyObject *)((PyObject*)__pyx_float__5));
     values[10] = ((PyObject *)((PyObject *)__pyx_int_1));
     values[11] = ((PyObject *)((PyObject*)__pyx_n_u_quantile_frac));
 
@@ -2431,10 +2459,24 @@ static PyObject *__pyx_pw_14structureboost_14prob_regressor_11PrestoBoost_1__ini
     values[20] = ((PyObject *)((PyObject*)__pyx_float__05));
     values[21] = ((PyObject *)((PyObject *)__pyx_int_0));
     values[22] = ((PyObject *)((PyObject*)__pyx_n_u_weighted_random));
+    values[23] = ((PyObject *)((PyObject *)__pyx_int_6));
+
+    /* "structureboost/prob_regressor.pyx":123
+ *                  feat_sample_by_node=1, learning_rate=.05,
+ *                  random_seed=0, na_unseen_action='weighted_random',
+ *                  prec_digits=6, default_configs=None):             # <<<<<<<<<<<<<<
+ *         self.num_forests = num_forests
+ *         self.num_trees = num_trees
+ */
+    values[24] = ((PyObject *)((PyObject *)Py_None));
     if (unlikely(__pyx_kwds)) {
       Py_ssize_t kw_args;
       const Py_ssize_t pos_args = PyTuple_GET_SIZE(__pyx_args);
       switch (pos_args) {
+        case 25: values[24] = PyTuple_GET_ITEM(__pyx_args, 24);
+        CYTHON_FALLTHROUGH;
+        case 24: values[23] = PyTuple_GET_ITEM(__pyx_args, 23);
+        CYTHON_FALLTHROUGH;
         case 23: values[22] = PyTuple_GET_ITEM(__pyx_args, 22);
         CYTHON_FALLTHROUGH;
         case 22: values[21] = PyTuple_GET_ITEM(__pyx_args, 21);
@@ -2493,19 +2535,19 @@ static PyObject *__pyx_pw_14structureboost_14prob_regressor_11PrestoBoost_1__ini
         case  1:
         if (likely((values[1] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_num_forests)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("__init__", 0, 4, 23, 1); __PYX_ERR(0, 109, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("__init__", 0, 3, 25, 1); __PYX_ERR(0, 109, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  2:
         if (likely((values[2] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_num_trees)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("__init__", 0, 4, 23, 2); __PYX_ERR(0, 109, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("__init__", 0, 3, 25, 2); __PYX_ERR(0, 109, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  3:
-        if (likely((values[3] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_feature_configs)) != 0)) kw_args--;
-        else {
-          __Pyx_RaiseArgtupleInvalid("__init__", 0, 4, 23, 3); __PYX_ERR(0, 109, __pyx_L3_error)
+        if (kw_args > 0) {
+          PyObject* value = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_feature_configs);
+          if (value) { values[3] = value; kw_args--; }
         }
         CYTHON_FALLTHROUGH;
         case  4:
@@ -2621,12 +2663,28 @@ static PyObject *__pyx_pw_14structureboost_14prob_regressor_11PrestoBoost_1__ini
           PyObject* value = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_na_unseen_action);
           if (value) { values[22] = value; kw_args--; }
         }
+        CYTHON_FALLTHROUGH;
+        case 23:
+        if (kw_args > 0) {
+          PyObject* value = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_prec_digits);
+          if (value) { values[23] = value; kw_args--; }
+        }
+        CYTHON_FALLTHROUGH;
+        case 24:
+        if (kw_args > 0) {
+          PyObject* value = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_default_configs);
+          if (value) { values[24] = value; kw_args--; }
+        }
       }
       if (unlikely(kw_args > 0)) {
         if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "__init__") < 0)) __PYX_ERR(0, 109, __pyx_L3_error)
       }
     } else {
       switch (PyTuple_GET_SIZE(__pyx_args)) {
+        case 25: values[24] = PyTuple_GET_ITEM(__pyx_args, 24);
+        CYTHON_FALLTHROUGH;
+        case 24: values[23] = PyTuple_GET_ITEM(__pyx_args, 23);
+        CYTHON_FALLTHROUGH;
         case 23: values[22] = PyTuple_GET_ITEM(__pyx_args, 22);
         CYTHON_FALLTHROUGH;
         case 22: values[21] = PyTuple_GET_ITEM(__pyx_args, 21);
@@ -2666,7 +2724,8 @@ static PyObject *__pyx_pw_14structureboost_14prob_regressor_11PrestoBoost_1__ini
         case  5: values[4] = PyTuple_GET_ITEM(__pyx_args, 4);
         CYTHON_FALLTHROUGH;
         case  4: values[3] = PyTuple_GET_ITEM(__pyx_args, 3);
-        values[2] = PyTuple_GET_ITEM(__pyx_args, 2);
+        CYTHON_FALLTHROUGH;
+        case  3: values[2] = PyTuple_GET_ITEM(__pyx_args, 2);
         values[1] = PyTuple_GET_ITEM(__pyx_args, 1);
         values[0] = PyTuple_GET_ITEM(__pyx_args, 0);
         break;
@@ -2696,22 +2755,24 @@ static PyObject *__pyx_pw_14structureboost_14prob_regressor_11PrestoBoost_1__ini
     __pyx_v_learning_rate = values[20];
     __pyx_v_random_seed = values[21];
     __pyx_v_na_unseen_action = values[22];
+    __pyx_v_prec_digits = values[23];
+    __pyx_v_default_configs = values[24];
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("__init__", 0, 4, 23, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 109, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("__init__", 0, 3, 25, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 109, __pyx_L3_error)
   __pyx_L3_error:;
   __Pyx_AddTraceback("structureboost.prob_regressor.PrestoBoost.__init__", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  __pyx_r = __pyx_pf_14structureboost_14prob_regressor_11PrestoBoost___init__(__pyx_self, __pyx_v_self, __pyx_v_num_forests, __pyx_v_num_trees, __pyx_v_feature_configs, __pyx_v_binpt_method, __pyx_v_binpt_sample_size, __pyx_v_binpt_vec, __pyx_v_bin_interp, __pyx_v_structure_strides, __pyx_v_singleton_weight, __pyx_v_subsample, __pyx_v_range_extension, __pyx_v_range_ext_param, __pyx_v_replace, __pyx_v_min_size_split, __pyx_v_max_depth, __pyx_v_gamma, __pyx_v_reg_lambda, __pyx_v_feat_sample_by_tree, __pyx_v_feat_sample_by_node, __pyx_v_learning_rate, __pyx_v_random_seed, __pyx_v_na_unseen_action);
+  __pyx_r = __pyx_pf_14structureboost_14prob_regressor_11PrestoBoost___init__(__pyx_self, __pyx_v_self, __pyx_v_num_forests, __pyx_v_num_trees, __pyx_v_feature_configs, __pyx_v_binpt_method, __pyx_v_binpt_sample_size, __pyx_v_binpt_vec, __pyx_v_bin_interp, __pyx_v_structure_strides, __pyx_v_singleton_weight, __pyx_v_subsample, __pyx_v_range_extension, __pyx_v_range_ext_param, __pyx_v_replace, __pyx_v_min_size_split, __pyx_v_max_depth, __pyx_v_gamma, __pyx_v_reg_lambda, __pyx_v_feat_sample_by_tree, __pyx_v_feat_sample_by_node, __pyx_v_learning_rate, __pyx_v_random_seed, __pyx_v_na_unseen_action, __pyx_v_prec_digits, __pyx_v_default_configs);
 
   /* "structureboost/prob_regressor.pyx":109
  *     https://arxiv.org/abs/2210.16247
  * """
  *     def __init__(self, num_forests, num_trees,             # <<<<<<<<<<<<<<
- *                  feature_configs, binpt_method='auto',
+ *                  feature_configs=None, binpt_method='auto',
  *                  binpt_sample_size=20,
  */
 
@@ -2720,7 +2781,7 @@ static PyObject *__pyx_pw_14structureboost_14prob_regressor_11PrestoBoost_1__ini
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_14structureboost_14prob_regressor_11PrestoBoost___init__(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self, PyObject *__pyx_v_num_forests, PyObject *__pyx_v_num_trees, PyObject *__pyx_v_feature_configs, PyObject *__pyx_v_binpt_method, PyObject *__pyx_v_binpt_sample_size, PyObject *__pyx_v_binpt_vec, PyObject *__pyx_v_bin_interp, PyObject *__pyx_v_structure_strides, PyObject *__pyx_v_singleton_weight, PyObject *__pyx_v_subsample, PyObject *__pyx_v_range_extension, PyObject *__pyx_v_range_ext_param, PyObject *__pyx_v_replace, PyObject *__pyx_v_min_size_split, PyObject *__pyx_v_max_depth, PyObject *__pyx_v_gamma, PyObject *__pyx_v_reg_lambda, PyObject *__pyx_v_feat_sample_by_tree, PyObject *__pyx_v_feat_sample_by_node, PyObject *__pyx_v_learning_rate, PyObject *__pyx_v_random_seed, PyObject *__pyx_v_na_unseen_action) {
+static PyObject *__pyx_pf_14structureboost_14prob_regressor_11PrestoBoost___init__(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self, PyObject *__pyx_v_num_forests, PyObject *__pyx_v_num_trees, PyObject *__pyx_v_feature_configs, PyObject *__pyx_v_binpt_method, PyObject *__pyx_v_binpt_sample_size, PyObject *__pyx_v_binpt_vec, PyObject *__pyx_v_bin_interp, PyObject *__pyx_v_structure_strides, PyObject *__pyx_v_singleton_weight, PyObject *__pyx_v_subsample, PyObject *__pyx_v_range_extension, PyObject *__pyx_v_range_ext_param, PyObject *__pyx_v_replace, PyObject *__pyx_v_min_size_split, PyObject *__pyx_v_max_depth, PyObject *__pyx_v_gamma, PyObject *__pyx_v_reg_lambda, PyObject *__pyx_v_feat_sample_by_tree, PyObject *__pyx_v_feat_sample_by_node, PyObject *__pyx_v_learning_rate, PyObject *__pyx_v_random_seed, PyObject *__pyx_v_na_unseen_action, PyObject *__pyx_v_prec_digits, PyObject *__pyx_v_default_configs) {
   PyObject *__pyx_r = NULL;
   __Pyx_TraceDeclarations
   __Pyx_RefNannyDeclarations
@@ -2739,221 +2800,221 @@ static PyObject *__pyx_pf_14structureboost_14prob_regressor_11PrestoBoost___init
   __Pyx_RefNannySetupContext("__init__", 0);
   __Pyx_TraceCall("__init__", __pyx_f[0], 109, 0, __PYX_ERR(0, 109, __pyx_L1_error));
 
-  /* "structureboost/prob_regressor.pyx":123
- *                  feat_sample_by_node=1, learning_rate=.05,
- *                  random_seed=0, na_unseen_action='weighted_random'):
+  /* "structureboost/prob_regressor.pyx":124
+ *                  random_seed=0, na_unseen_action='weighted_random',
+ *                  prec_digits=6, default_configs=None):
  *         self.num_forests = num_forests             # <<<<<<<<<<<<<<
  *         self.num_trees = num_trees
  *         self.binpt_sample_size = binpt_sample_size
  */
-  if (__Pyx_PyObject_SetAttrStr(__pyx_v_self, __pyx_n_s_num_forests, __pyx_v_num_forests) < 0) __PYX_ERR(0, 123, __pyx_L1_error)
+  if (__Pyx_PyObject_SetAttrStr(__pyx_v_self, __pyx_n_s_num_forests, __pyx_v_num_forests) < 0) __PYX_ERR(0, 124, __pyx_L1_error)
 
-  /* "structureboost/prob_regressor.pyx":124
- *                  random_seed=0, na_unseen_action='weighted_random'):
+  /* "structureboost/prob_regressor.pyx":125
+ *                  prec_digits=6, default_configs=None):
  *         self.num_forests = num_forests
  *         self.num_trees = num_trees             # <<<<<<<<<<<<<<
  *         self.binpt_sample_size = binpt_sample_size
  *         self.feature_configs = feature_configs
  */
-  if (__Pyx_PyObject_SetAttrStr(__pyx_v_self, __pyx_n_s_num_trees, __pyx_v_num_trees) < 0) __PYX_ERR(0, 124, __pyx_L1_error)
+  if (__Pyx_PyObject_SetAttrStr(__pyx_v_self, __pyx_n_s_num_trees, __pyx_v_num_trees) < 0) __PYX_ERR(0, 125, __pyx_L1_error)
 
-  /* "structureboost/prob_regressor.pyx":125
+  /* "structureboost/prob_regressor.pyx":126
  *         self.num_forests = num_forests
  *         self.num_trees = num_trees
  *         self.binpt_sample_size = binpt_sample_size             # <<<<<<<<<<<<<<
  *         self.feature_configs = feature_configs
  *         self.binpt_method = binpt_method
  */
-  if (__Pyx_PyObject_SetAttrStr(__pyx_v_self, __pyx_n_s_binpt_sample_size, __pyx_v_binpt_sample_size) < 0) __PYX_ERR(0, 125, __pyx_L1_error)
+  if (__Pyx_PyObject_SetAttrStr(__pyx_v_self, __pyx_n_s_binpt_sample_size, __pyx_v_binpt_sample_size) < 0) __PYX_ERR(0, 126, __pyx_L1_error)
 
-  /* "structureboost/prob_regressor.pyx":126
+  /* "structureboost/prob_regressor.pyx":127
  *         self.num_trees = num_trees
  *         self.binpt_sample_size = binpt_sample_size
  *         self.feature_configs = feature_configs             # <<<<<<<<<<<<<<
  *         self.binpt_method = binpt_method
  *         self.bin_interp = bin_interp
  */
-  if (__Pyx_PyObject_SetAttrStr(__pyx_v_self, __pyx_n_s_feature_configs, __pyx_v_feature_configs) < 0) __PYX_ERR(0, 126, __pyx_L1_error)
+  if (__Pyx_PyObject_SetAttrStr(__pyx_v_self, __pyx_n_s_feature_configs, __pyx_v_feature_configs) < 0) __PYX_ERR(0, 127, __pyx_L1_error)
 
-  /* "structureboost/prob_regressor.pyx":127
+  /* "structureboost/prob_regressor.pyx":128
  *         self.binpt_sample_size = binpt_sample_size
  *         self.feature_configs = feature_configs
  *         self.binpt_method = binpt_method             # <<<<<<<<<<<<<<
  *         self.bin_interp = bin_interp
  *         self.binpt_vec = binpt_vec
  */
-  if (__Pyx_PyObject_SetAttrStr(__pyx_v_self, __pyx_n_s_binpt_method, __pyx_v_binpt_method) < 0) __PYX_ERR(0, 127, __pyx_L1_error)
+  if (__Pyx_PyObject_SetAttrStr(__pyx_v_self, __pyx_n_s_binpt_method, __pyx_v_binpt_method) < 0) __PYX_ERR(0, 128, __pyx_L1_error)
 
-  /* "structureboost/prob_regressor.pyx":128
+  /* "structureboost/prob_regressor.pyx":129
  *         self.feature_configs = feature_configs
  *         self.binpt_method = binpt_method
  *         self.bin_interp = bin_interp             # <<<<<<<<<<<<<<
  *         self.binpt_vec = binpt_vec
  *         self.structure_strides=structure_strides
  */
-  if (__Pyx_PyObject_SetAttrStr(__pyx_v_self, __pyx_n_s_bin_interp, __pyx_v_bin_interp) < 0) __PYX_ERR(0, 128, __pyx_L1_error)
+  if (__Pyx_PyObject_SetAttrStr(__pyx_v_self, __pyx_n_s_bin_interp, __pyx_v_bin_interp) < 0) __PYX_ERR(0, 129, __pyx_L1_error)
 
-  /* "structureboost/prob_regressor.pyx":129
+  /* "structureboost/prob_regressor.pyx":130
  *         self.binpt_method = binpt_method
  *         self.bin_interp = bin_interp
  *         self.binpt_vec = binpt_vec             # <<<<<<<<<<<<<<
  *         self.structure_strides=structure_strides
  *         self.singleton_weight=singleton_weight
  */
-  if (__Pyx_PyObject_SetAttrStr(__pyx_v_self, __pyx_n_s_binpt_vec, __pyx_v_binpt_vec) < 0) __PYX_ERR(0, 129, __pyx_L1_error)
+  if (__Pyx_PyObject_SetAttrStr(__pyx_v_self, __pyx_n_s_binpt_vec, __pyx_v_binpt_vec) < 0) __PYX_ERR(0, 130, __pyx_L1_error)
 
-  /* "structureboost/prob_regressor.pyx":130
+  /* "structureboost/prob_regressor.pyx":131
  *         self.bin_interp = bin_interp
  *         self.binpt_vec = binpt_vec
  *         self.structure_strides=structure_strides             # <<<<<<<<<<<<<<
  *         self.singleton_weight=singleton_weight
  *         self.subsample=subsample
  */
-  if (__Pyx_PyObject_SetAttrStr(__pyx_v_self, __pyx_n_s_structure_strides, __pyx_v_structure_strides) < 0) __PYX_ERR(0, 130, __pyx_L1_error)
+  if (__Pyx_PyObject_SetAttrStr(__pyx_v_self, __pyx_n_s_structure_strides, __pyx_v_structure_strides) < 0) __PYX_ERR(0, 131, __pyx_L1_error)
 
-  /* "structureboost/prob_regressor.pyx":131
+  /* "structureboost/prob_regressor.pyx":132
  *         self.binpt_vec = binpt_vec
  *         self.structure_strides=structure_strides
  *         self.singleton_weight=singleton_weight             # <<<<<<<<<<<<<<
  *         self.subsample=subsample
  *         self.replace=replace
  */
-  if (__Pyx_PyObject_SetAttrStr(__pyx_v_self, __pyx_n_s_singleton_weight, __pyx_v_singleton_weight) < 0) __PYX_ERR(0, 131, __pyx_L1_error)
+  if (__Pyx_PyObject_SetAttrStr(__pyx_v_self, __pyx_n_s_singleton_weight, __pyx_v_singleton_weight) < 0) __PYX_ERR(0, 132, __pyx_L1_error)
 
-  /* "structureboost/prob_regressor.pyx":132
+  /* "structureboost/prob_regressor.pyx":133
  *         self.structure_strides=structure_strides
  *         self.singleton_weight=singleton_weight
  *         self.subsample=subsample             # <<<<<<<<<<<<<<
  *         self.replace=replace
  *         self.min_size_split=min_size_split
  */
-  if (__Pyx_PyObject_SetAttrStr(__pyx_v_self, __pyx_n_s_subsample, __pyx_v_subsample) < 0) __PYX_ERR(0, 132, __pyx_L1_error)
+  if (__Pyx_PyObject_SetAttrStr(__pyx_v_self, __pyx_n_s_subsample, __pyx_v_subsample) < 0) __PYX_ERR(0, 133, __pyx_L1_error)
 
-  /* "structureboost/prob_regressor.pyx":133
+  /* "structureboost/prob_regressor.pyx":134
  *         self.singleton_weight=singleton_weight
  *         self.subsample=subsample
  *         self.replace=replace             # <<<<<<<<<<<<<<
  *         self.min_size_split=min_size_split
  *         self.max_depth=max_depth
  */
-  if (__Pyx_PyObject_SetAttrStr(__pyx_v_self, __pyx_n_s_replace, __pyx_v_replace) < 0) __PYX_ERR(0, 133, __pyx_L1_error)
+  if (__Pyx_PyObject_SetAttrStr(__pyx_v_self, __pyx_n_s_replace, __pyx_v_replace) < 0) __PYX_ERR(0, 134, __pyx_L1_error)
 
-  /* "structureboost/prob_regressor.pyx":134
+  /* "structureboost/prob_regressor.pyx":135
  *         self.subsample=subsample
  *         self.replace=replace
  *         self.min_size_split=min_size_split             # <<<<<<<<<<<<<<
  *         self.max_depth=max_depth
  *         self.gamma=gamma
  */
-  if (__Pyx_PyObject_SetAttrStr(__pyx_v_self, __pyx_n_s_min_size_split, __pyx_v_min_size_split) < 0) __PYX_ERR(0, 134, __pyx_L1_error)
+  if (__Pyx_PyObject_SetAttrStr(__pyx_v_self, __pyx_n_s_min_size_split, __pyx_v_min_size_split) < 0) __PYX_ERR(0, 135, __pyx_L1_error)
 
-  /* "structureboost/prob_regressor.pyx":135
+  /* "structureboost/prob_regressor.pyx":136
  *         self.replace=replace
  *         self.min_size_split=min_size_split
  *         self.max_depth=max_depth             # <<<<<<<<<<<<<<
  *         self.gamma=gamma
  *         self.reg_lambda=reg_lambda
  */
-  if (__Pyx_PyObject_SetAttrStr(__pyx_v_self, __pyx_n_s_max_depth, __pyx_v_max_depth) < 0) __PYX_ERR(0, 135, __pyx_L1_error)
+  if (__Pyx_PyObject_SetAttrStr(__pyx_v_self, __pyx_n_s_max_depth, __pyx_v_max_depth) < 0) __PYX_ERR(0, 136, __pyx_L1_error)
 
-  /* "structureboost/prob_regressor.pyx":136
+  /* "structureboost/prob_regressor.pyx":137
  *         self.min_size_split=min_size_split
  *         self.max_depth=max_depth
  *         self.gamma=gamma             # <<<<<<<<<<<<<<
  *         self.reg_lambda=reg_lambda
  *         self.feat_sample_by_tree=feat_sample_by_tree
  */
-  if (__Pyx_PyObject_SetAttrStr(__pyx_v_self, __pyx_n_s_gamma, __pyx_v_gamma) < 0) __PYX_ERR(0, 136, __pyx_L1_error)
+  if (__Pyx_PyObject_SetAttrStr(__pyx_v_self, __pyx_n_s_gamma, __pyx_v_gamma) < 0) __PYX_ERR(0, 137, __pyx_L1_error)
 
-  /* "structureboost/prob_regressor.pyx":137
+  /* "structureboost/prob_regressor.pyx":138
  *         self.max_depth=max_depth
  *         self.gamma=gamma
  *         self.reg_lambda=reg_lambda             # <<<<<<<<<<<<<<
  *         self.feat_sample_by_tree=feat_sample_by_tree
  *         self.feat_sample_by_node=feat_sample_by_node
  */
-  if (__Pyx_PyObject_SetAttrStr(__pyx_v_self, __pyx_n_s_reg_lambda, __pyx_v_reg_lambda) < 0) __PYX_ERR(0, 137, __pyx_L1_error)
+  if (__Pyx_PyObject_SetAttrStr(__pyx_v_self, __pyx_n_s_reg_lambda, __pyx_v_reg_lambda) < 0) __PYX_ERR(0, 138, __pyx_L1_error)
 
-  /* "structureboost/prob_regressor.pyx":138
+  /* "structureboost/prob_regressor.pyx":139
  *         self.gamma=gamma
  *         self.reg_lambda=reg_lambda
  *         self.feat_sample_by_tree=feat_sample_by_tree             # <<<<<<<<<<<<<<
  *         self.feat_sample_by_node=feat_sample_by_node
  *         self.learning_rate=learning_rate
  */
-  if (__Pyx_PyObject_SetAttrStr(__pyx_v_self, __pyx_n_s_feat_sample_by_tree, __pyx_v_feat_sample_by_tree) < 0) __PYX_ERR(0, 138, __pyx_L1_error)
+  if (__Pyx_PyObject_SetAttrStr(__pyx_v_self, __pyx_n_s_feat_sample_by_tree, __pyx_v_feat_sample_by_tree) < 0) __PYX_ERR(0, 139, __pyx_L1_error)
 
-  /* "structureboost/prob_regressor.pyx":139
+  /* "structureboost/prob_regressor.pyx":140
  *         self.reg_lambda=reg_lambda
  *         self.feat_sample_by_tree=feat_sample_by_tree
  *         self.feat_sample_by_node=feat_sample_by_node             # <<<<<<<<<<<<<<
  *         self.learning_rate=learning_rate
  *         self.random_seed=random_seed
  */
-  if (__Pyx_PyObject_SetAttrStr(__pyx_v_self, __pyx_n_s_feat_sample_by_node, __pyx_v_feat_sample_by_node) < 0) __PYX_ERR(0, 139, __pyx_L1_error)
+  if (__Pyx_PyObject_SetAttrStr(__pyx_v_self, __pyx_n_s_feat_sample_by_node, __pyx_v_feat_sample_by_node) < 0) __PYX_ERR(0, 140, __pyx_L1_error)
 
-  /* "structureboost/prob_regressor.pyx":140
+  /* "structureboost/prob_regressor.pyx":141
  *         self.feat_sample_by_tree=feat_sample_by_tree
  *         self.feat_sample_by_node=feat_sample_by_node
  *         self.learning_rate=learning_rate             # <<<<<<<<<<<<<<
  *         self.random_seed=random_seed
  *         self.na_unseen_action=na_unseen_action
  */
-  if (__Pyx_PyObject_SetAttrStr(__pyx_v_self, __pyx_n_s_learning_rate, __pyx_v_learning_rate) < 0) __PYX_ERR(0, 140, __pyx_L1_error)
+  if (__Pyx_PyObject_SetAttrStr(__pyx_v_self, __pyx_n_s_learning_rate, __pyx_v_learning_rate) < 0) __PYX_ERR(0, 141, __pyx_L1_error)
 
-  /* "structureboost/prob_regressor.pyx":141
+  /* "structureboost/prob_regressor.pyx":142
  *         self.feat_sample_by_node=feat_sample_by_node
  *         self.learning_rate=learning_rate
  *         self.random_seed=random_seed             # <<<<<<<<<<<<<<
  *         self.na_unseen_action=na_unseen_action
  *         if self.binpt_method=='fixed':
  */
-  if (__Pyx_PyObject_SetAttrStr(__pyx_v_self, __pyx_n_s_random_seed, __pyx_v_random_seed) < 0) __PYX_ERR(0, 141, __pyx_L1_error)
+  if (__Pyx_PyObject_SetAttrStr(__pyx_v_self, __pyx_n_s_random_seed, __pyx_v_random_seed) < 0) __PYX_ERR(0, 142, __pyx_L1_error)
 
-  /* "structureboost/prob_regressor.pyx":142
+  /* "structureboost/prob_regressor.pyx":143
  *         self.learning_rate=learning_rate
  *         self.random_seed=random_seed
  *         self.na_unseen_action=na_unseen_action             # <<<<<<<<<<<<<<
  *         if self.binpt_method=='fixed':
  *             self.strides_lp = int(np.round(np.sqrt(len(self.binpt_vec))))
  */
-  if (__Pyx_PyObject_SetAttrStr(__pyx_v_self, __pyx_n_s_na_unseen_action, __pyx_v_na_unseen_action) < 0) __PYX_ERR(0, 142, __pyx_L1_error)
+  if (__Pyx_PyObject_SetAttrStr(__pyx_v_self, __pyx_n_s_na_unseen_action, __pyx_v_na_unseen_action) < 0) __PYX_ERR(0, 143, __pyx_L1_error)
 
-  /* "structureboost/prob_regressor.pyx":143
+  /* "structureboost/prob_regressor.pyx":144
  *         self.random_seed=random_seed
  *         self.na_unseen_action=na_unseen_action
  *         if self.binpt_method=='fixed':             # <<<<<<<<<<<<<<
  *             self.strides_lp = int(np.round(np.sqrt(len(self.binpt_vec))))
  *             self.strides_hp = int(np.round(np.sqrt(len(self.binpt_vec))))
  */
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_binpt_method); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 143, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_binpt_method); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 144, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = (__Pyx_PyUnicode_Equals(__pyx_t_1, __pyx_n_u_fixed, Py_EQ)); if (unlikely(__pyx_t_2 < 0)) __PYX_ERR(0, 143, __pyx_L1_error)
+  __pyx_t_2 = (__Pyx_PyUnicode_Equals(__pyx_t_1, __pyx_n_u_fixed, Py_EQ)); if (unlikely(__pyx_t_2 < 0)) __PYX_ERR(0, 144, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   if (__pyx_t_2) {
 
-    /* "structureboost/prob_regressor.pyx":144
+    /* "structureboost/prob_regressor.pyx":145
  *         self.na_unseen_action=na_unseen_action
  *         if self.binpt_method=='fixed':
  *             self.strides_lp = int(np.round(np.sqrt(len(self.binpt_vec))))             # <<<<<<<<<<<<<<
  *             self.strides_hp = int(np.round(np.sqrt(len(self.binpt_vec))))
  *         else:
  */
-    __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_n_s_np); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 144, __pyx_L1_error)
+    __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_n_s_np); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 145, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
-    __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_round); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 144, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_round); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 145, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-    __Pyx_GetModuleGlobalName(__pyx_t_5, __pyx_n_s_np); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 144, __pyx_L1_error)
+    __Pyx_GetModuleGlobalName(__pyx_t_5, __pyx_n_s_np); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 145, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_5);
-    __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_t_5, __pyx_n_s_sqrt); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 144, __pyx_L1_error)
+    __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_t_5, __pyx_n_s_sqrt); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 145, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_6);
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-    __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_binpt_vec); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 144, __pyx_L1_error)
+    __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_binpt_vec); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 145, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_5);
-    __pyx_t_7 = PyObject_Length(__pyx_t_5); if (unlikely(__pyx_t_7 == ((Py_ssize_t)-1))) __PYX_ERR(0, 144, __pyx_L1_error)
+    __pyx_t_7 = PyObject_Length(__pyx_t_5); if (unlikely(__pyx_t_7 == ((Py_ssize_t)-1))) __PYX_ERR(0, 145, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-    __pyx_t_5 = PyInt_FromSsize_t(__pyx_t_7); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 144, __pyx_L1_error)
+    __pyx_t_5 = PyInt_FromSsize_t(__pyx_t_7); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 145, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_5);
     __pyx_t_8 = NULL;
     if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_6))) {
@@ -2968,7 +3029,7 @@ static PyObject *__pyx_pf_14structureboost_14prob_regressor_11PrestoBoost___init
     __pyx_t_3 = (__pyx_t_8) ? __Pyx_PyObject_Call2Args(__pyx_t_6, __pyx_t_8, __pyx_t_5) : __Pyx_PyObject_CallOneArg(__pyx_t_6, __pyx_t_5);
     __Pyx_XDECREF(__pyx_t_8); __pyx_t_8 = 0;
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-    if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 144, __pyx_L1_error)
+    if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 145, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
     __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
     __pyx_t_6 = NULL;
@@ -2984,37 +3045,37 @@ static PyObject *__pyx_pf_14structureboost_14prob_regressor_11PrestoBoost___init
     __pyx_t_1 = (__pyx_t_6) ? __Pyx_PyObject_Call2Args(__pyx_t_4, __pyx_t_6, __pyx_t_3) : __Pyx_PyObject_CallOneArg(__pyx_t_4, __pyx_t_3);
     __Pyx_XDECREF(__pyx_t_6); __pyx_t_6 = 0;
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-    if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 144, __pyx_L1_error)
+    if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 145, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-    __pyx_t_4 = __Pyx_PyNumber_Int(__pyx_t_1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 144, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_PyNumber_Int(__pyx_t_1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 145, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-    if (__Pyx_PyObject_SetAttrStr(__pyx_v_self, __pyx_n_s_strides_lp, __pyx_t_4) < 0) __PYX_ERR(0, 144, __pyx_L1_error)
+    if (__Pyx_PyObject_SetAttrStr(__pyx_v_self, __pyx_n_s_strides_lp, __pyx_t_4) < 0) __PYX_ERR(0, 145, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
 
-    /* "structureboost/prob_regressor.pyx":145
+    /* "structureboost/prob_regressor.pyx":146
  *         if self.binpt_method=='fixed':
  *             self.strides_lp = int(np.round(np.sqrt(len(self.binpt_vec))))
  *             self.strides_hp = int(np.round(np.sqrt(len(self.binpt_vec))))             # <<<<<<<<<<<<<<
  *         else:
  *             self.strides_lp = int(np.round(np.sqrt(self.binpt_sample_size)))
  */
-    __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_np); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 145, __pyx_L1_error)
+    __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_np); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 146, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
-    __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_round); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 145, __pyx_L1_error)
+    __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_round); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 146, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-    __Pyx_GetModuleGlobalName(__pyx_t_6, __pyx_n_s_np); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 145, __pyx_L1_error)
+    __Pyx_GetModuleGlobalName(__pyx_t_6, __pyx_n_s_np); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 146, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_6);
-    __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_t_6, __pyx_n_s_sqrt); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 145, __pyx_L1_error)
+    __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_t_6, __pyx_n_s_sqrt); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 146, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_5);
     __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
-    __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_binpt_vec); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 145, __pyx_L1_error)
+    __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_binpt_vec); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 146, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_6);
-    __pyx_t_7 = PyObject_Length(__pyx_t_6); if (unlikely(__pyx_t_7 == ((Py_ssize_t)-1))) __PYX_ERR(0, 145, __pyx_L1_error)
+    __pyx_t_7 = PyObject_Length(__pyx_t_6); if (unlikely(__pyx_t_7 == ((Py_ssize_t)-1))) __PYX_ERR(0, 146, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
-    __pyx_t_6 = PyInt_FromSsize_t(__pyx_t_7); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 145, __pyx_L1_error)
+    __pyx_t_6 = PyInt_FromSsize_t(__pyx_t_7); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 146, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_6);
     __pyx_t_8 = NULL;
     if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_5))) {
@@ -3029,7 +3090,7 @@ static PyObject *__pyx_pf_14structureboost_14prob_regressor_11PrestoBoost___init
     __pyx_t_1 = (__pyx_t_8) ? __Pyx_PyObject_Call2Args(__pyx_t_5, __pyx_t_8, __pyx_t_6) : __Pyx_PyObject_CallOneArg(__pyx_t_5, __pyx_t_6);
     __Pyx_XDECREF(__pyx_t_8); __pyx_t_8 = 0;
     __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
-    if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 145, __pyx_L1_error)
+    if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 146, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
     __pyx_t_5 = NULL;
@@ -3045,16 +3106,16 @@ static PyObject *__pyx_pf_14structureboost_14prob_regressor_11PrestoBoost___init
     __pyx_t_4 = (__pyx_t_5) ? __Pyx_PyObject_Call2Args(__pyx_t_3, __pyx_t_5, __pyx_t_1) : __Pyx_PyObject_CallOneArg(__pyx_t_3, __pyx_t_1);
     __Pyx_XDECREF(__pyx_t_5); __pyx_t_5 = 0;
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-    if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 145, __pyx_L1_error)
+    if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 146, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-    __pyx_t_3 = __Pyx_PyNumber_Int(__pyx_t_4); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 145, __pyx_L1_error)
+    __pyx_t_3 = __Pyx_PyNumber_Int(__pyx_t_4); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 146, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-    if (__Pyx_PyObject_SetAttrStr(__pyx_v_self, __pyx_n_s_strides_hp, __pyx_t_3) < 0) __PYX_ERR(0, 145, __pyx_L1_error)
+    if (__Pyx_PyObject_SetAttrStr(__pyx_v_self, __pyx_n_s_strides_hp, __pyx_t_3) < 0) __PYX_ERR(0, 146, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-    /* "structureboost/prob_regressor.pyx":143
+    /* "structureboost/prob_regressor.pyx":144
  *         self.random_seed=random_seed
  *         self.na_unseen_action=na_unseen_action
  *         if self.binpt_method=='fixed':             # <<<<<<<<<<<<<<
@@ -3064,7 +3125,7 @@ static PyObject *__pyx_pf_14structureboost_14prob_regressor_11PrestoBoost___init
     goto __pyx_L3;
   }
 
-  /* "structureboost/prob_regressor.pyx":147
+  /* "structureboost/prob_regressor.pyx":148
  *             self.strides_hp = int(np.round(np.sqrt(len(self.binpt_vec))))
  *         else:
  *             self.strides_lp = int(np.round(np.sqrt(self.binpt_sample_size)))             # <<<<<<<<<<<<<<
@@ -3072,17 +3133,17 @@ static PyObject *__pyx_pf_14structureboost_14prob_regressor_11PrestoBoost___init
  *         self.range_extension = range_extension
  */
   /*else*/ {
-    __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_n_s_np); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 147, __pyx_L1_error)
+    __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_n_s_np); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 148, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
-    __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_round); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 147, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_round); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 148, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-    __Pyx_GetModuleGlobalName(__pyx_t_5, __pyx_n_s_np); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 147, __pyx_L1_error)
+    __Pyx_GetModuleGlobalName(__pyx_t_5, __pyx_n_s_np); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 148, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_5);
-    __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_t_5, __pyx_n_s_sqrt); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 147, __pyx_L1_error)
+    __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_t_5, __pyx_n_s_sqrt); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 148, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_6);
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-    __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_binpt_sample_size); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 147, __pyx_L1_error)
+    __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_binpt_sample_size); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 148, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_5);
     __pyx_t_8 = NULL;
     if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_6))) {
@@ -3097,7 +3158,7 @@ static PyObject *__pyx_pf_14structureboost_14prob_regressor_11PrestoBoost___init
     __pyx_t_4 = (__pyx_t_8) ? __Pyx_PyObject_Call2Args(__pyx_t_6, __pyx_t_8, __pyx_t_5) : __Pyx_PyObject_CallOneArg(__pyx_t_6, __pyx_t_5);
     __Pyx_XDECREF(__pyx_t_8); __pyx_t_8 = 0;
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-    if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 147, __pyx_L1_error)
+    if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 148, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
     __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
     __pyx_t_6 = NULL;
@@ -3113,33 +3174,33 @@ static PyObject *__pyx_pf_14structureboost_14prob_regressor_11PrestoBoost___init
     __pyx_t_3 = (__pyx_t_6) ? __Pyx_PyObject_Call2Args(__pyx_t_1, __pyx_t_6, __pyx_t_4) : __Pyx_PyObject_CallOneArg(__pyx_t_1, __pyx_t_4);
     __Pyx_XDECREF(__pyx_t_6); __pyx_t_6 = 0;
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-    if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 147, __pyx_L1_error)
+    if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 148, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-    __pyx_t_1 = __Pyx_PyNumber_Int(__pyx_t_3); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 147, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyNumber_Int(__pyx_t_3); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 148, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-    if (__Pyx_PyObject_SetAttrStr(__pyx_v_self, __pyx_n_s_strides_lp, __pyx_t_1) < 0) __PYX_ERR(0, 147, __pyx_L1_error)
+    if (__Pyx_PyObject_SetAttrStr(__pyx_v_self, __pyx_n_s_strides_lp, __pyx_t_1) < 0) __PYX_ERR(0, 148, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-    /* "structureboost/prob_regressor.pyx":148
+    /* "structureboost/prob_regressor.pyx":149
  *         else:
  *             self.strides_lp = int(np.round(np.sqrt(self.binpt_sample_size)))
  *             self.strides_hp = int(np.round(np.sqrt(self.binpt_sample_size)))             # <<<<<<<<<<<<<<
  *         self.range_extension = range_extension
  *         self.range_ext_param = range_ext_param
  */
-    __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_n_s_np); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 148, __pyx_L1_error)
+    __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_n_s_np); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 149, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
-    __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_round); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 148, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_round); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 149, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-    __Pyx_GetModuleGlobalName(__pyx_t_6, __pyx_n_s_np); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 148, __pyx_L1_error)
+    __Pyx_GetModuleGlobalName(__pyx_t_6, __pyx_n_s_np); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 149, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_6);
-    __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_t_6, __pyx_n_s_sqrt); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 148, __pyx_L1_error)
+    __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_t_6, __pyx_n_s_sqrt); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 149, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_5);
     __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
-    __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_binpt_sample_size); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 148, __pyx_L1_error)
+    __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_binpt_sample_size); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 149, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_6);
     __pyx_t_8 = NULL;
     if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_5))) {
@@ -3154,7 +3215,7 @@ static PyObject *__pyx_pf_14structureboost_14prob_regressor_11PrestoBoost___init
     __pyx_t_3 = (__pyx_t_8) ? __Pyx_PyObject_Call2Args(__pyx_t_5, __pyx_t_8, __pyx_t_6) : __Pyx_PyObject_CallOneArg(__pyx_t_5, __pyx_t_6);
     __Pyx_XDECREF(__pyx_t_8); __pyx_t_8 = 0;
     __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
-    if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 148, __pyx_L1_error)
+    if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 149, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
     __pyx_t_5 = NULL;
@@ -3170,69 +3231,87 @@ static PyObject *__pyx_pf_14structureboost_14prob_regressor_11PrestoBoost___init
     __pyx_t_1 = (__pyx_t_5) ? __Pyx_PyObject_Call2Args(__pyx_t_4, __pyx_t_5, __pyx_t_3) : __Pyx_PyObject_CallOneArg(__pyx_t_4, __pyx_t_3);
     __Pyx_XDECREF(__pyx_t_5); __pyx_t_5 = 0;
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-    if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 148, __pyx_L1_error)
+    if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 149, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-    __pyx_t_4 = __Pyx_PyNumber_Int(__pyx_t_1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 148, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_PyNumber_Int(__pyx_t_1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 149, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-    if (__Pyx_PyObject_SetAttrStr(__pyx_v_self, __pyx_n_s_strides_hp, __pyx_t_4) < 0) __PYX_ERR(0, 148, __pyx_L1_error)
+    if (__Pyx_PyObject_SetAttrStr(__pyx_v_self, __pyx_n_s_strides_hp, __pyx_t_4) < 0) __PYX_ERR(0, 149, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
   }
   __pyx_L3:;
 
-  /* "structureboost/prob_regressor.pyx":149
+  /* "structureboost/prob_regressor.pyx":150
  *             self.strides_lp = int(np.round(np.sqrt(self.binpt_sample_size)))
  *             self.strides_hp = int(np.round(np.sqrt(self.binpt_sample_size)))
  *         self.range_extension = range_extension             # <<<<<<<<<<<<<<
  *         self.range_ext_param = range_ext_param
  *         self.calibrator_list = None
  */
-  if (__Pyx_PyObject_SetAttrStr(__pyx_v_self, __pyx_n_s_range_extension, __pyx_v_range_extension) < 0) __PYX_ERR(0, 149, __pyx_L1_error)
+  if (__Pyx_PyObject_SetAttrStr(__pyx_v_self, __pyx_n_s_range_extension, __pyx_v_range_extension) < 0) __PYX_ERR(0, 150, __pyx_L1_error)
 
-  /* "structureboost/prob_regressor.pyx":150
+  /* "structureboost/prob_regressor.pyx":151
  *             self.strides_hp = int(np.round(np.sqrt(self.binpt_sample_size)))
  *         self.range_extension = range_extension
  *         self.range_ext_param = range_ext_param             # <<<<<<<<<<<<<<
  *         self.calibrator_list = None
- * 
+ *         self.prec_digits = prec_digits
  */
-  if (__Pyx_PyObject_SetAttrStr(__pyx_v_self, __pyx_n_s_range_ext_param, __pyx_v_range_ext_param) < 0) __PYX_ERR(0, 150, __pyx_L1_error)
+  if (__Pyx_PyObject_SetAttrStr(__pyx_v_self, __pyx_n_s_range_ext_param, __pyx_v_range_ext_param) < 0) __PYX_ERR(0, 151, __pyx_L1_error)
 
-  /* "structureboost/prob_regressor.pyx":151
+  /* "structureboost/prob_regressor.pyx":152
  *         self.range_extension = range_extension
  *         self.range_ext_param = range_ext_param
  *         self.calibrator_list = None             # <<<<<<<<<<<<<<
- * 
- *         if self.binpt_method=='fixed':
+ *         self.prec_digits = prec_digits
+ *         self.default_configs = default_configs
  */
-  if (__Pyx_PyObject_SetAttrStr(__pyx_v_self, __pyx_n_s_calibrator_list, Py_None) < 0) __PYX_ERR(0, 151, __pyx_L1_error)
+  if (__Pyx_PyObject_SetAttrStr(__pyx_v_self, __pyx_n_s_calibrator_list, Py_None) < 0) __PYX_ERR(0, 152, __pyx_L1_error)
 
   /* "structureboost/prob_regressor.pyx":153
+ *         self.range_ext_param = range_ext_param
  *         self.calibrator_list = None
- * 
+ *         self.prec_digits = prec_digits             # <<<<<<<<<<<<<<
+ *         self.default_configs = default_configs
+ *         if self.binpt_method=='fixed':
+ */
+  if (__Pyx_PyObject_SetAttrStr(__pyx_v_self, __pyx_n_s_prec_digits, __pyx_v_prec_digits) < 0) __PYX_ERR(0, 153, __pyx_L1_error)
+
+  /* "structureboost/prob_regressor.pyx":154
+ *         self.calibrator_list = None
+ *         self.prec_digits = prec_digits
+ *         self.default_configs = default_configs             # <<<<<<<<<<<<<<
+ *         if self.binpt_method=='fixed':
+ *             self.range_extension='none'
+ */
+  if (__Pyx_PyObject_SetAttrStr(__pyx_v_self, __pyx_n_s_default_configs, __pyx_v_default_configs) < 0) __PYX_ERR(0, 154, __pyx_L1_error)
+
+  /* "structureboost/prob_regressor.pyx":155
+ *         self.prec_digits = prec_digits
+ *         self.default_configs = default_configs
  *         if self.binpt_method=='fixed':             # <<<<<<<<<<<<<<
  *             self.range_extension='none'
  * 
  */
-  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_binpt_method); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 153, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_binpt_method); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 155, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
-  __pyx_t_2 = (__Pyx_PyUnicode_Equals(__pyx_t_4, __pyx_n_u_fixed, Py_EQ)); if (unlikely(__pyx_t_2 < 0)) __PYX_ERR(0, 153, __pyx_L1_error)
+  __pyx_t_2 = (__Pyx_PyUnicode_Equals(__pyx_t_4, __pyx_n_u_fixed, Py_EQ)); if (unlikely(__pyx_t_2 < 0)) __PYX_ERR(0, 155, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
   if (__pyx_t_2) {
 
-    /* "structureboost/prob_regressor.pyx":154
- * 
+    /* "structureboost/prob_regressor.pyx":156
+ *         self.default_configs = default_configs
  *         if self.binpt_method=='fixed':
  *             self.range_extension='none'             # <<<<<<<<<<<<<<
  * 
  *         # figure out method (here or in fit)
  */
-    if (__Pyx_PyObject_SetAttrStr(__pyx_v_self, __pyx_n_s_range_extension, __pyx_n_u_none) < 0) __PYX_ERR(0, 154, __pyx_L1_error)
+    if (__Pyx_PyObject_SetAttrStr(__pyx_v_self, __pyx_n_s_range_extension, __pyx_n_u_none) < 0) __PYX_ERR(0, 156, __pyx_L1_error)
 
-    /* "structureboost/prob_regressor.pyx":153
- *         self.calibrator_list = None
- * 
+    /* "structureboost/prob_regressor.pyx":155
+ *         self.prec_digits = prec_digits
+ *         self.default_configs = default_configs
  *         if self.binpt_method=='fixed':             # <<<<<<<<<<<<<<
  *             self.range_extension='none'
  * 
@@ -3243,7 +3322,7 @@ static PyObject *__pyx_pf_14structureboost_14prob_regressor_11PrestoBoost___init
  *     https://arxiv.org/abs/2210.16247
  * """
  *     def __init__(self, num_forests, num_trees,             # <<<<<<<<<<<<<<
- *                  feature_configs, binpt_method='auto',
+ *                  feature_configs=None, binpt_method='auto',
  *                  binpt_sample_size=20,
  */
 
@@ -3266,7 +3345,7 @@ static PyObject *__pyx_pf_14structureboost_14prob_regressor_11PrestoBoost___init
   return __pyx_r;
 }
 
-/* "structureboost/prob_regressor.pyx":158
+/* "structureboost/prob_regressor.pyx":160
  *         # figure out method (here or in fit)
  * 
  *     def fit(self, X_train, y_train, eval_set=None, eval_freq=10,             # <<<<<<<<<<<<<<
@@ -3305,7 +3384,7 @@ static PyObject *__pyx_pw_14structureboost_14prob_regressor_11PrestoBoost_3fit(P
     values[4] = ((PyObject *)((PyObject *)__pyx_int_10));
     values[5] = ((PyObject *)((PyObject *)__pyx_int_1));
 
-    /* "structureboost/prob_regressor.pyx":159
+    /* "structureboost/prob_regressor.pyx":161
  * 
  *     def fit(self, X_train, y_train, eval_set=None, eval_freq=10,
  *             early_stop_past_steps=1, choose_best_eval=True, fit_calibrators=False,             # <<<<<<<<<<<<<<
@@ -3315,7 +3394,7 @@ static PyObject *__pyx_pw_14structureboost_14prob_regressor_11PrestoBoost_3fit(P
     values[6] = ((PyObject *)((PyObject *)Py_True));
     values[7] = ((PyObject *)((PyObject *)Py_False));
 
-    /* "structureboost/prob_regressor.pyx":160
+    /* "structureboost/prob_regressor.pyx":162
  *     def fit(self, X_train, y_train, eval_set=None, eval_freq=10,
  *             early_stop_past_steps=1, choose_best_eval=True, fit_calibrators=False,
  *             refit_train_val=False, binpt_vec_list=None, calib_pw=100,             # <<<<<<<<<<<<<<
@@ -3369,13 +3448,13 @@ static PyObject *__pyx_pw_14structureboost_14prob_regressor_11PrestoBoost_3fit(P
         case  1:
         if (likely((values[1] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_X_train)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("fit", 0, 3, 13, 1); __PYX_ERR(0, 158, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("fit", 0, 3, 13, 1); __PYX_ERR(0, 160, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  2:
         if (likely((values[2] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_y_train)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("fit", 0, 3, 13, 2); __PYX_ERR(0, 158, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("fit", 0, 3, 13, 2); __PYX_ERR(0, 160, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  3:
@@ -3439,7 +3518,7 @@ static PyObject *__pyx_pw_14structureboost_14prob_regressor_11PrestoBoost_3fit(P
         }
       }
       if (unlikely(kw_args > 0)) {
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "fit") < 0)) __PYX_ERR(0, 158, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "fit") < 0)) __PYX_ERR(0, 160, __pyx_L3_error)
       }
     } else {
       switch (PyTuple_GET_SIZE(__pyx_args)) {
@@ -3486,7 +3565,7 @@ static PyObject *__pyx_pw_14structureboost_14prob_regressor_11PrestoBoost_3fit(P
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("fit", 0, 3, 13, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 158, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("fit", 0, 3, 13, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 160, __pyx_L3_error)
   __pyx_L3_error:;
   __Pyx_AddTraceback("structureboost.prob_regressor.PrestoBoost.fit", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
@@ -3494,7 +3573,7 @@ static PyObject *__pyx_pw_14structureboost_14prob_regressor_11PrestoBoost_3fit(P
   __pyx_L4_argument_unpacking_done:;
   __pyx_r = __pyx_pf_14structureboost_14prob_regressor_11PrestoBoost_2fit(__pyx_self, __pyx_v_self, __pyx_v_X_train, __pyx_v_y_train, __pyx_v_eval_set, __pyx_v_eval_freq, __pyx_v_early_stop_past_steps, __pyx_v_choose_best_eval, __pyx_v_fit_calibrators, __pyx_v_refit_train_val, __pyx_v_binpt_vec_list, __pyx_v_calib_pw, __pyx_v_n_jobs, __pyx_v_verbose);
 
-  /* "structureboost/prob_regressor.pyx":158
+  /* "structureboost/prob_regressor.pyx":160
  *         # figure out method (here or in fit)
  * 
  *     def fit(self, X_train, y_train, eval_set=None, eval_freq=10,             # <<<<<<<<<<<<<<
@@ -3508,7 +3587,7 @@ static PyObject *__pyx_pw_14structureboost_14prob_regressor_11PrestoBoost_3fit(P
 }
 static PyObject *__pyx_gb_14structureboost_14prob_regressor_11PrestoBoost_3fit_2generator(__pyx_CoroutineObject *__pyx_generator, CYTHON_UNUSED PyThreadState *__pyx_tstate, PyObject *__pyx_sent_value); /* proto */
 
-/* "structureboost/prob_regressor.pyx":308
+/* "structureboost/prob_regressor.pyx":312
  *                 print('Training Forests')
  *                 self.forest_list = Parallel(n_jobs=n_jobs,
  *                                         )(delayed(fit_and_return)(f, X_train, y_train)             # <<<<<<<<<<<<<<
@@ -3528,7 +3607,7 @@ static PyObject *__pyx_pf_14structureboost_14prob_regressor_11PrestoBoost_3fit_g
   if (unlikely(!__pyx_cur_scope)) {
     __pyx_cur_scope = ((struct __pyx_obj_14structureboost_14prob_regressor___pyx_scope_struct_1_genexpr *)Py_None);
     __Pyx_INCREF(Py_None);
-    __PYX_ERR(0, 308, __pyx_L1_error)
+    __PYX_ERR(0, 312, __pyx_L1_error)
   } else {
     __Pyx_GOTREF(__pyx_cur_scope);
   }
@@ -3536,7 +3615,7 @@ static PyObject *__pyx_pf_14structureboost_14prob_regressor_11PrestoBoost_3fit_g
   __Pyx_INCREF(((PyObject *)__pyx_cur_scope->__pyx_outer_scope));
   __Pyx_GIVEREF(__pyx_cur_scope->__pyx_outer_scope);
   {
-    __pyx_CoroutineObject *gen = __Pyx_Generator_New((__pyx_coroutine_body_t) __pyx_gb_14structureboost_14prob_regressor_11PrestoBoost_3fit_2generator, NULL, (PyObject *) __pyx_cur_scope, __pyx_n_s_genexpr, __pyx_n_s_PrestoBoost_fit_locals_genexpr, __pyx_n_s_structureboost_prob_regressor); if (unlikely(!gen)) __PYX_ERR(0, 308, __pyx_L1_error)
+    __pyx_CoroutineObject *gen = __Pyx_Generator_New((__pyx_coroutine_body_t) __pyx_gb_14structureboost_14prob_regressor_11PrestoBoost_3fit_2generator, NULL, (PyObject *) __pyx_cur_scope, __pyx_n_s_genexpr, __pyx_n_s_PrestoBoost_fit_locals_genexpr, __pyx_n_s_structureboost_prob_regressor); if (unlikely(!gen)) __PYX_ERR(0, 312, __pyx_L1_error)
     __Pyx_DECREF(__pyx_cur_scope);
     __Pyx_RefNannyFinishContext();
     return (PyObject *) gen;
@@ -3571,7 +3650,7 @@ static PyObject *__pyx_gb_14structureboost_14prob_regressor_11PrestoBoost_3fit_2
   int __pyx_clineno = 0;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("genexpr", 0);
-  __Pyx_TraceCall("genexpr", __pyx_f[0], 308, 0, __PYX_ERR(0, 308, __pyx_L1_error));
+  __Pyx_TraceCall("genexpr", __pyx_f[0], 312, 0, __PYX_ERR(0, 312, __pyx_L1_error));
   switch (__pyx_generator->resume_label) {
     case 0: goto __pyx_L3_first_run;
     case 1: goto __pyx_L6_resume_from_yield;
@@ -3581,25 +3660,25 @@ static PyObject *__pyx_gb_14structureboost_14prob_regressor_11PrestoBoost_3fit_2
     return NULL;
   }
   __pyx_L3_first_run:;
-  if (unlikely(!__pyx_sent_value)) __PYX_ERR(0, 308, __pyx_L1_error)
+  if (unlikely(!__pyx_sent_value)) __PYX_ERR(0, 312, __pyx_L1_error)
 
-  /* "structureboost/prob_regressor.pyx":309
+  /* "structureboost/prob_regressor.pyx":313
  *                 self.forest_list = Parallel(n_jobs=n_jobs,
  *                                         )(delayed(fit_and_return)(f, X_train, y_train)
  *                                         for f in self.forest_list)             # <<<<<<<<<<<<<<
  *             else:
  *                 print('Training Forests')
  */
-  if (unlikely(!__pyx_cur_scope->__pyx_outer_scope->__pyx_v_self)) { __Pyx_RaiseClosureNameError("self"); __PYX_ERR(0, 309, __pyx_L1_error) }
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_cur_scope->__pyx_outer_scope->__pyx_v_self, __pyx_n_s_forest_list); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 309, __pyx_L1_error)
+  if (unlikely(!__pyx_cur_scope->__pyx_outer_scope->__pyx_v_self)) { __Pyx_RaiseClosureNameError("self"); __PYX_ERR(0, 313, __pyx_L1_error) }
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_cur_scope->__pyx_outer_scope->__pyx_v_self, __pyx_n_s_forest_list); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 313, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   if (likely(PyList_CheckExact(__pyx_t_1)) || PyTuple_CheckExact(__pyx_t_1)) {
     __pyx_t_2 = __pyx_t_1; __Pyx_INCREF(__pyx_t_2); __pyx_t_3 = 0;
     __pyx_t_4 = NULL;
   } else {
-    __pyx_t_3 = -1; __pyx_t_2 = PyObject_GetIter(__pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 309, __pyx_L1_error)
+    __pyx_t_3 = -1; __pyx_t_2 = PyObject_GetIter(__pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 313, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
-    __pyx_t_4 = Py_TYPE(__pyx_t_2)->tp_iternext; if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 309, __pyx_L1_error)
+    __pyx_t_4 = Py_TYPE(__pyx_t_2)->tp_iternext; if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 313, __pyx_L1_error)
   }
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   for (;;) {
@@ -3607,17 +3686,17 @@ static PyObject *__pyx_gb_14structureboost_14prob_regressor_11PrestoBoost_3fit_2
       if (likely(PyList_CheckExact(__pyx_t_2))) {
         if (__pyx_t_3 >= PyList_GET_SIZE(__pyx_t_2)) break;
         #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-        __pyx_t_1 = PyList_GET_ITEM(__pyx_t_2, __pyx_t_3); __Pyx_INCREF(__pyx_t_1); __pyx_t_3++; if (unlikely(0 < 0)) __PYX_ERR(0, 309, __pyx_L1_error)
+        __pyx_t_1 = PyList_GET_ITEM(__pyx_t_2, __pyx_t_3); __Pyx_INCREF(__pyx_t_1); __pyx_t_3++; if (unlikely(0 < 0)) __PYX_ERR(0, 313, __pyx_L1_error)
         #else
-        __pyx_t_1 = PySequence_ITEM(__pyx_t_2, __pyx_t_3); __pyx_t_3++; if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 309, __pyx_L1_error)
+        __pyx_t_1 = PySequence_ITEM(__pyx_t_2, __pyx_t_3); __pyx_t_3++; if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 313, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_1);
         #endif
       } else {
         if (__pyx_t_3 >= PyTuple_GET_SIZE(__pyx_t_2)) break;
         #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-        __pyx_t_1 = PyTuple_GET_ITEM(__pyx_t_2, __pyx_t_3); __Pyx_INCREF(__pyx_t_1); __pyx_t_3++; if (unlikely(0 < 0)) __PYX_ERR(0, 309, __pyx_L1_error)
+        __pyx_t_1 = PyTuple_GET_ITEM(__pyx_t_2, __pyx_t_3); __Pyx_INCREF(__pyx_t_1); __pyx_t_3++; if (unlikely(0 < 0)) __PYX_ERR(0, 313, __pyx_L1_error)
         #else
-        __pyx_t_1 = PySequence_ITEM(__pyx_t_2, __pyx_t_3); __pyx_t_3++; if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 309, __pyx_L1_error)
+        __pyx_t_1 = PySequence_ITEM(__pyx_t_2, __pyx_t_3); __pyx_t_3++; if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 313, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_1);
         #endif
       }
@@ -3627,7 +3706,7 @@ static PyObject *__pyx_gb_14structureboost_14prob_regressor_11PrestoBoost_3fit_2
         PyObject* exc_type = PyErr_Occurred();
         if (exc_type) {
           if (likely(__Pyx_PyErr_GivenExceptionMatches(exc_type, PyExc_StopIteration))) PyErr_Clear();
-          else __PYX_ERR(0, 309, __pyx_L1_error)
+          else __PYX_ERR(0, 313, __pyx_L1_error)
         }
         break;
       }
@@ -3638,16 +3717,16 @@ static PyObject *__pyx_gb_14structureboost_14prob_regressor_11PrestoBoost_3fit_2
     __Pyx_GIVEREF(__pyx_t_1);
     __pyx_t_1 = 0;
 
-    /* "structureboost/prob_regressor.pyx":308
+    /* "structureboost/prob_regressor.pyx":312
  *                 print('Training Forests')
  *                 self.forest_list = Parallel(n_jobs=n_jobs,
  *                                         )(delayed(fit_and_return)(f, X_train, y_train)             # <<<<<<<<<<<<<<
  *                                         for f in self.forest_list)
  *             else:
  */
-    __Pyx_GetModuleGlobalName(__pyx_t_6, __pyx_n_s_delayed); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 308, __pyx_L1_error)
+    __Pyx_GetModuleGlobalName(__pyx_t_6, __pyx_n_s_delayed); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 312, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_6);
-    __Pyx_GetModuleGlobalName(__pyx_t_7, __pyx_n_s_fit_and_return); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 308, __pyx_L1_error)
+    __Pyx_GetModuleGlobalName(__pyx_t_7, __pyx_n_s_fit_and_return); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 312, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_7);
     __pyx_t_8 = NULL;
     if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_6))) {
@@ -3662,11 +3741,11 @@ static PyObject *__pyx_gb_14structureboost_14prob_regressor_11PrestoBoost_3fit_2
     __pyx_t_5 = (__pyx_t_8) ? __Pyx_PyObject_Call2Args(__pyx_t_6, __pyx_t_8, __pyx_t_7) : __Pyx_PyObject_CallOneArg(__pyx_t_6, __pyx_t_7);
     __Pyx_XDECREF(__pyx_t_8); __pyx_t_8 = 0;
     __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
-    if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 308, __pyx_L1_error)
+    if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 312, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_5);
     __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
-    if (unlikely(!__pyx_cur_scope->__pyx_outer_scope->__pyx_v_X_train)) { __Pyx_RaiseClosureNameError("X_train"); __PYX_ERR(0, 308, __pyx_L1_error) }
-    if (unlikely(!__pyx_cur_scope->__pyx_outer_scope->__pyx_v_y_train)) { __Pyx_RaiseClosureNameError("y_train"); __PYX_ERR(0, 308, __pyx_L1_error) }
+    if (unlikely(!__pyx_cur_scope->__pyx_outer_scope->__pyx_v_X_train)) { __Pyx_RaiseClosureNameError("X_train"); __PYX_ERR(0, 312, __pyx_L1_error) }
+    if (unlikely(!__pyx_cur_scope->__pyx_outer_scope->__pyx_v_y_train)) { __Pyx_RaiseClosureNameError("y_train"); __PYX_ERR(0, 312, __pyx_L1_error) }
     __pyx_t_6 = NULL;
     __pyx_t_9 = 0;
     if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_5))) {
@@ -3682,7 +3761,7 @@ static PyObject *__pyx_gb_14structureboost_14prob_regressor_11PrestoBoost_3fit_2
     #if CYTHON_FAST_PYCALL
     if (PyFunction_Check(__pyx_t_5)) {
       PyObject *__pyx_temp[4] = {__pyx_t_6, __pyx_cur_scope->__pyx_v_f, __pyx_cur_scope->__pyx_outer_scope->__pyx_v_X_train, __pyx_cur_scope->__pyx_outer_scope->__pyx_v_y_train};
-      __pyx_t_1 = __Pyx_PyFunction_FastCall(__pyx_t_5, __pyx_temp+1-__pyx_t_9, 3+__pyx_t_9); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 308, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyFunction_FastCall(__pyx_t_5, __pyx_temp+1-__pyx_t_9, 3+__pyx_t_9); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 312, __pyx_L1_error)
       __Pyx_XDECREF(__pyx_t_6); __pyx_t_6 = 0;
       __Pyx_GOTREF(__pyx_t_1);
     } else
@@ -3690,13 +3769,13 @@ static PyObject *__pyx_gb_14structureboost_14prob_regressor_11PrestoBoost_3fit_2
     #if CYTHON_FAST_PYCCALL
     if (__Pyx_PyFastCFunction_Check(__pyx_t_5)) {
       PyObject *__pyx_temp[4] = {__pyx_t_6, __pyx_cur_scope->__pyx_v_f, __pyx_cur_scope->__pyx_outer_scope->__pyx_v_X_train, __pyx_cur_scope->__pyx_outer_scope->__pyx_v_y_train};
-      __pyx_t_1 = __Pyx_PyCFunction_FastCall(__pyx_t_5, __pyx_temp+1-__pyx_t_9, 3+__pyx_t_9); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 308, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyCFunction_FastCall(__pyx_t_5, __pyx_temp+1-__pyx_t_9, 3+__pyx_t_9); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 312, __pyx_L1_error)
       __Pyx_XDECREF(__pyx_t_6); __pyx_t_6 = 0;
       __Pyx_GOTREF(__pyx_t_1);
     } else
     #endif
     {
-      __pyx_t_7 = PyTuple_New(3+__pyx_t_9); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 308, __pyx_L1_error)
+      __pyx_t_7 = PyTuple_New(3+__pyx_t_9); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 312, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_7);
       if (__pyx_t_6) {
         __Pyx_GIVEREF(__pyx_t_6); PyTuple_SET_ITEM(__pyx_t_7, 0, __pyx_t_6); __pyx_t_6 = NULL;
@@ -3710,7 +3789,7 @@ static PyObject *__pyx_gb_14structureboost_14prob_regressor_11PrestoBoost_3fit_2
       __Pyx_INCREF(__pyx_cur_scope->__pyx_outer_scope->__pyx_v_y_train);
       __Pyx_GIVEREF(__pyx_cur_scope->__pyx_outer_scope->__pyx_v_y_train);
       PyTuple_SET_ITEM(__pyx_t_7, 2+__pyx_t_9, __pyx_cur_scope->__pyx_outer_scope->__pyx_v_y_train);
-      __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_5, __pyx_t_7, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 308, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_5, __pyx_t_7, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 312, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
       __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
     }
@@ -3734,9 +3813,9 @@ static PyObject *__pyx_gb_14structureboost_14prob_regressor_11PrestoBoost_3fit_2
     __Pyx_XGOTREF(__pyx_t_2);
     __pyx_t_3 = __pyx_cur_scope->__pyx_t_1;
     __pyx_t_4 = __pyx_cur_scope->__pyx_t_2;
-    if (unlikely(!__pyx_sent_value)) __PYX_ERR(0, 308, __pyx_L1_error)
+    if (unlikely(!__pyx_sent_value)) __PYX_ERR(0, 312, __pyx_L1_error)
 
-    /* "structureboost/prob_regressor.pyx":309
+    /* "structureboost/prob_regressor.pyx":313
  *                 self.forest_list = Parallel(n_jobs=n_jobs,
  *                                         )(delayed(fit_and_return)(f, X_train, y_train)
  *                                         for f in self.forest_list)             # <<<<<<<<<<<<<<
@@ -3747,7 +3826,7 @@ static PyObject *__pyx_gb_14structureboost_14prob_regressor_11PrestoBoost_3fit_2
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   CYTHON_MAYBE_UNUSED_VAR(__pyx_cur_scope);
 
-  /* "structureboost/prob_regressor.pyx":308
+  /* "structureboost/prob_regressor.pyx":312
  *                 print('Training Forests')
  *                 self.forest_list = Parallel(n_jobs=n_jobs,
  *                                         )(delayed(fit_and_return)(f, X_train, y_train)             # <<<<<<<<<<<<<<
@@ -3779,7 +3858,7 @@ static PyObject *__pyx_gb_14structureboost_14prob_regressor_11PrestoBoost_3fit_2
 }
 static PyObject *__pyx_gb_14structureboost_14prob_regressor_11PrestoBoost_3fit_5generator1(__pyx_CoroutineObject *__pyx_generator, CYTHON_UNUSED PyThreadState *__pyx_tstate, PyObject *__pyx_sent_value); /* proto */
 
-/* "structureboost/prob_regressor.pyx":313
+/* "structureboost/prob_regressor.pyx":317
  *                 print('Training Forests')
  *                 self.forest_list = Parallel(n_jobs=n_jobs,
  *                                         )(delayed(fit_and_return2)(f, X_train, y_train,             # <<<<<<<<<<<<<<
@@ -3799,7 +3878,7 @@ static PyObject *__pyx_pf_14structureboost_14prob_regressor_11PrestoBoost_3fit_3
   if (unlikely(!__pyx_cur_scope)) {
     __pyx_cur_scope = ((struct __pyx_obj_14structureboost_14prob_regressor___pyx_scope_struct_2_genexpr *)Py_None);
     __Pyx_INCREF(Py_None);
-    __PYX_ERR(0, 313, __pyx_L1_error)
+    __PYX_ERR(0, 317, __pyx_L1_error)
   } else {
     __Pyx_GOTREF(__pyx_cur_scope);
   }
@@ -3807,7 +3886,7 @@ static PyObject *__pyx_pf_14structureboost_14prob_regressor_11PrestoBoost_3fit_3
   __Pyx_INCREF(((PyObject *)__pyx_cur_scope->__pyx_outer_scope));
   __Pyx_GIVEREF(__pyx_cur_scope->__pyx_outer_scope);
   {
-    __pyx_CoroutineObject *gen = __Pyx_Generator_New((__pyx_coroutine_body_t) __pyx_gb_14structureboost_14prob_regressor_11PrestoBoost_3fit_5generator1, NULL, (PyObject *) __pyx_cur_scope, __pyx_n_s_genexpr, __pyx_n_s_PrestoBoost_fit_locals_genexpr, __pyx_n_s_structureboost_prob_regressor); if (unlikely(!gen)) __PYX_ERR(0, 313, __pyx_L1_error)
+    __pyx_CoroutineObject *gen = __Pyx_Generator_New((__pyx_coroutine_body_t) __pyx_gb_14structureboost_14prob_regressor_11PrestoBoost_3fit_5generator1, NULL, (PyObject *) __pyx_cur_scope, __pyx_n_s_genexpr, __pyx_n_s_PrestoBoost_fit_locals_genexpr, __pyx_n_s_structureboost_prob_regressor); if (unlikely(!gen)) __PYX_ERR(0, 317, __pyx_L1_error)
     __Pyx_DECREF(__pyx_cur_scope);
     __Pyx_RefNannyFinishContext();
     return (PyObject *) gen;
@@ -3842,7 +3921,7 @@ static PyObject *__pyx_gb_14structureboost_14prob_regressor_11PrestoBoost_3fit_5
   int __pyx_clineno = 0;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("genexpr", 0);
-  __Pyx_TraceCall("genexpr", __pyx_f[0], 313, 0, __PYX_ERR(0, 313, __pyx_L1_error));
+  __Pyx_TraceCall("genexpr", __pyx_f[0], 317, 0, __PYX_ERR(0, 317, __pyx_L1_error));
   switch (__pyx_generator->resume_label) {
     case 0: goto __pyx_L3_first_run;
     case 1: goto __pyx_L6_resume_from_yield;
@@ -3852,25 +3931,25 @@ static PyObject *__pyx_gb_14structureboost_14prob_regressor_11PrestoBoost_3fit_5
     return NULL;
   }
   __pyx_L3_first_run:;
-  if (unlikely(!__pyx_sent_value)) __PYX_ERR(0, 313, __pyx_L1_error)
+  if (unlikely(!__pyx_sent_value)) __PYX_ERR(0, 317, __pyx_L1_error)
 
-  /* "structureboost/prob_regressor.pyx":316
+  /* "structureboost/prob_regressor.pyx":320
  *                                             eval_set, eval_freq,
  *                                             early_stop_past_steps, choose_best_eval)
  *                                         for f in self.forest_list)             # <<<<<<<<<<<<<<
  * 
  *                 if fit_calibrators:
  */
-  if (unlikely(!__pyx_cur_scope->__pyx_outer_scope->__pyx_v_self)) { __Pyx_RaiseClosureNameError("self"); __PYX_ERR(0, 316, __pyx_L1_error) }
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_cur_scope->__pyx_outer_scope->__pyx_v_self, __pyx_n_s_forest_list); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 316, __pyx_L1_error)
+  if (unlikely(!__pyx_cur_scope->__pyx_outer_scope->__pyx_v_self)) { __Pyx_RaiseClosureNameError("self"); __PYX_ERR(0, 320, __pyx_L1_error) }
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_cur_scope->__pyx_outer_scope->__pyx_v_self, __pyx_n_s_forest_list); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 320, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   if (likely(PyList_CheckExact(__pyx_t_1)) || PyTuple_CheckExact(__pyx_t_1)) {
     __pyx_t_2 = __pyx_t_1; __Pyx_INCREF(__pyx_t_2); __pyx_t_3 = 0;
     __pyx_t_4 = NULL;
   } else {
-    __pyx_t_3 = -1; __pyx_t_2 = PyObject_GetIter(__pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 316, __pyx_L1_error)
+    __pyx_t_3 = -1; __pyx_t_2 = PyObject_GetIter(__pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 320, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
-    __pyx_t_4 = Py_TYPE(__pyx_t_2)->tp_iternext; if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 316, __pyx_L1_error)
+    __pyx_t_4 = Py_TYPE(__pyx_t_2)->tp_iternext; if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 320, __pyx_L1_error)
   }
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   for (;;) {
@@ -3878,17 +3957,17 @@ static PyObject *__pyx_gb_14structureboost_14prob_regressor_11PrestoBoost_3fit_5
       if (likely(PyList_CheckExact(__pyx_t_2))) {
         if (__pyx_t_3 >= PyList_GET_SIZE(__pyx_t_2)) break;
         #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-        __pyx_t_1 = PyList_GET_ITEM(__pyx_t_2, __pyx_t_3); __Pyx_INCREF(__pyx_t_1); __pyx_t_3++; if (unlikely(0 < 0)) __PYX_ERR(0, 316, __pyx_L1_error)
+        __pyx_t_1 = PyList_GET_ITEM(__pyx_t_2, __pyx_t_3); __Pyx_INCREF(__pyx_t_1); __pyx_t_3++; if (unlikely(0 < 0)) __PYX_ERR(0, 320, __pyx_L1_error)
         #else
-        __pyx_t_1 = PySequence_ITEM(__pyx_t_2, __pyx_t_3); __pyx_t_3++; if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 316, __pyx_L1_error)
+        __pyx_t_1 = PySequence_ITEM(__pyx_t_2, __pyx_t_3); __pyx_t_3++; if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 320, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_1);
         #endif
       } else {
         if (__pyx_t_3 >= PyTuple_GET_SIZE(__pyx_t_2)) break;
         #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-        __pyx_t_1 = PyTuple_GET_ITEM(__pyx_t_2, __pyx_t_3); __Pyx_INCREF(__pyx_t_1); __pyx_t_3++; if (unlikely(0 < 0)) __PYX_ERR(0, 316, __pyx_L1_error)
+        __pyx_t_1 = PyTuple_GET_ITEM(__pyx_t_2, __pyx_t_3); __Pyx_INCREF(__pyx_t_1); __pyx_t_3++; if (unlikely(0 < 0)) __PYX_ERR(0, 320, __pyx_L1_error)
         #else
-        __pyx_t_1 = PySequence_ITEM(__pyx_t_2, __pyx_t_3); __pyx_t_3++; if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 316, __pyx_L1_error)
+        __pyx_t_1 = PySequence_ITEM(__pyx_t_2, __pyx_t_3); __pyx_t_3++; if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 320, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_1);
         #endif
       }
@@ -3898,7 +3977,7 @@ static PyObject *__pyx_gb_14structureboost_14prob_regressor_11PrestoBoost_3fit_5
         PyObject* exc_type = PyErr_Occurred();
         if (exc_type) {
           if (likely(__Pyx_PyErr_GivenExceptionMatches(exc_type, PyExc_StopIteration))) PyErr_Clear();
-          else __PYX_ERR(0, 316, __pyx_L1_error)
+          else __PYX_ERR(0, 320, __pyx_L1_error)
         }
         break;
       }
@@ -3909,16 +3988,16 @@ static PyObject *__pyx_gb_14structureboost_14prob_regressor_11PrestoBoost_3fit_5
     __Pyx_GIVEREF(__pyx_t_1);
     __pyx_t_1 = 0;
 
-    /* "structureboost/prob_regressor.pyx":313
+    /* "structureboost/prob_regressor.pyx":317
  *                 print('Training Forests')
  *                 self.forest_list = Parallel(n_jobs=n_jobs,
  *                                         )(delayed(fit_and_return2)(f, X_train, y_train,             # <<<<<<<<<<<<<<
  *                                             eval_set, eval_freq,
  *                                             early_stop_past_steps, choose_best_eval)
  */
-    __Pyx_GetModuleGlobalName(__pyx_t_6, __pyx_n_s_delayed); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 313, __pyx_L1_error)
+    __Pyx_GetModuleGlobalName(__pyx_t_6, __pyx_n_s_delayed); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 317, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_6);
-    __Pyx_GetModuleGlobalName(__pyx_t_7, __pyx_n_s_fit_and_return2); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 313, __pyx_L1_error)
+    __Pyx_GetModuleGlobalName(__pyx_t_7, __pyx_n_s_fit_and_return2); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 317, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_7);
     __pyx_t_8 = NULL;
     if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_6))) {
@@ -3933,31 +4012,31 @@ static PyObject *__pyx_gb_14structureboost_14prob_regressor_11PrestoBoost_3fit_5
     __pyx_t_5 = (__pyx_t_8) ? __Pyx_PyObject_Call2Args(__pyx_t_6, __pyx_t_8, __pyx_t_7) : __Pyx_PyObject_CallOneArg(__pyx_t_6, __pyx_t_7);
     __Pyx_XDECREF(__pyx_t_8); __pyx_t_8 = 0;
     __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
-    if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 313, __pyx_L1_error)
+    if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 317, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_5);
     __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
-    if (unlikely(!__pyx_cur_scope->__pyx_outer_scope->__pyx_v_X_train)) { __Pyx_RaiseClosureNameError("X_train"); __PYX_ERR(0, 313, __pyx_L1_error) }
-    if (unlikely(!__pyx_cur_scope->__pyx_outer_scope->__pyx_v_y_train)) { __Pyx_RaiseClosureNameError("y_train"); __PYX_ERR(0, 313, __pyx_L1_error) }
+    if (unlikely(!__pyx_cur_scope->__pyx_outer_scope->__pyx_v_X_train)) { __Pyx_RaiseClosureNameError("X_train"); __PYX_ERR(0, 317, __pyx_L1_error) }
+    if (unlikely(!__pyx_cur_scope->__pyx_outer_scope->__pyx_v_y_train)) { __Pyx_RaiseClosureNameError("y_train"); __PYX_ERR(0, 317, __pyx_L1_error) }
 
-    /* "structureboost/prob_regressor.pyx":314
+    /* "structureboost/prob_regressor.pyx":318
  *                 self.forest_list = Parallel(n_jobs=n_jobs,
  *                                         )(delayed(fit_and_return2)(f, X_train, y_train,
  *                                             eval_set, eval_freq,             # <<<<<<<<<<<<<<
  *                                             early_stop_past_steps, choose_best_eval)
  *                                         for f in self.forest_list)
  */
-    if (unlikely(!__pyx_cur_scope->__pyx_outer_scope->__pyx_v_eval_set)) { __Pyx_RaiseClosureNameError("eval_set"); __PYX_ERR(0, 314, __pyx_L1_error) }
-    if (unlikely(!__pyx_cur_scope->__pyx_outer_scope->__pyx_v_eval_freq)) { __Pyx_RaiseClosureNameError("eval_freq"); __PYX_ERR(0, 314, __pyx_L1_error) }
+    if (unlikely(!__pyx_cur_scope->__pyx_outer_scope->__pyx_v_eval_set)) { __Pyx_RaiseClosureNameError("eval_set"); __PYX_ERR(0, 318, __pyx_L1_error) }
+    if (unlikely(!__pyx_cur_scope->__pyx_outer_scope->__pyx_v_eval_freq)) { __Pyx_RaiseClosureNameError("eval_freq"); __PYX_ERR(0, 318, __pyx_L1_error) }
 
-    /* "structureboost/prob_regressor.pyx":315
+    /* "structureboost/prob_regressor.pyx":319
  *                                         )(delayed(fit_and_return2)(f, X_train, y_train,
  *                                             eval_set, eval_freq,
  *                                             early_stop_past_steps, choose_best_eval)             # <<<<<<<<<<<<<<
  *                                         for f in self.forest_list)
  * 
  */
-    if (unlikely(!__pyx_cur_scope->__pyx_outer_scope->__pyx_v_early_stop_past_steps)) { __Pyx_RaiseClosureNameError("early_stop_past_steps"); __PYX_ERR(0, 315, __pyx_L1_error) }
-    if (unlikely(!__pyx_cur_scope->__pyx_outer_scope->__pyx_v_choose_best_eval)) { __Pyx_RaiseClosureNameError("choose_best_eval"); __PYX_ERR(0, 315, __pyx_L1_error) }
+    if (unlikely(!__pyx_cur_scope->__pyx_outer_scope->__pyx_v_early_stop_past_steps)) { __Pyx_RaiseClosureNameError("early_stop_past_steps"); __PYX_ERR(0, 319, __pyx_L1_error) }
+    if (unlikely(!__pyx_cur_scope->__pyx_outer_scope->__pyx_v_choose_best_eval)) { __Pyx_RaiseClosureNameError("choose_best_eval"); __PYX_ERR(0, 319, __pyx_L1_error) }
     __pyx_t_6 = NULL;
     __pyx_t_9 = 0;
     if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_5))) {
@@ -3973,7 +4052,7 @@ static PyObject *__pyx_gb_14structureboost_14prob_regressor_11PrestoBoost_3fit_5
     #if CYTHON_FAST_PYCALL
     if (PyFunction_Check(__pyx_t_5)) {
       PyObject *__pyx_temp[8] = {__pyx_t_6, __pyx_cur_scope->__pyx_v_f, __pyx_cur_scope->__pyx_outer_scope->__pyx_v_X_train, __pyx_cur_scope->__pyx_outer_scope->__pyx_v_y_train, __pyx_cur_scope->__pyx_outer_scope->__pyx_v_eval_set, __pyx_cur_scope->__pyx_outer_scope->__pyx_v_eval_freq, __pyx_cur_scope->__pyx_outer_scope->__pyx_v_early_stop_past_steps, __pyx_cur_scope->__pyx_outer_scope->__pyx_v_choose_best_eval};
-      __pyx_t_1 = __Pyx_PyFunction_FastCall(__pyx_t_5, __pyx_temp+1-__pyx_t_9, 7+__pyx_t_9); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 313, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyFunction_FastCall(__pyx_t_5, __pyx_temp+1-__pyx_t_9, 7+__pyx_t_9); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 317, __pyx_L1_error)
       __Pyx_XDECREF(__pyx_t_6); __pyx_t_6 = 0;
       __Pyx_GOTREF(__pyx_t_1);
     } else
@@ -3981,13 +4060,13 @@ static PyObject *__pyx_gb_14structureboost_14prob_regressor_11PrestoBoost_3fit_5
     #if CYTHON_FAST_PYCCALL
     if (__Pyx_PyFastCFunction_Check(__pyx_t_5)) {
       PyObject *__pyx_temp[8] = {__pyx_t_6, __pyx_cur_scope->__pyx_v_f, __pyx_cur_scope->__pyx_outer_scope->__pyx_v_X_train, __pyx_cur_scope->__pyx_outer_scope->__pyx_v_y_train, __pyx_cur_scope->__pyx_outer_scope->__pyx_v_eval_set, __pyx_cur_scope->__pyx_outer_scope->__pyx_v_eval_freq, __pyx_cur_scope->__pyx_outer_scope->__pyx_v_early_stop_past_steps, __pyx_cur_scope->__pyx_outer_scope->__pyx_v_choose_best_eval};
-      __pyx_t_1 = __Pyx_PyCFunction_FastCall(__pyx_t_5, __pyx_temp+1-__pyx_t_9, 7+__pyx_t_9); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 313, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyCFunction_FastCall(__pyx_t_5, __pyx_temp+1-__pyx_t_9, 7+__pyx_t_9); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 317, __pyx_L1_error)
       __Pyx_XDECREF(__pyx_t_6); __pyx_t_6 = 0;
       __Pyx_GOTREF(__pyx_t_1);
     } else
     #endif
     {
-      __pyx_t_7 = PyTuple_New(7+__pyx_t_9); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 313, __pyx_L1_error)
+      __pyx_t_7 = PyTuple_New(7+__pyx_t_9); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 317, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_7);
       if (__pyx_t_6) {
         __Pyx_GIVEREF(__pyx_t_6); PyTuple_SET_ITEM(__pyx_t_7, 0, __pyx_t_6); __pyx_t_6 = NULL;
@@ -4013,7 +4092,7 @@ static PyObject *__pyx_gb_14structureboost_14prob_regressor_11PrestoBoost_3fit_5
       __Pyx_INCREF(__pyx_cur_scope->__pyx_outer_scope->__pyx_v_choose_best_eval);
       __Pyx_GIVEREF(__pyx_cur_scope->__pyx_outer_scope->__pyx_v_choose_best_eval);
       PyTuple_SET_ITEM(__pyx_t_7, 6+__pyx_t_9, __pyx_cur_scope->__pyx_outer_scope->__pyx_v_choose_best_eval);
-      __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_5, __pyx_t_7, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 313, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_5, __pyx_t_7, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 317, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
       __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
     }
@@ -4037,9 +4116,9 @@ static PyObject *__pyx_gb_14structureboost_14prob_regressor_11PrestoBoost_3fit_5
     __Pyx_XGOTREF(__pyx_t_2);
     __pyx_t_3 = __pyx_cur_scope->__pyx_t_1;
     __pyx_t_4 = __pyx_cur_scope->__pyx_t_2;
-    if (unlikely(!__pyx_sent_value)) __PYX_ERR(0, 313, __pyx_L1_error)
+    if (unlikely(!__pyx_sent_value)) __PYX_ERR(0, 317, __pyx_L1_error)
 
-    /* "structureboost/prob_regressor.pyx":316
+    /* "structureboost/prob_regressor.pyx":320
  *                                             eval_set, eval_freq,
  *                                             early_stop_past_steps, choose_best_eval)
  *                                         for f in self.forest_list)             # <<<<<<<<<<<<<<
@@ -4050,7 +4129,7 @@ static PyObject *__pyx_gb_14structureboost_14prob_regressor_11PrestoBoost_3fit_5
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   CYTHON_MAYBE_UNUSED_VAR(__pyx_cur_scope);
 
-  /* "structureboost/prob_regressor.pyx":313
+  /* "structureboost/prob_regressor.pyx":317
  *                 print('Training Forests')
  *                 self.forest_list = Parallel(n_jobs=n_jobs,
  *                                         )(delayed(fit_and_return2)(f, X_train, y_train,             # <<<<<<<<<<<<<<
@@ -4082,7 +4161,7 @@ static PyObject *__pyx_gb_14structureboost_14prob_regressor_11PrestoBoost_3fit_5
 }
 static PyObject *__pyx_gb_14structureboost_14prob_regressor_11PrestoBoost_3fit_8generator2(__pyx_CoroutineObject *__pyx_generator, CYTHON_UNUSED PyThreadState *__pyx_tstate, PyObject *__pyx_sent_value); /* proto */
 
-/* "structureboost/prob_regressor.pyx":323
+/* "structureboost/prob_regressor.pyx":327
  *                     y_calib = eval_set[1]
  *                     self.calibrator_list = Parallel(n_jobs=n_jobs,
  *                                         )(delayed(calib_parallel)(self.calibrator_list[i],             # <<<<<<<<<<<<<<
@@ -4102,7 +4181,7 @@ static PyObject *__pyx_pf_14structureboost_14prob_regressor_11PrestoBoost_3fit_6
   if (unlikely(!__pyx_cur_scope)) {
     __pyx_cur_scope = ((struct __pyx_obj_14structureboost_14prob_regressor___pyx_scope_struct_3_genexpr *)Py_None);
     __Pyx_INCREF(Py_None);
-    __PYX_ERR(0, 323, __pyx_L1_error)
+    __PYX_ERR(0, 327, __pyx_L1_error)
   } else {
     __Pyx_GOTREF(__pyx_cur_scope);
   }
@@ -4110,7 +4189,7 @@ static PyObject *__pyx_pf_14structureboost_14prob_regressor_11PrestoBoost_3fit_6
   __Pyx_INCREF(((PyObject *)__pyx_cur_scope->__pyx_outer_scope));
   __Pyx_GIVEREF(__pyx_cur_scope->__pyx_outer_scope);
   {
-    __pyx_CoroutineObject *gen = __Pyx_Generator_New((__pyx_coroutine_body_t) __pyx_gb_14structureboost_14prob_regressor_11PrestoBoost_3fit_8generator2, NULL, (PyObject *) __pyx_cur_scope, __pyx_n_s_genexpr, __pyx_n_s_PrestoBoost_fit_locals_genexpr, __pyx_n_s_structureboost_prob_regressor); if (unlikely(!gen)) __PYX_ERR(0, 323, __pyx_L1_error)
+    __pyx_CoroutineObject *gen = __Pyx_Generator_New((__pyx_coroutine_body_t) __pyx_gb_14structureboost_14prob_regressor_11PrestoBoost_3fit_8generator2, NULL, (PyObject *) __pyx_cur_scope, __pyx_n_s_genexpr, __pyx_n_s_PrestoBoost_fit_locals_genexpr, __pyx_n_s_structureboost_prob_regressor); if (unlikely(!gen)) __PYX_ERR(0, 327, __pyx_L1_error)
     __Pyx_DECREF(__pyx_cur_scope);
     __Pyx_RefNannyFinishContext();
     return (PyObject *) gen;
@@ -4147,7 +4226,7 @@ static PyObject *__pyx_gb_14structureboost_14prob_regressor_11PrestoBoost_3fit_8
   int __pyx_clineno = 0;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("genexpr", 0);
-  __Pyx_TraceCall("genexpr", __pyx_f[0], 323, 0, __PYX_ERR(0, 323, __pyx_L1_error));
+  __Pyx_TraceCall("genexpr", __pyx_f[0], 327, 0, __PYX_ERR(0, 327, __pyx_L1_error));
   switch (__pyx_generator->resume_label) {
     case 0: goto __pyx_L3_first_run;
     case 1: goto __pyx_L6_resume_from_yield;
@@ -4157,34 +4236,34 @@ static PyObject *__pyx_gb_14structureboost_14prob_regressor_11PrestoBoost_3fit_8
     return NULL;
   }
   __pyx_L3_first_run:;
-  if (unlikely(!__pyx_sent_value)) __PYX_ERR(0, 323, __pyx_L1_error)
+  if (unlikely(!__pyx_sent_value)) __PYX_ERR(0, 327, __pyx_L1_error)
 
-  /* "structureboost/prob_regressor.pyx":326
+  /* "structureboost/prob_regressor.pyx":330
  *                                         self.forest_list[i].bin_vec, self.forest_list[i].gbtmodel,
  *                                          X_calib, y_calib)
  *                                         for i in range(len(self.forest_list)))             # <<<<<<<<<<<<<<
  * 
  *                 if refit_train_val:
  */
-  if (unlikely(!__pyx_cur_scope->__pyx_outer_scope->__pyx_v_self)) { __Pyx_RaiseClosureNameError("self"); __PYX_ERR(0, 326, __pyx_L1_error) }
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_cur_scope->__pyx_outer_scope->__pyx_v_self, __pyx_n_s_forest_list); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 326, __pyx_L1_error)
+  if (unlikely(!__pyx_cur_scope->__pyx_outer_scope->__pyx_v_self)) { __Pyx_RaiseClosureNameError("self"); __PYX_ERR(0, 330, __pyx_L1_error) }
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_cur_scope->__pyx_outer_scope->__pyx_v_self, __pyx_n_s_forest_list); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 330, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = PyObject_Length(__pyx_t_1); if (unlikely(__pyx_t_2 == ((Py_ssize_t)-1))) __PYX_ERR(0, 326, __pyx_L1_error)
+  __pyx_t_2 = PyObject_Length(__pyx_t_1); if (unlikely(__pyx_t_2 == ((Py_ssize_t)-1))) __PYX_ERR(0, 330, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __pyx_t_3 = __pyx_t_2;
   for (__pyx_t_4 = 0; __pyx_t_4 < __pyx_t_3; __pyx_t_4+=1) {
     __pyx_cur_scope->__pyx_v_i = __pyx_t_4;
 
-    /* "structureboost/prob_regressor.pyx":323
+    /* "structureboost/prob_regressor.pyx":327
  *                     y_calib = eval_set[1]
  *                     self.calibrator_list = Parallel(n_jobs=n_jobs,
  *                                         )(delayed(calib_parallel)(self.calibrator_list[i],             # <<<<<<<<<<<<<<
  *                                         self.forest_list[i].bin_vec, self.forest_list[i].gbtmodel,
  *                                          X_calib, y_calib)
  */
-    __Pyx_GetModuleGlobalName(__pyx_t_6, __pyx_n_s_delayed); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 323, __pyx_L1_error)
+    __Pyx_GetModuleGlobalName(__pyx_t_6, __pyx_n_s_delayed); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 327, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_6);
-    __Pyx_GetModuleGlobalName(__pyx_t_7, __pyx_n_s_calib_parallel); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 323, __pyx_L1_error)
+    __Pyx_GetModuleGlobalName(__pyx_t_7, __pyx_n_s_calib_parallel); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 327, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_7);
     __pyx_t_8 = NULL;
     if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_6))) {
@@ -4199,51 +4278,51 @@ static PyObject *__pyx_gb_14structureboost_14prob_regressor_11PrestoBoost_3fit_8
     __pyx_t_5 = (__pyx_t_8) ? __Pyx_PyObject_Call2Args(__pyx_t_6, __pyx_t_8, __pyx_t_7) : __Pyx_PyObject_CallOneArg(__pyx_t_6, __pyx_t_7);
     __Pyx_XDECREF(__pyx_t_8); __pyx_t_8 = 0;
     __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
-    if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 323, __pyx_L1_error)
+    if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 327, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_5);
     __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
-    if (unlikely(!__pyx_cur_scope->__pyx_outer_scope->__pyx_v_self)) { __Pyx_RaiseClosureNameError("self"); __PYX_ERR(0, 323, __pyx_L1_error) }
-    __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_cur_scope->__pyx_outer_scope->__pyx_v_self, __pyx_n_s_calibrator_list); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 323, __pyx_L1_error)
+    if (unlikely(!__pyx_cur_scope->__pyx_outer_scope->__pyx_v_self)) { __Pyx_RaiseClosureNameError("self"); __PYX_ERR(0, 327, __pyx_L1_error) }
+    __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_cur_scope->__pyx_outer_scope->__pyx_v_self, __pyx_n_s_calibrator_list); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 327, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_6);
-    __pyx_t_7 = __Pyx_GetItemInt(__pyx_t_6, __pyx_cur_scope->__pyx_v_i, Py_ssize_t, 1, PyInt_FromSsize_t, 0, 1, 1); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 323, __pyx_L1_error)
+    __pyx_t_7 = __Pyx_GetItemInt(__pyx_t_6, __pyx_cur_scope->__pyx_v_i, Py_ssize_t, 1, PyInt_FromSsize_t, 0, 1, 1); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 327, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_7);
     __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
 
-    /* "structureboost/prob_regressor.pyx":324
+    /* "structureboost/prob_regressor.pyx":328
  *                     self.calibrator_list = Parallel(n_jobs=n_jobs,
  *                                         )(delayed(calib_parallel)(self.calibrator_list[i],
  *                                         self.forest_list[i].bin_vec, self.forest_list[i].gbtmodel,             # <<<<<<<<<<<<<<
  *                                          X_calib, y_calib)
  *                                         for i in range(len(self.forest_list)))
  */
-    if (unlikely(!__pyx_cur_scope->__pyx_outer_scope->__pyx_v_self)) { __Pyx_RaiseClosureNameError("self"); __PYX_ERR(0, 324, __pyx_L1_error) }
-    __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_cur_scope->__pyx_outer_scope->__pyx_v_self, __pyx_n_s_forest_list); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 324, __pyx_L1_error)
+    if (unlikely(!__pyx_cur_scope->__pyx_outer_scope->__pyx_v_self)) { __Pyx_RaiseClosureNameError("self"); __PYX_ERR(0, 328, __pyx_L1_error) }
+    __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_cur_scope->__pyx_outer_scope->__pyx_v_self, __pyx_n_s_forest_list); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 328, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_6);
-    __pyx_t_8 = __Pyx_GetItemInt(__pyx_t_6, __pyx_cur_scope->__pyx_v_i, Py_ssize_t, 1, PyInt_FromSsize_t, 0, 1, 1); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 324, __pyx_L1_error)
+    __pyx_t_8 = __Pyx_GetItemInt(__pyx_t_6, __pyx_cur_scope->__pyx_v_i, Py_ssize_t, 1, PyInt_FromSsize_t, 0, 1, 1); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 328, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_8);
     __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
-    __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_t_8, __pyx_n_s_bin_vec); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 324, __pyx_L1_error)
+    __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_t_8, __pyx_n_s_bin_vec); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 328, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_6);
     __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
-    if (unlikely(!__pyx_cur_scope->__pyx_outer_scope->__pyx_v_self)) { __Pyx_RaiseClosureNameError("self"); __PYX_ERR(0, 324, __pyx_L1_error) }
-    __pyx_t_8 = __Pyx_PyObject_GetAttrStr(__pyx_cur_scope->__pyx_outer_scope->__pyx_v_self, __pyx_n_s_forest_list); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 324, __pyx_L1_error)
+    if (unlikely(!__pyx_cur_scope->__pyx_outer_scope->__pyx_v_self)) { __Pyx_RaiseClosureNameError("self"); __PYX_ERR(0, 328, __pyx_L1_error) }
+    __pyx_t_8 = __Pyx_PyObject_GetAttrStr(__pyx_cur_scope->__pyx_outer_scope->__pyx_v_self, __pyx_n_s_forest_list); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 328, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_8);
-    __pyx_t_9 = __Pyx_GetItemInt(__pyx_t_8, __pyx_cur_scope->__pyx_v_i, Py_ssize_t, 1, PyInt_FromSsize_t, 0, 1, 1); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 324, __pyx_L1_error)
+    __pyx_t_9 = __Pyx_GetItemInt(__pyx_t_8, __pyx_cur_scope->__pyx_v_i, Py_ssize_t, 1, PyInt_FromSsize_t, 0, 1, 1); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 328, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_9);
     __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
-    __pyx_t_8 = __Pyx_PyObject_GetAttrStr(__pyx_t_9, __pyx_n_s_gbtmodel); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 324, __pyx_L1_error)
+    __pyx_t_8 = __Pyx_PyObject_GetAttrStr(__pyx_t_9, __pyx_n_s_gbtmodel); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 328, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_8);
     __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
 
-    /* "structureboost/prob_regressor.pyx":325
+    /* "structureboost/prob_regressor.pyx":329
  *                                         )(delayed(calib_parallel)(self.calibrator_list[i],
  *                                         self.forest_list[i].bin_vec, self.forest_list[i].gbtmodel,
  *                                          X_calib, y_calib)             # <<<<<<<<<<<<<<
  *                                         for i in range(len(self.forest_list)))
  * 
  */
-    if (unlikely(!__pyx_cur_scope->__pyx_outer_scope->__pyx_v_X_calib)) { __Pyx_RaiseClosureNameError("X_calib"); __PYX_ERR(0, 325, __pyx_L1_error) }
-    if (unlikely(!__pyx_cur_scope->__pyx_outer_scope->__pyx_v_y_calib)) { __Pyx_RaiseClosureNameError("y_calib"); __PYX_ERR(0, 325, __pyx_L1_error) }
+    if (unlikely(!__pyx_cur_scope->__pyx_outer_scope->__pyx_v_X_calib)) { __Pyx_RaiseClosureNameError("X_calib"); __PYX_ERR(0, 329, __pyx_L1_error) }
+    if (unlikely(!__pyx_cur_scope->__pyx_outer_scope->__pyx_v_y_calib)) { __Pyx_RaiseClosureNameError("y_calib"); __PYX_ERR(0, 329, __pyx_L1_error) }
     __pyx_t_9 = NULL;
     __pyx_t_10 = 0;
     if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_5))) {
@@ -4259,7 +4338,7 @@ static PyObject *__pyx_gb_14structureboost_14prob_regressor_11PrestoBoost_3fit_8
     #if CYTHON_FAST_PYCALL
     if (PyFunction_Check(__pyx_t_5)) {
       PyObject *__pyx_temp[6] = {__pyx_t_9, __pyx_t_7, __pyx_t_6, __pyx_t_8, __pyx_cur_scope->__pyx_outer_scope->__pyx_v_X_calib, __pyx_cur_scope->__pyx_outer_scope->__pyx_v_y_calib};
-      __pyx_t_1 = __Pyx_PyFunction_FastCall(__pyx_t_5, __pyx_temp+1-__pyx_t_10, 5+__pyx_t_10); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 323, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyFunction_FastCall(__pyx_t_5, __pyx_temp+1-__pyx_t_10, 5+__pyx_t_10); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 327, __pyx_L1_error)
       __Pyx_XDECREF(__pyx_t_9); __pyx_t_9 = 0;
       __Pyx_GOTREF(__pyx_t_1);
       __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
@@ -4270,7 +4349,7 @@ static PyObject *__pyx_gb_14structureboost_14prob_regressor_11PrestoBoost_3fit_8
     #if CYTHON_FAST_PYCCALL
     if (__Pyx_PyFastCFunction_Check(__pyx_t_5)) {
       PyObject *__pyx_temp[6] = {__pyx_t_9, __pyx_t_7, __pyx_t_6, __pyx_t_8, __pyx_cur_scope->__pyx_outer_scope->__pyx_v_X_calib, __pyx_cur_scope->__pyx_outer_scope->__pyx_v_y_calib};
-      __pyx_t_1 = __Pyx_PyCFunction_FastCall(__pyx_t_5, __pyx_temp+1-__pyx_t_10, 5+__pyx_t_10); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 323, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyCFunction_FastCall(__pyx_t_5, __pyx_temp+1-__pyx_t_10, 5+__pyx_t_10); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 327, __pyx_L1_error)
       __Pyx_XDECREF(__pyx_t_9); __pyx_t_9 = 0;
       __Pyx_GOTREF(__pyx_t_1);
       __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
@@ -4279,7 +4358,7 @@ static PyObject *__pyx_gb_14structureboost_14prob_regressor_11PrestoBoost_3fit_8
     } else
     #endif
     {
-      __pyx_t_11 = PyTuple_New(5+__pyx_t_10); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 323, __pyx_L1_error)
+      __pyx_t_11 = PyTuple_New(5+__pyx_t_10); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 327, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_11);
       if (__pyx_t_9) {
         __Pyx_GIVEREF(__pyx_t_9); PyTuple_SET_ITEM(__pyx_t_11, 0, __pyx_t_9); __pyx_t_9 = NULL;
@@ -4299,7 +4378,7 @@ static PyObject *__pyx_gb_14structureboost_14prob_regressor_11PrestoBoost_3fit_8
       __pyx_t_7 = 0;
       __pyx_t_6 = 0;
       __pyx_t_8 = 0;
-      __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_5, __pyx_t_11, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 323, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_5, __pyx_t_11, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 327, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
       __Pyx_DECREF(__pyx_t_11); __pyx_t_11 = 0;
     }
@@ -4320,11 +4399,11 @@ static PyObject *__pyx_gb_14structureboost_14prob_regressor_11PrestoBoost_3fit_8
     __pyx_t_2 = __pyx_cur_scope->__pyx_t_0;
     __pyx_t_3 = __pyx_cur_scope->__pyx_t_1;
     __pyx_t_4 = __pyx_cur_scope->__pyx_t_2;
-    if (unlikely(!__pyx_sent_value)) __PYX_ERR(0, 323, __pyx_L1_error)
+    if (unlikely(!__pyx_sent_value)) __PYX_ERR(0, 327, __pyx_L1_error)
   }
   CYTHON_MAYBE_UNUSED_VAR(__pyx_cur_scope);
 
-  /* "structureboost/prob_regressor.pyx":323
+  /* "structureboost/prob_regressor.pyx":327
  *                     y_calib = eval_set[1]
  *                     self.calibrator_list = Parallel(n_jobs=n_jobs,
  *                                         )(delayed(calib_parallel)(self.calibrator_list[i],             # <<<<<<<<<<<<<<
@@ -4357,7 +4436,7 @@ static PyObject *__pyx_gb_14structureboost_14prob_regressor_11PrestoBoost_3fit_8
 }
 static PyObject *__pyx_gb_14structureboost_14prob_regressor_11PrestoBoost_3fit_11generator3(__pyx_CoroutineObject *__pyx_generator, CYTHON_UNUSED PyThreadState *__pyx_tstate, PyObject *__pyx_sent_value); /* proto */
 
-/* "structureboost/prob_regressor.pyx":351
+/* "structureboost/prob_regressor.pyx":355
  *                     y_train_val = np.concatenate((y_train, y_valid))
  *                     self.forest_list = Parallel(n_jobs=n_jobs,
  *                                             )(delayed(fit_and_return)(f, X_train_val, y_train_val)             # <<<<<<<<<<<<<<
@@ -4377,7 +4456,7 @@ static PyObject *__pyx_pf_14structureboost_14prob_regressor_11PrestoBoost_3fit_9
   if (unlikely(!__pyx_cur_scope)) {
     __pyx_cur_scope = ((struct __pyx_obj_14structureboost_14prob_regressor___pyx_scope_struct_4_genexpr *)Py_None);
     __Pyx_INCREF(Py_None);
-    __PYX_ERR(0, 351, __pyx_L1_error)
+    __PYX_ERR(0, 355, __pyx_L1_error)
   } else {
     __Pyx_GOTREF(__pyx_cur_scope);
   }
@@ -4385,7 +4464,7 @@ static PyObject *__pyx_pf_14structureboost_14prob_regressor_11PrestoBoost_3fit_9
   __Pyx_INCREF(((PyObject *)__pyx_cur_scope->__pyx_outer_scope));
   __Pyx_GIVEREF(__pyx_cur_scope->__pyx_outer_scope);
   {
-    __pyx_CoroutineObject *gen = __Pyx_Generator_New((__pyx_coroutine_body_t) __pyx_gb_14structureboost_14prob_regressor_11PrestoBoost_3fit_11generator3, NULL, (PyObject *) __pyx_cur_scope, __pyx_n_s_genexpr, __pyx_n_s_PrestoBoost_fit_locals_genexpr, __pyx_n_s_structureboost_prob_regressor); if (unlikely(!gen)) __PYX_ERR(0, 351, __pyx_L1_error)
+    __pyx_CoroutineObject *gen = __Pyx_Generator_New((__pyx_coroutine_body_t) __pyx_gb_14structureboost_14prob_regressor_11PrestoBoost_3fit_11generator3, NULL, (PyObject *) __pyx_cur_scope, __pyx_n_s_genexpr, __pyx_n_s_PrestoBoost_fit_locals_genexpr, __pyx_n_s_structureboost_prob_regressor); if (unlikely(!gen)) __PYX_ERR(0, 355, __pyx_L1_error)
     __Pyx_DECREF(__pyx_cur_scope);
     __Pyx_RefNannyFinishContext();
     return (PyObject *) gen;
@@ -4420,7 +4499,7 @@ static PyObject *__pyx_gb_14structureboost_14prob_regressor_11PrestoBoost_3fit_1
   int __pyx_clineno = 0;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("genexpr", 0);
-  __Pyx_TraceCall("genexpr", __pyx_f[0], 351, 0, __PYX_ERR(0, 351, __pyx_L1_error));
+  __Pyx_TraceCall("genexpr", __pyx_f[0], 355, 0, __PYX_ERR(0, 355, __pyx_L1_error));
   switch (__pyx_generator->resume_label) {
     case 0: goto __pyx_L3_first_run;
     case 1: goto __pyx_L6_resume_from_yield;
@@ -4430,25 +4509,25 @@ static PyObject *__pyx_gb_14structureboost_14prob_regressor_11PrestoBoost_3fit_1
     return NULL;
   }
   __pyx_L3_first_run:;
-  if (unlikely(!__pyx_sent_value)) __PYX_ERR(0, 351, __pyx_L1_error)
+  if (unlikely(!__pyx_sent_value)) __PYX_ERR(0, 355, __pyx_L1_error)
 
-  /* "structureboost/prob_regressor.pyx":352
+  /* "structureboost/prob_regressor.pyx":356
  *                     self.forest_list = Parallel(n_jobs=n_jobs,
  *                                             )(delayed(fit_and_return)(f, X_train_val, y_train_val)
  *                                             for f in self.forest_list)             # <<<<<<<<<<<<<<
  * 
- * 
+ *     def analyze_y_train(self, y_train):
  */
-  if (unlikely(!__pyx_cur_scope->__pyx_outer_scope->__pyx_v_self)) { __Pyx_RaiseClosureNameError("self"); __PYX_ERR(0, 352, __pyx_L1_error) }
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_cur_scope->__pyx_outer_scope->__pyx_v_self, __pyx_n_s_forest_list); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 352, __pyx_L1_error)
+  if (unlikely(!__pyx_cur_scope->__pyx_outer_scope->__pyx_v_self)) { __Pyx_RaiseClosureNameError("self"); __PYX_ERR(0, 356, __pyx_L1_error) }
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_cur_scope->__pyx_outer_scope->__pyx_v_self, __pyx_n_s_forest_list); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 356, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   if (likely(PyList_CheckExact(__pyx_t_1)) || PyTuple_CheckExact(__pyx_t_1)) {
     __pyx_t_2 = __pyx_t_1; __Pyx_INCREF(__pyx_t_2); __pyx_t_3 = 0;
     __pyx_t_4 = NULL;
   } else {
-    __pyx_t_3 = -1; __pyx_t_2 = PyObject_GetIter(__pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 352, __pyx_L1_error)
+    __pyx_t_3 = -1; __pyx_t_2 = PyObject_GetIter(__pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 356, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
-    __pyx_t_4 = Py_TYPE(__pyx_t_2)->tp_iternext; if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 352, __pyx_L1_error)
+    __pyx_t_4 = Py_TYPE(__pyx_t_2)->tp_iternext; if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 356, __pyx_L1_error)
   }
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   for (;;) {
@@ -4456,17 +4535,17 @@ static PyObject *__pyx_gb_14structureboost_14prob_regressor_11PrestoBoost_3fit_1
       if (likely(PyList_CheckExact(__pyx_t_2))) {
         if (__pyx_t_3 >= PyList_GET_SIZE(__pyx_t_2)) break;
         #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-        __pyx_t_1 = PyList_GET_ITEM(__pyx_t_2, __pyx_t_3); __Pyx_INCREF(__pyx_t_1); __pyx_t_3++; if (unlikely(0 < 0)) __PYX_ERR(0, 352, __pyx_L1_error)
+        __pyx_t_1 = PyList_GET_ITEM(__pyx_t_2, __pyx_t_3); __Pyx_INCREF(__pyx_t_1); __pyx_t_3++; if (unlikely(0 < 0)) __PYX_ERR(0, 356, __pyx_L1_error)
         #else
-        __pyx_t_1 = PySequence_ITEM(__pyx_t_2, __pyx_t_3); __pyx_t_3++; if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 352, __pyx_L1_error)
+        __pyx_t_1 = PySequence_ITEM(__pyx_t_2, __pyx_t_3); __pyx_t_3++; if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 356, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_1);
         #endif
       } else {
         if (__pyx_t_3 >= PyTuple_GET_SIZE(__pyx_t_2)) break;
         #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-        __pyx_t_1 = PyTuple_GET_ITEM(__pyx_t_2, __pyx_t_3); __Pyx_INCREF(__pyx_t_1); __pyx_t_3++; if (unlikely(0 < 0)) __PYX_ERR(0, 352, __pyx_L1_error)
+        __pyx_t_1 = PyTuple_GET_ITEM(__pyx_t_2, __pyx_t_3); __Pyx_INCREF(__pyx_t_1); __pyx_t_3++; if (unlikely(0 < 0)) __PYX_ERR(0, 356, __pyx_L1_error)
         #else
-        __pyx_t_1 = PySequence_ITEM(__pyx_t_2, __pyx_t_3); __pyx_t_3++; if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 352, __pyx_L1_error)
+        __pyx_t_1 = PySequence_ITEM(__pyx_t_2, __pyx_t_3); __pyx_t_3++; if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 356, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_1);
         #endif
       }
@@ -4476,7 +4555,7 @@ static PyObject *__pyx_gb_14structureboost_14prob_regressor_11PrestoBoost_3fit_1
         PyObject* exc_type = PyErr_Occurred();
         if (exc_type) {
           if (likely(__Pyx_PyErr_GivenExceptionMatches(exc_type, PyExc_StopIteration))) PyErr_Clear();
-          else __PYX_ERR(0, 352, __pyx_L1_error)
+          else __PYX_ERR(0, 356, __pyx_L1_error)
         }
         break;
       }
@@ -4487,16 +4566,16 @@ static PyObject *__pyx_gb_14structureboost_14prob_regressor_11PrestoBoost_3fit_1
     __Pyx_GIVEREF(__pyx_t_1);
     __pyx_t_1 = 0;
 
-    /* "structureboost/prob_regressor.pyx":351
+    /* "structureboost/prob_regressor.pyx":355
  *                     y_train_val = np.concatenate((y_train, y_valid))
  *                     self.forest_list = Parallel(n_jobs=n_jobs,
  *                                             )(delayed(fit_and_return)(f, X_train_val, y_train_val)             # <<<<<<<<<<<<<<
  *                                             for f in self.forest_list)
  * 
  */
-    __Pyx_GetModuleGlobalName(__pyx_t_6, __pyx_n_s_delayed); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 351, __pyx_L1_error)
+    __Pyx_GetModuleGlobalName(__pyx_t_6, __pyx_n_s_delayed); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 355, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_6);
-    __Pyx_GetModuleGlobalName(__pyx_t_7, __pyx_n_s_fit_and_return); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 351, __pyx_L1_error)
+    __Pyx_GetModuleGlobalName(__pyx_t_7, __pyx_n_s_fit_and_return); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 355, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_7);
     __pyx_t_8 = NULL;
     if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_6))) {
@@ -4511,11 +4590,11 @@ static PyObject *__pyx_gb_14structureboost_14prob_regressor_11PrestoBoost_3fit_1
     __pyx_t_5 = (__pyx_t_8) ? __Pyx_PyObject_Call2Args(__pyx_t_6, __pyx_t_8, __pyx_t_7) : __Pyx_PyObject_CallOneArg(__pyx_t_6, __pyx_t_7);
     __Pyx_XDECREF(__pyx_t_8); __pyx_t_8 = 0;
     __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
-    if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 351, __pyx_L1_error)
+    if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 355, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_5);
     __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
-    if (unlikely(!__pyx_cur_scope->__pyx_outer_scope->__pyx_v_X_train_val)) { __Pyx_RaiseClosureNameError("X_train_val"); __PYX_ERR(0, 351, __pyx_L1_error) }
-    if (unlikely(!__pyx_cur_scope->__pyx_outer_scope->__pyx_v_y_train_val)) { __Pyx_RaiseClosureNameError("y_train_val"); __PYX_ERR(0, 351, __pyx_L1_error) }
+    if (unlikely(!__pyx_cur_scope->__pyx_outer_scope->__pyx_v_X_train_val)) { __Pyx_RaiseClosureNameError("X_train_val"); __PYX_ERR(0, 355, __pyx_L1_error) }
+    if (unlikely(!__pyx_cur_scope->__pyx_outer_scope->__pyx_v_y_train_val)) { __Pyx_RaiseClosureNameError("y_train_val"); __PYX_ERR(0, 355, __pyx_L1_error) }
     __pyx_t_6 = NULL;
     __pyx_t_9 = 0;
     if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_5))) {
@@ -4531,7 +4610,7 @@ static PyObject *__pyx_gb_14structureboost_14prob_regressor_11PrestoBoost_3fit_1
     #if CYTHON_FAST_PYCALL
     if (PyFunction_Check(__pyx_t_5)) {
       PyObject *__pyx_temp[4] = {__pyx_t_6, __pyx_cur_scope->__pyx_v_f, __pyx_cur_scope->__pyx_outer_scope->__pyx_v_X_train_val, __pyx_cur_scope->__pyx_outer_scope->__pyx_v_y_train_val};
-      __pyx_t_1 = __Pyx_PyFunction_FastCall(__pyx_t_5, __pyx_temp+1-__pyx_t_9, 3+__pyx_t_9); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 351, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyFunction_FastCall(__pyx_t_5, __pyx_temp+1-__pyx_t_9, 3+__pyx_t_9); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 355, __pyx_L1_error)
       __Pyx_XDECREF(__pyx_t_6); __pyx_t_6 = 0;
       __Pyx_GOTREF(__pyx_t_1);
     } else
@@ -4539,13 +4618,13 @@ static PyObject *__pyx_gb_14structureboost_14prob_regressor_11PrestoBoost_3fit_1
     #if CYTHON_FAST_PYCCALL
     if (__Pyx_PyFastCFunction_Check(__pyx_t_5)) {
       PyObject *__pyx_temp[4] = {__pyx_t_6, __pyx_cur_scope->__pyx_v_f, __pyx_cur_scope->__pyx_outer_scope->__pyx_v_X_train_val, __pyx_cur_scope->__pyx_outer_scope->__pyx_v_y_train_val};
-      __pyx_t_1 = __Pyx_PyCFunction_FastCall(__pyx_t_5, __pyx_temp+1-__pyx_t_9, 3+__pyx_t_9); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 351, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyCFunction_FastCall(__pyx_t_5, __pyx_temp+1-__pyx_t_9, 3+__pyx_t_9); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 355, __pyx_L1_error)
       __Pyx_XDECREF(__pyx_t_6); __pyx_t_6 = 0;
       __Pyx_GOTREF(__pyx_t_1);
     } else
     #endif
     {
-      __pyx_t_7 = PyTuple_New(3+__pyx_t_9); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 351, __pyx_L1_error)
+      __pyx_t_7 = PyTuple_New(3+__pyx_t_9); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 355, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_7);
       if (__pyx_t_6) {
         __Pyx_GIVEREF(__pyx_t_6); PyTuple_SET_ITEM(__pyx_t_7, 0, __pyx_t_6); __pyx_t_6 = NULL;
@@ -4559,7 +4638,7 @@ static PyObject *__pyx_gb_14structureboost_14prob_regressor_11PrestoBoost_3fit_1
       __Pyx_INCREF(__pyx_cur_scope->__pyx_outer_scope->__pyx_v_y_train_val);
       __Pyx_GIVEREF(__pyx_cur_scope->__pyx_outer_scope->__pyx_v_y_train_val);
       PyTuple_SET_ITEM(__pyx_t_7, 2+__pyx_t_9, __pyx_cur_scope->__pyx_outer_scope->__pyx_v_y_train_val);
-      __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_5, __pyx_t_7, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 351, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_5, __pyx_t_7, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 355, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
       __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
     }
@@ -4583,20 +4662,20 @@ static PyObject *__pyx_gb_14structureboost_14prob_regressor_11PrestoBoost_3fit_1
     __Pyx_XGOTREF(__pyx_t_2);
     __pyx_t_3 = __pyx_cur_scope->__pyx_t_1;
     __pyx_t_4 = __pyx_cur_scope->__pyx_t_2;
-    if (unlikely(!__pyx_sent_value)) __PYX_ERR(0, 351, __pyx_L1_error)
+    if (unlikely(!__pyx_sent_value)) __PYX_ERR(0, 355, __pyx_L1_error)
 
-    /* "structureboost/prob_regressor.pyx":352
+    /* "structureboost/prob_regressor.pyx":356
  *                     self.forest_list = Parallel(n_jobs=n_jobs,
  *                                             )(delayed(fit_and_return)(f, X_train_val, y_train_val)
  *                                             for f in self.forest_list)             # <<<<<<<<<<<<<<
  * 
- * 
+ *     def analyze_y_train(self, y_train):
  */
   }
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   CYTHON_MAYBE_UNUSED_VAR(__pyx_cur_scope);
 
-  /* "structureboost/prob_regressor.pyx":351
+  /* "structureboost/prob_regressor.pyx":355
  *                     y_train_val = np.concatenate((y_train, y_valid))
  *                     self.forest_list = Parallel(n_jobs=n_jobs,
  *                                             )(delayed(fit_and_return)(f, X_train_val, y_train_val)             # <<<<<<<<<<<<<<
@@ -4627,7 +4706,7 @@ static PyObject *__pyx_gb_14structureboost_14prob_regressor_11PrestoBoost_3fit_1
   return __pyx_r;
 }
 
-/* "structureboost/prob_regressor.pyx":158
+/* "structureboost/prob_regressor.pyx":160
  *         # figure out method (here or in fit)
  * 
  *     def fit(self, X_train, y_train, eval_set=None, eval_freq=10,             # <<<<<<<<<<<<<<
@@ -4677,11 +4756,11 @@ static PyObject *__pyx_pf_14structureboost_14prob_regressor_11PrestoBoost_2fit(C
   if (unlikely(!__pyx_cur_scope)) {
     __pyx_cur_scope = ((struct __pyx_obj_14structureboost_14prob_regressor___pyx_scope_struct__fit *)Py_None);
     __Pyx_INCREF(Py_None);
-    __PYX_ERR(0, 158, __pyx_L1_error)
+    __PYX_ERR(0, 160, __pyx_L1_error)
   } else {
     __Pyx_GOTREF(__pyx_cur_scope);
   }
-  __Pyx_TraceCall("fit", __pyx_f[0], 158, 0, __PYX_ERR(0, 158, __pyx_L1_error));
+  __Pyx_TraceCall("fit", __pyx_f[0], 160, 0, __PYX_ERR(0, 160, __pyx_L1_error));
   __pyx_cur_scope->__pyx_v_self = __pyx_v_self;
   __Pyx_INCREF(__pyx_cur_scope->__pyx_v_self);
   __Pyx_GIVEREF(__pyx_cur_scope->__pyx_v_self);
@@ -4704,26 +4783,26 @@ static PyObject *__pyx_pf_14structureboost_14prob_regressor_11PrestoBoost_2fit(C
   __Pyx_INCREF(__pyx_cur_scope->__pyx_v_choose_best_eval);
   __Pyx_GIVEREF(__pyx_cur_scope->__pyx_v_choose_best_eval);
 
-  /* "structureboost/prob_regressor.pyx":214
+  /* "structureboost/prob_regressor.pyx":216
  *             time.  This is still fairly experimental.
  * """
  *         self.forest_list = []             # <<<<<<<<<<<<<<
  *         self.analyze_y_train(y_train)
  *         if fit_calibrators:
  */
-  __pyx_t_1 = PyList_New(0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 214, __pyx_L1_error)
+  __pyx_t_1 = PyList_New(0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 216, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  if (__Pyx_PyObject_SetAttrStr(__pyx_cur_scope->__pyx_v_self, __pyx_n_s_forest_list, __pyx_t_1) < 0) __PYX_ERR(0, 214, __pyx_L1_error)
+  if (__Pyx_PyObject_SetAttrStr(__pyx_cur_scope->__pyx_v_self, __pyx_n_s_forest_list, __pyx_t_1) < 0) __PYX_ERR(0, 216, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "structureboost/prob_regressor.pyx":215
+  /* "structureboost/prob_regressor.pyx":217
  * """
  *         self.forest_list = []
  *         self.analyze_y_train(y_train)             # <<<<<<<<<<<<<<
  *         if fit_calibrators:
  *             self.calibrator_list=[]
  */
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_cur_scope->__pyx_v_self, __pyx_n_s_analyze_y_train); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 215, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_cur_scope->__pyx_v_self, __pyx_n_s_analyze_y_train); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 217, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __pyx_t_3 = NULL;
   if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_2))) {
@@ -4737,52 +4816,52 @@ static PyObject *__pyx_pf_14structureboost_14prob_regressor_11PrestoBoost_2fit(C
   }
   __pyx_t_1 = (__pyx_t_3) ? __Pyx_PyObject_Call2Args(__pyx_t_2, __pyx_t_3, __pyx_cur_scope->__pyx_v_y_train) : __Pyx_PyObject_CallOneArg(__pyx_t_2, __pyx_cur_scope->__pyx_v_y_train);
   __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
-  if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 215, __pyx_L1_error)
+  if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 217, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "structureboost/prob_regressor.pyx":216
+  /* "structureboost/prob_regressor.pyx":218
  *         self.forest_list = []
  *         self.analyze_y_train(y_train)
  *         if fit_calibrators:             # <<<<<<<<<<<<<<
  *             self.calibrator_list=[]
  *             for i in range(self.num_forests):
  */
-  __pyx_t_4 = __Pyx_PyObject_IsTrue(__pyx_v_fit_calibrators); if (unlikely(__pyx_t_4 < 0)) __PYX_ERR(0, 216, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyObject_IsTrue(__pyx_v_fit_calibrators); if (unlikely(__pyx_t_4 < 0)) __PYX_ERR(0, 218, __pyx_L1_error)
   if (__pyx_t_4) {
 
-    /* "structureboost/prob_regressor.pyx":217
+    /* "structureboost/prob_regressor.pyx":219
  *         self.analyze_y_train(y_train)
  *         if fit_calibrators:
  *             self.calibrator_list=[]             # <<<<<<<<<<<<<<
  *             for i in range(self.num_forests):
  *                 self.calibrator_list.append(mli.SplineCalib(unity_prior=True,
  */
-    __pyx_t_1 = PyList_New(0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 217, __pyx_L1_error)
+    __pyx_t_1 = PyList_New(0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 219, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
-    if (__Pyx_PyObject_SetAttrStr(__pyx_cur_scope->__pyx_v_self, __pyx_n_s_calibrator_list, __pyx_t_1) < 0) __PYX_ERR(0, 217, __pyx_L1_error)
+    if (__Pyx_PyObject_SetAttrStr(__pyx_cur_scope->__pyx_v_self, __pyx_n_s_calibrator_list, __pyx_t_1) < 0) __PYX_ERR(0, 219, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-    /* "structureboost/prob_regressor.pyx":218
+    /* "structureboost/prob_regressor.pyx":220
  *         if fit_calibrators:
  *             self.calibrator_list=[]
  *             for i in range(self.num_forests):             # <<<<<<<<<<<<<<
  *                 self.calibrator_list.append(mli.SplineCalib(unity_prior=True,
  *                     unity_prior_weight=calib_pw))
  */
-    __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_cur_scope->__pyx_v_self, __pyx_n_s_num_forests); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 218, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_cur_scope->__pyx_v_self, __pyx_n_s_num_forests); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 220, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
-    __pyx_t_2 = __Pyx_PyObject_CallOneArg(__pyx_builtin_range, __pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 218, __pyx_L1_error)
+    __pyx_t_2 = __Pyx_PyObject_CallOneArg(__pyx_builtin_range, __pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 220, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
     if (likely(PyList_CheckExact(__pyx_t_2)) || PyTuple_CheckExact(__pyx_t_2)) {
       __pyx_t_1 = __pyx_t_2; __Pyx_INCREF(__pyx_t_1); __pyx_t_5 = 0;
       __pyx_t_6 = NULL;
     } else {
-      __pyx_t_5 = -1; __pyx_t_1 = PyObject_GetIter(__pyx_t_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 218, __pyx_L1_error)
+      __pyx_t_5 = -1; __pyx_t_1 = PyObject_GetIter(__pyx_t_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 220, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
-      __pyx_t_6 = Py_TYPE(__pyx_t_1)->tp_iternext; if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 218, __pyx_L1_error)
+      __pyx_t_6 = Py_TYPE(__pyx_t_1)->tp_iternext; if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 220, __pyx_L1_error)
     }
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
     for (;;) {
@@ -4790,17 +4869,17 @@ static PyObject *__pyx_pf_14structureboost_14prob_regressor_11PrestoBoost_2fit(C
         if (likely(PyList_CheckExact(__pyx_t_1))) {
           if (__pyx_t_5 >= PyList_GET_SIZE(__pyx_t_1)) break;
           #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-          __pyx_t_2 = PyList_GET_ITEM(__pyx_t_1, __pyx_t_5); __Pyx_INCREF(__pyx_t_2); __pyx_t_5++; if (unlikely(0 < 0)) __PYX_ERR(0, 218, __pyx_L1_error)
+          __pyx_t_2 = PyList_GET_ITEM(__pyx_t_1, __pyx_t_5); __Pyx_INCREF(__pyx_t_2); __pyx_t_5++; if (unlikely(0 < 0)) __PYX_ERR(0, 220, __pyx_L1_error)
           #else
-          __pyx_t_2 = PySequence_ITEM(__pyx_t_1, __pyx_t_5); __pyx_t_5++; if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 218, __pyx_L1_error)
+          __pyx_t_2 = PySequence_ITEM(__pyx_t_1, __pyx_t_5); __pyx_t_5++; if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 220, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_2);
           #endif
         } else {
           if (__pyx_t_5 >= PyTuple_GET_SIZE(__pyx_t_1)) break;
           #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-          __pyx_t_2 = PyTuple_GET_ITEM(__pyx_t_1, __pyx_t_5); __Pyx_INCREF(__pyx_t_2); __pyx_t_5++; if (unlikely(0 < 0)) __PYX_ERR(0, 218, __pyx_L1_error)
+          __pyx_t_2 = PyTuple_GET_ITEM(__pyx_t_1, __pyx_t_5); __Pyx_INCREF(__pyx_t_2); __pyx_t_5++; if (unlikely(0 < 0)) __PYX_ERR(0, 220, __pyx_L1_error)
           #else
-          __pyx_t_2 = PySequence_ITEM(__pyx_t_1, __pyx_t_5); __pyx_t_5++; if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 218, __pyx_L1_error)
+          __pyx_t_2 = PySequence_ITEM(__pyx_t_1, __pyx_t_5); __pyx_t_5++; if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 220, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_2);
           #endif
         }
@@ -4810,7 +4889,7 @@ static PyObject *__pyx_pf_14structureboost_14prob_regressor_11PrestoBoost_2fit(C
           PyObject* exc_type = PyErr_Occurred();
           if (exc_type) {
             if (likely(__Pyx_PyErr_GivenExceptionMatches(exc_type, PyExc_StopIteration))) PyErr_Clear();
-            else __PYX_ERR(0, 218, __pyx_L1_error)
+            else __PYX_ERR(0, 220, __pyx_L1_error)
           }
           break;
         }
@@ -4819,49 +4898,49 @@ static PyObject *__pyx_pf_14structureboost_14prob_regressor_11PrestoBoost_2fit(C
       __Pyx_XDECREF_SET(__pyx_v_i, __pyx_t_2);
       __pyx_t_2 = 0;
 
-      /* "structureboost/prob_regressor.pyx":219
+      /* "structureboost/prob_regressor.pyx":221
  *             self.calibrator_list=[]
  *             for i in range(self.num_forests):
  *                 self.calibrator_list.append(mli.SplineCalib(unity_prior=True,             # <<<<<<<<<<<<<<
  *                     unity_prior_weight=calib_pw))
  * 
  */
-      __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_cur_scope->__pyx_v_self, __pyx_n_s_calibrator_list); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 219, __pyx_L1_error)
+      __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_cur_scope->__pyx_v_self, __pyx_n_s_calibrator_list); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 221, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_2);
-      __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_n_s_mli); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 219, __pyx_L1_error)
+      __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_n_s_mli); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 221, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_3);
-      __pyx_t_7 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_SplineCalib); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 219, __pyx_L1_error)
+      __pyx_t_7 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_SplineCalib); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 221, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_7);
       __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-      __pyx_t_3 = __Pyx_PyDict_NewPresized(2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 219, __pyx_L1_error)
+      __pyx_t_3 = __Pyx_PyDict_NewPresized(2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 221, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_3);
-      if (PyDict_SetItem(__pyx_t_3, __pyx_n_s_unity_prior, Py_True) < 0) __PYX_ERR(0, 219, __pyx_L1_error)
+      if (PyDict_SetItem(__pyx_t_3, __pyx_n_s_unity_prior, Py_True) < 0) __PYX_ERR(0, 221, __pyx_L1_error)
 
-      /* "structureboost/prob_regressor.pyx":220
+      /* "structureboost/prob_regressor.pyx":222
  *             for i in range(self.num_forests):
  *                 self.calibrator_list.append(mli.SplineCalib(unity_prior=True,
  *                     unity_prior_weight=calib_pw))             # <<<<<<<<<<<<<<
  * 
  * 
  */
-      if (PyDict_SetItem(__pyx_t_3, __pyx_n_s_unity_prior_weight, __pyx_v_calib_pw) < 0) __PYX_ERR(0, 219, __pyx_L1_error)
+      if (PyDict_SetItem(__pyx_t_3, __pyx_n_s_unity_prior_weight, __pyx_v_calib_pw) < 0) __PYX_ERR(0, 221, __pyx_L1_error)
 
-      /* "structureboost/prob_regressor.pyx":219
+      /* "structureboost/prob_regressor.pyx":221
  *             self.calibrator_list=[]
  *             for i in range(self.num_forests):
  *                 self.calibrator_list.append(mli.SplineCalib(unity_prior=True,             # <<<<<<<<<<<<<<
  *                     unity_prior_weight=calib_pw))
  * 
  */
-      __pyx_t_8 = __Pyx_PyObject_Call(__pyx_t_7, __pyx_empty_tuple, __pyx_t_3); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 219, __pyx_L1_error)
+      __pyx_t_8 = __Pyx_PyObject_Call(__pyx_t_7, __pyx_empty_tuple, __pyx_t_3); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 221, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_8);
       __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
       __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-      __pyx_t_9 = __Pyx_PyObject_Append(__pyx_t_2, __pyx_t_8); if (unlikely(__pyx_t_9 == ((int)-1))) __PYX_ERR(0, 219, __pyx_L1_error)
+      __pyx_t_9 = __Pyx_PyObject_Append(__pyx_t_2, __pyx_t_8); if (unlikely(__pyx_t_9 == ((int)-1))) __PYX_ERR(0, 221, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
       __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
 
-      /* "structureboost/prob_regressor.pyx":218
+      /* "structureboost/prob_regressor.pyx":220
  *         if fit_calibrators:
  *             self.calibrator_list=[]
  *             for i in range(self.num_forests):             # <<<<<<<<<<<<<<
@@ -4871,7 +4950,7 @@ static PyObject *__pyx_pf_14structureboost_14prob_regressor_11PrestoBoost_2fit(C
     }
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-    /* "structureboost/prob_regressor.pyx":216
+    /* "structureboost/prob_regressor.pyx":218
  *         self.forest_list = []
  *         self.analyze_y_train(y_train)
  *         if fit_calibrators:             # <<<<<<<<<<<<<<
@@ -4880,7 +4959,7 @@ static PyObject *__pyx_pf_14structureboost_14prob_regressor_11PrestoBoost_2fit(C
  */
   }
 
-  /* "structureboost/prob_regressor.pyx":224
+  /* "structureboost/prob_regressor.pyx":226
  * 
  *         # Determine the binpt_vecs for all forests
  *         if binpt_vec_list is None: # base case, we compute it             # <<<<<<<<<<<<<<
@@ -4891,37 +4970,37 @@ static PyObject *__pyx_pf_14structureboost_14prob_regressor_11PrestoBoost_2fit(C
   __pyx_t_10 = (__pyx_t_4 != 0);
   if (__pyx_t_10) {
 
-    /* "structureboost/prob_regressor.pyx":225
+    /* "structureboost/prob_regressor.pyx":227
  *         # Determine the binpt_vecs for all forests
  *         if binpt_vec_list is None: # base case, we compute it
  *             self.binpt_vec_list=[]             # <<<<<<<<<<<<<<
  *             for i in range(self.num_forests):
  *                 curr_binpt_vec = self.get_bin_pts(y_train, self.random_seed+i)
  */
-    __pyx_t_1 = PyList_New(0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 225, __pyx_L1_error)
+    __pyx_t_1 = PyList_New(0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 227, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
-    if (__Pyx_PyObject_SetAttrStr(__pyx_cur_scope->__pyx_v_self, __pyx_n_s_binpt_vec_list, __pyx_t_1) < 0) __PYX_ERR(0, 225, __pyx_L1_error)
+    if (__Pyx_PyObject_SetAttrStr(__pyx_cur_scope->__pyx_v_self, __pyx_n_s_binpt_vec_list, __pyx_t_1) < 0) __PYX_ERR(0, 227, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-    /* "structureboost/prob_regressor.pyx":226
+    /* "structureboost/prob_regressor.pyx":228
  *         if binpt_vec_list is None: # base case, we compute it
  *             self.binpt_vec_list=[]
  *             for i in range(self.num_forests):             # <<<<<<<<<<<<<<
  *                 curr_binpt_vec = self.get_bin_pts(y_train, self.random_seed+i)
  *                 self.binpt_vec_list.append(curr_binpt_vec.copy())
  */
-    __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_cur_scope->__pyx_v_self, __pyx_n_s_num_forests); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 226, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_cur_scope->__pyx_v_self, __pyx_n_s_num_forests); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 228, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
-    __pyx_t_8 = __Pyx_PyObject_CallOneArg(__pyx_builtin_range, __pyx_t_1); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 226, __pyx_L1_error)
+    __pyx_t_8 = __Pyx_PyObject_CallOneArg(__pyx_builtin_range, __pyx_t_1); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 228, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_8);
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
     if (likely(PyList_CheckExact(__pyx_t_8)) || PyTuple_CheckExact(__pyx_t_8)) {
       __pyx_t_1 = __pyx_t_8; __Pyx_INCREF(__pyx_t_1); __pyx_t_5 = 0;
       __pyx_t_6 = NULL;
     } else {
-      __pyx_t_5 = -1; __pyx_t_1 = PyObject_GetIter(__pyx_t_8); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 226, __pyx_L1_error)
+      __pyx_t_5 = -1; __pyx_t_1 = PyObject_GetIter(__pyx_t_8); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 228, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
-      __pyx_t_6 = Py_TYPE(__pyx_t_1)->tp_iternext; if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 226, __pyx_L1_error)
+      __pyx_t_6 = Py_TYPE(__pyx_t_1)->tp_iternext; if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 228, __pyx_L1_error)
     }
     __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
     for (;;) {
@@ -4929,17 +5008,17 @@ static PyObject *__pyx_pf_14structureboost_14prob_regressor_11PrestoBoost_2fit(C
         if (likely(PyList_CheckExact(__pyx_t_1))) {
           if (__pyx_t_5 >= PyList_GET_SIZE(__pyx_t_1)) break;
           #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-          __pyx_t_8 = PyList_GET_ITEM(__pyx_t_1, __pyx_t_5); __Pyx_INCREF(__pyx_t_8); __pyx_t_5++; if (unlikely(0 < 0)) __PYX_ERR(0, 226, __pyx_L1_error)
+          __pyx_t_8 = PyList_GET_ITEM(__pyx_t_1, __pyx_t_5); __Pyx_INCREF(__pyx_t_8); __pyx_t_5++; if (unlikely(0 < 0)) __PYX_ERR(0, 228, __pyx_L1_error)
           #else
-          __pyx_t_8 = PySequence_ITEM(__pyx_t_1, __pyx_t_5); __pyx_t_5++; if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 226, __pyx_L1_error)
+          __pyx_t_8 = PySequence_ITEM(__pyx_t_1, __pyx_t_5); __pyx_t_5++; if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 228, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_8);
           #endif
         } else {
           if (__pyx_t_5 >= PyTuple_GET_SIZE(__pyx_t_1)) break;
           #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-          __pyx_t_8 = PyTuple_GET_ITEM(__pyx_t_1, __pyx_t_5); __Pyx_INCREF(__pyx_t_8); __pyx_t_5++; if (unlikely(0 < 0)) __PYX_ERR(0, 226, __pyx_L1_error)
+          __pyx_t_8 = PyTuple_GET_ITEM(__pyx_t_1, __pyx_t_5); __Pyx_INCREF(__pyx_t_8); __pyx_t_5++; if (unlikely(0 < 0)) __PYX_ERR(0, 228, __pyx_L1_error)
           #else
-          __pyx_t_8 = PySequence_ITEM(__pyx_t_1, __pyx_t_5); __pyx_t_5++; if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 226, __pyx_L1_error)
+          __pyx_t_8 = PySequence_ITEM(__pyx_t_1, __pyx_t_5); __pyx_t_5++; if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 228, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_8);
           #endif
         }
@@ -4949,7 +5028,7 @@ static PyObject *__pyx_pf_14structureboost_14prob_regressor_11PrestoBoost_2fit(C
           PyObject* exc_type = PyErr_Occurred();
           if (exc_type) {
             if (likely(__Pyx_PyErr_GivenExceptionMatches(exc_type, PyExc_StopIteration))) PyErr_Clear();
-            else __PYX_ERR(0, 226, __pyx_L1_error)
+            else __PYX_ERR(0, 228, __pyx_L1_error)
           }
           break;
         }
@@ -4958,18 +5037,18 @@ static PyObject *__pyx_pf_14structureboost_14prob_regressor_11PrestoBoost_2fit(C
       __Pyx_XDECREF_SET(__pyx_v_i, __pyx_t_8);
       __pyx_t_8 = 0;
 
-      /* "structureboost/prob_regressor.pyx":227
+      /* "structureboost/prob_regressor.pyx":229
  *             self.binpt_vec_list=[]
  *             for i in range(self.num_forests):
  *                 curr_binpt_vec = self.get_bin_pts(y_train, self.random_seed+i)             # <<<<<<<<<<<<<<
  *                 self.binpt_vec_list.append(curr_binpt_vec.copy())
  *         else:   # Special case - we are given a binpt vec list
  */
-      __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_cur_scope->__pyx_v_self, __pyx_n_s_get_bin_pts); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 227, __pyx_L1_error)
+      __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_cur_scope->__pyx_v_self, __pyx_n_s_get_bin_pts); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 229, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_2);
-      __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_cur_scope->__pyx_v_self, __pyx_n_s_random_seed); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 227, __pyx_L1_error)
+      __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_cur_scope->__pyx_v_self, __pyx_n_s_random_seed); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 229, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_3);
-      __pyx_t_7 = PyNumber_Add(__pyx_t_3, __pyx_v_i); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 227, __pyx_L1_error)
+      __pyx_t_7 = PyNumber_Add(__pyx_t_3, __pyx_v_i); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 229, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_7);
       __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
       __pyx_t_3 = NULL;
@@ -4987,7 +5066,7 @@ static PyObject *__pyx_pf_14structureboost_14prob_regressor_11PrestoBoost_2fit(C
       #if CYTHON_FAST_PYCALL
       if (PyFunction_Check(__pyx_t_2)) {
         PyObject *__pyx_temp[3] = {__pyx_t_3, __pyx_cur_scope->__pyx_v_y_train, __pyx_t_7};
-        __pyx_t_8 = __Pyx_PyFunction_FastCall(__pyx_t_2, __pyx_temp+1-__pyx_t_11, 2+__pyx_t_11); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 227, __pyx_L1_error)
+        __pyx_t_8 = __Pyx_PyFunction_FastCall(__pyx_t_2, __pyx_temp+1-__pyx_t_11, 2+__pyx_t_11); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 229, __pyx_L1_error)
         __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
         __Pyx_GOTREF(__pyx_t_8);
         __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
@@ -4996,14 +5075,14 @@ static PyObject *__pyx_pf_14structureboost_14prob_regressor_11PrestoBoost_2fit(C
       #if CYTHON_FAST_PYCCALL
       if (__Pyx_PyFastCFunction_Check(__pyx_t_2)) {
         PyObject *__pyx_temp[3] = {__pyx_t_3, __pyx_cur_scope->__pyx_v_y_train, __pyx_t_7};
-        __pyx_t_8 = __Pyx_PyCFunction_FastCall(__pyx_t_2, __pyx_temp+1-__pyx_t_11, 2+__pyx_t_11); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 227, __pyx_L1_error)
+        __pyx_t_8 = __Pyx_PyCFunction_FastCall(__pyx_t_2, __pyx_temp+1-__pyx_t_11, 2+__pyx_t_11); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 229, __pyx_L1_error)
         __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
         __Pyx_GOTREF(__pyx_t_8);
         __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
       } else
       #endif
       {
-        __pyx_t_12 = PyTuple_New(2+__pyx_t_11); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 227, __pyx_L1_error)
+        __pyx_t_12 = PyTuple_New(2+__pyx_t_11); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 229, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_12);
         if (__pyx_t_3) {
           __Pyx_GIVEREF(__pyx_t_3); PyTuple_SET_ITEM(__pyx_t_12, 0, __pyx_t_3); __pyx_t_3 = NULL;
@@ -5014,7 +5093,7 @@ static PyObject *__pyx_pf_14structureboost_14prob_regressor_11PrestoBoost_2fit(C
         __Pyx_GIVEREF(__pyx_t_7);
         PyTuple_SET_ITEM(__pyx_t_12, 1+__pyx_t_11, __pyx_t_7);
         __pyx_t_7 = 0;
-        __pyx_t_8 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_12, NULL); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 227, __pyx_L1_error)
+        __pyx_t_8 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_12, NULL); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 229, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_8);
         __Pyx_DECREF(__pyx_t_12); __pyx_t_12 = 0;
       }
@@ -5022,16 +5101,16 @@ static PyObject *__pyx_pf_14structureboost_14prob_regressor_11PrestoBoost_2fit(C
       __Pyx_XDECREF_SET(__pyx_v_curr_binpt_vec, __pyx_t_8);
       __pyx_t_8 = 0;
 
-      /* "structureboost/prob_regressor.pyx":228
+      /* "structureboost/prob_regressor.pyx":230
  *             for i in range(self.num_forests):
  *                 curr_binpt_vec = self.get_bin_pts(y_train, self.random_seed+i)
  *                 self.binpt_vec_list.append(curr_binpt_vec.copy())             # <<<<<<<<<<<<<<
  *         else:   # Special case - we are given a binpt vec list
  *             self.binpt_vec_list = binpt_vec_list
  */
-      __pyx_t_8 = __Pyx_PyObject_GetAttrStr(__pyx_cur_scope->__pyx_v_self, __pyx_n_s_binpt_vec_list); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 228, __pyx_L1_error)
+      __pyx_t_8 = __Pyx_PyObject_GetAttrStr(__pyx_cur_scope->__pyx_v_self, __pyx_n_s_binpt_vec_list); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 230, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_8);
-      __pyx_t_12 = __Pyx_PyObject_GetAttrStr(__pyx_v_curr_binpt_vec, __pyx_n_s_copy); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 228, __pyx_L1_error)
+      __pyx_t_12 = __Pyx_PyObject_GetAttrStr(__pyx_v_curr_binpt_vec, __pyx_n_s_copy); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 230, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_12);
       __pyx_t_7 = NULL;
       if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_12))) {
@@ -5045,14 +5124,14 @@ static PyObject *__pyx_pf_14structureboost_14prob_regressor_11PrestoBoost_2fit(C
       }
       __pyx_t_2 = (__pyx_t_7) ? __Pyx_PyObject_CallOneArg(__pyx_t_12, __pyx_t_7) : __Pyx_PyObject_CallNoArg(__pyx_t_12);
       __Pyx_XDECREF(__pyx_t_7); __pyx_t_7 = 0;
-      if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 228, __pyx_L1_error)
+      if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 230, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_2);
       __Pyx_DECREF(__pyx_t_12); __pyx_t_12 = 0;
-      __pyx_t_9 = __Pyx_PyObject_Append(__pyx_t_8, __pyx_t_2); if (unlikely(__pyx_t_9 == ((int)-1))) __PYX_ERR(0, 228, __pyx_L1_error)
+      __pyx_t_9 = __Pyx_PyObject_Append(__pyx_t_8, __pyx_t_2); if (unlikely(__pyx_t_9 == ((int)-1))) __PYX_ERR(0, 230, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
       __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-      /* "structureboost/prob_regressor.pyx":226
+      /* "structureboost/prob_regressor.pyx":228
  *         if binpt_vec_list is None: # base case, we compute it
  *             self.binpt_vec_list=[]
  *             for i in range(self.num_forests):             # <<<<<<<<<<<<<<
@@ -5062,7 +5141,7 @@ static PyObject *__pyx_pf_14structureboost_14prob_regressor_11PrestoBoost_2fit(C
     }
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-    /* "structureboost/prob_regressor.pyx":224
+    /* "structureboost/prob_regressor.pyx":226
  * 
  *         # Determine the binpt_vecs for all forests
  *         if binpt_vec_list is None: # base case, we compute it             # <<<<<<<<<<<<<<
@@ -5072,7 +5151,7 @@ static PyObject *__pyx_pf_14structureboost_14prob_regressor_11PrestoBoost_2fit(C
     goto __pyx_L6;
   }
 
-  /* "structureboost/prob_regressor.pyx":230
+  /* "structureboost/prob_regressor.pyx":232
  *                 self.binpt_vec_list.append(curr_binpt_vec.copy())
  *         else:   # Special case - we are given a binpt vec list
  *             self.binpt_vec_list = binpt_vec_list             # <<<<<<<<<<<<<<
@@ -5080,51 +5159,51 @@ static PyObject *__pyx_pf_14structureboost_14prob_regressor_11PrestoBoost_2fit(C
  *         # Determine the number of trees for each forest
  */
   /*else*/ {
-    if (__Pyx_PyObject_SetAttrStr(__pyx_cur_scope->__pyx_v_self, __pyx_n_s_binpt_vec_list, __pyx_v_binpt_vec_list) < 0) __PYX_ERR(0, 230, __pyx_L1_error)
+    if (__Pyx_PyObject_SetAttrStr(__pyx_cur_scope->__pyx_v_self, __pyx_n_s_binpt_vec_list, __pyx_v_binpt_vec_list) < 0) __PYX_ERR(0, 232, __pyx_L1_error)
   }
   __pyx_L6:;
 
-  /* "structureboost/prob_regressor.pyx":233
+  /* "structureboost/prob_regressor.pyx":235
  * 
  *         # Determine the number of trees for each forest
  *         if type(self.num_trees)==int:             # <<<<<<<<<<<<<<
  *             self.num_trees_of_forest = [self.num_trees]*self.num_forests
  *         else:
  */
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_cur_scope->__pyx_v_self, __pyx_n_s_num_trees); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 233, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_cur_scope->__pyx_v_self, __pyx_n_s_num_trees); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 235, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = PyObject_RichCompare(((PyObject *)Py_TYPE(__pyx_t_1)), ((PyObject *)(&PyInt_Type)), Py_EQ); __Pyx_XGOTREF(__pyx_t_2); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 233, __pyx_L1_error)
+  __pyx_t_2 = PyObject_RichCompare(((PyObject *)Py_TYPE(__pyx_t_1)), ((PyObject *)(&PyInt_Type)), Py_EQ); __Pyx_XGOTREF(__pyx_t_2); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 235, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_t_10 = __Pyx_PyObject_IsTrue(__pyx_t_2); if (unlikely(__pyx_t_10 < 0)) __PYX_ERR(0, 233, __pyx_L1_error)
+  __pyx_t_10 = __Pyx_PyObject_IsTrue(__pyx_t_2); if (unlikely(__pyx_t_10 < 0)) __PYX_ERR(0, 235, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   if (__pyx_t_10) {
 
-    /* "structureboost/prob_regressor.pyx":234
+    /* "structureboost/prob_regressor.pyx":236
  *         # Determine the number of trees for each forest
  *         if type(self.num_trees)==int:
  *             self.num_trees_of_forest = [self.num_trees]*self.num_forests             # <<<<<<<<<<<<<<
  *         else:
  *             # assume it is a list or array of ints
  */
-    __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_cur_scope->__pyx_v_self, __pyx_n_s_num_trees); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 234, __pyx_L1_error)
+    __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_cur_scope->__pyx_v_self, __pyx_n_s_num_trees); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 236, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
-    __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_cur_scope->__pyx_v_self, __pyx_n_s_num_forests); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 234, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_cur_scope->__pyx_v_self, __pyx_n_s_num_forests); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 236, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
-    __pyx_t_8 = PyList_New(1); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 234, __pyx_L1_error)
+    __pyx_t_8 = PyList_New(1); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 236, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_8);
     __Pyx_GIVEREF(__pyx_t_2);
     PyList_SET_ITEM(__pyx_t_8, 0, __pyx_t_2);
-    { PyObject* __pyx_temp = PyNumber_InPlaceMultiply(__pyx_t_8, __pyx_t_1); if (unlikely(!__pyx_temp)) __PYX_ERR(0, 234, __pyx_L1_error)
+    { PyObject* __pyx_temp = PyNumber_InPlaceMultiply(__pyx_t_8, __pyx_t_1); if (unlikely(!__pyx_temp)) __PYX_ERR(0, 236, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_temp);
       __Pyx_DECREF(__pyx_t_8);
       __pyx_t_8 = __pyx_temp;
     }
     __pyx_t_2 = 0;
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-    if (__Pyx_PyObject_SetAttrStr(__pyx_cur_scope->__pyx_v_self, __pyx_n_s_num_trees_of_forest, __pyx_t_8) < 0) __PYX_ERR(0, 234, __pyx_L1_error)
+    if (__Pyx_PyObject_SetAttrStr(__pyx_cur_scope->__pyx_v_self, __pyx_n_s_num_trees_of_forest, __pyx_t_8) < 0) __PYX_ERR(0, 236, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
 
-    /* "structureboost/prob_regressor.pyx":233
+    /* "structureboost/prob_regressor.pyx":235
  * 
  *         # Determine the number of trees for each forest
  *         if type(self.num_trees)==int:             # <<<<<<<<<<<<<<
@@ -5134,7 +5213,7 @@ static PyObject *__pyx_pf_14structureboost_14prob_regressor_11PrestoBoost_2fit(C
     goto __pyx_L9;
   }
 
-  /* "structureboost/prob_regressor.pyx":237
+  /* "structureboost/prob_regressor.pyx":239
  *         else:
  *             # assume it is a list or array of ints
  *             self.num_trees_of_forest = self.num_trees             # <<<<<<<<<<<<<<
@@ -5142,32 +5221,32 @@ static PyObject *__pyx_pf_14structureboost_14prob_regressor_11PrestoBoost_2fit(C
  *         for i in range(self.num_forests):
  */
   /*else*/ {
-    __pyx_t_8 = __Pyx_PyObject_GetAttrStr(__pyx_cur_scope->__pyx_v_self, __pyx_n_s_num_trees); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 237, __pyx_L1_error)
+    __pyx_t_8 = __Pyx_PyObject_GetAttrStr(__pyx_cur_scope->__pyx_v_self, __pyx_n_s_num_trees); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 239, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_8);
-    if (__Pyx_PyObject_SetAttrStr(__pyx_cur_scope->__pyx_v_self, __pyx_n_s_num_trees_of_forest, __pyx_t_8) < 0) __PYX_ERR(0, 237, __pyx_L1_error)
+    if (__Pyx_PyObject_SetAttrStr(__pyx_cur_scope->__pyx_v_self, __pyx_n_s_num_trees_of_forest, __pyx_t_8) < 0) __PYX_ERR(0, 239, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
   }
   __pyx_L9:;
 
-  /* "structureboost/prob_regressor.pyx":239
+  /* "structureboost/prob_regressor.pyx":241
  *             self.num_trees_of_forest = self.num_trees
  * 
  *         for i in range(self.num_forests):             # <<<<<<<<<<<<<<
  *             # Set up forest with appropriate binpt_vec, number of trees
  *             self.forest_list.append(ProbRegressorUnit(
  */
-  __pyx_t_8 = __Pyx_PyObject_GetAttrStr(__pyx_cur_scope->__pyx_v_self, __pyx_n_s_num_forests); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 239, __pyx_L1_error)
+  __pyx_t_8 = __Pyx_PyObject_GetAttrStr(__pyx_cur_scope->__pyx_v_self, __pyx_n_s_num_forests); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 241, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_8);
-  __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_builtin_range, __pyx_t_8); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 239, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_builtin_range, __pyx_t_8); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 241, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
   if (likely(PyList_CheckExact(__pyx_t_1)) || PyTuple_CheckExact(__pyx_t_1)) {
     __pyx_t_8 = __pyx_t_1; __Pyx_INCREF(__pyx_t_8); __pyx_t_5 = 0;
     __pyx_t_6 = NULL;
   } else {
-    __pyx_t_5 = -1; __pyx_t_8 = PyObject_GetIter(__pyx_t_1); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 239, __pyx_L1_error)
+    __pyx_t_5 = -1; __pyx_t_8 = PyObject_GetIter(__pyx_t_1); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 241, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_8);
-    __pyx_t_6 = Py_TYPE(__pyx_t_8)->tp_iternext; if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 239, __pyx_L1_error)
+    __pyx_t_6 = Py_TYPE(__pyx_t_8)->tp_iternext; if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 241, __pyx_L1_error)
   }
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   for (;;) {
@@ -5175,17 +5254,17 @@ static PyObject *__pyx_pf_14structureboost_14prob_regressor_11PrestoBoost_2fit(C
       if (likely(PyList_CheckExact(__pyx_t_8))) {
         if (__pyx_t_5 >= PyList_GET_SIZE(__pyx_t_8)) break;
         #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-        __pyx_t_1 = PyList_GET_ITEM(__pyx_t_8, __pyx_t_5); __Pyx_INCREF(__pyx_t_1); __pyx_t_5++; if (unlikely(0 < 0)) __PYX_ERR(0, 239, __pyx_L1_error)
+        __pyx_t_1 = PyList_GET_ITEM(__pyx_t_8, __pyx_t_5); __Pyx_INCREF(__pyx_t_1); __pyx_t_5++; if (unlikely(0 < 0)) __PYX_ERR(0, 241, __pyx_L1_error)
         #else
-        __pyx_t_1 = PySequence_ITEM(__pyx_t_8, __pyx_t_5); __pyx_t_5++; if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 239, __pyx_L1_error)
+        __pyx_t_1 = PySequence_ITEM(__pyx_t_8, __pyx_t_5); __pyx_t_5++; if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 241, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_1);
         #endif
       } else {
         if (__pyx_t_5 >= PyTuple_GET_SIZE(__pyx_t_8)) break;
         #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-        __pyx_t_1 = PyTuple_GET_ITEM(__pyx_t_8, __pyx_t_5); __Pyx_INCREF(__pyx_t_1); __pyx_t_5++; if (unlikely(0 < 0)) __PYX_ERR(0, 239, __pyx_L1_error)
+        __pyx_t_1 = PyTuple_GET_ITEM(__pyx_t_8, __pyx_t_5); __Pyx_INCREF(__pyx_t_1); __pyx_t_5++; if (unlikely(0 < 0)) __PYX_ERR(0, 241, __pyx_L1_error)
         #else
-        __pyx_t_1 = PySequence_ITEM(__pyx_t_8, __pyx_t_5); __pyx_t_5++; if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 239, __pyx_L1_error)
+        __pyx_t_1 = PySequence_ITEM(__pyx_t_8, __pyx_t_5); __pyx_t_5++; if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 241, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_1);
         #endif
       }
@@ -5195,7 +5274,7 @@ static PyObject *__pyx_pf_14structureboost_14prob_regressor_11PrestoBoost_2fit(C
         PyObject* exc_type = PyErr_Occurred();
         if (exc_type) {
           if (likely(__Pyx_PyErr_GivenExceptionMatches(exc_type, PyExc_StopIteration))) PyErr_Clear();
-          else __PYX_ERR(0, 239, __pyx_L1_error)
+          else __PYX_ERR(0, 241, __pyx_L1_error)
         }
         break;
       }
@@ -5204,48 +5283,48 @@ static PyObject *__pyx_pf_14structureboost_14prob_regressor_11PrestoBoost_2fit(C
     __Pyx_XDECREF_SET(__pyx_v_i, __pyx_t_1);
     __pyx_t_1 = 0;
 
-    /* "structureboost/prob_regressor.pyx":241
+    /* "structureboost/prob_regressor.pyx":243
  *         for i in range(self.num_forests):
  *             # Set up forest with appropriate binpt_vec, number of trees
  *             self.forest_list.append(ProbRegressorUnit(             # <<<<<<<<<<<<<<
  *                                 num_trees = self.num_trees_of_forest[i],
  *                                 bin_vec = self.binpt_vec_list[i].copy(),
  */
-    __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_cur_scope->__pyx_v_self, __pyx_n_s_forest_list); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 241, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_cur_scope->__pyx_v_self, __pyx_n_s_forest_list); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 243, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
-    __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_ProbRegressorUnit); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 241, __pyx_L1_error)
+    __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_ProbRegressorUnit); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 243, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
 
-    /* "structureboost/prob_regressor.pyx":242
+    /* "structureboost/prob_regressor.pyx":244
  *             # Set up forest with appropriate binpt_vec, number of trees
  *             self.forest_list.append(ProbRegressorUnit(
  *                                 num_trees = self.num_trees_of_forest[i],             # <<<<<<<<<<<<<<
  *                                 bin_vec = self.binpt_vec_list[i].copy(),
  *                                 feature_configs=self.feature_configs,
  */
-    __pyx_t_12 = __Pyx_PyDict_NewPresized(10); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 242, __pyx_L1_error)
+    __pyx_t_12 = __Pyx_PyDict_NewPresized(12); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 244, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_12);
-    __pyx_t_7 = __Pyx_PyObject_GetAttrStr(__pyx_cur_scope->__pyx_v_self, __pyx_n_s_num_trees_of_forest); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 242, __pyx_L1_error)
+    __pyx_t_7 = __Pyx_PyObject_GetAttrStr(__pyx_cur_scope->__pyx_v_self, __pyx_n_s_num_trees_of_forest); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 244, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_7);
-    __pyx_t_3 = __Pyx_PyObject_GetItem(__pyx_t_7, __pyx_v_i); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 242, __pyx_L1_error)
+    __pyx_t_3 = __Pyx_PyObject_GetItem(__pyx_t_7, __pyx_v_i); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 244, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
     __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
-    if (PyDict_SetItem(__pyx_t_12, __pyx_n_s_num_trees, __pyx_t_3) < 0) __PYX_ERR(0, 242, __pyx_L1_error)
+    if (PyDict_SetItem(__pyx_t_12, __pyx_n_s_num_trees, __pyx_t_3) < 0) __PYX_ERR(0, 244, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-    /* "structureboost/prob_regressor.pyx":243
+    /* "structureboost/prob_regressor.pyx":245
  *             self.forest_list.append(ProbRegressorUnit(
  *                                 num_trees = self.num_trees_of_forest[i],
  *                                 bin_vec = self.binpt_vec_list[i].copy(),             # <<<<<<<<<<<<<<
  *                                 feature_configs=self.feature_configs,
  *                                 learning_rate=self.learning_rate,
  */
-    __pyx_t_7 = __Pyx_PyObject_GetAttrStr(__pyx_cur_scope->__pyx_v_self, __pyx_n_s_binpt_vec_list); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 243, __pyx_L1_error)
+    __pyx_t_7 = __Pyx_PyObject_GetAttrStr(__pyx_cur_scope->__pyx_v_self, __pyx_n_s_binpt_vec_list); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 245, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_7);
-    __pyx_t_13 = __Pyx_PyObject_GetItem(__pyx_t_7, __pyx_v_i); if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 243, __pyx_L1_error)
+    __pyx_t_13 = __Pyx_PyObject_GetItem(__pyx_t_7, __pyx_v_i); if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 245, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_13);
     __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
-    __pyx_t_7 = __Pyx_PyObject_GetAttrStr(__pyx_t_13, __pyx_n_s_copy); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 243, __pyx_L1_error)
+    __pyx_t_7 = __Pyx_PyObject_GetAttrStr(__pyx_t_13, __pyx_n_s_copy); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 245, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_7);
     __Pyx_DECREF(__pyx_t_13); __pyx_t_13 = 0;
     __pyx_t_13 = NULL;
@@ -5260,119 +5339,143 @@ static PyObject *__pyx_pf_14structureboost_14prob_regressor_11PrestoBoost_2fit(C
     }
     __pyx_t_3 = (__pyx_t_13) ? __Pyx_PyObject_CallOneArg(__pyx_t_7, __pyx_t_13) : __Pyx_PyObject_CallNoArg(__pyx_t_7);
     __Pyx_XDECREF(__pyx_t_13); __pyx_t_13 = 0;
-    if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 243, __pyx_L1_error)
+    if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 245, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
     __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
-    if (PyDict_SetItem(__pyx_t_12, __pyx_n_s_bin_vec, __pyx_t_3) < 0) __PYX_ERR(0, 242, __pyx_L1_error)
+    if (PyDict_SetItem(__pyx_t_12, __pyx_n_s_bin_vec, __pyx_t_3) < 0) __PYX_ERR(0, 244, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-    /* "structureboost/prob_regressor.pyx":244
+    /* "structureboost/prob_regressor.pyx":246
  *                                 num_trees = self.num_trees_of_forest[i],
  *                                 bin_vec = self.binpt_vec_list[i].copy(),
  *                                 feature_configs=self.feature_configs,             # <<<<<<<<<<<<<<
  *                                 learning_rate=self.learning_rate,
  *                                 max_depth=self.max_depth,
  */
-    __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_cur_scope->__pyx_v_self, __pyx_n_s_feature_configs); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 244, __pyx_L1_error)
+    __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_cur_scope->__pyx_v_self, __pyx_n_s_feature_configs); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 246, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
-    if (PyDict_SetItem(__pyx_t_12, __pyx_n_s_feature_configs, __pyx_t_3) < 0) __PYX_ERR(0, 242, __pyx_L1_error)
+    if (PyDict_SetItem(__pyx_t_12, __pyx_n_s_feature_configs, __pyx_t_3) < 0) __PYX_ERR(0, 244, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-    /* "structureboost/prob_regressor.pyx":245
+    /* "structureboost/prob_regressor.pyx":247
  *                                 bin_vec = self.binpt_vec_list[i].copy(),
  *                                 feature_configs=self.feature_configs,
  *                                 learning_rate=self.learning_rate,             # <<<<<<<<<<<<<<
  *                                 max_depth=self.max_depth,
  *                                 structure_strides=self.structure_strides,
  */
-    __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_cur_scope->__pyx_v_self, __pyx_n_s_learning_rate); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 245, __pyx_L1_error)
+    __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_cur_scope->__pyx_v_self, __pyx_n_s_learning_rate); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 247, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
-    if (PyDict_SetItem(__pyx_t_12, __pyx_n_s_learning_rate, __pyx_t_3) < 0) __PYX_ERR(0, 242, __pyx_L1_error)
+    if (PyDict_SetItem(__pyx_t_12, __pyx_n_s_learning_rate, __pyx_t_3) < 0) __PYX_ERR(0, 244, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-    /* "structureboost/prob_regressor.pyx":246
+    /* "structureboost/prob_regressor.pyx":248
  *                                 feature_configs=self.feature_configs,
  *                                 learning_rate=self.learning_rate,
  *                                 max_depth=self.max_depth,             # <<<<<<<<<<<<<<
  *                                 structure_strides=self.structure_strides,
  *                                 random_seed = self.random_seed+i,
  */
-    __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_cur_scope->__pyx_v_self, __pyx_n_s_max_depth); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 246, __pyx_L1_error)
+    __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_cur_scope->__pyx_v_self, __pyx_n_s_max_depth); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 248, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
-    if (PyDict_SetItem(__pyx_t_12, __pyx_n_s_max_depth, __pyx_t_3) < 0) __PYX_ERR(0, 242, __pyx_L1_error)
+    if (PyDict_SetItem(__pyx_t_12, __pyx_n_s_max_depth, __pyx_t_3) < 0) __PYX_ERR(0, 244, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-    /* "structureboost/prob_regressor.pyx":247
+    /* "structureboost/prob_regressor.pyx":249
  *                                 learning_rate=self.learning_rate,
  *                                 max_depth=self.max_depth,
  *                                 structure_strides=self.structure_strides,             # <<<<<<<<<<<<<<
  *                                 random_seed = self.random_seed+i,
  *                                 sw=self.singleton_weight,
  */
-    __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_cur_scope->__pyx_v_self, __pyx_n_s_structure_strides); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 247, __pyx_L1_error)
+    __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_cur_scope->__pyx_v_self, __pyx_n_s_structure_strides); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 249, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
-    if (PyDict_SetItem(__pyx_t_12, __pyx_n_s_structure_strides, __pyx_t_3) < 0) __PYX_ERR(0, 242, __pyx_L1_error)
+    if (PyDict_SetItem(__pyx_t_12, __pyx_n_s_structure_strides, __pyx_t_3) < 0) __PYX_ERR(0, 244, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-    /* "structureboost/prob_regressor.pyx":248
+    /* "structureboost/prob_regressor.pyx":250
  *                                 max_depth=self.max_depth,
  *                                 structure_strides=self.structure_strides,
  *                                 random_seed = self.random_seed+i,             # <<<<<<<<<<<<<<
  *                                 sw=self.singleton_weight,
- *                                 lp=self.strides_lp, hp=self.strides_hp))
+ *                                 lp=self.strides_lp, hp=self.strides_hp,
  */
-    __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_cur_scope->__pyx_v_self, __pyx_n_s_random_seed); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 248, __pyx_L1_error)
+    __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_cur_scope->__pyx_v_self, __pyx_n_s_random_seed); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 250, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
-    __pyx_t_7 = PyNumber_Add(__pyx_t_3, __pyx_v_i); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 248, __pyx_L1_error)
+    __pyx_t_7 = PyNumber_Add(__pyx_t_3, __pyx_v_i); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 250, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_7);
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-    if (PyDict_SetItem(__pyx_t_12, __pyx_n_s_random_seed, __pyx_t_7) < 0) __PYX_ERR(0, 242, __pyx_L1_error)
+    if (PyDict_SetItem(__pyx_t_12, __pyx_n_s_random_seed, __pyx_t_7) < 0) __PYX_ERR(0, 244, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
 
-    /* "structureboost/prob_regressor.pyx":249
+    /* "structureboost/prob_regressor.pyx":251
  *                                 structure_strides=self.structure_strides,
  *                                 random_seed = self.random_seed+i,
  *                                 sw=self.singleton_weight,             # <<<<<<<<<<<<<<
- *                                 lp=self.strides_lp, hp=self.strides_hp))
- * 
+ *                                 lp=self.strides_lp, hp=self.strides_hp,
+ *                                 prec_digits=self.prec_digits,
  */
-    __pyx_t_7 = __Pyx_PyObject_GetAttrStr(__pyx_cur_scope->__pyx_v_self, __pyx_n_s_singleton_weight); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 249, __pyx_L1_error)
+    __pyx_t_7 = __Pyx_PyObject_GetAttrStr(__pyx_cur_scope->__pyx_v_self, __pyx_n_s_singleton_weight); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 251, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_7);
-    if (PyDict_SetItem(__pyx_t_12, __pyx_n_s_sw, __pyx_t_7) < 0) __PYX_ERR(0, 242, __pyx_L1_error)
+    if (PyDict_SetItem(__pyx_t_12, __pyx_n_s_sw, __pyx_t_7) < 0) __PYX_ERR(0, 244, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
 
-    /* "structureboost/prob_regressor.pyx":250
+    /* "structureboost/prob_regressor.pyx":252
  *                                 random_seed = self.random_seed+i,
  *                                 sw=self.singleton_weight,
- *                                 lp=self.strides_lp, hp=self.strides_hp))             # <<<<<<<<<<<<<<
+ *                                 lp=self.strides_lp, hp=self.strides_hp,             # <<<<<<<<<<<<<<
+ *                                 prec_digits=self.prec_digits,
+ *                                 default_configs=self.default_configs))
+ */
+    __pyx_t_7 = __Pyx_PyObject_GetAttrStr(__pyx_cur_scope->__pyx_v_self, __pyx_n_s_strides_lp); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 252, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_7);
+    if (PyDict_SetItem(__pyx_t_12, __pyx_n_s_lp, __pyx_t_7) < 0) __PYX_ERR(0, 244, __pyx_L1_error)
+    __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
+    __pyx_t_7 = __Pyx_PyObject_GetAttrStr(__pyx_cur_scope->__pyx_v_self, __pyx_n_s_strides_hp); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 252, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_7);
+    if (PyDict_SetItem(__pyx_t_12, __pyx_n_s_hp, __pyx_t_7) < 0) __PYX_ERR(0, 244, __pyx_L1_error)
+    __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
+
+    /* "structureboost/prob_regressor.pyx":253
+ *                                 sw=self.singleton_weight,
+ *                                 lp=self.strides_lp, hp=self.strides_hp,
+ *                                 prec_digits=self.prec_digits,             # <<<<<<<<<<<<<<
+ *                                 default_configs=self.default_configs))
+ * 
+ */
+    __pyx_t_7 = __Pyx_PyObject_GetAttrStr(__pyx_cur_scope->__pyx_v_self, __pyx_n_s_prec_digits); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 253, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_7);
+    if (PyDict_SetItem(__pyx_t_12, __pyx_n_s_prec_digits, __pyx_t_7) < 0) __PYX_ERR(0, 244, __pyx_L1_error)
+    __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
+
+    /* "structureboost/prob_regressor.pyx":254
+ *                                 lp=self.strides_lp, hp=self.strides_hp,
+ *                                 prec_digits=self.prec_digits,
+ *                                 default_configs=self.default_configs))             # <<<<<<<<<<<<<<
  * 
  * 
  */
-    __pyx_t_7 = __Pyx_PyObject_GetAttrStr(__pyx_cur_scope->__pyx_v_self, __pyx_n_s_strides_lp); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 250, __pyx_L1_error)
+    __pyx_t_7 = __Pyx_PyObject_GetAttrStr(__pyx_cur_scope->__pyx_v_self, __pyx_n_s_default_configs); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 254, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_7);
-    if (PyDict_SetItem(__pyx_t_12, __pyx_n_s_lp, __pyx_t_7) < 0) __PYX_ERR(0, 242, __pyx_L1_error)
-    __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
-    __pyx_t_7 = __Pyx_PyObject_GetAttrStr(__pyx_cur_scope->__pyx_v_self, __pyx_n_s_strides_hp); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 250, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_7);
-    if (PyDict_SetItem(__pyx_t_12, __pyx_n_s_hp, __pyx_t_7) < 0) __PYX_ERR(0, 242, __pyx_L1_error)
+    if (PyDict_SetItem(__pyx_t_12, __pyx_n_s_default_configs, __pyx_t_7) < 0) __PYX_ERR(0, 244, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
 
-    /* "structureboost/prob_regressor.pyx":241
+    /* "structureboost/prob_regressor.pyx":243
  *         for i in range(self.num_forests):
  *             # Set up forest with appropriate binpt_vec, number of trees
  *             self.forest_list.append(ProbRegressorUnit(             # <<<<<<<<<<<<<<
  *                                 num_trees = self.num_trees_of_forest[i],
  *                                 bin_vec = self.binpt_vec_list[i].copy(),
  */
-    __pyx_t_7 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_empty_tuple, __pyx_t_12); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 241, __pyx_L1_error)
+    __pyx_t_7 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_empty_tuple, __pyx_t_12); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 243, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_7);
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
     __Pyx_DECREF(__pyx_t_12); __pyx_t_12 = 0;
-    __pyx_t_9 = __Pyx_PyObject_Append(__pyx_t_1, __pyx_t_7); if (unlikely(__pyx_t_9 == ((int)-1))) __PYX_ERR(0, 241, __pyx_L1_error)
+    __pyx_t_9 = __Pyx_PyObject_Append(__pyx_t_1, __pyx_t_7); if (unlikely(__pyx_t_9 == ((int)-1))) __PYX_ERR(0, 243, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
     __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
 
-    /* "structureboost/prob_regressor.pyx":239
+    /* "structureboost/prob_regressor.pyx":241
  *             self.num_trees_of_forest = self.num_trees
  * 
  *         for i in range(self.num_forests):             # <<<<<<<<<<<<<<
@@ -5382,38 +5485,38 @@ static PyObject *__pyx_pf_14structureboost_14prob_regressor_11PrestoBoost_2fit(C
   }
   __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
 
-  /* "structureboost/prob_regressor.pyx":253
+  /* "structureboost/prob_regressor.pyx":257
  * 
  * 
  *         if n_jobs==1: # if not parallelizing             # <<<<<<<<<<<<<<
  *             # Fit as appropriate using early stopping or not
  *             for i in range(self.num_forests):
  */
-  __pyx_t_8 = __Pyx_PyInt_EqObjC(__pyx_v_n_jobs, __pyx_int_1, 1, 0); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 253, __pyx_L1_error)
+  __pyx_t_8 = __Pyx_PyInt_EqObjC(__pyx_v_n_jobs, __pyx_int_1, 1, 0); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 257, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_8);
-  __pyx_t_10 = __Pyx_PyObject_IsTrue(__pyx_t_8); if (unlikely(__pyx_t_10 < 0)) __PYX_ERR(0, 253, __pyx_L1_error)
+  __pyx_t_10 = __Pyx_PyObject_IsTrue(__pyx_t_8); if (unlikely(__pyx_t_10 < 0)) __PYX_ERR(0, 257, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
   if (__pyx_t_10) {
 
-    /* "structureboost/prob_regressor.pyx":255
+    /* "structureboost/prob_regressor.pyx":259
  *         if n_jobs==1: # if not parallelizing
  *             # Fit as appropriate using early stopping or not
  *             for i in range(self.num_forests):             # <<<<<<<<<<<<<<
  *                 print(f'Training Forest {i}')
  *                 if eval_set is None:
  */
-    __pyx_t_8 = __Pyx_PyObject_GetAttrStr(__pyx_cur_scope->__pyx_v_self, __pyx_n_s_num_forests); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 255, __pyx_L1_error)
+    __pyx_t_8 = __Pyx_PyObject_GetAttrStr(__pyx_cur_scope->__pyx_v_self, __pyx_n_s_num_forests); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 259, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_8);
-    __pyx_t_7 = __Pyx_PyObject_CallOneArg(__pyx_builtin_range, __pyx_t_8); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 255, __pyx_L1_error)
+    __pyx_t_7 = __Pyx_PyObject_CallOneArg(__pyx_builtin_range, __pyx_t_8); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 259, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_7);
     __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
     if (likely(PyList_CheckExact(__pyx_t_7)) || PyTuple_CheckExact(__pyx_t_7)) {
       __pyx_t_8 = __pyx_t_7; __Pyx_INCREF(__pyx_t_8); __pyx_t_5 = 0;
       __pyx_t_6 = NULL;
     } else {
-      __pyx_t_5 = -1; __pyx_t_8 = PyObject_GetIter(__pyx_t_7); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 255, __pyx_L1_error)
+      __pyx_t_5 = -1; __pyx_t_8 = PyObject_GetIter(__pyx_t_7); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 259, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_8);
-      __pyx_t_6 = Py_TYPE(__pyx_t_8)->tp_iternext; if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 255, __pyx_L1_error)
+      __pyx_t_6 = Py_TYPE(__pyx_t_8)->tp_iternext; if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 259, __pyx_L1_error)
     }
     __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
     for (;;) {
@@ -5421,17 +5524,17 @@ static PyObject *__pyx_pf_14structureboost_14prob_regressor_11PrestoBoost_2fit(C
         if (likely(PyList_CheckExact(__pyx_t_8))) {
           if (__pyx_t_5 >= PyList_GET_SIZE(__pyx_t_8)) break;
           #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-          __pyx_t_7 = PyList_GET_ITEM(__pyx_t_8, __pyx_t_5); __Pyx_INCREF(__pyx_t_7); __pyx_t_5++; if (unlikely(0 < 0)) __PYX_ERR(0, 255, __pyx_L1_error)
+          __pyx_t_7 = PyList_GET_ITEM(__pyx_t_8, __pyx_t_5); __Pyx_INCREF(__pyx_t_7); __pyx_t_5++; if (unlikely(0 < 0)) __PYX_ERR(0, 259, __pyx_L1_error)
           #else
-          __pyx_t_7 = PySequence_ITEM(__pyx_t_8, __pyx_t_5); __pyx_t_5++; if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 255, __pyx_L1_error)
+          __pyx_t_7 = PySequence_ITEM(__pyx_t_8, __pyx_t_5); __pyx_t_5++; if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 259, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_7);
           #endif
         } else {
           if (__pyx_t_5 >= PyTuple_GET_SIZE(__pyx_t_8)) break;
           #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-          __pyx_t_7 = PyTuple_GET_ITEM(__pyx_t_8, __pyx_t_5); __Pyx_INCREF(__pyx_t_7); __pyx_t_5++; if (unlikely(0 < 0)) __PYX_ERR(0, 255, __pyx_L1_error)
+          __pyx_t_7 = PyTuple_GET_ITEM(__pyx_t_8, __pyx_t_5); __Pyx_INCREF(__pyx_t_7); __pyx_t_5++; if (unlikely(0 < 0)) __PYX_ERR(0, 259, __pyx_L1_error)
           #else
-          __pyx_t_7 = PySequence_ITEM(__pyx_t_8, __pyx_t_5); __pyx_t_5++; if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 255, __pyx_L1_error)
+          __pyx_t_7 = PySequence_ITEM(__pyx_t_8, __pyx_t_5); __pyx_t_5++; if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 259, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_7);
           #endif
         }
@@ -5441,7 +5544,7 @@ static PyObject *__pyx_pf_14structureboost_14prob_regressor_11PrestoBoost_2fit(C
           PyObject* exc_type = PyErr_Occurred();
           if (exc_type) {
             if (likely(__Pyx_PyErr_GivenExceptionMatches(exc_type, PyExc_StopIteration))) PyErr_Clear();
-            else __PYX_ERR(0, 255, __pyx_L1_error)
+            else __PYX_ERR(0, 259, __pyx_L1_error)
           }
           break;
         }
@@ -5450,24 +5553,24 @@ static PyObject *__pyx_pf_14structureboost_14prob_regressor_11PrestoBoost_2fit(C
       __Pyx_XDECREF_SET(__pyx_v_i, __pyx_t_7);
       __pyx_t_7 = 0;
 
-      /* "structureboost/prob_regressor.pyx":256
+      /* "structureboost/prob_regressor.pyx":260
  *             # Fit as appropriate using early stopping or not
  *             for i in range(self.num_forests):
  *                 print(f'Training Forest {i}')             # <<<<<<<<<<<<<<
  *                 if eval_set is None:
  *                     self.forest_list[i].fit(X_train, y_train, eval_freq=eval_freq)
  */
-      __pyx_t_7 = __Pyx_PyObject_FormatSimple(__pyx_v_i, __pyx_empty_unicode); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 256, __pyx_L1_error)
+      __pyx_t_7 = __Pyx_PyObject_FormatSimple(__pyx_v_i, __pyx_empty_unicode); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 260, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_7);
-      __pyx_t_1 = __Pyx_PyUnicode_Concat(__pyx_kp_u_Training_Forest, __pyx_t_7); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 256, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyUnicode_Concat(__pyx_kp_u_Training_Forest, __pyx_t_7); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 260, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
       __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
-      __pyx_t_7 = __Pyx_PyObject_CallOneArg(__pyx_builtin_print, __pyx_t_1); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 256, __pyx_L1_error)
+      __pyx_t_7 = __Pyx_PyObject_CallOneArg(__pyx_builtin_print, __pyx_t_1); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 260, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_7);
       __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
       __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
 
-      /* "structureboost/prob_regressor.pyx":257
+      /* "structureboost/prob_regressor.pyx":261
  *             for i in range(self.num_forests):
  *                 print(f'Training Forest {i}')
  *                 if eval_set is None:             # <<<<<<<<<<<<<<
@@ -5478,22 +5581,22 @@ static PyObject *__pyx_pf_14structureboost_14prob_regressor_11PrestoBoost_2fit(C
       __pyx_t_4 = (__pyx_t_10 != 0);
       if (__pyx_t_4) {
 
-        /* "structureboost/prob_regressor.pyx":258
+        /* "structureboost/prob_regressor.pyx":262
  *                 print(f'Training Forest {i}')
  *                 if eval_set is None:
  *                     self.forest_list[i].fit(X_train, y_train, eval_freq=eval_freq)             # <<<<<<<<<<<<<<
  *                 else:
  *                     self.forest_list[i].fit(X_train, y_train, eval_set, eval_freq,
  */
-        __pyx_t_7 = __Pyx_PyObject_GetAttrStr(__pyx_cur_scope->__pyx_v_self, __pyx_n_s_forest_list); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 258, __pyx_L1_error)
+        __pyx_t_7 = __Pyx_PyObject_GetAttrStr(__pyx_cur_scope->__pyx_v_self, __pyx_n_s_forest_list); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 262, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_7);
-        __pyx_t_1 = __Pyx_PyObject_GetItem(__pyx_t_7, __pyx_v_i); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 258, __pyx_L1_error)
+        __pyx_t_1 = __Pyx_PyObject_GetItem(__pyx_t_7, __pyx_v_i); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 262, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_1);
         __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
-        __pyx_t_7 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_fit); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 258, __pyx_L1_error)
+        __pyx_t_7 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_fit); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 262, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_7);
         __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-        __pyx_t_1 = PyTuple_New(2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 258, __pyx_L1_error)
+        __pyx_t_1 = PyTuple_New(2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 262, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_1);
         __Pyx_INCREF(__pyx_cur_scope->__pyx_v_X_train);
         __Pyx_GIVEREF(__pyx_cur_scope->__pyx_v_X_train);
@@ -5501,17 +5604,17 @@ static PyObject *__pyx_pf_14structureboost_14prob_regressor_11PrestoBoost_2fit(C
         __Pyx_INCREF(__pyx_cur_scope->__pyx_v_y_train);
         __Pyx_GIVEREF(__pyx_cur_scope->__pyx_v_y_train);
         PyTuple_SET_ITEM(__pyx_t_1, 1, __pyx_cur_scope->__pyx_v_y_train);
-        __pyx_t_12 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 258, __pyx_L1_error)
+        __pyx_t_12 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 262, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_12);
-        if (PyDict_SetItem(__pyx_t_12, __pyx_n_s_eval_freq, __pyx_cur_scope->__pyx_v_eval_freq) < 0) __PYX_ERR(0, 258, __pyx_L1_error)
-        __pyx_t_2 = __Pyx_PyObject_Call(__pyx_t_7, __pyx_t_1, __pyx_t_12); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 258, __pyx_L1_error)
+        if (PyDict_SetItem(__pyx_t_12, __pyx_n_s_eval_freq, __pyx_cur_scope->__pyx_v_eval_freq) < 0) __PYX_ERR(0, 262, __pyx_L1_error)
+        __pyx_t_2 = __Pyx_PyObject_Call(__pyx_t_7, __pyx_t_1, __pyx_t_12); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 262, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_2);
         __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
         __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
         __Pyx_DECREF(__pyx_t_12); __pyx_t_12 = 0;
         __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-        /* "structureboost/prob_regressor.pyx":257
+        /* "structureboost/prob_regressor.pyx":261
  *             for i in range(self.num_forests):
  *                 print(f'Training Forest {i}')
  *                 if eval_set is None:             # <<<<<<<<<<<<<<
@@ -5521,7 +5624,7 @@ static PyObject *__pyx_pf_14structureboost_14prob_regressor_11PrestoBoost_2fit(C
         goto __pyx_L15;
       }
 
-      /* "structureboost/prob_regressor.pyx":260
+      /* "structureboost/prob_regressor.pyx":264
  *                     self.forest_list[i].fit(X_train, y_train, eval_freq=eval_freq)
  *                 else:
  *                     self.forest_list[i].fit(X_train, y_train, eval_set, eval_freq,             # <<<<<<<<<<<<<<
@@ -5529,16 +5632,16 @@ static PyObject *__pyx_pf_14structureboost_14prob_regressor_11PrestoBoost_2fit(C
  * 
  */
       /*else*/ {
-        __pyx_t_12 = __Pyx_PyObject_GetAttrStr(__pyx_cur_scope->__pyx_v_self, __pyx_n_s_forest_list); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 260, __pyx_L1_error)
+        __pyx_t_12 = __Pyx_PyObject_GetAttrStr(__pyx_cur_scope->__pyx_v_self, __pyx_n_s_forest_list); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 264, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_12);
-        __pyx_t_1 = __Pyx_PyObject_GetItem(__pyx_t_12, __pyx_v_i); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 260, __pyx_L1_error)
+        __pyx_t_1 = __Pyx_PyObject_GetItem(__pyx_t_12, __pyx_v_i); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 264, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_1);
         __Pyx_DECREF(__pyx_t_12); __pyx_t_12 = 0;
-        __pyx_t_12 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_fit); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 260, __pyx_L1_error)
+        __pyx_t_12 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_fit); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 264, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_12);
         __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-        /* "structureboost/prob_regressor.pyx":261
+        /* "structureboost/prob_regressor.pyx":265
  *                 else:
  *                     self.forest_list[i].fit(X_train, y_train, eval_set, eval_freq,
  *                         early_stop_past_steps, choose_best_eval)             # <<<<<<<<<<<<<<
@@ -5560,7 +5663,7 @@ static PyObject *__pyx_pf_14structureboost_14prob_regressor_11PrestoBoost_2fit(C
         #if CYTHON_FAST_PYCALL
         if (PyFunction_Check(__pyx_t_12)) {
           PyObject *__pyx_temp[7] = {__pyx_t_1, __pyx_cur_scope->__pyx_v_X_train, __pyx_cur_scope->__pyx_v_y_train, __pyx_cur_scope->__pyx_v_eval_set, __pyx_cur_scope->__pyx_v_eval_freq, __pyx_cur_scope->__pyx_v_early_stop_past_steps, __pyx_cur_scope->__pyx_v_choose_best_eval};
-          __pyx_t_2 = __Pyx_PyFunction_FastCall(__pyx_t_12, __pyx_temp+1-__pyx_t_11, 6+__pyx_t_11); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 260, __pyx_L1_error)
+          __pyx_t_2 = __Pyx_PyFunction_FastCall(__pyx_t_12, __pyx_temp+1-__pyx_t_11, 6+__pyx_t_11); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 264, __pyx_L1_error)
           __Pyx_XDECREF(__pyx_t_1); __pyx_t_1 = 0;
           __Pyx_GOTREF(__pyx_t_2);
         } else
@@ -5568,13 +5671,13 @@ static PyObject *__pyx_pf_14structureboost_14prob_regressor_11PrestoBoost_2fit(C
         #if CYTHON_FAST_PYCCALL
         if (__Pyx_PyFastCFunction_Check(__pyx_t_12)) {
           PyObject *__pyx_temp[7] = {__pyx_t_1, __pyx_cur_scope->__pyx_v_X_train, __pyx_cur_scope->__pyx_v_y_train, __pyx_cur_scope->__pyx_v_eval_set, __pyx_cur_scope->__pyx_v_eval_freq, __pyx_cur_scope->__pyx_v_early_stop_past_steps, __pyx_cur_scope->__pyx_v_choose_best_eval};
-          __pyx_t_2 = __Pyx_PyCFunction_FastCall(__pyx_t_12, __pyx_temp+1-__pyx_t_11, 6+__pyx_t_11); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 260, __pyx_L1_error)
+          __pyx_t_2 = __Pyx_PyCFunction_FastCall(__pyx_t_12, __pyx_temp+1-__pyx_t_11, 6+__pyx_t_11); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 264, __pyx_L1_error)
           __Pyx_XDECREF(__pyx_t_1); __pyx_t_1 = 0;
           __Pyx_GOTREF(__pyx_t_2);
         } else
         #endif
         {
-          __pyx_t_7 = PyTuple_New(6+__pyx_t_11); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 260, __pyx_L1_error)
+          __pyx_t_7 = PyTuple_New(6+__pyx_t_11); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 264, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_7);
           if (__pyx_t_1) {
             __Pyx_GIVEREF(__pyx_t_1); PyTuple_SET_ITEM(__pyx_t_7, 0, __pyx_t_1); __pyx_t_1 = NULL;
@@ -5597,63 +5700,63 @@ static PyObject *__pyx_pf_14structureboost_14prob_regressor_11PrestoBoost_2fit(C
           __Pyx_INCREF(__pyx_cur_scope->__pyx_v_choose_best_eval);
           __Pyx_GIVEREF(__pyx_cur_scope->__pyx_v_choose_best_eval);
           PyTuple_SET_ITEM(__pyx_t_7, 5+__pyx_t_11, __pyx_cur_scope->__pyx_v_choose_best_eval);
-          __pyx_t_2 = __Pyx_PyObject_Call(__pyx_t_12, __pyx_t_7, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 260, __pyx_L1_error)
+          __pyx_t_2 = __Pyx_PyObject_Call(__pyx_t_12, __pyx_t_7, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 264, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_2);
           __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
         }
         __Pyx_DECREF(__pyx_t_12); __pyx_t_12 = 0;
         __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-        /* "structureboost/prob_regressor.pyx":264
+        /* "structureboost/prob_regressor.pyx":268
  * 
  *                     # fit calibrators if desired
  *                     if fit_calibrators:             # <<<<<<<<<<<<<<
  *                         X_valid = eval_set[0]
  *                         y_valid = eval_set[1]
  */
-        __pyx_t_4 = __Pyx_PyObject_IsTrue(__pyx_v_fit_calibrators); if (unlikely(__pyx_t_4 < 0)) __PYX_ERR(0, 264, __pyx_L1_error)
+        __pyx_t_4 = __Pyx_PyObject_IsTrue(__pyx_v_fit_calibrators); if (unlikely(__pyx_t_4 < 0)) __PYX_ERR(0, 268, __pyx_L1_error)
         if (__pyx_t_4) {
 
-          /* "structureboost/prob_regressor.pyx":265
+          /* "structureboost/prob_regressor.pyx":269
  *                     # fit calibrators if desired
  *                     if fit_calibrators:
  *                         X_valid = eval_set[0]             # <<<<<<<<<<<<<<
  *                         y_valid = eval_set[1]
  *                         validdiscpred = self.forest_list[i].gbtmodel.predict_proba(X_valid)
  */
-          __pyx_t_2 = __Pyx_GetItemInt(__pyx_cur_scope->__pyx_v_eval_set, 0, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 265, __pyx_L1_error)
+          __pyx_t_2 = __Pyx_GetItemInt(__pyx_cur_scope->__pyx_v_eval_set, 0, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 269, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_2);
           __Pyx_XDECREF_SET(__pyx_v_X_valid, __pyx_t_2);
           __pyx_t_2 = 0;
 
-          /* "structureboost/prob_regressor.pyx":266
+          /* "structureboost/prob_regressor.pyx":270
  *                     if fit_calibrators:
  *                         X_valid = eval_set[0]
  *                         y_valid = eval_set[1]             # <<<<<<<<<<<<<<
  *                         validdiscpred = self.forest_list[i].gbtmodel.predict_proba(X_valid)
  *                         y_valid_bin = np.digitize(y_valid,self.forest_list[i].bin_vec[:-1]) -1
  */
-          __pyx_t_2 = __Pyx_GetItemInt(__pyx_cur_scope->__pyx_v_eval_set, 1, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 266, __pyx_L1_error)
+          __pyx_t_2 = __Pyx_GetItemInt(__pyx_cur_scope->__pyx_v_eval_set, 1, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 270, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_2);
           __Pyx_XDECREF_SET(__pyx_v_y_valid, __pyx_t_2);
           __pyx_t_2 = 0;
 
-          /* "structureboost/prob_regressor.pyx":267
+          /* "structureboost/prob_regressor.pyx":271
  *                         X_valid = eval_set[0]
  *                         y_valid = eval_set[1]
  *                         validdiscpred = self.forest_list[i].gbtmodel.predict_proba(X_valid)             # <<<<<<<<<<<<<<
  *                         y_valid_bin = np.digitize(y_valid,self.forest_list[i].bin_vec[:-1]) -1
  *                         print('Fitting Calibrator')
  */
-          __pyx_t_12 = __Pyx_PyObject_GetAttrStr(__pyx_cur_scope->__pyx_v_self, __pyx_n_s_forest_list); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 267, __pyx_L1_error)
+          __pyx_t_12 = __Pyx_PyObject_GetAttrStr(__pyx_cur_scope->__pyx_v_self, __pyx_n_s_forest_list); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 271, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_12);
-          __pyx_t_7 = __Pyx_PyObject_GetItem(__pyx_t_12, __pyx_v_i); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 267, __pyx_L1_error)
+          __pyx_t_7 = __Pyx_PyObject_GetItem(__pyx_t_12, __pyx_v_i); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 271, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_7);
           __Pyx_DECREF(__pyx_t_12); __pyx_t_12 = 0;
-          __pyx_t_12 = __Pyx_PyObject_GetAttrStr(__pyx_t_7, __pyx_n_s_gbtmodel); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 267, __pyx_L1_error)
+          __pyx_t_12 = __Pyx_PyObject_GetAttrStr(__pyx_t_7, __pyx_n_s_gbtmodel); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 271, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_12);
           __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
-          __pyx_t_7 = __Pyx_PyObject_GetAttrStr(__pyx_t_12, __pyx_n_s_predict_proba); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 267, __pyx_L1_error)
+          __pyx_t_7 = __Pyx_PyObject_GetAttrStr(__pyx_t_12, __pyx_n_s_predict_proba); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 271, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_7);
           __Pyx_DECREF(__pyx_t_12); __pyx_t_12 = 0;
           __pyx_t_12 = NULL;
@@ -5668,33 +5771,33 @@ static PyObject *__pyx_pf_14structureboost_14prob_regressor_11PrestoBoost_2fit(C
           }
           __pyx_t_2 = (__pyx_t_12) ? __Pyx_PyObject_Call2Args(__pyx_t_7, __pyx_t_12, __pyx_v_X_valid) : __Pyx_PyObject_CallOneArg(__pyx_t_7, __pyx_v_X_valid);
           __Pyx_XDECREF(__pyx_t_12); __pyx_t_12 = 0;
-          if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 267, __pyx_L1_error)
+          if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 271, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_2);
           __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
           __Pyx_XDECREF_SET(__pyx_v_validdiscpred, __pyx_t_2);
           __pyx_t_2 = 0;
 
-          /* "structureboost/prob_regressor.pyx":268
+          /* "structureboost/prob_regressor.pyx":272
  *                         y_valid = eval_set[1]
  *                         validdiscpred = self.forest_list[i].gbtmodel.predict_proba(X_valid)
  *                         y_valid_bin = np.digitize(y_valid,self.forest_list[i].bin_vec[:-1]) -1             # <<<<<<<<<<<<<<
  *                         print('Fitting Calibrator')
  *                         self.calibrator_list[i].fit(validdiscpred,y_valid_bin)
  */
-          __Pyx_GetModuleGlobalName(__pyx_t_7, __pyx_n_s_np); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 268, __pyx_L1_error)
+          __Pyx_GetModuleGlobalName(__pyx_t_7, __pyx_n_s_np); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 272, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_7);
-          __pyx_t_12 = __Pyx_PyObject_GetAttrStr(__pyx_t_7, __pyx_n_s_digitize); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 268, __pyx_L1_error)
+          __pyx_t_12 = __Pyx_PyObject_GetAttrStr(__pyx_t_7, __pyx_n_s_digitize); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 272, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_12);
           __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
-          __pyx_t_7 = __Pyx_PyObject_GetAttrStr(__pyx_cur_scope->__pyx_v_self, __pyx_n_s_forest_list); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 268, __pyx_L1_error)
+          __pyx_t_7 = __Pyx_PyObject_GetAttrStr(__pyx_cur_scope->__pyx_v_self, __pyx_n_s_forest_list); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 272, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_7);
-          __pyx_t_1 = __Pyx_PyObject_GetItem(__pyx_t_7, __pyx_v_i); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 268, __pyx_L1_error)
+          __pyx_t_1 = __Pyx_PyObject_GetItem(__pyx_t_7, __pyx_v_i); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 272, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_1);
           __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
-          __pyx_t_7 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_bin_vec); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 268, __pyx_L1_error)
+          __pyx_t_7 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_bin_vec); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 272, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_7);
           __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-          __pyx_t_1 = __Pyx_PyObject_GetSlice(__pyx_t_7, 0, -1L, NULL, NULL, &__pyx_slice__4, 0, 1, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 268, __pyx_L1_error)
+          __pyx_t_1 = __Pyx_PyObject_GetSlice(__pyx_t_7, 0, -1L, NULL, NULL, &__pyx_slice__4, 0, 1, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 272, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_1);
           __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
           __pyx_t_7 = NULL;
@@ -5712,7 +5815,7 @@ static PyObject *__pyx_pf_14structureboost_14prob_regressor_11PrestoBoost_2fit(C
           #if CYTHON_FAST_PYCALL
           if (PyFunction_Check(__pyx_t_12)) {
             PyObject *__pyx_temp[3] = {__pyx_t_7, __pyx_v_y_valid, __pyx_t_1};
-            __pyx_t_2 = __Pyx_PyFunction_FastCall(__pyx_t_12, __pyx_temp+1-__pyx_t_11, 2+__pyx_t_11); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 268, __pyx_L1_error)
+            __pyx_t_2 = __Pyx_PyFunction_FastCall(__pyx_t_12, __pyx_temp+1-__pyx_t_11, 2+__pyx_t_11); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 272, __pyx_L1_error)
             __Pyx_XDECREF(__pyx_t_7); __pyx_t_7 = 0;
             __Pyx_GOTREF(__pyx_t_2);
             __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
@@ -5721,14 +5824,14 @@ static PyObject *__pyx_pf_14structureboost_14prob_regressor_11PrestoBoost_2fit(C
           #if CYTHON_FAST_PYCCALL
           if (__Pyx_PyFastCFunction_Check(__pyx_t_12)) {
             PyObject *__pyx_temp[3] = {__pyx_t_7, __pyx_v_y_valid, __pyx_t_1};
-            __pyx_t_2 = __Pyx_PyCFunction_FastCall(__pyx_t_12, __pyx_temp+1-__pyx_t_11, 2+__pyx_t_11); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 268, __pyx_L1_error)
+            __pyx_t_2 = __Pyx_PyCFunction_FastCall(__pyx_t_12, __pyx_temp+1-__pyx_t_11, 2+__pyx_t_11); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 272, __pyx_L1_error)
             __Pyx_XDECREF(__pyx_t_7); __pyx_t_7 = 0;
             __Pyx_GOTREF(__pyx_t_2);
             __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
           } else
           #endif
           {
-            __pyx_t_3 = PyTuple_New(2+__pyx_t_11); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 268, __pyx_L1_error)
+            __pyx_t_3 = PyTuple_New(2+__pyx_t_11); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 272, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_3);
             if (__pyx_t_7) {
               __Pyx_GIVEREF(__pyx_t_7); PyTuple_SET_ITEM(__pyx_t_3, 0, __pyx_t_7); __pyx_t_7 = NULL;
@@ -5739,41 +5842,41 @@ static PyObject *__pyx_pf_14structureboost_14prob_regressor_11PrestoBoost_2fit(C
             __Pyx_GIVEREF(__pyx_t_1);
             PyTuple_SET_ITEM(__pyx_t_3, 1+__pyx_t_11, __pyx_t_1);
             __pyx_t_1 = 0;
-            __pyx_t_2 = __Pyx_PyObject_Call(__pyx_t_12, __pyx_t_3, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 268, __pyx_L1_error)
+            __pyx_t_2 = __Pyx_PyObject_Call(__pyx_t_12, __pyx_t_3, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 272, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_2);
             __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
           }
           __Pyx_DECREF(__pyx_t_12); __pyx_t_12 = 0;
-          __pyx_t_12 = __Pyx_PyInt_SubtractObjC(__pyx_t_2, __pyx_int_1, 1, 0, 0); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 268, __pyx_L1_error)
+          __pyx_t_12 = __Pyx_PyInt_SubtractObjC(__pyx_t_2, __pyx_int_1, 1, 0, 0); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 272, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_12);
           __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
           __Pyx_XDECREF_SET(__pyx_v_y_valid_bin, __pyx_t_12);
           __pyx_t_12 = 0;
 
-          /* "structureboost/prob_regressor.pyx":269
+          /* "structureboost/prob_regressor.pyx":273
  *                         validdiscpred = self.forest_list[i].gbtmodel.predict_proba(X_valid)
  *                         y_valid_bin = np.digitize(y_valid,self.forest_list[i].bin_vec[:-1]) -1
  *                         print('Fitting Calibrator')             # <<<<<<<<<<<<<<
  *                         self.calibrator_list[i].fit(validdiscpred,y_valid_bin)
  * 
  */
-          __pyx_t_12 = __Pyx_PyObject_Call(__pyx_builtin_print, __pyx_tuple__5, NULL); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 269, __pyx_L1_error)
+          __pyx_t_12 = __Pyx_PyObject_Call(__pyx_builtin_print, __pyx_tuple__5, NULL); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 273, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_12);
           __Pyx_DECREF(__pyx_t_12); __pyx_t_12 = 0;
 
-          /* "structureboost/prob_regressor.pyx":270
+          /* "structureboost/prob_regressor.pyx":274
  *                         y_valid_bin = np.digitize(y_valid,self.forest_list[i].bin_vec[:-1]) -1
  *                         print('Fitting Calibrator')
  *                         self.calibrator_list[i].fit(validdiscpred,y_valid_bin)             # <<<<<<<<<<<<<<
  * 
  *             # If you want to refit on the combined training and validation data
  */
-          __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_cur_scope->__pyx_v_self, __pyx_n_s_calibrator_list); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 270, __pyx_L1_error)
+          __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_cur_scope->__pyx_v_self, __pyx_n_s_calibrator_list); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 274, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_2);
-          __pyx_t_3 = __Pyx_PyObject_GetItem(__pyx_t_2, __pyx_v_i); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 270, __pyx_L1_error)
+          __pyx_t_3 = __Pyx_PyObject_GetItem(__pyx_t_2, __pyx_v_i); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 274, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_3);
           __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-          __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_fit); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 270, __pyx_L1_error)
+          __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_fit); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 274, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_2);
           __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
           __pyx_t_3 = NULL;
@@ -5791,7 +5894,7 @@ static PyObject *__pyx_pf_14structureboost_14prob_regressor_11PrestoBoost_2fit(C
           #if CYTHON_FAST_PYCALL
           if (PyFunction_Check(__pyx_t_2)) {
             PyObject *__pyx_temp[3] = {__pyx_t_3, __pyx_v_validdiscpred, __pyx_v_y_valid_bin};
-            __pyx_t_12 = __Pyx_PyFunction_FastCall(__pyx_t_2, __pyx_temp+1-__pyx_t_11, 2+__pyx_t_11); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 270, __pyx_L1_error)
+            __pyx_t_12 = __Pyx_PyFunction_FastCall(__pyx_t_2, __pyx_temp+1-__pyx_t_11, 2+__pyx_t_11); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 274, __pyx_L1_error)
             __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
             __Pyx_GOTREF(__pyx_t_12);
           } else
@@ -5799,13 +5902,13 @@ static PyObject *__pyx_pf_14structureboost_14prob_regressor_11PrestoBoost_2fit(C
           #if CYTHON_FAST_PYCCALL
           if (__Pyx_PyFastCFunction_Check(__pyx_t_2)) {
             PyObject *__pyx_temp[3] = {__pyx_t_3, __pyx_v_validdiscpred, __pyx_v_y_valid_bin};
-            __pyx_t_12 = __Pyx_PyCFunction_FastCall(__pyx_t_2, __pyx_temp+1-__pyx_t_11, 2+__pyx_t_11); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 270, __pyx_L1_error)
+            __pyx_t_12 = __Pyx_PyCFunction_FastCall(__pyx_t_2, __pyx_temp+1-__pyx_t_11, 2+__pyx_t_11); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 274, __pyx_L1_error)
             __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
             __Pyx_GOTREF(__pyx_t_12);
           } else
           #endif
           {
-            __pyx_t_1 = PyTuple_New(2+__pyx_t_11); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 270, __pyx_L1_error)
+            __pyx_t_1 = PyTuple_New(2+__pyx_t_11); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 274, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_1);
             if (__pyx_t_3) {
               __Pyx_GIVEREF(__pyx_t_3); PyTuple_SET_ITEM(__pyx_t_1, 0, __pyx_t_3); __pyx_t_3 = NULL;
@@ -5816,14 +5919,14 @@ static PyObject *__pyx_pf_14structureboost_14prob_regressor_11PrestoBoost_2fit(C
             __Pyx_INCREF(__pyx_v_y_valid_bin);
             __Pyx_GIVEREF(__pyx_v_y_valid_bin);
             PyTuple_SET_ITEM(__pyx_t_1, 1+__pyx_t_11, __pyx_v_y_valid_bin);
-            __pyx_t_12 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_1, NULL); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 270, __pyx_L1_error)
+            __pyx_t_12 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_1, NULL); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 274, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_12);
             __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
           }
           __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
           __Pyx_DECREF(__pyx_t_12); __pyx_t_12 = 0;
 
-          /* "structureboost/prob_regressor.pyx":264
+          /* "structureboost/prob_regressor.pyx":268
  * 
  *                     # fit calibrators if desired
  *                     if fit_calibrators:             # <<<<<<<<<<<<<<
@@ -5834,7 +5937,7 @@ static PyObject *__pyx_pf_14structureboost_14prob_regressor_11PrestoBoost_2fit(C
       }
       __pyx_L15:;
 
-      /* "structureboost/prob_regressor.pyx":255
+      /* "structureboost/prob_regressor.pyx":259
  *         if n_jobs==1: # if not parallelizing
  *             # Fit as appropriate using early stopping or not
  *             for i in range(self.num_forests):             # <<<<<<<<<<<<<<
@@ -5844,14 +5947,14 @@ static PyObject *__pyx_pf_14structureboost_14prob_regressor_11PrestoBoost_2fit(C
     }
     __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
 
-    /* "structureboost/prob_regressor.pyx":273
+    /* "structureboost/prob_regressor.pyx":277
  * 
  *             # If you want to refit on the combined training and validation data
  *             if refit_train_val and (eval_set is not None):             # <<<<<<<<<<<<<<
  *                 num_trees_used = [self.forest_list[k].gbtmodel.num_trees_for_prediction
  *                                     for k in range(self.num_forests)]
  */
-    __pyx_t_10 = __Pyx_PyObject_IsTrue(__pyx_v_refit_train_val); if (unlikely(__pyx_t_10 < 0)) __PYX_ERR(0, 273, __pyx_L1_error)
+    __pyx_t_10 = __Pyx_PyObject_IsTrue(__pyx_v_refit_train_val); if (unlikely(__pyx_t_10 < 0)) __PYX_ERR(0, 277, __pyx_L1_error)
     if (__pyx_t_10) {
     } else {
       __pyx_t_4 = __pyx_t_10;
@@ -5863,7 +5966,7 @@ static PyObject *__pyx_pf_14structureboost_14prob_regressor_11PrestoBoost_2fit(C
     __pyx_L18_bool_binop_done:;
     if (__pyx_t_4) {
 
-      /* "structureboost/prob_regressor.pyx":274
+      /* "structureboost/prob_regressor.pyx":278
  *             # If you want to refit on the combined training and validation data
  *             if refit_train_val and (eval_set is not None):
  *                 num_trees_used = [self.forest_list[k].gbtmodel.num_trees_for_prediction             # <<<<<<<<<<<<<<
@@ -5871,28 +5974,28 @@ static PyObject *__pyx_pf_14structureboost_14prob_regressor_11PrestoBoost_2fit(C
  *                 X_valid = eval_set[0]
  */
       { /* enter inner scope */
-        __pyx_t_8 = PyList_New(0); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 274, __pyx_L22_error)
+        __pyx_t_8 = PyList_New(0); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 278, __pyx_L22_error)
         __Pyx_GOTREF(__pyx_t_8);
 
-        /* "structureboost/prob_regressor.pyx":275
+        /* "structureboost/prob_regressor.pyx":279
  *             if refit_train_val and (eval_set is not None):
  *                 num_trees_used = [self.forest_list[k].gbtmodel.num_trees_for_prediction
  *                                     for k in range(self.num_forests)]             # <<<<<<<<<<<<<<
  *                 X_valid = eval_set[0]
  *                 y_valid = eval_set[1]
  */
-        __pyx_t_12 = __Pyx_PyObject_GetAttrStr(__pyx_cur_scope->__pyx_v_self, __pyx_n_s_num_forests); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 275, __pyx_L22_error)
+        __pyx_t_12 = __Pyx_PyObject_GetAttrStr(__pyx_cur_scope->__pyx_v_self, __pyx_n_s_num_forests); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 279, __pyx_L22_error)
         __Pyx_GOTREF(__pyx_t_12);
-        __pyx_t_2 = __Pyx_PyObject_CallOneArg(__pyx_builtin_range, __pyx_t_12); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 275, __pyx_L22_error)
+        __pyx_t_2 = __Pyx_PyObject_CallOneArg(__pyx_builtin_range, __pyx_t_12); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 279, __pyx_L22_error)
         __Pyx_GOTREF(__pyx_t_2);
         __Pyx_DECREF(__pyx_t_12); __pyx_t_12 = 0;
         if (likely(PyList_CheckExact(__pyx_t_2)) || PyTuple_CheckExact(__pyx_t_2)) {
           __pyx_t_12 = __pyx_t_2; __Pyx_INCREF(__pyx_t_12); __pyx_t_5 = 0;
           __pyx_t_6 = NULL;
         } else {
-          __pyx_t_5 = -1; __pyx_t_12 = PyObject_GetIter(__pyx_t_2); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 275, __pyx_L22_error)
+          __pyx_t_5 = -1; __pyx_t_12 = PyObject_GetIter(__pyx_t_2); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 279, __pyx_L22_error)
           __Pyx_GOTREF(__pyx_t_12);
-          __pyx_t_6 = Py_TYPE(__pyx_t_12)->tp_iternext; if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 275, __pyx_L22_error)
+          __pyx_t_6 = Py_TYPE(__pyx_t_12)->tp_iternext; if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 279, __pyx_L22_error)
         }
         __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
         for (;;) {
@@ -5900,17 +6003,17 @@ static PyObject *__pyx_pf_14structureboost_14prob_regressor_11PrestoBoost_2fit(C
             if (likely(PyList_CheckExact(__pyx_t_12))) {
               if (__pyx_t_5 >= PyList_GET_SIZE(__pyx_t_12)) break;
               #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-              __pyx_t_2 = PyList_GET_ITEM(__pyx_t_12, __pyx_t_5); __Pyx_INCREF(__pyx_t_2); __pyx_t_5++; if (unlikely(0 < 0)) __PYX_ERR(0, 275, __pyx_L22_error)
+              __pyx_t_2 = PyList_GET_ITEM(__pyx_t_12, __pyx_t_5); __Pyx_INCREF(__pyx_t_2); __pyx_t_5++; if (unlikely(0 < 0)) __PYX_ERR(0, 279, __pyx_L22_error)
               #else
-              __pyx_t_2 = PySequence_ITEM(__pyx_t_12, __pyx_t_5); __pyx_t_5++; if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 275, __pyx_L22_error)
+              __pyx_t_2 = PySequence_ITEM(__pyx_t_12, __pyx_t_5); __pyx_t_5++; if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 279, __pyx_L22_error)
               __Pyx_GOTREF(__pyx_t_2);
               #endif
             } else {
               if (__pyx_t_5 >= PyTuple_GET_SIZE(__pyx_t_12)) break;
               #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-              __pyx_t_2 = PyTuple_GET_ITEM(__pyx_t_12, __pyx_t_5); __Pyx_INCREF(__pyx_t_2); __pyx_t_5++; if (unlikely(0 < 0)) __PYX_ERR(0, 275, __pyx_L22_error)
+              __pyx_t_2 = PyTuple_GET_ITEM(__pyx_t_12, __pyx_t_5); __Pyx_INCREF(__pyx_t_2); __pyx_t_5++; if (unlikely(0 < 0)) __PYX_ERR(0, 279, __pyx_L22_error)
               #else
-              __pyx_t_2 = PySequence_ITEM(__pyx_t_12, __pyx_t_5); __pyx_t_5++; if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 275, __pyx_L22_error)
+              __pyx_t_2 = PySequence_ITEM(__pyx_t_12, __pyx_t_5); __pyx_t_5++; if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 279, __pyx_L22_error)
               __Pyx_GOTREF(__pyx_t_2);
               #endif
             }
@@ -5920,7 +6023,7 @@ static PyObject *__pyx_pf_14structureboost_14prob_regressor_11PrestoBoost_2fit(C
               PyObject* exc_type = PyErr_Occurred();
               if (exc_type) {
                 if (likely(__Pyx_PyErr_GivenExceptionMatches(exc_type, PyExc_StopIteration))) PyErr_Clear();
-                else __PYX_ERR(0, 275, __pyx_L22_error)
+                else __PYX_ERR(0, 279, __pyx_L22_error)
               }
               break;
             }
@@ -5929,28 +6032,28 @@ static PyObject *__pyx_pf_14structureboost_14prob_regressor_11PrestoBoost_2fit(C
           __Pyx_XDECREF_SET(__pyx_7genexpr__pyx_v_k, __pyx_t_2);
           __pyx_t_2 = 0;
 
-          /* "structureboost/prob_regressor.pyx":274
+          /* "structureboost/prob_regressor.pyx":278
  *             # If you want to refit on the combined training and validation data
  *             if refit_train_val and (eval_set is not None):
  *                 num_trees_used = [self.forest_list[k].gbtmodel.num_trees_for_prediction             # <<<<<<<<<<<<<<
  *                                     for k in range(self.num_forests)]
  *                 X_valid = eval_set[0]
  */
-          __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_cur_scope->__pyx_v_self, __pyx_n_s_forest_list); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 274, __pyx_L22_error)
+          __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_cur_scope->__pyx_v_self, __pyx_n_s_forest_list); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 278, __pyx_L22_error)
           __Pyx_GOTREF(__pyx_t_2);
-          __pyx_t_1 = __Pyx_PyObject_GetItem(__pyx_t_2, __pyx_7genexpr__pyx_v_k); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 274, __pyx_L22_error)
+          __pyx_t_1 = __Pyx_PyObject_GetItem(__pyx_t_2, __pyx_7genexpr__pyx_v_k); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 278, __pyx_L22_error)
           __Pyx_GOTREF(__pyx_t_1);
           __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-          __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_gbtmodel); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 274, __pyx_L22_error)
+          __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_gbtmodel); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 278, __pyx_L22_error)
           __Pyx_GOTREF(__pyx_t_2);
           __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-          __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_num_trees_for_prediction); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 274, __pyx_L22_error)
+          __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_num_trees_for_prediction); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 278, __pyx_L22_error)
           __Pyx_GOTREF(__pyx_t_1);
           __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-          if (unlikely(__Pyx_ListComp_Append(__pyx_t_8, (PyObject*)__pyx_t_1))) __PYX_ERR(0, 274, __pyx_L22_error)
+          if (unlikely(__Pyx_ListComp_Append(__pyx_t_8, (PyObject*)__pyx_t_1))) __PYX_ERR(0, 278, __pyx_L22_error)
           __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-          /* "structureboost/prob_regressor.pyx":275
+          /* "structureboost/prob_regressor.pyx":279
  *             if refit_train_val and (eval_set is not None):
  *                 num_trees_used = [self.forest_list[k].gbtmodel.num_trees_for_prediction
  *                                     for k in range(self.num_forests)]             # <<<<<<<<<<<<<<
@@ -5969,43 +6072,43 @@ static PyObject *__pyx_pf_14structureboost_14prob_regressor_11PrestoBoost_2fit(C
       __pyx_v_num_trees_used = ((PyObject*)__pyx_t_8);
       __pyx_t_8 = 0;
 
-      /* "structureboost/prob_regressor.pyx":276
+      /* "structureboost/prob_regressor.pyx":280
  *                 num_trees_used = [self.forest_list[k].gbtmodel.num_trees_for_prediction
  *                                     for k in range(self.num_forests)]
  *                 X_valid = eval_set[0]             # <<<<<<<<<<<<<<
  *                 y_valid = eval_set[1]
  *                 X_train_val = pd.concat((X_train, X_valid))
  */
-      __pyx_t_8 = __Pyx_GetItemInt(__pyx_cur_scope->__pyx_v_eval_set, 0, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 276, __pyx_L1_error)
+      __pyx_t_8 = __Pyx_GetItemInt(__pyx_cur_scope->__pyx_v_eval_set, 0, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 280, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_8);
       __Pyx_XDECREF_SET(__pyx_v_X_valid, __pyx_t_8);
       __pyx_t_8 = 0;
 
-      /* "structureboost/prob_regressor.pyx":277
+      /* "structureboost/prob_regressor.pyx":281
  *                                     for k in range(self.num_forests)]
  *                 X_valid = eval_set[0]
  *                 y_valid = eval_set[1]             # <<<<<<<<<<<<<<
  *                 X_train_val = pd.concat((X_train, X_valid))
  *                 y_train_val = np.concatenate((y_train, y_valid))
  */
-      __pyx_t_8 = __Pyx_GetItemInt(__pyx_cur_scope->__pyx_v_eval_set, 1, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 277, __pyx_L1_error)
+      __pyx_t_8 = __Pyx_GetItemInt(__pyx_cur_scope->__pyx_v_eval_set, 1, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 281, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_8);
       __Pyx_XDECREF_SET(__pyx_v_y_valid, __pyx_t_8);
       __pyx_t_8 = 0;
 
-      /* "structureboost/prob_regressor.pyx":278
+      /* "structureboost/prob_regressor.pyx":282
  *                 X_valid = eval_set[0]
  *                 y_valid = eval_set[1]
  *                 X_train_val = pd.concat((X_train, X_valid))             # <<<<<<<<<<<<<<
  *                 y_train_val = np.concatenate((y_train, y_valid))
  *                 self.num_trees = num_trees_used
  */
-      __Pyx_GetModuleGlobalName(__pyx_t_12, __pyx_n_s_pd); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 278, __pyx_L1_error)
+      __Pyx_GetModuleGlobalName(__pyx_t_12, __pyx_n_s_pd); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 282, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_12);
-      __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_12, __pyx_n_s_concat); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 278, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_12, __pyx_n_s_concat); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 282, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
       __Pyx_DECREF(__pyx_t_12); __pyx_t_12 = 0;
-      __pyx_t_12 = PyTuple_New(2); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 278, __pyx_L1_error)
+      __pyx_t_12 = PyTuple_New(2); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 282, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_12);
       __Pyx_INCREF(__pyx_cur_scope->__pyx_v_X_train);
       __Pyx_GIVEREF(__pyx_cur_scope->__pyx_v_X_train);
@@ -6026,26 +6129,26 @@ static PyObject *__pyx_pf_14structureboost_14prob_regressor_11PrestoBoost_2fit(C
       __pyx_t_8 = (__pyx_t_2) ? __Pyx_PyObject_Call2Args(__pyx_t_1, __pyx_t_2, __pyx_t_12) : __Pyx_PyObject_CallOneArg(__pyx_t_1, __pyx_t_12);
       __Pyx_XDECREF(__pyx_t_2); __pyx_t_2 = 0;
       __Pyx_DECREF(__pyx_t_12); __pyx_t_12 = 0;
-      if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 278, __pyx_L1_error)
+      if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 282, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_8);
       __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
       __Pyx_GIVEREF(__pyx_t_8);
       __pyx_cur_scope->__pyx_v_X_train_val = __pyx_t_8;
       __pyx_t_8 = 0;
 
-      /* "structureboost/prob_regressor.pyx":279
+      /* "structureboost/prob_regressor.pyx":283
  *                 y_valid = eval_set[1]
  *                 X_train_val = pd.concat((X_train, X_valid))
  *                 y_train_val = np.concatenate((y_train, y_valid))             # <<<<<<<<<<<<<<
  *                 self.num_trees = num_trees_used
  * #                self.fit(X_train_val, y_train_val, binpt_vec_list=self.binpt_vec_list)
  */
-      __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_np); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 279, __pyx_L1_error)
+      __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_np); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 283, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
-      __pyx_t_12 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_concatenate); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 279, __pyx_L1_error)
+      __pyx_t_12 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_concatenate); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 283, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_12);
       __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-      __pyx_t_1 = PyTuple_New(2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 279, __pyx_L1_error)
+      __pyx_t_1 = PyTuple_New(2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 283, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
       __Pyx_INCREF(__pyx_cur_scope->__pyx_v_y_train);
       __Pyx_GIVEREF(__pyx_cur_scope->__pyx_v_y_train);
@@ -6066,23 +6169,23 @@ static PyObject *__pyx_pf_14structureboost_14prob_regressor_11PrestoBoost_2fit(C
       __pyx_t_8 = (__pyx_t_2) ? __Pyx_PyObject_Call2Args(__pyx_t_12, __pyx_t_2, __pyx_t_1) : __Pyx_PyObject_CallOneArg(__pyx_t_12, __pyx_t_1);
       __Pyx_XDECREF(__pyx_t_2); __pyx_t_2 = 0;
       __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-      if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 279, __pyx_L1_error)
+      if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 283, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_8);
       __Pyx_DECREF(__pyx_t_12); __pyx_t_12 = 0;
       __Pyx_GIVEREF(__pyx_t_8);
       __pyx_cur_scope->__pyx_v_y_train_val = __pyx_t_8;
       __pyx_t_8 = 0;
 
-      /* "structureboost/prob_regressor.pyx":280
+      /* "structureboost/prob_regressor.pyx":284
  *                 X_train_val = pd.concat((X_train, X_valid))
  *                 y_train_val = np.concatenate((y_train, y_valid))
  *                 self.num_trees = num_trees_used             # <<<<<<<<<<<<<<
  * #                self.fit(X_train_val, y_train_val, binpt_vec_list=self.binpt_vec_list)
  * 
  */
-      if (__Pyx_PyObject_SetAttrStr(__pyx_cur_scope->__pyx_v_self, __pyx_n_s_num_trees, __pyx_v_num_trees_used) < 0) __PYX_ERR(0, 280, __pyx_L1_error)
+      if (__Pyx_PyObject_SetAttrStr(__pyx_cur_scope->__pyx_v_self, __pyx_n_s_num_trees, __pyx_v_num_trees_used) < 0) __PYX_ERR(0, 284, __pyx_L1_error)
 
-      /* "structureboost/prob_regressor.pyx":283
+      /* "structureboost/prob_regressor.pyx":287
  * #                self.fit(X_train_val, y_train_val, binpt_vec_list=self.binpt_vec_list)
  * 
  *                 num_trees_used = [self.forest_list[k].gbtmodel.num_trees_for_prediction             # <<<<<<<<<<<<<<
@@ -6090,28 +6193,28 @@ static PyObject *__pyx_pf_14structureboost_14prob_regressor_11PrestoBoost_2fit(C
  *                 self.forest_list = []
  */
       { /* enter inner scope */
-        __pyx_t_8 = PyList_New(0); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 283, __pyx_L28_error)
+        __pyx_t_8 = PyList_New(0); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 287, __pyx_L28_error)
         __Pyx_GOTREF(__pyx_t_8);
 
-        /* "structureboost/prob_regressor.pyx":284
+        /* "structureboost/prob_regressor.pyx":288
  * 
  *                 num_trees_used = [self.forest_list[k].gbtmodel.num_trees_for_prediction
  *                                     for k in range(self.num_forests)]             # <<<<<<<<<<<<<<
  *                 self.forest_list = []
  *                 for i in range(self.num_forests):
  */
-        __pyx_t_12 = __Pyx_PyObject_GetAttrStr(__pyx_cur_scope->__pyx_v_self, __pyx_n_s_num_forests); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 284, __pyx_L28_error)
+        __pyx_t_12 = __Pyx_PyObject_GetAttrStr(__pyx_cur_scope->__pyx_v_self, __pyx_n_s_num_forests); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 288, __pyx_L28_error)
         __Pyx_GOTREF(__pyx_t_12);
-        __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_builtin_range, __pyx_t_12); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 284, __pyx_L28_error)
+        __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_builtin_range, __pyx_t_12); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 288, __pyx_L28_error)
         __Pyx_GOTREF(__pyx_t_1);
         __Pyx_DECREF(__pyx_t_12); __pyx_t_12 = 0;
         if (likely(PyList_CheckExact(__pyx_t_1)) || PyTuple_CheckExact(__pyx_t_1)) {
           __pyx_t_12 = __pyx_t_1; __Pyx_INCREF(__pyx_t_12); __pyx_t_5 = 0;
           __pyx_t_6 = NULL;
         } else {
-          __pyx_t_5 = -1; __pyx_t_12 = PyObject_GetIter(__pyx_t_1); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 284, __pyx_L28_error)
+          __pyx_t_5 = -1; __pyx_t_12 = PyObject_GetIter(__pyx_t_1); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 288, __pyx_L28_error)
           __Pyx_GOTREF(__pyx_t_12);
-          __pyx_t_6 = Py_TYPE(__pyx_t_12)->tp_iternext; if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 284, __pyx_L28_error)
+          __pyx_t_6 = Py_TYPE(__pyx_t_12)->tp_iternext; if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 288, __pyx_L28_error)
         }
         __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
         for (;;) {
@@ -6119,17 +6222,17 @@ static PyObject *__pyx_pf_14structureboost_14prob_regressor_11PrestoBoost_2fit(C
             if (likely(PyList_CheckExact(__pyx_t_12))) {
               if (__pyx_t_5 >= PyList_GET_SIZE(__pyx_t_12)) break;
               #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-              __pyx_t_1 = PyList_GET_ITEM(__pyx_t_12, __pyx_t_5); __Pyx_INCREF(__pyx_t_1); __pyx_t_5++; if (unlikely(0 < 0)) __PYX_ERR(0, 284, __pyx_L28_error)
+              __pyx_t_1 = PyList_GET_ITEM(__pyx_t_12, __pyx_t_5); __Pyx_INCREF(__pyx_t_1); __pyx_t_5++; if (unlikely(0 < 0)) __PYX_ERR(0, 288, __pyx_L28_error)
               #else
-              __pyx_t_1 = PySequence_ITEM(__pyx_t_12, __pyx_t_5); __pyx_t_5++; if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 284, __pyx_L28_error)
+              __pyx_t_1 = PySequence_ITEM(__pyx_t_12, __pyx_t_5); __pyx_t_5++; if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 288, __pyx_L28_error)
               __Pyx_GOTREF(__pyx_t_1);
               #endif
             } else {
               if (__pyx_t_5 >= PyTuple_GET_SIZE(__pyx_t_12)) break;
               #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-              __pyx_t_1 = PyTuple_GET_ITEM(__pyx_t_12, __pyx_t_5); __Pyx_INCREF(__pyx_t_1); __pyx_t_5++; if (unlikely(0 < 0)) __PYX_ERR(0, 284, __pyx_L28_error)
+              __pyx_t_1 = PyTuple_GET_ITEM(__pyx_t_12, __pyx_t_5); __Pyx_INCREF(__pyx_t_1); __pyx_t_5++; if (unlikely(0 < 0)) __PYX_ERR(0, 288, __pyx_L28_error)
               #else
-              __pyx_t_1 = PySequence_ITEM(__pyx_t_12, __pyx_t_5); __pyx_t_5++; if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 284, __pyx_L28_error)
+              __pyx_t_1 = PySequence_ITEM(__pyx_t_12, __pyx_t_5); __pyx_t_5++; if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 288, __pyx_L28_error)
               __Pyx_GOTREF(__pyx_t_1);
               #endif
             }
@@ -6139,7 +6242,7 @@ static PyObject *__pyx_pf_14structureboost_14prob_regressor_11PrestoBoost_2fit(C
               PyObject* exc_type = PyErr_Occurred();
               if (exc_type) {
                 if (likely(__Pyx_PyErr_GivenExceptionMatches(exc_type, PyExc_StopIteration))) PyErr_Clear();
-                else __PYX_ERR(0, 284, __pyx_L28_error)
+                else __PYX_ERR(0, 288, __pyx_L28_error)
               }
               break;
             }
@@ -6148,28 +6251,28 @@ static PyObject *__pyx_pf_14structureboost_14prob_regressor_11PrestoBoost_2fit(C
           __Pyx_XDECREF_SET(__pyx_8genexpr1__pyx_v_k, __pyx_t_1);
           __pyx_t_1 = 0;
 
-          /* "structureboost/prob_regressor.pyx":283
+          /* "structureboost/prob_regressor.pyx":287
  * #                self.fit(X_train_val, y_train_val, binpt_vec_list=self.binpt_vec_list)
  * 
  *                 num_trees_used = [self.forest_list[k].gbtmodel.num_trees_for_prediction             # <<<<<<<<<<<<<<
  *                                     for k in range(self.num_forests)]
  *                 self.forest_list = []
  */
-          __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_cur_scope->__pyx_v_self, __pyx_n_s_forest_list); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 283, __pyx_L28_error)
+          __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_cur_scope->__pyx_v_self, __pyx_n_s_forest_list); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 287, __pyx_L28_error)
           __Pyx_GOTREF(__pyx_t_1);
-          __pyx_t_2 = __Pyx_PyObject_GetItem(__pyx_t_1, __pyx_8genexpr1__pyx_v_k); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 283, __pyx_L28_error)
+          __pyx_t_2 = __Pyx_PyObject_GetItem(__pyx_t_1, __pyx_8genexpr1__pyx_v_k); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 287, __pyx_L28_error)
           __Pyx_GOTREF(__pyx_t_2);
           __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-          __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_gbtmodel); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 283, __pyx_L28_error)
+          __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_gbtmodel); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 287, __pyx_L28_error)
           __Pyx_GOTREF(__pyx_t_1);
           __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-          __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_num_trees_for_prediction); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 283, __pyx_L28_error)
+          __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_num_trees_for_prediction); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 287, __pyx_L28_error)
           __Pyx_GOTREF(__pyx_t_2);
           __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-          if (unlikely(__Pyx_ListComp_Append(__pyx_t_8, (PyObject*)__pyx_t_2))) __PYX_ERR(0, 283, __pyx_L28_error)
+          if (unlikely(__Pyx_ListComp_Append(__pyx_t_8, (PyObject*)__pyx_t_2))) __PYX_ERR(0, 287, __pyx_L28_error)
           __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-          /* "structureboost/prob_regressor.pyx":284
+          /* "structureboost/prob_regressor.pyx":288
  * 
  *                 num_trees_used = [self.forest_list[k].gbtmodel.num_trees_for_prediction
  *                                     for k in range(self.num_forests)]             # <<<<<<<<<<<<<<
@@ -6188,37 +6291,37 @@ static PyObject *__pyx_pf_14structureboost_14prob_regressor_11PrestoBoost_2fit(C
       __Pyx_DECREF_SET(__pyx_v_num_trees_used, ((PyObject*)__pyx_t_8));
       __pyx_t_8 = 0;
 
-      /* "structureboost/prob_regressor.pyx":285
+      /* "structureboost/prob_regressor.pyx":289
  *                 num_trees_used = [self.forest_list[k].gbtmodel.num_trees_for_prediction
  *                                     for k in range(self.num_forests)]
  *                 self.forest_list = []             # <<<<<<<<<<<<<<
  *                 for i in range(self.num_forests):
  *                     # Set up forest with appropriate binpt_vec, newnumber of trees
  */
-      __pyx_t_8 = PyList_New(0); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 285, __pyx_L1_error)
+      __pyx_t_8 = PyList_New(0); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 289, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_8);
-      if (__Pyx_PyObject_SetAttrStr(__pyx_cur_scope->__pyx_v_self, __pyx_n_s_forest_list, __pyx_t_8) < 0) __PYX_ERR(0, 285, __pyx_L1_error)
+      if (__Pyx_PyObject_SetAttrStr(__pyx_cur_scope->__pyx_v_self, __pyx_n_s_forest_list, __pyx_t_8) < 0) __PYX_ERR(0, 289, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
 
-      /* "structureboost/prob_regressor.pyx":286
+      /* "structureboost/prob_regressor.pyx":290
  *                                     for k in range(self.num_forests)]
  *                 self.forest_list = []
  *                 for i in range(self.num_forests):             # <<<<<<<<<<<<<<
  *                     # Set up forest with appropriate binpt_vec, newnumber of trees
  *                     self.forest_list.append(ProbRegressorUnit(
  */
-      __pyx_t_8 = __Pyx_PyObject_GetAttrStr(__pyx_cur_scope->__pyx_v_self, __pyx_n_s_num_forests); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 286, __pyx_L1_error)
+      __pyx_t_8 = __Pyx_PyObject_GetAttrStr(__pyx_cur_scope->__pyx_v_self, __pyx_n_s_num_forests); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 290, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_8);
-      __pyx_t_12 = __Pyx_PyObject_CallOneArg(__pyx_builtin_range, __pyx_t_8); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 286, __pyx_L1_error)
+      __pyx_t_12 = __Pyx_PyObject_CallOneArg(__pyx_builtin_range, __pyx_t_8); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 290, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_12);
       __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
       if (likely(PyList_CheckExact(__pyx_t_12)) || PyTuple_CheckExact(__pyx_t_12)) {
         __pyx_t_8 = __pyx_t_12; __Pyx_INCREF(__pyx_t_8); __pyx_t_5 = 0;
         __pyx_t_6 = NULL;
       } else {
-        __pyx_t_5 = -1; __pyx_t_8 = PyObject_GetIter(__pyx_t_12); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 286, __pyx_L1_error)
+        __pyx_t_5 = -1; __pyx_t_8 = PyObject_GetIter(__pyx_t_12); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 290, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_8);
-        __pyx_t_6 = Py_TYPE(__pyx_t_8)->tp_iternext; if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 286, __pyx_L1_error)
+        __pyx_t_6 = Py_TYPE(__pyx_t_8)->tp_iternext; if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 290, __pyx_L1_error)
       }
       __Pyx_DECREF(__pyx_t_12); __pyx_t_12 = 0;
       for (;;) {
@@ -6226,17 +6329,17 @@ static PyObject *__pyx_pf_14structureboost_14prob_regressor_11PrestoBoost_2fit(C
           if (likely(PyList_CheckExact(__pyx_t_8))) {
             if (__pyx_t_5 >= PyList_GET_SIZE(__pyx_t_8)) break;
             #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-            __pyx_t_12 = PyList_GET_ITEM(__pyx_t_8, __pyx_t_5); __Pyx_INCREF(__pyx_t_12); __pyx_t_5++; if (unlikely(0 < 0)) __PYX_ERR(0, 286, __pyx_L1_error)
+            __pyx_t_12 = PyList_GET_ITEM(__pyx_t_8, __pyx_t_5); __Pyx_INCREF(__pyx_t_12); __pyx_t_5++; if (unlikely(0 < 0)) __PYX_ERR(0, 290, __pyx_L1_error)
             #else
-            __pyx_t_12 = PySequence_ITEM(__pyx_t_8, __pyx_t_5); __pyx_t_5++; if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 286, __pyx_L1_error)
+            __pyx_t_12 = PySequence_ITEM(__pyx_t_8, __pyx_t_5); __pyx_t_5++; if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 290, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_12);
             #endif
           } else {
             if (__pyx_t_5 >= PyTuple_GET_SIZE(__pyx_t_8)) break;
             #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-            __pyx_t_12 = PyTuple_GET_ITEM(__pyx_t_8, __pyx_t_5); __Pyx_INCREF(__pyx_t_12); __pyx_t_5++; if (unlikely(0 < 0)) __PYX_ERR(0, 286, __pyx_L1_error)
+            __pyx_t_12 = PyTuple_GET_ITEM(__pyx_t_8, __pyx_t_5); __Pyx_INCREF(__pyx_t_12); __pyx_t_5++; if (unlikely(0 < 0)) __PYX_ERR(0, 290, __pyx_L1_error)
             #else
-            __pyx_t_12 = PySequence_ITEM(__pyx_t_8, __pyx_t_5); __pyx_t_5++; if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 286, __pyx_L1_error)
+            __pyx_t_12 = PySequence_ITEM(__pyx_t_8, __pyx_t_5); __pyx_t_5++; if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 290, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_12);
             #endif
           }
@@ -6246,7 +6349,7 @@ static PyObject *__pyx_pf_14structureboost_14prob_regressor_11PrestoBoost_2fit(C
             PyObject* exc_type = PyErr_Occurred();
             if (exc_type) {
               if (likely(__Pyx_PyErr_GivenExceptionMatches(exc_type, PyExc_StopIteration))) PyErr_Clear();
-              else __PYX_ERR(0, 286, __pyx_L1_error)
+              else __PYX_ERR(0, 290, __pyx_L1_error)
             }
             break;
           }
@@ -6255,45 +6358,45 @@ static PyObject *__pyx_pf_14structureboost_14prob_regressor_11PrestoBoost_2fit(C
         __Pyx_XDECREF_SET(__pyx_v_i, __pyx_t_12);
         __pyx_t_12 = 0;
 
-        /* "structureboost/prob_regressor.pyx":288
+        /* "structureboost/prob_regressor.pyx":292
  *                 for i in range(self.num_forests):
  *                     # Set up forest with appropriate binpt_vec, newnumber of trees
  *                     self.forest_list.append(ProbRegressorUnit(             # <<<<<<<<<<<<<<
  *                                         num_trees = num_trees_used[i],
  *                                         bin_vec = self.binpt_vec_list[i].copy(),
  */
-        __pyx_t_12 = __Pyx_PyObject_GetAttrStr(__pyx_cur_scope->__pyx_v_self, __pyx_n_s_forest_list); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 288, __pyx_L1_error)
+        __pyx_t_12 = __Pyx_PyObject_GetAttrStr(__pyx_cur_scope->__pyx_v_self, __pyx_n_s_forest_list); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 292, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_12);
-        __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_ProbRegressorUnit); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 288, __pyx_L1_error)
+        __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_ProbRegressorUnit); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 292, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_2);
 
-        /* "structureboost/prob_regressor.pyx":289
+        /* "structureboost/prob_regressor.pyx":293
  *                     # Set up forest with appropriate binpt_vec, newnumber of trees
  *                     self.forest_list.append(ProbRegressorUnit(
  *                                         num_trees = num_trees_used[i],             # <<<<<<<<<<<<<<
  *                                         bin_vec = self.binpt_vec_list[i].copy(),
  *                                         feature_configs=self.feature_configs,
  */
-        __pyx_t_1 = __Pyx_PyDict_NewPresized(10); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 289, __pyx_L1_error)
+        __pyx_t_1 = __Pyx_PyDict_NewPresized(10); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 293, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_1);
-        __pyx_t_3 = __Pyx_PyObject_GetItem(__pyx_v_num_trees_used, __pyx_v_i); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 289, __pyx_L1_error)
+        __pyx_t_3 = __Pyx_PyObject_GetItem(__pyx_v_num_trees_used, __pyx_v_i); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 293, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_3);
-        if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_num_trees, __pyx_t_3) < 0) __PYX_ERR(0, 289, __pyx_L1_error)
+        if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_num_trees, __pyx_t_3) < 0) __PYX_ERR(0, 293, __pyx_L1_error)
         __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-        /* "structureboost/prob_regressor.pyx":290
+        /* "structureboost/prob_regressor.pyx":294
  *                     self.forest_list.append(ProbRegressorUnit(
  *                                         num_trees = num_trees_used[i],
  *                                         bin_vec = self.binpt_vec_list[i].copy(),             # <<<<<<<<<<<<<<
  *                                         feature_configs=self.feature_configs,
  *                                         learning_rate=self.learning_rate,
  */
-        __pyx_t_7 = __Pyx_PyObject_GetAttrStr(__pyx_cur_scope->__pyx_v_self, __pyx_n_s_binpt_vec_list); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 290, __pyx_L1_error)
+        __pyx_t_7 = __Pyx_PyObject_GetAttrStr(__pyx_cur_scope->__pyx_v_self, __pyx_n_s_binpt_vec_list); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 294, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_7);
-        __pyx_t_13 = __Pyx_PyObject_GetItem(__pyx_t_7, __pyx_v_i); if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 290, __pyx_L1_error)
+        __pyx_t_13 = __Pyx_PyObject_GetItem(__pyx_t_7, __pyx_v_i); if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 294, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_13);
         __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
-        __pyx_t_7 = __Pyx_PyObject_GetAttrStr(__pyx_t_13, __pyx_n_s_copy); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 290, __pyx_L1_error)
+        __pyx_t_7 = __Pyx_PyObject_GetAttrStr(__pyx_t_13, __pyx_n_s_copy); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 294, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_7);
         __Pyx_DECREF(__pyx_t_13); __pyx_t_13 = 0;
         __pyx_t_13 = NULL;
@@ -6308,119 +6411,119 @@ static PyObject *__pyx_pf_14structureboost_14prob_regressor_11PrestoBoost_2fit(C
         }
         __pyx_t_3 = (__pyx_t_13) ? __Pyx_PyObject_CallOneArg(__pyx_t_7, __pyx_t_13) : __Pyx_PyObject_CallNoArg(__pyx_t_7);
         __Pyx_XDECREF(__pyx_t_13); __pyx_t_13 = 0;
-        if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 290, __pyx_L1_error)
+        if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 294, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_3);
         __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
-        if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_bin_vec, __pyx_t_3) < 0) __PYX_ERR(0, 289, __pyx_L1_error)
+        if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_bin_vec, __pyx_t_3) < 0) __PYX_ERR(0, 293, __pyx_L1_error)
         __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-        /* "structureboost/prob_regressor.pyx":291
+        /* "structureboost/prob_regressor.pyx":295
  *                                         num_trees = num_trees_used[i],
  *                                         bin_vec = self.binpt_vec_list[i].copy(),
  *                                         feature_configs=self.feature_configs,             # <<<<<<<<<<<<<<
  *                                         learning_rate=self.learning_rate,
  *                                         max_depth=self.max_depth,
  */
-        __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_cur_scope->__pyx_v_self, __pyx_n_s_feature_configs); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 291, __pyx_L1_error)
+        __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_cur_scope->__pyx_v_self, __pyx_n_s_feature_configs); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 295, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_3);
-        if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_feature_configs, __pyx_t_3) < 0) __PYX_ERR(0, 289, __pyx_L1_error)
+        if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_feature_configs, __pyx_t_3) < 0) __PYX_ERR(0, 293, __pyx_L1_error)
         __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-        /* "structureboost/prob_regressor.pyx":292
+        /* "structureboost/prob_regressor.pyx":296
  *                                         bin_vec = self.binpt_vec_list[i].copy(),
  *                                         feature_configs=self.feature_configs,
  *                                         learning_rate=self.learning_rate,             # <<<<<<<<<<<<<<
  *                                         max_depth=self.max_depth,
  *                                         structure_strides=self.structure_strides,
  */
-        __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_cur_scope->__pyx_v_self, __pyx_n_s_learning_rate); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 292, __pyx_L1_error)
+        __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_cur_scope->__pyx_v_self, __pyx_n_s_learning_rate); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 296, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_3);
-        if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_learning_rate, __pyx_t_3) < 0) __PYX_ERR(0, 289, __pyx_L1_error)
+        if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_learning_rate, __pyx_t_3) < 0) __PYX_ERR(0, 293, __pyx_L1_error)
         __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-        /* "structureboost/prob_regressor.pyx":293
+        /* "structureboost/prob_regressor.pyx":297
  *                                         feature_configs=self.feature_configs,
  *                                         learning_rate=self.learning_rate,
  *                                         max_depth=self.max_depth,             # <<<<<<<<<<<<<<
  *                                         structure_strides=self.structure_strides,
  *                                         random_seed = self.random_seed+i,
  */
-        __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_cur_scope->__pyx_v_self, __pyx_n_s_max_depth); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 293, __pyx_L1_error)
+        __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_cur_scope->__pyx_v_self, __pyx_n_s_max_depth); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 297, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_3);
-        if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_max_depth, __pyx_t_3) < 0) __PYX_ERR(0, 289, __pyx_L1_error)
+        if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_max_depth, __pyx_t_3) < 0) __PYX_ERR(0, 293, __pyx_L1_error)
         __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-        /* "structureboost/prob_regressor.pyx":294
+        /* "structureboost/prob_regressor.pyx":298
  *                                         learning_rate=self.learning_rate,
  *                                         max_depth=self.max_depth,
  *                                         structure_strides=self.structure_strides,             # <<<<<<<<<<<<<<
  *                                         random_seed = self.random_seed+i,
  *                                         sw=self.singleton_weight,
  */
-        __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_cur_scope->__pyx_v_self, __pyx_n_s_structure_strides); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 294, __pyx_L1_error)
+        __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_cur_scope->__pyx_v_self, __pyx_n_s_structure_strides); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 298, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_3);
-        if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_structure_strides, __pyx_t_3) < 0) __PYX_ERR(0, 289, __pyx_L1_error)
+        if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_structure_strides, __pyx_t_3) < 0) __PYX_ERR(0, 293, __pyx_L1_error)
         __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-        /* "structureboost/prob_regressor.pyx":295
+        /* "structureboost/prob_regressor.pyx":299
  *                                         max_depth=self.max_depth,
  *                                         structure_strides=self.structure_strides,
  *                                         random_seed = self.random_seed+i,             # <<<<<<<<<<<<<<
  *                                         sw=self.singleton_weight,
  *                                         lp=self.strides_lp, hp=self.strides_hp))
  */
-        __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_cur_scope->__pyx_v_self, __pyx_n_s_random_seed); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 295, __pyx_L1_error)
+        __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_cur_scope->__pyx_v_self, __pyx_n_s_random_seed); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 299, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_3);
-        __pyx_t_7 = PyNumber_Add(__pyx_t_3, __pyx_v_i); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 295, __pyx_L1_error)
+        __pyx_t_7 = PyNumber_Add(__pyx_t_3, __pyx_v_i); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 299, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_7);
         __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-        if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_random_seed, __pyx_t_7) < 0) __PYX_ERR(0, 289, __pyx_L1_error)
+        if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_random_seed, __pyx_t_7) < 0) __PYX_ERR(0, 293, __pyx_L1_error)
         __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
 
-        /* "structureboost/prob_regressor.pyx":296
+        /* "structureboost/prob_regressor.pyx":300
  *                                         structure_strides=self.structure_strides,
  *                                         random_seed = self.random_seed+i,
  *                                         sw=self.singleton_weight,             # <<<<<<<<<<<<<<
  *                                         lp=self.strides_lp, hp=self.strides_hp))
  *                 for i in range(self.num_forests):
  */
-        __pyx_t_7 = __Pyx_PyObject_GetAttrStr(__pyx_cur_scope->__pyx_v_self, __pyx_n_s_singleton_weight); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 296, __pyx_L1_error)
+        __pyx_t_7 = __Pyx_PyObject_GetAttrStr(__pyx_cur_scope->__pyx_v_self, __pyx_n_s_singleton_weight); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 300, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_7);
-        if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_sw, __pyx_t_7) < 0) __PYX_ERR(0, 289, __pyx_L1_error)
+        if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_sw, __pyx_t_7) < 0) __PYX_ERR(0, 293, __pyx_L1_error)
         __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
 
-        /* "structureboost/prob_regressor.pyx":297
+        /* "structureboost/prob_regressor.pyx":301
  *                                         random_seed = self.random_seed+i,
  *                                         sw=self.singleton_weight,
  *                                         lp=self.strides_lp, hp=self.strides_hp))             # <<<<<<<<<<<<<<
  *                 for i in range(self.num_forests):
  *                     print(f'Training Forest {i}')
  */
-        __pyx_t_7 = __Pyx_PyObject_GetAttrStr(__pyx_cur_scope->__pyx_v_self, __pyx_n_s_strides_lp); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 297, __pyx_L1_error)
+        __pyx_t_7 = __Pyx_PyObject_GetAttrStr(__pyx_cur_scope->__pyx_v_self, __pyx_n_s_strides_lp); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 301, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_7);
-        if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_lp, __pyx_t_7) < 0) __PYX_ERR(0, 289, __pyx_L1_error)
+        if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_lp, __pyx_t_7) < 0) __PYX_ERR(0, 293, __pyx_L1_error)
         __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
-        __pyx_t_7 = __Pyx_PyObject_GetAttrStr(__pyx_cur_scope->__pyx_v_self, __pyx_n_s_strides_hp); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 297, __pyx_L1_error)
+        __pyx_t_7 = __Pyx_PyObject_GetAttrStr(__pyx_cur_scope->__pyx_v_self, __pyx_n_s_strides_hp); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 301, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_7);
-        if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_hp, __pyx_t_7) < 0) __PYX_ERR(0, 289, __pyx_L1_error)
+        if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_hp, __pyx_t_7) < 0) __PYX_ERR(0, 293, __pyx_L1_error)
         __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
 
-        /* "structureboost/prob_regressor.pyx":288
+        /* "structureboost/prob_regressor.pyx":292
  *                 for i in range(self.num_forests):
  *                     # Set up forest with appropriate binpt_vec, newnumber of trees
  *                     self.forest_list.append(ProbRegressorUnit(             # <<<<<<<<<<<<<<
  *                                         num_trees = num_trees_used[i],
  *                                         bin_vec = self.binpt_vec_list[i].copy(),
  */
-        __pyx_t_7 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_empty_tuple, __pyx_t_1); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 288, __pyx_L1_error)
+        __pyx_t_7 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_empty_tuple, __pyx_t_1); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 292, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_7);
         __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
         __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-        __pyx_t_9 = __Pyx_PyObject_Append(__pyx_t_12, __pyx_t_7); if (unlikely(__pyx_t_9 == ((int)-1))) __PYX_ERR(0, 288, __pyx_L1_error)
+        __pyx_t_9 = __Pyx_PyObject_Append(__pyx_t_12, __pyx_t_7); if (unlikely(__pyx_t_9 == ((int)-1))) __PYX_ERR(0, 292, __pyx_L1_error)
         __Pyx_DECREF(__pyx_t_12); __pyx_t_12 = 0;
         __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
 
-        /* "structureboost/prob_regressor.pyx":286
+        /* "structureboost/prob_regressor.pyx":290
  *                                     for k in range(self.num_forests)]
  *                 self.forest_list = []
  *                 for i in range(self.num_forests):             # <<<<<<<<<<<<<<
@@ -6430,25 +6533,25 @@ static PyObject *__pyx_pf_14structureboost_14prob_regressor_11PrestoBoost_2fit(C
       }
       __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
 
-      /* "structureboost/prob_regressor.pyx":298
+      /* "structureboost/prob_regressor.pyx":302
  *                                         sw=self.singleton_weight,
  *                                         lp=self.strides_lp, hp=self.strides_hp))
  *                 for i in range(self.num_forests):             # <<<<<<<<<<<<<<
  *                     print(f'Training Forest {i}')
  *                     self.forest_list[i].fit(X_train_val, y_train_val, eval_freq=eval_freq)
  */
-      __pyx_t_8 = __Pyx_PyObject_GetAttrStr(__pyx_cur_scope->__pyx_v_self, __pyx_n_s_num_forests); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 298, __pyx_L1_error)
+      __pyx_t_8 = __Pyx_PyObject_GetAttrStr(__pyx_cur_scope->__pyx_v_self, __pyx_n_s_num_forests); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 302, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_8);
-      __pyx_t_7 = __Pyx_PyObject_CallOneArg(__pyx_builtin_range, __pyx_t_8); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 298, __pyx_L1_error)
+      __pyx_t_7 = __Pyx_PyObject_CallOneArg(__pyx_builtin_range, __pyx_t_8); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 302, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_7);
       __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
       if (likely(PyList_CheckExact(__pyx_t_7)) || PyTuple_CheckExact(__pyx_t_7)) {
         __pyx_t_8 = __pyx_t_7; __Pyx_INCREF(__pyx_t_8); __pyx_t_5 = 0;
         __pyx_t_6 = NULL;
       } else {
-        __pyx_t_5 = -1; __pyx_t_8 = PyObject_GetIter(__pyx_t_7); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 298, __pyx_L1_error)
+        __pyx_t_5 = -1; __pyx_t_8 = PyObject_GetIter(__pyx_t_7); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 302, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_8);
-        __pyx_t_6 = Py_TYPE(__pyx_t_8)->tp_iternext; if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 298, __pyx_L1_error)
+        __pyx_t_6 = Py_TYPE(__pyx_t_8)->tp_iternext; if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 302, __pyx_L1_error)
       }
       __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
       for (;;) {
@@ -6456,17 +6559,17 @@ static PyObject *__pyx_pf_14structureboost_14prob_regressor_11PrestoBoost_2fit(C
           if (likely(PyList_CheckExact(__pyx_t_8))) {
             if (__pyx_t_5 >= PyList_GET_SIZE(__pyx_t_8)) break;
             #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-            __pyx_t_7 = PyList_GET_ITEM(__pyx_t_8, __pyx_t_5); __Pyx_INCREF(__pyx_t_7); __pyx_t_5++; if (unlikely(0 < 0)) __PYX_ERR(0, 298, __pyx_L1_error)
+            __pyx_t_7 = PyList_GET_ITEM(__pyx_t_8, __pyx_t_5); __Pyx_INCREF(__pyx_t_7); __pyx_t_5++; if (unlikely(0 < 0)) __PYX_ERR(0, 302, __pyx_L1_error)
             #else
-            __pyx_t_7 = PySequence_ITEM(__pyx_t_8, __pyx_t_5); __pyx_t_5++; if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 298, __pyx_L1_error)
+            __pyx_t_7 = PySequence_ITEM(__pyx_t_8, __pyx_t_5); __pyx_t_5++; if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 302, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_7);
             #endif
           } else {
             if (__pyx_t_5 >= PyTuple_GET_SIZE(__pyx_t_8)) break;
             #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-            __pyx_t_7 = PyTuple_GET_ITEM(__pyx_t_8, __pyx_t_5); __Pyx_INCREF(__pyx_t_7); __pyx_t_5++; if (unlikely(0 < 0)) __PYX_ERR(0, 298, __pyx_L1_error)
+            __pyx_t_7 = PyTuple_GET_ITEM(__pyx_t_8, __pyx_t_5); __Pyx_INCREF(__pyx_t_7); __pyx_t_5++; if (unlikely(0 < 0)) __PYX_ERR(0, 302, __pyx_L1_error)
             #else
-            __pyx_t_7 = PySequence_ITEM(__pyx_t_8, __pyx_t_5); __pyx_t_5++; if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 298, __pyx_L1_error)
+            __pyx_t_7 = PySequence_ITEM(__pyx_t_8, __pyx_t_5); __pyx_t_5++; if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 302, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_7);
             #endif
           }
@@ -6476,7 +6579,7 @@ static PyObject *__pyx_pf_14structureboost_14prob_regressor_11PrestoBoost_2fit(C
             PyObject* exc_type = PyErr_Occurred();
             if (exc_type) {
               if (likely(__Pyx_PyErr_GivenExceptionMatches(exc_type, PyExc_StopIteration))) PyErr_Clear();
-              else __PYX_ERR(0, 298, __pyx_L1_error)
+              else __PYX_ERR(0, 302, __pyx_L1_error)
             }
             break;
           }
@@ -6485,39 +6588,39 @@ static PyObject *__pyx_pf_14structureboost_14prob_regressor_11PrestoBoost_2fit(C
         __Pyx_XDECREF_SET(__pyx_v_i, __pyx_t_7);
         __pyx_t_7 = 0;
 
-        /* "structureboost/prob_regressor.pyx":299
+        /* "structureboost/prob_regressor.pyx":303
  *                                         lp=self.strides_lp, hp=self.strides_hp))
  *                 for i in range(self.num_forests):
  *                     print(f'Training Forest {i}')             # <<<<<<<<<<<<<<
  *                     self.forest_list[i].fit(X_train_val, y_train_val, eval_freq=eval_freq)
  * 
  */
-        __pyx_t_7 = __Pyx_PyObject_FormatSimple(__pyx_v_i, __pyx_empty_unicode); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 299, __pyx_L1_error)
+        __pyx_t_7 = __Pyx_PyObject_FormatSimple(__pyx_v_i, __pyx_empty_unicode); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 303, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_7);
-        __pyx_t_12 = __Pyx_PyUnicode_Concat(__pyx_kp_u_Training_Forest, __pyx_t_7); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 299, __pyx_L1_error)
+        __pyx_t_12 = __Pyx_PyUnicode_Concat(__pyx_kp_u_Training_Forest, __pyx_t_7); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 303, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_12);
         __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
-        __pyx_t_7 = __Pyx_PyObject_CallOneArg(__pyx_builtin_print, __pyx_t_12); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 299, __pyx_L1_error)
+        __pyx_t_7 = __Pyx_PyObject_CallOneArg(__pyx_builtin_print, __pyx_t_12); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 303, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_7);
         __Pyx_DECREF(__pyx_t_12); __pyx_t_12 = 0;
         __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
 
-        /* "structureboost/prob_regressor.pyx":300
+        /* "structureboost/prob_regressor.pyx":304
  *                 for i in range(self.num_forests):
  *                     print(f'Training Forest {i}')
  *                     self.forest_list[i].fit(X_train_val, y_train_val, eval_freq=eval_freq)             # <<<<<<<<<<<<<<
  * 
  * 
  */
-        __pyx_t_7 = __Pyx_PyObject_GetAttrStr(__pyx_cur_scope->__pyx_v_self, __pyx_n_s_forest_list); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 300, __pyx_L1_error)
+        __pyx_t_7 = __Pyx_PyObject_GetAttrStr(__pyx_cur_scope->__pyx_v_self, __pyx_n_s_forest_list); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 304, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_7);
-        __pyx_t_12 = __Pyx_PyObject_GetItem(__pyx_t_7, __pyx_v_i); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 300, __pyx_L1_error)
+        __pyx_t_12 = __Pyx_PyObject_GetItem(__pyx_t_7, __pyx_v_i); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 304, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_12);
         __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
-        __pyx_t_7 = __Pyx_PyObject_GetAttrStr(__pyx_t_12, __pyx_n_s_fit); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 300, __pyx_L1_error)
+        __pyx_t_7 = __Pyx_PyObject_GetAttrStr(__pyx_t_12, __pyx_n_s_fit); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 304, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_7);
         __Pyx_DECREF(__pyx_t_12); __pyx_t_12 = 0;
-        __pyx_t_12 = PyTuple_New(2); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 300, __pyx_L1_error)
+        __pyx_t_12 = PyTuple_New(2); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 304, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_12);
         __Pyx_INCREF(__pyx_cur_scope->__pyx_v_X_train_val);
         __Pyx_GIVEREF(__pyx_cur_scope->__pyx_v_X_train_val);
@@ -6525,17 +6628,17 @@ static PyObject *__pyx_pf_14structureboost_14prob_regressor_11PrestoBoost_2fit(C
         __Pyx_INCREF(__pyx_cur_scope->__pyx_v_y_train_val);
         __Pyx_GIVEREF(__pyx_cur_scope->__pyx_v_y_train_val);
         PyTuple_SET_ITEM(__pyx_t_12, 1, __pyx_cur_scope->__pyx_v_y_train_val);
-        __pyx_t_1 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 300, __pyx_L1_error)
+        __pyx_t_1 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 304, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_1);
-        if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_eval_freq, __pyx_cur_scope->__pyx_v_eval_freq) < 0) __PYX_ERR(0, 300, __pyx_L1_error)
-        __pyx_t_2 = __Pyx_PyObject_Call(__pyx_t_7, __pyx_t_12, __pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 300, __pyx_L1_error)
+        if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_eval_freq, __pyx_cur_scope->__pyx_v_eval_freq) < 0) __PYX_ERR(0, 304, __pyx_L1_error)
+        __pyx_t_2 = __Pyx_PyObject_Call(__pyx_t_7, __pyx_t_12, __pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 304, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_2);
         __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
         __Pyx_DECREF(__pyx_t_12); __pyx_t_12 = 0;
         __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
         __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-        /* "structureboost/prob_regressor.pyx":298
+        /* "structureboost/prob_regressor.pyx":302
  *                                         sw=self.singleton_weight,
  *                                         lp=self.strides_lp, hp=self.strides_hp))
  *                 for i in range(self.num_forests):             # <<<<<<<<<<<<<<
@@ -6545,7 +6648,7 @@ static PyObject *__pyx_pf_14structureboost_14prob_regressor_11PrestoBoost_2fit(C
       }
       __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
 
-      /* "structureboost/prob_regressor.pyx":273
+      /* "structureboost/prob_regressor.pyx":277
  * 
  *             # If you want to refit on the combined training and validation data
  *             if refit_train_val and (eval_set is not None):             # <<<<<<<<<<<<<<
@@ -6554,7 +6657,7 @@ static PyObject *__pyx_pf_14structureboost_14prob_regressor_11PrestoBoost_2fit(C
  */
     }
 
-    /* "structureboost/prob_regressor.pyx":253
+    /* "structureboost/prob_regressor.pyx":257
  * 
  * 
  *         if n_jobs==1: # if not parallelizing             # <<<<<<<<<<<<<<
@@ -6564,7 +6667,7 @@ static PyObject *__pyx_pf_14structureboost_14prob_regressor_11PrestoBoost_2fit(C
     goto __pyx_L12;
   }
 
-  /* "structureboost/prob_regressor.pyx":305
+  /* "structureboost/prob_regressor.pyx":309
  * 
  *         else: # if parallelizing
  *             if eval_set is None:             # <<<<<<<<<<<<<<
@@ -6576,42 +6679,42 @@ static PyObject *__pyx_pf_14structureboost_14prob_regressor_11PrestoBoost_2fit(C
     __pyx_t_14 = (__pyx_t_4 != 0);
     if (__pyx_t_14) {
 
-      /* "structureboost/prob_regressor.pyx":306
+      /* "structureboost/prob_regressor.pyx":310
  *         else: # if parallelizing
  *             if eval_set is None:
  *                 print('Training Forests')             # <<<<<<<<<<<<<<
  *                 self.forest_list = Parallel(n_jobs=n_jobs,
  *                                         )(delayed(fit_and_return)(f, X_train, y_train)
  */
-      __pyx_t_8 = __Pyx_PyObject_Call(__pyx_builtin_print, __pyx_tuple__6, NULL); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 306, __pyx_L1_error)
+      __pyx_t_8 = __Pyx_PyObject_Call(__pyx_builtin_print, __pyx_tuple__6, NULL); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 310, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_8);
       __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
 
-      /* "structureboost/prob_regressor.pyx":307
+      /* "structureboost/prob_regressor.pyx":311
  *             if eval_set is None:
  *                 print('Training Forests')
  *                 self.forest_list = Parallel(n_jobs=n_jobs,             # <<<<<<<<<<<<<<
  *                                         )(delayed(fit_and_return)(f, X_train, y_train)
  *                                         for f in self.forest_list)
  */
-      __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_Parallel); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 307, __pyx_L1_error)
+      __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_Parallel); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 311, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_2);
-      __pyx_t_1 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 307, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 311, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
-      if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_n_jobs, __pyx_v_n_jobs) < 0) __PYX_ERR(0, 307, __pyx_L1_error)
-      __pyx_t_12 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_empty_tuple, __pyx_t_1); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 307, __pyx_L1_error)
+      if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_n_jobs, __pyx_v_n_jobs) < 0) __PYX_ERR(0, 311, __pyx_L1_error)
+      __pyx_t_12 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_empty_tuple, __pyx_t_1); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 311, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_12);
       __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
       __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-      /* "structureboost/prob_regressor.pyx":308
+      /* "structureboost/prob_regressor.pyx":312
  *                 print('Training Forests')
  *                 self.forest_list = Parallel(n_jobs=n_jobs,
  *                                         )(delayed(fit_and_return)(f, X_train, y_train)             # <<<<<<<<<<<<<<
  *                                         for f in self.forest_list)
  *             else:
  */
-      __pyx_t_1 = __pyx_pf_14structureboost_14prob_regressor_11PrestoBoost_3fit_genexpr(((PyObject*)__pyx_cur_scope)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 308, __pyx_L1_error)
+      __pyx_t_1 = __pyx_pf_14structureboost_14prob_regressor_11PrestoBoost_3fit_genexpr(((PyObject*)__pyx_cur_scope)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 312, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
       __pyx_t_2 = NULL;
       if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_12))) {
@@ -6626,21 +6729,21 @@ static PyObject *__pyx_pf_14structureboost_14prob_regressor_11PrestoBoost_2fit(C
       __pyx_t_8 = (__pyx_t_2) ? __Pyx_PyObject_Call2Args(__pyx_t_12, __pyx_t_2, __pyx_t_1) : __Pyx_PyObject_CallOneArg(__pyx_t_12, __pyx_t_1);
       __Pyx_XDECREF(__pyx_t_2); __pyx_t_2 = 0;
       __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-      if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 308, __pyx_L1_error)
+      if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 312, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_8);
       __Pyx_DECREF(__pyx_t_12); __pyx_t_12 = 0;
 
-      /* "structureboost/prob_regressor.pyx":307
+      /* "structureboost/prob_regressor.pyx":311
  *             if eval_set is None:
  *                 print('Training Forests')
  *                 self.forest_list = Parallel(n_jobs=n_jobs,             # <<<<<<<<<<<<<<
  *                                         )(delayed(fit_and_return)(f, X_train, y_train)
  *                                         for f in self.forest_list)
  */
-      if (__Pyx_PyObject_SetAttrStr(__pyx_cur_scope->__pyx_v_self, __pyx_n_s_forest_list, __pyx_t_8) < 0) __PYX_ERR(0, 307, __pyx_L1_error)
+      if (__Pyx_PyObject_SetAttrStr(__pyx_cur_scope->__pyx_v_self, __pyx_n_s_forest_list, __pyx_t_8) < 0) __PYX_ERR(0, 311, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
 
-      /* "structureboost/prob_regressor.pyx":305
+      /* "structureboost/prob_regressor.pyx":309
  * 
  *         else: # if parallelizing
  *             if eval_set is None:             # <<<<<<<<<<<<<<
@@ -6650,7 +6753,7 @@ static PyObject *__pyx_pf_14structureboost_14prob_regressor_11PrestoBoost_2fit(C
       goto __pyx_L36;
     }
 
-    /* "structureboost/prob_regressor.pyx":311
+    /* "structureboost/prob_regressor.pyx":315
  *                                         for f in self.forest_list)
  *             else:
  *                 print('Training Forests')             # <<<<<<<<<<<<<<
@@ -6658,35 +6761,35 @@ static PyObject *__pyx_pf_14structureboost_14prob_regressor_11PrestoBoost_2fit(C
  *                                         )(delayed(fit_and_return2)(f, X_train, y_train,
  */
     /*else*/ {
-      __pyx_t_8 = __Pyx_PyObject_Call(__pyx_builtin_print, __pyx_tuple__6, NULL); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 311, __pyx_L1_error)
+      __pyx_t_8 = __Pyx_PyObject_Call(__pyx_builtin_print, __pyx_tuple__6, NULL); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 315, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_8);
       __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
 
-      /* "structureboost/prob_regressor.pyx":312
+      /* "structureboost/prob_regressor.pyx":316
  *             else:
  *                 print('Training Forests')
  *                 self.forest_list = Parallel(n_jobs=n_jobs,             # <<<<<<<<<<<<<<
  *                                         )(delayed(fit_and_return2)(f, X_train, y_train,
  *                                             eval_set, eval_freq,
  */
-      __Pyx_GetModuleGlobalName(__pyx_t_12, __pyx_n_s_Parallel); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 312, __pyx_L1_error)
+      __Pyx_GetModuleGlobalName(__pyx_t_12, __pyx_n_s_Parallel); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 316, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_12);
-      __pyx_t_1 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 312, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 316, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
-      if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_n_jobs, __pyx_v_n_jobs) < 0) __PYX_ERR(0, 312, __pyx_L1_error)
-      __pyx_t_2 = __Pyx_PyObject_Call(__pyx_t_12, __pyx_empty_tuple, __pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 312, __pyx_L1_error)
+      if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_n_jobs, __pyx_v_n_jobs) < 0) __PYX_ERR(0, 316, __pyx_L1_error)
+      __pyx_t_2 = __Pyx_PyObject_Call(__pyx_t_12, __pyx_empty_tuple, __pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 316, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_2);
       __Pyx_DECREF(__pyx_t_12); __pyx_t_12 = 0;
       __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-      /* "structureboost/prob_regressor.pyx":313
+      /* "structureboost/prob_regressor.pyx":317
  *                 print('Training Forests')
  *                 self.forest_list = Parallel(n_jobs=n_jobs,
  *                                         )(delayed(fit_and_return2)(f, X_train, y_train,             # <<<<<<<<<<<<<<
  *                                             eval_set, eval_freq,
  *                                             early_stop_past_steps, choose_best_eval)
  */
-      __pyx_t_1 = __pyx_pf_14structureboost_14prob_regressor_11PrestoBoost_3fit_3genexpr(((PyObject*)__pyx_cur_scope)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 313, __pyx_L1_error)
+      __pyx_t_1 = __pyx_pf_14structureboost_14prob_regressor_11PrestoBoost_3fit_3genexpr(((PyObject*)__pyx_cur_scope)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 317, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
       __pyx_t_12 = NULL;
       if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_2))) {
@@ -6701,92 +6804,92 @@ static PyObject *__pyx_pf_14structureboost_14prob_regressor_11PrestoBoost_2fit(C
       __pyx_t_8 = (__pyx_t_12) ? __Pyx_PyObject_Call2Args(__pyx_t_2, __pyx_t_12, __pyx_t_1) : __Pyx_PyObject_CallOneArg(__pyx_t_2, __pyx_t_1);
       __Pyx_XDECREF(__pyx_t_12); __pyx_t_12 = 0;
       __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-      if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 313, __pyx_L1_error)
+      if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 317, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_8);
       __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-      /* "structureboost/prob_regressor.pyx":312
+      /* "structureboost/prob_regressor.pyx":316
  *             else:
  *                 print('Training Forests')
  *                 self.forest_list = Parallel(n_jobs=n_jobs,             # <<<<<<<<<<<<<<
  *                                         )(delayed(fit_and_return2)(f, X_train, y_train,
  *                                             eval_set, eval_freq,
  */
-      if (__Pyx_PyObject_SetAttrStr(__pyx_cur_scope->__pyx_v_self, __pyx_n_s_forest_list, __pyx_t_8) < 0) __PYX_ERR(0, 312, __pyx_L1_error)
+      if (__Pyx_PyObject_SetAttrStr(__pyx_cur_scope->__pyx_v_self, __pyx_n_s_forest_list, __pyx_t_8) < 0) __PYX_ERR(0, 316, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
 
-      /* "structureboost/prob_regressor.pyx":318
+      /* "structureboost/prob_regressor.pyx":322
  *                                         for f in self.forest_list)
  * 
  *                 if fit_calibrators:             # <<<<<<<<<<<<<<
  *                     print('Fitting Calibrators')
  *                     X_calib = eval_set[0]
  */
-      __pyx_t_14 = __Pyx_PyObject_IsTrue(__pyx_v_fit_calibrators); if (unlikely(__pyx_t_14 < 0)) __PYX_ERR(0, 318, __pyx_L1_error)
+      __pyx_t_14 = __Pyx_PyObject_IsTrue(__pyx_v_fit_calibrators); if (unlikely(__pyx_t_14 < 0)) __PYX_ERR(0, 322, __pyx_L1_error)
       if (__pyx_t_14) {
 
-        /* "structureboost/prob_regressor.pyx":319
+        /* "structureboost/prob_regressor.pyx":323
  * 
  *                 if fit_calibrators:
  *                     print('Fitting Calibrators')             # <<<<<<<<<<<<<<
  *                     X_calib = eval_set[0]
  *                     y_calib = eval_set[1]
  */
-        __pyx_t_8 = __Pyx_PyObject_Call(__pyx_builtin_print, __pyx_tuple__7, NULL); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 319, __pyx_L1_error)
+        __pyx_t_8 = __Pyx_PyObject_Call(__pyx_builtin_print, __pyx_tuple__7, NULL); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 323, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_8);
         __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
 
-        /* "structureboost/prob_regressor.pyx":320
+        /* "structureboost/prob_regressor.pyx":324
  *                 if fit_calibrators:
  *                     print('Fitting Calibrators')
  *                     X_calib = eval_set[0]             # <<<<<<<<<<<<<<
  *                     y_calib = eval_set[1]
  *                     self.calibrator_list = Parallel(n_jobs=n_jobs,
  */
-        __pyx_t_8 = __Pyx_GetItemInt(__pyx_cur_scope->__pyx_v_eval_set, 0, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 320, __pyx_L1_error)
+        __pyx_t_8 = __Pyx_GetItemInt(__pyx_cur_scope->__pyx_v_eval_set, 0, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 324, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_8);
         __Pyx_GIVEREF(__pyx_t_8);
         __pyx_cur_scope->__pyx_v_X_calib = __pyx_t_8;
         __pyx_t_8 = 0;
 
-        /* "structureboost/prob_regressor.pyx":321
+        /* "structureboost/prob_regressor.pyx":325
  *                     print('Fitting Calibrators')
  *                     X_calib = eval_set[0]
  *                     y_calib = eval_set[1]             # <<<<<<<<<<<<<<
  *                     self.calibrator_list = Parallel(n_jobs=n_jobs,
  *                                         )(delayed(calib_parallel)(self.calibrator_list[i],
  */
-        __pyx_t_8 = __Pyx_GetItemInt(__pyx_cur_scope->__pyx_v_eval_set, 1, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 321, __pyx_L1_error)
+        __pyx_t_8 = __Pyx_GetItemInt(__pyx_cur_scope->__pyx_v_eval_set, 1, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 325, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_8);
         __Pyx_GIVEREF(__pyx_t_8);
         __pyx_cur_scope->__pyx_v_y_calib = __pyx_t_8;
         __pyx_t_8 = 0;
 
-        /* "structureboost/prob_regressor.pyx":322
+        /* "structureboost/prob_regressor.pyx":326
  *                     X_calib = eval_set[0]
  *                     y_calib = eval_set[1]
  *                     self.calibrator_list = Parallel(n_jobs=n_jobs,             # <<<<<<<<<<<<<<
  *                                         )(delayed(calib_parallel)(self.calibrator_list[i],
  *                                         self.forest_list[i].bin_vec, self.forest_list[i].gbtmodel,
  */
-        __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_Parallel); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 322, __pyx_L1_error)
+        __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_Parallel); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 326, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_2);
-        __pyx_t_1 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 322, __pyx_L1_error)
+        __pyx_t_1 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 326, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_1);
-        if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_n_jobs, __pyx_v_n_jobs) < 0) __PYX_ERR(0, 322, __pyx_L1_error)
-        __pyx_t_12 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_empty_tuple, __pyx_t_1); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 322, __pyx_L1_error)
+        if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_n_jobs, __pyx_v_n_jobs) < 0) __PYX_ERR(0, 326, __pyx_L1_error)
+        __pyx_t_12 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_empty_tuple, __pyx_t_1); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 326, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_12);
         __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
         __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-        /* "structureboost/prob_regressor.pyx":323
+        /* "structureboost/prob_regressor.pyx":327
  *                     y_calib = eval_set[1]
  *                     self.calibrator_list = Parallel(n_jobs=n_jobs,
  *                                         )(delayed(calib_parallel)(self.calibrator_list[i],             # <<<<<<<<<<<<<<
  *                                         self.forest_list[i].bin_vec, self.forest_list[i].gbtmodel,
  *                                          X_calib, y_calib)
  */
-        __pyx_t_1 = __pyx_pf_14structureboost_14prob_regressor_11PrestoBoost_3fit_6genexpr(((PyObject*)__pyx_cur_scope)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 323, __pyx_L1_error)
+        __pyx_t_1 = __pyx_pf_14structureboost_14prob_regressor_11PrestoBoost_3fit_6genexpr(((PyObject*)__pyx_cur_scope)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 327, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_1);
         __pyx_t_2 = NULL;
         if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_12))) {
@@ -6801,21 +6904,21 @@ static PyObject *__pyx_pf_14structureboost_14prob_regressor_11PrestoBoost_2fit(C
         __pyx_t_8 = (__pyx_t_2) ? __Pyx_PyObject_Call2Args(__pyx_t_12, __pyx_t_2, __pyx_t_1) : __Pyx_PyObject_CallOneArg(__pyx_t_12, __pyx_t_1);
         __Pyx_XDECREF(__pyx_t_2); __pyx_t_2 = 0;
         __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-        if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 323, __pyx_L1_error)
+        if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 327, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_8);
         __Pyx_DECREF(__pyx_t_12); __pyx_t_12 = 0;
 
-        /* "structureboost/prob_regressor.pyx":322
+        /* "structureboost/prob_regressor.pyx":326
  *                     X_calib = eval_set[0]
  *                     y_calib = eval_set[1]
  *                     self.calibrator_list = Parallel(n_jobs=n_jobs,             # <<<<<<<<<<<<<<
  *                                         )(delayed(calib_parallel)(self.calibrator_list[i],
  *                                         self.forest_list[i].bin_vec, self.forest_list[i].gbtmodel,
  */
-        if (__Pyx_PyObject_SetAttrStr(__pyx_cur_scope->__pyx_v_self, __pyx_n_s_calibrator_list, __pyx_t_8) < 0) __PYX_ERR(0, 322, __pyx_L1_error)
+        if (__Pyx_PyObject_SetAttrStr(__pyx_cur_scope->__pyx_v_self, __pyx_n_s_calibrator_list, __pyx_t_8) < 0) __PYX_ERR(0, 326, __pyx_L1_error)
         __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
 
-        /* "structureboost/prob_regressor.pyx":318
+        /* "structureboost/prob_regressor.pyx":322
  *                                         for f in self.forest_list)
  * 
  *                 if fit_calibrators:             # <<<<<<<<<<<<<<
@@ -6824,28 +6927,28 @@ static PyObject *__pyx_pf_14structureboost_14prob_regressor_11PrestoBoost_2fit(C
  */
       }
 
-      /* "structureboost/prob_regressor.pyx":328
+      /* "structureboost/prob_regressor.pyx":332
  *                                         for i in range(len(self.forest_list)))
  * 
  *                 if refit_train_val:             # <<<<<<<<<<<<<<
  *                     print('Training Forests on combined data')
  *                     num_trees_used = [self.forest_list[k].gbtmodel.num_trees_for_prediction
  */
-      __pyx_t_14 = __Pyx_PyObject_IsTrue(__pyx_v_refit_train_val); if (unlikely(__pyx_t_14 < 0)) __PYX_ERR(0, 328, __pyx_L1_error)
+      __pyx_t_14 = __Pyx_PyObject_IsTrue(__pyx_v_refit_train_val); if (unlikely(__pyx_t_14 < 0)) __PYX_ERR(0, 332, __pyx_L1_error)
       if (__pyx_t_14) {
 
-        /* "structureboost/prob_regressor.pyx":329
+        /* "structureboost/prob_regressor.pyx":333
  * 
  *                 if refit_train_val:
  *                     print('Training Forests on combined data')             # <<<<<<<<<<<<<<
  *                     num_trees_used = [self.forest_list[k].gbtmodel.num_trees_for_prediction
  *                                         for k in range(self.num_forests)]
  */
-        __pyx_t_8 = __Pyx_PyObject_Call(__pyx_builtin_print, __pyx_tuple__8, NULL); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 329, __pyx_L1_error)
+        __pyx_t_8 = __Pyx_PyObject_Call(__pyx_builtin_print, __pyx_tuple__8, NULL); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 333, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_8);
         __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
 
-        /* "structureboost/prob_regressor.pyx":330
+        /* "structureboost/prob_regressor.pyx":334
  *                 if refit_train_val:
  *                     print('Training Forests on combined data')
  *                     num_trees_used = [self.forest_list[k].gbtmodel.num_trees_for_prediction             # <<<<<<<<<<<<<<
@@ -6853,28 +6956,28 @@ static PyObject *__pyx_pf_14structureboost_14prob_regressor_11PrestoBoost_2fit(C
  *                     self.forest_list = []
  */
         { /* enter inner scope */
-          __pyx_t_8 = PyList_New(0); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 330, __pyx_L41_error)
+          __pyx_t_8 = PyList_New(0); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 334, __pyx_L41_error)
           __Pyx_GOTREF(__pyx_t_8);
 
-          /* "structureboost/prob_regressor.pyx":331
+          /* "structureboost/prob_regressor.pyx":335
  *                     print('Training Forests on combined data')
  *                     num_trees_used = [self.forest_list[k].gbtmodel.num_trees_for_prediction
  *                                         for k in range(self.num_forests)]             # <<<<<<<<<<<<<<
  *                     self.forest_list = []
  *                     for i in range(self.num_forests):
  */
-          __pyx_t_12 = __Pyx_PyObject_GetAttrStr(__pyx_cur_scope->__pyx_v_self, __pyx_n_s_num_forests); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 331, __pyx_L41_error)
+          __pyx_t_12 = __Pyx_PyObject_GetAttrStr(__pyx_cur_scope->__pyx_v_self, __pyx_n_s_num_forests); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 335, __pyx_L41_error)
           __Pyx_GOTREF(__pyx_t_12);
-          __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_builtin_range, __pyx_t_12); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 331, __pyx_L41_error)
+          __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_builtin_range, __pyx_t_12); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 335, __pyx_L41_error)
           __Pyx_GOTREF(__pyx_t_1);
           __Pyx_DECREF(__pyx_t_12); __pyx_t_12 = 0;
           if (likely(PyList_CheckExact(__pyx_t_1)) || PyTuple_CheckExact(__pyx_t_1)) {
             __pyx_t_12 = __pyx_t_1; __Pyx_INCREF(__pyx_t_12); __pyx_t_5 = 0;
             __pyx_t_6 = NULL;
           } else {
-            __pyx_t_5 = -1; __pyx_t_12 = PyObject_GetIter(__pyx_t_1); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 331, __pyx_L41_error)
+            __pyx_t_5 = -1; __pyx_t_12 = PyObject_GetIter(__pyx_t_1); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 335, __pyx_L41_error)
             __Pyx_GOTREF(__pyx_t_12);
-            __pyx_t_6 = Py_TYPE(__pyx_t_12)->tp_iternext; if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 331, __pyx_L41_error)
+            __pyx_t_6 = Py_TYPE(__pyx_t_12)->tp_iternext; if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 335, __pyx_L41_error)
           }
           __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
           for (;;) {
@@ -6882,17 +6985,17 @@ static PyObject *__pyx_pf_14structureboost_14prob_regressor_11PrestoBoost_2fit(C
               if (likely(PyList_CheckExact(__pyx_t_12))) {
                 if (__pyx_t_5 >= PyList_GET_SIZE(__pyx_t_12)) break;
                 #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-                __pyx_t_1 = PyList_GET_ITEM(__pyx_t_12, __pyx_t_5); __Pyx_INCREF(__pyx_t_1); __pyx_t_5++; if (unlikely(0 < 0)) __PYX_ERR(0, 331, __pyx_L41_error)
+                __pyx_t_1 = PyList_GET_ITEM(__pyx_t_12, __pyx_t_5); __Pyx_INCREF(__pyx_t_1); __pyx_t_5++; if (unlikely(0 < 0)) __PYX_ERR(0, 335, __pyx_L41_error)
                 #else
-                __pyx_t_1 = PySequence_ITEM(__pyx_t_12, __pyx_t_5); __pyx_t_5++; if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 331, __pyx_L41_error)
+                __pyx_t_1 = PySequence_ITEM(__pyx_t_12, __pyx_t_5); __pyx_t_5++; if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 335, __pyx_L41_error)
                 __Pyx_GOTREF(__pyx_t_1);
                 #endif
               } else {
                 if (__pyx_t_5 >= PyTuple_GET_SIZE(__pyx_t_12)) break;
                 #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-                __pyx_t_1 = PyTuple_GET_ITEM(__pyx_t_12, __pyx_t_5); __Pyx_INCREF(__pyx_t_1); __pyx_t_5++; if (unlikely(0 < 0)) __PYX_ERR(0, 331, __pyx_L41_error)
+                __pyx_t_1 = PyTuple_GET_ITEM(__pyx_t_12, __pyx_t_5); __Pyx_INCREF(__pyx_t_1); __pyx_t_5++; if (unlikely(0 < 0)) __PYX_ERR(0, 335, __pyx_L41_error)
                 #else
-                __pyx_t_1 = PySequence_ITEM(__pyx_t_12, __pyx_t_5); __pyx_t_5++; if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 331, __pyx_L41_error)
+                __pyx_t_1 = PySequence_ITEM(__pyx_t_12, __pyx_t_5); __pyx_t_5++; if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 335, __pyx_L41_error)
                 __Pyx_GOTREF(__pyx_t_1);
                 #endif
               }
@@ -6902,7 +7005,7 @@ static PyObject *__pyx_pf_14structureboost_14prob_regressor_11PrestoBoost_2fit(C
                 PyObject* exc_type = PyErr_Occurred();
                 if (exc_type) {
                   if (likely(__Pyx_PyErr_GivenExceptionMatches(exc_type, PyExc_StopIteration))) PyErr_Clear();
-                  else __PYX_ERR(0, 331, __pyx_L41_error)
+                  else __PYX_ERR(0, 335, __pyx_L41_error)
                 }
                 break;
               }
@@ -6911,28 +7014,28 @@ static PyObject *__pyx_pf_14structureboost_14prob_regressor_11PrestoBoost_2fit(C
             __Pyx_XDECREF_SET(__pyx_8genexpr5__pyx_v_k, __pyx_t_1);
             __pyx_t_1 = 0;
 
-            /* "structureboost/prob_regressor.pyx":330
+            /* "structureboost/prob_regressor.pyx":334
  *                 if refit_train_val:
  *                     print('Training Forests on combined data')
  *                     num_trees_used = [self.forest_list[k].gbtmodel.num_trees_for_prediction             # <<<<<<<<<<<<<<
  *                                         for k in range(self.num_forests)]
  *                     self.forest_list = []
  */
-            __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_cur_scope->__pyx_v_self, __pyx_n_s_forest_list); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 330, __pyx_L41_error)
+            __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_cur_scope->__pyx_v_self, __pyx_n_s_forest_list); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 334, __pyx_L41_error)
             __Pyx_GOTREF(__pyx_t_1);
-            __pyx_t_2 = __Pyx_PyObject_GetItem(__pyx_t_1, __pyx_8genexpr5__pyx_v_k); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 330, __pyx_L41_error)
+            __pyx_t_2 = __Pyx_PyObject_GetItem(__pyx_t_1, __pyx_8genexpr5__pyx_v_k); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 334, __pyx_L41_error)
             __Pyx_GOTREF(__pyx_t_2);
             __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-            __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_gbtmodel); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 330, __pyx_L41_error)
+            __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_gbtmodel); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 334, __pyx_L41_error)
             __Pyx_GOTREF(__pyx_t_1);
             __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-            __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_num_trees_for_prediction); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 330, __pyx_L41_error)
+            __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_num_trees_for_prediction); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 334, __pyx_L41_error)
             __Pyx_GOTREF(__pyx_t_2);
             __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-            if (unlikely(__Pyx_ListComp_Append(__pyx_t_8, (PyObject*)__pyx_t_2))) __PYX_ERR(0, 330, __pyx_L41_error)
+            if (unlikely(__Pyx_ListComp_Append(__pyx_t_8, (PyObject*)__pyx_t_2))) __PYX_ERR(0, 334, __pyx_L41_error)
             __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-            /* "structureboost/prob_regressor.pyx":331
+            /* "structureboost/prob_regressor.pyx":335
  *                     print('Training Forests on combined data')
  *                     num_trees_used = [self.forest_list[k].gbtmodel.num_trees_for_prediction
  *                                         for k in range(self.num_forests)]             # <<<<<<<<<<<<<<
@@ -6951,37 +7054,37 @@ static PyObject *__pyx_pf_14structureboost_14prob_regressor_11PrestoBoost_2fit(C
         __pyx_v_num_trees_used = ((PyObject*)__pyx_t_8);
         __pyx_t_8 = 0;
 
-        /* "structureboost/prob_regressor.pyx":332
+        /* "structureboost/prob_regressor.pyx":336
  *                     num_trees_used = [self.forest_list[k].gbtmodel.num_trees_for_prediction
  *                                         for k in range(self.num_forests)]
  *                     self.forest_list = []             # <<<<<<<<<<<<<<
  *                     for i in range(self.num_forests):
  *                         # Set up forest with appropriate binpt_vec, newnumber of trees
  */
-        __pyx_t_8 = PyList_New(0); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 332, __pyx_L1_error)
+        __pyx_t_8 = PyList_New(0); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 336, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_8);
-        if (__Pyx_PyObject_SetAttrStr(__pyx_cur_scope->__pyx_v_self, __pyx_n_s_forest_list, __pyx_t_8) < 0) __PYX_ERR(0, 332, __pyx_L1_error)
+        if (__Pyx_PyObject_SetAttrStr(__pyx_cur_scope->__pyx_v_self, __pyx_n_s_forest_list, __pyx_t_8) < 0) __PYX_ERR(0, 336, __pyx_L1_error)
         __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
 
-        /* "structureboost/prob_regressor.pyx":333
+        /* "structureboost/prob_regressor.pyx":337
  *                                         for k in range(self.num_forests)]
  *                     self.forest_list = []
  *                     for i in range(self.num_forests):             # <<<<<<<<<<<<<<
  *                         # Set up forest with appropriate binpt_vec, newnumber of trees
  *                         self.forest_list.append(ProbRegressorUnit(
  */
-        __pyx_t_8 = __Pyx_PyObject_GetAttrStr(__pyx_cur_scope->__pyx_v_self, __pyx_n_s_num_forests); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 333, __pyx_L1_error)
+        __pyx_t_8 = __Pyx_PyObject_GetAttrStr(__pyx_cur_scope->__pyx_v_self, __pyx_n_s_num_forests); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 337, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_8);
-        __pyx_t_12 = __Pyx_PyObject_CallOneArg(__pyx_builtin_range, __pyx_t_8); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 333, __pyx_L1_error)
+        __pyx_t_12 = __Pyx_PyObject_CallOneArg(__pyx_builtin_range, __pyx_t_8); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 337, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_12);
         __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
         if (likely(PyList_CheckExact(__pyx_t_12)) || PyTuple_CheckExact(__pyx_t_12)) {
           __pyx_t_8 = __pyx_t_12; __Pyx_INCREF(__pyx_t_8); __pyx_t_5 = 0;
           __pyx_t_6 = NULL;
         } else {
-          __pyx_t_5 = -1; __pyx_t_8 = PyObject_GetIter(__pyx_t_12); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 333, __pyx_L1_error)
+          __pyx_t_5 = -1; __pyx_t_8 = PyObject_GetIter(__pyx_t_12); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 337, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_8);
-          __pyx_t_6 = Py_TYPE(__pyx_t_8)->tp_iternext; if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 333, __pyx_L1_error)
+          __pyx_t_6 = Py_TYPE(__pyx_t_8)->tp_iternext; if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 337, __pyx_L1_error)
         }
         __Pyx_DECREF(__pyx_t_12); __pyx_t_12 = 0;
         for (;;) {
@@ -6989,17 +7092,17 @@ static PyObject *__pyx_pf_14structureboost_14prob_regressor_11PrestoBoost_2fit(C
             if (likely(PyList_CheckExact(__pyx_t_8))) {
               if (__pyx_t_5 >= PyList_GET_SIZE(__pyx_t_8)) break;
               #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-              __pyx_t_12 = PyList_GET_ITEM(__pyx_t_8, __pyx_t_5); __Pyx_INCREF(__pyx_t_12); __pyx_t_5++; if (unlikely(0 < 0)) __PYX_ERR(0, 333, __pyx_L1_error)
+              __pyx_t_12 = PyList_GET_ITEM(__pyx_t_8, __pyx_t_5); __Pyx_INCREF(__pyx_t_12); __pyx_t_5++; if (unlikely(0 < 0)) __PYX_ERR(0, 337, __pyx_L1_error)
               #else
-              __pyx_t_12 = PySequence_ITEM(__pyx_t_8, __pyx_t_5); __pyx_t_5++; if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 333, __pyx_L1_error)
+              __pyx_t_12 = PySequence_ITEM(__pyx_t_8, __pyx_t_5); __pyx_t_5++; if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 337, __pyx_L1_error)
               __Pyx_GOTREF(__pyx_t_12);
               #endif
             } else {
               if (__pyx_t_5 >= PyTuple_GET_SIZE(__pyx_t_8)) break;
               #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-              __pyx_t_12 = PyTuple_GET_ITEM(__pyx_t_8, __pyx_t_5); __Pyx_INCREF(__pyx_t_12); __pyx_t_5++; if (unlikely(0 < 0)) __PYX_ERR(0, 333, __pyx_L1_error)
+              __pyx_t_12 = PyTuple_GET_ITEM(__pyx_t_8, __pyx_t_5); __Pyx_INCREF(__pyx_t_12); __pyx_t_5++; if (unlikely(0 < 0)) __PYX_ERR(0, 337, __pyx_L1_error)
               #else
-              __pyx_t_12 = PySequence_ITEM(__pyx_t_8, __pyx_t_5); __pyx_t_5++; if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 333, __pyx_L1_error)
+              __pyx_t_12 = PySequence_ITEM(__pyx_t_8, __pyx_t_5); __pyx_t_5++; if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 337, __pyx_L1_error)
               __Pyx_GOTREF(__pyx_t_12);
               #endif
             }
@@ -7009,7 +7112,7 @@ static PyObject *__pyx_pf_14structureboost_14prob_regressor_11PrestoBoost_2fit(C
               PyObject* exc_type = PyErr_Occurred();
               if (exc_type) {
                 if (likely(__Pyx_PyErr_GivenExceptionMatches(exc_type, PyExc_StopIteration))) PyErr_Clear();
-                else __PYX_ERR(0, 333, __pyx_L1_error)
+                else __PYX_ERR(0, 337, __pyx_L1_error)
               }
               break;
             }
@@ -7018,45 +7121,45 @@ static PyObject *__pyx_pf_14structureboost_14prob_regressor_11PrestoBoost_2fit(C
           __Pyx_XDECREF_SET(__pyx_v_i, __pyx_t_12);
           __pyx_t_12 = 0;
 
-          /* "structureboost/prob_regressor.pyx":335
+          /* "structureboost/prob_regressor.pyx":339
  *                     for i in range(self.num_forests):
  *                         # Set up forest with appropriate binpt_vec, newnumber of trees
  *                         self.forest_list.append(ProbRegressorUnit(             # <<<<<<<<<<<<<<
  *                                             num_trees = num_trees_used[i],
  *                                             bin_vec = self.binpt_vec_list[i].copy(),
  */
-          __pyx_t_12 = __Pyx_PyObject_GetAttrStr(__pyx_cur_scope->__pyx_v_self, __pyx_n_s_forest_list); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 335, __pyx_L1_error)
+          __pyx_t_12 = __Pyx_PyObject_GetAttrStr(__pyx_cur_scope->__pyx_v_self, __pyx_n_s_forest_list); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 339, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_12);
-          __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_ProbRegressorUnit); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 335, __pyx_L1_error)
+          __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_ProbRegressorUnit); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 339, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_2);
 
-          /* "structureboost/prob_regressor.pyx":336
+          /* "structureboost/prob_regressor.pyx":340
  *                         # Set up forest with appropriate binpt_vec, newnumber of trees
  *                         self.forest_list.append(ProbRegressorUnit(
  *                                             num_trees = num_trees_used[i],             # <<<<<<<<<<<<<<
  *                                             bin_vec = self.binpt_vec_list[i].copy(),
  *                                             feature_configs=self.feature_configs,
  */
-          __pyx_t_1 = __Pyx_PyDict_NewPresized(10); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 336, __pyx_L1_error)
+          __pyx_t_1 = __Pyx_PyDict_NewPresized(10); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 340, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_1);
-          __pyx_t_7 = __Pyx_PyObject_GetItem(__pyx_v_num_trees_used, __pyx_v_i); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 336, __pyx_L1_error)
+          __pyx_t_7 = __Pyx_PyObject_GetItem(__pyx_v_num_trees_used, __pyx_v_i); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 340, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_7);
-          if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_num_trees, __pyx_t_7) < 0) __PYX_ERR(0, 336, __pyx_L1_error)
+          if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_num_trees, __pyx_t_7) < 0) __PYX_ERR(0, 340, __pyx_L1_error)
           __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
 
-          /* "structureboost/prob_regressor.pyx":337
+          /* "structureboost/prob_regressor.pyx":341
  *                         self.forest_list.append(ProbRegressorUnit(
  *                                             num_trees = num_trees_used[i],
  *                                             bin_vec = self.binpt_vec_list[i].copy(),             # <<<<<<<<<<<<<<
  *                                             feature_configs=self.feature_configs,
  *                                             learning_rate=self.learning_rate,
  */
-          __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_cur_scope->__pyx_v_self, __pyx_n_s_binpt_vec_list); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 337, __pyx_L1_error)
+          __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_cur_scope->__pyx_v_self, __pyx_n_s_binpt_vec_list); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 341, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_3);
-          __pyx_t_13 = __Pyx_PyObject_GetItem(__pyx_t_3, __pyx_v_i); if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 337, __pyx_L1_error)
+          __pyx_t_13 = __Pyx_PyObject_GetItem(__pyx_t_3, __pyx_v_i); if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 341, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_13);
           __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-          __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_13, __pyx_n_s_copy); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 337, __pyx_L1_error)
+          __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_13, __pyx_n_s_copy); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 341, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_3);
           __Pyx_DECREF(__pyx_t_13); __pyx_t_13 = 0;
           __pyx_t_13 = NULL;
@@ -7071,119 +7174,119 @@ static PyObject *__pyx_pf_14structureboost_14prob_regressor_11PrestoBoost_2fit(C
           }
           __pyx_t_7 = (__pyx_t_13) ? __Pyx_PyObject_CallOneArg(__pyx_t_3, __pyx_t_13) : __Pyx_PyObject_CallNoArg(__pyx_t_3);
           __Pyx_XDECREF(__pyx_t_13); __pyx_t_13 = 0;
-          if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 337, __pyx_L1_error)
+          if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 341, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_7);
           __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-          if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_bin_vec, __pyx_t_7) < 0) __PYX_ERR(0, 336, __pyx_L1_error)
+          if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_bin_vec, __pyx_t_7) < 0) __PYX_ERR(0, 340, __pyx_L1_error)
           __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
 
-          /* "structureboost/prob_regressor.pyx":338
+          /* "structureboost/prob_regressor.pyx":342
  *                                             num_trees = num_trees_used[i],
  *                                             bin_vec = self.binpt_vec_list[i].copy(),
  *                                             feature_configs=self.feature_configs,             # <<<<<<<<<<<<<<
  *                                             learning_rate=self.learning_rate,
  *                                             max_depth=self.max_depth,
  */
-          __pyx_t_7 = __Pyx_PyObject_GetAttrStr(__pyx_cur_scope->__pyx_v_self, __pyx_n_s_feature_configs); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 338, __pyx_L1_error)
+          __pyx_t_7 = __Pyx_PyObject_GetAttrStr(__pyx_cur_scope->__pyx_v_self, __pyx_n_s_feature_configs); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 342, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_7);
-          if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_feature_configs, __pyx_t_7) < 0) __PYX_ERR(0, 336, __pyx_L1_error)
+          if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_feature_configs, __pyx_t_7) < 0) __PYX_ERR(0, 340, __pyx_L1_error)
           __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
 
-          /* "structureboost/prob_regressor.pyx":339
+          /* "structureboost/prob_regressor.pyx":343
  *                                             bin_vec = self.binpt_vec_list[i].copy(),
  *                                             feature_configs=self.feature_configs,
  *                                             learning_rate=self.learning_rate,             # <<<<<<<<<<<<<<
  *                                             max_depth=self.max_depth,
  *                                             structure_strides=self.structure_strides,
  */
-          __pyx_t_7 = __Pyx_PyObject_GetAttrStr(__pyx_cur_scope->__pyx_v_self, __pyx_n_s_learning_rate); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 339, __pyx_L1_error)
+          __pyx_t_7 = __Pyx_PyObject_GetAttrStr(__pyx_cur_scope->__pyx_v_self, __pyx_n_s_learning_rate); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 343, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_7);
-          if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_learning_rate, __pyx_t_7) < 0) __PYX_ERR(0, 336, __pyx_L1_error)
+          if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_learning_rate, __pyx_t_7) < 0) __PYX_ERR(0, 340, __pyx_L1_error)
           __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
 
-          /* "structureboost/prob_regressor.pyx":340
+          /* "structureboost/prob_regressor.pyx":344
  *                                             feature_configs=self.feature_configs,
  *                                             learning_rate=self.learning_rate,
  *                                             max_depth=self.max_depth,             # <<<<<<<<<<<<<<
  *                                             structure_strides=self.structure_strides,
  *                                             random_seed = self.random_seed+i,
  */
-          __pyx_t_7 = __Pyx_PyObject_GetAttrStr(__pyx_cur_scope->__pyx_v_self, __pyx_n_s_max_depth); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 340, __pyx_L1_error)
+          __pyx_t_7 = __Pyx_PyObject_GetAttrStr(__pyx_cur_scope->__pyx_v_self, __pyx_n_s_max_depth); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 344, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_7);
-          if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_max_depth, __pyx_t_7) < 0) __PYX_ERR(0, 336, __pyx_L1_error)
+          if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_max_depth, __pyx_t_7) < 0) __PYX_ERR(0, 340, __pyx_L1_error)
           __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
 
-          /* "structureboost/prob_regressor.pyx":341
+          /* "structureboost/prob_regressor.pyx":345
  *                                             learning_rate=self.learning_rate,
  *                                             max_depth=self.max_depth,
  *                                             structure_strides=self.structure_strides,             # <<<<<<<<<<<<<<
  *                                             random_seed = self.random_seed+i,
  *                                             sw=self.singleton_weight,
  */
-          __pyx_t_7 = __Pyx_PyObject_GetAttrStr(__pyx_cur_scope->__pyx_v_self, __pyx_n_s_structure_strides); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 341, __pyx_L1_error)
+          __pyx_t_7 = __Pyx_PyObject_GetAttrStr(__pyx_cur_scope->__pyx_v_self, __pyx_n_s_structure_strides); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 345, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_7);
-          if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_structure_strides, __pyx_t_7) < 0) __PYX_ERR(0, 336, __pyx_L1_error)
+          if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_structure_strides, __pyx_t_7) < 0) __PYX_ERR(0, 340, __pyx_L1_error)
           __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
 
-          /* "structureboost/prob_regressor.pyx":342
+          /* "structureboost/prob_regressor.pyx":346
  *                                             max_depth=self.max_depth,
  *                                             structure_strides=self.structure_strides,
  *                                             random_seed = self.random_seed+i,             # <<<<<<<<<<<<<<
  *                                             sw=self.singleton_weight,
  *                                             lp=self.strides_lp, hp=self.strides_hp))
  */
-          __pyx_t_7 = __Pyx_PyObject_GetAttrStr(__pyx_cur_scope->__pyx_v_self, __pyx_n_s_random_seed); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 342, __pyx_L1_error)
+          __pyx_t_7 = __Pyx_PyObject_GetAttrStr(__pyx_cur_scope->__pyx_v_self, __pyx_n_s_random_seed); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 346, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_7);
-          __pyx_t_3 = PyNumber_Add(__pyx_t_7, __pyx_v_i); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 342, __pyx_L1_error)
+          __pyx_t_3 = PyNumber_Add(__pyx_t_7, __pyx_v_i); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 346, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_3);
           __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
-          if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_random_seed, __pyx_t_3) < 0) __PYX_ERR(0, 336, __pyx_L1_error)
+          if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_random_seed, __pyx_t_3) < 0) __PYX_ERR(0, 340, __pyx_L1_error)
           __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-          /* "structureboost/prob_regressor.pyx":343
+          /* "structureboost/prob_regressor.pyx":347
  *                                             structure_strides=self.structure_strides,
  *                                             random_seed = self.random_seed+i,
  *                                             sw=self.singleton_weight,             # <<<<<<<<<<<<<<
  *                                             lp=self.strides_lp, hp=self.strides_hp))
  * 
  */
-          __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_cur_scope->__pyx_v_self, __pyx_n_s_singleton_weight); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 343, __pyx_L1_error)
+          __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_cur_scope->__pyx_v_self, __pyx_n_s_singleton_weight); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 347, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_3);
-          if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_sw, __pyx_t_3) < 0) __PYX_ERR(0, 336, __pyx_L1_error)
+          if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_sw, __pyx_t_3) < 0) __PYX_ERR(0, 340, __pyx_L1_error)
           __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-          /* "structureboost/prob_regressor.pyx":344
+          /* "structureboost/prob_regressor.pyx":348
  *                                             random_seed = self.random_seed+i,
  *                                             sw=self.singleton_weight,
  *                                             lp=self.strides_lp, hp=self.strides_hp))             # <<<<<<<<<<<<<<
  * 
  *                     X_valid = eval_set[0]
  */
-          __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_cur_scope->__pyx_v_self, __pyx_n_s_strides_lp); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 344, __pyx_L1_error)
+          __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_cur_scope->__pyx_v_self, __pyx_n_s_strides_lp); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 348, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_3);
-          if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_lp, __pyx_t_3) < 0) __PYX_ERR(0, 336, __pyx_L1_error)
+          if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_lp, __pyx_t_3) < 0) __PYX_ERR(0, 340, __pyx_L1_error)
           __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-          __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_cur_scope->__pyx_v_self, __pyx_n_s_strides_hp); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 344, __pyx_L1_error)
+          __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_cur_scope->__pyx_v_self, __pyx_n_s_strides_hp); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 348, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_3);
-          if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_hp, __pyx_t_3) < 0) __PYX_ERR(0, 336, __pyx_L1_error)
+          if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_hp, __pyx_t_3) < 0) __PYX_ERR(0, 340, __pyx_L1_error)
           __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-          /* "structureboost/prob_regressor.pyx":335
+          /* "structureboost/prob_regressor.pyx":339
  *                     for i in range(self.num_forests):
  *                         # Set up forest with appropriate binpt_vec, newnumber of trees
  *                         self.forest_list.append(ProbRegressorUnit(             # <<<<<<<<<<<<<<
  *                                             num_trees = num_trees_used[i],
  *                                             bin_vec = self.binpt_vec_list[i].copy(),
  */
-          __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_empty_tuple, __pyx_t_1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 335, __pyx_L1_error)
+          __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_empty_tuple, __pyx_t_1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 339, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_3);
           __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
           __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-          __pyx_t_9 = __Pyx_PyObject_Append(__pyx_t_12, __pyx_t_3); if (unlikely(__pyx_t_9 == ((int)-1))) __PYX_ERR(0, 335, __pyx_L1_error)
+          __pyx_t_9 = __Pyx_PyObject_Append(__pyx_t_12, __pyx_t_3); if (unlikely(__pyx_t_9 == ((int)-1))) __PYX_ERR(0, 339, __pyx_L1_error)
           __Pyx_DECREF(__pyx_t_12); __pyx_t_12 = 0;
           __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-          /* "structureboost/prob_regressor.pyx":333
+          /* "structureboost/prob_regressor.pyx":337
  *                                         for k in range(self.num_forests)]
  *                     self.forest_list = []
  *                     for i in range(self.num_forests):             # <<<<<<<<<<<<<<
@@ -7193,43 +7296,43 @@ static PyObject *__pyx_pf_14structureboost_14prob_regressor_11PrestoBoost_2fit(C
         }
         __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
 
-        /* "structureboost/prob_regressor.pyx":346
+        /* "structureboost/prob_regressor.pyx":350
  *                                             lp=self.strides_lp, hp=self.strides_hp))
  * 
  *                     X_valid = eval_set[0]             # <<<<<<<<<<<<<<
  *                     y_valid = eval_set[1]
  *                     X_train_val = pd.concat((X_train, X_valid))
  */
-        __pyx_t_8 = __Pyx_GetItemInt(__pyx_cur_scope->__pyx_v_eval_set, 0, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 346, __pyx_L1_error)
+        __pyx_t_8 = __Pyx_GetItemInt(__pyx_cur_scope->__pyx_v_eval_set, 0, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 350, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_8);
         __pyx_v_X_valid = __pyx_t_8;
         __pyx_t_8 = 0;
 
-        /* "structureboost/prob_regressor.pyx":347
+        /* "structureboost/prob_regressor.pyx":351
  * 
  *                     X_valid = eval_set[0]
  *                     y_valid = eval_set[1]             # <<<<<<<<<<<<<<
  *                     X_train_val = pd.concat((X_train, X_valid))
  *                     y_train_val = np.concatenate((y_train, y_valid))
  */
-        __pyx_t_8 = __Pyx_GetItemInt(__pyx_cur_scope->__pyx_v_eval_set, 1, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 347, __pyx_L1_error)
+        __pyx_t_8 = __Pyx_GetItemInt(__pyx_cur_scope->__pyx_v_eval_set, 1, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 351, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_8);
         __pyx_v_y_valid = __pyx_t_8;
         __pyx_t_8 = 0;
 
-        /* "structureboost/prob_regressor.pyx":348
+        /* "structureboost/prob_regressor.pyx":352
  *                     X_valid = eval_set[0]
  *                     y_valid = eval_set[1]
  *                     X_train_val = pd.concat((X_train, X_valid))             # <<<<<<<<<<<<<<
  *                     y_train_val = np.concatenate((y_train, y_valid))
  *                     self.forest_list = Parallel(n_jobs=n_jobs,
  */
-        __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_n_s_pd); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 348, __pyx_L1_error)
+        __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_n_s_pd); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 352, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_3);
-        __pyx_t_12 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_concat); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 348, __pyx_L1_error)
+        __pyx_t_12 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_concat); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 352, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_12);
         __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-        __pyx_t_3 = PyTuple_New(2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 348, __pyx_L1_error)
+        __pyx_t_3 = PyTuple_New(2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 352, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_3);
         __Pyx_INCREF(__pyx_cur_scope->__pyx_v_X_train);
         __Pyx_GIVEREF(__pyx_cur_scope->__pyx_v_X_train);
@@ -7250,26 +7353,26 @@ static PyObject *__pyx_pf_14structureboost_14prob_regressor_11PrestoBoost_2fit(C
         __pyx_t_8 = (__pyx_t_1) ? __Pyx_PyObject_Call2Args(__pyx_t_12, __pyx_t_1, __pyx_t_3) : __Pyx_PyObject_CallOneArg(__pyx_t_12, __pyx_t_3);
         __Pyx_XDECREF(__pyx_t_1); __pyx_t_1 = 0;
         __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-        if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 348, __pyx_L1_error)
+        if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 352, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_8);
         __Pyx_DECREF(__pyx_t_12); __pyx_t_12 = 0;
         __Pyx_GIVEREF(__pyx_t_8);
         __pyx_cur_scope->__pyx_v_X_train_val = __pyx_t_8;
         __pyx_t_8 = 0;
 
-        /* "structureboost/prob_regressor.pyx":349
+        /* "structureboost/prob_regressor.pyx":353
  *                     y_valid = eval_set[1]
  *                     X_train_val = pd.concat((X_train, X_valid))
  *                     y_train_val = np.concatenate((y_train, y_valid))             # <<<<<<<<<<<<<<
  *                     self.forest_list = Parallel(n_jobs=n_jobs,
  *                                             )(delayed(fit_and_return)(f, X_train_val, y_train_val)
  */
-        __Pyx_GetModuleGlobalName(__pyx_t_12, __pyx_n_s_np); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 349, __pyx_L1_error)
+        __Pyx_GetModuleGlobalName(__pyx_t_12, __pyx_n_s_np); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 353, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_12);
-        __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_12, __pyx_n_s_concatenate); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 349, __pyx_L1_error)
+        __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_12, __pyx_n_s_concatenate); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 353, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_3);
         __Pyx_DECREF(__pyx_t_12); __pyx_t_12 = 0;
-        __pyx_t_12 = PyTuple_New(2); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 349, __pyx_L1_error)
+        __pyx_t_12 = PyTuple_New(2); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 353, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_12);
         __Pyx_INCREF(__pyx_cur_scope->__pyx_v_y_train);
         __Pyx_GIVEREF(__pyx_cur_scope->__pyx_v_y_train);
@@ -7290,38 +7393,38 @@ static PyObject *__pyx_pf_14structureboost_14prob_regressor_11PrestoBoost_2fit(C
         __pyx_t_8 = (__pyx_t_1) ? __Pyx_PyObject_Call2Args(__pyx_t_3, __pyx_t_1, __pyx_t_12) : __Pyx_PyObject_CallOneArg(__pyx_t_3, __pyx_t_12);
         __Pyx_XDECREF(__pyx_t_1); __pyx_t_1 = 0;
         __Pyx_DECREF(__pyx_t_12); __pyx_t_12 = 0;
-        if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 349, __pyx_L1_error)
+        if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 353, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_8);
         __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
         __Pyx_GIVEREF(__pyx_t_8);
         __pyx_cur_scope->__pyx_v_y_train_val = __pyx_t_8;
         __pyx_t_8 = 0;
 
-        /* "structureboost/prob_regressor.pyx":350
+        /* "structureboost/prob_regressor.pyx":354
  *                     X_train_val = pd.concat((X_train, X_valid))
  *                     y_train_val = np.concatenate((y_train, y_valid))
  *                     self.forest_list = Parallel(n_jobs=n_jobs,             # <<<<<<<<<<<<<<
  *                                             )(delayed(fit_and_return)(f, X_train_val, y_train_val)
  *                                             for f in self.forest_list)
  */
-        __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_n_s_Parallel); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 350, __pyx_L1_error)
+        __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_n_s_Parallel); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 354, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_3);
-        __pyx_t_12 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 350, __pyx_L1_error)
+        __pyx_t_12 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 354, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_12);
-        if (PyDict_SetItem(__pyx_t_12, __pyx_n_s_n_jobs, __pyx_v_n_jobs) < 0) __PYX_ERR(0, 350, __pyx_L1_error)
-        __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_3, __pyx_empty_tuple, __pyx_t_12); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 350, __pyx_L1_error)
+        if (PyDict_SetItem(__pyx_t_12, __pyx_n_s_n_jobs, __pyx_v_n_jobs) < 0) __PYX_ERR(0, 354, __pyx_L1_error)
+        __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_3, __pyx_empty_tuple, __pyx_t_12); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 354, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_1);
         __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
         __Pyx_DECREF(__pyx_t_12); __pyx_t_12 = 0;
 
-        /* "structureboost/prob_regressor.pyx":351
+        /* "structureboost/prob_regressor.pyx":355
  *                     y_train_val = np.concatenate((y_train, y_valid))
  *                     self.forest_list = Parallel(n_jobs=n_jobs,
  *                                             )(delayed(fit_and_return)(f, X_train_val, y_train_val)             # <<<<<<<<<<<<<<
  *                                             for f in self.forest_list)
  * 
  */
-        __pyx_t_12 = __pyx_pf_14structureboost_14prob_regressor_11PrestoBoost_3fit_9genexpr(((PyObject*)__pyx_cur_scope)); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 351, __pyx_L1_error)
+        __pyx_t_12 = __pyx_pf_14structureboost_14prob_regressor_11PrestoBoost_3fit_9genexpr(((PyObject*)__pyx_cur_scope)); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 355, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_12);
         __pyx_t_3 = NULL;
         if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_1))) {
@@ -7336,21 +7439,21 @@ static PyObject *__pyx_pf_14structureboost_14prob_regressor_11PrestoBoost_2fit(C
         __pyx_t_8 = (__pyx_t_3) ? __Pyx_PyObject_Call2Args(__pyx_t_1, __pyx_t_3, __pyx_t_12) : __Pyx_PyObject_CallOneArg(__pyx_t_1, __pyx_t_12);
         __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
         __Pyx_DECREF(__pyx_t_12); __pyx_t_12 = 0;
-        if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 351, __pyx_L1_error)
+        if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 355, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_8);
         __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-        /* "structureboost/prob_regressor.pyx":350
+        /* "structureboost/prob_regressor.pyx":354
  *                     X_train_val = pd.concat((X_train, X_valid))
  *                     y_train_val = np.concatenate((y_train, y_valid))
  *                     self.forest_list = Parallel(n_jobs=n_jobs,             # <<<<<<<<<<<<<<
  *                                             )(delayed(fit_and_return)(f, X_train_val, y_train_val)
  *                                             for f in self.forest_list)
  */
-        if (__Pyx_PyObject_SetAttrStr(__pyx_cur_scope->__pyx_v_self, __pyx_n_s_forest_list, __pyx_t_8) < 0) __PYX_ERR(0, 350, __pyx_L1_error)
+        if (__Pyx_PyObject_SetAttrStr(__pyx_cur_scope->__pyx_v_self, __pyx_n_s_forest_list, __pyx_t_8) < 0) __PYX_ERR(0, 354, __pyx_L1_error)
         __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
 
-        /* "structureboost/prob_regressor.pyx":328
+        /* "structureboost/prob_regressor.pyx":332
  *                                         for i in range(len(self.forest_list)))
  * 
  *                 if refit_train_val:             # <<<<<<<<<<<<<<
@@ -7363,7 +7466,7 @@ static PyObject *__pyx_pf_14structureboost_14prob_regressor_11PrestoBoost_2fit(C
   }
   __pyx_L12:;
 
-  /* "structureboost/prob_regressor.pyx":158
+  /* "structureboost/prob_regressor.pyx":160
  *         # figure out method (here or in fit)
  * 
  *     def fit(self, X_train, y_train, eval_set=None, eval_freq=10,             # <<<<<<<<<<<<<<
@@ -7406,8 +7509,8 @@ static PyObject *__pyx_pf_14structureboost_14prob_regressor_11PrestoBoost_2fit(C
   return __pyx_r;
 }
 
-/* "structureboost/prob_regressor.pyx":368
- * 
+/* "structureboost/prob_regressor.pyx":358
+ *                                             for f in self.forest_list)
  * 
  *     def analyze_y_train(self, y_train):             # <<<<<<<<<<<<<<
  *             self.unique_y = np.unique(y_train)
@@ -7449,11 +7552,11 @@ static PyObject *__pyx_pw_14structureboost_14prob_regressor_11PrestoBoost_5analy
         case  1:
         if (likely((values[1] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_y_train)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("analyze_y_train", 1, 2, 2, 1); __PYX_ERR(0, 368, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("analyze_y_train", 1, 2, 2, 1); __PYX_ERR(0, 358, __pyx_L3_error)
         }
       }
       if (unlikely(kw_args > 0)) {
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "analyze_y_train") < 0)) __PYX_ERR(0, 368, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "analyze_y_train") < 0)) __PYX_ERR(0, 358, __pyx_L3_error)
       }
     } else if (PyTuple_GET_SIZE(__pyx_args) != 2) {
       goto __pyx_L5_argtuple_error;
@@ -7466,7 +7569,7 @@ static PyObject *__pyx_pw_14structureboost_14prob_regressor_11PrestoBoost_5analy
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("analyze_y_train", 1, 2, 2, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 368, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("analyze_y_train", 1, 2, 2, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 358, __pyx_L3_error)
   __pyx_L3_error:;
   __Pyx_AddTraceback("structureboost.prob_regressor.PrestoBoost.analyze_y_train", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
@@ -7492,18 +7595,18 @@ static PyObject *__pyx_pf_14structureboost_14prob_regressor_11PrestoBoost_4analy
   int __pyx_clineno = 0;
   __Pyx_TraceFrameInit(__pyx_codeobj__9)
   __Pyx_RefNannySetupContext("analyze_y_train", 0);
-  __Pyx_TraceCall("analyze_y_train", __pyx_f[0], 368, 0, __PYX_ERR(0, 368, __pyx_L1_error));
+  __Pyx_TraceCall("analyze_y_train", __pyx_f[0], 358, 0, __PYX_ERR(0, 358, __pyx_L1_error));
 
-  /* "structureboost/prob_regressor.pyx":369
+  /* "structureboost/prob_regressor.pyx":359
  * 
  *     def analyze_y_train(self, y_train):
  *             self.unique_y = np.unique(y_train)             # <<<<<<<<<<<<<<
  *             self.num_uv = len(self.unique_y)
  *             self.y_max_train = np.max(y_train)
  */
-  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_np); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 369, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_np); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 359, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_unique); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 369, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_unique); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 359, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __pyx_t_2 = NULL;
@@ -7518,38 +7621,38 @@ static PyObject *__pyx_pf_14structureboost_14prob_regressor_11PrestoBoost_4analy
   }
   __pyx_t_1 = (__pyx_t_2) ? __Pyx_PyObject_Call2Args(__pyx_t_3, __pyx_t_2, __pyx_v_y_train) : __Pyx_PyObject_CallOneArg(__pyx_t_3, __pyx_v_y_train);
   __Pyx_XDECREF(__pyx_t_2); __pyx_t_2 = 0;
-  if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 369, __pyx_L1_error)
+  if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 359, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  if (__Pyx_PyObject_SetAttrStr(__pyx_v_self, __pyx_n_s_unique_y, __pyx_t_1) < 0) __PYX_ERR(0, 369, __pyx_L1_error)
+  if (__Pyx_PyObject_SetAttrStr(__pyx_v_self, __pyx_n_s_unique_y, __pyx_t_1) < 0) __PYX_ERR(0, 359, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "structureboost/prob_regressor.pyx":370
+  /* "structureboost/prob_regressor.pyx":360
  *     def analyze_y_train(self, y_train):
  *             self.unique_y = np.unique(y_train)
  *             self.num_uv = len(self.unique_y)             # <<<<<<<<<<<<<<
  *             self.y_max_train = np.max(y_train)
  *             self.y_min_train = np.min(y_train)
  */
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_unique_y); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 370, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_unique_y); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 360, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_4 = PyObject_Length(__pyx_t_1); if (unlikely(__pyx_t_4 == ((Py_ssize_t)-1))) __PYX_ERR(0, 370, __pyx_L1_error)
+  __pyx_t_4 = PyObject_Length(__pyx_t_1); if (unlikely(__pyx_t_4 == ((Py_ssize_t)-1))) __PYX_ERR(0, 360, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_t_1 = PyInt_FromSsize_t(__pyx_t_4); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 370, __pyx_L1_error)
+  __pyx_t_1 = PyInt_FromSsize_t(__pyx_t_4); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 360, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  if (__Pyx_PyObject_SetAttrStr(__pyx_v_self, __pyx_n_s_num_uv, __pyx_t_1) < 0) __PYX_ERR(0, 370, __pyx_L1_error)
+  if (__Pyx_PyObject_SetAttrStr(__pyx_v_self, __pyx_n_s_num_uv, __pyx_t_1) < 0) __PYX_ERR(0, 360, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "structureboost/prob_regressor.pyx":371
+  /* "structureboost/prob_regressor.pyx":361
  *             self.unique_y = np.unique(y_train)
  *             self.num_uv = len(self.unique_y)
  *             self.y_max_train = np.max(y_train)             # <<<<<<<<<<<<<<
  *             self.y_min_train = np.min(y_train)
  * 
  */
-  __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_n_s_np); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 371, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_n_s_np); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 361, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_max); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 371, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_max); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 361, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   __pyx_t_3 = NULL;
@@ -7564,22 +7667,22 @@ static PyObject *__pyx_pf_14structureboost_14prob_regressor_11PrestoBoost_4analy
   }
   __pyx_t_1 = (__pyx_t_3) ? __Pyx_PyObject_Call2Args(__pyx_t_2, __pyx_t_3, __pyx_v_y_train) : __Pyx_PyObject_CallOneArg(__pyx_t_2, __pyx_v_y_train);
   __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
-  if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 371, __pyx_L1_error)
+  if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 361, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  if (__Pyx_PyObject_SetAttrStr(__pyx_v_self, __pyx_n_s_y_max_train, __pyx_t_1) < 0) __PYX_ERR(0, 371, __pyx_L1_error)
+  if (__Pyx_PyObject_SetAttrStr(__pyx_v_self, __pyx_n_s_y_max_train, __pyx_t_1) < 0) __PYX_ERR(0, 361, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "structureboost/prob_regressor.pyx":372
+  /* "structureboost/prob_regressor.pyx":362
  *             self.num_uv = len(self.unique_y)
  *             self.y_max_train = np.max(y_train)
  *             self.y_min_train = np.min(y_train)             # <<<<<<<<<<<<<<
  * 
  * 
  */
-  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_np); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 372, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_np); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 362, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_min); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 372, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_min); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 362, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __pyx_t_2 = NULL;
@@ -7594,14 +7697,14 @@ static PyObject *__pyx_pf_14structureboost_14prob_regressor_11PrestoBoost_4analy
   }
   __pyx_t_1 = (__pyx_t_2) ? __Pyx_PyObject_Call2Args(__pyx_t_3, __pyx_t_2, __pyx_v_y_train) : __Pyx_PyObject_CallOneArg(__pyx_t_3, __pyx_v_y_train);
   __Pyx_XDECREF(__pyx_t_2); __pyx_t_2 = 0;
-  if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 372, __pyx_L1_error)
+  if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 362, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  if (__Pyx_PyObject_SetAttrStr(__pyx_v_self, __pyx_n_s_y_min_train, __pyx_t_1) < 0) __PYX_ERR(0, 372, __pyx_L1_error)
+  if (__Pyx_PyObject_SetAttrStr(__pyx_v_self, __pyx_n_s_y_min_train, __pyx_t_1) < 0) __PYX_ERR(0, 362, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "structureboost/prob_regressor.pyx":368
- * 
+  /* "structureboost/prob_regressor.pyx":358
+ *                                             for f in self.forest_list)
  * 
  *     def analyze_y_train(self, y_train):             # <<<<<<<<<<<<<<
  *             self.unique_y = np.unique(y_train)
@@ -7624,7 +7727,7 @@ static PyObject *__pyx_pf_14structureboost_14prob_regressor_11PrestoBoost_4analy
   return __pyx_r;
 }
 
-/* "structureboost/prob_regressor.pyx":375
+/* "structureboost/prob_regressor.pyx":365
  * 
  * 
  *     def get_bin_pts(self, y_train, random_seed=None):             # <<<<<<<<<<<<<<
@@ -7671,7 +7774,7 @@ static PyObject *__pyx_pw_14structureboost_14prob_regressor_11PrestoBoost_7get_b
         case  1:
         if (likely((values[1] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_y_train)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("get_bin_pts", 0, 2, 3, 1); __PYX_ERR(0, 375, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("get_bin_pts", 0, 2, 3, 1); __PYX_ERR(0, 365, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  2:
@@ -7681,7 +7784,7 @@ static PyObject *__pyx_pw_14structureboost_14prob_regressor_11PrestoBoost_7get_b
         }
       }
       if (unlikely(kw_args > 0)) {
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "get_bin_pts") < 0)) __PYX_ERR(0, 375, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "get_bin_pts") < 0)) __PYX_ERR(0, 365, __pyx_L3_error)
       }
     } else {
       switch (PyTuple_GET_SIZE(__pyx_args)) {
@@ -7699,7 +7802,7 @@ static PyObject *__pyx_pw_14structureboost_14prob_regressor_11PrestoBoost_7get_b
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("get_bin_pts", 0, 2, 3, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 375, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("get_bin_pts", 0, 2, 3, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 365, __pyx_L3_error)
   __pyx_L3_error:;
   __Pyx_AddTraceback("structureboost.prob_regressor.PrestoBoost.get_bin_pts", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
@@ -7744,9 +7847,9 @@ static PyObject *__pyx_pf_14structureboost_14prob_regressor_11PrestoBoost_6get_b
   int __pyx_clineno = 0;
   __Pyx_TraceFrameInit(__pyx_codeobj__10)
   __Pyx_RefNannySetupContext("get_bin_pts", 0);
-  __Pyx_TraceCall("get_bin_pts", __pyx_f[0], 375, 0, __PYX_ERR(0, 375, __pyx_L1_error));
+  __Pyx_TraceCall("get_bin_pts", __pyx_f[0], 365, 0, __PYX_ERR(0, 365, __pyx_L1_error));
 
-  /* "structureboost/prob_regressor.pyx":376
+  /* "structureboost/prob_regressor.pyx":366
  * 
  *     def get_bin_pts(self, y_train, random_seed=None):
  *         if random_seed is not None:             # <<<<<<<<<<<<<<
@@ -7757,19 +7860,19 @@ static PyObject *__pyx_pf_14structureboost_14prob_regressor_11PrestoBoost_6get_b
   __pyx_t_2 = (__pyx_t_1 != 0);
   if (__pyx_t_2) {
 
-    /* "structureboost/prob_regressor.pyx":377
+    /* "structureboost/prob_regressor.pyx":367
  *     def get_bin_pts(self, y_train, random_seed=None):
  *         if random_seed is not None:
  *             np.random.seed(random_seed)             # <<<<<<<<<<<<<<
  *         if self.binpt_method == 'fixed':
  *             binvec = np.array(self.binpt_vec)
  */
-    __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_n_s_np); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 377, __pyx_L1_error)
+    __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_n_s_np); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 367, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
-    __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_random); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 377, __pyx_L1_error)
+    __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_random); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 367, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_5);
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-    __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_5, __pyx_n_s_seed); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 377, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_5, __pyx_n_s_seed); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 367, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
     __pyx_t_5 = NULL;
@@ -7784,12 +7887,12 @@ static PyObject *__pyx_pf_14structureboost_14prob_regressor_11PrestoBoost_6get_b
     }
     __pyx_t_3 = (__pyx_t_5) ? __Pyx_PyObject_Call2Args(__pyx_t_4, __pyx_t_5, __pyx_v_random_seed) : __Pyx_PyObject_CallOneArg(__pyx_t_4, __pyx_v_random_seed);
     __Pyx_XDECREF(__pyx_t_5); __pyx_t_5 = 0;
-    if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 377, __pyx_L1_error)
+    if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 367, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-    /* "structureboost/prob_regressor.pyx":376
+    /* "structureboost/prob_regressor.pyx":366
  * 
  *     def get_bin_pts(self, y_train, random_seed=None):
  *         if random_seed is not None:             # <<<<<<<<<<<<<<
@@ -7798,32 +7901,32 @@ static PyObject *__pyx_pf_14structureboost_14prob_regressor_11PrestoBoost_6get_b
  */
   }
 
-  /* "structureboost/prob_regressor.pyx":378
+  /* "structureboost/prob_regressor.pyx":368
  *         if random_seed is not None:
  *             np.random.seed(random_seed)
  *         if self.binpt_method == 'fixed':             # <<<<<<<<<<<<<<
  *             binvec = np.array(self.binpt_vec)
  *         else:
  */
-  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_binpt_method); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 378, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_binpt_method); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 368, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_2 = (__Pyx_PyUnicode_Equals(__pyx_t_3, __pyx_n_u_fixed, Py_EQ)); if (unlikely(__pyx_t_2 < 0)) __PYX_ERR(0, 378, __pyx_L1_error)
+  __pyx_t_2 = (__Pyx_PyUnicode_Equals(__pyx_t_3, __pyx_n_u_fixed, Py_EQ)); if (unlikely(__pyx_t_2 < 0)) __PYX_ERR(0, 368, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   if (__pyx_t_2) {
 
-    /* "structureboost/prob_regressor.pyx":379
+    /* "structureboost/prob_regressor.pyx":369
  *             np.random.seed(random_seed)
  *         if self.binpt_method == 'fixed':
  *             binvec = np.array(self.binpt_vec)             # <<<<<<<<<<<<<<
  *         else:
  *             if (self.binpt_method=='fixed_rss'):
  */
-    __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_n_s_np); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 379, __pyx_L1_error)
+    __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_n_s_np); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 369, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
-    __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_array); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 379, __pyx_L1_error)
+    __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_array); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 369, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_5);
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-    __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_binpt_vec); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 379, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_binpt_vec); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 369, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
     __pyx_t_6 = NULL;
     if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_5))) {
@@ -7838,13 +7941,13 @@ static PyObject *__pyx_pf_14structureboost_14prob_regressor_11PrestoBoost_6get_b
     __pyx_t_3 = (__pyx_t_6) ? __Pyx_PyObject_Call2Args(__pyx_t_5, __pyx_t_6, __pyx_t_4) : __Pyx_PyObject_CallOneArg(__pyx_t_5, __pyx_t_4);
     __Pyx_XDECREF(__pyx_t_6); __pyx_t_6 = 0;
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-    if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 379, __pyx_L1_error)
+    if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 369, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
     __pyx_v_binvec = __pyx_t_3;
     __pyx_t_3 = 0;
 
-    /* "structureboost/prob_regressor.pyx":378
+    /* "structureboost/prob_regressor.pyx":368
  *         if random_seed is not None:
  *             np.random.seed(random_seed)
  *         if self.binpt_method == 'fixed':             # <<<<<<<<<<<<<<
@@ -7854,7 +7957,7 @@ static PyObject *__pyx_pf_14structureboost_14prob_regressor_11PrestoBoost_6get_b
     goto __pyx_L4;
   }
 
-  /* "structureboost/prob_regressor.pyx":381
+  /* "structureboost/prob_regressor.pyx":371
  *             binvec = np.array(self.binpt_vec)
  *         else:
  *             if (self.binpt_method=='fixed_rss'):             # <<<<<<<<<<<<<<
@@ -7862,25 +7965,25 @@ static PyObject *__pyx_pf_14structureboost_14prob_regressor_11PrestoBoost_6get_b
  * 
  */
   /*else*/ {
-    __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_binpt_method); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 381, __pyx_L1_error)
+    __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_binpt_method); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 371, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
-    __pyx_t_2 = (__Pyx_PyUnicode_Equals(__pyx_t_3, __pyx_n_u_fixed_rss, Py_EQ)); if (unlikely(__pyx_t_2 < 0)) __PYX_ERR(0, 381, __pyx_L1_error)
+    __pyx_t_2 = (__Pyx_PyUnicode_Equals(__pyx_t_3, __pyx_n_u_fixed_rss, Py_EQ)); if (unlikely(__pyx_t_2 < 0)) __PYX_ERR(0, 371, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
     if (__pyx_t_2) {
 
-      /* "structureboost/prob_regressor.pyx":382
+      /* "structureboost/prob_regressor.pyx":372
  *         else:
  *             if (self.binpt_method=='fixed_rss'):
  *                 binvec_start = np.array(self.binpt_vec)             # <<<<<<<<<<<<<<
  * 
  *                 binvec = np.random.choice(binvec_start, replace=False,
  */
-      __Pyx_GetModuleGlobalName(__pyx_t_5, __pyx_n_s_np); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 382, __pyx_L1_error)
+      __Pyx_GetModuleGlobalName(__pyx_t_5, __pyx_n_s_np); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 372, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_5);
-      __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_5, __pyx_n_s_array); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 382, __pyx_L1_error)
+      __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_5, __pyx_n_s_array); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 372, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_4);
       __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-      __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_binpt_vec); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 382, __pyx_L1_error)
+      __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_binpt_vec); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 372, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_5);
       __pyx_t_6 = NULL;
       if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_4))) {
@@ -7895,54 +7998,54 @@ static PyObject *__pyx_pf_14structureboost_14prob_regressor_11PrestoBoost_6get_b
       __pyx_t_3 = (__pyx_t_6) ? __Pyx_PyObject_Call2Args(__pyx_t_4, __pyx_t_6, __pyx_t_5) : __Pyx_PyObject_CallOneArg(__pyx_t_4, __pyx_t_5);
       __Pyx_XDECREF(__pyx_t_6); __pyx_t_6 = 0;
       __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-      if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 382, __pyx_L1_error)
+      if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 372, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_3);
       __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
       __pyx_v_binvec_start = __pyx_t_3;
       __pyx_t_3 = 0;
 
-      /* "structureboost/prob_regressor.pyx":384
+      /* "structureboost/prob_regressor.pyx":374
  *                 binvec_start = np.array(self.binpt_vec)
  * 
  *                 binvec = np.random.choice(binvec_start, replace=False,             # <<<<<<<<<<<<<<
  *                        size=np.min([self.binpt_sample_size, len(binvec_start)]))
  *             elif (self.binpt_method=='auto') & (self.binpt_sample_size<self.num_uv):
  */
-      __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_n_s_np); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 384, __pyx_L1_error)
+      __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_n_s_np); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 374, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_3);
-      __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_random); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 384, __pyx_L1_error)
+      __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_random); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 374, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_4);
       __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-      __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_choice); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 384, __pyx_L1_error)
+      __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_choice); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 374, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_3);
       __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-      __pyx_t_4 = PyTuple_New(1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 384, __pyx_L1_error)
+      __pyx_t_4 = PyTuple_New(1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 374, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_4);
       __Pyx_INCREF(__pyx_v_binvec_start);
       __Pyx_GIVEREF(__pyx_v_binvec_start);
       PyTuple_SET_ITEM(__pyx_t_4, 0, __pyx_v_binvec_start);
-      __pyx_t_5 = __Pyx_PyDict_NewPresized(2); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 384, __pyx_L1_error)
+      __pyx_t_5 = __Pyx_PyDict_NewPresized(2); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 374, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_5);
-      if (PyDict_SetItem(__pyx_t_5, __pyx_n_s_replace, Py_False) < 0) __PYX_ERR(0, 384, __pyx_L1_error)
+      if (PyDict_SetItem(__pyx_t_5, __pyx_n_s_replace, Py_False) < 0) __PYX_ERR(0, 374, __pyx_L1_error)
 
-      /* "structureboost/prob_regressor.pyx":385
+      /* "structureboost/prob_regressor.pyx":375
  * 
  *                 binvec = np.random.choice(binvec_start, replace=False,
  *                        size=np.min([self.binpt_sample_size, len(binvec_start)]))             # <<<<<<<<<<<<<<
  *             elif (self.binpt_method=='auto') & (self.binpt_sample_size<self.num_uv):
  *                 binvec = np.unique(np.quantile(y_train, np.random.uniform(size=self.binpt_sample_size)))
  */
-      __Pyx_GetModuleGlobalName(__pyx_t_7, __pyx_n_s_np); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 385, __pyx_L1_error)
+      __Pyx_GetModuleGlobalName(__pyx_t_7, __pyx_n_s_np); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 375, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_7);
-      __pyx_t_8 = __Pyx_PyObject_GetAttrStr(__pyx_t_7, __pyx_n_s_min); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 385, __pyx_L1_error)
+      __pyx_t_8 = __Pyx_PyObject_GetAttrStr(__pyx_t_7, __pyx_n_s_min); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 375, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_8);
       __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
-      __pyx_t_7 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_binpt_sample_size); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 385, __pyx_L1_error)
+      __pyx_t_7 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_binpt_sample_size); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 375, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_7);
-      __pyx_t_9 = PyObject_Length(__pyx_v_binvec_start); if (unlikely(__pyx_t_9 == ((Py_ssize_t)-1))) __PYX_ERR(0, 385, __pyx_L1_error)
-      __pyx_t_10 = PyInt_FromSsize_t(__pyx_t_9); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 385, __pyx_L1_error)
+      __pyx_t_9 = PyObject_Length(__pyx_v_binvec_start); if (unlikely(__pyx_t_9 == ((Py_ssize_t)-1))) __PYX_ERR(0, 375, __pyx_L1_error)
+      __pyx_t_10 = PyInt_FromSsize_t(__pyx_t_9); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 375, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_10);
-      __pyx_t_11 = PyList_New(2); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 385, __pyx_L1_error)
+      __pyx_t_11 = PyList_New(2); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 375, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_11);
       __Pyx_GIVEREF(__pyx_t_7);
       PyList_SET_ITEM(__pyx_t_11, 0, __pyx_t_7);
@@ -7963,20 +8066,20 @@ static PyObject *__pyx_pf_14structureboost_14prob_regressor_11PrestoBoost_6get_b
       __pyx_t_6 = (__pyx_t_10) ? __Pyx_PyObject_Call2Args(__pyx_t_8, __pyx_t_10, __pyx_t_11) : __Pyx_PyObject_CallOneArg(__pyx_t_8, __pyx_t_11);
       __Pyx_XDECREF(__pyx_t_10); __pyx_t_10 = 0;
       __Pyx_DECREF(__pyx_t_11); __pyx_t_11 = 0;
-      if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 385, __pyx_L1_error)
+      if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 375, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_6);
       __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
-      if (PyDict_SetItem(__pyx_t_5, __pyx_n_s_size, __pyx_t_6) < 0) __PYX_ERR(0, 384, __pyx_L1_error)
+      if (PyDict_SetItem(__pyx_t_5, __pyx_n_s_size, __pyx_t_6) < 0) __PYX_ERR(0, 374, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
 
-      /* "structureboost/prob_regressor.pyx":384
+      /* "structureboost/prob_regressor.pyx":374
  *                 binvec_start = np.array(self.binpt_vec)
  * 
  *                 binvec = np.random.choice(binvec_start, replace=False,             # <<<<<<<<<<<<<<
  *                        size=np.min([self.binpt_sample_size, len(binvec_start)]))
  *             elif (self.binpt_method=='auto') & (self.binpt_sample_size<self.num_uv):
  */
-      __pyx_t_6 = __Pyx_PyObject_Call(__pyx_t_3, __pyx_t_4, __pyx_t_5); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 384, __pyx_L1_error)
+      __pyx_t_6 = __Pyx_PyObject_Call(__pyx_t_3, __pyx_t_4, __pyx_t_5); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 374, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_6);
       __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
       __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
@@ -7984,7 +8087,7 @@ static PyObject *__pyx_pf_14structureboost_14prob_regressor_11PrestoBoost_6get_b
       __pyx_v_binvec = __pyx_t_6;
       __pyx_t_6 = 0;
 
-      /* "structureboost/prob_regressor.pyx":381
+      /* "structureboost/prob_regressor.pyx":371
  *             binvec = np.array(self.binpt_vec)
  *         else:
  *             if (self.binpt_method=='fixed_rss'):             # <<<<<<<<<<<<<<
@@ -7994,64 +8097,64 @@ static PyObject *__pyx_pf_14structureboost_14prob_regressor_11PrestoBoost_6get_b
       goto __pyx_L5;
     }
 
-    /* "structureboost/prob_regressor.pyx":386
+    /* "structureboost/prob_regressor.pyx":376
  *                 binvec = np.random.choice(binvec_start, replace=False,
  *                        size=np.min([self.binpt_sample_size, len(binvec_start)]))
  *             elif (self.binpt_method=='auto') & (self.binpt_sample_size<self.num_uv):             # <<<<<<<<<<<<<<
  *                 binvec = np.unique(np.quantile(y_train, np.random.uniform(size=self.binpt_sample_size)))
  *             else:
  */
-    __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_binpt_method); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 386, __pyx_L1_error)
+    __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_binpt_method); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 376, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_6);
-    __pyx_t_5 = PyObject_RichCompare(__pyx_t_6, __pyx_n_u_auto, Py_EQ); __Pyx_XGOTREF(__pyx_t_5); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 386, __pyx_L1_error)
+    __pyx_t_5 = PyObject_RichCompare(__pyx_t_6, __pyx_n_u_auto, Py_EQ); __Pyx_XGOTREF(__pyx_t_5); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 376, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
-    __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_binpt_sample_size); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 386, __pyx_L1_error)
+    __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_binpt_sample_size); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 376, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_6);
-    __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_num_uv); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 386, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_num_uv); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 376, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
-    __pyx_t_3 = PyObject_RichCompare(__pyx_t_6, __pyx_t_4, Py_LT); __Pyx_XGOTREF(__pyx_t_3); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 386, __pyx_L1_error)
+    __pyx_t_3 = PyObject_RichCompare(__pyx_t_6, __pyx_t_4, Py_LT); __Pyx_XGOTREF(__pyx_t_3); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 376, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-    __pyx_t_4 = PyNumber_And(__pyx_t_5, __pyx_t_3); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 386, __pyx_L1_error)
+    __pyx_t_4 = PyNumber_And(__pyx_t_5, __pyx_t_3); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 376, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-    __pyx_t_2 = __Pyx_PyObject_IsTrue(__pyx_t_4); if (unlikely(__pyx_t_2 < 0)) __PYX_ERR(0, 386, __pyx_L1_error)
+    __pyx_t_2 = __Pyx_PyObject_IsTrue(__pyx_t_4); if (unlikely(__pyx_t_2 < 0)) __PYX_ERR(0, 376, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
     if (__pyx_t_2) {
 
-      /* "structureboost/prob_regressor.pyx":387
+      /* "structureboost/prob_regressor.pyx":377
  *                        size=np.min([self.binpt_sample_size, len(binvec_start)]))
  *             elif (self.binpt_method=='auto') & (self.binpt_sample_size<self.num_uv):
  *                 binvec = np.unique(np.quantile(y_train, np.random.uniform(size=self.binpt_sample_size)))             # <<<<<<<<<<<<<<
  *             else:
  *                 binvec = self.unique_y
  */
-      __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_n_s_np); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 387, __pyx_L1_error)
+      __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_n_s_np); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 377, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_3);
-      __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_unique); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 387, __pyx_L1_error)
+      __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_unique); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 377, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_5);
       __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-      __Pyx_GetModuleGlobalName(__pyx_t_6, __pyx_n_s_np); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 387, __pyx_L1_error)
+      __Pyx_GetModuleGlobalName(__pyx_t_6, __pyx_n_s_np); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 377, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_6);
-      __pyx_t_8 = __Pyx_PyObject_GetAttrStr(__pyx_t_6, __pyx_n_s_quantile); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 387, __pyx_L1_error)
+      __pyx_t_8 = __Pyx_PyObject_GetAttrStr(__pyx_t_6, __pyx_n_s_quantile); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 377, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_8);
       __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
-      __Pyx_GetModuleGlobalName(__pyx_t_6, __pyx_n_s_np); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 387, __pyx_L1_error)
+      __Pyx_GetModuleGlobalName(__pyx_t_6, __pyx_n_s_np); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 377, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_6);
-      __pyx_t_11 = __Pyx_PyObject_GetAttrStr(__pyx_t_6, __pyx_n_s_random); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 387, __pyx_L1_error)
+      __pyx_t_11 = __Pyx_PyObject_GetAttrStr(__pyx_t_6, __pyx_n_s_random); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 377, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_11);
       __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
-      __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_t_11, __pyx_n_s_uniform); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 387, __pyx_L1_error)
+      __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_t_11, __pyx_n_s_uniform); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 377, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_6);
       __Pyx_DECREF(__pyx_t_11); __pyx_t_11 = 0;
-      __pyx_t_11 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 387, __pyx_L1_error)
+      __pyx_t_11 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 377, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_11);
-      __pyx_t_10 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_binpt_sample_size); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 387, __pyx_L1_error)
+      __pyx_t_10 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_binpt_sample_size); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 377, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_10);
-      if (PyDict_SetItem(__pyx_t_11, __pyx_n_s_size, __pyx_t_10) < 0) __PYX_ERR(0, 387, __pyx_L1_error)
+      if (PyDict_SetItem(__pyx_t_11, __pyx_n_s_size, __pyx_t_10) < 0) __PYX_ERR(0, 377, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
-      __pyx_t_10 = __Pyx_PyObject_Call(__pyx_t_6, __pyx_empty_tuple, __pyx_t_11); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 387, __pyx_L1_error)
+      __pyx_t_10 = __Pyx_PyObject_Call(__pyx_t_6, __pyx_empty_tuple, __pyx_t_11); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 377, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_10);
       __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
       __Pyx_DECREF(__pyx_t_11); __pyx_t_11 = 0;
@@ -8070,7 +8173,7 @@ static PyObject *__pyx_pf_14structureboost_14prob_regressor_11PrestoBoost_6get_b
       #if CYTHON_FAST_PYCALL
       if (PyFunction_Check(__pyx_t_8)) {
         PyObject *__pyx_temp[3] = {__pyx_t_11, __pyx_v_y_train, __pyx_t_10};
-        __pyx_t_3 = __Pyx_PyFunction_FastCall(__pyx_t_8, __pyx_temp+1-__pyx_t_12, 2+__pyx_t_12); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 387, __pyx_L1_error)
+        __pyx_t_3 = __Pyx_PyFunction_FastCall(__pyx_t_8, __pyx_temp+1-__pyx_t_12, 2+__pyx_t_12); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 377, __pyx_L1_error)
         __Pyx_XDECREF(__pyx_t_11); __pyx_t_11 = 0;
         __Pyx_GOTREF(__pyx_t_3);
         __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
@@ -8079,14 +8182,14 @@ static PyObject *__pyx_pf_14structureboost_14prob_regressor_11PrestoBoost_6get_b
       #if CYTHON_FAST_PYCCALL
       if (__Pyx_PyFastCFunction_Check(__pyx_t_8)) {
         PyObject *__pyx_temp[3] = {__pyx_t_11, __pyx_v_y_train, __pyx_t_10};
-        __pyx_t_3 = __Pyx_PyCFunction_FastCall(__pyx_t_8, __pyx_temp+1-__pyx_t_12, 2+__pyx_t_12); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 387, __pyx_L1_error)
+        __pyx_t_3 = __Pyx_PyCFunction_FastCall(__pyx_t_8, __pyx_temp+1-__pyx_t_12, 2+__pyx_t_12); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 377, __pyx_L1_error)
         __Pyx_XDECREF(__pyx_t_11); __pyx_t_11 = 0;
         __Pyx_GOTREF(__pyx_t_3);
         __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
       } else
       #endif
       {
-        __pyx_t_6 = PyTuple_New(2+__pyx_t_12); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 387, __pyx_L1_error)
+        __pyx_t_6 = PyTuple_New(2+__pyx_t_12); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 377, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_6);
         if (__pyx_t_11) {
           __Pyx_GIVEREF(__pyx_t_11); PyTuple_SET_ITEM(__pyx_t_6, 0, __pyx_t_11); __pyx_t_11 = NULL;
@@ -8097,7 +8200,7 @@ static PyObject *__pyx_pf_14structureboost_14prob_regressor_11PrestoBoost_6get_b
         __Pyx_GIVEREF(__pyx_t_10);
         PyTuple_SET_ITEM(__pyx_t_6, 1+__pyx_t_12, __pyx_t_10);
         __pyx_t_10 = 0;
-        __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_8, __pyx_t_6, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 387, __pyx_L1_error)
+        __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_8, __pyx_t_6, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 377, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_3);
         __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
       }
@@ -8115,13 +8218,13 @@ static PyObject *__pyx_pf_14structureboost_14prob_regressor_11PrestoBoost_6get_b
       __pyx_t_4 = (__pyx_t_8) ? __Pyx_PyObject_Call2Args(__pyx_t_5, __pyx_t_8, __pyx_t_3) : __Pyx_PyObject_CallOneArg(__pyx_t_5, __pyx_t_3);
       __Pyx_XDECREF(__pyx_t_8); __pyx_t_8 = 0;
       __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-      if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 387, __pyx_L1_error)
+      if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 377, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_4);
       __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
       __pyx_v_binvec = __pyx_t_4;
       __pyx_t_4 = 0;
 
-      /* "structureboost/prob_regressor.pyx":386
+      /* "structureboost/prob_regressor.pyx":376
  *                 binvec = np.random.choice(binvec_start, replace=False,
  *                        size=np.min([self.binpt_sample_size, len(binvec_start)]))
  *             elif (self.binpt_method=='auto') & (self.binpt_sample_size<self.num_uv):             # <<<<<<<<<<<<<<
@@ -8131,7 +8234,7 @@ static PyObject *__pyx_pf_14structureboost_14prob_regressor_11PrestoBoost_6get_b
       goto __pyx_L5;
     }
 
-    /* "structureboost/prob_regressor.pyx":389
+    /* "structureboost/prob_regressor.pyx":379
  *                 binvec = np.unique(np.quantile(y_train, np.random.uniform(size=self.binpt_sample_size)))
  *             else:
  *                 binvec = self.unique_y             # <<<<<<<<<<<<<<
@@ -8139,93 +8242,93 @@ static PyObject *__pyx_pf_14structureboost_14prob_regressor_11PrestoBoost_6get_b
  *                 binvec = np.unique(
  */
     /*else*/ {
-      __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_unique_y); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 389, __pyx_L1_error)
+      __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_unique_y); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 379, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_4);
       __pyx_v_binvec = __pyx_t_4;
       __pyx_t_4 = 0;
     }
     __pyx_L5:;
 
-    /* "structureboost/prob_regressor.pyx":390
+    /* "structureboost/prob_regressor.pyx":380
  *             else:
  *                 binvec = self.unique_y
  *             if self.bin_interp == 'midpt':             # <<<<<<<<<<<<<<
  *                 binvec = np.unique(
  *                             np.concatenate(([self.y_min_train],(binvec[1:]+binvec[:-1])/2,
  */
-    __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_bin_interp); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 390, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_bin_interp); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 380, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
-    __pyx_t_2 = (__Pyx_PyUnicode_Equals(__pyx_t_4, __pyx_n_u_midpt, Py_EQ)); if (unlikely(__pyx_t_2 < 0)) __PYX_ERR(0, 390, __pyx_L1_error)
+    __pyx_t_2 = (__Pyx_PyUnicode_Equals(__pyx_t_4, __pyx_n_u_midpt, Py_EQ)); if (unlikely(__pyx_t_2 < 0)) __PYX_ERR(0, 380, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
     if (__pyx_t_2) {
 
-      /* "structureboost/prob_regressor.pyx":391
+      /* "structureboost/prob_regressor.pyx":381
  *                 binvec = self.unique_y
  *             if self.bin_interp == 'midpt':
  *                 binvec = np.unique(             # <<<<<<<<<<<<<<
  *                             np.concatenate(([self.y_min_train],(binvec[1:]+binvec[:-1])/2,
  *                                             [self.y_max_train])
  */
-      __Pyx_GetModuleGlobalName(__pyx_t_5, __pyx_n_s_np); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 391, __pyx_L1_error)
+      __Pyx_GetModuleGlobalName(__pyx_t_5, __pyx_n_s_np); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 381, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_5);
-      __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_5, __pyx_n_s_unique); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 391, __pyx_L1_error)
+      __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_5, __pyx_n_s_unique); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 381, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_3);
       __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
 
-      /* "structureboost/prob_regressor.pyx":392
+      /* "structureboost/prob_regressor.pyx":382
  *             if self.bin_interp == 'midpt':
  *                 binvec = np.unique(
  *                             np.concatenate(([self.y_min_train],(binvec[1:]+binvec[:-1])/2,             # <<<<<<<<<<<<<<
  *                                             [self.y_max_train])
  *                                           ))
  */
-      __Pyx_GetModuleGlobalName(__pyx_t_8, __pyx_n_s_np); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 392, __pyx_L1_error)
+      __Pyx_GetModuleGlobalName(__pyx_t_8, __pyx_n_s_np); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 382, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_8);
-      __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_t_8, __pyx_n_s_concatenate); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 392, __pyx_L1_error)
+      __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_t_8, __pyx_n_s_concatenate); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 382, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_6);
       __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
-      __pyx_t_8 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_y_min_train); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 392, __pyx_L1_error)
+      __pyx_t_8 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_y_min_train); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 382, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_8);
-      __pyx_t_10 = PyList_New(1); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 392, __pyx_L1_error)
+      __pyx_t_10 = PyList_New(1); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 382, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_10);
       __Pyx_GIVEREF(__pyx_t_8);
       PyList_SET_ITEM(__pyx_t_10, 0, __pyx_t_8);
       __pyx_t_8 = 0;
-      __pyx_t_8 = __Pyx_PyObject_GetSlice(__pyx_v_binvec, 1, 0, NULL, NULL, &__pyx_slice__11, 1, 0, 1); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 392, __pyx_L1_error)
+      __pyx_t_8 = __Pyx_PyObject_GetSlice(__pyx_v_binvec, 1, 0, NULL, NULL, &__pyx_slice__11, 1, 0, 1); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 382, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_8);
-      __pyx_t_11 = __Pyx_PyObject_GetSlice(__pyx_v_binvec, 0, -1L, NULL, NULL, &__pyx_slice__4, 0, 1, 1); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 392, __pyx_L1_error)
+      __pyx_t_11 = __Pyx_PyObject_GetSlice(__pyx_v_binvec, 0, -1L, NULL, NULL, &__pyx_slice__4, 0, 1, 1); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 382, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_11);
-      __pyx_t_7 = PyNumber_Add(__pyx_t_8, __pyx_t_11); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 392, __pyx_L1_error)
+      __pyx_t_7 = PyNumber_Add(__pyx_t_8, __pyx_t_11); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 382, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_7);
       __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
       __Pyx_DECREF(__pyx_t_11); __pyx_t_11 = 0;
-      __pyx_t_11 = __Pyx_PyInt_TrueDivideObjC(__pyx_t_7, __pyx_int_2, 2, 0, 0); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 392, __pyx_L1_error)
+      __pyx_t_11 = __Pyx_PyInt_TrueDivideObjC(__pyx_t_7, __pyx_int_2, 2, 0, 0); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 382, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_11);
       __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
 
-      /* "structureboost/prob_regressor.pyx":393
+      /* "structureboost/prob_regressor.pyx":383
  *                 binvec = np.unique(
  *                             np.concatenate(([self.y_min_train],(binvec[1:]+binvec[:-1])/2,
  *                                             [self.y_max_train])             # <<<<<<<<<<<<<<
  *                                           ))
  *             elif self.bin_interp == 'runif':
  */
-      __pyx_t_7 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_y_max_train); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 393, __pyx_L1_error)
+      __pyx_t_7 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_y_max_train); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 383, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_7);
-      __pyx_t_8 = PyList_New(1); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 393, __pyx_L1_error)
+      __pyx_t_8 = PyList_New(1); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 383, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_8);
       __Pyx_GIVEREF(__pyx_t_7);
       PyList_SET_ITEM(__pyx_t_8, 0, __pyx_t_7);
       __pyx_t_7 = 0;
 
-      /* "structureboost/prob_regressor.pyx":392
+      /* "structureboost/prob_regressor.pyx":382
  *             if self.bin_interp == 'midpt':
  *                 binvec = np.unique(
  *                             np.concatenate(([self.y_min_train],(binvec[1:]+binvec[:-1])/2,             # <<<<<<<<<<<<<<
  *                                             [self.y_max_train])
  *                                           ))
  */
-      __pyx_t_7 = PyTuple_New(3); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 392, __pyx_L1_error)
+      __pyx_t_7 = PyTuple_New(3); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 382, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_7);
       __Pyx_GIVEREF(__pyx_t_10);
       PyTuple_SET_ITEM(__pyx_t_7, 0, __pyx_t_10);
@@ -8249,7 +8352,7 @@ static PyObject *__pyx_pf_14structureboost_14prob_regressor_11PrestoBoost_6get_b
       __pyx_t_5 = (__pyx_t_8) ? __Pyx_PyObject_Call2Args(__pyx_t_6, __pyx_t_8, __pyx_t_7) : __Pyx_PyObject_CallOneArg(__pyx_t_6, __pyx_t_7);
       __Pyx_XDECREF(__pyx_t_8); __pyx_t_8 = 0;
       __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
-      if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 392, __pyx_L1_error)
+      if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 382, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_5);
       __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
       __pyx_t_6 = NULL;
@@ -8265,13 +8368,13 @@ static PyObject *__pyx_pf_14structureboost_14prob_regressor_11PrestoBoost_6get_b
       __pyx_t_4 = (__pyx_t_6) ? __Pyx_PyObject_Call2Args(__pyx_t_3, __pyx_t_6, __pyx_t_5) : __Pyx_PyObject_CallOneArg(__pyx_t_3, __pyx_t_5);
       __Pyx_XDECREF(__pyx_t_6); __pyx_t_6 = 0;
       __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-      if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 391, __pyx_L1_error)
+      if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 381, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_4);
       __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
       __Pyx_DECREF_SET(__pyx_v_binvec, __pyx_t_4);
       __pyx_t_4 = 0;
 
-      /* "structureboost/prob_regressor.pyx":390
+      /* "structureboost/prob_regressor.pyx":380
  *             else:
  *                 binvec = self.unique_y
  *             if self.bin_interp == 'midpt':             # <<<<<<<<<<<<<<
@@ -8281,120 +8384,120 @@ static PyObject *__pyx_pf_14structureboost_14prob_regressor_11PrestoBoost_6get_b
       goto __pyx_L6;
     }
 
-    /* "structureboost/prob_regressor.pyx":395
+    /* "structureboost/prob_regressor.pyx":385
  *                                             [self.y_max_train])
  *                                           ))
  *             elif self.bin_interp == 'runif':             # <<<<<<<<<<<<<<
  *                 binvec = np.unique(
  *                             np.concatenate(([self.y_min_train],
  */
-    __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_bin_interp); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 395, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_bin_interp); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 385, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
-    __pyx_t_2 = (__Pyx_PyUnicode_Equals(__pyx_t_4, __pyx_n_u_runif, Py_EQ)); if (unlikely(__pyx_t_2 < 0)) __PYX_ERR(0, 395, __pyx_L1_error)
+    __pyx_t_2 = (__Pyx_PyUnicode_Equals(__pyx_t_4, __pyx_n_u_runif, Py_EQ)); if (unlikely(__pyx_t_2 < 0)) __PYX_ERR(0, 385, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
     if (__pyx_t_2) {
 
-      /* "structureboost/prob_regressor.pyx":396
+      /* "structureboost/prob_regressor.pyx":386
  *                                           ))
  *             elif self.bin_interp == 'runif':
  *                 binvec = np.unique(             # <<<<<<<<<<<<<<
  *                             np.concatenate(([self.y_min_train],
  *                                          binvec[:-1]+(binvec[1:]-binvec[:-1])*np.random.uniform(size=len(binvec)-1),
  */
-      __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_n_s_np); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 396, __pyx_L1_error)
+      __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_n_s_np); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 386, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_3);
-      __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_unique); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 396, __pyx_L1_error)
+      __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_unique); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 386, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_5);
       __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-      /* "structureboost/prob_regressor.pyx":397
+      /* "structureboost/prob_regressor.pyx":387
  *             elif self.bin_interp == 'runif':
  *                 binvec = np.unique(
  *                             np.concatenate(([self.y_min_train],             # <<<<<<<<<<<<<<
  *                                          binvec[:-1]+(binvec[1:]-binvec[:-1])*np.random.uniform(size=len(binvec)-1),
  *                                          [self.y_max_train])
  */
-      __Pyx_GetModuleGlobalName(__pyx_t_6, __pyx_n_s_np); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 397, __pyx_L1_error)
+      __Pyx_GetModuleGlobalName(__pyx_t_6, __pyx_n_s_np); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 387, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_6);
-      __pyx_t_7 = __Pyx_PyObject_GetAttrStr(__pyx_t_6, __pyx_n_s_concatenate); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 397, __pyx_L1_error)
+      __pyx_t_7 = __Pyx_PyObject_GetAttrStr(__pyx_t_6, __pyx_n_s_concatenate); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 387, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_7);
       __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
-      __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_y_min_train); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 397, __pyx_L1_error)
+      __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_y_min_train); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 387, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_6);
-      __pyx_t_8 = PyList_New(1); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 397, __pyx_L1_error)
+      __pyx_t_8 = PyList_New(1); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 387, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_8);
       __Pyx_GIVEREF(__pyx_t_6);
       PyList_SET_ITEM(__pyx_t_8, 0, __pyx_t_6);
       __pyx_t_6 = 0;
 
-      /* "structureboost/prob_regressor.pyx":398
+      /* "structureboost/prob_regressor.pyx":388
  *                 binvec = np.unique(
  *                             np.concatenate(([self.y_min_train],
  *                                          binvec[:-1]+(binvec[1:]-binvec[:-1])*np.random.uniform(size=len(binvec)-1),             # <<<<<<<<<<<<<<
  *                                          [self.y_max_train])
  *                                           ))
  */
-      __pyx_t_6 = __Pyx_PyObject_GetSlice(__pyx_v_binvec, 0, -1L, NULL, NULL, &__pyx_slice__4, 0, 1, 1); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 398, __pyx_L1_error)
+      __pyx_t_6 = __Pyx_PyObject_GetSlice(__pyx_v_binvec, 0, -1L, NULL, NULL, &__pyx_slice__4, 0, 1, 1); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 388, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_6);
-      __pyx_t_11 = __Pyx_PyObject_GetSlice(__pyx_v_binvec, 1, 0, NULL, NULL, &__pyx_slice__11, 1, 0, 1); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 398, __pyx_L1_error)
+      __pyx_t_11 = __Pyx_PyObject_GetSlice(__pyx_v_binvec, 1, 0, NULL, NULL, &__pyx_slice__11, 1, 0, 1); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 388, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_11);
-      __pyx_t_10 = __Pyx_PyObject_GetSlice(__pyx_v_binvec, 0, -1L, NULL, NULL, &__pyx_slice__4, 0, 1, 1); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 398, __pyx_L1_error)
+      __pyx_t_10 = __Pyx_PyObject_GetSlice(__pyx_v_binvec, 0, -1L, NULL, NULL, &__pyx_slice__4, 0, 1, 1); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 388, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_10);
-      __pyx_t_13 = PyNumber_Subtract(__pyx_t_11, __pyx_t_10); if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 398, __pyx_L1_error)
+      __pyx_t_13 = PyNumber_Subtract(__pyx_t_11, __pyx_t_10); if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 388, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_13);
       __Pyx_DECREF(__pyx_t_11); __pyx_t_11 = 0;
       __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
-      __Pyx_GetModuleGlobalName(__pyx_t_10, __pyx_n_s_np); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 398, __pyx_L1_error)
+      __Pyx_GetModuleGlobalName(__pyx_t_10, __pyx_n_s_np); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 388, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_10);
-      __pyx_t_11 = __Pyx_PyObject_GetAttrStr(__pyx_t_10, __pyx_n_s_random); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 398, __pyx_L1_error)
+      __pyx_t_11 = __Pyx_PyObject_GetAttrStr(__pyx_t_10, __pyx_n_s_random); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 388, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_11);
       __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
-      __pyx_t_10 = __Pyx_PyObject_GetAttrStr(__pyx_t_11, __pyx_n_s_uniform); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 398, __pyx_L1_error)
+      __pyx_t_10 = __Pyx_PyObject_GetAttrStr(__pyx_t_11, __pyx_n_s_uniform); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 388, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_10);
       __Pyx_DECREF(__pyx_t_11); __pyx_t_11 = 0;
-      __pyx_t_11 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 398, __pyx_L1_error)
+      __pyx_t_11 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 388, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_11);
-      __pyx_t_9 = PyObject_Length(__pyx_v_binvec); if (unlikely(__pyx_t_9 == ((Py_ssize_t)-1))) __PYX_ERR(0, 398, __pyx_L1_error)
-      __pyx_t_14 = PyInt_FromSsize_t((__pyx_t_9 - 1)); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 398, __pyx_L1_error)
+      __pyx_t_9 = PyObject_Length(__pyx_v_binvec); if (unlikely(__pyx_t_9 == ((Py_ssize_t)-1))) __PYX_ERR(0, 388, __pyx_L1_error)
+      __pyx_t_14 = PyInt_FromSsize_t((__pyx_t_9 - 1)); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 388, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_14);
-      if (PyDict_SetItem(__pyx_t_11, __pyx_n_s_size, __pyx_t_14) < 0) __PYX_ERR(0, 398, __pyx_L1_error)
+      if (PyDict_SetItem(__pyx_t_11, __pyx_n_s_size, __pyx_t_14) < 0) __PYX_ERR(0, 388, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_14); __pyx_t_14 = 0;
-      __pyx_t_14 = __Pyx_PyObject_Call(__pyx_t_10, __pyx_empty_tuple, __pyx_t_11); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 398, __pyx_L1_error)
+      __pyx_t_14 = __Pyx_PyObject_Call(__pyx_t_10, __pyx_empty_tuple, __pyx_t_11); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 388, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_14);
       __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
       __Pyx_DECREF(__pyx_t_11); __pyx_t_11 = 0;
-      __pyx_t_11 = PyNumber_Multiply(__pyx_t_13, __pyx_t_14); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 398, __pyx_L1_error)
+      __pyx_t_11 = PyNumber_Multiply(__pyx_t_13, __pyx_t_14); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 388, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_11);
       __Pyx_DECREF(__pyx_t_13); __pyx_t_13 = 0;
       __Pyx_DECREF(__pyx_t_14); __pyx_t_14 = 0;
-      __pyx_t_14 = PyNumber_Add(__pyx_t_6, __pyx_t_11); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 398, __pyx_L1_error)
+      __pyx_t_14 = PyNumber_Add(__pyx_t_6, __pyx_t_11); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 388, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_14);
       __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
       __Pyx_DECREF(__pyx_t_11); __pyx_t_11 = 0;
 
-      /* "structureboost/prob_regressor.pyx":399
+      /* "structureboost/prob_regressor.pyx":389
  *                             np.concatenate(([self.y_min_train],
  *                                          binvec[:-1]+(binvec[1:]-binvec[:-1])*np.random.uniform(size=len(binvec)-1),
  *                                          [self.y_max_train])             # <<<<<<<<<<<<<<
  *                                           ))
  *             if (self.range_extension=='quantile_frac') and (self.binpt_method!='fixed_rss'):
  */
-      __pyx_t_11 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_y_max_train); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 399, __pyx_L1_error)
+      __pyx_t_11 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_y_max_train); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 389, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_11);
-      __pyx_t_6 = PyList_New(1); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 399, __pyx_L1_error)
+      __pyx_t_6 = PyList_New(1); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 389, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_6);
       __Pyx_GIVEREF(__pyx_t_11);
       PyList_SET_ITEM(__pyx_t_6, 0, __pyx_t_11);
       __pyx_t_11 = 0;
 
-      /* "structureboost/prob_regressor.pyx":397
+      /* "structureboost/prob_regressor.pyx":387
  *             elif self.bin_interp == 'runif':
  *                 binvec = np.unique(
  *                             np.concatenate(([self.y_min_train],             # <<<<<<<<<<<<<<
  *                                          binvec[:-1]+(binvec[1:]-binvec[:-1])*np.random.uniform(size=len(binvec)-1),
  *                                          [self.y_max_train])
  */
-      __pyx_t_11 = PyTuple_New(3); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 397, __pyx_L1_error)
+      __pyx_t_11 = PyTuple_New(3); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 387, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_11);
       __Pyx_GIVEREF(__pyx_t_8);
       PyTuple_SET_ITEM(__pyx_t_11, 0, __pyx_t_8);
@@ -8418,7 +8521,7 @@ static PyObject *__pyx_pf_14structureboost_14prob_regressor_11PrestoBoost_6get_b
       __pyx_t_3 = (__pyx_t_6) ? __Pyx_PyObject_Call2Args(__pyx_t_7, __pyx_t_6, __pyx_t_11) : __Pyx_PyObject_CallOneArg(__pyx_t_7, __pyx_t_11);
       __Pyx_XDECREF(__pyx_t_6); __pyx_t_6 = 0;
       __Pyx_DECREF(__pyx_t_11); __pyx_t_11 = 0;
-      if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 397, __pyx_L1_error)
+      if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 387, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_3);
       __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
       __pyx_t_7 = NULL;
@@ -8434,13 +8537,13 @@ static PyObject *__pyx_pf_14structureboost_14prob_regressor_11PrestoBoost_6get_b
       __pyx_t_4 = (__pyx_t_7) ? __Pyx_PyObject_Call2Args(__pyx_t_5, __pyx_t_7, __pyx_t_3) : __Pyx_PyObject_CallOneArg(__pyx_t_5, __pyx_t_3);
       __Pyx_XDECREF(__pyx_t_7); __pyx_t_7 = 0;
       __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-      if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 396, __pyx_L1_error)
+      if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 386, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_4);
       __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
       __Pyx_DECREF_SET(__pyx_v_binvec, __pyx_t_4);
       __pyx_t_4 = 0;
 
-      /* "structureboost/prob_regressor.pyx":395
+      /* "structureboost/prob_regressor.pyx":385
  *                                             [self.y_max_train])
  *                                           ))
  *             elif self.bin_interp == 'runif':             # <<<<<<<<<<<<<<
@@ -8450,38 +8553,38 @@ static PyObject *__pyx_pf_14structureboost_14prob_regressor_11PrestoBoost_6get_b
     }
     __pyx_L6:;
 
-    /* "structureboost/prob_regressor.pyx":401
+    /* "structureboost/prob_regressor.pyx":391
  *                                          [self.y_max_train])
  *                                           ))
  *             if (self.range_extension=='quantile_frac') and (self.binpt_method!='fixed_rss'):             # <<<<<<<<<<<<<<
  *                 q_left, q_right, mult_factor = self.range_ext_param
  *                 q_range = (np.quantile(y_train, q_right) - np.quantile(y_train, q_left))
  */
-    __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_range_extension); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 401, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_range_extension); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 391, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
-    __pyx_t_1 = (__Pyx_PyUnicode_Equals(__pyx_t_4, __pyx_n_u_quantile_frac, Py_EQ)); if (unlikely(__pyx_t_1 < 0)) __PYX_ERR(0, 401, __pyx_L1_error)
+    __pyx_t_1 = (__Pyx_PyUnicode_Equals(__pyx_t_4, __pyx_n_u_quantile_frac, Py_EQ)); if (unlikely(__pyx_t_1 < 0)) __PYX_ERR(0, 391, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
     if (__pyx_t_1) {
     } else {
       __pyx_t_2 = __pyx_t_1;
       goto __pyx_L8_bool_binop_done;
     }
-    __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_binpt_method); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 401, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_binpt_method); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 391, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
-    __pyx_t_1 = (__Pyx_PyUnicode_Equals(__pyx_t_4, __pyx_n_u_fixed_rss, Py_NE)); if (unlikely(__pyx_t_1 < 0)) __PYX_ERR(0, 401, __pyx_L1_error)
+    __pyx_t_1 = (__Pyx_PyUnicode_Equals(__pyx_t_4, __pyx_n_u_fixed_rss, Py_NE)); if (unlikely(__pyx_t_1 < 0)) __PYX_ERR(0, 391, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
     __pyx_t_2 = __pyx_t_1;
     __pyx_L8_bool_binop_done:;
     if (__pyx_t_2) {
 
-      /* "structureboost/prob_regressor.pyx":402
+      /* "structureboost/prob_regressor.pyx":392
  *                                           ))
  *             if (self.range_extension=='quantile_frac') and (self.binpt_method!='fixed_rss'):
  *                 q_left, q_right, mult_factor = self.range_ext_param             # <<<<<<<<<<<<<<
  *                 q_range = (np.quantile(y_train, q_right) - np.quantile(y_train, q_left))
  *                 ext_amount = mult_factor*q_range
  */
-      __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_range_ext_param); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 402, __pyx_L1_error)
+      __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_range_ext_param); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 392, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_4);
       if ((likely(PyTuple_CheckExact(__pyx_t_4))) || (PyList_CheckExact(__pyx_t_4))) {
         PyObject* sequence = __pyx_t_4;
@@ -8489,7 +8592,7 @@ static PyObject *__pyx_pf_14structureboost_14prob_regressor_11PrestoBoost_6get_b
         if (unlikely(size != 3)) {
           if (size > 3) __Pyx_RaiseTooManyValuesError(3);
           else if (size >= 0) __Pyx_RaiseNeedMoreValuesError(size);
-          __PYX_ERR(0, 402, __pyx_L1_error)
+          __PYX_ERR(0, 392, __pyx_L1_error)
         }
         #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
         if (likely(PyTuple_CheckExact(sequence))) {
@@ -8505,17 +8608,17 @@ static PyObject *__pyx_pf_14structureboost_14prob_regressor_11PrestoBoost_6get_b
         __Pyx_INCREF(__pyx_t_3);
         __Pyx_INCREF(__pyx_t_7);
         #else
-        __pyx_t_5 = PySequence_ITEM(sequence, 0); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 402, __pyx_L1_error)
+        __pyx_t_5 = PySequence_ITEM(sequence, 0); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 392, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_5);
-        __pyx_t_3 = PySequence_ITEM(sequence, 1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 402, __pyx_L1_error)
+        __pyx_t_3 = PySequence_ITEM(sequence, 1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 392, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_3);
-        __pyx_t_7 = PySequence_ITEM(sequence, 2); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 402, __pyx_L1_error)
+        __pyx_t_7 = PySequence_ITEM(sequence, 2); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 392, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_7);
         #endif
         __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
       } else {
         Py_ssize_t index = -1;
-        __pyx_t_11 = PyObject_GetIter(__pyx_t_4); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 402, __pyx_L1_error)
+        __pyx_t_11 = PyObject_GetIter(__pyx_t_4); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 392, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_11);
         __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
         __pyx_t_15 = Py_TYPE(__pyx_t_11)->tp_iternext;
@@ -8525,7 +8628,7 @@ static PyObject *__pyx_pf_14structureboost_14prob_regressor_11PrestoBoost_6get_b
         __Pyx_GOTREF(__pyx_t_3);
         index = 2; __pyx_t_7 = __pyx_t_15(__pyx_t_11); if (unlikely(!__pyx_t_7)) goto __pyx_L10_unpacking_failed;
         __Pyx_GOTREF(__pyx_t_7);
-        if (__Pyx_IternextUnpackEndCheck(__pyx_t_15(__pyx_t_11), 3) < 0) __PYX_ERR(0, 402, __pyx_L1_error)
+        if (__Pyx_IternextUnpackEndCheck(__pyx_t_15(__pyx_t_11), 3) < 0) __PYX_ERR(0, 392, __pyx_L1_error)
         __pyx_t_15 = NULL;
         __Pyx_DECREF(__pyx_t_11); __pyx_t_11 = 0;
         goto __pyx_L11_unpacking_done;
@@ -8533,7 +8636,7 @@ static PyObject *__pyx_pf_14structureboost_14prob_regressor_11PrestoBoost_6get_b
         __Pyx_DECREF(__pyx_t_11); __pyx_t_11 = 0;
         __pyx_t_15 = NULL;
         if (__Pyx_IterFinish() == 0) __Pyx_RaiseNeedMoreValuesError(index);
-        __PYX_ERR(0, 402, __pyx_L1_error)
+        __PYX_ERR(0, 392, __pyx_L1_error)
         __pyx_L11_unpacking_done:;
       }
       __pyx_v_q_left = __pyx_t_5;
@@ -8543,16 +8646,16 @@ static PyObject *__pyx_pf_14structureboost_14prob_regressor_11PrestoBoost_6get_b
       __pyx_v_mult_factor = __pyx_t_7;
       __pyx_t_7 = 0;
 
-      /* "structureboost/prob_regressor.pyx":403
+      /* "structureboost/prob_regressor.pyx":393
  *             if (self.range_extension=='quantile_frac') and (self.binpt_method!='fixed_rss'):
  *                 q_left, q_right, mult_factor = self.range_ext_param
  *                 q_range = (np.quantile(y_train, q_right) - np.quantile(y_train, q_left))             # <<<<<<<<<<<<<<
  *                 ext_amount = mult_factor*q_range
  *                 added_pts = [self.y_min_train - ext_amount, self.y_max_train+ext_amount]
  */
-      __Pyx_GetModuleGlobalName(__pyx_t_7, __pyx_n_s_np); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 403, __pyx_L1_error)
+      __Pyx_GetModuleGlobalName(__pyx_t_7, __pyx_n_s_np); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 393, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_7);
-      __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_7, __pyx_n_s_quantile); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 403, __pyx_L1_error)
+      __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_7, __pyx_n_s_quantile); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 393, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_3);
       __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
       __pyx_t_7 = NULL;
@@ -8570,7 +8673,7 @@ static PyObject *__pyx_pf_14structureboost_14prob_regressor_11PrestoBoost_6get_b
       #if CYTHON_FAST_PYCALL
       if (PyFunction_Check(__pyx_t_3)) {
         PyObject *__pyx_temp[3] = {__pyx_t_7, __pyx_v_y_train, __pyx_v_q_right};
-        __pyx_t_4 = __Pyx_PyFunction_FastCall(__pyx_t_3, __pyx_temp+1-__pyx_t_12, 2+__pyx_t_12); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 403, __pyx_L1_error)
+        __pyx_t_4 = __Pyx_PyFunction_FastCall(__pyx_t_3, __pyx_temp+1-__pyx_t_12, 2+__pyx_t_12); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 393, __pyx_L1_error)
         __Pyx_XDECREF(__pyx_t_7); __pyx_t_7 = 0;
         __Pyx_GOTREF(__pyx_t_4);
       } else
@@ -8578,13 +8681,13 @@ static PyObject *__pyx_pf_14structureboost_14prob_regressor_11PrestoBoost_6get_b
       #if CYTHON_FAST_PYCCALL
       if (__Pyx_PyFastCFunction_Check(__pyx_t_3)) {
         PyObject *__pyx_temp[3] = {__pyx_t_7, __pyx_v_y_train, __pyx_v_q_right};
-        __pyx_t_4 = __Pyx_PyCFunction_FastCall(__pyx_t_3, __pyx_temp+1-__pyx_t_12, 2+__pyx_t_12); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 403, __pyx_L1_error)
+        __pyx_t_4 = __Pyx_PyCFunction_FastCall(__pyx_t_3, __pyx_temp+1-__pyx_t_12, 2+__pyx_t_12); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 393, __pyx_L1_error)
         __Pyx_XDECREF(__pyx_t_7); __pyx_t_7 = 0;
         __Pyx_GOTREF(__pyx_t_4);
       } else
       #endif
       {
-        __pyx_t_5 = PyTuple_New(2+__pyx_t_12); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 403, __pyx_L1_error)
+        __pyx_t_5 = PyTuple_New(2+__pyx_t_12); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 393, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_5);
         if (__pyx_t_7) {
           __Pyx_GIVEREF(__pyx_t_7); PyTuple_SET_ITEM(__pyx_t_5, 0, __pyx_t_7); __pyx_t_7 = NULL;
@@ -8595,14 +8698,14 @@ static PyObject *__pyx_pf_14structureboost_14prob_regressor_11PrestoBoost_6get_b
         __Pyx_INCREF(__pyx_v_q_right);
         __Pyx_GIVEREF(__pyx_v_q_right);
         PyTuple_SET_ITEM(__pyx_t_5, 1+__pyx_t_12, __pyx_v_q_right);
-        __pyx_t_4 = __Pyx_PyObject_Call(__pyx_t_3, __pyx_t_5, NULL); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 403, __pyx_L1_error)
+        __pyx_t_4 = __Pyx_PyObject_Call(__pyx_t_3, __pyx_t_5, NULL); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 393, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_4);
         __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
       }
       __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-      __Pyx_GetModuleGlobalName(__pyx_t_5, __pyx_n_s_np); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 403, __pyx_L1_error)
+      __Pyx_GetModuleGlobalName(__pyx_t_5, __pyx_n_s_np); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 393, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_5);
-      __pyx_t_7 = __Pyx_PyObject_GetAttrStr(__pyx_t_5, __pyx_n_s_quantile); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 403, __pyx_L1_error)
+      __pyx_t_7 = __Pyx_PyObject_GetAttrStr(__pyx_t_5, __pyx_n_s_quantile); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 393, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_7);
       __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
       __pyx_t_5 = NULL;
@@ -8620,7 +8723,7 @@ static PyObject *__pyx_pf_14structureboost_14prob_regressor_11PrestoBoost_6get_b
       #if CYTHON_FAST_PYCALL
       if (PyFunction_Check(__pyx_t_7)) {
         PyObject *__pyx_temp[3] = {__pyx_t_5, __pyx_v_y_train, __pyx_v_q_left};
-        __pyx_t_3 = __Pyx_PyFunction_FastCall(__pyx_t_7, __pyx_temp+1-__pyx_t_12, 2+__pyx_t_12); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 403, __pyx_L1_error)
+        __pyx_t_3 = __Pyx_PyFunction_FastCall(__pyx_t_7, __pyx_temp+1-__pyx_t_12, 2+__pyx_t_12); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 393, __pyx_L1_error)
         __Pyx_XDECREF(__pyx_t_5); __pyx_t_5 = 0;
         __Pyx_GOTREF(__pyx_t_3);
       } else
@@ -8628,13 +8731,13 @@ static PyObject *__pyx_pf_14structureboost_14prob_regressor_11PrestoBoost_6get_b
       #if CYTHON_FAST_PYCCALL
       if (__Pyx_PyFastCFunction_Check(__pyx_t_7)) {
         PyObject *__pyx_temp[3] = {__pyx_t_5, __pyx_v_y_train, __pyx_v_q_left};
-        __pyx_t_3 = __Pyx_PyCFunction_FastCall(__pyx_t_7, __pyx_temp+1-__pyx_t_12, 2+__pyx_t_12); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 403, __pyx_L1_error)
+        __pyx_t_3 = __Pyx_PyCFunction_FastCall(__pyx_t_7, __pyx_temp+1-__pyx_t_12, 2+__pyx_t_12); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 393, __pyx_L1_error)
         __Pyx_XDECREF(__pyx_t_5); __pyx_t_5 = 0;
         __Pyx_GOTREF(__pyx_t_3);
       } else
       #endif
       {
-        __pyx_t_11 = PyTuple_New(2+__pyx_t_12); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 403, __pyx_L1_error)
+        __pyx_t_11 = PyTuple_New(2+__pyx_t_12); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 393, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_11);
         if (__pyx_t_5) {
           __Pyx_GIVEREF(__pyx_t_5); PyTuple_SET_ITEM(__pyx_t_11, 0, __pyx_t_5); __pyx_t_5 = NULL;
@@ -8645,48 +8748,48 @@ static PyObject *__pyx_pf_14structureboost_14prob_regressor_11PrestoBoost_6get_b
         __Pyx_INCREF(__pyx_v_q_left);
         __Pyx_GIVEREF(__pyx_v_q_left);
         PyTuple_SET_ITEM(__pyx_t_11, 1+__pyx_t_12, __pyx_v_q_left);
-        __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_7, __pyx_t_11, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 403, __pyx_L1_error)
+        __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_7, __pyx_t_11, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 393, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_3);
         __Pyx_DECREF(__pyx_t_11); __pyx_t_11 = 0;
       }
       __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
-      __pyx_t_7 = PyNumber_Subtract(__pyx_t_4, __pyx_t_3); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 403, __pyx_L1_error)
+      __pyx_t_7 = PyNumber_Subtract(__pyx_t_4, __pyx_t_3); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 393, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_7);
       __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
       __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
       __pyx_v_q_range = __pyx_t_7;
       __pyx_t_7 = 0;
 
-      /* "structureboost/prob_regressor.pyx":404
+      /* "structureboost/prob_regressor.pyx":394
  *                 q_left, q_right, mult_factor = self.range_ext_param
  *                 q_range = (np.quantile(y_train, q_right) - np.quantile(y_train, q_left))
  *                 ext_amount = mult_factor*q_range             # <<<<<<<<<<<<<<
  *                 added_pts = [self.y_min_train - ext_amount, self.y_max_train+ext_amount]
  *                 #print(f'extending range: adding in {added_pts}')
  */
-      __pyx_t_7 = PyNumber_Multiply(__pyx_v_mult_factor, __pyx_v_q_range); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 404, __pyx_L1_error)
+      __pyx_t_7 = PyNumber_Multiply(__pyx_v_mult_factor, __pyx_v_q_range); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 394, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_7);
       __pyx_v_ext_amount = __pyx_t_7;
       __pyx_t_7 = 0;
 
-      /* "structureboost/prob_regressor.pyx":405
+      /* "structureboost/prob_regressor.pyx":395
  *                 q_range = (np.quantile(y_train, q_right) - np.quantile(y_train, q_left))
  *                 ext_amount = mult_factor*q_range
  *                 added_pts = [self.y_min_train - ext_amount, self.y_max_train+ext_amount]             # <<<<<<<<<<<<<<
  *                 #print(f'extending range: adding in {added_pts}')
  *                 binvec = np.unique(np.concatenate((added_pts, binvec)))
  */
-      __pyx_t_7 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_y_min_train); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 405, __pyx_L1_error)
+      __pyx_t_7 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_y_min_train); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 395, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_7);
-      __pyx_t_3 = PyNumber_Subtract(__pyx_t_7, __pyx_v_ext_amount); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 405, __pyx_L1_error)
+      __pyx_t_3 = PyNumber_Subtract(__pyx_t_7, __pyx_v_ext_amount); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 395, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_3);
       __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
-      __pyx_t_7 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_y_max_train); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 405, __pyx_L1_error)
+      __pyx_t_7 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_y_max_train); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 395, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_7);
-      __pyx_t_4 = PyNumber_Add(__pyx_t_7, __pyx_v_ext_amount); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 405, __pyx_L1_error)
+      __pyx_t_4 = PyNumber_Add(__pyx_t_7, __pyx_v_ext_amount); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 395, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_4);
       __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
-      __pyx_t_7 = PyList_New(2); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 405, __pyx_L1_error)
+      __pyx_t_7 = PyList_New(2); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 395, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_7);
       __Pyx_GIVEREF(__pyx_t_3);
       PyList_SET_ITEM(__pyx_t_7, 0, __pyx_t_3);
@@ -8697,24 +8800,24 @@ static PyObject *__pyx_pf_14structureboost_14prob_regressor_11PrestoBoost_6get_b
       __pyx_v_added_pts = ((PyObject*)__pyx_t_7);
       __pyx_t_7 = 0;
 
-      /* "structureboost/prob_regressor.pyx":407
+      /* "structureboost/prob_regressor.pyx":397
  *                 added_pts = [self.y_min_train - ext_amount, self.y_max_train+ext_amount]
  *                 #print(f'extending range: adding in {added_pts}')
  *                 binvec = np.unique(np.concatenate((added_pts, binvec)))             # <<<<<<<<<<<<<<
  *         return(binvec)
  * 
  */
-      __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_n_s_np); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 407, __pyx_L1_error)
+      __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_n_s_np); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 397, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_4);
-      __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_unique); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 407, __pyx_L1_error)
+      __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_unique); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 397, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_3);
       __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-      __Pyx_GetModuleGlobalName(__pyx_t_11, __pyx_n_s_np); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 407, __pyx_L1_error)
+      __Pyx_GetModuleGlobalName(__pyx_t_11, __pyx_n_s_np); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 397, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_11);
-      __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_t_11, __pyx_n_s_concatenate); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 407, __pyx_L1_error)
+      __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_t_11, __pyx_n_s_concatenate); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 397, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_5);
       __Pyx_DECREF(__pyx_t_11); __pyx_t_11 = 0;
-      __pyx_t_11 = PyTuple_New(2); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 407, __pyx_L1_error)
+      __pyx_t_11 = PyTuple_New(2); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 397, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_11);
       __Pyx_INCREF(__pyx_v_added_pts);
       __Pyx_GIVEREF(__pyx_v_added_pts);
@@ -8735,7 +8838,7 @@ static PyObject *__pyx_pf_14structureboost_14prob_regressor_11PrestoBoost_6get_b
       __pyx_t_4 = (__pyx_t_6) ? __Pyx_PyObject_Call2Args(__pyx_t_5, __pyx_t_6, __pyx_t_11) : __Pyx_PyObject_CallOneArg(__pyx_t_5, __pyx_t_11);
       __Pyx_XDECREF(__pyx_t_6); __pyx_t_6 = 0;
       __Pyx_DECREF(__pyx_t_11); __pyx_t_11 = 0;
-      if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 407, __pyx_L1_error)
+      if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 397, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_4);
       __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
       __pyx_t_5 = NULL;
@@ -8751,13 +8854,13 @@ static PyObject *__pyx_pf_14structureboost_14prob_regressor_11PrestoBoost_6get_b
       __pyx_t_7 = (__pyx_t_5) ? __Pyx_PyObject_Call2Args(__pyx_t_3, __pyx_t_5, __pyx_t_4) : __Pyx_PyObject_CallOneArg(__pyx_t_3, __pyx_t_4);
       __Pyx_XDECREF(__pyx_t_5); __pyx_t_5 = 0;
       __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-      if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 407, __pyx_L1_error)
+      if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 397, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_7);
       __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
       __Pyx_DECREF_SET(__pyx_v_binvec, __pyx_t_7);
       __pyx_t_7 = 0;
 
-      /* "structureboost/prob_regressor.pyx":401
+      /* "structureboost/prob_regressor.pyx":391
  *                                          [self.y_max_train])
  *                                           ))
  *             if (self.range_extension=='quantile_frac') and (self.binpt_method!='fixed_rss'):             # <<<<<<<<<<<<<<
@@ -8768,7 +8871,7 @@ static PyObject *__pyx_pf_14structureboost_14prob_regressor_11PrestoBoost_6get_b
   }
   __pyx_L4:;
 
-  /* "structureboost/prob_regressor.pyx":408
+  /* "structureboost/prob_regressor.pyx":398
  *                 #print(f'extending range: adding in {added_pts}')
  *                 binvec = np.unique(np.concatenate((added_pts, binvec)))
  *         return(binvec)             # <<<<<<<<<<<<<<
@@ -8780,7 +8883,7 @@ static PyObject *__pyx_pf_14structureboost_14prob_regressor_11PrestoBoost_6get_b
   __pyx_r = __pyx_v_binvec;
   goto __pyx_L0;
 
-  /* "structureboost/prob_regressor.pyx":375
+  /* "structureboost/prob_regressor.pyx":365
  * 
  * 
  *     def get_bin_pts(self, y_train, random_seed=None):             # <<<<<<<<<<<<<<
@@ -8817,11 +8920,11 @@ static PyObject *__pyx_pf_14structureboost_14prob_regressor_11PrestoBoost_6get_b
   return __pyx_r;
 }
 
-/* "structureboost/prob_regressor.pyx":410
+/* "structureboost/prob_regressor.pyx":400
  *         return(binvec)
  * 
  *     def predict_distributions(self, X_test, num_forests_to_use=-1, use_calibrators=False,             # <<<<<<<<<<<<<<
- *         calibrator_list=None):
+ *         calibrator_list=None, scaling='log'):
  *         if num_forests_to_use==-1:
  */
 
@@ -8834,6 +8937,7 @@ static PyObject *__pyx_pw_14structureboost_14prob_regressor_11PrestoBoost_9predi
   PyObject *__pyx_v_num_forests_to_use = 0;
   PyObject *__pyx_v_use_calibrators = 0;
   PyObject *__pyx_v_calibrator_list = 0;
+  PyObject *__pyx_v_scaling = 0;
   int __pyx_lineno = 0;
   const char *__pyx_filename = NULL;
   int __pyx_clineno = 0;
@@ -8841,23 +8945,26 @@ static PyObject *__pyx_pw_14structureboost_14prob_regressor_11PrestoBoost_9predi
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("predict_distributions (wrapper)", 0);
   {
-    static PyObject **__pyx_pyargnames[] = {&__pyx_n_s_self,&__pyx_n_s_X_test,&__pyx_n_s_num_forests_to_use,&__pyx_n_s_use_calibrators,&__pyx_n_s_calibrator_list,0};
-    PyObject* values[5] = {0,0,0,0,0};
+    static PyObject **__pyx_pyargnames[] = {&__pyx_n_s_self,&__pyx_n_s_X_test,&__pyx_n_s_num_forests_to_use,&__pyx_n_s_use_calibrators,&__pyx_n_s_calibrator_list,&__pyx_n_s_scaling,0};
+    PyObject* values[6] = {0,0,0,0,0,0};
     values[2] = ((PyObject *)((PyObject *)__pyx_int_neg_1));
     values[3] = ((PyObject *)((PyObject *)Py_False));
 
-    /* "structureboost/prob_regressor.pyx":411
+    /* "structureboost/prob_regressor.pyx":401
  * 
  *     def predict_distributions(self, X_test, num_forests_to_use=-1, use_calibrators=False,
- *         calibrator_list=None):             # <<<<<<<<<<<<<<
+ *         calibrator_list=None, scaling='log'):             # <<<<<<<<<<<<<<
  *         if num_forests_to_use==-1:
  *             num_forests_to_use = self.num_forests
  */
     values[4] = ((PyObject *)((PyObject *)Py_None));
+    values[5] = ((PyObject *)((PyObject*)__pyx_n_u_log));
     if (unlikely(__pyx_kwds)) {
       Py_ssize_t kw_args;
       const Py_ssize_t pos_args = PyTuple_GET_SIZE(__pyx_args);
       switch (pos_args) {
+        case  6: values[5] = PyTuple_GET_ITEM(__pyx_args, 5);
+        CYTHON_FALLTHROUGH;
         case  5: values[4] = PyTuple_GET_ITEM(__pyx_args, 4);
         CYTHON_FALLTHROUGH;
         case  4: values[3] = PyTuple_GET_ITEM(__pyx_args, 3);
@@ -8880,7 +8987,7 @@ static PyObject *__pyx_pw_14structureboost_14prob_regressor_11PrestoBoost_9predi
         case  1:
         if (likely((values[1] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_X_test)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("predict_distributions", 0, 2, 5, 1); __PYX_ERR(0, 410, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("predict_distributions", 0, 2, 6, 1); __PYX_ERR(0, 400, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  2:
@@ -8900,12 +9007,20 @@ static PyObject *__pyx_pw_14structureboost_14prob_regressor_11PrestoBoost_9predi
           PyObject* value = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_calibrator_list);
           if (value) { values[4] = value; kw_args--; }
         }
+        CYTHON_FALLTHROUGH;
+        case  5:
+        if (kw_args > 0) {
+          PyObject* value = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_scaling);
+          if (value) { values[5] = value; kw_args--; }
+        }
       }
       if (unlikely(kw_args > 0)) {
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "predict_distributions") < 0)) __PYX_ERR(0, 410, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "predict_distributions") < 0)) __PYX_ERR(0, 400, __pyx_L3_error)
       }
     } else {
       switch (PyTuple_GET_SIZE(__pyx_args)) {
+        case  6: values[5] = PyTuple_GET_ITEM(__pyx_args, 5);
+        CYTHON_FALLTHROUGH;
         case  5: values[4] = PyTuple_GET_ITEM(__pyx_args, 4);
         CYTHON_FALLTHROUGH;
         case  4: values[3] = PyTuple_GET_ITEM(__pyx_args, 3);
@@ -8923,22 +9038,23 @@ static PyObject *__pyx_pw_14structureboost_14prob_regressor_11PrestoBoost_9predi
     __pyx_v_num_forests_to_use = values[2];
     __pyx_v_use_calibrators = values[3];
     __pyx_v_calibrator_list = values[4];
+    __pyx_v_scaling = values[5];
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("predict_distributions", 0, 2, 5, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 410, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("predict_distributions", 0, 2, 6, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 400, __pyx_L3_error)
   __pyx_L3_error:;
   __Pyx_AddTraceback("structureboost.prob_regressor.PrestoBoost.predict_distributions", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  __pyx_r = __pyx_pf_14structureboost_14prob_regressor_11PrestoBoost_8predict_distributions(__pyx_self, __pyx_v_self, __pyx_v_X_test, __pyx_v_num_forests_to_use, __pyx_v_use_calibrators, __pyx_v_calibrator_list);
+  __pyx_r = __pyx_pf_14structureboost_14prob_regressor_11PrestoBoost_8predict_distributions(__pyx_self, __pyx_v_self, __pyx_v_X_test, __pyx_v_num_forests_to_use, __pyx_v_use_calibrators, __pyx_v_calibrator_list, __pyx_v_scaling);
 
-  /* "structureboost/prob_regressor.pyx":410
+  /* "structureboost/prob_regressor.pyx":400
  *         return(binvec)
  * 
  *     def predict_distributions(self, X_test, num_forests_to_use=-1, use_calibrators=False,             # <<<<<<<<<<<<<<
- *         calibrator_list=None):
+ *         calibrator_list=None, scaling='log'):
  *         if num_forests_to_use==-1:
  */
 
@@ -8947,12 +9063,15 @@ static PyObject *__pyx_pw_14structureboost_14prob_regressor_11PrestoBoost_9predi
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_14structureboost_14prob_regressor_11PrestoBoost_8predict_distributions(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self, PyObject *__pyx_v_X_test, PyObject *__pyx_v_num_forests_to_use, PyObject *__pyx_v_use_calibrators, PyObject *__pyx_v_calibrator_list) {
+static PyObject *__pyx_pf_14structureboost_14prob_regressor_11PrestoBoost_8predict_distributions(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self, PyObject *__pyx_v_X_test, PyObject *__pyx_v_num_forests_to_use, PyObject *__pyx_v_use_calibrators, PyObject *__pyx_v_calibrator_list, PyObject *__pyx_v_scaling) {
   PyObject *__pyx_v_predlist = NULL;
   PyObject *__pyx_v_j = NULL;
   PyObject *__pyx_v_final_dists = NULL;
+  PyObject *__pyx_v_bv = NULL;
+  PyObject *__pyx_v_pm = NULL;
   PyObject *__pyx_8genexpr7__pyx_v_j = NULL;
   PyObject *__pyx_8genexpr8__pyx_v_i = NULL;
+  PyObject *__pyx_8genexpr9__pyx_v_pdf = NULL;
   PyObject *__pyx_r = NULL;
   __Pyx_TraceDeclarations
   __Pyx_RefNannyDeclarations
@@ -8968,46 +9087,46 @@ static PyObject *__pyx_pf_14structureboost_14prob_regressor_11PrestoBoost_8predi
   int __pyx_t_10;
   PyObject *__pyx_t_11 = NULL;
   int __pyx_t_12;
-  PyObject *__pyx_t_13 = NULL;
-  Py_ssize_t __pyx_t_14;
-  PyObject *(*__pyx_t_15)(PyObject *);
-  PyObject *__pyx_t_16 = NULL;
+  Py_ssize_t __pyx_t_13;
+  PyObject *(*__pyx_t_14)(PyObject *);
+  PyObject *__pyx_t_15 = NULL;
+  int __pyx_t_16;
   int __pyx_lineno = 0;
   const char *__pyx_filename = NULL;
   int __pyx_clineno = 0;
   __Pyx_TraceFrameInit(__pyx_codeobj__12)
   __Pyx_RefNannySetupContext("predict_distributions", 0);
-  __Pyx_TraceCall("predict_distributions", __pyx_f[0], 410, 0, __PYX_ERR(0, 410, __pyx_L1_error));
+  __Pyx_TraceCall("predict_distributions", __pyx_f[0], 400, 0, __PYX_ERR(0, 400, __pyx_L1_error));
   __Pyx_INCREF(__pyx_v_num_forests_to_use);
 
-  /* "structureboost/prob_regressor.pyx":412
+  /* "structureboost/prob_regressor.pyx":402
  *     def predict_distributions(self, X_test, num_forests_to_use=-1, use_calibrators=False,
- *         calibrator_list=None):
+ *         calibrator_list=None, scaling='log'):
  *         if num_forests_to_use==-1:             # <<<<<<<<<<<<<<
  *             num_forests_to_use = self.num_forests
  *         elif (num_forests_to_use > self.num_forests):
  */
-  __pyx_t_1 = __Pyx_PyInt_EqObjC(__pyx_v_num_forests_to_use, __pyx_int_neg_1, -1L, 0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 412, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyInt_EqObjC(__pyx_v_num_forests_to_use, __pyx_int_neg_1, -1L, 0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 402, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = __Pyx_PyObject_IsTrue(__pyx_t_1); if (unlikely(__pyx_t_2 < 0)) __PYX_ERR(0, 412, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_IsTrue(__pyx_t_1); if (unlikely(__pyx_t_2 < 0)) __PYX_ERR(0, 402, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   if (__pyx_t_2) {
 
-    /* "structureboost/prob_regressor.pyx":413
- *         calibrator_list=None):
+    /* "structureboost/prob_regressor.pyx":403
+ *         calibrator_list=None, scaling='log'):
  *         if num_forests_to_use==-1:
  *             num_forests_to_use = self.num_forests             # <<<<<<<<<<<<<<
  *         elif (num_forests_to_use > self.num_forests):
  *             warnings.warn(f"Using only the {self.num_forests} that are available")
  */
-    __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_num_forests); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 413, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_num_forests); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 403, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF_SET(__pyx_v_num_forests_to_use, __pyx_t_1);
     __pyx_t_1 = 0;
 
-    /* "structureboost/prob_regressor.pyx":412
+    /* "structureboost/prob_regressor.pyx":402
  *     def predict_distributions(self, X_test, num_forests_to_use=-1, use_calibrators=False,
- *         calibrator_list=None):
+ *         calibrator_list=None, scaling='log'):
  *         if num_forests_to_use==-1:             # <<<<<<<<<<<<<<
  *             num_forests_to_use = self.num_forests
  *         elif (num_forests_to_use > self.num_forests):
@@ -9015,34 +9134,34 @@ static PyObject *__pyx_pf_14structureboost_14prob_regressor_11PrestoBoost_8predi
     goto __pyx_L3;
   }
 
-  /* "structureboost/prob_regressor.pyx":414
+  /* "structureboost/prob_regressor.pyx":404
  *         if num_forests_to_use==-1:
  *             num_forests_to_use = self.num_forests
  *         elif (num_forests_to_use > self.num_forests):             # <<<<<<<<<<<<<<
  *             warnings.warn(f"Using only the {self.num_forests} that are available")
  *             num_forests_to_use = self.num_forests
  */
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_num_forests); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 414, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_num_forests); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 404, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_3 = PyObject_RichCompare(__pyx_v_num_forests_to_use, __pyx_t_1, Py_GT); __Pyx_XGOTREF(__pyx_t_3); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 414, __pyx_L1_error)
+  __pyx_t_3 = PyObject_RichCompare(__pyx_v_num_forests_to_use, __pyx_t_1, Py_GT); __Pyx_XGOTREF(__pyx_t_3); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 404, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_t_2 = __Pyx_PyObject_IsTrue(__pyx_t_3); if (unlikely(__pyx_t_2 < 0)) __PYX_ERR(0, 414, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_IsTrue(__pyx_t_3); if (unlikely(__pyx_t_2 < 0)) __PYX_ERR(0, 404, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   if (__pyx_t_2) {
 
-    /* "structureboost/prob_regressor.pyx":415
+    /* "structureboost/prob_regressor.pyx":405
  *             num_forests_to_use = self.num_forests
  *         elif (num_forests_to_use > self.num_forests):
  *             warnings.warn(f"Using only the {self.num_forests} that are available")             # <<<<<<<<<<<<<<
  *             num_forests_to_use = self.num_forests
  *         predlist = []
  */
-    __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_warnings); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 415, __pyx_L1_error)
+    __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_warnings); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 405, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
-    __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_warn); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 415, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_warn); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 405, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-    __pyx_t_1 = PyTuple_New(3); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 415, __pyx_L1_error)
+    __pyx_t_1 = PyTuple_New(3); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 405, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __pyx_t_5 = 0;
     __pyx_t_6 = 127;
@@ -9050,9 +9169,9 @@ static PyObject *__pyx_pf_14structureboost_14prob_regressor_11PrestoBoost_8predi
     __pyx_t_5 += 15;
     __Pyx_GIVEREF(__pyx_kp_u_Using_only_the);
     PyTuple_SET_ITEM(__pyx_t_1, 0, __pyx_kp_u_Using_only_the);
-    __pyx_t_7 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_num_forests); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 415, __pyx_L1_error)
+    __pyx_t_7 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_num_forests); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 405, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_7);
-    __pyx_t_8 = __Pyx_PyObject_FormatSimple(__pyx_t_7, __pyx_empty_unicode); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 415, __pyx_L1_error)
+    __pyx_t_8 = __Pyx_PyObject_FormatSimple(__pyx_t_7, __pyx_empty_unicode); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 405, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_8);
     __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
     __pyx_t_6 = (__Pyx_PyUnicode_MAX_CHAR_VALUE(__pyx_t_8) > __pyx_t_6) ? __Pyx_PyUnicode_MAX_CHAR_VALUE(__pyx_t_8) : __pyx_t_6;
@@ -9064,7 +9183,7 @@ static PyObject *__pyx_pf_14structureboost_14prob_regressor_11PrestoBoost_8predi
     __pyx_t_5 += 19;
     __Pyx_GIVEREF(__pyx_kp_u_that_are_available);
     PyTuple_SET_ITEM(__pyx_t_1, 2, __pyx_kp_u_that_are_available);
-    __pyx_t_8 = __Pyx_PyUnicode_Join(__pyx_t_1, 3, __pyx_t_5, __pyx_t_6); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 415, __pyx_L1_error)
+    __pyx_t_8 = __Pyx_PyUnicode_Join(__pyx_t_1, 3, __pyx_t_5, __pyx_t_6); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 405, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_8);
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
     __pyx_t_1 = NULL;
@@ -9080,24 +9199,24 @@ static PyObject *__pyx_pf_14structureboost_14prob_regressor_11PrestoBoost_8predi
     __pyx_t_3 = (__pyx_t_1) ? __Pyx_PyObject_Call2Args(__pyx_t_4, __pyx_t_1, __pyx_t_8) : __Pyx_PyObject_CallOneArg(__pyx_t_4, __pyx_t_8);
     __Pyx_XDECREF(__pyx_t_1); __pyx_t_1 = 0;
     __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
-    if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 415, __pyx_L1_error)
+    if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 405, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-    /* "structureboost/prob_regressor.pyx":416
+    /* "structureboost/prob_regressor.pyx":406
  *         elif (num_forests_to_use > self.num_forests):
  *             warnings.warn(f"Using only the {self.num_forests} that are available")
  *             num_forests_to_use = self.num_forests             # <<<<<<<<<<<<<<
  *         predlist = []
  *         for j in range(num_forests_to_use):
  */
-    __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_num_forests); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 416, __pyx_L1_error)
+    __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_num_forests); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 406, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
     __Pyx_DECREF_SET(__pyx_v_num_forests_to_use, __pyx_t_3);
     __pyx_t_3 = 0;
 
-    /* "structureboost/prob_regressor.pyx":414
+    /* "structureboost/prob_regressor.pyx":404
  *         if num_forests_to_use==-1:
  *             num_forests_to_use = self.num_forests
  *         elif (num_forests_to_use > self.num_forests):             # <<<<<<<<<<<<<<
@@ -9107,34 +9226,34 @@ static PyObject *__pyx_pf_14structureboost_14prob_regressor_11PrestoBoost_8predi
   }
   __pyx_L3:;
 
-  /* "structureboost/prob_regressor.pyx":417
+  /* "structureboost/prob_regressor.pyx":407
  *             warnings.warn(f"Using only the {self.num_forests} that are available")
  *             num_forests_to_use = self.num_forests
  *         predlist = []             # <<<<<<<<<<<<<<
  *         for j in range(num_forests_to_use):
  *             if use_calibrators:
  */
-  __pyx_t_3 = PyList_New(0); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 417, __pyx_L1_error)
+  __pyx_t_3 = PyList_New(0); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 407, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __pyx_v_predlist = ((PyObject*)__pyx_t_3);
   __pyx_t_3 = 0;
 
-  /* "structureboost/prob_regressor.pyx":418
+  /* "structureboost/prob_regressor.pyx":408
  *             num_forests_to_use = self.num_forests
  *         predlist = []
  *         for j in range(num_forests_to_use):             # <<<<<<<<<<<<<<
  *             if use_calibrators:
  *                 if (calibrator_list is None):
  */
-  __pyx_t_3 = __Pyx_PyObject_CallOneArg(__pyx_builtin_range, __pyx_v_num_forests_to_use); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 418, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyObject_CallOneArg(__pyx_builtin_range, __pyx_v_num_forests_to_use); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 408, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   if (likely(PyList_CheckExact(__pyx_t_3)) || PyTuple_CheckExact(__pyx_t_3)) {
     __pyx_t_4 = __pyx_t_3; __Pyx_INCREF(__pyx_t_4); __pyx_t_5 = 0;
     __pyx_t_9 = NULL;
   } else {
-    __pyx_t_5 = -1; __pyx_t_4 = PyObject_GetIter(__pyx_t_3); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 418, __pyx_L1_error)
+    __pyx_t_5 = -1; __pyx_t_4 = PyObject_GetIter(__pyx_t_3); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 408, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
-    __pyx_t_9 = Py_TYPE(__pyx_t_4)->tp_iternext; if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 418, __pyx_L1_error)
+    __pyx_t_9 = Py_TYPE(__pyx_t_4)->tp_iternext; if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 408, __pyx_L1_error)
   }
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   for (;;) {
@@ -9142,17 +9261,17 @@ static PyObject *__pyx_pf_14structureboost_14prob_regressor_11PrestoBoost_8predi
       if (likely(PyList_CheckExact(__pyx_t_4))) {
         if (__pyx_t_5 >= PyList_GET_SIZE(__pyx_t_4)) break;
         #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-        __pyx_t_3 = PyList_GET_ITEM(__pyx_t_4, __pyx_t_5); __Pyx_INCREF(__pyx_t_3); __pyx_t_5++; if (unlikely(0 < 0)) __PYX_ERR(0, 418, __pyx_L1_error)
+        __pyx_t_3 = PyList_GET_ITEM(__pyx_t_4, __pyx_t_5); __Pyx_INCREF(__pyx_t_3); __pyx_t_5++; if (unlikely(0 < 0)) __PYX_ERR(0, 408, __pyx_L1_error)
         #else
-        __pyx_t_3 = PySequence_ITEM(__pyx_t_4, __pyx_t_5); __pyx_t_5++; if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 418, __pyx_L1_error)
+        __pyx_t_3 = PySequence_ITEM(__pyx_t_4, __pyx_t_5); __pyx_t_5++; if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 408, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_3);
         #endif
       } else {
         if (__pyx_t_5 >= PyTuple_GET_SIZE(__pyx_t_4)) break;
         #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-        __pyx_t_3 = PyTuple_GET_ITEM(__pyx_t_4, __pyx_t_5); __Pyx_INCREF(__pyx_t_3); __pyx_t_5++; if (unlikely(0 < 0)) __PYX_ERR(0, 418, __pyx_L1_error)
+        __pyx_t_3 = PyTuple_GET_ITEM(__pyx_t_4, __pyx_t_5); __Pyx_INCREF(__pyx_t_3); __pyx_t_5++; if (unlikely(0 < 0)) __PYX_ERR(0, 408, __pyx_L1_error)
         #else
-        __pyx_t_3 = PySequence_ITEM(__pyx_t_4, __pyx_t_5); __pyx_t_5++; if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 418, __pyx_L1_error)
+        __pyx_t_3 = PySequence_ITEM(__pyx_t_4, __pyx_t_5); __pyx_t_5++; if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 408, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_3);
         #endif
       }
@@ -9162,7 +9281,7 @@ static PyObject *__pyx_pf_14structureboost_14prob_regressor_11PrestoBoost_8predi
         PyObject* exc_type = PyErr_Occurred();
         if (exc_type) {
           if (likely(__Pyx_PyErr_GivenExceptionMatches(exc_type, PyExc_StopIteration))) PyErr_Clear();
-          else __PYX_ERR(0, 418, __pyx_L1_error)
+          else __PYX_ERR(0, 408, __pyx_L1_error)
         }
         break;
       }
@@ -9171,17 +9290,17 @@ static PyObject *__pyx_pf_14structureboost_14prob_regressor_11PrestoBoost_8predi
     __Pyx_XDECREF_SET(__pyx_v_j, __pyx_t_3);
     __pyx_t_3 = 0;
 
-    /* "structureboost/prob_regressor.pyx":419
+    /* "structureboost/prob_regressor.pyx":409
  *         predlist = []
  *         for j in range(num_forests_to_use):
  *             if use_calibrators:             # <<<<<<<<<<<<<<
  *                 if (calibrator_list is None):
  *                     if (self.calibrator_list is None):
  */
-    __pyx_t_2 = __Pyx_PyObject_IsTrue(__pyx_v_use_calibrators); if (unlikely(__pyx_t_2 < 0)) __PYX_ERR(0, 419, __pyx_L1_error)
+    __pyx_t_2 = __Pyx_PyObject_IsTrue(__pyx_v_use_calibrators); if (unlikely(__pyx_t_2 < 0)) __PYX_ERR(0, 409, __pyx_L1_error)
     if (__pyx_t_2) {
 
-      /* "structureboost/prob_regressor.pyx":420
+      /* "structureboost/prob_regressor.pyx":410
  *         for j in range(num_forests_to_use):
  *             if use_calibrators:
  *                 if (calibrator_list is None):             # <<<<<<<<<<<<<<
@@ -9192,30 +9311,30 @@ static PyObject *__pyx_pf_14structureboost_14prob_regressor_11PrestoBoost_8predi
       __pyx_t_10 = (__pyx_t_2 != 0);
       if (__pyx_t_10) {
 
-        /* "structureboost/prob_regressor.pyx":421
+        /* "structureboost/prob_regressor.pyx":411
  *             if use_calibrators:
  *                 if (calibrator_list is None):
  *                     if (self.calibrator_list is None):             # <<<<<<<<<<<<<<
  *                         warnings.warn("Calibrators not trained - aborting prediction")
  *                     else:
  */
-        __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_calibrator_list); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 421, __pyx_L1_error)
+        __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_calibrator_list); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 411, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_3);
         __pyx_t_10 = (__pyx_t_3 == Py_None);
         __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
         __pyx_t_2 = (__pyx_t_10 != 0);
         if (__pyx_t_2) {
 
-          /* "structureboost/prob_regressor.pyx":422
+          /* "structureboost/prob_regressor.pyx":412
  *                 if (calibrator_list is None):
  *                     if (self.calibrator_list is None):
  *                         warnings.warn("Calibrators not trained - aborting prediction")             # <<<<<<<<<<<<<<
  *                     else:
  *                         predlist.append(self.forest_list[j].predict_distributions(X_test,
  */
-          __Pyx_GetModuleGlobalName(__pyx_t_8, __pyx_n_s_warnings); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 422, __pyx_L1_error)
+          __Pyx_GetModuleGlobalName(__pyx_t_8, __pyx_n_s_warnings); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 412, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_8);
-          __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_8, __pyx_n_s_warn); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 422, __pyx_L1_error)
+          __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_8, __pyx_n_s_warn); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 412, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_1);
           __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
           __pyx_t_8 = NULL;
@@ -9230,12 +9349,12 @@ static PyObject *__pyx_pf_14structureboost_14prob_regressor_11PrestoBoost_8predi
           }
           __pyx_t_3 = (__pyx_t_8) ? __Pyx_PyObject_Call2Args(__pyx_t_1, __pyx_t_8, __pyx_kp_u_Calibrators_not_trained_aborting) : __Pyx_PyObject_CallOneArg(__pyx_t_1, __pyx_kp_u_Calibrators_not_trained_aborting);
           __Pyx_XDECREF(__pyx_t_8); __pyx_t_8 = 0;
-          if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 422, __pyx_L1_error)
+          if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 412, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_3);
           __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
           __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-          /* "structureboost/prob_regressor.pyx":421
+          /* "structureboost/prob_regressor.pyx":411
  *             if use_calibrators:
  *                 if (calibrator_list is None):
  *                     if (self.calibrator_list is None):             # <<<<<<<<<<<<<<
@@ -9245,7 +9364,7 @@ static PyObject *__pyx_pf_14structureboost_14prob_regressor_11PrestoBoost_8predi
           goto __pyx_L8;
         }
 
-        /* "structureboost/prob_regressor.pyx":424
+        /* "structureboost/prob_regressor.pyx":414
  *                         warnings.warn("Calibrators not trained - aborting prediction")
  *                     else:
  *                         predlist.append(self.forest_list[j].predict_distributions(X_test,             # <<<<<<<<<<<<<<
@@ -9253,55 +9372,55 @@ static PyObject *__pyx_pf_14structureboost_14prob_regressor_11PrestoBoost_8predi
  *                 else:
  */
         /*else*/ {
-          __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_forest_list); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 424, __pyx_L1_error)
+          __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_forest_list); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 414, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_3);
-          __pyx_t_1 = __Pyx_PyObject_GetItem(__pyx_t_3, __pyx_v_j); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 424, __pyx_L1_error)
+          __pyx_t_1 = __Pyx_PyObject_GetItem(__pyx_t_3, __pyx_v_j); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 414, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_1);
           __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-          __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_predict_distributions); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 424, __pyx_L1_error)
+          __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_predict_distributions); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 414, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_3);
           __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-          __pyx_t_1 = PyTuple_New(1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 424, __pyx_L1_error)
+          __pyx_t_1 = PyTuple_New(1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 414, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_1);
           __Pyx_INCREF(__pyx_v_X_test);
           __Pyx_GIVEREF(__pyx_v_X_test);
           PyTuple_SET_ITEM(__pyx_t_1, 0, __pyx_v_X_test);
 
-          /* "structureboost/prob_regressor.pyx":425
+          /* "structureboost/prob_regressor.pyx":415
  *                     else:
  *                         predlist.append(self.forest_list[j].predict_distributions(X_test,
  *                             calibrator = self.calibrator_list[j]))             # <<<<<<<<<<<<<<
  *                 else:
  *                     predlist.append(self.forest_list[j].predict_distributions(X_test,
  */
-          __pyx_t_8 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 425, __pyx_L1_error)
+          __pyx_t_8 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 415, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_8);
-          __pyx_t_7 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_calibrator_list); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 425, __pyx_L1_error)
+          __pyx_t_7 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_calibrator_list); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 415, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_7);
-          __pyx_t_11 = __Pyx_PyObject_GetItem(__pyx_t_7, __pyx_v_j); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 425, __pyx_L1_error)
+          __pyx_t_11 = __Pyx_PyObject_GetItem(__pyx_t_7, __pyx_v_j); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 415, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_11);
           __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
-          if (PyDict_SetItem(__pyx_t_8, __pyx_n_s_calibrator, __pyx_t_11) < 0) __PYX_ERR(0, 425, __pyx_L1_error)
+          if (PyDict_SetItem(__pyx_t_8, __pyx_n_s_calibrator, __pyx_t_11) < 0) __PYX_ERR(0, 415, __pyx_L1_error)
           __Pyx_DECREF(__pyx_t_11); __pyx_t_11 = 0;
 
-          /* "structureboost/prob_regressor.pyx":424
+          /* "structureboost/prob_regressor.pyx":414
  *                         warnings.warn("Calibrators not trained - aborting prediction")
  *                     else:
  *                         predlist.append(self.forest_list[j].predict_distributions(X_test,             # <<<<<<<<<<<<<<
  *                             calibrator = self.calibrator_list[j]))
  *                 else:
  */
-          __pyx_t_11 = __Pyx_PyObject_Call(__pyx_t_3, __pyx_t_1, __pyx_t_8); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 424, __pyx_L1_error)
+          __pyx_t_11 = __Pyx_PyObject_Call(__pyx_t_3, __pyx_t_1, __pyx_t_8); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 414, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_11);
           __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
           __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
           __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
-          __pyx_t_12 = __Pyx_PyList_Append(__pyx_v_predlist, __pyx_t_11); if (unlikely(__pyx_t_12 == ((int)-1))) __PYX_ERR(0, 424, __pyx_L1_error)
+          __pyx_t_12 = __Pyx_PyList_Append(__pyx_v_predlist, __pyx_t_11); if (unlikely(__pyx_t_12 == ((int)-1))) __PYX_ERR(0, 414, __pyx_L1_error)
           __Pyx_DECREF(__pyx_t_11); __pyx_t_11 = 0;
         }
         __pyx_L8:;
 
-        /* "structureboost/prob_regressor.pyx":420
+        /* "structureboost/prob_regressor.pyx":410
  *         for j in range(num_forests_to_use):
  *             if use_calibrators:
  *                 if (calibrator_list is None):             # <<<<<<<<<<<<<<
@@ -9311,7 +9430,7 @@ static PyObject *__pyx_pf_14structureboost_14prob_regressor_11PrestoBoost_8predi
         goto __pyx_L7;
       }
 
-      /* "structureboost/prob_regressor.pyx":427
+      /* "structureboost/prob_regressor.pyx":417
  *                             calibrator = self.calibrator_list[j]))
  *                 else:
  *                     predlist.append(self.forest_list[j].predict_distributions(X_test,             # <<<<<<<<<<<<<<
@@ -9319,52 +9438,52 @@ static PyObject *__pyx_pf_14structureboost_14prob_regressor_11PrestoBoost_8predi
  * 
  */
       /*else*/ {
-        __pyx_t_11 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_forest_list); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 427, __pyx_L1_error)
+        __pyx_t_11 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_forest_list); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 417, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_11);
-        __pyx_t_8 = __Pyx_PyObject_GetItem(__pyx_t_11, __pyx_v_j); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 427, __pyx_L1_error)
+        __pyx_t_8 = __Pyx_PyObject_GetItem(__pyx_t_11, __pyx_v_j); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 417, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_8);
         __Pyx_DECREF(__pyx_t_11); __pyx_t_11 = 0;
-        __pyx_t_11 = __Pyx_PyObject_GetAttrStr(__pyx_t_8, __pyx_n_s_predict_distributions); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 427, __pyx_L1_error)
+        __pyx_t_11 = __Pyx_PyObject_GetAttrStr(__pyx_t_8, __pyx_n_s_predict_distributions); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 417, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_11);
         __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
-        __pyx_t_8 = PyTuple_New(1); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 427, __pyx_L1_error)
+        __pyx_t_8 = PyTuple_New(1); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 417, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_8);
         __Pyx_INCREF(__pyx_v_X_test);
         __Pyx_GIVEREF(__pyx_v_X_test);
         PyTuple_SET_ITEM(__pyx_t_8, 0, __pyx_v_X_test);
 
-        /* "structureboost/prob_regressor.pyx":428
+        /* "structureboost/prob_regressor.pyx":418
  *                 else:
  *                     predlist.append(self.forest_list[j].predict_distributions(X_test,
  *                         calibrator = calibrator_list[j]))             # <<<<<<<<<<<<<<
  * 
  *             else:
  */
-        __pyx_t_1 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 428, __pyx_L1_error)
+        __pyx_t_1 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 418, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_1);
-        __pyx_t_3 = __Pyx_PyObject_GetItem(__pyx_v_calibrator_list, __pyx_v_j); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 428, __pyx_L1_error)
+        __pyx_t_3 = __Pyx_PyObject_GetItem(__pyx_v_calibrator_list, __pyx_v_j); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 418, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_3);
-        if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_calibrator, __pyx_t_3) < 0) __PYX_ERR(0, 428, __pyx_L1_error)
+        if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_calibrator, __pyx_t_3) < 0) __PYX_ERR(0, 418, __pyx_L1_error)
         __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-        /* "structureboost/prob_regressor.pyx":427
+        /* "structureboost/prob_regressor.pyx":417
  *                             calibrator = self.calibrator_list[j]))
  *                 else:
  *                     predlist.append(self.forest_list[j].predict_distributions(X_test,             # <<<<<<<<<<<<<<
  *                         calibrator = calibrator_list[j]))
  * 
  */
-        __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_11, __pyx_t_8, __pyx_t_1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 427, __pyx_L1_error)
+        __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_11, __pyx_t_8, __pyx_t_1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 417, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_3);
         __Pyx_DECREF(__pyx_t_11); __pyx_t_11 = 0;
         __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
         __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-        __pyx_t_12 = __Pyx_PyList_Append(__pyx_v_predlist, __pyx_t_3); if (unlikely(__pyx_t_12 == ((int)-1))) __PYX_ERR(0, 427, __pyx_L1_error)
+        __pyx_t_12 = __Pyx_PyList_Append(__pyx_v_predlist, __pyx_t_3); if (unlikely(__pyx_t_12 == ((int)-1))) __PYX_ERR(0, 417, __pyx_L1_error)
         __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
       }
       __pyx_L7:;
 
-      /* "structureboost/prob_regressor.pyx":419
+      /* "structureboost/prob_regressor.pyx":409
  *         predlist = []
  *         for j in range(num_forests_to_use):
  *             if use_calibrators:             # <<<<<<<<<<<<<<
@@ -9374,20 +9493,20 @@ static PyObject *__pyx_pf_14structureboost_14prob_regressor_11PrestoBoost_8predi
       goto __pyx_L6;
     }
 
-    /* "structureboost/prob_regressor.pyx":431
+    /* "structureboost/prob_regressor.pyx":421
  * 
  *             else:
  *                 predlist.append(self.forest_list[j].predict_distributions(X_test))             # <<<<<<<<<<<<<<
- *         final_dists = [average_densities([predlist[i][j] for i in range(num_forests_to_use)])
- *                                            for j in range(X_test.shape[0])]
+ *         final_dists = [average_densities([predlist[i][j] for i in range(num_forests_to_use)],
+ *                                             scaling=scaling)
  */
     /*else*/ {
-      __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_forest_list); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 431, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_forest_list); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 421, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
-      __pyx_t_8 = __Pyx_PyObject_GetItem(__pyx_t_1, __pyx_v_j); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 431, __pyx_L1_error)
+      __pyx_t_8 = __Pyx_PyObject_GetItem(__pyx_t_1, __pyx_v_j); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 421, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_8);
       __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-      __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_8, __pyx_n_s_predict_distributions); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 431, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_8, __pyx_n_s_predict_distributions); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 421, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
       __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
       __pyx_t_8 = NULL;
@@ -9402,15 +9521,15 @@ static PyObject *__pyx_pf_14structureboost_14prob_regressor_11PrestoBoost_8predi
       }
       __pyx_t_3 = (__pyx_t_8) ? __Pyx_PyObject_Call2Args(__pyx_t_1, __pyx_t_8, __pyx_v_X_test) : __Pyx_PyObject_CallOneArg(__pyx_t_1, __pyx_v_X_test);
       __Pyx_XDECREF(__pyx_t_8); __pyx_t_8 = 0;
-      if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 431, __pyx_L1_error)
+      if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 421, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_3);
       __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-      __pyx_t_12 = __Pyx_PyList_Append(__pyx_v_predlist, __pyx_t_3); if (unlikely(__pyx_t_12 == ((int)-1))) __PYX_ERR(0, 431, __pyx_L1_error)
+      __pyx_t_12 = __Pyx_PyList_Append(__pyx_v_predlist, __pyx_t_3); if (unlikely(__pyx_t_12 == ((int)-1))) __PYX_ERR(0, 421, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
     }
     __pyx_L6:;
 
-    /* "structureboost/prob_regressor.pyx":418
+    /* "structureboost/prob_regressor.pyx":408
  *             num_forests_to_use = self.num_forests
  *         predlist = []
  *         for j in range(num_forests_to_use):             # <<<<<<<<<<<<<<
@@ -9420,39 +9539,39 @@ static PyObject *__pyx_pf_14structureboost_14prob_regressor_11PrestoBoost_8predi
   }
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
 
-  /* "structureboost/prob_regressor.pyx":432
+  /* "structureboost/prob_regressor.pyx":422
  *             else:
  *                 predlist.append(self.forest_list[j].predict_distributions(X_test))
- *         final_dists = [average_densities([predlist[i][j] for i in range(num_forests_to_use)])             # <<<<<<<<<<<<<<
+ *         final_dists = [average_densities([predlist[i][j] for i in range(num_forests_to_use)],             # <<<<<<<<<<<<<<
+ *                                             scaling=scaling)
  *                                            for j in range(X_test.shape[0])]
- *         return(PdfSet(final_dists))
  */
   { /* enter inner scope */
-    __pyx_t_4 = PyList_New(0); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 432, __pyx_L11_error)
+    __pyx_t_4 = PyList_New(0); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 422, __pyx_L11_error)
     __Pyx_GOTREF(__pyx_t_4);
 
-    /* "structureboost/prob_regressor.pyx":433
- *                 predlist.append(self.forest_list[j].predict_distributions(X_test))
- *         final_dists = [average_densities([predlist[i][j] for i in range(num_forests_to_use)])
+    /* "structureboost/prob_regressor.pyx":424
+ *         final_dists = [average_densities([predlist[i][j] for i in range(num_forests_to_use)],
+ *                                             scaling=scaling)
  *                                            for j in range(X_test.shape[0])]             # <<<<<<<<<<<<<<
- *         return(PdfSet(final_dists))
- * 
+ *         bv = final_dists[0].binvec
+ *         pm = np.array([pdf.probvec for pdf in final_dists])
  */
-    __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_X_test, __pyx_n_s_shape); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 433, __pyx_L11_error)
+    __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_X_test, __pyx_n_s_shape); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 424, __pyx_L11_error)
     __Pyx_GOTREF(__pyx_t_3);
-    __pyx_t_1 = __Pyx_GetItemInt(__pyx_t_3, 0, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 433, __pyx_L11_error)
+    __pyx_t_1 = __Pyx_GetItemInt(__pyx_t_3, 0, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 424, __pyx_L11_error)
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-    __pyx_t_3 = __Pyx_PyObject_CallOneArg(__pyx_builtin_range, __pyx_t_1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 433, __pyx_L11_error)
+    __pyx_t_3 = __Pyx_PyObject_CallOneArg(__pyx_builtin_range, __pyx_t_1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 424, __pyx_L11_error)
     __Pyx_GOTREF(__pyx_t_3);
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
     if (likely(PyList_CheckExact(__pyx_t_3)) || PyTuple_CheckExact(__pyx_t_3)) {
       __pyx_t_1 = __pyx_t_3; __Pyx_INCREF(__pyx_t_1); __pyx_t_5 = 0;
       __pyx_t_9 = NULL;
     } else {
-      __pyx_t_5 = -1; __pyx_t_1 = PyObject_GetIter(__pyx_t_3); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 433, __pyx_L11_error)
+      __pyx_t_5 = -1; __pyx_t_1 = PyObject_GetIter(__pyx_t_3); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 424, __pyx_L11_error)
       __Pyx_GOTREF(__pyx_t_1);
-      __pyx_t_9 = Py_TYPE(__pyx_t_1)->tp_iternext; if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 433, __pyx_L11_error)
+      __pyx_t_9 = Py_TYPE(__pyx_t_1)->tp_iternext; if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 424, __pyx_L11_error)
     }
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
     for (;;) {
@@ -9460,17 +9579,17 @@ static PyObject *__pyx_pf_14structureboost_14prob_regressor_11PrestoBoost_8predi
         if (likely(PyList_CheckExact(__pyx_t_1))) {
           if (__pyx_t_5 >= PyList_GET_SIZE(__pyx_t_1)) break;
           #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-          __pyx_t_3 = PyList_GET_ITEM(__pyx_t_1, __pyx_t_5); __Pyx_INCREF(__pyx_t_3); __pyx_t_5++; if (unlikely(0 < 0)) __PYX_ERR(0, 433, __pyx_L11_error)
+          __pyx_t_3 = PyList_GET_ITEM(__pyx_t_1, __pyx_t_5); __Pyx_INCREF(__pyx_t_3); __pyx_t_5++; if (unlikely(0 < 0)) __PYX_ERR(0, 424, __pyx_L11_error)
           #else
-          __pyx_t_3 = PySequence_ITEM(__pyx_t_1, __pyx_t_5); __pyx_t_5++; if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 433, __pyx_L11_error)
+          __pyx_t_3 = PySequence_ITEM(__pyx_t_1, __pyx_t_5); __pyx_t_5++; if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 424, __pyx_L11_error)
           __Pyx_GOTREF(__pyx_t_3);
           #endif
         } else {
           if (__pyx_t_5 >= PyTuple_GET_SIZE(__pyx_t_1)) break;
           #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-          __pyx_t_3 = PyTuple_GET_ITEM(__pyx_t_1, __pyx_t_5); __Pyx_INCREF(__pyx_t_3); __pyx_t_5++; if (unlikely(0 < 0)) __PYX_ERR(0, 433, __pyx_L11_error)
+          __pyx_t_3 = PyTuple_GET_ITEM(__pyx_t_1, __pyx_t_5); __Pyx_INCREF(__pyx_t_3); __pyx_t_5++; if (unlikely(0 < 0)) __PYX_ERR(0, 424, __pyx_L11_error)
           #else
-          __pyx_t_3 = PySequence_ITEM(__pyx_t_1, __pyx_t_5); __pyx_t_5++; if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 433, __pyx_L11_error)
+          __pyx_t_3 = PySequence_ITEM(__pyx_t_1, __pyx_t_5); __pyx_t_5++; if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 424, __pyx_L11_error)
           __Pyx_GOTREF(__pyx_t_3);
           #endif
         }
@@ -9480,7 +9599,7 @@ static PyObject *__pyx_pf_14structureboost_14prob_regressor_11PrestoBoost_8predi
           PyObject* exc_type = PyErr_Occurred();
           if (exc_type) {
             if (likely(__Pyx_PyErr_GivenExceptionMatches(exc_type, PyExc_StopIteration))) PyErr_Clear();
-            else __PYX_ERR(0, 433, __pyx_L11_error)
+            else __PYX_ERR(0, 424, __pyx_L11_error)
           }
           break;
         }
@@ -9489,71 +9608,71 @@ static PyObject *__pyx_pf_14structureboost_14prob_regressor_11PrestoBoost_8predi
       __Pyx_XDECREF_SET(__pyx_8genexpr7__pyx_v_j, __pyx_t_3);
       __pyx_t_3 = 0;
 
-      /* "structureboost/prob_regressor.pyx":432
+      /* "structureboost/prob_regressor.pyx":422
  *             else:
  *                 predlist.append(self.forest_list[j].predict_distributions(X_test))
- *         final_dists = [average_densities([predlist[i][j] for i in range(num_forests_to_use)])             # <<<<<<<<<<<<<<
+ *         final_dists = [average_densities([predlist[i][j] for i in range(num_forests_to_use)],             # <<<<<<<<<<<<<<
+ *                                             scaling=scaling)
  *                                            for j in range(X_test.shape[0])]
- *         return(PdfSet(final_dists))
  */
-      __Pyx_GetModuleGlobalName(__pyx_t_8, __pyx_n_s_average_densities); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 432, __pyx_L11_error)
-      __Pyx_GOTREF(__pyx_t_8);
+      __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_n_s_average_densities); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 422, __pyx_L11_error)
+      __Pyx_GOTREF(__pyx_t_3);
       { /* enter inner scope */
-        __pyx_t_11 = PyList_New(0); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 432, __pyx_L16_error)
+        __pyx_t_8 = PyList_New(0); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 422, __pyx_L16_error)
+        __Pyx_GOTREF(__pyx_t_8);
+        __pyx_t_11 = __Pyx_PyObject_CallOneArg(__pyx_builtin_range, __pyx_v_num_forests_to_use); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 422, __pyx_L16_error)
         __Pyx_GOTREF(__pyx_t_11);
-        __pyx_t_7 = __Pyx_PyObject_CallOneArg(__pyx_builtin_range, __pyx_v_num_forests_to_use); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 432, __pyx_L16_error)
-        __Pyx_GOTREF(__pyx_t_7);
-        if (likely(PyList_CheckExact(__pyx_t_7)) || PyTuple_CheckExact(__pyx_t_7)) {
-          __pyx_t_13 = __pyx_t_7; __Pyx_INCREF(__pyx_t_13); __pyx_t_14 = 0;
-          __pyx_t_15 = NULL;
+        if (likely(PyList_CheckExact(__pyx_t_11)) || PyTuple_CheckExact(__pyx_t_11)) {
+          __pyx_t_7 = __pyx_t_11; __Pyx_INCREF(__pyx_t_7); __pyx_t_13 = 0;
+          __pyx_t_14 = NULL;
         } else {
-          __pyx_t_14 = -1; __pyx_t_13 = PyObject_GetIter(__pyx_t_7); if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 432, __pyx_L16_error)
-          __Pyx_GOTREF(__pyx_t_13);
-          __pyx_t_15 = Py_TYPE(__pyx_t_13)->tp_iternext; if (unlikely(!__pyx_t_15)) __PYX_ERR(0, 432, __pyx_L16_error)
+          __pyx_t_13 = -1; __pyx_t_7 = PyObject_GetIter(__pyx_t_11); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 422, __pyx_L16_error)
+          __Pyx_GOTREF(__pyx_t_7);
+          __pyx_t_14 = Py_TYPE(__pyx_t_7)->tp_iternext; if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 422, __pyx_L16_error)
         }
-        __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
+        __Pyx_DECREF(__pyx_t_11); __pyx_t_11 = 0;
         for (;;) {
-          if (likely(!__pyx_t_15)) {
-            if (likely(PyList_CheckExact(__pyx_t_13))) {
-              if (__pyx_t_14 >= PyList_GET_SIZE(__pyx_t_13)) break;
+          if (likely(!__pyx_t_14)) {
+            if (likely(PyList_CheckExact(__pyx_t_7))) {
+              if (__pyx_t_13 >= PyList_GET_SIZE(__pyx_t_7)) break;
               #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-              __pyx_t_7 = PyList_GET_ITEM(__pyx_t_13, __pyx_t_14); __Pyx_INCREF(__pyx_t_7); __pyx_t_14++; if (unlikely(0 < 0)) __PYX_ERR(0, 432, __pyx_L16_error)
+              __pyx_t_11 = PyList_GET_ITEM(__pyx_t_7, __pyx_t_13); __Pyx_INCREF(__pyx_t_11); __pyx_t_13++; if (unlikely(0 < 0)) __PYX_ERR(0, 422, __pyx_L16_error)
               #else
-              __pyx_t_7 = PySequence_ITEM(__pyx_t_13, __pyx_t_14); __pyx_t_14++; if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 432, __pyx_L16_error)
-              __Pyx_GOTREF(__pyx_t_7);
+              __pyx_t_11 = PySequence_ITEM(__pyx_t_7, __pyx_t_13); __pyx_t_13++; if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 422, __pyx_L16_error)
+              __Pyx_GOTREF(__pyx_t_11);
               #endif
             } else {
-              if (__pyx_t_14 >= PyTuple_GET_SIZE(__pyx_t_13)) break;
+              if (__pyx_t_13 >= PyTuple_GET_SIZE(__pyx_t_7)) break;
               #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-              __pyx_t_7 = PyTuple_GET_ITEM(__pyx_t_13, __pyx_t_14); __Pyx_INCREF(__pyx_t_7); __pyx_t_14++; if (unlikely(0 < 0)) __PYX_ERR(0, 432, __pyx_L16_error)
+              __pyx_t_11 = PyTuple_GET_ITEM(__pyx_t_7, __pyx_t_13); __Pyx_INCREF(__pyx_t_11); __pyx_t_13++; if (unlikely(0 < 0)) __PYX_ERR(0, 422, __pyx_L16_error)
               #else
-              __pyx_t_7 = PySequence_ITEM(__pyx_t_13, __pyx_t_14); __pyx_t_14++; if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 432, __pyx_L16_error)
-              __Pyx_GOTREF(__pyx_t_7);
+              __pyx_t_11 = PySequence_ITEM(__pyx_t_7, __pyx_t_13); __pyx_t_13++; if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 422, __pyx_L16_error)
+              __Pyx_GOTREF(__pyx_t_11);
               #endif
             }
           } else {
-            __pyx_t_7 = __pyx_t_15(__pyx_t_13);
-            if (unlikely(!__pyx_t_7)) {
+            __pyx_t_11 = __pyx_t_14(__pyx_t_7);
+            if (unlikely(!__pyx_t_11)) {
               PyObject* exc_type = PyErr_Occurred();
               if (exc_type) {
                 if (likely(__Pyx_PyErr_GivenExceptionMatches(exc_type, PyExc_StopIteration))) PyErr_Clear();
-                else __PYX_ERR(0, 432, __pyx_L16_error)
+                else __PYX_ERR(0, 422, __pyx_L16_error)
               }
               break;
             }
-            __Pyx_GOTREF(__pyx_t_7);
+            __Pyx_GOTREF(__pyx_t_11);
           }
-          __Pyx_XDECREF_SET(__pyx_8genexpr8__pyx_v_i, __pyx_t_7);
-          __pyx_t_7 = 0;
-          __pyx_t_7 = __Pyx_PyObject_GetItem(__pyx_v_predlist, __pyx_8genexpr8__pyx_v_i); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 432, __pyx_L16_error)
-          __Pyx_GOTREF(__pyx_t_7);
-          __pyx_t_16 = __Pyx_PyObject_GetItem(__pyx_t_7, __pyx_8genexpr7__pyx_v_j); if (unlikely(!__pyx_t_16)) __PYX_ERR(0, 432, __pyx_L16_error)
-          __Pyx_GOTREF(__pyx_t_16);
-          __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
-          if (unlikely(__Pyx_ListComp_Append(__pyx_t_11, (PyObject*)__pyx_t_16))) __PYX_ERR(0, 432, __pyx_L16_error)
-          __Pyx_DECREF(__pyx_t_16); __pyx_t_16 = 0;
+          __Pyx_XDECREF_SET(__pyx_8genexpr8__pyx_v_i, __pyx_t_11);
+          __pyx_t_11 = 0;
+          __pyx_t_11 = __Pyx_PyObject_GetItem(__pyx_v_predlist, __pyx_8genexpr8__pyx_v_i); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 422, __pyx_L16_error)
+          __Pyx_GOTREF(__pyx_t_11);
+          __pyx_t_15 = __Pyx_PyObject_GetItem(__pyx_t_11, __pyx_8genexpr7__pyx_v_j); if (unlikely(!__pyx_t_15)) __PYX_ERR(0, 422, __pyx_L16_error)
+          __Pyx_GOTREF(__pyx_t_15);
+          __Pyx_DECREF(__pyx_t_11); __pyx_t_11 = 0;
+          if (unlikely(__Pyx_ListComp_Append(__pyx_t_8, (PyObject*)__pyx_t_15))) __PYX_ERR(0, 422, __pyx_L16_error)
+          __Pyx_DECREF(__pyx_t_15); __pyx_t_15 = 0;
         }
-        __Pyx_DECREF(__pyx_t_13); __pyx_t_13 = 0;
+        __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
         __Pyx_XDECREF(__pyx_8genexpr8__pyx_v_i); __pyx_8genexpr8__pyx_v_i = 0;
         goto __pyx_L19_exit_scope;
         __pyx_L16_error:;
@@ -9561,31 +9680,44 @@ static PyObject *__pyx_pf_14structureboost_14prob_regressor_11PrestoBoost_8predi
         goto __pyx_L11_error;
         __pyx_L19_exit_scope:;
       } /* exit inner scope */
-      __pyx_t_13 = NULL;
-      if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_8))) {
-        __pyx_t_13 = PyMethod_GET_SELF(__pyx_t_8);
-        if (likely(__pyx_t_13)) {
-          PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_8);
-          __Pyx_INCREF(__pyx_t_13);
-          __Pyx_INCREF(function);
-          __Pyx_DECREF_SET(__pyx_t_8, function);
-        }
-      }
-      __pyx_t_3 = (__pyx_t_13) ? __Pyx_PyObject_Call2Args(__pyx_t_8, __pyx_t_13, __pyx_t_11) : __Pyx_PyObject_CallOneArg(__pyx_t_8, __pyx_t_11);
-      __Pyx_XDECREF(__pyx_t_13); __pyx_t_13 = 0;
-      __Pyx_DECREF(__pyx_t_11); __pyx_t_11 = 0;
-      if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 432, __pyx_L11_error)
-      __Pyx_GOTREF(__pyx_t_3);
-      __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
-      if (unlikely(__Pyx_ListComp_Append(__pyx_t_4, (PyObject*)__pyx_t_3))) __PYX_ERR(0, 432, __pyx_L11_error)
-      __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+      __pyx_t_7 = PyTuple_New(1); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 422, __pyx_L11_error)
+      __Pyx_GOTREF(__pyx_t_7);
+      __Pyx_GIVEREF(__pyx_t_8);
+      PyTuple_SET_ITEM(__pyx_t_7, 0, __pyx_t_8);
+      __pyx_t_8 = 0;
 
-      /* "structureboost/prob_regressor.pyx":433
+      /* "structureboost/prob_regressor.pyx":423
  *                 predlist.append(self.forest_list[j].predict_distributions(X_test))
- *         final_dists = [average_densities([predlist[i][j] for i in range(num_forests_to_use)])
+ *         final_dists = [average_densities([predlist[i][j] for i in range(num_forests_to_use)],
+ *                                             scaling=scaling)             # <<<<<<<<<<<<<<
+ *                                            for j in range(X_test.shape[0])]
+ *         bv = final_dists[0].binvec
+ */
+      __pyx_t_8 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 423, __pyx_L11_error)
+      __Pyx_GOTREF(__pyx_t_8);
+      if (PyDict_SetItem(__pyx_t_8, __pyx_n_s_scaling, __pyx_v_scaling) < 0) __PYX_ERR(0, 423, __pyx_L11_error)
+
+      /* "structureboost/prob_regressor.pyx":422
+ *             else:
+ *                 predlist.append(self.forest_list[j].predict_distributions(X_test))
+ *         final_dists = [average_densities([predlist[i][j] for i in range(num_forests_to_use)],             # <<<<<<<<<<<<<<
+ *                                             scaling=scaling)
+ *                                            for j in range(X_test.shape[0])]
+ */
+      __pyx_t_15 = __Pyx_PyObject_Call(__pyx_t_3, __pyx_t_7, __pyx_t_8); if (unlikely(!__pyx_t_15)) __PYX_ERR(0, 422, __pyx_L11_error)
+      __Pyx_GOTREF(__pyx_t_15);
+      __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+      __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
+      __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
+      if (unlikely(__Pyx_ListComp_Append(__pyx_t_4, (PyObject*)__pyx_t_15))) __PYX_ERR(0, 422, __pyx_L11_error)
+      __Pyx_DECREF(__pyx_t_15); __pyx_t_15 = 0;
+
+      /* "structureboost/prob_regressor.pyx":424
+ *         final_dists = [average_densities([predlist[i][j] for i in range(num_forests_to_use)],
+ *                                             scaling=scaling)
  *                                            for j in range(X_test.shape[0])]             # <<<<<<<<<<<<<<
- *         return(PdfSet(final_dists))
- * 
+ *         bv = final_dists[0].binvec
+ *         pm = np.array([pdf.probvec for pdf in final_dists])
  */
     }
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
@@ -9599,40 +9731,143 @@ static PyObject *__pyx_pf_14structureboost_14prob_regressor_11PrestoBoost_8predi
   __pyx_v_final_dists = ((PyObject*)__pyx_t_4);
   __pyx_t_4 = 0;
 
-  /* "structureboost/prob_regressor.pyx":434
- *         final_dists = [average_densities([predlist[i][j] for i in range(num_forests_to_use)])
+  /* "structureboost/prob_regressor.pyx":425
+ *                                             scaling=scaling)
  *                                            for j in range(X_test.shape[0])]
- *         return(PdfSet(final_dists))             # <<<<<<<<<<<<<<
+ *         bv = final_dists[0].binvec             # <<<<<<<<<<<<<<
+ *         pm = np.array([pdf.probvec for pdf in final_dists])
+ *         return(PdfGroup(bv, pm))
+ */
+  __pyx_t_4 = __Pyx_GetItemInt_List(__pyx_v_final_dists, 0, long, 1, __Pyx_PyInt_From_long, 1, 0, 1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 425, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_4);
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_binvec); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 425, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+  __pyx_v_bv = __pyx_t_1;
+  __pyx_t_1 = 0;
+
+  /* "structureboost/prob_regressor.pyx":426
+ *                                            for j in range(X_test.shape[0])]
+ *         bv = final_dists[0].binvec
+ *         pm = np.array([pdf.probvec for pdf in final_dists])             # <<<<<<<<<<<<<<
+ *         return(PdfGroup(bv, pm))
+ * 
+ */
+  __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_n_s_np); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 426, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_4);
+  __pyx_t_15 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_array); if (unlikely(!__pyx_t_15)) __PYX_ERR(0, 426, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_15);
+  __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+  { /* enter inner scope */
+    __pyx_t_4 = PyList_New(0); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 426, __pyx_L23_error)
+    __Pyx_GOTREF(__pyx_t_4);
+    __pyx_t_8 = __pyx_v_final_dists; __Pyx_INCREF(__pyx_t_8); __pyx_t_5 = 0;
+    for (;;) {
+      if (__pyx_t_5 >= PyList_GET_SIZE(__pyx_t_8)) break;
+      #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
+      __pyx_t_7 = PyList_GET_ITEM(__pyx_t_8, __pyx_t_5); __Pyx_INCREF(__pyx_t_7); __pyx_t_5++; if (unlikely(0 < 0)) __PYX_ERR(0, 426, __pyx_L23_error)
+      #else
+      __pyx_t_7 = PySequence_ITEM(__pyx_t_8, __pyx_t_5); __pyx_t_5++; if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 426, __pyx_L23_error)
+      __Pyx_GOTREF(__pyx_t_7);
+      #endif
+      __Pyx_XDECREF_SET(__pyx_8genexpr9__pyx_v_pdf, __pyx_t_7);
+      __pyx_t_7 = 0;
+      __pyx_t_7 = __Pyx_PyObject_GetAttrStr(__pyx_8genexpr9__pyx_v_pdf, __pyx_n_s_probvec); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 426, __pyx_L23_error)
+      __Pyx_GOTREF(__pyx_t_7);
+      if (unlikely(__Pyx_ListComp_Append(__pyx_t_4, (PyObject*)__pyx_t_7))) __PYX_ERR(0, 426, __pyx_L23_error)
+      __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
+    }
+    __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
+    __Pyx_XDECREF(__pyx_8genexpr9__pyx_v_pdf); __pyx_8genexpr9__pyx_v_pdf = 0;
+    goto __pyx_L26_exit_scope;
+    __pyx_L23_error:;
+    __Pyx_XDECREF(__pyx_8genexpr9__pyx_v_pdf); __pyx_8genexpr9__pyx_v_pdf = 0;
+    goto __pyx_L1_error;
+    __pyx_L26_exit_scope:;
+  } /* exit inner scope */
+  __pyx_t_8 = NULL;
+  if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_15))) {
+    __pyx_t_8 = PyMethod_GET_SELF(__pyx_t_15);
+    if (likely(__pyx_t_8)) {
+      PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_15);
+      __Pyx_INCREF(__pyx_t_8);
+      __Pyx_INCREF(function);
+      __Pyx_DECREF_SET(__pyx_t_15, function);
+    }
+  }
+  __pyx_t_1 = (__pyx_t_8) ? __Pyx_PyObject_Call2Args(__pyx_t_15, __pyx_t_8, __pyx_t_4) : __Pyx_PyObject_CallOneArg(__pyx_t_15, __pyx_t_4);
+  __Pyx_XDECREF(__pyx_t_8); __pyx_t_8 = 0;
+  __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+  if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 426, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __Pyx_DECREF(__pyx_t_15); __pyx_t_15 = 0;
+  __pyx_v_pm = __pyx_t_1;
+  __pyx_t_1 = 0;
+
+  /* "structureboost/prob_regressor.pyx":427
+ *         bv = final_dists[0].binvec
+ *         pm = np.array([pdf.probvec for pdf in final_dists])
+ *         return(PdfGroup(bv, pm))             # <<<<<<<<<<<<<<
  * 
  * def fit_and_return(model, X_train, y_train):
  */
   __Pyx_XDECREF(__pyx_r);
-  __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_PdfSet); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 434, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_3 = NULL;
-  if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_1))) {
-    __pyx_t_3 = PyMethod_GET_SELF(__pyx_t_1);
-    if (likely(__pyx_t_3)) {
-      PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_1);
-      __Pyx_INCREF(__pyx_t_3);
+  __Pyx_GetModuleGlobalName(__pyx_t_15, __pyx_n_s_PdfGroup); if (unlikely(!__pyx_t_15)) __PYX_ERR(0, 427, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_15);
+  __pyx_t_4 = NULL;
+  __pyx_t_16 = 0;
+  if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_15))) {
+    __pyx_t_4 = PyMethod_GET_SELF(__pyx_t_15);
+    if (likely(__pyx_t_4)) {
+      PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_15);
+      __Pyx_INCREF(__pyx_t_4);
       __Pyx_INCREF(function);
-      __Pyx_DECREF_SET(__pyx_t_1, function);
+      __Pyx_DECREF_SET(__pyx_t_15, function);
+      __pyx_t_16 = 1;
     }
   }
-  __pyx_t_4 = (__pyx_t_3) ? __Pyx_PyObject_Call2Args(__pyx_t_1, __pyx_t_3, __pyx_v_final_dists) : __Pyx_PyObject_CallOneArg(__pyx_t_1, __pyx_v_final_dists);
-  __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
-  if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 434, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_4);
-  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_r = __pyx_t_4;
-  __pyx_t_4 = 0;
+  #if CYTHON_FAST_PYCALL
+  if (PyFunction_Check(__pyx_t_15)) {
+    PyObject *__pyx_temp[3] = {__pyx_t_4, __pyx_v_bv, __pyx_v_pm};
+    __pyx_t_1 = __Pyx_PyFunction_FastCall(__pyx_t_15, __pyx_temp+1-__pyx_t_16, 2+__pyx_t_16); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 427, __pyx_L1_error)
+    __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
+    __Pyx_GOTREF(__pyx_t_1);
+  } else
+  #endif
+  #if CYTHON_FAST_PYCCALL
+  if (__Pyx_PyFastCFunction_Check(__pyx_t_15)) {
+    PyObject *__pyx_temp[3] = {__pyx_t_4, __pyx_v_bv, __pyx_v_pm};
+    __pyx_t_1 = __Pyx_PyCFunction_FastCall(__pyx_t_15, __pyx_temp+1-__pyx_t_16, 2+__pyx_t_16); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 427, __pyx_L1_error)
+    __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
+    __Pyx_GOTREF(__pyx_t_1);
+  } else
+  #endif
+  {
+    __pyx_t_8 = PyTuple_New(2+__pyx_t_16); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 427, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_8);
+    if (__pyx_t_4) {
+      __Pyx_GIVEREF(__pyx_t_4); PyTuple_SET_ITEM(__pyx_t_8, 0, __pyx_t_4); __pyx_t_4 = NULL;
+    }
+    __Pyx_INCREF(__pyx_v_bv);
+    __Pyx_GIVEREF(__pyx_v_bv);
+    PyTuple_SET_ITEM(__pyx_t_8, 0+__pyx_t_16, __pyx_v_bv);
+    __Pyx_INCREF(__pyx_v_pm);
+    __Pyx_GIVEREF(__pyx_v_pm);
+    PyTuple_SET_ITEM(__pyx_t_8, 1+__pyx_t_16, __pyx_v_pm);
+    __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_15, __pyx_t_8, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 427, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_1);
+    __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
+  }
+  __Pyx_DECREF(__pyx_t_15); __pyx_t_15 = 0;
+  __pyx_r = __pyx_t_1;
+  __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "structureboost/prob_regressor.pyx":410
+  /* "structureboost/prob_regressor.pyx":400
  *         return(binvec)
  * 
  *     def predict_distributions(self, X_test, num_forests_to_use=-1, use_calibrators=False,             # <<<<<<<<<<<<<<
- *         calibrator_list=None):
+ *         calibrator_list=None, scaling='log'):
  *         if num_forests_to_use==-1:
  */
 
@@ -9644,16 +9879,18 @@ static PyObject *__pyx_pf_14structureboost_14prob_regressor_11PrestoBoost_8predi
   __Pyx_XDECREF(__pyx_t_7);
   __Pyx_XDECREF(__pyx_t_8);
   __Pyx_XDECREF(__pyx_t_11);
-  __Pyx_XDECREF(__pyx_t_13);
-  __Pyx_XDECREF(__pyx_t_16);
+  __Pyx_XDECREF(__pyx_t_15);
   __Pyx_AddTraceback("structureboost.prob_regressor.PrestoBoost.predict_distributions", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
   __Pyx_XDECREF(__pyx_v_predlist);
   __Pyx_XDECREF(__pyx_v_j);
   __Pyx_XDECREF(__pyx_v_final_dists);
+  __Pyx_XDECREF(__pyx_v_bv);
+  __Pyx_XDECREF(__pyx_v_pm);
   __Pyx_XDECREF(__pyx_8genexpr7__pyx_v_j);
   __Pyx_XDECREF(__pyx_8genexpr8__pyx_v_i);
+  __Pyx_XDECREF(__pyx_8genexpr9__pyx_v_pdf);
   __Pyx_XDECREF(__pyx_v_num_forests_to_use);
   __Pyx_XGIVEREF(__pyx_r);
   __Pyx_TraceReturn(__pyx_r, 0);
@@ -9661,8 +9898,8 @@ static PyObject *__pyx_pf_14structureboost_14prob_regressor_11PrestoBoost_8predi
   return __pyx_r;
 }
 
-/* "structureboost/prob_regressor.pyx":436
- *         return(PdfSet(final_dists))
+/* "structureboost/prob_regressor.pyx":429
+ *         return(PdfGroup(bv, pm))
  * 
  * def fit_and_return(model, X_train, y_train):             # <<<<<<<<<<<<<<
  *     model.fit(X_train, y_train, verbose=0)
@@ -9707,17 +9944,17 @@ static PyObject *__pyx_pw_14structureboost_14prob_regressor_1fit_and_return(PyOb
         case  1:
         if (likely((values[1] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_X_train)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("fit_and_return", 1, 3, 3, 1); __PYX_ERR(0, 436, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("fit_and_return", 1, 3, 3, 1); __PYX_ERR(0, 429, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  2:
         if (likely((values[2] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_y_train)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("fit_and_return", 1, 3, 3, 2); __PYX_ERR(0, 436, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("fit_and_return", 1, 3, 3, 2); __PYX_ERR(0, 429, __pyx_L3_error)
         }
       }
       if (unlikely(kw_args > 0)) {
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "fit_and_return") < 0)) __PYX_ERR(0, 436, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "fit_and_return") < 0)) __PYX_ERR(0, 429, __pyx_L3_error)
       }
     } else if (PyTuple_GET_SIZE(__pyx_args) != 3) {
       goto __pyx_L5_argtuple_error;
@@ -9732,7 +9969,7 @@ static PyObject *__pyx_pw_14structureboost_14prob_regressor_1fit_and_return(PyOb
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("fit_and_return", 1, 3, 3, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 436, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("fit_and_return", 1, 3, 3, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 429, __pyx_L3_error)
   __pyx_L3_error:;
   __Pyx_AddTraceback("structureboost.prob_regressor.fit_and_return", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
@@ -9758,18 +9995,18 @@ static PyObject *__pyx_pf_14structureboost_14prob_regressor_fit_and_return(CYTHO
   int __pyx_clineno = 0;
   __Pyx_TraceFrameInit(__pyx_codeobj__13)
   __Pyx_RefNannySetupContext("fit_and_return", 0);
-  __Pyx_TraceCall("fit_and_return", __pyx_f[0], 436, 0, __PYX_ERR(0, 436, __pyx_L1_error));
+  __Pyx_TraceCall("fit_and_return", __pyx_f[0], 429, 0, __PYX_ERR(0, 429, __pyx_L1_error));
 
-  /* "structureboost/prob_regressor.pyx":437
+  /* "structureboost/prob_regressor.pyx":430
  * 
  * def fit_and_return(model, X_train, y_train):
  *     model.fit(X_train, y_train, verbose=0)             # <<<<<<<<<<<<<<
  *     return(model)
  * 
  */
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_model, __pyx_n_s_fit); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 437, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_model, __pyx_n_s_fit); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 430, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = PyTuple_New(2); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 437, __pyx_L1_error)
+  __pyx_t_2 = PyTuple_New(2); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 430, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_INCREF(__pyx_v_X_train);
   __Pyx_GIVEREF(__pyx_v_X_train);
@@ -9777,17 +10014,17 @@ static PyObject *__pyx_pf_14structureboost_14prob_regressor_fit_and_return(CYTHO
   __Pyx_INCREF(__pyx_v_y_train);
   __Pyx_GIVEREF(__pyx_v_y_train);
   PyTuple_SET_ITEM(__pyx_t_2, 1, __pyx_v_y_train);
-  __pyx_t_3 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 437, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 430, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  if (PyDict_SetItem(__pyx_t_3, __pyx_n_s_verbose, __pyx_int_0) < 0) __PYX_ERR(0, 437, __pyx_L1_error)
-  __pyx_t_4 = __Pyx_PyObject_Call(__pyx_t_1, __pyx_t_2, __pyx_t_3); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 437, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_3, __pyx_n_s_verbose, __pyx_int_0) < 0) __PYX_ERR(0, 430, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyObject_Call(__pyx_t_1, __pyx_t_2, __pyx_t_3); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 430, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
 
-  /* "structureboost/prob_regressor.pyx":438
+  /* "structureboost/prob_regressor.pyx":431
  * def fit_and_return(model, X_train, y_train):
  *     model.fit(X_train, y_train, verbose=0)
  *     return(model)             # <<<<<<<<<<<<<<
@@ -9799,8 +10036,8 @@ static PyObject *__pyx_pf_14structureboost_14prob_regressor_fit_and_return(CYTHO
   __pyx_r = __pyx_v_model;
   goto __pyx_L0;
 
-  /* "structureboost/prob_regressor.pyx":436
- *         return(PdfSet(final_dists))
+  /* "structureboost/prob_regressor.pyx":429
+ *         return(PdfGroup(bv, pm))
  * 
  * def fit_and_return(model, X_train, y_train):             # <<<<<<<<<<<<<<
  *     model.fit(X_train, y_train, verbose=0)
@@ -9822,7 +10059,7 @@ static PyObject *__pyx_pf_14structureboost_14prob_regressor_fit_and_return(CYTHO
   return __pyx_r;
 }
 
-/* "structureboost/prob_regressor.pyx":441
+/* "structureboost/prob_regressor.pyx":434
  * 
  * 
  * def fit_and_return2(model, X_train, y_train, eval_set, eval_freq,             # <<<<<<<<<<<<<<
@@ -9880,41 +10117,41 @@ static PyObject *__pyx_pw_14structureboost_14prob_regressor_3fit_and_return2(PyO
         case  1:
         if (likely((values[1] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_X_train)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("fit_and_return2", 1, 7, 7, 1); __PYX_ERR(0, 441, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("fit_and_return2", 1, 7, 7, 1); __PYX_ERR(0, 434, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  2:
         if (likely((values[2] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_y_train)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("fit_and_return2", 1, 7, 7, 2); __PYX_ERR(0, 441, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("fit_and_return2", 1, 7, 7, 2); __PYX_ERR(0, 434, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  3:
         if (likely((values[3] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_eval_set)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("fit_and_return2", 1, 7, 7, 3); __PYX_ERR(0, 441, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("fit_and_return2", 1, 7, 7, 3); __PYX_ERR(0, 434, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  4:
         if (likely((values[4] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_eval_freq)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("fit_and_return2", 1, 7, 7, 4); __PYX_ERR(0, 441, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("fit_and_return2", 1, 7, 7, 4); __PYX_ERR(0, 434, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  5:
         if (likely((values[5] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_early_stop_past_steps)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("fit_and_return2", 1, 7, 7, 5); __PYX_ERR(0, 441, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("fit_and_return2", 1, 7, 7, 5); __PYX_ERR(0, 434, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  6:
         if (likely((values[6] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_choose_best_eval)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("fit_and_return2", 1, 7, 7, 6); __PYX_ERR(0, 441, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("fit_and_return2", 1, 7, 7, 6); __PYX_ERR(0, 434, __pyx_L3_error)
         }
       }
       if (unlikely(kw_args > 0)) {
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "fit_and_return2") < 0)) __PYX_ERR(0, 441, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "fit_and_return2") < 0)) __PYX_ERR(0, 434, __pyx_L3_error)
       }
     } else if (PyTuple_GET_SIZE(__pyx_args) != 7) {
       goto __pyx_L5_argtuple_error;
@@ -9937,7 +10174,7 @@ static PyObject *__pyx_pw_14structureboost_14prob_regressor_3fit_and_return2(PyO
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("fit_and_return2", 1, 7, 7, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 441, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("fit_and_return2", 1, 7, 7, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 434, __pyx_L3_error)
   __pyx_L3_error:;
   __Pyx_AddTraceback("structureboost.prob_regressor.fit_and_return2", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
@@ -9963,26 +10200,26 @@ static PyObject *__pyx_pf_14structureboost_14prob_regressor_2fit_and_return2(CYT
   int __pyx_clineno = 0;
   __Pyx_TraceFrameInit(__pyx_codeobj__14)
   __Pyx_RefNannySetupContext("fit_and_return2", 0);
-  __Pyx_TraceCall("fit_and_return2", __pyx_f[0], 441, 0, __PYX_ERR(0, 441, __pyx_L1_error));
+  __Pyx_TraceCall("fit_and_return2", __pyx_f[0], 434, 0, __PYX_ERR(0, 434, __pyx_L1_error));
 
-  /* "structureboost/prob_regressor.pyx":443
+  /* "structureboost/prob_regressor.pyx":436
  * def fit_and_return2(model, X_train, y_train, eval_set, eval_freq,
  *                         early_stop_past_steps, choose_best_eval):
  *     model.fit(X_train, y_train, eval_set, eval_freq,             # <<<<<<<<<<<<<<
  *                         early_stop_past_steps, choose_best_eval, verbose=0)
  *     return(model)
  */
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_model, __pyx_n_s_fit); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 443, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_model, __pyx_n_s_fit); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 436, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
 
-  /* "structureboost/prob_regressor.pyx":444
+  /* "structureboost/prob_regressor.pyx":437
  *                         early_stop_past_steps, choose_best_eval):
  *     model.fit(X_train, y_train, eval_set, eval_freq,
  *                         early_stop_past_steps, choose_best_eval, verbose=0)             # <<<<<<<<<<<<<<
  *     return(model)
  * 
  */
-  __pyx_t_2 = PyTuple_New(6); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 443, __pyx_L1_error)
+  __pyx_t_2 = PyTuple_New(6); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 436, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_INCREF(__pyx_v_X_train);
   __Pyx_GIVEREF(__pyx_v_X_train);
@@ -10002,25 +10239,25 @@ static PyObject *__pyx_pf_14structureboost_14prob_regressor_2fit_and_return2(CYT
   __Pyx_INCREF(__pyx_v_choose_best_eval);
   __Pyx_GIVEREF(__pyx_v_choose_best_eval);
   PyTuple_SET_ITEM(__pyx_t_2, 5, __pyx_v_choose_best_eval);
-  __pyx_t_3 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 444, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 437, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  if (PyDict_SetItem(__pyx_t_3, __pyx_n_s_verbose, __pyx_int_0) < 0) __PYX_ERR(0, 444, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_3, __pyx_n_s_verbose, __pyx_int_0) < 0) __PYX_ERR(0, 437, __pyx_L1_error)
 
-  /* "structureboost/prob_regressor.pyx":443
+  /* "structureboost/prob_regressor.pyx":436
  * def fit_and_return2(model, X_train, y_train, eval_set, eval_freq,
  *                         early_stop_past_steps, choose_best_eval):
  *     model.fit(X_train, y_train, eval_set, eval_freq,             # <<<<<<<<<<<<<<
  *                         early_stop_past_steps, choose_best_eval, verbose=0)
  *     return(model)
  */
-  __pyx_t_4 = __Pyx_PyObject_Call(__pyx_t_1, __pyx_t_2, __pyx_t_3); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 443, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyObject_Call(__pyx_t_1, __pyx_t_2, __pyx_t_3); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 436, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
 
-  /* "structureboost/prob_regressor.pyx":445
+  /* "structureboost/prob_regressor.pyx":438
  *     model.fit(X_train, y_train, eval_set, eval_freq,
  *                         early_stop_past_steps, choose_best_eval, verbose=0)
  *     return(model)             # <<<<<<<<<<<<<<
@@ -10032,7 +10269,7 @@ static PyObject *__pyx_pf_14structureboost_14prob_regressor_2fit_and_return2(CYT
   __pyx_r = __pyx_v_model;
   goto __pyx_L0;
 
-  /* "structureboost/prob_regressor.pyx":441
+  /* "structureboost/prob_regressor.pyx":434
  * 
  * 
  * def fit_and_return2(model, X_train, y_train, eval_set, eval_freq,             # <<<<<<<<<<<<<<
@@ -10055,7 +10292,7 @@ static PyObject *__pyx_pf_14structureboost_14prob_regressor_2fit_and_return2(CYT
   return __pyx_r;
 }
 
-/* "structureboost/prob_regressor.pyx":447
+/* "structureboost/prob_regressor.pyx":440
  *     return(model)
  * 
  * def calib_parallel(calibrator,binvec, model,X_calib, y_calib):             # <<<<<<<<<<<<<<
@@ -10107,29 +10344,29 @@ static PyObject *__pyx_pw_14structureboost_14prob_regressor_5calib_parallel(PyOb
         case  1:
         if (likely((values[1] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_binvec)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("calib_parallel", 1, 5, 5, 1); __PYX_ERR(0, 447, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("calib_parallel", 1, 5, 5, 1); __PYX_ERR(0, 440, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  2:
         if (likely((values[2] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_model)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("calib_parallel", 1, 5, 5, 2); __PYX_ERR(0, 447, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("calib_parallel", 1, 5, 5, 2); __PYX_ERR(0, 440, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  3:
         if (likely((values[3] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_X_calib)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("calib_parallel", 1, 5, 5, 3); __PYX_ERR(0, 447, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("calib_parallel", 1, 5, 5, 3); __PYX_ERR(0, 440, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  4:
         if (likely((values[4] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_y_calib)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("calib_parallel", 1, 5, 5, 4); __PYX_ERR(0, 447, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("calib_parallel", 1, 5, 5, 4); __PYX_ERR(0, 440, __pyx_L3_error)
         }
       }
       if (unlikely(kw_args > 0)) {
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "calib_parallel") < 0)) __PYX_ERR(0, 447, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "calib_parallel") < 0)) __PYX_ERR(0, 440, __pyx_L3_error)
       }
     } else if (PyTuple_GET_SIZE(__pyx_args) != 5) {
       goto __pyx_L5_argtuple_error;
@@ -10148,7 +10385,7 @@ static PyObject *__pyx_pw_14structureboost_14prob_regressor_5calib_parallel(PyOb
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("calib_parallel", 1, 5, 5, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 447, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("calib_parallel", 1, 5, 5, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 440, __pyx_L3_error)
   __pyx_L3_error:;
   __Pyx_AddTraceback("structureboost.prob_regressor.calib_parallel", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
@@ -10178,16 +10415,16 @@ static PyObject *__pyx_pf_14structureboost_14prob_regressor_4calib_parallel(CYTH
   int __pyx_clineno = 0;
   __Pyx_TraceFrameInit(__pyx_codeobj__15)
   __Pyx_RefNannySetupContext("calib_parallel", 0);
-  __Pyx_TraceCall("calib_parallel", __pyx_f[0], 447, 0, __PYX_ERR(0, 447, __pyx_L1_error));
+  __Pyx_TraceCall("calib_parallel", __pyx_f[0], 440, 0, __PYX_ERR(0, 440, __pyx_L1_error));
 
-  /* "structureboost/prob_regressor.pyx":448
+  /* "structureboost/prob_regressor.pyx":441
  * 
  * def calib_parallel(calibrator,binvec, model,X_calib, y_calib):
  *     validdiscpred = model.predict_proba(X_calib)             # <<<<<<<<<<<<<<
  *     y_calib_bin = np.digitize(y_calib,binvec[:-1]) -1
  *     calibrator.fit(validdiscpred,y_calib_bin)
  */
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_model, __pyx_n_s_predict_proba); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 448, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_model, __pyx_n_s_predict_proba); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 441, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __pyx_t_3 = NULL;
   if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_2))) {
@@ -10201,25 +10438,25 @@ static PyObject *__pyx_pf_14structureboost_14prob_regressor_4calib_parallel(CYTH
   }
   __pyx_t_1 = (__pyx_t_3) ? __Pyx_PyObject_Call2Args(__pyx_t_2, __pyx_t_3, __pyx_v_X_calib) : __Pyx_PyObject_CallOneArg(__pyx_t_2, __pyx_v_X_calib);
   __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
-  if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 448, __pyx_L1_error)
+  if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 441, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __pyx_v_validdiscpred = __pyx_t_1;
   __pyx_t_1 = 0;
 
-  /* "structureboost/prob_regressor.pyx":449
+  /* "structureboost/prob_regressor.pyx":442
  * def calib_parallel(calibrator,binvec, model,X_calib, y_calib):
  *     validdiscpred = model.predict_proba(X_calib)
  *     y_calib_bin = np.digitize(y_calib,binvec[:-1]) -1             # <<<<<<<<<<<<<<
  *     calibrator.fit(validdiscpred,y_calib_bin)
  *     return(calibrator)
  */
-  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_np); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 449, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_np); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 442, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_digitize); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 449, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_digitize); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 442, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __pyx_t_2 = __Pyx_PyObject_GetSlice(__pyx_v_binvec, 0, -1L, NULL, NULL, &__pyx_slice__4, 0, 1, 1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 449, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_GetSlice(__pyx_v_binvec, 0, -1L, NULL, NULL, &__pyx_slice__4, 0, 1, 1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 442, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __pyx_t_4 = NULL;
   __pyx_t_5 = 0;
@@ -10236,7 +10473,7 @@ static PyObject *__pyx_pf_14structureboost_14prob_regressor_4calib_parallel(CYTH
   #if CYTHON_FAST_PYCALL
   if (PyFunction_Check(__pyx_t_3)) {
     PyObject *__pyx_temp[3] = {__pyx_t_4, __pyx_v_y_calib, __pyx_t_2};
-    __pyx_t_1 = __Pyx_PyFunction_FastCall(__pyx_t_3, __pyx_temp+1-__pyx_t_5, 2+__pyx_t_5); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 449, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyFunction_FastCall(__pyx_t_3, __pyx_temp+1-__pyx_t_5, 2+__pyx_t_5); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 442, __pyx_L1_error)
     __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
@@ -10245,14 +10482,14 @@ static PyObject *__pyx_pf_14structureboost_14prob_regressor_4calib_parallel(CYTH
   #if CYTHON_FAST_PYCCALL
   if (__Pyx_PyFastCFunction_Check(__pyx_t_3)) {
     PyObject *__pyx_temp[3] = {__pyx_t_4, __pyx_v_y_calib, __pyx_t_2};
-    __pyx_t_1 = __Pyx_PyCFunction_FastCall(__pyx_t_3, __pyx_temp+1-__pyx_t_5, 2+__pyx_t_5); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 449, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyCFunction_FastCall(__pyx_t_3, __pyx_temp+1-__pyx_t_5, 2+__pyx_t_5); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 442, __pyx_L1_error)
     __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   } else
   #endif
   {
-    __pyx_t_6 = PyTuple_New(2+__pyx_t_5); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 449, __pyx_L1_error)
+    __pyx_t_6 = PyTuple_New(2+__pyx_t_5); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 442, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_6);
     if (__pyx_t_4) {
       __Pyx_GIVEREF(__pyx_t_4); PyTuple_SET_ITEM(__pyx_t_6, 0, __pyx_t_4); __pyx_t_4 = NULL;
@@ -10263,25 +10500,25 @@ static PyObject *__pyx_pf_14structureboost_14prob_regressor_4calib_parallel(CYTH
     __Pyx_GIVEREF(__pyx_t_2);
     PyTuple_SET_ITEM(__pyx_t_6, 1+__pyx_t_5, __pyx_t_2);
     __pyx_t_2 = 0;
-    __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_3, __pyx_t_6, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 449, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_3, __pyx_t_6, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 442, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
   }
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  __pyx_t_3 = __Pyx_PyInt_SubtractObjC(__pyx_t_1, __pyx_int_1, 1, 0, 0); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 449, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyInt_SubtractObjC(__pyx_t_1, __pyx_int_1, 1, 0, 0); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 442, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __pyx_v_y_calib_bin = __pyx_t_3;
   __pyx_t_3 = 0;
 
-  /* "structureboost/prob_regressor.pyx":450
+  /* "structureboost/prob_regressor.pyx":443
  *     validdiscpred = model.predict_proba(X_calib)
  *     y_calib_bin = np.digitize(y_calib,binvec[:-1]) -1
  *     calibrator.fit(validdiscpred,y_calib_bin)             # <<<<<<<<<<<<<<
  *     return(calibrator)
  * 
  */
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_calibrator, __pyx_n_s_fit); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 450, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_calibrator, __pyx_n_s_fit); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 443, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_t_6 = NULL;
   __pyx_t_5 = 0;
@@ -10298,7 +10535,7 @@ static PyObject *__pyx_pf_14structureboost_14prob_regressor_4calib_parallel(CYTH
   #if CYTHON_FAST_PYCALL
   if (PyFunction_Check(__pyx_t_1)) {
     PyObject *__pyx_temp[3] = {__pyx_t_6, __pyx_v_validdiscpred, __pyx_v_y_calib_bin};
-    __pyx_t_3 = __Pyx_PyFunction_FastCall(__pyx_t_1, __pyx_temp+1-__pyx_t_5, 2+__pyx_t_5); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 450, __pyx_L1_error)
+    __pyx_t_3 = __Pyx_PyFunction_FastCall(__pyx_t_1, __pyx_temp+1-__pyx_t_5, 2+__pyx_t_5); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 443, __pyx_L1_error)
     __Pyx_XDECREF(__pyx_t_6); __pyx_t_6 = 0;
     __Pyx_GOTREF(__pyx_t_3);
   } else
@@ -10306,13 +10543,13 @@ static PyObject *__pyx_pf_14structureboost_14prob_regressor_4calib_parallel(CYTH
   #if CYTHON_FAST_PYCCALL
   if (__Pyx_PyFastCFunction_Check(__pyx_t_1)) {
     PyObject *__pyx_temp[3] = {__pyx_t_6, __pyx_v_validdiscpred, __pyx_v_y_calib_bin};
-    __pyx_t_3 = __Pyx_PyCFunction_FastCall(__pyx_t_1, __pyx_temp+1-__pyx_t_5, 2+__pyx_t_5); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 450, __pyx_L1_error)
+    __pyx_t_3 = __Pyx_PyCFunction_FastCall(__pyx_t_1, __pyx_temp+1-__pyx_t_5, 2+__pyx_t_5); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 443, __pyx_L1_error)
     __Pyx_XDECREF(__pyx_t_6); __pyx_t_6 = 0;
     __Pyx_GOTREF(__pyx_t_3);
   } else
   #endif
   {
-    __pyx_t_2 = PyTuple_New(2+__pyx_t_5); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 450, __pyx_L1_error)
+    __pyx_t_2 = PyTuple_New(2+__pyx_t_5); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 443, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
     if (__pyx_t_6) {
       __Pyx_GIVEREF(__pyx_t_6); PyTuple_SET_ITEM(__pyx_t_2, 0, __pyx_t_6); __pyx_t_6 = NULL;
@@ -10323,14 +10560,14 @@ static PyObject *__pyx_pf_14structureboost_14prob_regressor_4calib_parallel(CYTH
     __Pyx_INCREF(__pyx_v_y_calib_bin);
     __Pyx_GIVEREF(__pyx_v_y_calib_bin);
     PyTuple_SET_ITEM(__pyx_t_2, 1+__pyx_t_5, __pyx_v_y_calib_bin);
-    __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_1, __pyx_t_2, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 450, __pyx_L1_error)
+    __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_1, __pyx_t_2, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 443, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   }
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-  /* "structureboost/prob_regressor.pyx":451
+  /* "structureboost/prob_regressor.pyx":444
  *     y_calib_bin = np.digitize(y_calib,binvec[:-1]) -1
  *     calibrator.fit(validdiscpred,y_calib_bin)
  *     return(calibrator)             # <<<<<<<<<<<<<<
@@ -10341,7 +10578,7 @@ static PyObject *__pyx_pf_14structureboost_14prob_regressor_4calib_parallel(CYTH
   __pyx_r = __pyx_v_calibrator;
   goto __pyx_L0;
 
-  /* "structureboost/prob_regressor.pyx":447
+  /* "structureboost/prob_regressor.pyx":440
  *     return(model)
  * 
  * def calib_parallel(calibrator,binvec, model,X_calib, y_calib):             # <<<<<<<<<<<<<<
@@ -11066,7 +11303,7 @@ static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {&__pyx_kp_u_Fitting_Calibrators, __pyx_k_Fitting_Calibrators, sizeof(__pyx_k_Fitting_Calibrators), 0, 1, 0, 0},
   {&__pyx_kp_s_Nonparametric_Probabilistic_Regr, __pyx_k_Nonparametric_Probabilistic_Regr, sizeof(__pyx_k_Nonparametric_Probabilistic_Regr), 0, 0, 1, 0},
   {&__pyx_n_s_Parallel, __pyx_k_Parallel, sizeof(__pyx_k_Parallel), 0, 0, 1, 1},
-  {&__pyx_n_s_PdfSet, __pyx_k_PdfSet, sizeof(__pyx_k_PdfSet), 0, 0, 1, 1},
+  {&__pyx_n_s_PdfGroup, __pyx_k_PdfGroup, sizeof(__pyx_k_PdfGroup), 0, 0, 1, 1},
   {&__pyx_n_s_PrestoBoost, __pyx_k_PrestoBoost, sizeof(__pyx_k_PrestoBoost), 0, 0, 1, 1},
   {&__pyx_n_s_PrestoBoost___init, __pyx_k_PrestoBoost___init, sizeof(__pyx_k_PrestoBoost___init), 0, 0, 1, 1},
   {&__pyx_n_s_PrestoBoost_analyze_y_train, __pyx_k_PrestoBoost_analyze_y_train, sizeof(__pyx_k_PrestoBoost_analyze_y_train), 0, 0, 1, 1},
@@ -11100,6 +11337,7 @@ static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {&__pyx_n_s_binpt_vec_list, __pyx_k_binpt_vec_list, sizeof(__pyx_k_binpt_vec_list), 0, 0, 1, 1},
   {&__pyx_n_s_binvec, __pyx_k_binvec, sizeof(__pyx_k_binvec), 0, 0, 1, 1},
   {&__pyx_n_s_binvec_start, __pyx_k_binvec_start, sizeof(__pyx_k_binvec_start), 0, 0, 1, 1},
+  {&__pyx_n_s_bv, __pyx_k_bv, sizeof(__pyx_k_bv), 0, 0, 1, 1},
   {&__pyx_n_s_calib_parallel, __pyx_k_calib_parallel, sizeof(__pyx_k_calib_parallel), 0, 0, 1, 1},
   {&__pyx_n_s_calib_pw, __pyx_k_calib_pw, sizeof(__pyx_k_calib_pw), 0, 0, 1, 1},
   {&__pyx_n_s_calibrator, __pyx_k_calibrator, sizeof(__pyx_k_calibrator), 0, 0, 1, 1},
@@ -11112,6 +11350,7 @@ static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {&__pyx_n_s_concatenate, __pyx_k_concatenate, sizeof(__pyx_k_concatenate), 0, 0, 1, 1},
   {&__pyx_n_s_copy, __pyx_k_copy, sizeof(__pyx_k_copy), 0, 0, 1, 1},
   {&__pyx_n_s_curr_binpt_vec, __pyx_k_curr_binpt_vec, sizeof(__pyx_k_curr_binpt_vec), 0, 0, 1, 1},
+  {&__pyx_n_s_default_configs, __pyx_k_default_configs, sizeof(__pyx_k_default_configs), 0, 0, 1, 1},
   {&__pyx_n_s_delayed, __pyx_k_delayed, sizeof(__pyx_k_delayed), 0, 0, 1, 1},
   {&__pyx_n_s_digitize, __pyx_k_digitize, sizeof(__pyx_k_digitize), 0, 0, 1, 1},
   {&__pyx_n_s_doc, __pyx_k_doc, sizeof(__pyx_k_doc), 0, 0, 1, 1},
@@ -11142,6 +11381,7 @@ static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {&__pyx_n_s_joblib, __pyx_k_joblib, sizeof(__pyx_k_joblib), 0, 0, 1, 1},
   {&__pyx_n_s_k, __pyx_k_k, sizeof(__pyx_k_k), 0, 0, 1, 1},
   {&__pyx_n_s_learning_rate, __pyx_k_learning_rate, sizeof(__pyx_k_learning_rate), 0, 0, 1, 1},
+  {&__pyx_n_u_log, __pyx_k_log, sizeof(__pyx_k_log), 0, 1, 0, 1},
   {&__pyx_n_s_lp, __pyx_k_lp, sizeof(__pyx_k_lp), 0, 0, 1, 1},
   {&__pyx_n_s_main, __pyx_k_main, sizeof(__pyx_k_main), 0, 0, 1, 1},
   {&__pyx_n_s_max, __pyx_k_max, sizeof(__pyx_k_max), 0, 0, 1, 1},
@@ -11171,8 +11411,11 @@ static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {&__pyx_n_s_object, __pyx_k_object, sizeof(__pyx_k_object), 0, 0, 1, 1},
   {&__pyx_n_s_pandas, __pyx_k_pandas, sizeof(__pyx_k_pandas), 0, 0, 1, 1},
   {&__pyx_n_s_pd, __pyx_k_pd, sizeof(__pyx_k_pd), 0, 0, 1, 1},
+  {&__pyx_n_s_pdf, __pyx_k_pdf, sizeof(__pyx_k_pdf), 0, 0, 1, 1},
   {&__pyx_n_s_pdf_discrete, __pyx_k_pdf_discrete, sizeof(__pyx_k_pdf_discrete), 0, 0, 1, 1},
-  {&__pyx_n_s_pdf_set, __pyx_k_pdf_set, sizeof(__pyx_k_pdf_set), 0, 0, 1, 1},
+  {&__pyx_n_s_pdf_group, __pyx_k_pdf_group, sizeof(__pyx_k_pdf_group), 0, 0, 1, 1},
+  {&__pyx_n_s_pm, __pyx_k_pm, sizeof(__pyx_k_pm), 0, 0, 1, 1},
+  {&__pyx_n_s_prec_digits, __pyx_k_prec_digits, sizeof(__pyx_k_prec_digits), 0, 0, 1, 1},
   {&__pyx_n_s_predict_distributions, __pyx_k_predict_distributions, sizeof(__pyx_k_predict_distributions), 0, 0, 1, 1},
   {&__pyx_n_s_predict_proba, __pyx_k_predict_proba, sizeof(__pyx_k_predict_proba), 0, 0, 1, 1},
   {&__pyx_n_s_predlist, __pyx_k_predlist, sizeof(__pyx_k_predlist), 0, 0, 1, 1},
@@ -11180,6 +11423,7 @@ static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {&__pyx_n_s_print, __pyx_k_print, sizeof(__pyx_k_print), 0, 0, 1, 1},
   {&__pyx_n_s_prob_regr_unit, __pyx_k_prob_regr_unit, sizeof(__pyx_k_prob_regr_unit), 0, 0, 1, 1},
   {&__pyx_kp_s_prob_regressor_pyx, __pyx_k_prob_regressor_pyx, sizeof(__pyx_k_prob_regressor_pyx), 0, 0, 1, 0},
+  {&__pyx_n_s_probvec, __pyx_k_probvec, sizeof(__pyx_k_probvec), 0, 0, 1, 1},
   {&__pyx_n_s_q_left, __pyx_k_q_left, sizeof(__pyx_k_q_left), 0, 0, 1, 1},
   {&__pyx_n_s_q_range, __pyx_k_q_range, sizeof(__pyx_k_q_range), 0, 0, 1, 1},
   {&__pyx_n_s_q_right, __pyx_k_q_right, sizeof(__pyx_k_q_right), 0, 0, 1, 1},
@@ -11196,6 +11440,7 @@ static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {&__pyx_n_s_replace, __pyx_k_replace, sizeof(__pyx_k_replace), 0, 0, 1, 1},
   {&__pyx_n_s_round, __pyx_k_round, sizeof(__pyx_k_round), 0, 0, 1, 1},
   {&__pyx_n_u_runif, __pyx_k_runif, sizeof(__pyx_k_runif), 0, 1, 0, 1},
+  {&__pyx_n_s_scaling, __pyx_k_scaling, sizeof(__pyx_k_scaling), 0, 0, 1, 1},
   {&__pyx_n_s_seed, __pyx_k_seed, sizeof(__pyx_k_seed), 0, 0, 1, 1},
   {&__pyx_n_s_self, __pyx_k_self, sizeof(__pyx_k_self), 0, 0, 1, 1},
   {&__pyx_n_s_send, __pyx_k_send, sizeof(__pyx_k_send), 0, 0, 1, 1},
@@ -11235,8 +11480,8 @@ static __Pyx_StringTabEntry __pyx_string_tab[] = {
 };
 static CYTHON_SMALL_CODE int __Pyx_InitCachedBuiltins(void) {
   __pyx_builtin_object = __Pyx_GetBuiltinName(__pyx_n_s_object); if (!__pyx_builtin_object) __PYX_ERR(0, 14, __pyx_L1_error)
-  __pyx_builtin_range = __Pyx_GetBuiltinName(__pyx_n_s_range); if (!__pyx_builtin_range) __PYX_ERR(0, 218, __pyx_L1_error)
-  __pyx_builtin_print = __Pyx_GetBuiltinName(__pyx_n_s_print); if (!__pyx_builtin_print) __PYX_ERR(0, 256, __pyx_L1_error)
+  __pyx_builtin_range = __Pyx_GetBuiltinName(__pyx_n_s_range); if (!__pyx_builtin_range) __PYX_ERR(0, 220, __pyx_L1_error)
+  __pyx_builtin_print = __Pyx_GetBuiltinName(__pyx_n_s_print); if (!__pyx_builtin_print) __PYX_ERR(0, 260, __pyx_L1_error)
   return 0;
   __pyx_L1_error:;
   return -1;
@@ -11257,69 +11502,69 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
   __Pyx_GOTREF(__pyx_tuple_);
   __Pyx_GIVEREF(__pyx_tuple_);
 
-  /* "structureboost/prob_regressor.pyx":268
+  /* "structureboost/prob_regressor.pyx":272
  *                         y_valid = eval_set[1]
  *                         validdiscpred = self.forest_list[i].gbtmodel.predict_proba(X_valid)
  *                         y_valid_bin = np.digitize(y_valid,self.forest_list[i].bin_vec[:-1]) -1             # <<<<<<<<<<<<<<
  *                         print('Fitting Calibrator')
  *                         self.calibrator_list[i].fit(validdiscpred,y_valid_bin)
  */
-  __pyx_slice__4 = PySlice_New(Py_None, __pyx_int_neg_1, Py_None); if (unlikely(!__pyx_slice__4)) __PYX_ERR(0, 268, __pyx_L1_error)
+  __pyx_slice__4 = PySlice_New(Py_None, __pyx_int_neg_1, Py_None); if (unlikely(!__pyx_slice__4)) __PYX_ERR(0, 272, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_slice__4);
   __Pyx_GIVEREF(__pyx_slice__4);
 
-  /* "structureboost/prob_regressor.pyx":269
+  /* "structureboost/prob_regressor.pyx":273
  *                         validdiscpred = self.forest_list[i].gbtmodel.predict_proba(X_valid)
  *                         y_valid_bin = np.digitize(y_valid,self.forest_list[i].bin_vec[:-1]) -1
  *                         print('Fitting Calibrator')             # <<<<<<<<<<<<<<
  *                         self.calibrator_list[i].fit(validdiscpred,y_valid_bin)
  * 
  */
-  __pyx_tuple__5 = PyTuple_Pack(1, __pyx_kp_u_Fitting_Calibrator); if (unlikely(!__pyx_tuple__5)) __PYX_ERR(0, 269, __pyx_L1_error)
+  __pyx_tuple__5 = PyTuple_Pack(1, __pyx_kp_u_Fitting_Calibrator); if (unlikely(!__pyx_tuple__5)) __PYX_ERR(0, 273, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__5);
   __Pyx_GIVEREF(__pyx_tuple__5);
 
-  /* "structureboost/prob_regressor.pyx":306
+  /* "structureboost/prob_regressor.pyx":310
  *         else: # if parallelizing
  *             if eval_set is None:
  *                 print('Training Forests')             # <<<<<<<<<<<<<<
  *                 self.forest_list = Parallel(n_jobs=n_jobs,
  *                                         )(delayed(fit_and_return)(f, X_train, y_train)
  */
-  __pyx_tuple__6 = PyTuple_Pack(1, __pyx_kp_u_Training_Forests); if (unlikely(!__pyx_tuple__6)) __PYX_ERR(0, 306, __pyx_L1_error)
+  __pyx_tuple__6 = PyTuple_Pack(1, __pyx_kp_u_Training_Forests); if (unlikely(!__pyx_tuple__6)) __PYX_ERR(0, 310, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__6);
   __Pyx_GIVEREF(__pyx_tuple__6);
 
-  /* "structureboost/prob_regressor.pyx":319
+  /* "structureboost/prob_regressor.pyx":323
  * 
  *                 if fit_calibrators:
  *                     print('Fitting Calibrators')             # <<<<<<<<<<<<<<
  *                     X_calib = eval_set[0]
  *                     y_calib = eval_set[1]
  */
-  __pyx_tuple__7 = PyTuple_Pack(1, __pyx_kp_u_Fitting_Calibrators); if (unlikely(!__pyx_tuple__7)) __PYX_ERR(0, 319, __pyx_L1_error)
+  __pyx_tuple__7 = PyTuple_Pack(1, __pyx_kp_u_Fitting_Calibrators); if (unlikely(!__pyx_tuple__7)) __PYX_ERR(0, 323, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__7);
   __Pyx_GIVEREF(__pyx_tuple__7);
 
-  /* "structureboost/prob_regressor.pyx":329
+  /* "structureboost/prob_regressor.pyx":333
  * 
  *                 if refit_train_val:
  *                     print('Training Forests on combined data')             # <<<<<<<<<<<<<<
  *                     num_trees_used = [self.forest_list[k].gbtmodel.num_trees_for_prediction
  *                                         for k in range(self.num_forests)]
  */
-  __pyx_tuple__8 = PyTuple_Pack(1, __pyx_kp_u_Training_Forests_on_combined_dat); if (unlikely(!__pyx_tuple__8)) __PYX_ERR(0, 329, __pyx_L1_error)
+  __pyx_tuple__8 = PyTuple_Pack(1, __pyx_kp_u_Training_Forests_on_combined_dat); if (unlikely(!__pyx_tuple__8)) __PYX_ERR(0, 333, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__8);
   __Pyx_GIVEREF(__pyx_tuple__8);
 
-  /* "structureboost/prob_regressor.pyx":392
+  /* "structureboost/prob_regressor.pyx":382
  *             if self.bin_interp == 'midpt':
  *                 binvec = np.unique(
  *                             np.concatenate(([self.y_min_train],(binvec[1:]+binvec[:-1])/2,             # <<<<<<<<<<<<<<
  *                                             [self.y_max_train])
  *                                           ))
  */
-  __pyx_slice__11 = PySlice_New(__pyx_int_1, Py_None, Py_None); if (unlikely(!__pyx_slice__11)) __PYX_ERR(0, 392, __pyx_L1_error)
+  __pyx_slice__11 = PySlice_New(__pyx_int_1, Py_None, Py_None); if (unlikely(!__pyx_slice__11)) __PYX_ERR(0, 382, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_slice__11);
   __Pyx_GIVEREF(__pyx_slice__11);
 
@@ -11338,109 +11583,109 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
  *     https://arxiv.org/abs/2210.16247
  * """
  *     def __init__(self, num_forests, num_trees,             # <<<<<<<<<<<<<<
- *                  feature_configs, binpt_method='auto',
+ *                  feature_configs=None, binpt_method='auto',
  *                  binpt_sample_size=20,
  */
-  __pyx_tuple__17 = PyTuple_Pack(23, __pyx_n_s_self, __pyx_n_s_num_forests, __pyx_n_s_num_trees, __pyx_n_s_feature_configs, __pyx_n_s_binpt_method, __pyx_n_s_binpt_sample_size, __pyx_n_s_binpt_vec, __pyx_n_s_bin_interp, __pyx_n_s_structure_strides, __pyx_n_s_singleton_weight, __pyx_n_s_subsample, __pyx_n_s_range_extension, __pyx_n_s_range_ext_param, __pyx_n_s_replace, __pyx_n_s_min_size_split, __pyx_n_s_max_depth, __pyx_n_s_gamma, __pyx_n_s_reg_lambda, __pyx_n_s_feat_sample_by_tree, __pyx_n_s_feat_sample_by_node, __pyx_n_s_learning_rate, __pyx_n_s_random_seed, __pyx_n_s_na_unseen_action); if (unlikely(!__pyx_tuple__17)) __PYX_ERR(0, 109, __pyx_L1_error)
+  __pyx_tuple__17 = PyTuple_Pack(25, __pyx_n_s_self, __pyx_n_s_num_forests, __pyx_n_s_num_trees, __pyx_n_s_feature_configs, __pyx_n_s_binpt_method, __pyx_n_s_binpt_sample_size, __pyx_n_s_binpt_vec, __pyx_n_s_bin_interp, __pyx_n_s_structure_strides, __pyx_n_s_singleton_weight, __pyx_n_s_subsample, __pyx_n_s_range_extension, __pyx_n_s_range_ext_param, __pyx_n_s_replace, __pyx_n_s_min_size_split, __pyx_n_s_max_depth, __pyx_n_s_gamma, __pyx_n_s_reg_lambda, __pyx_n_s_feat_sample_by_tree, __pyx_n_s_feat_sample_by_node, __pyx_n_s_learning_rate, __pyx_n_s_random_seed, __pyx_n_s_na_unseen_action, __pyx_n_s_prec_digits, __pyx_n_s_default_configs); if (unlikely(!__pyx_tuple__17)) __PYX_ERR(0, 109, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__17);
   __Pyx_GIVEREF(__pyx_tuple__17);
-  __pyx_codeobj__2 = (PyObject*)__Pyx_PyCode_New(23, 0, 23, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__17, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_prob_regressor_pyx, __pyx_n_s_init, 109, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__2)) __PYX_ERR(0, 109, __pyx_L1_error)
-  __pyx_tuple__18 = PyTuple_Pack(19, ((PyObject*)__pyx_n_u_auto), ((PyObject *)__pyx_int_20), ((PyObject *)Py_None), ((PyObject*)__pyx_n_u_runif), ((PyObject*)__pyx_n_u_auto), ((PyObject*)__pyx_float__1), ((PyObject *)__pyx_int_1), ((PyObject*)__pyx_n_u_quantile_frac), ((PyObject*)__pyx_tuple_), ((PyObject *)Py_True), ((PyObject *)__pyx_int_25), ((PyObject *)__pyx_int_3), ((PyObject *)__pyx_int_0), ((PyObject *)__pyx_int_1), ((PyObject *)__pyx_int_1), ((PyObject *)__pyx_int_1), ((PyObject*)__pyx_float__05), ((PyObject *)__pyx_int_0), ((PyObject*)__pyx_n_u_weighted_random)); if (unlikely(!__pyx_tuple__18)) __PYX_ERR(0, 109, __pyx_L1_error)
+  __pyx_codeobj__2 = (PyObject*)__Pyx_PyCode_New(25, 0, 25, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__17, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_prob_regressor_pyx, __pyx_n_s_init, 109, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__2)) __PYX_ERR(0, 109, __pyx_L1_error)
+  __pyx_tuple__18 = PyTuple_Pack(22, ((PyObject *)Py_None), ((PyObject*)__pyx_n_u_auto), ((PyObject *)__pyx_int_20), ((PyObject *)Py_None), ((PyObject*)__pyx_n_u_runif), ((PyObject*)__pyx_n_u_auto), ((PyObject*)__pyx_float__5), ((PyObject *)__pyx_int_1), ((PyObject*)__pyx_n_u_quantile_frac), ((PyObject*)__pyx_tuple_), ((PyObject *)Py_True), ((PyObject *)__pyx_int_25), ((PyObject *)__pyx_int_3), ((PyObject *)__pyx_int_0), ((PyObject *)__pyx_int_1), ((PyObject *)__pyx_int_1), ((PyObject *)__pyx_int_1), ((PyObject*)__pyx_float__05), ((PyObject *)__pyx_int_0), ((PyObject*)__pyx_n_u_weighted_random), ((PyObject *)__pyx_int_6), ((PyObject *)Py_None)); if (unlikely(!__pyx_tuple__18)) __PYX_ERR(0, 109, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__18);
   __Pyx_GIVEREF(__pyx_tuple__18);
 
-  /* "structureboost/prob_regressor.pyx":158
+  /* "structureboost/prob_regressor.pyx":160
  *         # figure out method (here or in fit)
  * 
  *     def fit(self, X_train, y_train, eval_set=None, eval_freq=10,             # <<<<<<<<<<<<<<
  *             early_stop_past_steps=1, choose_best_eval=True, fit_calibrators=False,
  *             refit_train_val=False, binpt_vec_list=None, calib_pw=100,
  */
-  __pyx_tuple__19 = PyTuple_Pack(32, __pyx_n_s_self, __pyx_n_s_X_train, __pyx_n_s_y_train, __pyx_n_s_eval_set, __pyx_n_s_eval_freq, __pyx_n_s_early_stop_past_steps, __pyx_n_s_choose_best_eval, __pyx_n_s_fit_calibrators, __pyx_n_s_refit_train_val, __pyx_n_s_binpt_vec_list, __pyx_n_s_calib_pw, __pyx_n_s_n_jobs, __pyx_n_s_verbose, __pyx_n_s_i, __pyx_n_s_curr_binpt_vec, __pyx_n_s_X_valid, __pyx_n_s_y_valid, __pyx_n_s_validdiscpred, __pyx_n_s_y_valid_bin, __pyx_n_s_num_trees_used, __pyx_n_s_X_train_val, __pyx_n_s_y_train_val, __pyx_n_s_X_calib, __pyx_n_s_y_calib, __pyx_n_s_k, __pyx_n_s_k, __pyx_n_s_genexpr, __pyx_n_s_genexpr, __pyx_n_s_genexpr, __pyx_n_s_genexpr, __pyx_n_s_k, __pyx_n_s_genexpr); if (unlikely(!__pyx_tuple__19)) __PYX_ERR(0, 158, __pyx_L1_error)
+  __pyx_tuple__19 = PyTuple_Pack(32, __pyx_n_s_self, __pyx_n_s_X_train, __pyx_n_s_y_train, __pyx_n_s_eval_set, __pyx_n_s_eval_freq, __pyx_n_s_early_stop_past_steps, __pyx_n_s_choose_best_eval, __pyx_n_s_fit_calibrators, __pyx_n_s_refit_train_val, __pyx_n_s_binpt_vec_list, __pyx_n_s_calib_pw, __pyx_n_s_n_jobs, __pyx_n_s_verbose, __pyx_n_s_i, __pyx_n_s_curr_binpt_vec, __pyx_n_s_X_valid, __pyx_n_s_y_valid, __pyx_n_s_validdiscpred, __pyx_n_s_y_valid_bin, __pyx_n_s_num_trees_used, __pyx_n_s_X_train_val, __pyx_n_s_y_train_val, __pyx_n_s_X_calib, __pyx_n_s_y_calib, __pyx_n_s_k, __pyx_n_s_k, __pyx_n_s_genexpr, __pyx_n_s_genexpr, __pyx_n_s_genexpr, __pyx_n_s_genexpr, __pyx_n_s_k, __pyx_n_s_genexpr); if (unlikely(!__pyx_tuple__19)) __PYX_ERR(0, 160, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__19);
   __Pyx_GIVEREF(__pyx_tuple__19);
-  __pyx_codeobj__3 = (PyObject*)__Pyx_PyCode_New(13, 0, 32, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__19, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_prob_regressor_pyx, __pyx_n_s_fit, 158, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__3)) __PYX_ERR(0, 158, __pyx_L1_error)
-  __pyx_tuple__20 = PyTuple_Pack(10, ((PyObject *)Py_None), ((PyObject *)__pyx_int_10), ((PyObject *)__pyx_int_1), ((PyObject *)Py_True), ((PyObject *)Py_False), ((PyObject *)Py_False), ((PyObject *)Py_None), ((PyObject *)__pyx_int_100), ((PyObject *)__pyx_int_1), ((PyObject *)__pyx_int_1)); if (unlikely(!__pyx_tuple__20)) __PYX_ERR(0, 158, __pyx_L1_error)
+  __pyx_codeobj__3 = (PyObject*)__Pyx_PyCode_New(13, 0, 32, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__19, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_prob_regressor_pyx, __pyx_n_s_fit, 160, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__3)) __PYX_ERR(0, 160, __pyx_L1_error)
+  __pyx_tuple__20 = PyTuple_Pack(10, ((PyObject *)Py_None), ((PyObject *)__pyx_int_10), ((PyObject *)__pyx_int_1), ((PyObject *)Py_True), ((PyObject *)Py_False), ((PyObject *)Py_False), ((PyObject *)Py_None), ((PyObject *)__pyx_int_100), ((PyObject *)__pyx_int_1), ((PyObject *)__pyx_int_1)); if (unlikely(!__pyx_tuple__20)) __PYX_ERR(0, 160, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__20);
   __Pyx_GIVEREF(__pyx_tuple__20);
 
-  /* "structureboost/prob_regressor.pyx":368
- * 
+  /* "structureboost/prob_regressor.pyx":358
+ *                                             for f in self.forest_list)
  * 
  *     def analyze_y_train(self, y_train):             # <<<<<<<<<<<<<<
  *             self.unique_y = np.unique(y_train)
  *             self.num_uv = len(self.unique_y)
  */
-  __pyx_tuple__21 = PyTuple_Pack(2, __pyx_n_s_self, __pyx_n_s_y_train); if (unlikely(!__pyx_tuple__21)) __PYX_ERR(0, 368, __pyx_L1_error)
+  __pyx_tuple__21 = PyTuple_Pack(2, __pyx_n_s_self, __pyx_n_s_y_train); if (unlikely(!__pyx_tuple__21)) __PYX_ERR(0, 358, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__21);
   __Pyx_GIVEREF(__pyx_tuple__21);
-  __pyx_codeobj__9 = (PyObject*)__Pyx_PyCode_New(2, 0, 2, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__21, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_prob_regressor_pyx, __pyx_n_s_analyze_y_train, 368, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__9)) __PYX_ERR(0, 368, __pyx_L1_error)
+  __pyx_codeobj__9 = (PyObject*)__Pyx_PyCode_New(2, 0, 2, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__21, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_prob_regressor_pyx, __pyx_n_s_analyze_y_train, 358, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__9)) __PYX_ERR(0, 358, __pyx_L1_error)
 
-  /* "structureboost/prob_regressor.pyx":375
+  /* "structureboost/prob_regressor.pyx":365
  * 
  * 
  *     def get_bin_pts(self, y_train, random_seed=None):             # <<<<<<<<<<<<<<
  *         if random_seed is not None:
  *             np.random.seed(random_seed)
  */
-  __pyx_tuple__22 = PyTuple_Pack(11, __pyx_n_s_self, __pyx_n_s_y_train, __pyx_n_s_random_seed, __pyx_n_s_binvec, __pyx_n_s_binvec_start, __pyx_n_s_q_left, __pyx_n_s_q_right, __pyx_n_s_mult_factor, __pyx_n_s_q_range, __pyx_n_s_ext_amount, __pyx_n_s_added_pts); if (unlikely(!__pyx_tuple__22)) __PYX_ERR(0, 375, __pyx_L1_error)
+  __pyx_tuple__22 = PyTuple_Pack(11, __pyx_n_s_self, __pyx_n_s_y_train, __pyx_n_s_random_seed, __pyx_n_s_binvec, __pyx_n_s_binvec_start, __pyx_n_s_q_left, __pyx_n_s_q_right, __pyx_n_s_mult_factor, __pyx_n_s_q_range, __pyx_n_s_ext_amount, __pyx_n_s_added_pts); if (unlikely(!__pyx_tuple__22)) __PYX_ERR(0, 365, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__22);
   __Pyx_GIVEREF(__pyx_tuple__22);
-  __pyx_codeobj__10 = (PyObject*)__Pyx_PyCode_New(3, 0, 11, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__22, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_prob_regressor_pyx, __pyx_n_s_get_bin_pts, 375, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__10)) __PYX_ERR(0, 375, __pyx_L1_error)
-  __pyx_tuple__23 = PyTuple_Pack(1, ((PyObject *)Py_None)); if (unlikely(!__pyx_tuple__23)) __PYX_ERR(0, 375, __pyx_L1_error)
+  __pyx_codeobj__10 = (PyObject*)__Pyx_PyCode_New(3, 0, 11, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__22, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_prob_regressor_pyx, __pyx_n_s_get_bin_pts, 365, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__10)) __PYX_ERR(0, 365, __pyx_L1_error)
+  __pyx_tuple__23 = PyTuple_Pack(1, ((PyObject *)Py_None)); if (unlikely(!__pyx_tuple__23)) __PYX_ERR(0, 365, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__23);
   __Pyx_GIVEREF(__pyx_tuple__23);
 
-  /* "structureboost/prob_regressor.pyx":410
+  /* "structureboost/prob_regressor.pyx":400
  *         return(binvec)
  * 
  *     def predict_distributions(self, X_test, num_forests_to_use=-1, use_calibrators=False,             # <<<<<<<<<<<<<<
- *         calibrator_list=None):
+ *         calibrator_list=None, scaling='log'):
  *         if num_forests_to_use==-1:
  */
-  __pyx_tuple__24 = PyTuple_Pack(10, __pyx_n_s_self, __pyx_n_s_X_test, __pyx_n_s_num_forests_to_use, __pyx_n_s_use_calibrators, __pyx_n_s_calibrator_list, __pyx_n_s_predlist, __pyx_n_s_j, __pyx_n_s_final_dists, __pyx_n_s_j, __pyx_n_s_i); if (unlikely(!__pyx_tuple__24)) __PYX_ERR(0, 410, __pyx_L1_error)
+  __pyx_tuple__24 = PyTuple_Pack(14, __pyx_n_s_self, __pyx_n_s_X_test, __pyx_n_s_num_forests_to_use, __pyx_n_s_use_calibrators, __pyx_n_s_calibrator_list, __pyx_n_s_scaling, __pyx_n_s_predlist, __pyx_n_s_j, __pyx_n_s_final_dists, __pyx_n_s_bv, __pyx_n_s_pm, __pyx_n_s_j, __pyx_n_s_i, __pyx_n_s_pdf); if (unlikely(!__pyx_tuple__24)) __PYX_ERR(0, 400, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__24);
   __Pyx_GIVEREF(__pyx_tuple__24);
-  __pyx_codeobj__12 = (PyObject*)__Pyx_PyCode_New(5, 0, 10, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__24, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_prob_regressor_pyx, __pyx_n_s_predict_distributions, 410, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__12)) __PYX_ERR(0, 410, __pyx_L1_error)
-  __pyx_tuple__25 = PyTuple_Pack(3, ((PyObject *)__pyx_int_neg_1), ((PyObject *)Py_False), ((PyObject *)Py_None)); if (unlikely(!__pyx_tuple__25)) __PYX_ERR(0, 410, __pyx_L1_error)
+  __pyx_codeobj__12 = (PyObject*)__Pyx_PyCode_New(6, 0, 14, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__24, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_prob_regressor_pyx, __pyx_n_s_predict_distributions, 400, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__12)) __PYX_ERR(0, 400, __pyx_L1_error)
+  __pyx_tuple__25 = PyTuple_Pack(4, ((PyObject *)__pyx_int_neg_1), ((PyObject *)Py_False), ((PyObject *)Py_None), ((PyObject*)__pyx_n_u_log)); if (unlikely(!__pyx_tuple__25)) __PYX_ERR(0, 400, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__25);
   __Pyx_GIVEREF(__pyx_tuple__25);
 
-  /* "structureboost/prob_regressor.pyx":436
- *         return(PdfSet(final_dists))
+  /* "structureboost/prob_regressor.pyx":429
+ *         return(PdfGroup(bv, pm))
  * 
  * def fit_and_return(model, X_train, y_train):             # <<<<<<<<<<<<<<
  *     model.fit(X_train, y_train, verbose=0)
  *     return(model)
  */
-  __pyx_tuple__26 = PyTuple_Pack(3, __pyx_n_s_model, __pyx_n_s_X_train, __pyx_n_s_y_train); if (unlikely(!__pyx_tuple__26)) __PYX_ERR(0, 436, __pyx_L1_error)
+  __pyx_tuple__26 = PyTuple_Pack(3, __pyx_n_s_model, __pyx_n_s_X_train, __pyx_n_s_y_train); if (unlikely(!__pyx_tuple__26)) __PYX_ERR(0, 429, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__26);
   __Pyx_GIVEREF(__pyx_tuple__26);
-  __pyx_codeobj__13 = (PyObject*)__Pyx_PyCode_New(3, 0, 3, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__26, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_prob_regressor_pyx, __pyx_n_s_fit_and_return, 436, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__13)) __PYX_ERR(0, 436, __pyx_L1_error)
+  __pyx_codeobj__13 = (PyObject*)__Pyx_PyCode_New(3, 0, 3, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__26, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_prob_regressor_pyx, __pyx_n_s_fit_and_return, 429, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__13)) __PYX_ERR(0, 429, __pyx_L1_error)
 
-  /* "structureboost/prob_regressor.pyx":441
+  /* "structureboost/prob_regressor.pyx":434
  * 
  * 
  * def fit_and_return2(model, X_train, y_train, eval_set, eval_freq,             # <<<<<<<<<<<<<<
  *                         early_stop_past_steps, choose_best_eval):
  *     model.fit(X_train, y_train, eval_set, eval_freq,
  */
-  __pyx_tuple__27 = PyTuple_Pack(7, __pyx_n_s_model, __pyx_n_s_X_train, __pyx_n_s_y_train, __pyx_n_s_eval_set, __pyx_n_s_eval_freq, __pyx_n_s_early_stop_past_steps, __pyx_n_s_choose_best_eval); if (unlikely(!__pyx_tuple__27)) __PYX_ERR(0, 441, __pyx_L1_error)
+  __pyx_tuple__27 = PyTuple_Pack(7, __pyx_n_s_model, __pyx_n_s_X_train, __pyx_n_s_y_train, __pyx_n_s_eval_set, __pyx_n_s_eval_freq, __pyx_n_s_early_stop_past_steps, __pyx_n_s_choose_best_eval); if (unlikely(!__pyx_tuple__27)) __PYX_ERR(0, 434, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__27);
   __Pyx_GIVEREF(__pyx_tuple__27);
-  __pyx_codeobj__14 = (PyObject*)__Pyx_PyCode_New(7, 0, 7, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__27, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_prob_regressor_pyx, __pyx_n_s_fit_and_return2, 441, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__14)) __PYX_ERR(0, 441, __pyx_L1_error)
+  __pyx_codeobj__14 = (PyObject*)__Pyx_PyCode_New(7, 0, 7, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__27, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_prob_regressor_pyx, __pyx_n_s_fit_and_return2, 434, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__14)) __PYX_ERR(0, 434, __pyx_L1_error)
 
-  /* "structureboost/prob_regressor.pyx":447
+  /* "structureboost/prob_regressor.pyx":440
  *     return(model)
  * 
  * def calib_parallel(calibrator,binvec, model,X_calib, y_calib):             # <<<<<<<<<<<<<<
  *     validdiscpred = model.predict_proba(X_calib)
  *     y_calib_bin = np.digitize(y_calib,binvec[:-1]) -1
  */
-  __pyx_tuple__28 = PyTuple_Pack(7, __pyx_n_s_calibrator, __pyx_n_s_binvec, __pyx_n_s_model, __pyx_n_s_X_calib, __pyx_n_s_y_calib, __pyx_n_s_validdiscpred, __pyx_n_s_y_calib_bin); if (unlikely(!__pyx_tuple__28)) __PYX_ERR(0, 447, __pyx_L1_error)
+  __pyx_tuple__28 = PyTuple_Pack(7, __pyx_n_s_calibrator, __pyx_n_s_binvec, __pyx_n_s_model, __pyx_n_s_X_calib, __pyx_n_s_y_calib, __pyx_n_s_validdiscpred, __pyx_n_s_y_calib_bin); if (unlikely(!__pyx_tuple__28)) __PYX_ERR(0, 440, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__28);
   __Pyx_GIVEREF(__pyx_tuple__28);
-  __pyx_codeobj__15 = (PyObject*)__Pyx_PyCode_New(5, 0, 7, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__28, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_prob_regressor_pyx, __pyx_n_s_calib_parallel, 447, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__15)) __PYX_ERR(0, 447, __pyx_L1_error)
+  __pyx_codeobj__15 = (PyObject*)__Pyx_PyCode_New(5, 0, 7, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__28, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_prob_regressor_pyx, __pyx_n_s_calib_parallel, 440, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__15)) __PYX_ERR(0, 440, __pyx_L1_error)
   __Pyx_RefNannyFinishContext();
   return 0;
   __pyx_L1_error:;
@@ -11450,7 +11695,7 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
 
 static CYTHON_SMALL_CODE int __Pyx_InitGlobals(void) {
   if (__Pyx_InitStrings(__pyx_string_tab) < 0) __PYX_ERR(0, 1, __pyx_L1_error);
-  __pyx_float__1 = PyFloat_FromDouble(.1); if (unlikely(!__pyx_float__1)) __PYX_ERR(0, 1, __pyx_L1_error)
+  __pyx_float__5 = PyFloat_FromDouble(.5); if (unlikely(!__pyx_float__5)) __PYX_ERR(0, 1, __pyx_L1_error)
   __pyx_float__05 = PyFloat_FromDouble(.05); if (unlikely(!__pyx_float__05)) __PYX_ERR(0, 1, __pyx_L1_error)
   __pyx_float__25 = PyFloat_FromDouble(.25); if (unlikely(!__pyx_float__25)) __PYX_ERR(0, 1, __pyx_L1_error)
   __pyx_float__75 = PyFloat_FromDouble(.75); if (unlikely(!__pyx_float__75)) __PYX_ERR(0, 1, __pyx_L1_error)
@@ -11458,6 +11703,7 @@ static CYTHON_SMALL_CODE int __Pyx_InitGlobals(void) {
   __pyx_int_1 = PyInt_FromLong(1); if (unlikely(!__pyx_int_1)) __PYX_ERR(0, 1, __pyx_L1_error)
   __pyx_int_2 = PyInt_FromLong(2); if (unlikely(!__pyx_int_2)) __PYX_ERR(0, 1, __pyx_L1_error)
   __pyx_int_3 = PyInt_FromLong(3); if (unlikely(!__pyx_int_3)) __PYX_ERR(0, 1, __pyx_L1_error)
+  __pyx_int_6 = PyInt_FromLong(6); if (unlikely(!__pyx_int_6)) __PYX_ERR(0, 1, __pyx_L1_error)
   __pyx_int_10 = PyInt_FromLong(10); if (unlikely(!__pyx_int_10)) __PYX_ERR(0, 1, __pyx_L1_error)
   __pyx_int_20 = PyInt_FromLong(20); if (unlikely(!__pyx_int_20)) __PYX_ERR(0, 1, __pyx_L1_error)
   __pyx_int_25 = PyInt_FromLong(25); if (unlikely(!__pyx_int_25)) __PYX_ERR(0, 1, __pyx_L1_error)
@@ -11507,7 +11753,7 @@ static int __Pyx_modinit_type_init_code(void) {
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("__Pyx_modinit_type_init_code", 0);
   /*--- Type init code ---*/
-  if (PyType_Ready(&__pyx_type_14structureboost_14prob_regressor___pyx_scope_struct__fit) < 0) __PYX_ERR(0, 158, __pyx_L1_error)
+  if (PyType_Ready(&__pyx_type_14structureboost_14prob_regressor___pyx_scope_struct__fit) < 0) __PYX_ERR(0, 160, __pyx_L1_error)
   #if PY_VERSION_HEX < 0x030800B1
   __pyx_type_14structureboost_14prob_regressor___pyx_scope_struct__fit.tp_print = 0;
   #endif
@@ -11515,7 +11761,7 @@ static int __Pyx_modinit_type_init_code(void) {
     __pyx_type_14structureboost_14prob_regressor___pyx_scope_struct__fit.tp_getattro = __Pyx_PyObject_GenericGetAttrNoDict;
   }
   __pyx_ptype_14structureboost_14prob_regressor___pyx_scope_struct__fit = &__pyx_type_14structureboost_14prob_regressor___pyx_scope_struct__fit;
-  if (PyType_Ready(&__pyx_type_14structureboost_14prob_regressor___pyx_scope_struct_1_genexpr) < 0) __PYX_ERR(0, 308, __pyx_L1_error)
+  if (PyType_Ready(&__pyx_type_14structureboost_14prob_regressor___pyx_scope_struct_1_genexpr) < 0) __PYX_ERR(0, 312, __pyx_L1_error)
   #if PY_VERSION_HEX < 0x030800B1
   __pyx_type_14structureboost_14prob_regressor___pyx_scope_struct_1_genexpr.tp_print = 0;
   #endif
@@ -11523,7 +11769,7 @@ static int __Pyx_modinit_type_init_code(void) {
     __pyx_type_14structureboost_14prob_regressor___pyx_scope_struct_1_genexpr.tp_getattro = __Pyx_PyObject_GenericGetAttrNoDict;
   }
   __pyx_ptype_14structureboost_14prob_regressor___pyx_scope_struct_1_genexpr = &__pyx_type_14structureboost_14prob_regressor___pyx_scope_struct_1_genexpr;
-  if (PyType_Ready(&__pyx_type_14structureboost_14prob_regressor___pyx_scope_struct_2_genexpr) < 0) __PYX_ERR(0, 313, __pyx_L1_error)
+  if (PyType_Ready(&__pyx_type_14structureboost_14prob_regressor___pyx_scope_struct_2_genexpr) < 0) __PYX_ERR(0, 317, __pyx_L1_error)
   #if PY_VERSION_HEX < 0x030800B1
   __pyx_type_14structureboost_14prob_regressor___pyx_scope_struct_2_genexpr.tp_print = 0;
   #endif
@@ -11531,7 +11777,7 @@ static int __Pyx_modinit_type_init_code(void) {
     __pyx_type_14structureboost_14prob_regressor___pyx_scope_struct_2_genexpr.tp_getattro = __Pyx_PyObject_GenericGetAttrNoDict;
   }
   __pyx_ptype_14structureboost_14prob_regressor___pyx_scope_struct_2_genexpr = &__pyx_type_14structureboost_14prob_regressor___pyx_scope_struct_2_genexpr;
-  if (PyType_Ready(&__pyx_type_14structureboost_14prob_regressor___pyx_scope_struct_3_genexpr) < 0) __PYX_ERR(0, 323, __pyx_L1_error)
+  if (PyType_Ready(&__pyx_type_14structureboost_14prob_regressor___pyx_scope_struct_3_genexpr) < 0) __PYX_ERR(0, 327, __pyx_L1_error)
   #if PY_VERSION_HEX < 0x030800B1
   __pyx_type_14structureboost_14prob_regressor___pyx_scope_struct_3_genexpr.tp_print = 0;
   #endif
@@ -11539,7 +11785,7 @@ static int __Pyx_modinit_type_init_code(void) {
     __pyx_type_14structureboost_14prob_regressor___pyx_scope_struct_3_genexpr.tp_getattro = __Pyx_PyObject_GenericGetAttrNoDict;
   }
   __pyx_ptype_14structureboost_14prob_regressor___pyx_scope_struct_3_genexpr = &__pyx_type_14structureboost_14prob_regressor___pyx_scope_struct_3_genexpr;
-  if (PyType_Ready(&__pyx_type_14structureboost_14prob_regressor___pyx_scope_struct_4_genexpr) < 0) __PYX_ERR(0, 351, __pyx_L1_error)
+  if (PyType_Ready(&__pyx_type_14structureboost_14prob_regressor___pyx_scope_struct_4_genexpr) < 0) __PYX_ERR(0, 355, __pyx_L1_error)
   #if PY_VERSION_HEX < 0x030800B1
   __pyx_type_14structureboost_14prob_regressor___pyx_scope_struct_4_genexpr.tp_print = 0;
   #endif
@@ -11799,7 +12045,7 @@ if (!__Pyx_RefNanny) {
  * import warnings
  * from prob_regr_unit import ProbRegressorUnit             # <<<<<<<<<<<<<<
  * from pdf_discrete import average_densities
- * from pdf_set import PdfSet
+ * from pdf_group import PdfGroup
  */
   __pyx_t_1 = PyList_New(1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 5, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
@@ -11819,7 +12065,7 @@ if (!__Pyx_RefNanny) {
  * import warnings
  * from prob_regr_unit import ProbRegressorUnit
  * from pdf_discrete import average_densities             # <<<<<<<<<<<<<<
- * from pdf_set import PdfSet
+ * from pdf_group import PdfGroup
  * import numpy as np
  */
   __pyx_t_2 = PyList_New(1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 6, __pyx_L1_error)
@@ -11839,27 +12085,27 @@ if (!__Pyx_RefNanny) {
   /* "structureboost/prob_regressor.pyx":7
  * from prob_regr_unit import ProbRegressorUnit
  * from pdf_discrete import average_densities
- * from pdf_set import PdfSet             # <<<<<<<<<<<<<<
+ * from pdf_group import PdfGroup             # <<<<<<<<<<<<<<
  * import numpy as np
  * import pandas as pd
  */
   __pyx_t_1 = PyList_New(1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 7, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __Pyx_INCREF(__pyx_n_s_PdfSet);
-  __Pyx_GIVEREF(__pyx_n_s_PdfSet);
-  PyList_SET_ITEM(__pyx_t_1, 0, __pyx_n_s_PdfSet);
-  __pyx_t_2 = __Pyx_Import(__pyx_n_s_pdf_set, __pyx_t_1, 0); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 7, __pyx_L1_error)
+  __Pyx_INCREF(__pyx_n_s_PdfGroup);
+  __Pyx_GIVEREF(__pyx_n_s_PdfGroup);
+  PyList_SET_ITEM(__pyx_t_1, 0, __pyx_n_s_PdfGroup);
+  __pyx_t_2 = __Pyx_Import(__pyx_n_s_pdf_group, __pyx_t_1, 0); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 7, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_t_1 = __Pyx_ImportFrom(__pyx_t_2, __pyx_n_s_PdfSet); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 7, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_ImportFrom(__pyx_t_2, __pyx_n_s_PdfGroup); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 7, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_PdfSet, __pyx_t_1) < 0) __PYX_ERR(0, 7, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_PdfGroup, __pyx_t_1) < 0) __PYX_ERR(0, 7, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
   /* "structureboost/prob_regressor.pyx":8
  * from pdf_discrete import average_densities
- * from pdf_set import PdfSet
+ * from pdf_group import PdfGroup
  * import numpy as np             # <<<<<<<<<<<<<<
  * import pandas as pd
  * import ml_insights as mli
@@ -11870,7 +12116,7 @@ if (!__Pyx_RefNanny) {
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
   /* "structureboost/prob_regressor.pyx":9
- * from pdf_set import PdfSet
+ * from pdf_group import PdfGroup
  * import numpy as np
  * import pandas as pd             # <<<<<<<<<<<<<<
  * import ml_insights as mli
@@ -11937,7 +12183,7 @@ if (!__Pyx_RefNanny) {
  *     https://arxiv.org/abs/2210.16247
  * """
  *     def __init__(self, num_forests, num_trees,             # <<<<<<<<<<<<<<
- *                  feature_configs, binpt_method='auto',
+ *                  feature_configs=None, binpt_method='auto',
  *                  binpt_sample_size=20,
  */
   __pyx_t_3 = __Pyx_CyFunction_New(&__pyx_mdef_14structureboost_14prob_regressor_11PrestoBoost_1__init__, 0, __pyx_n_s_PrestoBoost___init, NULL, __pyx_n_s_structureboost_prob_regressor, __pyx_d, ((PyObject *)__pyx_codeobj__2)); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 109, __pyx_L1_error)
@@ -11946,55 +12192,55 @@ if (!__Pyx_RefNanny) {
   if (__Pyx_SetNameInClass(__pyx_t_2, __pyx_n_s_init, __pyx_t_3) < 0) __PYX_ERR(0, 109, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-  /* "structureboost/prob_regressor.pyx":158
+  /* "structureboost/prob_regressor.pyx":160
  *         # figure out method (here or in fit)
  * 
  *     def fit(self, X_train, y_train, eval_set=None, eval_freq=10,             # <<<<<<<<<<<<<<
  *             early_stop_past_steps=1, choose_best_eval=True, fit_calibrators=False,
  *             refit_train_val=False, binpt_vec_list=None, calib_pw=100,
  */
-  __pyx_t_3 = __Pyx_CyFunction_New(&__pyx_mdef_14structureboost_14prob_regressor_11PrestoBoost_3fit, 0, __pyx_n_s_PrestoBoost_fit, NULL, __pyx_n_s_structureboost_prob_regressor, __pyx_d, ((PyObject *)__pyx_codeobj__3)); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 158, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_CyFunction_New(&__pyx_mdef_14structureboost_14prob_regressor_11PrestoBoost_3fit, 0, __pyx_n_s_PrestoBoost_fit, NULL, __pyx_n_s_structureboost_prob_regressor, __pyx_d, ((PyObject *)__pyx_codeobj__3)); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 160, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_CyFunction_SetDefaultsTuple(__pyx_t_3, __pyx_tuple__20);
-  if (__Pyx_SetNameInClass(__pyx_t_2, __pyx_n_s_fit, __pyx_t_3) < 0) __PYX_ERR(0, 158, __pyx_L1_error)
+  if (__Pyx_SetNameInClass(__pyx_t_2, __pyx_n_s_fit, __pyx_t_3) < 0) __PYX_ERR(0, 160, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-  /* "structureboost/prob_regressor.pyx":368
- * 
+  /* "structureboost/prob_regressor.pyx":358
+ *                                             for f in self.forest_list)
  * 
  *     def analyze_y_train(self, y_train):             # <<<<<<<<<<<<<<
  *             self.unique_y = np.unique(y_train)
  *             self.num_uv = len(self.unique_y)
  */
-  __pyx_t_3 = __Pyx_CyFunction_New(&__pyx_mdef_14structureboost_14prob_regressor_11PrestoBoost_5analyze_y_train, 0, __pyx_n_s_PrestoBoost_analyze_y_train, NULL, __pyx_n_s_structureboost_prob_regressor, __pyx_d, ((PyObject *)__pyx_codeobj__9)); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 368, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_CyFunction_New(&__pyx_mdef_14structureboost_14prob_regressor_11PrestoBoost_5analyze_y_train, 0, __pyx_n_s_PrestoBoost_analyze_y_train, NULL, __pyx_n_s_structureboost_prob_regressor, __pyx_d, ((PyObject *)__pyx_codeobj__9)); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 358, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  if (__Pyx_SetNameInClass(__pyx_t_2, __pyx_n_s_analyze_y_train, __pyx_t_3) < 0) __PYX_ERR(0, 368, __pyx_L1_error)
+  if (__Pyx_SetNameInClass(__pyx_t_2, __pyx_n_s_analyze_y_train, __pyx_t_3) < 0) __PYX_ERR(0, 358, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-  /* "structureboost/prob_regressor.pyx":375
+  /* "structureboost/prob_regressor.pyx":365
  * 
  * 
  *     def get_bin_pts(self, y_train, random_seed=None):             # <<<<<<<<<<<<<<
  *         if random_seed is not None:
  *             np.random.seed(random_seed)
  */
-  __pyx_t_3 = __Pyx_CyFunction_New(&__pyx_mdef_14structureboost_14prob_regressor_11PrestoBoost_7get_bin_pts, 0, __pyx_n_s_PrestoBoost_get_bin_pts, NULL, __pyx_n_s_structureboost_prob_regressor, __pyx_d, ((PyObject *)__pyx_codeobj__10)); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 375, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_CyFunction_New(&__pyx_mdef_14structureboost_14prob_regressor_11PrestoBoost_7get_bin_pts, 0, __pyx_n_s_PrestoBoost_get_bin_pts, NULL, __pyx_n_s_structureboost_prob_regressor, __pyx_d, ((PyObject *)__pyx_codeobj__10)); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 365, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_CyFunction_SetDefaultsTuple(__pyx_t_3, __pyx_tuple__23);
-  if (__Pyx_SetNameInClass(__pyx_t_2, __pyx_n_s_get_bin_pts, __pyx_t_3) < 0) __PYX_ERR(0, 375, __pyx_L1_error)
+  if (__Pyx_SetNameInClass(__pyx_t_2, __pyx_n_s_get_bin_pts, __pyx_t_3) < 0) __PYX_ERR(0, 365, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-  /* "structureboost/prob_regressor.pyx":410
+  /* "structureboost/prob_regressor.pyx":400
  *         return(binvec)
  * 
  *     def predict_distributions(self, X_test, num_forests_to_use=-1, use_calibrators=False,             # <<<<<<<<<<<<<<
- *         calibrator_list=None):
+ *         calibrator_list=None, scaling='log'):
  *         if num_forests_to_use==-1:
  */
-  __pyx_t_3 = __Pyx_CyFunction_New(&__pyx_mdef_14structureboost_14prob_regressor_11PrestoBoost_9predict_distributions, 0, __pyx_n_s_PrestoBoost_predict_distribution, NULL, __pyx_n_s_structureboost_prob_regressor, __pyx_d, ((PyObject *)__pyx_codeobj__12)); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 410, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_CyFunction_New(&__pyx_mdef_14structureboost_14prob_regressor_11PrestoBoost_9predict_distributions, 0, __pyx_n_s_PrestoBoost_predict_distribution, NULL, __pyx_n_s_structureboost_prob_regressor, __pyx_d, ((PyObject *)__pyx_codeobj__12)); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 400, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_CyFunction_SetDefaultsTuple(__pyx_t_3, __pyx_tuple__25);
-  if (__Pyx_SetNameInClass(__pyx_t_2, __pyx_n_s_predict_distributions, __pyx_t_3) < 0) __PYX_ERR(0, 410, __pyx_L1_error)
+  if (__Pyx_SetNameInClass(__pyx_t_2, __pyx_n_s_predict_distributions, __pyx_t_3) < 0) __PYX_ERR(0, 400, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
   /* "structureboost/prob_regressor.pyx":14
@@ -12011,40 +12257,40 @@ if (!__Pyx_RefNanny) {
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "structureboost/prob_regressor.pyx":436
- *         return(PdfSet(final_dists))
+  /* "structureboost/prob_regressor.pyx":429
+ *         return(PdfGroup(bv, pm))
  * 
  * def fit_and_return(model, X_train, y_train):             # <<<<<<<<<<<<<<
  *     model.fit(X_train, y_train, verbose=0)
  *     return(model)
  */
-  __pyx_t_1 = PyCFunction_NewEx(&__pyx_mdef_14structureboost_14prob_regressor_1fit_and_return, NULL, __pyx_n_s_structureboost_prob_regressor); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 436, __pyx_L1_error)
+  __pyx_t_1 = PyCFunction_NewEx(&__pyx_mdef_14structureboost_14prob_regressor_1fit_and_return, NULL, __pyx_n_s_structureboost_prob_regressor); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 429, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_fit_and_return, __pyx_t_1) < 0) __PYX_ERR(0, 436, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_fit_and_return, __pyx_t_1) < 0) __PYX_ERR(0, 429, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "structureboost/prob_regressor.pyx":441
+  /* "structureboost/prob_regressor.pyx":434
  * 
  * 
  * def fit_and_return2(model, X_train, y_train, eval_set, eval_freq,             # <<<<<<<<<<<<<<
  *                         early_stop_past_steps, choose_best_eval):
  *     model.fit(X_train, y_train, eval_set, eval_freq,
  */
-  __pyx_t_1 = PyCFunction_NewEx(&__pyx_mdef_14structureboost_14prob_regressor_3fit_and_return2, NULL, __pyx_n_s_structureboost_prob_regressor); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 441, __pyx_L1_error)
+  __pyx_t_1 = PyCFunction_NewEx(&__pyx_mdef_14structureboost_14prob_regressor_3fit_and_return2, NULL, __pyx_n_s_structureboost_prob_regressor); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 434, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_fit_and_return2, __pyx_t_1) < 0) __PYX_ERR(0, 441, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_fit_and_return2, __pyx_t_1) < 0) __PYX_ERR(0, 434, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "structureboost/prob_regressor.pyx":447
+  /* "structureboost/prob_regressor.pyx":440
  *     return(model)
  * 
  * def calib_parallel(calibrator,binvec, model,X_calib, y_calib):             # <<<<<<<<<<<<<<
  *     validdiscpred = model.predict_proba(X_calib)
  *     y_calib_bin = np.digitize(y_calib,binvec[:-1]) -1
  */
-  __pyx_t_1 = PyCFunction_NewEx(&__pyx_mdef_14structureboost_14prob_regressor_5calib_parallel, NULL, __pyx_n_s_structureboost_prob_regressor); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 447, __pyx_L1_error)
+  __pyx_t_1 = PyCFunction_NewEx(&__pyx_mdef_14structureboost_14prob_regressor_5calib_parallel, NULL, __pyx_n_s_structureboost_prob_regressor); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 440, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_calib_parallel, __pyx_t_1) < 0) __PYX_ERR(0, 447, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_calib_parallel, __pyx_t_1) < 0) __PYX_ERR(0, 440, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
   /* "structureboost/prob_regressor.pyx":1

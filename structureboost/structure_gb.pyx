@@ -8,10 +8,16 @@ import pandas as pd
 import structure_dt as stdt
 import graphs
 import random
+# from utils import get_basic_config, default_config_dict
+# Always run into issues trying to import from utils
+# I just added the fns to structure_gb ...
+
 from libc.math cimport log as clog
 from libc.math cimport exp
 cimport numpy as np
 cimport cython
+
+ctypedef np.int64_t dtype_int64_t
 
 
 class StructureBoost(object):
@@ -112,6 +118,11 @@ class StructureBoost(object):
     random_state : int default=42
         A random seed that can be fixed for replicability purposes.
 
+    prec_digits : int default = 6
+        Number of digits to use for finding unique values in floats. This
+        is a technical point where two floats may be treated differently
+        even though they are the same value if this setting is too high.
+
 
     References
     ----------
@@ -123,19 +134,23 @@ class StructureBoost(object):
     Lucena, B. StructureBoost: Efficient Gradient Boosting for Structured
     Categorical Variables. https://arxiv.org/abs/2007.04446
     """
-    def __init__(self, num_trees, feature_configs,
+    def __init__(self, num_trees, feature_configs=None,
                  mode='classification',
                  loss_fn=None, subsample=1,
                  initial_model=None,
                  replace=True, min_size_split=25, max_depth=3,
                  gamma=0, reg_lambda=1, feat_sample_by_tree=1,
                  feat_sample_by_node=1, learning_rate=.02,
-                 random_seed=0, na_unseen_action='weighted_random'):
+                 random_seed=0, na_unseen_action='weighted_random',
+                 prec_digits=6, default_configs=None):
         self.num_trees = num_trees
         self.num_trees_for_prediction = num_trees
-        self.feature_configs = feature_configs.copy()
-        self._process_feature_configs()
-        self.feat_list_full = list(self.feature_configs.keys())
+        if feature_configs is not None:
+            self.feature_configs = feature_configs.copy()
+            self._process_feature_configs()
+            self.feat_list_full = list(self.feature_configs.keys())
+        else:
+            self.feature_configs=None
         self.min_size_split = min_size_split
         self.max_depth = max_depth
         self.gamma = gamma
@@ -151,6 +166,7 @@ class StructureBoost(object):
         self.na_unseen_action = na_unseen_action
         self.num_classes=2
         self.optimized = False
+        self.prec_digits=prec_digits
         self.mode = mode
         if mode not in ['classification', 'regression']:
             warnings.warn('Mode not recognized')
@@ -169,7 +185,10 @@ class StructureBoost(object):
             self.loss_fn_der_1 = _mse_der_1
             self.loss_fn_der_2 = _mse_der_2
 
-        self._validate_feature_config()
+        if self.feature_configs is not None:
+            self._validate_feature_config()
+        if default_configs is None:
+            self.default_configs = default_config_dict()
 
     def _validate_feature_config(self):
         valid_ftypes = ['numerical', 'categorical_int',
@@ -255,7 +274,7 @@ class StructureBoost(object):
     def process_curr_answer(self, curr_answer):
         return curr_answer
 
-    def compute_gh_mat(self, y_train, curr_answer):
+    def compute_gh_mat(self, y_train, curr_answer, index):
         y_g_vec = self.loss_fn_der_1(y_train, curr_answer)
         y_h_vec = self.loss_fn_der_2(y_train, curr_answer)
         y_g_h_mat = np.vstack((y_g_vec, y_h_vec)).T
@@ -267,6 +286,86 @@ class StructureBoost(object):
             return(my_log_loss(y_true, 1/(1+np.exp(-pred))))
         else:
             return(my_mean_squared_error(y_true, pred))
+
+    def _update_curr_answer(self, curr_answer, X_train, index):
+        if (index>0):
+            curr_answer = (curr_answer + self.learning_rate *
+                                    self.dec_tree_list[index-1].predict(X_train))
+        return(curr_answer)
+
+    def _get_rows_for_tree(self, num_rows):
+        if (self.subsample == 1) and (not self.replace):
+            return np.arange(num_rows)
+        rows_to_return = int(np.ceil(num_rows*self.subsample))
+        if self.replace:
+            return np.random.randint(0, num_rows, rows_to_return)
+        else:
+            return np.random.choice(num_rows, rows_to_return, replace=False)
+
+
+    def _get_features_for_tree(self):
+        if self.feat_sample_by_tree < 1:
+            feat_set_size = (self.feat_sample_by_tree *
+                             len(self.feat_list_full))
+            feat_set_size = int(np.maximum(feat_set_size, 1))
+            np.random.shuffle(self.feat_list_full)
+            features_for_tree = self.feat_list_full[:feat_set_size]
+        elif self.feat_sample_by_tree > 1:
+            feat_set_size = int(self.feat_sample_by_tree)
+            np.random.shuffle(self.feat_list_full)
+            features_for_tree = self.feat_list_full[:feat_set_size]
+        else:
+            features_for_tree = self.feat_list_full
+
+    def _output_loss_check_stop(self, y_valid, curr_valid_answer, i):
+        stop_now=False
+        if ((i+1) % self.eval_freq == 1) and (i>0):
+            curr_loss = self._compute_loss(y_valid, curr_valid_answer)
+            if self.verbose:
+                print("i={}, eval_set_loss = {}".format(i, curr_loss))
+            self.curr_step = np.floor((i+1) /
+                                 self.eval_freq).astype(int)-1
+            self.eval_results[self.curr_step] = curr_loss
+            if ((self.early_stop_past_steps>=0) and 
+                    (self.curr_step > self.early_stop_past_steps)):
+                self.best_step = np.argmin(self.eval_results[:(self.curr_step+1)])
+                if ((self.curr_step-self.best_step) >= self.early_stop_past_steps):
+                    stop_now = True
+                    if self.verbose:
+                        print("""Stopping early: low pt was {} steps ago"""
+                            .format((self.curr_step-self.best_step)))
+                    if self.choose_best_eval:
+                        self.num_trees_for_prediction = ((
+                            np.argmin(self.eval_results[:self.curr_step+1])+1) *
+                            self.eval_freq)
+        return(stop_now)
+
+    def _initialize_uv_dict(self, X_train):
+        self.unique_vals_dict = {}
+        for feature in self.feature_configs.keys():
+            if self.feature_configs[feature]['feature_type'] == 'numerical':
+                self.unique_vals_dict[feature] = np.sort(
+                                    pd.unique(np.round(X_train[feature].dropna(), 
+                                        decimals=self.prec_digits)))
+
+    def _init_eval_set_info(self, eval_set, y_train):
+        self.eval_results = np.zeros(np.floor(
+                                self.num_trees/self.eval_freq).astype(int))
+        X_valid = eval_set[0]
+        y_valid = eval_set[1]
+        y_valid = self._process_y_data(y_valid)
+        # below, we use X_valid and y_train *not a mistake* 
+        # if there is initial model, we apply it to X_valid
+        # otherwise we use the marginal averages from y_train
+        curr_valid_answer = self._get_initial_pred(X_valid, y_train)
+        curr_valid_loss = self._compute_loss(y_valid, curr_valid_answer)
+        if self.verbose:
+            print("i={}, eval_set_loss = {}".format(0, curr_valid_loss))
+        return(X_valid, y_valid, curr_valid_answer)
+
+    def _output_no_evalset(self, index):
+        if (((index+1) % self.eval_freq == 1) and self.verbose):
+                print("i={}".format(index))
 
 
     def fit(self, X_train, y_train, eval_set=None, eval_freq=10,
@@ -321,116 +420,59 @@ class StructureBoost(object):
             (by default).  Used to truncate the model rather than deleting
             trees.
         """
-        # Initialize random seeds
         np.random.seed(self.random_seed)
         random.seed(self.random_seed)
+        if self.feature_configs is None:
+            self.feature_configs = get_basic_config(X_train,self.default_configs)
+            self._process_feature_configs()
+            self.feat_list_full = list(self.feature_configs.keys())
         self.dec_tree_list = []
-
-        y_train = self._process_y_data(y_train)
-        self.initial_pred = self._get_initial_pred(X_train, y_train)
-
+        self.verbose = verbose
+        self.early_stop_past_steps = early_stop_past_steps
+        self.eval_freq = eval_freq
+        self.choose_best_eval = choose_best_eval
+        self.has_eval_set = (eval_set is not None)
         num_rows = X_train.shape[0]
         col_list = list(X_train.columns)
         self.column_to_int_dict = {col_list[i]: i for i in range(len(col_list))}
+        self._initialize_uv_dict(X_train)
+
+        y_train = self._process_y_data(y_train)
+        self.initial_pred = self._get_initial_pred(X_train, y_train)
         curr_answer = self.initial_pred
-
-        # Initalize unique values dict
-        self.unique_vals_dict = {}
-        for feature in self.feature_configs.keys():
-            if self.feature_configs[feature]['feature_type'] == 'numerical':
-                self.unique_vals_dict[feature] = np.sort(
-                                    pd.unique(X_train[feature].dropna()))
-
-        # Initalize eval_set related
-        self.eval_results = np.zeros(np.floor(self.num_trees/eval_freq).astype(int))
-        if eval_set is not None:
-            X_valid = eval_set[0]
-            y_valid = eval_set[1]
-            y_valid = self._process_y_data(y_valid)
-            # below, we use X_valid and y_train *not a mistake* 
-            # if there is initial model, we apply it to X_valid
-            # otherwise we use the marginal averages from y_train
-            curr_valid_answer = self._get_initial_pred(X_valid, y_train)
-            curr_valid_loss = self._compute_loss(y_valid, curr_valid_answer)
-            if verbose:
-                print("i={}, eval_set_loss = {}".format(0, curr_valid_loss))
+        if self.has_eval_set:
+            X_valid, y_valid, curr_valid_answer = self._init_eval_set_info(
+                                                            eval_set, y_train)
 
         # Main loop to build trees
         stop_now = False
         for i in range(self.num_trees):
-
-            # Get predictions of current model
-            if (i > 0):
-                curr_answer = (curr_answer + self.learning_rate *
-                               self.dec_tree_list[i-1].predict(X_train))
-
-                # handle eval_set / early_stopping related tasks
-                if eval_set is not None:
-                    curr_valid_answer = (curr_valid_answer +
-                                         self.learning_rate *
-                                         self.dec_tree_list[i-1].predict(
-                                            X_valid))
-                    if ((i+1) % eval_freq == 1):
-                        curr_loss = self._compute_loss(y_valid, curr_valid_answer)
-                        if verbose:
-                            print("i={}, eval_set_loss = {}".format(i, curr_loss))
-                        curr_step = np.floor((i+1) /
-                                             eval_freq).astype(int)-1
-                        self.eval_results[curr_step] = curr_loss
-                        if ((early_stop_past_steps>=0) and 
-                                (curr_step > early_stop_past_steps)):
-                            best_step = np.argmin(self.eval_results[:(curr_step+1)])
-                            if ((curr_step-best_step) >= early_stop_past_steps):
-                                stop_now = True
-                                if verbose:
-                                    print("""Stopping early: low pt was {} steps ago"""
-                                        .format((curr_step-best_step)))
-                            # compare_loss = np.min(self.eval_results[:(
-                            #                curr_step-early_stop_past_steps+1)])
-                            # if (curr_loss > compare_loss):
-                            #     stop_now = True
-                            #     print("""Stopping early: curr_loss of {}
-                            #             exceeds compare_loss of {}"""
-                            #           .format(curr_loss, compare_loss))
-                elif ((i+1) % eval_freq == 1):
-                    if verbose:
-                        print("i={}".format(i))
-
+            curr_answer = self._update_curr_answer(curr_answer, X_train, i)
+            # handle eval_set / early_stopping related tasks
+            if self.has_eval_set:
+                curr_valid_answer = self._update_curr_answer(curr_valid_answer,
+                                                    X_valid, i)
+                stop_now = self._output_loss_check_stop(y_valid,
+                                    curr_valid_answer, i)
                 if stop_now:
-                    if choose_best_eval:
-                        self.num_trees_for_prediction = ((
-                            np.argmin(self.eval_results[:curr_step+1])+1) *
-                            eval_freq)
                     break
-
-            # Get first and second derivatives of loss fn
-            # relative to current prediction
-            curr_answer = self.process_curr_answer(curr_answer)
-            y_g_h_mat = self.compute_gh_mat(y_train, curr_answer)
-
-            # Sample the data to use for this tree
-            rows_to_use = _get_rows_for_tree(num_rows, self.subsample,
-                                             self.replace)
-
-            # Determine which features to consider for this tree
-            if self.feat_sample_by_tree < 1:
-                feat_set_size = (self.feat_sample_by_tree *
-                                 len(self.feat_list_full))
-                feat_set_size = int(np.maximum(feat_set_size, 1))
-                np.random.shuffle(self.feat_list_full)
-                features_for_tree = self.feat_list_full[:feat_set_size]
-            elif self.feat_sample_by_tree > 1:
-                feat_set_size = int(self.feat_sample_by_tree)
-                np.random.shuffle(self.feat_list_full)
-                features_for_tree = self.feat_list_full[:feat_set_size]
             else:
-                features_for_tree = self.feat_list_full
+                self._output_no_evalset(i)
 
+            # Get first and second derivatives of loss fn for current prediction
+            curr_answer = self.process_curr_answer(curr_answer)
+            y_g_h_mat = self.compute_gh_mat(y_train, curr_answer, i)
+
+            # Determine rows and features to use for this tree
+            rows_to_use = self._get_rows_for_tree(num_rows)
+            features_for_tree = self._get_features_for_tree()
             X_train_to_use = X_train.iloc[rows_to_use, :]
             y_g_h_to_use = y_g_h_mat[rows_to_use, :]
 
             # Add and train the next tree
             self._add_train_next_tree(features_for_tree, X_train_to_use, y_g_h_to_use, i)
+
+        # Post-processing steps
         if self.na_unseen_action == 'weighted_random':
             self.rerandomize_na_dir_weighted_all_trees()
 
@@ -605,6 +647,52 @@ class StructureBoost(object):
                                                  feat_name]['feature_vals'])
         self.feature_graphs = fg
 
+    def predict_shap(self, X_test, int num_trees_to_use=-1, same_col_pos=True):
+        if (type(X_test)==np.ndarray):
+            if self.optimizable:
+                if self.optimized:
+                    return(self._predict_shap(X_test, num_trees_to_use))
+                else:
+                    self.get_tensors_for_predict()
+                    return(self._predict_shap(X_test, num_trees_to_use))
+            else:
+                print("Shap values not available for categorical string or voronoi vars")
+        elif (type(X_test)==pd.DataFrame):
+            if same_col_pos:
+                if self.optimizable:
+                    if not self.optimized:
+                        self.get_tensors_for_predict()
+                    return(self._predict_shap(X_test.to_numpy(), num_trees_to_use))
+                else:
+                    print("Shap values not available for categorical string or voronoi vars")
+            else:
+                print('columns must be in correct order for shap values')
+
+    def _predict_shap(self, 
+                    np.ndarray[double, ndim=2] X_test, int num_trees_to_use=-1):
+        cdef long i,j
+        cdef long nrows = X_test.shape[0]
+        cdef long nfeat = X_test.shape[1] #not including intercept
+        cdef double start_pred
+
+        if num_trees_to_use == -1:
+            num_trees_to_use = self.num_trees_for_prediction
+        phi_out = np.zeros((nrows, nfeat+1))
+        start_pred=0
+        if self.initial_model is None:
+            start_pred = self.initial_pred[0]
+        for j in range(nrows):
+            phi_out[j,nfeat] += start_pred
+        for i in range(num_trees_to_use):
+            dt_mat_int = self.pred_tens_int[i,:,:]
+            dt_mat_float = self.pred_tens_float[i,:,:]
+            for j in range(nrows):
+                curr_pt = X_test[j,:]
+                phi_out[j,:]+= tree_shap_single_pt(dt_mat_int, dt_mat_float,
+                    self.max_depth, curr_pt) * self.learning_rate
+        return(phi_out)
+
+
     def rerandomize_na_dir_weighted_all_trees(self):
         for i in range(len(self.dec_tree_list)):
             curr_tree = self.dec_tree_list[i].dec_tree
@@ -660,32 +748,12 @@ class StructureBoost(object):
             num_dt = len(self.dec_tree_list)
             max_nodes = np.max(np.array([dt.num_nodes for dt in self.dec_tree_list]))
             self.pred_tens_int = np.zeros((num_dt, max_nodes, cat_size+6), dtype=np.int64)-1
-            self.pred_tens_float = np.zeros((num_dt, max_nodes, 2))
+            self.pred_tens_float = np.zeros((num_dt, max_nodes, 3))
             for i in range(num_dt):
                 self.convert_dt_to_matrix(i)
             self.optimized=True
-
         else:
             print("Model not optimizable for predict due to string or voronoi variable.")
-
-    # # These are in dtm_float
-    # cdef long THRESH = 0
-    # cdef long NODE_VALUE = 1
-
-    # # These are in dtm_int
-    # cdef long NODE_TYPE = 0
-    # cdef long FEATURE_COL = 1
-    # cdef long LEFT_CHILD = 2
-    # cdef long RIGHT_CHILD = 3
-    # cdef long NA_LEFT = 4
-    # cdef long NUM_CAT_VALS = 5
-    # cdef long CAT_VALS_START = 6
-    # # categorical values for left: 6 ... 6 + num_cat_vals-1
-
-    # cdef long LEAF = 0
-    # cdef long NUMER = 1
-    # cdef long CATEG = 2
-
 
     def convert_dt_to_matrix(self, dt_num):
         curr_node = self.dec_tree_list[dt_num].dec_tree
@@ -695,8 +763,10 @@ class StructureBoost(object):
         ni = node['node_index']
         if node['node_type']=='leaf':
             self.pred_tens_int[dt_num, ni, 0]= 0
-            self.pred_tens_float[dt_num, ni, 1] = node['node_summary_val']
+            self.pred_tens_float[dt_num, ni, 1] = float(node['num_data_points'])
+            self.pred_tens_float[dt_num, ni, 2] = node['node_summary_val']
         else:
+            self.pred_tens_float[dt_num, ni, 1] = float(node['num_data_points'])
             if node['feature_type']=='numerical':
                 self.pred_tens_float[dt_num, ni, 0] = node['split_val']
                 self.pred_tens_int[dt_num, ni, 0]= 1
@@ -711,15 +781,6 @@ class StructureBoost(object):
             self.pred_tens_int[dt_num, ni, 4]=node['na_left']
             self.convert_subtree(node['left_child'], dt_num)
             self.convert_subtree(node['right_child'], dt_num)
-
-def _get_rows_for_tree(num_rows, subsample, replace):
-    if (subsample == 1) and (not replace):
-        return np.arange(num_rows)
-    rows_to_return = int(np.ceil(num_rows*subsample))
-    if replace:
-        return np.random.randint(0, num_rows, rows_to_return)
-    else:
-        return np.random.choice(num_rows, rows_to_return, replace=False)
 
 
 def _mse_der_1(y_true, y_pred, eps=1e-15):
@@ -742,6 +803,36 @@ def _entropy_link_der_2(y_true, z_pred, eps=1e-15):
     denom_2 = (1+minus_z_pred_exp)*(1+minus_z_pred_exp)
     return(y_true*(z_pred_exp/denom_1) +
            (1-y_true) * (minus_z_pred_exp/denom_2))
+
+
+def my_log_loss(y_true, y_pred, eps=1e-16):
+    y_pred = np.clip(y_pred, eps, (1-eps))
+    out_val = -np.mean(y_true*(np.log(y_pred)) + (1-y_true)*np.log(1-y_pred))
+    return out_val
+
+
+def my_log_loss_vec(y_true_mat, y_pred, eps=1e-16):
+    y_pred = np.clip(y_pred, eps, (1-eps))
+    out_val = -np.mean(np.sum(y_true_mat*np.log(y_pred),axis=1))
+    return out_val
+
+
+def my_mean_squared_error(y_true, y_pred):
+    return(np.mean((y_true-y_pred)*(y_true-y_pred)))
+
+
+def randomize_node_na_dir_weighted(curr_node):
+    if (('node_type' in curr_node.keys()) and 
+                (curr_node['node_type'] == 'interior')):
+        if ('na_dir_random' in curr_node.keys()) and (
+             curr_node['na_dir_random'] == 1):
+            lw = curr_node['left_child']['num_data_points']
+            rw = curr_node['right_child']['num_data_points']
+            curr_node['na_left'] = int(random.random() < (lw/(lw+rw)))
+        if curr_node['left_child']['node_type'] == 'interior':
+            randomize_node_na_dir_weighted(curr_node['left_child'])
+        if curr_node['right_child']['node_type'] == 'interior':
+            randomize_node_na_dir_weighted(curr_node['right_child'])
 
 
 @cython.boundscheck(False)  # Deactivate bounds checking
@@ -798,7 +889,8 @@ def predict_with_tensor_c(np.ndarray[double, ndim=3] dtm_float,
     
     # These are in dtm_float
     cdef long THRESH = 0
-    cdef long NODE_VALUE = 1
+    cdef long NODE_WEIGHT = 1
+    cdef long NODE_VALUE = 2
 
     # These are in dtm_int
     cdef long NODE_TYPE = 0
@@ -842,180 +934,418 @@ def predict_with_tensor_c(np.ndarray[double, ndim=3] dtm_float,
                             j+=1
                     cn = dtm[k,cn, LEFT_CHILD] if found_val else dtm[k,cn, RIGHT_CHILD]
     return(res_mat)
-                
+
+
+## Below was taken (and modified) from:
+# 
+# https://shap.readthedocs.io/en/latest/example_notebooks/
+# tabular_examples/tree_based_models/Python%20Version%20of%20Tree%20SHAP.html
+# 
+# extend our decision path with a fraction of one and zero extensions
+@cython.boundscheck(False)  # Deactivate bounds checking
+@cython.wraparound(False)   # Deactivate negative indexing.
+@cython.cdivision(True)
+cdef extend_path(np.ndarray[dtype_int64_t] feature_indexes, 
+                np.ndarray[double] zero_fractions,
+                np.ndarray[double] one_fractions, 
+                np.ndarray[double] pweights,
+                long unique_depth, double zero_fraction, 
+                double one_fraction, long feature_index):
+
+    cdef long i
+
+    feature_indexes[unique_depth] = feature_index
+    zero_fractions[unique_depth] = zero_fraction
+    one_fractions[unique_depth] = one_fraction
+    if unique_depth == 0:
+        pweights[unique_depth] = 1
+    else:
+        pweights[unique_depth] = 0
+
+    for i in range(unique_depth - 1, -1, -1):
+        pweights[i+1] += one_fraction * pweights[i] * (i + 1) / (unique_depth + 1)
+        pweights[i] = zero_fraction * pweights[i] * (unique_depth - i) / (unique_depth + 1)
+
+# undo a previous extension of the decision path
+# should try activating cdivision here but wasn't working before
+@cython.boundscheck(False)  # Deactivate bounds checking
+@cython.wraparound(False)   # Deactivate negative indexing.
+@cython.cdivision(True)
+cdef unwind_path(np.ndarray[dtype_int64_t] feature_indexes,
+                np.ndarray[double] zero_fractions,
+                np.ndarray[double] one_fractions, 
+                np.ndarray[double] pweights,
+                long unique_depth, long path_index):
+
+    cdef double one_fraction, zero_fraction, next_one_portion, tmp
+    cdef long i
+
+    one_fraction = one_fractions[path_index]
+    zero_fraction = zero_fractions[path_index]
+    next_one_portion = pweights[unique_depth]
+
+    for i in range(unique_depth - 1, -1, -1):
+        if one_fraction != 0:
+            tmp = pweights[i]
+            pweights[i] = next_one_portion * (unique_depth + 1) / ((i + 1) * one_fraction)
+            next_one_portion = tmp - pweights[i] * zero_fraction * (unique_depth - i) / (unique_depth + 1)
+        else:
+            pweights[i] = (pweights[i] * (unique_depth + 1)) / (zero_fraction * (unique_depth - i))
+
+    for i in range(path_index, unique_depth):
+        feature_indexes[i] = feature_indexes[i+1]
+        zero_fractions[i] = zero_fractions[i+1]
+        one_fractions[i] = one_fractions[i+1]
+
+# determine what the total permuation weight would be if
+# we unwound a previous extension in the decision path
+@cython.boundscheck(False)  # Deactivate bounds checking
+@cython.wraparound(False)   # Deactivate negative indexing.
+cdef double unwound_path_sum(np.ndarray[dtype_int64_t] feature_indexes, 
+                     np.ndarray[double] zero_fractions, 
+                     np.ndarray[double] one_fractions, 
+                     np.ndarray[double] pweights, 
+                     long unique_depth,
+                     long path_index):
+    cdef double one_fraction = one_fractions[path_index]
+    cdef double zero_fraction = zero_fractions[path_index]
+    cdef double next_one_portion = pweights[unique_depth]
+    cdef double total = 0.0
+    cdef long i
+    cdef double tmp
+
+    for i in range(unique_depth - 1, -1, -1):
+        if one_fraction != 0:
+            tmp = next_one_portion * (unique_depth + 1) / ((i + 1) * one_fraction)
+            total += tmp;
+            next_one_portion = pweights[i] - tmp * zero_fraction * ((unique_depth - i) / (unique_depth + 1))
+        else:
+            if zero_fraction == 0:
+                print('Warning: zero_fraction is 0')
+            else:
+                total += (pweights[i] / zero_fraction) / ((unique_depth - i) / (unique_depth + 1))
+
+    return total
+
+# recursive computation of SHAP values for a decision tree
+@cython.boundscheck(False)  # Deactivate bounds checking
+@cython.wraparound(False)   # Deactivate negative indexing.
+@cython.cdivision(True)
+cdef tree_shap_recursive(np.ndarray[dtype_int64_t] children_left, 
+                        np.ndarray[dtype_int64_t] children_right, 
+                        np.ndarray[dtype_int64_t] children_default, 
+                        np.ndarray[dtype_int64_t] features, 
+                        np.ndarray[dtype_int64_t] node_type_vec, 
+                        np.ndarray[dtype_int64_t] num_cat_vals_vec, 
+                        np.ndarray[dtype_int64_t, ndim=2] cat_vals_mat, 
+                        np.ndarray[double] thresholds,
+                        np.ndarray[double] values,
+                        np.ndarray[double] node_sample_weight,
+                        np.ndarray[double] x, 
+                        np.ndarray[long] x_missing,
+                        np.ndarray[double] phi, 
+                        long node_index, 
+                        long unique_depth, 
+                        np.ndarray[dtype_int64_t] parent_feature_indexes,
+                        np.ndarray[double] parent_zero_fractions, 
+                        np.ndarray[double] parent_one_fractions, 
+                        np.ndarray[double] parent_pweights,
+                        double parent_zero_fraction,
+                        double parent_one_fraction, 
+                        long parent_feature_index, 
+                        long condition, 
+                        long condition_feature, 
+                        double condition_fraction):
+
+    cdef long pfi_len = len(parent_feature_indexes)
+    cdef np.ndarray[dtype_int64_t] feature_indexes = np.zeros(pfi_len, dtype=np.int64)
+    cdef np.ndarray[double] zero_fractions = np.zeros(pfi_len, dtype=np.float64)
+    cdef np.ndarray[double] one_fractions = np.zeros(pfi_len, dtype=np.float64)
+    cdef np.ndarray[double] pweights = np.zeros(pfi_len, dtype=np.float64)
+
+    cdef long i,j,k, split_index, hot_index, cold_index, cleft, cright, path_index,
+    cdef double w, hot_zero_fraction, cold_zero_fraction, hot_condition_fraction
+    cdef double incoming_zero_fraction, incoming_one_fraction, cold_condition_fraction
+    # TODO: optimize below for cython
+    # section "extend the unique path" is inefficiently implemented
+    # also issues with type consistency (long vs pyint, float v double, etc.)
+
+    # stop if we have no weight coming down to us
+    if condition_fraction == 0:
+        return
+
+    # # extend the unique path
+    # feature_indexes = parent_feature_indexes[unique_depth + 1:]
+    # feature_indexes[:unique_depth + 1] = parent_feature_indexes[:unique_depth + 1]
+    # zero_fractions = parent_zero_fractions[unique_depth + 1:]
+    # zero_fractions[:unique_depth + 1] = parent_zero_fractions[:unique_depth + 1]
+    # one_fractions = parent_one_fractions[unique_depth + 1:]
+    # one_fractions[:unique_depth + 1] = parent_one_fractions[:unique_depth + 1]
+    # pweights = parent_pweights[unique_depth + 1:]
+    # pweights[:unique_depth + 1] = parent_pweights[:unique_depth + 1]
+
+    # extend the unique path
+    j=0
+    # I am assuming the length of parent_feature_indexes is the same as the others
+    for i in range((unique_depth + 1),pfi_len):
+        feature_indexes[j] = parent_feature_indexes[i]
+        zero_fractions[j] = parent_zero_fractions[i]
+        one_fractions[j] = parent_one_fractions[i]
+        pweights[j] = parent_pweights[i]
+        j+=1
+    for i in range(unique_depth+1):   
+        feature_indexes[i] = parent_feature_indexes[i]
+        zero_fractions[i] = parent_zero_fractions[i]
+        one_fractions[i] = parent_one_fractions[i]
+        pweights[i] = parent_pweights[i]
+
+    if condition == 0 or condition_feature != parent_feature_index:
+        extend_path(
+            feature_indexes, zero_fractions, one_fractions, pweights,
+            unique_depth, parent_zero_fraction, parent_one_fraction, parent_feature_index
+        )
+
+    split_index = features[node_index]
+
+    # leaf node
+    if children_right[node_index] == -1:
+        for i in range(1, unique_depth+1):
+            w = unwound_path_sum(feature_indexes, zero_fractions, one_fractions, pweights, unique_depth, i)
+            phi[feature_indexes[i]] += w * (one_fractions[i] - zero_fractions[i]) * values[node_index] * condition_fraction
+    # internal node
+    else:
+        # find which branch is "hot" (meaning x would follow it)
+        hot_index = 0
+        cleft = children_left[node_index]
+        cright = children_right[node_index]
+        if x_missing[split_index] == 1:
+            hot_index = children_default[node_index]
+        elif (node_type_vec[node_index]==1) and (x[split_index] < thresholds[node_index]): # (node_type_vec[node_index]==1) and 
+            hot_index = cleft
+        elif (node_type_vec[node_index]==2):
+            hot_index = cright
+            for k in range(num_cat_vals_vec[node_index]):
+                if x[split_index]==cat_vals_mat[node_index,k]:
+                    hot_index = cleft
+                    break
+        else:
+            hot_index = cright
+        cold_index = (cright if hot_index == cleft else cleft)
+        w = node_sample_weight[node_index]
+        hot_zero_fraction = node_sample_weight[hot_index] / w
+        cold_zero_fraction = node_sample_weight[cold_index] / w
+        incoming_zero_fraction = 1
+        incoming_one_fraction = 1
+
+        # see if we have already split on this feature,
+        # if so we undo that split so we can redo it for this node
+        path_index = 0
+        while (path_index <= unique_depth):
+            if feature_indexes[path_index] == split_index:
+                break
+            path_index += 1
+
+        if path_index != unique_depth + 1:
+            incoming_zero_fraction = zero_fractions[path_index]
+            incoming_one_fraction = one_fractions[path_index]
+            unwind_path(feature_indexes, zero_fractions, one_fractions, pweights, unique_depth, path_index)
+            unique_depth -= 1
+
+        # divide up the condition_fraction among the recursive calls
+        hot_condition_fraction = condition_fraction
+        cold_condition_fraction = condition_fraction
+        if condition > 0 and split_index == condition_feature:
+            cold_condition_fraction = 0;
+            unique_depth -= 1
+        elif condition < 0 and split_index == condition_feature:
+            hot_condition_fraction *= hot_zero_fraction
+            cold_condition_fraction *= cold_zero_fraction
+            unique_depth -= 1
+
+        tree_shap_recursive(
+            children_left, children_right, children_default, features, 
+            node_type_vec, num_cat_vals_vec, cat_vals_mat,
+            thresholds, values, node_sample_weight,
+            x, x_missing, phi, hot_index, unique_depth + 1,
+            feature_indexes, zero_fractions, one_fractions, pweights,
+            hot_zero_fraction * incoming_zero_fraction, incoming_one_fraction,
+            split_index, condition, condition_feature, hot_condition_fraction
+        )
+
+        tree_shap_recursive(
+            children_left, children_right, children_default, features, 
+            node_type_vec, num_cat_vals_vec, cat_vals_mat,
+            thresholds, values, node_sample_weight,
+            x, x_missing, phi, cold_index, unique_depth + 1,
+            feature_indexes, zero_fractions, one_fractions, pweights,
+            cold_zero_fraction * incoming_zero_fraction, 0,
+            split_index, condition, condition_feature, cold_condition_fraction
+        )
         
+def tree_shap_single_pt(dt_mat_int, dt_mat_float,  dt_max_depth, X_in, condition=0, condition_feature=0):
 
-ctypedef np.int64_t dtype_int64_t 
-
-# @cython.boundscheck(False)  # Deactivate bounds checking
-# @cython.wraparound(False)   # Deactivate negative indexing.
-# @cython.nonecheck(False)
-# @cython.cdivision(True)
-# def c_entropy_link_der_1_vec(np.ndarray[dtype_int64_t] y_true,
-#                          double[:,:] phi_pred):
-#     cdef int N = y_true.shape[0]
-#     cdef int m = phi_pred.shape[1]
-#     cdef double[:,:] Y = np.zeros((N,m))
-#     #Y = np.zeros((N, m), dtype=np.dtype('float64'))
-#     cdef float phi_exp_sum = 0
+    x_missing = np.isnan(X_in).astype(int)
+    # Extract tree info from the matrix/tensor representation
+    dt_thresholds = dt_mat_float[:,0]
+    dt_node_weights = dt_mat_float[:,1]
+    dt_node_vals = dt_mat_float[:,2] # for a single valued output
     
-#     for i in range(N):
-#         for j in range(m):
-#             phi_exp_sum = 0
-#             for k in range(m):
-#                 phi_exp_sum+=exp(phi_pred[i,k])
-#             if j==y_true[i]:
-#                 Y[i,j]=(exp(phi_pred[i,j])/phi_exp_sum)-1
-#             else:
-#                 Y[i,j]=(exp(phi_pred[i,j])/phi_exp_sum)
-                
-#     return np.asarray(Y)
+    dt_node_type = dt_mat_int[:,0]
+    dt_features = dt_mat_int[:,1]
+    dt_left_children = dt_mat_int[:,2]
+    dt_right_children = dt_mat_int[:,3]
+    dt_na_left = dt_mat_int[:,4]
+    dt_default_children = dt_na_left*dt_left_children + (1-dt_na_left)*dt_right_children
+    dt_num_cat_vals = dt_mat_int[:,5]
+    dt_cat_vals_mat = dt_mat_int[:,6:]
 
-
-# @cython.boundscheck(False)  # Deactivate bounds checking
-# @cython.wraparound(False)   # Deactivate negative indexing.
-# @cython.nonecheck(False)
-# @cython.cdivision(True)
-# def c_entropy_link_der_2_vec(np.ndarray[dtype_int64_t] y_true,
-#                          double[:,:] phi_pred):
-#     cdef int N = y_true.shape[0]
-#     cdef int m = phi_pred.shape[1]
-#     cdef double[:,:] Y = np.zeros((N,m))
-#     #Y = np.zeros((N, m), dtype=np.dtype('float64'))
-#     cdef float phi_exp_sum = 0
+    # Initialize tracking vectors
+    s = (dt_max_depth+2)*(dt_max_depth+1)
+    feature_indexes = np.zeros(s, dtype=np.int64)
+    zero_fractions = np.zeros(s, dtype=np.float64)
+    one_fractions = np.zeros(s, dtype=np.float64)
+    pweights = np.zeros(s, dtype=np.float64)
     
-#     for i in range(N):
-#         for j in range(m):
-#             phi_exp_sum = 0
-#             for k in range(m):
-#                 phi_exp_sum+=exp(phi_pred[i,k])
-#             Y[i,j]=-(exp(phi_pred[i,j])*(exp(phi_pred[i,j]-phi_exp_sum)/
-#                                              (phi_exp_sum*phi_exp_sum)))                
-#     return np.asarray(Y)
+    phi = np.zeros(len(X_in)+1) # Assuming single value output
+    root_val = (np.sum((dt_node_type==0) * (dt_node_weights) * dt_node_vals) / 
+                np.sum((dt_node_type==0) * (dt_node_weights)) )
+    # update the bias term, which is the last index in phi
+    # (note the paper has this as phi_0 instead of phi_M)
+    if condition == 0:
+        phi[-1] +=  root_val # Assuming single value output
 
-# @cython.boundscheck(False)  # Deactivate bounds checking
-# @cython.wraparound(False)   # Deactivate negative indexing.
-# @cython.nonecheck(False)
-# @cython.cdivision(True)
-# def c_str_entropy_link_der_1_vec(np.ndarray[dtype_int64_t] y_true,
-#                                  double[:,:] phi_pred, 
-#                                  double[:] weight_vec, 
-#                                  dtype_int64_t[:,:,:] rp_tensor, 
-#                                  int num_part):
-#     cdef int N = y_true.shape[0]
-#     cdef int m = phi_pred.shape[1]
-#     cdef int ind = 0
-#     cdef int qqq, xyz
-#     cdef double curr_wt
-#     cdef dict md
-#     cdef double[:,:] Y = np.zeros((N,m))
-#     #Y = np.zeros((N, m), dtype=np.dtype('float64'))
-#     cdef double all_sum = 0
-#     cdef double set_sum = 0
+    # start the recursive algorithm
+    tree_shap_recursive(
+        dt_left_children, dt_right_children, dt_default_children, dt_features,
+        dt_node_type, dt_num_cat_vals, dt_cat_vals_mat,
+        dt_thresholds, dt_node_vals, dt_node_weights,
+        X_in, x_missing, phi, 0, 0, feature_indexes, zero_fractions, one_fractions, pweights,
+        1, 1, -1, condition, condition_feature, 1
+    )
+    
+    return(phi)
 
-#     for qqq in range(num_part):
-#         curr_wt = weight_vec[ind]
-        
-#         for i in range(N):
-#             # get sum of exp phi for this row
-#             all_sum = 0
-#             for k in range(m):
-#                 all_sum+=exp(phi_pred[i,k])
-#             xyz=0
-#             while (rp_tensor[qqq,xyz,y_true[i]]==0):
-#                 xyz+=1
-#             set_sum = 0
-#             for t in range(m):
-#                 if (rp_tensor[qqq,xyz,t]==1):
-#                     set_sum+=exp(phi_pred[i,t])
-#             for j in range(m):
+def get_basic_config(X_tr, default_config, X_te=None):
+    """Returns a feature_configs based on a training set and some defaults.
 
-#                 # if j in set containing y_true[i]
-#                 if (rp_tensor[qqq,xyz,j]==1):
-#                     #Y[i,j]+= value when j in T * weight
-#                     Y[i,j]+=(-curr_wt * (exp(phi_pred[i,j])*(all_sum-set_sum)/
-#                                         (set_sum*all_sum)))
-#                 else:
-#                     #Y[i,j]+= value when j not in T * weight
-#                     Y[i,j]+=curr_wt * exp(phi_pred[i,j])/all_sum
-                
-#     return np.asarray(Y)
+    This is a tool to avoid constructing the feature_configs from scratch.
+    Call `get_basic_config` with the results of `default_config_dict()`
+    as the second argument.
+    Then modify the resulting config to your liking.
 
-# @cython.boundscheck(False)  # Deactivate bounds checking
-# @cython.wraparound(False)   # Deactivate negative indexing.
-# @cython.nonecheck(False)
-# @cython.cdivision(True)
-# def c_str_entropy_link_der_2_vec(np.ndarray[dtype_int64_t] y_true,
-#                                  double[:,:] phi_pred, 
-#                                  double[:] weight_vec, 
-#                                  dtype_int64_t[:,:,:] rp_tensor, 
-#                                  int num_part):
-#     cdef int N = y_true.shape[0]
-#     cdef int m = phi_pred.shape[1]
-#     cdef int ind = 0
-#     cdef int qqq, xyz
-#     cdef double curr_wt
-#     cdef dict md
-#     cdef double[:,:] Y = np.zeros((N,m))
-#     #Y = np.zeros((N, m), dtype=np.dtype('float64'))
-#     cdef double all_sum = 0
-#     cdef double set_sum = 0
+    Parameters
+    ----------
 
-#     for qqq in range(num_part):
-#         curr_wt = weight_vec[ind]
-        
-#         for i in range(N):
-#             # get sum of exp phi for this row
-#             all_sum = 0
-#             for k in range(m):
-#                 all_sum+=exp(phi_pred[i,k])
-#             xyz=0
-#             while (rp_tensor[qqq,xyz,y_true[i]]==0):
-#                 xyz+=1
-#             set_sum = 0
-#             for t in range(m):
-#                 if (rp_tensor[qqq,xyz,t]==1):
-#                     set_sum+=exp(phi_pred[i,t])
-#             for j in range(m):
+    X_tr : DataFrame
+        A dataframe containing the features you plan to train on.  The function
+        will analyze the values, make some assumptions, and apply the defaults
+        to give a starting configuration dict, which can either be used directly
+        of further modified.
 
-#                 # if j in set containing y_true[i]
-#                 jt = (exp(phi_pred[i,j])/set_sum)
-#                 jk = (exp(phi_pred[i,j])/all_sum)
-#                 if (rp_tensor[qqq,xyz,j]==1):
-#                     #Y[i,j]+= value when j in T * weight
-#                     Y[i,j]+=(-curr_wt * (jt-jk+jk*jk-jt*jt))
-#                 else:
-#                     #Y[i,j]+= value when j not in T * weight
-#                     Y[i,j]+=(-curr_wt * (-jk+jk*jk))
-                
-#     return np.asarray(Y)
+    default_config : dict
+        This should usually be the output of the `default_config_dict` (or a 
+        modified version of it).
+
+    Examples
+    --------
+    >>> def_set = stb.default_config_dict()
+    >>> def_set
+    {'default_categorical_method': 'span_tree',
+    'default_num_span_trees': 1,
+    'default_contraction_size': 9,
+    'default_contraction_max_splits_to_search': 25,
+    'default_numerical_max_splits_to_search': 25}
+    >>> feat_cfg = stb.get_basic_config(X_train, def_set)
+    >>> feat_cfg
+    {'county': {'feature_type': 'categorical_str',
+      'graph': <graphs.graph_undirected at 0x10ea75860>,
+      'split_method': 'span_tree',
+      'num_span_trees': 1},
+     'month': {'feature_type': 'numerical', 'max_splits_to_search': 25}}
+    >>> stb_model = stb.StructureBoost(num_trees = 2500,
+                                    learning_rate=.02,
+                                    feature_configs=feat_cfg, 
+                                    max_depth=2,
+                                    mode='classification')
+    >>> stb_model.fit(X_train, y_train)
+"""
+    feature_config_dict = {}
+    for colname in X_tr.columns:
+        if X_te is not None:
+            vec_to_use = pd.concat((X_tr[colname], X_te.colname))
+        else:
+            vec_to_use = X_tr[colname]
+        config, graph = get_basic_config_series(vec_to_use, default_config)
+        feature_config_dict[colname] = config
+        if graph is not None:
+            feature_config_dict[colname]['graph'] = graph
+    return feature_config_dict
 
 
-def my_log_loss(y_true, y_pred, eps=1e-16):
-    y_pred = np.clip(y_pred, eps, (1-eps))
-    out_val = -np.mean(y_true*(np.log(y_pred)) + (1-y_true)*np.log(1-y_pred))
-    return out_val
+def default_config_dict():
+    """Returns a dict of defaults to be used with `get_basic_config`
 
+    The dictionary returned will contain a set of default values.
+    These can be modified before the dictionary is used with the 
+    `get_basic_config` function.
 
-def my_log_loss_vec(y_true_mat, y_pred, eps=1e-16):
-    y_pred = np.clip(y_pred, eps, (1-eps))
-    out_val = -np.mean(np.sum(y_true_mat*np.log(y_pred),axis=1))
-    return out_val
+    Returns
+    -------
 
+    config_dict : dict
+        A dictionary containing defaults to be used in `get_basic_config()`
 
-def my_mean_squared_error(y_true, y_pred):
-    return(np.mean((y_true-y_pred)*(y_true-y_pred)))
+    Examples
+    --------
+    >>> def_set = stb.default_config_dict()
+    >>> def_set
+    {'default_categorical_method': 'span_tree',
+    'default_num_span_trees': 1,
+    'default_contraction_size': 9,
+    'default_contraction_max_splits_to_search': 25,
+    'default_numerical_max_splits_to_search': 25}
+    >>> feat_cfg = stb.get_basic_config(X_train, def_set)
+    >>> feat_cfg
+    {'county': {'feature_type': 'categorical_str',
+      'graph': <graphs.graph_undirected at 0x10ea75860>,
+      'split_method': 'span_tree',
+      'num_span_trees': 1},
+     'month': {'feature_type': 'numerical', 'max_splits_to_search': 25}}
+    >>> stb_model = stb.StructureBoost(num_trees = 2500,
+                                    learning_rate=.02,
+                                    feature_configs=feat_cfg, 
+                                    max_depth=2,
+                                    mode='classification')
+    >>> stb_model.fit(X_train, y_train)
+    """
+    config_dict = {}
+    config_dict['default_categorical_method'] = 'span_tree'
+    config_dict['default_num_span_trees'] = 1
+    config_dict['default_contraction_size'] = 9
+    config_dict['default_contraction_max_splits_to_search'] = 25
+    config_dict['default_numerical_max_splits_to_search'] = 25
+    return config_dict
 
+def get_basic_config_series(feature_vec, default_config):
+    config_dict = {}
+    graph_out = None
+    if feature_vec.dtype == 'O':
+        config_dict['feature_type'] = 'categorical_str'
+        config_dict['graph'] = graphs.complete_graph(pd.unique(
+                                                     feature_vec.dropna()))
+        categorical_method = default_config['default_categorical_method']
+        config_dict['split_method'] = categorical_method
+        if categorical_method == 'contraction':
+            config_dict['contraction_size'] = default_config[
+                                                'default_contraction_size']
+            config_dict['max_splits_to_search'] = default_config[
+                                'default_contraction_max_splits_to_search']
+        if categorical_method == 'span_tree':
+            config_dict['num_span_trees'] = default_config[
+                                                    'default_num_span_trees']
+    else:
+        config_dict['feature_type'] = 'numerical'
+        config_dict['max_splits_to_search'] = default_config[
+                                    'default_numerical_max_splits_to_search']
+    return config_dict, graph_out
 
-def randomize_node_na_dir_weighted(curr_node):
-    if (('node_type' in curr_node.keys()) and 
-                (curr_node['node_type'] == 'interior')):
-        if ('na_dir_random' in curr_node.keys()) and (
-             curr_node['na_dir_random'] == 1):
-            lw = curr_node['left_child']['num_data_points']
-            rw = curr_node['right_child']['num_data_points']
-            curr_node['na_left'] = int(random.random() < (lw/(lw+rw)))
-        if curr_node['left_child']['node_type'] == 'interior':
-            randomize_node_na_dir_weighted(curr_node['left_child'])
-        if curr_node['right_child']['node_type'] == 'interior':
-            randomize_node_na_dir_weighted(curr_node['right_child'])

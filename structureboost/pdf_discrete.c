@@ -957,8 +957,8 @@ static const char *__pyx_f[] = {
 struct __pyx_obj_14structureboost_12pdf_discrete___pyx_scope_struct__get_part;
 struct __pyx_obj_14structureboost_12pdf_discrete___pyx_scope_struct_1_genexpr;
 
-/* "structureboost/pdf_discrete.pyx":144
- *     #             width = self.bin_widths[index], color=bar_color)
+/* "structureboost/pdf_discrete.pyx":207
+ *         return((self.quantile((1-coverage)/2), self.quantile(1-((1-coverage)/2))))
  * 
  * def get_part(nc, blocksize, start_val):             # <<<<<<<<<<<<<<
  *     list1=[]
@@ -972,7 +972,7 @@ struct __pyx_obj_14structureboost_12pdf_discrete___pyx_scope_struct__get_part {
 };
 
 
-/* "structureboost/pdf_discrete.pyx":150
+/* "structureboost/pdf_discrete.pyx":213
  *     if start_val>0:
  *         list1.append(list(range(0,start_val)))
  *     list1+=(list(range(i*blocksize+start_val, (i+1)*blocksize+start_val)) for i in range(num_full_blocks))             # <<<<<<<<<<<<<<
@@ -1463,6 +1463,12 @@ static PyObject* __Pyx_PyFloat_SubtractObjC(PyObject *op1, PyObject *op2, double
     (inplace ? PyNumber_InPlaceSubtract(op1, op2) : PyNumber_Subtract(op1, op2))
 #endif
 
+/* SliceObject.proto */
+static CYTHON_INLINE PyObject* __Pyx_PyObject_GetSlice(
+        PyObject* obj, Py_ssize_t cstart, Py_ssize_t cstop,
+        PyObject** py_start, PyObject** py_stop, PyObject** py_slice,
+        int has_cstart, int has_cstop, int wraparound);
+
 /* PyIntBinop.proto */
 #if !CYTHON_COMPILING_IN_PYPY
 static PyObject* __Pyx_PyInt_TrueDivideObjC(PyObject *op1, PyObject *op2, long intval, int inplace, int zerodivision_check);
@@ -1470,12 +1476,6 @@ static PyObject* __Pyx_PyInt_TrueDivideObjC(PyObject *op1, PyObject *op2, long i
 #define __Pyx_PyInt_TrueDivideObjC(op1, op2, intval, inplace, zerodivision_check)\
     (inplace ? PyNumber_InPlaceTrueDivide(op1, op2) : PyNumber_TrueDivide(op1, op2))
 #endif
-
-/* SliceObject.proto */
-static CYTHON_INLINE PyObject* __Pyx_PyObject_GetSlice(
-        PyObject* obj, Py_ssize_t cstart, Py_ssize_t cstop,
-        PyObject** py_start, PyObject** py_stop, PyObject** py_slice,
-        int has_cstart, int has_cstop, int wraparound);
 
 /* GetItemInt.proto */
 #define __Pyx_GetItemInt(o, i, type, is_signed, to_py_func, is_list, wraparound, boundscheck)\
@@ -1498,6 +1498,13 @@ static CYTHON_INLINE PyObject *__Pyx_GetItemInt_Tuple_Fast(PyObject *o, Py_ssize
 static PyObject *__Pyx_GetItemInt_Generic(PyObject *o, PyObject* j);
 static CYTHON_INLINE PyObject *__Pyx_GetItemInt_Fast(PyObject *o, Py_ssize_t i,
                                                      int is_list, int wraparound, int boundscheck);
+
+/* PyObjectCallNoArg.proto */
+#if CYTHON_COMPILING_IN_CPYTHON
+static CYTHON_INLINE PyObject* __Pyx_PyObject_CallNoArg(PyObject *func);
+#else
+#define __Pyx_PyObject_CallNoArg(func) __Pyx_PyObject_Call(func, __pyx_empty_tuple, NULL)
+#endif
 
 /* PyIntBinop.proto */
 #if !CYTHON_COMPILING_IN_PYPY
@@ -1540,6 +1547,14 @@ static CYTHON_INLINE int __Pyx_PyBytes_Equals(PyObject* s1, PyObject* s2, int eq
 /* UnicodeEquals.proto */
 static CYTHON_INLINE int __Pyx_PyUnicode_Equals(PyObject* s1, PyObject* s2, int equals);
 
+/* PyIntBinop.proto */
+#if !CYTHON_COMPILING_IN_PYPY
+static PyObject* __Pyx_PyInt_SubtractCObj(PyObject *op1, PyObject *op2, long intval, int inplace, int zerodivision_check);
+#else
+#define __Pyx_PyInt_SubtractCObj(op1, op2, intval, inplace, zerodivision_check)\
+    (inplace ? PyNumber_InPlaceSubtract(op1, op2) : PyNumber_Subtract(op1, op2))
+#endif
+
 /* RaiseTooManyValuesToUnpack.proto */
 static CYTHON_INLINE void __Pyx_RaiseTooManyValuesError(Py_ssize_t expected);
 
@@ -1560,13 +1575,6 @@ static PyObject* __Pyx_PyInt_AddObjC(PyObject *op1, PyObject *op2, long intval, 
     (inplace ? PyNumber_InPlaceAdd(op1, op2) : PyNumber_Add(op1, op2))
 #endif
 
-/* PyObjectCallNoArg.proto */
-#if CYTHON_COMPILING_IN_CPYTHON
-static CYTHON_INLINE PyObject* __Pyx_PyObject_CallNoArg(PyObject *func);
-#else
-#define __Pyx_PyObject_CallNoArg(func) __Pyx_PyObject_Call(func, __pyx_empty_tuple, NULL)
-#endif
-
 /* ListAppend.proto */
 #if CYTHON_USE_PYLIST_INTERNALS && CYTHON_ASSUME_SAFE_MACROS
 static CYTHON_INLINE int __Pyx_PyList_Append(PyObject* list, PyObject* x) {
@@ -1584,14 +1592,6 @@ static CYTHON_INLINE int __Pyx_PyList_Append(PyObject* list, PyObject* x) {
 #define __Pyx_PyList_Append(L,x) PyList_Append(L,x)
 #endif
 
-/* PyIntBinop.proto */
-#if !CYTHON_COMPILING_IN_PYPY
-static PyObject* __Pyx_PyInt_SubtractCObj(PyObject *op1, PyObject *op2, long intval, int inplace, int zerodivision_check);
-#else
-#define __Pyx_PyInt_SubtractCObj(op1, op2, intval, inplace, zerodivision_check)\
-    (inplace ? PyNumber_InPlaceSubtract(op1, op2) : PyNumber_Subtract(op1, op2))
-#endif
-
 /* None.proto */
 static CYTHON_INLINE void __Pyx_RaiseClosureNameError(const char *varname);
 
@@ -1603,6 +1603,9 @@ static PyObject* __Pyx_PyObject_CallMethod1(PyObject* obj, PyObject* method_name
 
 /* append.proto */
 static CYTHON_INLINE int __Pyx_PyObject_Append(PyObject* L, PyObject* x);
+
+/* None.proto */
+static CYTHON_INLINE void __Pyx_RaiseUnboundLocalError(const char *varname);
 
 /* PyObject_GenericGetAttrNoDict.proto */
 #if CYTHON_USE_TYPE_SLOTS && CYTHON_USE_PYTYPE_LOOKUP && PY_VERSION_HEX < 0x03070000
@@ -1869,6 +1872,7 @@ int __pyx_module_is_main_structureboost__pdf_discrete = 0;
 
 /* Implementation of 'structureboost.pdf_discrete' */
 static PyObject *__pyx_builtin_object;
+static PyObject *__pyx_builtin_print;
 static PyObject *__pyx_builtin_range;
 static PyObject *__pyx_builtin_enumerate;
 static const char __pyx_k_T[] = "T";
@@ -1877,24 +1881,28 @@ static const char __pyx_k_x[] = "x";
 static const char __pyx_k_nc[] = "nc";
 static const char __pyx_k_np[] = "np";
 static const char __pyx_k_pd[] = "pd";
+static const char __pyx_k_pv[] = "pv";
 static const char __pyx_k_sv[] = "sv";
-static const char __pyx_k__21[] = "*";
+static const char __pyx_k__26[] = "*";
 static const char __pyx_k_abs[] = "abs";
-static const char __pyx_k_add[] = "__add__";
 static const char __pyx_k_bar[] = "bar";
 static const char __pyx_k_cdf[] = "cdf";
 static const char __pyx_k_doc[] = "__doc__";
+static const char __pyx_k_dot[] = "dot";
+static const char __pyx_k_eps[] = "eps";
+static const char __pyx_k_exp[] = "exp";
 static const char __pyx_k_inf[] = "inf";
 static const char __pyx_k_jkl[] = "jkl";
+static const char __pyx_k_loc[] = "loc";
+static const char __pyx_k_log[] = "log";
 static const char __pyx_k_min[] = "min";
-static const char __pyx_k_pd2[] = "pd2";
 static const char __pyx_k_plt[] = "plt";
 static const char __pyx_k_pv1[] = "pv1";
-static const char __pyx_k_pv2[] = "pv2";
 static const char __pyx_k_sum[] = "sum";
 static const char __pyx_k_val[] = "val";
 static const char __pyx_k_args[] = "args";
 static const char __pyx_k_axis[] = "axis";
+static const char __pyx_k_beta[] = "beta";
 static const char __pyx_k_diff[] = "diff";
 static const char __pyx_k_init[] = "__init__";
 static const char __pyx_k_main[] = "__main__";
@@ -1918,18 +1926,24 @@ static const char __pyx_k_isinf[] = "isinf";
 static const char __pyx_k_list1[] = "list1";
 static const char __pyx_k_numpy[] = "numpy";
 static const char __pyx_k_order[] = "order";
+static const char __pyx_k_print[] = "print";
 static const char __pyx_k_range[] = "range";
 static const char __pyx_k_throw[] = "throw";
+static const char __pyx_k_total[] = "total";
 static const char __pyx_k_where[] = "where";
 static const char __pyx_k_width[] = "width";
+static const char __pyx_k_y_bin[] = "y_bin";
 static const char __pyx_k_zeros[] = "zeros";
 static const char __pyx_k_append[] = "append";
 static const char __pyx_k_bin_lp[] = "bin_lp";
+static const char __pyx_k_binnum[] = "binnum";
 static const char __pyx_k_binvec[] = "binvec";
+static const char __pyx_k_counts[] = "counts";
 static const char __pyx_k_cumsum[] = "cumsum";
 static const char __pyx_k_height[] = "height";
 static const char __pyx_k_import[] = "__import__";
 static const char __pyx_k_kwargs[] = "kwargs";
+static const char __pyx_k_linear[] = "linear";
 static const char __pyx_k_median[] = "median";
 static const char __pyx_k_module[] = "__module__";
 static const char __pyx_k_object[] = "object";
@@ -1940,19 +1954,27 @@ static const char __pyx_k_vstack[] = "vstack";
 static const char __pyx_k_x_vals[] = "x_vals";
 static const char __pyx_k_argsort[] = "argsort";
 static const char __pyx_k_bin_ind[] = "bin_ind";
+static const char __pyx_k_bin_num[] = "bin_num";
 static const char __pyx_k_bin_vec[] = "bin_vec";
+static const char __pyx_k_binvals[] = "binvals";
+static const char __pyx_k_cdf_val[] = "cdf_val";
 static const char __pyx_k_density[] = "density";
 static const char __pyx_k_genexpr[] = "genexpr";
 static const char __pyx_k_inc_int[] = "inc_int";
 static const char __pyx_k_left_pi[] = "left_pi";
 static const char __pyx_k_left_pt[] = "left_pt";
+static const char __pyx_k_maximum[] = "maximum";
 static const char __pyx_k_out_val[] = "out_val";
 static const char __pyx_k_out_vec[] = "out_vec";
 static const char __pyx_k_pd_list[] = "pd_list";
 static const char __pyx_k_prepare[] = "__prepare__";
 static const char __pyx_k_probvec[] = "probvec";
 static const char __pyx_k_reshape[] = "reshape";
+static const char __pyx_k_scaling[] = "scaling";
+static const char __pyx_k_weights[] = "weights";
+static const char __pyx_k_coverage[] = "coverage";
 static const char __pyx_k_cum_prob[] = "cum_prob";
+static const char __pyx_k_dens_vec[] = "dens_vec";
 static const char __pyx_k_digitize[] = "digitize";
 static const char __pyx_k_get_part[] = "get_part";
 static const char __pyx_k_int_list[] = "int_list";
@@ -1962,32 +1984,32 @@ static const char __pyx_k_num_bins[] = "num_bins";
 static const char __pyx_k_num_dens[] = "num_dens";
 static const char __pyx_k_num_ints[] = "num_ints";
 static const char __pyx_k_plot_cdf[] = "plot_cdf";
-static const char __pyx_k_prob_vec[] = "prob_vec";
 static const char __pyx_k_qualname[] = "__qualname__";
 static const char __pyx_k_quantile[] = "quantile";
 static const char __pyx_k_right_pi[] = "right_pi";
 static const char __pyx_k_right_pt[] = "right_pt";
 static const char __pyx_k_warnings[] = "warnings";
 static const char __pyx_k_blocksize[] = "blocksize";
+static const char __pyx_k_check_sum[] = "check_sum";
+static const char __pyx_k_dens_plot[] = "dens_plot";
 static const char __pyx_k_enumerate[] = "enumerate";
 static const char __pyx_k_metaclass[] = "__metaclass__";
 static const char __pyx_k_pred_type[] = "pred_type";
-static const char __pyx_k_prob_dens[] = "prob_dens";
-static const char __pyx_k_prob_plot[] = "prob_plot";
 static const char __pyx_k_quantiles[] = "quantiles";
 static const char __pyx_k_right_xpt[] = "right_xpt";
 static const char __pyx_k_start_val[] = "start_val";
 static const char __pyx_k_upper_lim[] = "upper_lim";
 static const char __pyx_k_value_vec[] = "value_vec";
+static const char __pyx_k_add_binpts[] = "add_binpts";
 static const char __pyx_k_bin_midpts[] = "bin_midpts";
 static const char __pyx_k_bin_widths[] = "bin_widths";
 static const char __pyx_k_binpt_left[] = "binpt_left";
 static const char __pyx_k_binpt_list[] = "binpt_list";
+static const char __pyx_k_densityvec[] = "densityvec";
 static const char __pyx_k_left_midpt[] = "left_midpt";
 static const char __pyx_k_left_width[] = "left_width";
 static const char __pyx_k_new_binvec[] = "new_binvec";
 static const char __pyx_k_new_midpts[] = "new_midpts";
-static const char __pyx_k_pred_alpha[] = "pred_alpha";
 static const char __pyx_k_pred_color[] = "pred_color";
 static const char __pyx_k_prob_array[] = "prob_array";
 static const char __pyx_k_PdfDiscrete[] = "PdfDiscrete";
@@ -2004,43 +2026,63 @@ static const char __pyx_k_support_min[] = "support_min";
 static const char __pyx_k_aug_cum_prob[] = "aug_cum_prob";
 static const char __pyx_k_aug_dens_vec[] = "aug_dens_vec";
 static const char __pyx_k_cumprob_left[] = "cumprob_left";
-static const char __pyx_k_density_plot[] = "density_plot";
 static const char __pyx_k_plot_density[] = "plot_density";
 static const char __pyx_k_aug_densities[] = "aug_densities";
-static const char __pyx_k_bin_densities[] = "bin_densities";
+static const char __pyx_k_binpts_to_add[] = "binpts_to_add";
+static const char __pyx_k_bins_to_probs[] = "bins_to_probs";
 static const char __pyx_k_include_right[] = "include_right";
+static const char __pyx_k_logprob_array[] = "logprob_array";
+static const char __pyx_k_new_binpt_vec[] = "new_binpt_vec";
 static const char __pyx_k_pred_interval[] = "pred_interval";
+static const char __pyx_k_return_counts[] = "return_counts";
 static const char __pyx_k_interval_index[] = "interval_index";
 static const char __pyx_k_new_bin_widths[] = "new_bin_widths";
+static const char __pyx_k_new_logprobvec[] = "new_logprobvec";
 static const char __pyx_k_PdfDiscrete_cdf[] = "PdfDiscrete.cdf";
 static const char __pyx_k_chain_partition[] = "chain_partition";
+static const char __pyx_k_new_tempprobvec[] = "new_tempprobvec";
 static const char __pyx_k_num_full_blocks[] = "num_full_blocks";
+static const char __pyx_k_pred_region_cdf[] = "pred_region_cdf";
 static const char __pyx_k_PdfDiscrete_mean[] = "PdfDiscrete.mean";
 static const char __pyx_k_pdf_discrete_pyx[] = "pdf_discrete.pyx";
 static const char __pyx_k_pred_region_bins[] = "pred_region_bins";
-static const char __pyx_k_PdfDiscrete___add[] = "PdfDiscrete.__add__";
 static const char __pyx_k_average_densities[] = "average_densities";
+static const char __pyx_k_get_pdf_from_data[] = "get_pdf_from_data";
 static const char __pyx_k_matplotlib_pyplot[] = "matplotlib.pyplot";
 static const char __pyx_k_PdfDiscrete___init[] = "PdfDiscrete.__init__";
 static const char __pyx_k_PdfDiscrete_median[] = "PdfDiscrete.median";
+static const char __pyx_k_basic_density_plot[] = "basic_density_plot";
+static const char __pyx_k_calculate_cum_prob[] = "calculate_cum_prob";
 static const char __pyx_k_cline_in_traceback[] = "cline_in_traceback";
 static const char __pyx_k_included_intervals[] = "included_intervals";
 static const char __pyx_k_PdfDiscrete_density[] = "PdfDiscrete.density";
 static const char __pyx_k_PdfDiscrete_plot_cdf[] = "PdfDiscrete.plot_cdf";
 static const char __pyx_k_PdfDiscrete_quantile[] = "PdfDiscrete.quantile";
 static const char __pyx_k_PdfDiscrete_quantiles[] = "PdfDiscrete.quantiles";
+static const char __pyx_k_PdfDiscrete_add_binpts[] = "PdfDiscrete.add_binpts";
 static const char __pyx_k_PdfDiscrete_pred_region[] = "PdfDiscrete.pred_region";
+static const char __pyx_k_get_bin_probs_from_data[] = "get_bin_probs_from_data";
 static const char __pyx_k_get_part_locals_genexpr[] = "get_part.<locals>.genexpr";
 static const char __pyx_k_PdfDiscrete_plot_density[] = "PdfDiscrete.plot_density";
+static const char __pyx_k_PdfDiscrete_bins_to_probs[] = "PdfDiscrete.bins_to_probs";
 static const char __pyx_k_PdfDiscrete_pred_interval[] = "PdfDiscrete.pred_interval";
+static const char __pyx_k_PdfDiscrete_pred_region_cdf[] = "PdfDiscrete.pred_region_cdf";
 static const char __pyx_k_structureboost_pdf_discrete[] = "structureboost.pdf_discrete";
 static const char __pyx_k_PdfDiscrete_pred_region_bins[] = "PdfDiscrete.pred_region_bins";
 static const char __pyx_k_Probabilities_do_not_sum_to_1[] = "Probabilities do not sum to 1.";
+static const char __pyx_k_PdfDiscrete_calculate_cum_prob[] = "PdfDiscrete.calculate_cum_prob";
+static const char __pyx_k_Represents_a_piecewise_constant[] = "Represents a piecewise constant probability density function.\n\n    Parameters\n    ----------\n\n    binvec : np.array-like\n        The bin points which represent the discrete intervals over which the\n        probability density is defined.  Should be given in ascending order.\n        A binvec with n points implies n-1 distinct intervals with the given\n        probabilities / (probability densities).\n\n    probvec : np.array-like\n        The corresponding probabilities of each interval.  Can be set to None\n        if densities are provided instead.  Only one of probvec and densityvec\n        should be provided.\n\n    densityvec : np.array-like\n        The corresponding densities of each interval.  Will be ignored if the\n        probvec is provided, but is necessary if not provided.\n\n    ptol : float, default is 1e-6\n        The tolerance used when checking if the probabilities sum to 1.\n\n    check_sum : bool, default is True\n        Whether or not to check that the probabilities sum to 1.  Default is\n        True.  Can be turned off for computational efficiency.\n";
+static const char __pyx_k_Both_probs_and_densities_given_i[] = "Both probs and densities given, ignoring densities.";
+static const char __pyx_k_Number_of_densities_does_not_mat[] = "Number of densities does not match number of bins.";
 static const char __pyx_k_Number_of_probabilities_does_not[] = "Number of probabilities does not match number of bins.";
+static PyObject *__pyx_kp_u_Both_probs_and_densities_given_i;
+static PyObject *__pyx_kp_u_Number_of_densities_does_not_mat;
 static PyObject *__pyx_kp_u_Number_of_probabilities_does_not;
 static PyObject *__pyx_n_s_PdfDiscrete;
-static PyObject *__pyx_n_s_PdfDiscrete___add;
 static PyObject *__pyx_n_s_PdfDiscrete___init;
+static PyObject *__pyx_n_s_PdfDiscrete_add_binpts;
+static PyObject *__pyx_n_s_PdfDiscrete_bins_to_probs;
+static PyObject *__pyx_n_s_PdfDiscrete_calculate_cum_prob;
 static PyObject *__pyx_n_s_PdfDiscrete_cdf;
 static PyObject *__pyx_n_s_PdfDiscrete_density;
 static PyObject *__pyx_n_s_PdfDiscrete_mean;
@@ -2050,13 +2092,15 @@ static PyObject *__pyx_n_s_PdfDiscrete_plot_density;
 static PyObject *__pyx_n_s_PdfDiscrete_pred_interval;
 static PyObject *__pyx_n_s_PdfDiscrete_pred_region;
 static PyObject *__pyx_n_s_PdfDiscrete_pred_region_bins;
+static PyObject *__pyx_n_s_PdfDiscrete_pred_region_cdf;
 static PyObject *__pyx_n_s_PdfDiscrete_quantile;
 static PyObject *__pyx_n_s_PdfDiscrete_quantiles;
 static PyObject *__pyx_kp_u_Probabilities_do_not_sum_to_1;
+static PyObject *__pyx_kp_s_Represents_a_piecewise_constant;
 static PyObject *__pyx_n_s_T;
-static PyObject *__pyx_n_s__21;
+static PyObject *__pyx_n_s__26;
 static PyObject *__pyx_n_s_abs;
-static PyObject *__pyx_n_s_add;
+static PyObject *__pyx_n_s_add_binpts;
 static PyObject *__pyx_n_s_alpha;
 static PyObject *__pyx_n_s_append;
 static PyObject *__pyx_n_s_args;
@@ -2069,35 +2113,53 @@ static PyObject *__pyx_n_s_aug_densities;
 static PyObject *__pyx_n_s_average_densities;
 static PyObject *__pyx_n_s_axis;
 static PyObject *__pyx_n_s_bar;
-static PyObject *__pyx_n_s_bin_densities;
+static PyObject *__pyx_n_s_basic_density_plot;
+static PyObject *__pyx_n_s_beta;
 static PyObject *__pyx_n_s_bin_ind;
 static PyObject *__pyx_n_s_bin_lp;
 static PyObject *__pyx_n_s_bin_midpts;
+static PyObject *__pyx_n_s_bin_num;
 static PyObject *__pyx_n_s_bin_vec;
 static PyObject *__pyx_n_s_bin_widths;
+static PyObject *__pyx_n_s_binnum;
 static PyObject *__pyx_n_s_binpt_left;
 static PyObject *__pyx_n_s_binpt_list;
+static PyObject *__pyx_n_s_binpts_to_add;
+static PyObject *__pyx_n_s_bins_to_probs;
+static PyObject *__pyx_n_s_binvals;
 static PyObject *__pyx_n_s_binvec;
 static PyObject *__pyx_n_s_binvec_plot;
 static PyObject *__pyx_n_s_blocksize;
+static PyObject *__pyx_n_s_calculate_cum_prob;
 static PyObject *__pyx_n_s_cdf;
+static PyObject *__pyx_n_s_cdf_val;
 static PyObject *__pyx_n_s_chain_partition;
+static PyObject *__pyx_n_s_check_sum;
 static PyObject *__pyx_n_s_cline_in_traceback;
 static PyObject *__pyx_n_s_close;
 static PyObject *__pyx_n_s_color;
 static PyObject *__pyx_n_s_concatenate;
+static PyObject *__pyx_n_s_counts;
+static PyObject *__pyx_n_s_coverage;
 static PyObject *__pyx_n_s_cum_prob;
 static PyObject *__pyx_n_s_cumprob_left;
 static PyObject *__pyx_n_s_cumsum;
+static PyObject *__pyx_n_s_dens_plot;
+static PyObject *__pyx_n_s_dens_vec;
 static PyObject *__pyx_n_s_density;
-static PyObject *__pyx_n_s_density_plot;
+static PyObject *__pyx_n_s_densityvec;
 static PyObject *__pyx_n_s_diff;
 static PyObject *__pyx_n_s_digitize;
 static PyObject *__pyx_n_s_doc;
+static PyObject *__pyx_n_s_dot;
 static PyObject *__pyx_n_s_enumerate;
+static PyObject *__pyx_n_s_eps;
+static PyObject *__pyx_n_s_exp;
 static PyObject *__pyx_n_s_genexpr;
+static PyObject *__pyx_n_s_get_bin_probs_from_data;
 static PyObject *__pyx_n_s_get_part;
 static PyObject *__pyx_n_s_get_part_locals_genexpr;
+static PyObject *__pyx_n_s_get_pdf_from_data;
 static PyObject *__pyx_n_s_height;
 static PyObject *__pyx_n_s_i;
 static PyObject *__pyx_n_s_import;
@@ -2118,9 +2180,15 @@ static PyObject *__pyx_n_s_left_pi;
 static PyObject *__pyx_n_s_left_pt;
 static PyObject *__pyx_n_s_left_width;
 static PyObject *__pyx_n_s_left_xpt;
+static PyObject *__pyx_n_u_linear;
 static PyObject *__pyx_n_s_list1;
+static PyObject *__pyx_n_s_loc;
+static PyObject *__pyx_n_s_log;
+static PyObject *__pyx_n_u_log;
+static PyObject *__pyx_n_s_logprob_array;
 static PyObject *__pyx_n_s_main;
 static PyObject *__pyx_n_s_matplotlib_pyplot;
+static PyObject *__pyx_n_s_maximum;
 static PyObject *__pyx_n_s_mean;
 static PyObject *__pyx_n_s_median;
 static PyObject *__pyx_n_s_metaclass;
@@ -2129,9 +2197,12 @@ static PyObject *__pyx_n_s_module;
 static PyObject *__pyx_n_s_name;
 static PyObject *__pyx_n_s_nc;
 static PyObject *__pyx_n_s_new_bin_widths;
+static PyObject *__pyx_n_s_new_binpt_vec;
 static PyObject *__pyx_n_s_new_binvec;
+static PyObject *__pyx_n_s_new_logprobvec;
 static PyObject *__pyx_n_s_new_midpts;
 static PyObject *__pyx_n_s_new_probvec;
+static PyObject *__pyx_n_s_new_tempprobvec;
 static PyObject *__pyx_n_s_np;
 static PyObject *__pyx_n_s_num_bins;
 static PyObject *__pyx_n_s_num_dens;
@@ -2145,28 +2216,25 @@ static PyObject *__pyx_n_s_out_val;
 static PyObject *__pyx_n_s_out_vec;
 static PyObject *__pyx_n_s_part;
 static PyObject *__pyx_n_s_pd;
-static PyObject *__pyx_n_s_pd2;
 static PyObject *__pyx_n_s_pd_list;
 static PyObject *__pyx_kp_s_pdf_discrete_pyx;
 static PyObject *__pyx_n_s_plot;
 static PyObject *__pyx_n_s_plot_cdf;
 static PyObject *__pyx_n_s_plot_density;
 static PyObject *__pyx_n_s_plt;
-static PyObject *__pyx_n_s_pred_alpha;
 static PyObject *__pyx_n_s_pred_color;
 static PyObject *__pyx_n_s_pred_interval;
 static PyObject *__pyx_n_s_pred_region;
 static PyObject *__pyx_n_s_pred_region_bins;
+static PyObject *__pyx_n_s_pred_region_cdf;
 static PyObject *__pyx_n_s_pred_type;
 static PyObject *__pyx_n_s_prepare;
+static PyObject *__pyx_n_s_print;
 static PyObject *__pyx_n_s_prob_array;
-static PyObject *__pyx_n_s_prob_dens;
-static PyObject *__pyx_n_s_prob_plot;
-static PyObject *__pyx_n_s_prob_vec;
 static PyObject *__pyx_n_s_probvec;
 static PyObject *__pyx_n_s_ptol;
+static PyObject *__pyx_n_s_pv;
 static PyObject *__pyx_n_s_pv1;
-static PyObject *__pyx_n_s_pv2;
 static PyObject *__pyx_n_s_qualname;
 static PyObject *__pyx_n_s_quantile;
 static PyObject *__pyx_n_s_quantiles;
@@ -2175,11 +2243,13 @@ static PyObject *__pyx_n_s_range;
 static PyObject *__pyx_n_u_region;
 static PyObject *__pyx_n_s_remainder_x;
 static PyObject *__pyx_n_s_reshape;
+static PyObject *__pyx_n_s_return_counts;
 static PyObject *__pyx_n_s_right_midpt;
 static PyObject *__pyx_n_s_right_pi;
 static PyObject *__pyx_n_s_right_pt;
 static PyObject *__pyx_n_s_right_width;
 static PyObject *__pyx_n_s_right_xpt;
+static PyObject *__pyx_n_s_scaling;
 static PyObject *__pyx_n_s_self;
 static PyObject *__pyx_n_s_send;
 static PyObject *__pyx_n_s_sort;
@@ -2191,6 +2261,7 @@ static PyObject *__pyx_n_s_support_min;
 static PyObject *__pyx_n_s_sv;
 static PyObject *__pyx_n_s_test;
 static PyObject *__pyx_n_s_throw;
+static PyObject *__pyx_n_s_total;
 static PyObject *__pyx_n_s_unique;
 static PyObject *__pyx_n_s_upper_lim;
 static PyObject *__pyx_n_s_val;
@@ -2198,36 +2269,42 @@ static PyObject *__pyx_n_s_value_vec;
 static PyObject *__pyx_n_s_vstack;
 static PyObject *__pyx_n_s_warn;
 static PyObject *__pyx_n_s_warnings;
+static PyObject *__pyx_n_s_weights;
 static PyObject *__pyx_n_s_where;
 static PyObject *__pyx_n_s_width;
 static PyObject *__pyx_n_s_x;
 static PyObject *__pyx_n_s_x_vals;
+static PyObject *__pyx_n_s_y_bin;
 static PyObject *__pyx_n_s_zeros;
-static PyObject *__pyx_pf_14structureboost_12pdf_discrete_11PdfDiscrete___init__(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self, PyObject *__pyx_v_binvec, PyObject *__pyx_v_probvec, PyObject *__pyx_v_ptol); /* proto */
-static PyObject *__pyx_pf_14structureboost_12pdf_discrete_11PdfDiscrete_2mean(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self); /* proto */
-static PyObject *__pyx_pf_14structureboost_12pdf_discrete_11PdfDiscrete_4quantile(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self, PyObject *__pyx_v_qval); /* proto */
-static PyObject *__pyx_pf_14structureboost_12pdf_discrete_11PdfDiscrete_6quantiles(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self, PyObject *__pyx_v_qval); /* proto */
-static PyObject *__pyx_pf_14structureboost_12pdf_discrete_11PdfDiscrete_8median(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self); /* proto */
-static PyObject *__pyx_pf_14structureboost_12pdf_discrete_11PdfDiscrete_10density(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self, PyObject *__pyx_v_value_vec, PyObject *__pyx_v_include_right); /* proto */
-static PyObject *__pyx_pf_14structureboost_12pdf_discrete_11PdfDiscrete_12cdf(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self, PyObject *__pyx_v_x_vals); /* proto */
-static PyObject *__pyx_pf_14structureboost_12pdf_discrete_11PdfDiscrete_14__add__(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self, PyObject *__pyx_v_pd2); /* proto */
-static PyObject *__pyx_pf_14structureboost_12pdf_discrete_11PdfDiscrete_16plot_density(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self, PyObject *__pyx_v_pred_alpha, PyObject *__pyx_v_pred_type, PyObject *__pyx_v_pred_color, PyObject *__pyx_v_kwargs); /* proto */
-static PyObject *__pyx_pf_14structureboost_12pdf_discrete_11PdfDiscrete_18plot_cdf(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self, PyObject *__pyx_v_kwargs); /* proto */
-static PyObject *__pyx_pf_14structureboost_12pdf_discrete_11PdfDiscrete_20pred_region(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self, PyObject *__pyx_v_alpha); /* proto */
-static PyObject *__pyx_pf_14structureboost_12pdf_discrete_11PdfDiscrete_22pred_region_bins(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self, PyObject *__pyx_v_alpha); /* proto */
-static PyObject *__pyx_pf_14structureboost_12pdf_discrete_11PdfDiscrete_24pred_interval(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self, PyObject *__pyx_v_alpha); /* proto */
+static PyObject *__pyx_pf_14structureboost_12pdf_discrete_11PdfDiscrete___init__(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self, PyObject *__pyx_v_binvec, PyObject *__pyx_v_probvec, PyObject *__pyx_v_densityvec, PyObject *__pyx_v_ptol, PyObject *__pyx_v_check_sum); /* proto */
+static PyObject *__pyx_pf_14structureboost_12pdf_discrete_11PdfDiscrete_2calculate_cum_prob(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self); /* proto */
+static PyObject *__pyx_pf_14structureboost_12pdf_discrete_11PdfDiscrete_4mean(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self); /* proto */
+static PyObject *__pyx_pf_14structureboost_12pdf_discrete_11PdfDiscrete_6quantile(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self, PyObject *__pyx_v_qval); /* proto */
+static PyObject *__pyx_pf_14structureboost_12pdf_discrete_11PdfDiscrete_8quantiles(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self, PyObject *__pyx_v_qval); /* proto */
+static PyObject *__pyx_pf_14structureboost_12pdf_discrete_11PdfDiscrete_10median(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self); /* proto */
+static PyObject *__pyx_pf_14structureboost_12pdf_discrete_11PdfDiscrete_12density(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self, PyObject *__pyx_v_value_vec, PyObject *__pyx_v_include_right); /* proto */
+static PyObject *__pyx_pf_14structureboost_12pdf_discrete_11PdfDiscrete_14cdf(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self, PyObject *__pyx_v_x_vals); /* proto */
+static PyObject *__pyx_pf_14structureboost_12pdf_discrete_11PdfDiscrete_16add_binpts(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self, PyObject *__pyx_v_binpts_to_add); /* proto */
+static PyObject *__pyx_pf_14structureboost_12pdf_discrete_11PdfDiscrete_18bins_to_probs(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self, PyObject *__pyx_v_new_binpt_vec); /* proto */
+static PyObject *__pyx_pf_14structureboost_12pdf_discrete_11PdfDiscrete_20plot_density(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self, PyObject *__pyx_v_coverage, PyObject *__pyx_v_pred_type, PyObject *__pyx_v_pred_color, PyObject *__pyx_v_kwargs); /* proto */
+static PyObject *__pyx_pf_14structureboost_12pdf_discrete_11PdfDiscrete_22plot_cdf(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self, PyObject *__pyx_v_kwargs); /* proto */
+static PyObject *__pyx_pf_14structureboost_12pdf_discrete_11PdfDiscrete_24pred_region(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self, PyObject *__pyx_v_alpha); /* proto */
+static PyObject *__pyx_pf_14structureboost_12pdf_discrete_11PdfDiscrete_26pred_region_bins(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self, PyObject *__pyx_v_coverage); /* proto */
+static PyObject *__pyx_pf_14structureboost_12pdf_discrete_11PdfDiscrete_28pred_region_cdf(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self, PyObject *__pyx_v_val); /* proto */
+static PyObject *__pyx_pf_14structureboost_12pdf_discrete_11PdfDiscrete_30pred_interval(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self, PyObject *__pyx_v_coverage); /* proto */
 static PyObject *__pyx_pf_14structureboost_12pdf_discrete_8get_part_genexpr(PyObject *__pyx_self); /* proto */
 static PyObject *__pyx_pf_14structureboost_12pdf_discrete_get_part(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_nc, PyObject *__pyx_v_blocksize, PyObject *__pyx_v_start_val); /* proto */
 static PyObject *__pyx_pf_14structureboost_12pdf_discrete_2chain_partition(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_nc, PyObject *__pyx_v_blocksize); /* proto */
-static PyObject *__pyx_pf_14structureboost_12pdf_discrete_4density_plot(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_bin_vec, PyObject *__pyx_v_prob_vec, PyObject *__pyx_v_kwargs); /* proto */
-static PyObject *__pyx_pf_14structureboost_12pdf_discrete_6average_densities(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_pd_list); /* proto */
+static PyObject *__pyx_pf_14structureboost_12pdf_discrete_4basic_density_plot(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_bin_vec, PyObject *__pyx_v_dens_vec, PyObject *__pyx_v_kwargs); /* proto */
+static PyObject *__pyx_pf_14structureboost_12pdf_discrete_6average_densities(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_pd_list, PyObject *__pyx_v_scaling, PyObject *__pyx_v_weights); /* proto */
+static PyObject *__pyx_pf_14structureboost_12pdf_discrete_8get_bin_probs_from_data(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_binvec, PyObject *__pyx_v_value_vec, PyObject *__pyx_v_eps); /* proto */
+static PyObject *__pyx_pf_14structureboost_12pdf_discrete_10get_pdf_from_data(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_binvec, PyObject *__pyx_v_value_vec); /* proto */
 static PyObject *__pyx_tp_new_14structureboost_12pdf_discrete___pyx_scope_struct__get_part(PyTypeObject *t, PyObject *a, PyObject *k); /*proto*/
 static PyObject *__pyx_tp_new_14structureboost_12pdf_discrete___pyx_scope_struct_1_genexpr(PyTypeObject *t, PyObject *a, PyObject *k); /*proto*/
 static PyObject *__pyx_float__5;
-static PyObject *__pyx_float__05;
-static PyObject *__pyx_float__95;
 static PyObject *__pyx_float_1_0;
 static PyObject *__pyx_float_1eneg_6;
+static PyObject *__pyx_float_1eneg_16;
 static PyObject *__pyx_int_0;
 static PyObject *__pyx_int_1;
 static PyObject *__pyx_int_2;
@@ -2235,12 +2312,7 @@ static PyObject *__pyx_int_neg_1;
 static PyObject *__pyx_codeobj_;
 static PyObject *__pyx_slice__2;
 static PyObject *__pyx_slice__3;
-static PyObject *__pyx_slice__20;
-static PyObject *__pyx_tuple__22;
-static PyObject *__pyx_tuple__23;
-static PyObject *__pyx_tuple__24;
-static PyObject *__pyx_tuple__25;
-static PyObject *__pyx_tuple__26;
+static PyObject *__pyx_slice__23;
 static PyObject *__pyx_tuple__27;
 static PyObject *__pyx_tuple__28;
 static PyObject *__pyx_tuple__29;
@@ -2257,6 +2329,16 @@ static PyObject *__pyx_tuple__39;
 static PyObject *__pyx_tuple__40;
 static PyObject *__pyx_tuple__41;
 static PyObject *__pyx_tuple__42;
+static PyObject *__pyx_tuple__43;
+static PyObject *__pyx_tuple__44;
+static PyObject *__pyx_tuple__45;
+static PyObject *__pyx_tuple__46;
+static PyObject *__pyx_tuple__47;
+static PyObject *__pyx_tuple__48;
+static PyObject *__pyx_tuple__49;
+static PyObject *__pyx_tuple__50;
+static PyObject *__pyx_tuple__51;
+static PyObject *__pyx_tuple__52;
 static PyObject *__pyx_codeobj__4;
 static PyObject *__pyx_codeobj__5;
 static PyObject *__pyx_codeobj__6;
@@ -2273,14 +2355,19 @@ static PyObject *__pyx_codeobj__16;
 static PyObject *__pyx_codeobj__17;
 static PyObject *__pyx_codeobj__18;
 static PyObject *__pyx_codeobj__19;
+static PyObject *__pyx_codeobj__20;
+static PyObject *__pyx_codeobj__21;
+static PyObject *__pyx_codeobj__22;
+static PyObject *__pyx_codeobj__24;
+static PyObject *__pyx_codeobj__25;
 /* Late includes */
 
-/* "structureboost/pdf_discrete.pyx":10
- * class PdfDiscrete(object):
- * 
- *     def __init__(self, binvec, probvec, ptol=1e-6):             # <<<<<<<<<<<<<<
+/* "structureboost/pdf_discrete.pyx":36
+ *         True.  Can be turned off for computational efficiency.
+ * """
+ *     def __init__(self, binvec, probvec=None, densityvec=None,             # <<<<<<<<<<<<<<
+ *                  ptol=1e-6, check_sum=True):
  *         self.binvec = np.array(binvec)
- *         self.probvec = np.array(probvec)
  */
 
 /* Python wrapper */
@@ -2290,7 +2377,9 @@ static PyObject *__pyx_pw_14structureboost_12pdf_discrete_11PdfDiscrete_1__init_
   PyObject *__pyx_v_self = 0;
   PyObject *__pyx_v_binvec = 0;
   PyObject *__pyx_v_probvec = 0;
+  PyObject *__pyx_v_densityvec = 0;
   PyObject *__pyx_v_ptol = 0;
+  PyObject *__pyx_v_check_sum = 0;
   int __pyx_lineno = 0;
   const char *__pyx_filename = NULL;
   int __pyx_clineno = 0;
@@ -2298,13 +2387,28 @@ static PyObject *__pyx_pw_14structureboost_12pdf_discrete_11PdfDiscrete_1__init_
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__init__ (wrapper)", 0);
   {
-    static PyObject **__pyx_pyargnames[] = {&__pyx_n_s_self,&__pyx_n_s_binvec,&__pyx_n_s_probvec,&__pyx_n_s_ptol,0};
-    PyObject* values[4] = {0,0,0,0};
-    values[3] = ((PyObject *)((PyObject*)__pyx_float_1eneg_6));
+    static PyObject **__pyx_pyargnames[] = {&__pyx_n_s_self,&__pyx_n_s_binvec,&__pyx_n_s_probvec,&__pyx_n_s_densityvec,&__pyx_n_s_ptol,&__pyx_n_s_check_sum,0};
+    PyObject* values[6] = {0,0,0,0,0,0};
+    values[2] = ((PyObject *)((PyObject *)Py_None));
+    values[3] = ((PyObject *)((PyObject *)Py_None));
+    values[4] = ((PyObject *)((PyObject*)__pyx_float_1eneg_6));
+
+    /* "structureboost/pdf_discrete.pyx":37
+ * """
+ *     def __init__(self, binvec, probvec=None, densityvec=None,
+ *                  ptol=1e-6, check_sum=True):             # <<<<<<<<<<<<<<
+ *         self.binvec = np.array(binvec)
+ *         self.num_bins = len(binvec)-1
+ */
+    values[5] = ((PyObject *)((PyObject *)Py_True));
     if (unlikely(__pyx_kwds)) {
       Py_ssize_t kw_args;
       const Py_ssize_t pos_args = PyTuple_GET_SIZE(__pyx_args);
       switch (pos_args) {
+        case  6: values[5] = PyTuple_GET_ITEM(__pyx_args, 5);
+        CYTHON_FALLTHROUGH;
+        case  5: values[4] = PyTuple_GET_ITEM(__pyx_args, 4);
+        CYTHON_FALLTHROUGH;
         case  4: values[3] = PyTuple_GET_ITEM(__pyx_args, 3);
         CYTHON_FALLTHROUGH;
         case  3: values[2] = PyTuple_GET_ITEM(__pyx_args, 2);
@@ -2325,30 +2429,47 @@ static PyObject *__pyx_pw_14structureboost_12pdf_discrete_11PdfDiscrete_1__init_
         case  1:
         if (likely((values[1] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_binvec)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("__init__", 0, 3, 4, 1); __PYX_ERR(0, 10, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("__init__", 0, 2, 6, 1); __PYX_ERR(0, 36, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  2:
-        if (likely((values[2] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_probvec)) != 0)) kw_args--;
-        else {
-          __Pyx_RaiseArgtupleInvalid("__init__", 0, 3, 4, 2); __PYX_ERR(0, 10, __pyx_L3_error)
+        if (kw_args > 0) {
+          PyObject* value = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_probvec);
+          if (value) { values[2] = value; kw_args--; }
         }
         CYTHON_FALLTHROUGH;
         case  3:
         if (kw_args > 0) {
-          PyObject* value = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_ptol);
+          PyObject* value = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_densityvec);
           if (value) { values[3] = value; kw_args--; }
+        }
+        CYTHON_FALLTHROUGH;
+        case  4:
+        if (kw_args > 0) {
+          PyObject* value = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_ptol);
+          if (value) { values[4] = value; kw_args--; }
+        }
+        CYTHON_FALLTHROUGH;
+        case  5:
+        if (kw_args > 0) {
+          PyObject* value = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_check_sum);
+          if (value) { values[5] = value; kw_args--; }
         }
       }
       if (unlikely(kw_args > 0)) {
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "__init__") < 0)) __PYX_ERR(0, 10, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "__init__") < 0)) __PYX_ERR(0, 36, __pyx_L3_error)
       }
     } else {
       switch (PyTuple_GET_SIZE(__pyx_args)) {
+        case  6: values[5] = PyTuple_GET_ITEM(__pyx_args, 5);
+        CYTHON_FALLTHROUGH;
+        case  5: values[4] = PyTuple_GET_ITEM(__pyx_args, 4);
+        CYTHON_FALLTHROUGH;
         case  4: values[3] = PyTuple_GET_ITEM(__pyx_args, 3);
         CYTHON_FALLTHROUGH;
         case  3: values[2] = PyTuple_GET_ITEM(__pyx_args, 2);
-        values[1] = PyTuple_GET_ITEM(__pyx_args, 1);
+        CYTHON_FALLTHROUGH;
+        case  2: values[1] = PyTuple_GET_ITEM(__pyx_args, 1);
         values[0] = PyTuple_GET_ITEM(__pyx_args, 0);
         break;
         default: goto __pyx_L5_argtuple_error;
@@ -2357,24 +2478,34 @@ static PyObject *__pyx_pw_14structureboost_12pdf_discrete_11PdfDiscrete_1__init_
     __pyx_v_self = values[0];
     __pyx_v_binvec = values[1];
     __pyx_v_probvec = values[2];
-    __pyx_v_ptol = values[3];
+    __pyx_v_densityvec = values[3];
+    __pyx_v_ptol = values[4];
+    __pyx_v_check_sum = values[5];
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("__init__", 0, 3, 4, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 10, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("__init__", 0, 2, 6, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 36, __pyx_L3_error)
   __pyx_L3_error:;
   __Pyx_AddTraceback("structureboost.pdf_discrete.PdfDiscrete.__init__", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  __pyx_r = __pyx_pf_14structureboost_12pdf_discrete_11PdfDiscrete___init__(__pyx_self, __pyx_v_self, __pyx_v_binvec, __pyx_v_probvec, __pyx_v_ptol);
+  __pyx_r = __pyx_pf_14structureboost_12pdf_discrete_11PdfDiscrete___init__(__pyx_self, __pyx_v_self, __pyx_v_binvec, __pyx_v_probvec, __pyx_v_densityvec, __pyx_v_ptol, __pyx_v_check_sum);
+
+  /* "structureboost/pdf_discrete.pyx":36
+ *         True.  Can be turned off for computational efficiency.
+ * """
+ *     def __init__(self, binvec, probvec=None, densityvec=None,             # <<<<<<<<<<<<<<
+ *                  ptol=1e-6, check_sum=True):
+ *         self.binvec = np.array(binvec)
+ */
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_14structureboost_12pdf_discrete_11PdfDiscrete___init__(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self, PyObject *__pyx_v_binvec, PyObject *__pyx_v_probvec, PyObject *__pyx_v_ptol) {
+static PyObject *__pyx_pf_14structureboost_12pdf_discrete_11PdfDiscrete___init__(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self, PyObject *__pyx_v_binvec, PyObject *__pyx_v_probvec, PyObject *__pyx_v_densityvec, PyObject *__pyx_v_ptol, PyObject *__pyx_v_check_sum) {
   PyObject *__pyx_r = NULL;
   __Pyx_TraceDeclarations
   __Pyx_RefNannyDeclarations
@@ -2383,7 +2514,7 @@ static PyObject *__pyx_pf_14structureboost_12pdf_discrete_11PdfDiscrete___init__
   PyObject *__pyx_t_3 = NULL;
   Py_ssize_t __pyx_t_4;
   int __pyx_t_5;
-  PyObject *__pyx_t_6 = NULL;
+  int __pyx_t_6;
   PyObject *__pyx_t_7 = NULL;
   PyObject *__pyx_t_8 = NULL;
   PyObject *__pyx_t_9 = NULL;
@@ -2392,18 +2523,18 @@ static PyObject *__pyx_pf_14structureboost_12pdf_discrete_11PdfDiscrete___init__
   int __pyx_clineno = 0;
   __Pyx_TraceFrameInit(__pyx_codeobj_)
   __Pyx_RefNannySetupContext("__init__", 0);
-  __Pyx_TraceCall("__init__", __pyx_f[0], 10, 0, __PYX_ERR(0, 10, __pyx_L1_error));
+  __Pyx_TraceCall("__init__", __pyx_f[0], 36, 0, __PYX_ERR(0, 36, __pyx_L1_error));
 
-  /* "structureboost/pdf_discrete.pyx":11
- * 
- *     def __init__(self, binvec, probvec, ptol=1e-6):
+  /* "structureboost/pdf_discrete.pyx":38
+ *     def __init__(self, binvec, probvec=None, densityvec=None,
+ *                  ptol=1e-6, check_sum=True):
  *         self.binvec = np.array(binvec)             # <<<<<<<<<<<<<<
- *         self.probvec = np.array(probvec)
  *         self.num_bins = len(binvec)-1
+ *         if probvec is not None:
  */
-  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_np); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 11, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_np); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 38, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_array); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 11, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_array); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 38, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __pyx_t_2 = NULL;
@@ -2418,377 +2549,678 @@ static PyObject *__pyx_pf_14structureboost_12pdf_discrete_11PdfDiscrete___init__
   }
   __pyx_t_1 = (__pyx_t_2) ? __Pyx_PyObject_Call2Args(__pyx_t_3, __pyx_t_2, __pyx_v_binvec) : __Pyx_PyObject_CallOneArg(__pyx_t_3, __pyx_v_binvec);
   __Pyx_XDECREF(__pyx_t_2); __pyx_t_2 = 0;
-  if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 11, __pyx_L1_error)
+  if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 38, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  if (__Pyx_PyObject_SetAttrStr(__pyx_v_self, __pyx_n_s_binvec, __pyx_t_1) < 0) __PYX_ERR(0, 11, __pyx_L1_error)
+  if (__Pyx_PyObject_SetAttrStr(__pyx_v_self, __pyx_n_s_binvec, __pyx_t_1) < 0) __PYX_ERR(0, 38, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "structureboost/pdf_discrete.pyx":12
- *     def __init__(self, binvec, probvec, ptol=1e-6):
+  /* "structureboost/pdf_discrete.pyx":39
+ *                  ptol=1e-6, check_sum=True):
  *         self.binvec = np.array(binvec)
- *         self.probvec = np.array(probvec)             # <<<<<<<<<<<<<<
- *         self.num_bins = len(binvec)-1
- *         if len(self.probvec)!=self.num_bins:
- */
-  __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_n_s_np); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 12, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_array); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 12, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_2);
-  __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  __pyx_t_3 = NULL;
-  if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_2))) {
-    __pyx_t_3 = PyMethod_GET_SELF(__pyx_t_2);
-    if (likely(__pyx_t_3)) {
-      PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_2);
-      __Pyx_INCREF(__pyx_t_3);
-      __Pyx_INCREF(function);
-      __Pyx_DECREF_SET(__pyx_t_2, function);
-    }
-  }
-  __pyx_t_1 = (__pyx_t_3) ? __Pyx_PyObject_Call2Args(__pyx_t_2, __pyx_t_3, __pyx_v_probvec) : __Pyx_PyObject_CallOneArg(__pyx_t_2, __pyx_v_probvec);
-  __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
-  if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 12, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_1);
-  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  if (__Pyx_PyObject_SetAttrStr(__pyx_v_self, __pyx_n_s_probvec, __pyx_t_1) < 0) __PYX_ERR(0, 12, __pyx_L1_error)
-  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-
-  /* "structureboost/pdf_discrete.pyx":13
- *         self.binvec = np.array(binvec)
- *         self.probvec = np.array(probvec)
  *         self.num_bins = len(binvec)-1             # <<<<<<<<<<<<<<
- *         if len(self.probvec)!=self.num_bins:
- *             warnings.warn('Number of probabilities does not match number of bins.')
+ *         if probvec is not None:
+ *             self.probvec = probvec
  */
-  __pyx_t_4 = PyObject_Length(__pyx_v_binvec); if (unlikely(__pyx_t_4 == ((Py_ssize_t)-1))) __PYX_ERR(0, 13, __pyx_L1_error)
-  __pyx_t_1 = PyInt_FromSsize_t((__pyx_t_4 - 1)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 13, __pyx_L1_error)
+  __pyx_t_4 = PyObject_Length(__pyx_v_binvec); if (unlikely(__pyx_t_4 == ((Py_ssize_t)-1))) __PYX_ERR(0, 39, __pyx_L1_error)
+  __pyx_t_1 = PyInt_FromSsize_t((__pyx_t_4 - 1)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 39, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  if (__Pyx_PyObject_SetAttrStr(__pyx_v_self, __pyx_n_s_num_bins, __pyx_t_1) < 0) __PYX_ERR(0, 13, __pyx_L1_error)
+  if (__Pyx_PyObject_SetAttrStr(__pyx_v_self, __pyx_n_s_num_bins, __pyx_t_1) < 0) __PYX_ERR(0, 39, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "structureboost/pdf_discrete.pyx":14
- *         self.probvec = np.array(probvec)
+  /* "structureboost/pdf_discrete.pyx":40
+ *         self.binvec = np.array(binvec)
  *         self.num_bins = len(binvec)-1
- *         if len(self.probvec)!=self.num_bins:             # <<<<<<<<<<<<<<
- *             warnings.warn('Number of probabilities does not match number of bins.')
- *         if np.abs(np.sum(self.probvec)-1.0)>ptol:
+ *         if probvec is not None:             # <<<<<<<<<<<<<<
+ *             self.probvec = probvec
+ *             if len(self.probvec)!=self.num_bins:
  */
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_probvec); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 14, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_4 = PyObject_Length(__pyx_t_1); if (unlikely(__pyx_t_4 == ((Py_ssize_t)-1))) __PYX_ERR(0, 14, __pyx_L1_error)
-  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_t_1 = PyInt_FromSsize_t(__pyx_t_4); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 14, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_num_bins); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 14, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_3 = PyObject_RichCompare(__pyx_t_1, __pyx_t_2, Py_NE); __Pyx_XGOTREF(__pyx_t_3); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 14, __pyx_L1_error)
-  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __pyx_t_5 = __Pyx_PyObject_IsTrue(__pyx_t_3); if (unlikely(__pyx_t_5 < 0)) __PYX_ERR(0, 14, __pyx_L1_error)
-  __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  if (__pyx_t_5) {
+  __pyx_t_5 = (__pyx_v_probvec != Py_None);
+  __pyx_t_6 = (__pyx_t_5 != 0);
+  if (__pyx_t_6) {
 
-    /* "structureboost/pdf_discrete.pyx":15
+    /* "structureboost/pdf_discrete.pyx":41
  *         self.num_bins = len(binvec)-1
- *         if len(self.probvec)!=self.num_bins:
- *             warnings.warn('Number of probabilities does not match number of bins.')             # <<<<<<<<<<<<<<
- *         if np.abs(np.sum(self.probvec)-1.0)>ptol:
- *             warnings.warn('Probabilities do not sum to 1.')
+ *         if probvec is not None:
+ *             self.probvec = probvec             # <<<<<<<<<<<<<<
+ *             if len(self.probvec)!=self.num_bins:
+ *                 warnings.warn('Number of probabilities does not match number of bins.')
  */
-    __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_warnings); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 15, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_2);
-    __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_warn); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 15, __pyx_L1_error)
+    if (__Pyx_PyObject_SetAttrStr(__pyx_v_self, __pyx_n_s_probvec, __pyx_v_probvec) < 0) __PYX_ERR(0, 41, __pyx_L1_error)
+
+    /* "structureboost/pdf_discrete.pyx":42
+ *         if probvec is not None:
+ *             self.probvec = probvec
+ *             if len(self.probvec)!=self.num_bins:             # <<<<<<<<<<<<<<
+ *                 warnings.warn('Number of probabilities does not match number of bins.')
+ *             if check_sum:
+ */
+    __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_probvec); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 42, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
-    __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-    __pyx_t_2 = NULL;
-    if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_1))) {
-      __pyx_t_2 = PyMethod_GET_SELF(__pyx_t_1);
-      if (likely(__pyx_t_2)) {
-        PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_1);
-        __Pyx_INCREF(__pyx_t_2);
-        __Pyx_INCREF(function);
-        __Pyx_DECREF_SET(__pyx_t_1, function);
-      }
-    }
-    __pyx_t_3 = (__pyx_t_2) ? __Pyx_PyObject_Call2Args(__pyx_t_1, __pyx_t_2, __pyx_kp_u_Number_of_probabilities_does_not) : __Pyx_PyObject_CallOneArg(__pyx_t_1, __pyx_kp_u_Number_of_probabilities_does_not);
-    __Pyx_XDECREF(__pyx_t_2); __pyx_t_2 = 0;
-    if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 15, __pyx_L1_error)
+    __pyx_t_4 = PyObject_Length(__pyx_t_1); if (unlikely(__pyx_t_4 == ((Py_ssize_t)-1))) __PYX_ERR(0, 42, __pyx_L1_error)
+    __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+    __pyx_t_1 = PyInt_FromSsize_t(__pyx_t_4); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 42, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_1);
+    __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_num_bins); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 42, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
+    __pyx_t_2 = PyObject_RichCompare(__pyx_t_1, __pyx_t_3, Py_NE); __Pyx_XGOTREF(__pyx_t_2); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 42, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+    __pyx_t_6 = __Pyx_PyObject_IsTrue(__pyx_t_2); if (unlikely(__pyx_t_6 < 0)) __PYX_ERR(0, 42, __pyx_L1_error)
+    __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+    if (__pyx_t_6) {
 
-    /* "structureboost/pdf_discrete.pyx":14
- *         self.probvec = np.array(probvec)
- *         self.num_bins = len(binvec)-1
- *         if len(self.probvec)!=self.num_bins:             # <<<<<<<<<<<<<<
- *             warnings.warn('Number of probabilities does not match number of bins.')
- *         if np.abs(np.sum(self.probvec)-1.0)>ptol:
+      /* "structureboost/pdf_discrete.pyx":43
+ *             self.probvec = probvec
+ *             if len(self.probvec)!=self.num_bins:
+ *                 warnings.warn('Number of probabilities does not match number of bins.')             # <<<<<<<<<<<<<<
+ *             if check_sum:
+ *                 if np.abs(np.sum(self.probvec)-1.0)>ptol:
  */
-  }
-
-  /* "structureboost/pdf_discrete.pyx":16
- *         if len(self.probvec)!=self.num_bins:
- *             warnings.warn('Number of probabilities does not match number of bins.')
- *         if np.abs(np.sum(self.probvec)-1.0)>ptol:             # <<<<<<<<<<<<<<
- *             warnings.warn('Probabilities do not sum to 1.')
- *         self.bin_midpts = (self.binvec[:-1]+self.binvec[1:])/2
- */
-  __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_np); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 16, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_abs); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 16, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_2);
-  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __Pyx_GetModuleGlobalName(__pyx_t_6, __pyx_n_s_np); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 16, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_6);
-  __pyx_t_7 = __Pyx_PyObject_GetAttrStr(__pyx_t_6, __pyx_n_s_sum); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 16, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_7);
-  __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
-  __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_probvec); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 16, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_6);
-  __pyx_t_8 = NULL;
-  if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_7))) {
-    __pyx_t_8 = PyMethod_GET_SELF(__pyx_t_7);
-    if (likely(__pyx_t_8)) {
-      PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_7);
-      __Pyx_INCREF(__pyx_t_8);
-      __Pyx_INCREF(function);
-      __Pyx_DECREF_SET(__pyx_t_7, function);
-    }
-  }
-  __pyx_t_1 = (__pyx_t_8) ? __Pyx_PyObject_Call2Args(__pyx_t_7, __pyx_t_8, __pyx_t_6) : __Pyx_PyObject_CallOneArg(__pyx_t_7, __pyx_t_6);
-  __Pyx_XDECREF(__pyx_t_8); __pyx_t_8 = 0;
-  __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
-  if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 16, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_1);
-  __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
-  __pyx_t_7 = __Pyx_PyFloat_SubtractObjC(__pyx_t_1, __pyx_float_1_0, 1.0, 0, 0); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 16, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_7);
-  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_t_1 = NULL;
-  if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_2))) {
-    __pyx_t_1 = PyMethod_GET_SELF(__pyx_t_2);
-    if (likely(__pyx_t_1)) {
-      PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_2);
-      __Pyx_INCREF(__pyx_t_1);
-      __Pyx_INCREF(function);
-      __Pyx_DECREF_SET(__pyx_t_2, function);
-    }
-  }
-  __pyx_t_3 = (__pyx_t_1) ? __Pyx_PyObject_Call2Args(__pyx_t_2, __pyx_t_1, __pyx_t_7) : __Pyx_PyObject_CallOneArg(__pyx_t_2, __pyx_t_7);
-  __Pyx_XDECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
-  if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 16, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_3);
-  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __pyx_t_2 = PyObject_RichCompare(__pyx_t_3, __pyx_v_ptol, Py_GT); __Pyx_XGOTREF(__pyx_t_2); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 16, __pyx_L1_error)
-  __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  __pyx_t_5 = __Pyx_PyObject_IsTrue(__pyx_t_2); if (unlikely(__pyx_t_5 < 0)) __PYX_ERR(0, 16, __pyx_L1_error)
-  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  if (__pyx_t_5) {
-
-    /* "structureboost/pdf_discrete.pyx":17
- *             warnings.warn('Number of probabilities does not match number of bins.')
- *         if np.abs(np.sum(self.probvec)-1.0)>ptol:
- *             warnings.warn('Probabilities do not sum to 1.')             # <<<<<<<<<<<<<<
- *         self.bin_midpts = (self.binvec[:-1]+self.binvec[1:])/2
- *         self.bin_widths = self.binvec[1:] - self.binvec[:-1]
- */
-    __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_n_s_warnings); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 17, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_3);
-    __pyx_t_7 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_warn); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 17, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_7);
-    __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-    __pyx_t_3 = NULL;
-    if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_7))) {
-      __pyx_t_3 = PyMethod_GET_SELF(__pyx_t_7);
-      if (likely(__pyx_t_3)) {
-        PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_7);
-        __Pyx_INCREF(__pyx_t_3);
-        __Pyx_INCREF(function);
-        __Pyx_DECREF_SET(__pyx_t_7, function);
+      __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_n_s_warnings); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 43, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_3);
+      __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_warn); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 43, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_1);
+      __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+      __pyx_t_3 = NULL;
+      if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_1))) {
+        __pyx_t_3 = PyMethod_GET_SELF(__pyx_t_1);
+        if (likely(__pyx_t_3)) {
+          PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_1);
+          __Pyx_INCREF(__pyx_t_3);
+          __Pyx_INCREF(function);
+          __Pyx_DECREF_SET(__pyx_t_1, function);
+        }
       }
+      __pyx_t_2 = (__pyx_t_3) ? __Pyx_PyObject_Call2Args(__pyx_t_1, __pyx_t_3, __pyx_kp_u_Number_of_probabilities_does_not) : __Pyx_PyObject_CallOneArg(__pyx_t_1, __pyx_kp_u_Number_of_probabilities_does_not);
+      __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
+      if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 43, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_2);
+      __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+      __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+
+      /* "structureboost/pdf_discrete.pyx":42
+ *         if probvec is not None:
+ *             self.probvec = probvec
+ *             if len(self.probvec)!=self.num_bins:             # <<<<<<<<<<<<<<
+ *                 warnings.warn('Number of probabilities does not match number of bins.')
+ *             if check_sum:
+ */
     }
-    __pyx_t_2 = (__pyx_t_3) ? __Pyx_PyObject_Call2Args(__pyx_t_7, __pyx_t_3, __pyx_kp_u_Probabilities_do_not_sum_to_1) : __Pyx_PyObject_CallOneArg(__pyx_t_7, __pyx_kp_u_Probabilities_do_not_sum_to_1);
-    __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
-    if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 17, __pyx_L1_error)
+
+    /* "structureboost/pdf_discrete.pyx":44
+ *             if len(self.probvec)!=self.num_bins:
+ *                 warnings.warn('Number of probabilities does not match number of bins.')
+ *             if check_sum:             # <<<<<<<<<<<<<<
+ *                 if np.abs(np.sum(self.probvec)-1.0)>ptol:
+ *                     warnings.warn('Probabilities do not sum to 1.')
+ */
+    __pyx_t_6 = __Pyx_PyObject_IsTrue(__pyx_v_check_sum); if (unlikely(__pyx_t_6 < 0)) __PYX_ERR(0, 44, __pyx_L1_error)
+    if (__pyx_t_6) {
+
+      /* "structureboost/pdf_discrete.pyx":45
+ *                 warnings.warn('Number of probabilities does not match number of bins.')
+ *             if check_sum:
+ *                 if np.abs(np.sum(self.probvec)-1.0)>ptol:             # <<<<<<<<<<<<<<
+ *                     warnings.warn('Probabilities do not sum to 1.')
+ *             self.bin_widths = self.binvec[1:] - self.binvec[:-1]
+ */
+      __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_np); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 45, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_1);
+      __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_abs); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 45, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_3);
+      __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+      __Pyx_GetModuleGlobalName(__pyx_t_7, __pyx_n_s_np); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 45, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_7);
+      __pyx_t_8 = __Pyx_PyObject_GetAttrStr(__pyx_t_7, __pyx_n_s_sum); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 45, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_8);
+      __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
+      __pyx_t_7 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_probvec); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 45, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_7);
+      __pyx_t_9 = NULL;
+      if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_8))) {
+        __pyx_t_9 = PyMethod_GET_SELF(__pyx_t_8);
+        if (likely(__pyx_t_9)) {
+          PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_8);
+          __Pyx_INCREF(__pyx_t_9);
+          __Pyx_INCREF(function);
+          __Pyx_DECREF_SET(__pyx_t_8, function);
+        }
+      }
+      __pyx_t_1 = (__pyx_t_9) ? __Pyx_PyObject_Call2Args(__pyx_t_8, __pyx_t_9, __pyx_t_7) : __Pyx_PyObject_CallOneArg(__pyx_t_8, __pyx_t_7);
+      __Pyx_XDECREF(__pyx_t_9); __pyx_t_9 = 0;
+      __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
+      if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 45, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_1);
+      __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
+      __pyx_t_8 = __Pyx_PyFloat_SubtractObjC(__pyx_t_1, __pyx_float_1_0, 1.0, 0, 0); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 45, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_8);
+      __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+      __pyx_t_1 = NULL;
+      if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_3))) {
+        __pyx_t_1 = PyMethod_GET_SELF(__pyx_t_3);
+        if (likely(__pyx_t_1)) {
+          PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_3);
+          __Pyx_INCREF(__pyx_t_1);
+          __Pyx_INCREF(function);
+          __Pyx_DECREF_SET(__pyx_t_3, function);
+        }
+      }
+      __pyx_t_2 = (__pyx_t_1) ? __Pyx_PyObject_Call2Args(__pyx_t_3, __pyx_t_1, __pyx_t_8) : __Pyx_PyObject_CallOneArg(__pyx_t_3, __pyx_t_8);
+      __Pyx_XDECREF(__pyx_t_1); __pyx_t_1 = 0;
+      __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
+      if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 45, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_2);
+      __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+      __pyx_t_3 = PyObject_RichCompare(__pyx_t_2, __pyx_v_ptol, Py_GT); __Pyx_XGOTREF(__pyx_t_3); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 45, __pyx_L1_error)
+      __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+      __pyx_t_6 = __Pyx_PyObject_IsTrue(__pyx_t_3); if (unlikely(__pyx_t_6 < 0)) __PYX_ERR(0, 45, __pyx_L1_error)
+      __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+      if (__pyx_t_6) {
+
+        /* "structureboost/pdf_discrete.pyx":46
+ *             if check_sum:
+ *                 if np.abs(np.sum(self.probvec)-1.0)>ptol:
+ *                     warnings.warn('Probabilities do not sum to 1.')             # <<<<<<<<<<<<<<
+ *             self.bin_widths = self.binvec[1:] - self.binvec[:-1]
+ *             self.densityvec = self.probvec / self.bin_widths
+ */
+        __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_warnings); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 46, __pyx_L1_error)
+        __Pyx_GOTREF(__pyx_t_2);
+        __pyx_t_8 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_warn); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 46, __pyx_L1_error)
+        __Pyx_GOTREF(__pyx_t_8);
+        __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+        __pyx_t_2 = NULL;
+        if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_8))) {
+          __pyx_t_2 = PyMethod_GET_SELF(__pyx_t_8);
+          if (likely(__pyx_t_2)) {
+            PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_8);
+            __Pyx_INCREF(__pyx_t_2);
+            __Pyx_INCREF(function);
+            __Pyx_DECREF_SET(__pyx_t_8, function);
+          }
+        }
+        __pyx_t_3 = (__pyx_t_2) ? __Pyx_PyObject_Call2Args(__pyx_t_8, __pyx_t_2, __pyx_kp_u_Probabilities_do_not_sum_to_1) : __Pyx_PyObject_CallOneArg(__pyx_t_8, __pyx_kp_u_Probabilities_do_not_sum_to_1);
+        __Pyx_XDECREF(__pyx_t_2); __pyx_t_2 = 0;
+        if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 46, __pyx_L1_error)
+        __Pyx_GOTREF(__pyx_t_3);
+        __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
+        __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+
+        /* "structureboost/pdf_discrete.pyx":45
+ *                 warnings.warn('Number of probabilities does not match number of bins.')
+ *             if check_sum:
+ *                 if np.abs(np.sum(self.probvec)-1.0)>ptol:             # <<<<<<<<<<<<<<
+ *                     warnings.warn('Probabilities do not sum to 1.')
+ *             self.bin_widths = self.binvec[1:] - self.binvec[:-1]
+ */
+      }
+
+      /* "structureboost/pdf_discrete.pyx":44
+ *             if len(self.probvec)!=self.num_bins:
+ *                 warnings.warn('Number of probabilities does not match number of bins.')
+ *             if check_sum:             # <<<<<<<<<<<<<<
+ *                 if np.abs(np.sum(self.probvec)-1.0)>ptol:
+ *                     warnings.warn('Probabilities do not sum to 1.')
+ */
+    }
+
+    /* "structureboost/pdf_discrete.pyx":47
+ *                 if np.abs(np.sum(self.probvec)-1.0)>ptol:
+ *                     warnings.warn('Probabilities do not sum to 1.')
+ *             self.bin_widths = self.binvec[1:] - self.binvec[:-1]             # <<<<<<<<<<<<<<
+ *             self.densityvec = self.probvec / self.bin_widths
+ *             if densityvec is not None:
+ */
+    __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_binvec); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 47, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_3);
+    __pyx_t_8 = __Pyx_PyObject_GetSlice(__pyx_t_3, 1, 0, NULL, NULL, &__pyx_slice__2, 1, 0, 1); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 47, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_8);
+    __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+    __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_binvec); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 47, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_3);
+    __pyx_t_2 = __Pyx_PyObject_GetSlice(__pyx_t_3, 0, -1L, NULL, NULL, &__pyx_slice__3, 0, 1, 1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 47, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
-    __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
+    __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+    __pyx_t_3 = PyNumber_Subtract(__pyx_t_8, __pyx_t_2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 47, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_3);
+    __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
+    __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+    if (__Pyx_PyObject_SetAttrStr(__pyx_v_self, __pyx_n_s_bin_widths, __pyx_t_3) < 0) __PYX_ERR(0, 47, __pyx_L1_error)
+    __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+
+    /* "structureboost/pdf_discrete.pyx":48
+ *                     warnings.warn('Probabilities do not sum to 1.')
+ *             self.bin_widths = self.binvec[1:] - self.binvec[:-1]
+ *             self.densityvec = self.probvec / self.bin_widths             # <<<<<<<<<<<<<<
+ *             if densityvec is not None:
+ *                 warnings.warn('Both probs and densities given, ignoring densities.')
+ */
+    __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_probvec); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 48, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_3);
+    __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_bin_widths); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 48, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_2);
+    __pyx_t_8 = __Pyx_PyNumber_Divide(__pyx_t_3, __pyx_t_2); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 48, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_8);
+    __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+    __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+    if (__Pyx_PyObject_SetAttrStr(__pyx_v_self, __pyx_n_s_densityvec, __pyx_t_8) < 0) __PYX_ERR(0, 48, __pyx_L1_error)
+    __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
+
+    /* "structureboost/pdf_discrete.pyx":49
+ *             self.bin_widths = self.binvec[1:] - self.binvec[:-1]
+ *             self.densityvec = self.probvec / self.bin_widths
+ *             if densityvec is not None:             # <<<<<<<<<<<<<<
+ *                 warnings.warn('Both probs and densities given, ignoring densities.')
+ *         elif densityvec is not None:
+ */
+    __pyx_t_6 = (__pyx_v_densityvec != Py_None);
+    __pyx_t_5 = (__pyx_t_6 != 0);
+    if (__pyx_t_5) {
+
+      /* "structureboost/pdf_discrete.pyx":50
+ *             self.densityvec = self.probvec / self.bin_widths
+ *             if densityvec is not None:
+ *                 warnings.warn('Both probs and densities given, ignoring densities.')             # <<<<<<<<<<<<<<
+ *         elif densityvec is not None:
+ *             if len(densityvec)!=self.num_bins:
+ */
+      __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_warnings); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 50, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_2);
+      __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_warn); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 50, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_3);
+      __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+      __pyx_t_2 = NULL;
+      if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_3))) {
+        __pyx_t_2 = PyMethod_GET_SELF(__pyx_t_3);
+        if (likely(__pyx_t_2)) {
+          PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_3);
+          __Pyx_INCREF(__pyx_t_2);
+          __Pyx_INCREF(function);
+          __Pyx_DECREF_SET(__pyx_t_3, function);
+        }
+      }
+      __pyx_t_8 = (__pyx_t_2) ? __Pyx_PyObject_Call2Args(__pyx_t_3, __pyx_t_2, __pyx_kp_u_Both_probs_and_densities_given_i) : __Pyx_PyObject_CallOneArg(__pyx_t_3, __pyx_kp_u_Both_probs_and_densities_given_i);
+      __Pyx_XDECREF(__pyx_t_2); __pyx_t_2 = 0;
+      if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 50, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_8);
+      __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+      __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
+
+      /* "structureboost/pdf_discrete.pyx":49
+ *             self.bin_widths = self.binvec[1:] - self.binvec[:-1]
+ *             self.densityvec = self.probvec / self.bin_widths
+ *             if densityvec is not None:             # <<<<<<<<<<<<<<
+ *                 warnings.warn('Both probs and densities given, ignoring densities.')
+ *         elif densityvec is not None:
+ */
+    }
+
+    /* "structureboost/pdf_discrete.pyx":40
+ *         self.binvec = np.array(binvec)
+ *         self.num_bins = len(binvec)-1
+ *         if probvec is not None:             # <<<<<<<<<<<<<<
+ *             self.probvec = probvec
+ *             if len(self.probvec)!=self.num_bins:
+ */
+    goto __pyx_L3;
+  }
+
+  /* "structureboost/pdf_discrete.pyx":51
+ *             if densityvec is not None:
+ *                 warnings.warn('Both probs and densities given, ignoring densities.')
+ *         elif densityvec is not None:             # <<<<<<<<<<<<<<
+ *             if len(densityvec)!=self.num_bins:
+ *                 warnings.warn('Number of densities does not match number of bins.')
+ */
+  __pyx_t_5 = (__pyx_v_densityvec != Py_None);
+  __pyx_t_6 = (__pyx_t_5 != 0);
+  if (__pyx_t_6) {
+
+    /* "structureboost/pdf_discrete.pyx":52
+ *                 warnings.warn('Both probs and densities given, ignoring densities.')
+ *         elif densityvec is not None:
+ *             if len(densityvec)!=self.num_bins:             # <<<<<<<<<<<<<<
+ *                 warnings.warn('Number of densities does not match number of bins.')
+ *             self.densityvec = densityvec
+ */
+    __pyx_t_4 = PyObject_Length(__pyx_v_densityvec); if (unlikely(__pyx_t_4 == ((Py_ssize_t)-1))) __PYX_ERR(0, 52, __pyx_L1_error)
+    __pyx_t_8 = PyInt_FromSsize_t(__pyx_t_4); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 52, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_8);
+    __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_num_bins); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 52, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_3);
+    __pyx_t_2 = PyObject_RichCompare(__pyx_t_8, __pyx_t_3, Py_NE); __Pyx_XGOTREF(__pyx_t_2); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 52, __pyx_L1_error)
+    __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
+    __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+    __pyx_t_6 = __Pyx_PyObject_IsTrue(__pyx_t_2); if (unlikely(__pyx_t_6 < 0)) __PYX_ERR(0, 52, __pyx_L1_error)
+    __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+    if (__pyx_t_6) {
+
+      /* "structureboost/pdf_discrete.pyx":53
+ *         elif densityvec is not None:
+ *             if len(densityvec)!=self.num_bins:
+ *                 warnings.warn('Number of densities does not match number of bins.')             # <<<<<<<<<<<<<<
+ *             self.densityvec = densityvec
+ *             self.bin_widths = self.binvec[1:] - self.binvec[:-1]
+ */
+      __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_n_s_warnings); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 53, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_3);
+      __pyx_t_8 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_warn); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 53, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_8);
+      __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+      __pyx_t_3 = NULL;
+      if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_8))) {
+        __pyx_t_3 = PyMethod_GET_SELF(__pyx_t_8);
+        if (likely(__pyx_t_3)) {
+          PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_8);
+          __Pyx_INCREF(__pyx_t_3);
+          __Pyx_INCREF(function);
+          __Pyx_DECREF_SET(__pyx_t_8, function);
+        }
+      }
+      __pyx_t_2 = (__pyx_t_3) ? __Pyx_PyObject_Call2Args(__pyx_t_8, __pyx_t_3, __pyx_kp_u_Number_of_densities_does_not_mat) : __Pyx_PyObject_CallOneArg(__pyx_t_8, __pyx_kp_u_Number_of_densities_does_not_mat);
+      __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
+      if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 53, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_2);
+      __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
+      __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+
+      /* "structureboost/pdf_discrete.pyx":52
+ *                 warnings.warn('Both probs and densities given, ignoring densities.')
+ *         elif densityvec is not None:
+ *             if len(densityvec)!=self.num_bins:             # <<<<<<<<<<<<<<
+ *                 warnings.warn('Number of densities does not match number of bins.')
+ *             self.densityvec = densityvec
+ */
+    }
+
+    /* "structureboost/pdf_discrete.pyx":54
+ *             if len(densityvec)!=self.num_bins:
+ *                 warnings.warn('Number of densities does not match number of bins.')
+ *             self.densityvec = densityvec             # <<<<<<<<<<<<<<
+ *             self.bin_widths = self.binvec[1:] - self.binvec[:-1]
+ *             self.probvec = self.densityvec * self.bin_widths
+ */
+    if (__Pyx_PyObject_SetAttrStr(__pyx_v_self, __pyx_n_s_densityvec, __pyx_v_densityvec) < 0) __PYX_ERR(0, 54, __pyx_L1_error)
+
+    /* "structureboost/pdf_discrete.pyx":55
+ *                 warnings.warn('Number of densities does not match number of bins.')
+ *             self.densityvec = densityvec
+ *             self.bin_widths = self.binvec[1:] - self.binvec[:-1]             # <<<<<<<<<<<<<<
+ *             self.probvec = self.densityvec * self.bin_widths
+ *             if check_sum:
+ */
+    __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_binvec); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 55, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_2);
+    __pyx_t_8 = __Pyx_PyObject_GetSlice(__pyx_t_2, 1, 0, NULL, NULL, &__pyx_slice__2, 1, 0, 1); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 55, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_8);
+    __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+    __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_binvec); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 55, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_2);
+    __pyx_t_3 = __Pyx_PyObject_GetSlice(__pyx_t_2, 0, -1L, NULL, NULL, &__pyx_slice__3, 0, 1, 1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 55, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_3);
+    __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+    __pyx_t_2 = PyNumber_Subtract(__pyx_t_8, __pyx_t_3); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 55, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_2);
+    __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
+    __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+    if (__Pyx_PyObject_SetAttrStr(__pyx_v_self, __pyx_n_s_bin_widths, __pyx_t_2) < 0) __PYX_ERR(0, 55, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-    /* "structureboost/pdf_discrete.pyx":16
- *         if len(self.probvec)!=self.num_bins:
- *             warnings.warn('Number of probabilities does not match number of bins.')
- *         if np.abs(np.sum(self.probvec)-1.0)>ptol:             # <<<<<<<<<<<<<<
- *             warnings.warn('Probabilities do not sum to 1.')
+    /* "structureboost/pdf_discrete.pyx":56
+ *             self.densityvec = densityvec
+ *             self.bin_widths = self.binvec[1:] - self.binvec[:-1]
+ *             self.probvec = self.densityvec * self.bin_widths             # <<<<<<<<<<<<<<
+ *             if check_sum:
+ *                 if np.abs(np.sum(self.probvec)-1.0)>ptol:
+ */
+    __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_densityvec); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 56, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_2);
+    __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_bin_widths); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 56, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_3);
+    __pyx_t_8 = PyNumber_Multiply(__pyx_t_2, __pyx_t_3); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 56, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_8);
+    __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+    __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+    if (__Pyx_PyObject_SetAttrStr(__pyx_v_self, __pyx_n_s_probvec, __pyx_t_8) < 0) __PYX_ERR(0, 56, __pyx_L1_error)
+    __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
+
+    /* "structureboost/pdf_discrete.pyx":57
+ *             self.bin_widths = self.binvec[1:] - self.binvec[:-1]
+ *             self.probvec = self.densityvec * self.bin_widths
+ *             if check_sum:             # <<<<<<<<<<<<<<
+ *                 if np.abs(np.sum(self.probvec)-1.0)>ptol:
+ *                     print(np.sum(self.probvec),self.probvec)
+ */
+    __pyx_t_6 = __Pyx_PyObject_IsTrue(__pyx_v_check_sum); if (unlikely(__pyx_t_6 < 0)) __PYX_ERR(0, 57, __pyx_L1_error)
+    if (__pyx_t_6) {
+
+      /* "structureboost/pdf_discrete.pyx":58
+ *             self.probvec = self.densityvec * self.bin_widths
+ *             if check_sum:
+ *                 if np.abs(np.sum(self.probvec)-1.0)>ptol:             # <<<<<<<<<<<<<<
+ *                     print(np.sum(self.probvec),self.probvec)
+ *                     warnings.warn('Probabilities do not sum to 1.')
+ */
+      __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_n_s_np); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 58, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_3);
+      __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_abs); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 58, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_2);
+      __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+      __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_np); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 58, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_1);
+      __pyx_t_7 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_sum); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 58, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_7);
+      __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+      __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_probvec); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 58, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_1);
+      __pyx_t_9 = NULL;
+      if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_7))) {
+        __pyx_t_9 = PyMethod_GET_SELF(__pyx_t_7);
+        if (likely(__pyx_t_9)) {
+          PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_7);
+          __Pyx_INCREF(__pyx_t_9);
+          __Pyx_INCREF(function);
+          __Pyx_DECREF_SET(__pyx_t_7, function);
+        }
+      }
+      __pyx_t_3 = (__pyx_t_9) ? __Pyx_PyObject_Call2Args(__pyx_t_7, __pyx_t_9, __pyx_t_1) : __Pyx_PyObject_CallOneArg(__pyx_t_7, __pyx_t_1);
+      __Pyx_XDECREF(__pyx_t_9); __pyx_t_9 = 0;
+      __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+      if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 58, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_3);
+      __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
+      __pyx_t_7 = __Pyx_PyFloat_SubtractObjC(__pyx_t_3, __pyx_float_1_0, 1.0, 0, 0); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 58, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_7);
+      __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+      __pyx_t_3 = NULL;
+      if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_2))) {
+        __pyx_t_3 = PyMethod_GET_SELF(__pyx_t_2);
+        if (likely(__pyx_t_3)) {
+          PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_2);
+          __Pyx_INCREF(__pyx_t_3);
+          __Pyx_INCREF(function);
+          __Pyx_DECREF_SET(__pyx_t_2, function);
+        }
+      }
+      __pyx_t_8 = (__pyx_t_3) ? __Pyx_PyObject_Call2Args(__pyx_t_2, __pyx_t_3, __pyx_t_7) : __Pyx_PyObject_CallOneArg(__pyx_t_2, __pyx_t_7);
+      __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
+      __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
+      if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 58, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_8);
+      __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+      __pyx_t_2 = PyObject_RichCompare(__pyx_t_8, __pyx_v_ptol, Py_GT); __Pyx_XGOTREF(__pyx_t_2); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 58, __pyx_L1_error)
+      __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
+      __pyx_t_6 = __Pyx_PyObject_IsTrue(__pyx_t_2); if (unlikely(__pyx_t_6 < 0)) __PYX_ERR(0, 58, __pyx_L1_error)
+      __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+      if (__pyx_t_6) {
+
+        /* "structureboost/pdf_discrete.pyx":59
+ *             if check_sum:
+ *                 if np.abs(np.sum(self.probvec)-1.0)>ptol:
+ *                     print(np.sum(self.probvec),self.probvec)             # <<<<<<<<<<<<<<
+ *                     warnings.warn('Probabilities do not sum to 1.')
  *         self.bin_midpts = (self.binvec[:-1]+self.binvec[1:])/2
  */
-  }
+        __Pyx_GetModuleGlobalName(__pyx_t_8, __pyx_n_s_np); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 59, __pyx_L1_error)
+        __Pyx_GOTREF(__pyx_t_8);
+        __pyx_t_7 = __Pyx_PyObject_GetAttrStr(__pyx_t_8, __pyx_n_s_sum); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 59, __pyx_L1_error)
+        __Pyx_GOTREF(__pyx_t_7);
+        __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
+        __pyx_t_8 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_probvec); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 59, __pyx_L1_error)
+        __Pyx_GOTREF(__pyx_t_8);
+        __pyx_t_3 = NULL;
+        if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_7))) {
+          __pyx_t_3 = PyMethod_GET_SELF(__pyx_t_7);
+          if (likely(__pyx_t_3)) {
+            PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_7);
+            __Pyx_INCREF(__pyx_t_3);
+            __Pyx_INCREF(function);
+            __Pyx_DECREF_SET(__pyx_t_7, function);
+          }
+        }
+        __pyx_t_2 = (__pyx_t_3) ? __Pyx_PyObject_Call2Args(__pyx_t_7, __pyx_t_3, __pyx_t_8) : __Pyx_PyObject_CallOneArg(__pyx_t_7, __pyx_t_8);
+        __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
+        __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
+        if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 59, __pyx_L1_error)
+        __Pyx_GOTREF(__pyx_t_2);
+        __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
+        __pyx_t_7 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_probvec); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 59, __pyx_L1_error)
+        __Pyx_GOTREF(__pyx_t_7);
+        __pyx_t_8 = PyTuple_New(2); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 59, __pyx_L1_error)
+        __Pyx_GOTREF(__pyx_t_8);
+        __Pyx_GIVEREF(__pyx_t_2);
+        PyTuple_SET_ITEM(__pyx_t_8, 0, __pyx_t_2);
+        __Pyx_GIVEREF(__pyx_t_7);
+        PyTuple_SET_ITEM(__pyx_t_8, 1, __pyx_t_7);
+        __pyx_t_2 = 0;
+        __pyx_t_7 = 0;
+        __pyx_t_7 = __Pyx_PyObject_Call(__pyx_builtin_print, __pyx_t_8, NULL); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 59, __pyx_L1_error)
+        __Pyx_GOTREF(__pyx_t_7);
+        __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
+        __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
 
-  /* "structureboost/pdf_discrete.pyx":18
- *         if np.abs(np.sum(self.probvec)-1.0)>ptol:
- *             warnings.warn('Probabilities do not sum to 1.')
+        /* "structureboost/pdf_discrete.pyx":60
+ *                 if np.abs(np.sum(self.probvec)-1.0)>ptol:
+ *                     print(np.sum(self.probvec),self.probvec)
+ *                     warnings.warn('Probabilities do not sum to 1.')             # <<<<<<<<<<<<<<
+ *         self.bin_midpts = (self.binvec[:-1]+self.binvec[1:])/2
+ *         self.support_min, self.support_max = self.binvec[0], self.binvec[-1]
+ */
+        __Pyx_GetModuleGlobalName(__pyx_t_8, __pyx_n_s_warnings); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 60, __pyx_L1_error)
+        __Pyx_GOTREF(__pyx_t_8);
+        __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_8, __pyx_n_s_warn); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 60, __pyx_L1_error)
+        __Pyx_GOTREF(__pyx_t_2);
+        __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
+        __pyx_t_8 = NULL;
+        if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_2))) {
+          __pyx_t_8 = PyMethod_GET_SELF(__pyx_t_2);
+          if (likely(__pyx_t_8)) {
+            PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_2);
+            __Pyx_INCREF(__pyx_t_8);
+            __Pyx_INCREF(function);
+            __Pyx_DECREF_SET(__pyx_t_2, function);
+          }
+        }
+        __pyx_t_7 = (__pyx_t_8) ? __Pyx_PyObject_Call2Args(__pyx_t_2, __pyx_t_8, __pyx_kp_u_Probabilities_do_not_sum_to_1) : __Pyx_PyObject_CallOneArg(__pyx_t_2, __pyx_kp_u_Probabilities_do_not_sum_to_1);
+        __Pyx_XDECREF(__pyx_t_8); __pyx_t_8 = 0;
+        if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 60, __pyx_L1_error)
+        __Pyx_GOTREF(__pyx_t_7);
+        __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+        __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
+
+        /* "structureboost/pdf_discrete.pyx":58
+ *             self.probvec = self.densityvec * self.bin_widths
+ *             if check_sum:
+ *                 if np.abs(np.sum(self.probvec)-1.0)>ptol:             # <<<<<<<<<<<<<<
+ *                     print(np.sum(self.probvec),self.probvec)
+ *                     warnings.warn('Probabilities do not sum to 1.')
+ */
+      }
+
+      /* "structureboost/pdf_discrete.pyx":57
+ *             self.bin_widths = self.binvec[1:] - self.binvec[:-1]
+ *             self.probvec = self.densityvec * self.bin_widths
+ *             if check_sum:             # <<<<<<<<<<<<<<
+ *                 if np.abs(np.sum(self.probvec)-1.0)>ptol:
+ *                     print(np.sum(self.probvec),self.probvec)
+ */
+    }
+
+    /* "structureboost/pdf_discrete.pyx":51
+ *             if densityvec is not None:
+ *                 warnings.warn('Both probs and densities given, ignoring densities.')
+ *         elif densityvec is not None:             # <<<<<<<<<<<<<<
+ *             if len(densityvec)!=self.num_bins:
+ *                 warnings.warn('Number of densities does not match number of bins.')
+ */
+  }
+  __pyx_L3:;
+
+  /* "structureboost/pdf_discrete.pyx":61
+ *                     print(np.sum(self.probvec),self.probvec)
+ *                     warnings.warn('Probabilities do not sum to 1.')
  *         self.bin_midpts = (self.binvec[:-1]+self.binvec[1:])/2             # <<<<<<<<<<<<<<
- *         self.bin_widths = self.binvec[1:] - self.binvec[:-1]
  *         self.support_min, self.support_max = self.binvec[0], self.binvec[-1]
+ *         self.cum_prob = None
  */
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_binvec); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 18, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_7 = __Pyx_PyObject_GetSlice(__pyx_t_2, 0, -1L, NULL, NULL, &__pyx_slice__2, 0, 1, 1); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 18, __pyx_L1_error)
+  __pyx_t_7 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_binvec); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 61, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_7);
-  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_binvec); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 18, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_3 = __Pyx_PyObject_GetSlice(__pyx_t_2, 1, 0, NULL, NULL, &__pyx_slice__3, 1, 0, 1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 18, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_3);
-  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __pyx_t_2 = PyNumber_Add(__pyx_t_7, __pyx_t_3); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 18, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_GetSlice(__pyx_t_7, 0, -1L, NULL, NULL, &__pyx_slice__3, 0, 1, 1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 61, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
-  __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  __pyx_t_3 = __Pyx_PyInt_TrueDivideObjC(__pyx_t_2, __pyx_int_2, 2, 0, 0); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 18, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_3);
-  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  if (__Pyx_PyObject_SetAttrStr(__pyx_v_self, __pyx_n_s_bin_midpts, __pyx_t_3) < 0) __PYX_ERR(0, 18, __pyx_L1_error)
-  __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-
-  /* "structureboost/pdf_discrete.pyx":19
- *             warnings.warn('Probabilities do not sum to 1.')
- *         self.bin_midpts = (self.binvec[:-1]+self.binvec[1:])/2
- *         self.bin_widths = self.binvec[1:] - self.binvec[:-1]             # <<<<<<<<<<<<<<
- *         self.support_min, self.support_max = self.binvec[0], self.binvec[-1]
- *         self.bin_densities = self.probvec / self.bin_widths
- */
-  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_binvec); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 19, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_2 = __Pyx_PyObject_GetSlice(__pyx_t_3, 1, 0, NULL, NULL, &__pyx_slice__3, 1, 0, 1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 19, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_2);
-  __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_binvec); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 19, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_7 = __Pyx_PyObject_GetSlice(__pyx_t_3, 0, -1L, NULL, NULL, &__pyx_slice__2, 0, 1, 1); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 19, __pyx_L1_error)
+  __pyx_t_7 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_binvec); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 61, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_7);
-  __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  __pyx_t_3 = PyNumber_Subtract(__pyx_t_2, __pyx_t_7); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 19, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_3);
-  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+  __pyx_t_8 = __Pyx_PyObject_GetSlice(__pyx_t_7, 1, 0, NULL, NULL, &__pyx_slice__2, 1, 0, 1); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 61, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_8);
   __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
-  if (__Pyx_PyObject_SetAttrStr(__pyx_v_self, __pyx_n_s_bin_widths, __pyx_t_3) < 0) __PYX_ERR(0, 19, __pyx_L1_error)
-  __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+  __pyx_t_7 = PyNumber_Add(__pyx_t_2, __pyx_t_8); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 61, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_7);
+  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+  __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
+  __pyx_t_8 = __Pyx_PyInt_TrueDivideObjC(__pyx_t_7, __pyx_int_2, 2, 0, 0); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 61, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_8);
+  __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
+  if (__Pyx_PyObject_SetAttrStr(__pyx_v_self, __pyx_n_s_bin_midpts, __pyx_t_8) < 0) __PYX_ERR(0, 61, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
 
-  /* "structureboost/pdf_discrete.pyx":20
+  /* "structureboost/pdf_discrete.pyx":62
+ *                     warnings.warn('Probabilities do not sum to 1.')
  *         self.bin_midpts = (self.binvec[:-1]+self.binvec[1:])/2
- *         self.bin_widths = self.binvec[1:] - self.binvec[:-1]
  *         self.support_min, self.support_max = self.binvec[0], self.binvec[-1]             # <<<<<<<<<<<<<<
- *         self.bin_densities = self.probvec / self.bin_widths
- *         self.cum_prob = np.concatenate(([0],np.cumsum(self.probvec)))
- */
-  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_binvec); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 20, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_7 = __Pyx_GetItemInt(__pyx_t_3, 0, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 20, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_7);
-  __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_binvec); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 20, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_2 = __Pyx_GetItemInt(__pyx_t_3, -1L, long, 1, __Pyx_PyInt_From_long, 0, 1, 1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 20, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_2);
-  __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  if (__Pyx_PyObject_SetAttrStr(__pyx_v_self, __pyx_n_s_support_min, __pyx_t_7) < 0) __PYX_ERR(0, 20, __pyx_L1_error)
-  __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
-  if (__Pyx_PyObject_SetAttrStr(__pyx_v_self, __pyx_n_s_support_max, __pyx_t_2) < 0) __PYX_ERR(0, 20, __pyx_L1_error)
-  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-
-  /* "structureboost/pdf_discrete.pyx":21
- *         self.bin_widths = self.binvec[1:] - self.binvec[:-1]
- *         self.support_min, self.support_max = self.binvec[0], self.binvec[-1]
- *         self.bin_densities = self.probvec / self.bin_widths             # <<<<<<<<<<<<<<
- *         self.cum_prob = np.concatenate(([0],np.cumsum(self.probvec)))
+ *         self.cum_prob = None
  * 
  */
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_probvec); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 21, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_7 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_bin_widths); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 21, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_7);
-  __pyx_t_3 = __Pyx_PyNumber_Divide(__pyx_t_2, __pyx_t_7); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 21, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_3);
-  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
-  if (__Pyx_PyObject_SetAttrStr(__pyx_v_self, __pyx_n_s_bin_densities, __pyx_t_3) < 0) __PYX_ERR(0, 21, __pyx_L1_error)
-  __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-
-  /* "structureboost/pdf_discrete.pyx":22
- *         self.support_min, self.support_max = self.binvec[0], self.binvec[-1]
- *         self.bin_densities = self.probvec / self.bin_widths
- *         self.cum_prob = np.concatenate(([0],np.cumsum(self.probvec)))             # <<<<<<<<<<<<<<
- * 
- *     def mean(self):
- */
-  __Pyx_GetModuleGlobalName(__pyx_t_7, __pyx_n_s_np); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 22, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_7);
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_7, __pyx_n_s_concatenate); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 22, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_2);
-  __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
-  __pyx_t_7 = PyList_New(1); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 22, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_7);
-  __Pyx_INCREF(__pyx_int_0);
-  __Pyx_GIVEREF(__pyx_int_0);
-  PyList_SET_ITEM(__pyx_t_7, 0, __pyx_int_0);
-  __Pyx_GetModuleGlobalName(__pyx_t_6, __pyx_n_s_np); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 22, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_6);
-  __pyx_t_8 = __Pyx_PyObject_GetAttrStr(__pyx_t_6, __pyx_n_s_cumsum); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 22, __pyx_L1_error)
+  __pyx_t_8 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_binvec); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 62, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_8);
-  __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
-  __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_probvec); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 22, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_6);
-  __pyx_t_9 = NULL;
-  if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_8))) {
-    __pyx_t_9 = PyMethod_GET_SELF(__pyx_t_8);
-    if (likely(__pyx_t_9)) {
-      PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_8);
-      __Pyx_INCREF(__pyx_t_9);
-      __Pyx_INCREF(function);
-      __Pyx_DECREF_SET(__pyx_t_8, function);
-    }
-  }
-  __pyx_t_1 = (__pyx_t_9) ? __Pyx_PyObject_Call2Args(__pyx_t_8, __pyx_t_9, __pyx_t_6) : __Pyx_PyObject_CallOneArg(__pyx_t_8, __pyx_t_6);
-  __Pyx_XDECREF(__pyx_t_9); __pyx_t_9 = 0;
-  __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
-  if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 22, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_1);
+  __pyx_t_7 = __Pyx_GetItemInt(__pyx_t_8, 0, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 62, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_7);
   __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
-  __pyx_t_8 = PyTuple_New(2); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 22, __pyx_L1_error)
+  __pyx_t_8 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_binvec); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 62, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_8);
-  __Pyx_GIVEREF(__pyx_t_7);
-  PyTuple_SET_ITEM(__pyx_t_8, 0, __pyx_t_7);
-  __Pyx_GIVEREF(__pyx_t_1);
-  PyTuple_SET_ITEM(__pyx_t_8, 1, __pyx_t_1);
-  __pyx_t_7 = 0;
-  __pyx_t_1 = 0;
-  __pyx_t_1 = NULL;
-  if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_2))) {
-    __pyx_t_1 = PyMethod_GET_SELF(__pyx_t_2);
-    if (likely(__pyx_t_1)) {
-      PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_2);
-      __Pyx_INCREF(__pyx_t_1);
-      __Pyx_INCREF(function);
-      __Pyx_DECREF_SET(__pyx_t_2, function);
-    }
-  }
-  __pyx_t_3 = (__pyx_t_1) ? __Pyx_PyObject_Call2Args(__pyx_t_2, __pyx_t_1, __pyx_t_8) : __Pyx_PyObject_CallOneArg(__pyx_t_2, __pyx_t_8);
-  __Pyx_XDECREF(__pyx_t_1); __pyx_t_1 = 0;
+  __pyx_t_2 = __Pyx_GetItemInt(__pyx_t_8, -1L, long, 1, __Pyx_PyInt_From_long, 0, 1, 1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 62, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
-  if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 22, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_3);
+  if (__Pyx_PyObject_SetAttrStr(__pyx_v_self, __pyx_n_s_support_min, __pyx_t_7) < 0) __PYX_ERR(0, 62, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
+  if (__Pyx_PyObject_SetAttrStr(__pyx_v_self, __pyx_n_s_support_max, __pyx_t_2) < 0) __PYX_ERR(0, 62, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  if (__Pyx_PyObject_SetAttrStr(__pyx_v_self, __pyx_n_s_cum_prob, __pyx_t_3) < 0) __PYX_ERR(0, 22, __pyx_L1_error)
-  __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-  /* "structureboost/pdf_discrete.pyx":10
- * class PdfDiscrete(object):
+  /* "structureboost/pdf_discrete.pyx":63
+ *         self.bin_midpts = (self.binvec[:-1]+self.binvec[1:])/2
+ *         self.support_min, self.support_max = self.binvec[0], self.binvec[-1]
+ *         self.cum_prob = None             # <<<<<<<<<<<<<<
  * 
- *     def __init__(self, binvec, probvec, ptol=1e-6):             # <<<<<<<<<<<<<<
+ *     def calculate_cum_prob(self):
+ */
+  if (__Pyx_PyObject_SetAttrStr(__pyx_v_self, __pyx_n_s_cum_prob, Py_None) < 0) __PYX_ERR(0, 63, __pyx_L1_error)
+
+  /* "structureboost/pdf_discrete.pyx":36
+ *         True.  Can be turned off for computational efficiency.
+ * """
+ *     def __init__(self, binvec, probvec=None, densityvec=None,             # <<<<<<<<<<<<<<
+ *                  ptol=1e-6, check_sum=True):
  *         self.binvec = np.array(binvec)
- *         self.probvec = np.array(probvec)
  */
 
   /* function exit code */
@@ -2798,7 +3230,6 @@ static PyObject *__pyx_pf_14structureboost_12pdf_discrete_11PdfDiscrete___init__
   __Pyx_XDECREF(__pyx_t_1);
   __Pyx_XDECREF(__pyx_t_2);
   __Pyx_XDECREF(__pyx_t_3);
-  __Pyx_XDECREF(__pyx_t_6);
   __Pyx_XDECREF(__pyx_t_7);
   __Pyx_XDECREF(__pyx_t_8);
   __Pyx_XDECREF(__pyx_t_9);
@@ -2811,7 +3242,142 @@ static PyObject *__pyx_pf_14structureboost_12pdf_discrete_11PdfDiscrete___init__
   return __pyx_r;
 }
 
-/* "structureboost/pdf_discrete.pyx":24
+/* "structureboost/pdf_discrete.pyx":65
+ *         self.cum_prob = None
+ * 
+ *     def calculate_cum_prob(self):             # <<<<<<<<<<<<<<
+ *         self.cum_prob = np.concatenate(([0],np.cumsum(self.probvec)))
+ * 
+ */
+
+/* Python wrapper */
+static PyObject *__pyx_pw_14structureboost_12pdf_discrete_11PdfDiscrete_3calculate_cum_prob(PyObject *__pyx_self, PyObject *__pyx_v_self); /*proto*/
+static PyMethodDef __pyx_mdef_14structureboost_12pdf_discrete_11PdfDiscrete_3calculate_cum_prob = {"calculate_cum_prob", (PyCFunction)__pyx_pw_14structureboost_12pdf_discrete_11PdfDiscrete_3calculate_cum_prob, METH_O, 0};
+static PyObject *__pyx_pw_14structureboost_12pdf_discrete_11PdfDiscrete_3calculate_cum_prob(PyObject *__pyx_self, PyObject *__pyx_v_self) {
+  PyObject *__pyx_r = 0;
+  __Pyx_RefNannyDeclarations
+  __Pyx_RefNannySetupContext("calculate_cum_prob (wrapper)", 0);
+  __pyx_r = __pyx_pf_14structureboost_12pdf_discrete_11PdfDiscrete_2calculate_cum_prob(__pyx_self, ((PyObject *)__pyx_v_self));
+
+  /* function exit code */
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+static PyObject *__pyx_pf_14structureboost_12pdf_discrete_11PdfDiscrete_2calculate_cum_prob(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self) {
+  PyObject *__pyx_r = NULL;
+  __Pyx_TraceDeclarations
+  __Pyx_RefNannyDeclarations
+  PyObject *__pyx_t_1 = NULL;
+  PyObject *__pyx_t_2 = NULL;
+  PyObject *__pyx_t_3 = NULL;
+  PyObject *__pyx_t_4 = NULL;
+  PyObject *__pyx_t_5 = NULL;
+  PyObject *__pyx_t_6 = NULL;
+  PyObject *__pyx_t_7 = NULL;
+  int __pyx_lineno = 0;
+  const char *__pyx_filename = NULL;
+  int __pyx_clineno = 0;
+  __Pyx_TraceFrameInit(__pyx_codeobj__4)
+  __Pyx_RefNannySetupContext("calculate_cum_prob", 0);
+  __Pyx_TraceCall("calculate_cum_prob", __pyx_f[0], 65, 0, __PYX_ERR(0, 65, __pyx_L1_error));
+
+  /* "structureboost/pdf_discrete.pyx":66
+ * 
+ *     def calculate_cum_prob(self):
+ *         self.cum_prob = np.concatenate(([0],np.cumsum(self.probvec)))             # <<<<<<<<<<<<<<
+ * 
+ *     def mean(self):
+ */
+  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_np); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 66, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_2);
+  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_concatenate); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 66, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_3);
+  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+  __pyx_t_2 = PyList_New(1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 66, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_2);
+  __Pyx_INCREF(__pyx_int_0);
+  __Pyx_GIVEREF(__pyx_int_0);
+  PyList_SET_ITEM(__pyx_t_2, 0, __pyx_int_0);
+  __Pyx_GetModuleGlobalName(__pyx_t_5, __pyx_n_s_np); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 66, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_5);
+  __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_t_5, __pyx_n_s_cumsum); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 66, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_6);
+  __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
+  __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_probvec); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 66, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_5);
+  __pyx_t_7 = NULL;
+  if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_6))) {
+    __pyx_t_7 = PyMethod_GET_SELF(__pyx_t_6);
+    if (likely(__pyx_t_7)) {
+      PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_6);
+      __Pyx_INCREF(__pyx_t_7);
+      __Pyx_INCREF(function);
+      __Pyx_DECREF_SET(__pyx_t_6, function);
+    }
+  }
+  __pyx_t_4 = (__pyx_t_7) ? __Pyx_PyObject_Call2Args(__pyx_t_6, __pyx_t_7, __pyx_t_5) : __Pyx_PyObject_CallOneArg(__pyx_t_6, __pyx_t_5);
+  __Pyx_XDECREF(__pyx_t_7); __pyx_t_7 = 0;
+  __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
+  if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 66, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_4);
+  __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
+  __pyx_t_6 = PyTuple_New(2); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 66, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_6);
+  __Pyx_GIVEREF(__pyx_t_2);
+  PyTuple_SET_ITEM(__pyx_t_6, 0, __pyx_t_2);
+  __Pyx_GIVEREF(__pyx_t_4);
+  PyTuple_SET_ITEM(__pyx_t_6, 1, __pyx_t_4);
+  __pyx_t_2 = 0;
+  __pyx_t_4 = 0;
+  __pyx_t_4 = NULL;
+  if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_3))) {
+    __pyx_t_4 = PyMethod_GET_SELF(__pyx_t_3);
+    if (likely(__pyx_t_4)) {
+      PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_3);
+      __Pyx_INCREF(__pyx_t_4);
+      __Pyx_INCREF(function);
+      __Pyx_DECREF_SET(__pyx_t_3, function);
+    }
+  }
+  __pyx_t_1 = (__pyx_t_4) ? __Pyx_PyObject_Call2Args(__pyx_t_3, __pyx_t_4, __pyx_t_6) : __Pyx_PyObject_CallOneArg(__pyx_t_3, __pyx_t_6);
+  __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
+  __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
+  if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 66, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+  if (__Pyx_PyObject_SetAttrStr(__pyx_v_self, __pyx_n_s_cum_prob, __pyx_t_1) < 0) __PYX_ERR(0, 66, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+
+  /* "structureboost/pdf_discrete.pyx":65
+ *         self.cum_prob = None
+ * 
+ *     def calculate_cum_prob(self):             # <<<<<<<<<<<<<<
+ *         self.cum_prob = np.concatenate(([0],np.cumsum(self.probvec)))
+ * 
+ */
+
+  /* function exit code */
+  __pyx_r = Py_None; __Pyx_INCREF(Py_None);
+  goto __pyx_L0;
+  __pyx_L1_error:;
+  __Pyx_XDECREF(__pyx_t_1);
+  __Pyx_XDECREF(__pyx_t_2);
+  __Pyx_XDECREF(__pyx_t_3);
+  __Pyx_XDECREF(__pyx_t_4);
+  __Pyx_XDECREF(__pyx_t_5);
+  __Pyx_XDECREF(__pyx_t_6);
+  __Pyx_XDECREF(__pyx_t_7);
+  __Pyx_AddTraceback("structureboost.pdf_discrete.PdfDiscrete.calculate_cum_prob", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __pyx_r = NULL;
+  __pyx_L0:;
+  __Pyx_XGIVEREF(__pyx_r);
+  __Pyx_TraceReturn(__pyx_r, 0);
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+/* "structureboost/pdf_discrete.pyx":68
  *         self.cum_prob = np.concatenate(([0],np.cumsum(self.probvec)))
  * 
  *     def mean(self):             # <<<<<<<<<<<<<<
@@ -2820,20 +3386,20 @@ static PyObject *__pyx_pf_14structureboost_12pdf_discrete_11PdfDiscrete___init__
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_14structureboost_12pdf_discrete_11PdfDiscrete_3mean(PyObject *__pyx_self, PyObject *__pyx_v_self); /*proto*/
-static PyMethodDef __pyx_mdef_14structureboost_12pdf_discrete_11PdfDiscrete_3mean = {"mean", (PyCFunction)__pyx_pw_14structureboost_12pdf_discrete_11PdfDiscrete_3mean, METH_O, 0};
-static PyObject *__pyx_pw_14structureboost_12pdf_discrete_11PdfDiscrete_3mean(PyObject *__pyx_self, PyObject *__pyx_v_self) {
+static PyObject *__pyx_pw_14structureboost_12pdf_discrete_11PdfDiscrete_5mean(PyObject *__pyx_self, PyObject *__pyx_v_self); /*proto*/
+static PyMethodDef __pyx_mdef_14structureboost_12pdf_discrete_11PdfDiscrete_5mean = {"mean", (PyCFunction)__pyx_pw_14structureboost_12pdf_discrete_11PdfDiscrete_5mean, METH_O, 0};
+static PyObject *__pyx_pw_14structureboost_12pdf_discrete_11PdfDiscrete_5mean(PyObject *__pyx_self, PyObject *__pyx_v_self) {
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("mean (wrapper)", 0);
-  __pyx_r = __pyx_pf_14structureboost_12pdf_discrete_11PdfDiscrete_2mean(__pyx_self, ((PyObject *)__pyx_v_self));
+  __pyx_r = __pyx_pf_14structureboost_12pdf_discrete_11PdfDiscrete_4mean(__pyx_self, ((PyObject *)__pyx_v_self));
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_14structureboost_12pdf_discrete_11PdfDiscrete_2mean(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self) {
+static PyObject *__pyx_pf_14structureboost_12pdf_discrete_11PdfDiscrete_4mean(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self) {
   PyObject *__pyx_v_val = NULL;
   PyObject *__pyx_r = NULL;
   __Pyx_TraceDeclarations
@@ -2846,27 +3412,27 @@ static PyObject *__pyx_pf_14structureboost_12pdf_discrete_11PdfDiscrete_2mean(CY
   int __pyx_lineno = 0;
   const char *__pyx_filename = NULL;
   int __pyx_clineno = 0;
-  __Pyx_TraceFrameInit(__pyx_codeobj__4)
+  __Pyx_TraceFrameInit(__pyx_codeobj__5)
   __Pyx_RefNannySetupContext("mean", 0);
-  __Pyx_TraceCall("mean", __pyx_f[0], 24, 0, __PYX_ERR(0, 24, __pyx_L1_error));
+  __Pyx_TraceCall("mean", __pyx_f[0], 68, 0, __PYX_ERR(0, 68, __pyx_L1_error));
 
-  /* "structureboost/pdf_discrete.pyx":25
+  /* "structureboost/pdf_discrete.pyx":69
  * 
  *     def mean(self):
  *         val = np.sum(self.bin_midpts*self.probvec)             # <<<<<<<<<<<<<<
  *         return(val)
  * 
  */
-  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_np); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 25, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_np); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 69, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_sum); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 25, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_sum); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 69, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_bin_midpts); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 25, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_bin_midpts); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 69, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_probvec); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 25, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_probvec); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 69, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
-  __pyx_t_5 = PyNumber_Multiply(__pyx_t_2, __pyx_t_4); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 25, __pyx_L1_error)
+  __pyx_t_5 = PyNumber_Multiply(__pyx_t_2, __pyx_t_4); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 69, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
@@ -2883,13 +3449,13 @@ static PyObject *__pyx_pf_14structureboost_12pdf_discrete_11PdfDiscrete_2mean(CY
   __pyx_t_1 = (__pyx_t_4) ? __Pyx_PyObject_Call2Args(__pyx_t_3, __pyx_t_4, __pyx_t_5) : __Pyx_PyObject_CallOneArg(__pyx_t_3, __pyx_t_5);
   __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-  if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 25, __pyx_L1_error)
+  if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 69, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   __pyx_v_val = __pyx_t_1;
   __pyx_t_1 = 0;
 
-  /* "structureboost/pdf_discrete.pyx":26
+  /* "structureboost/pdf_discrete.pyx":70
  *     def mean(self):
  *         val = np.sum(self.bin_midpts*self.probvec)
  *         return(val)             # <<<<<<<<<<<<<<
@@ -2901,7 +3467,7 @@ static PyObject *__pyx_pf_14structureboost_12pdf_discrete_11PdfDiscrete_2mean(CY
   __pyx_r = __pyx_v_val;
   goto __pyx_L0;
 
-  /* "structureboost/pdf_discrete.pyx":24
+  /* "structureboost/pdf_discrete.pyx":68
  *         self.cum_prob = np.concatenate(([0],np.cumsum(self.probvec)))
  * 
  *     def mean(self):             # <<<<<<<<<<<<<<
@@ -2926,18 +3492,18 @@ static PyObject *__pyx_pf_14structureboost_12pdf_discrete_11PdfDiscrete_2mean(CY
   return __pyx_r;
 }
 
-/* "structureboost/pdf_discrete.pyx":28
+/* "structureboost/pdf_discrete.pyx":72
  *         return(val)
  * 
  *     def quantile(self, qval):             # <<<<<<<<<<<<<<
- *         bin_lp = np.digitize(qval, self.cum_prob)-1
- * 
+ *         if self.cum_prob is None:
+ *             self.calculate_cum_prob()
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_14structureboost_12pdf_discrete_11PdfDiscrete_5quantile(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
-static PyMethodDef __pyx_mdef_14structureboost_12pdf_discrete_11PdfDiscrete_5quantile = {"quantile", (PyCFunction)(void*)(PyCFunctionWithKeywords)__pyx_pw_14structureboost_12pdf_discrete_11PdfDiscrete_5quantile, METH_VARARGS|METH_KEYWORDS, 0};
-static PyObject *__pyx_pw_14structureboost_12pdf_discrete_11PdfDiscrete_5quantile(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
+static PyObject *__pyx_pw_14structureboost_12pdf_discrete_11PdfDiscrete_7quantile(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
+static PyMethodDef __pyx_mdef_14structureboost_12pdf_discrete_11PdfDiscrete_7quantile = {"quantile", (PyCFunction)(void*)(PyCFunctionWithKeywords)__pyx_pw_14structureboost_12pdf_discrete_11PdfDiscrete_7quantile, METH_VARARGS|METH_KEYWORDS, 0};
+static PyObject *__pyx_pw_14structureboost_12pdf_discrete_11PdfDiscrete_7quantile(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
   PyObject *__pyx_v_self = 0;
   PyObject *__pyx_v_qval = 0;
   int __pyx_lineno = 0;
@@ -2969,11 +3535,11 @@ static PyObject *__pyx_pw_14structureboost_12pdf_discrete_11PdfDiscrete_5quantil
         case  1:
         if (likely((values[1] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_qval)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("quantile", 1, 2, 2, 1); __PYX_ERR(0, 28, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("quantile", 1, 2, 2, 1); __PYX_ERR(0, 72, __pyx_L3_error)
         }
       }
       if (unlikely(kw_args > 0)) {
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "quantile") < 0)) __PYX_ERR(0, 28, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "quantile") < 0)) __PYX_ERR(0, 72, __pyx_L3_error)
       }
     } else if (PyTuple_GET_SIZE(__pyx_args) != 2) {
       goto __pyx_L5_argtuple_error;
@@ -2986,20 +3552,20 @@ static PyObject *__pyx_pw_14structureboost_12pdf_discrete_11PdfDiscrete_5quantil
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("quantile", 1, 2, 2, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 28, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("quantile", 1, 2, 2, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 72, __pyx_L3_error)
   __pyx_L3_error:;
   __Pyx_AddTraceback("structureboost.pdf_discrete.PdfDiscrete.quantile", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  __pyx_r = __pyx_pf_14structureboost_12pdf_discrete_11PdfDiscrete_4quantile(__pyx_self, __pyx_v_self, __pyx_v_qval);
+  __pyx_r = __pyx_pf_14structureboost_12pdf_discrete_11PdfDiscrete_6quantile(__pyx_self, __pyx_v_self, __pyx_v_qval);
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_14structureboost_12pdf_discrete_11PdfDiscrete_4quantile(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self, PyObject *__pyx_v_qval) {
+static PyObject *__pyx_pf_14structureboost_12pdf_discrete_11PdfDiscrete_6quantile(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self, PyObject *__pyx_v_qval) {
   PyObject *__pyx_v_bin_lp = NULL;
   PyObject *__pyx_v_binpt_left = NULL;
   PyObject *__pyx_v_cumprob_left = NULL;
@@ -3008,123 +3574,173 @@ static PyObject *__pyx_pf_14structureboost_12pdf_discrete_11PdfDiscrete_4quantil
   __Pyx_TraceDeclarations
   __Pyx_RefNannyDeclarations
   PyObject *__pyx_t_1 = NULL;
-  PyObject *__pyx_t_2 = NULL;
-  PyObject *__pyx_t_3 = NULL;
+  int __pyx_t_2;
+  int __pyx_t_3;
   PyObject *__pyx_t_4 = NULL;
-  int __pyx_t_5;
+  PyObject *__pyx_t_5 = NULL;
   PyObject *__pyx_t_6 = NULL;
-  Py_ssize_t __pyx_t_7;
-  int __pyx_t_8;
+  int __pyx_t_7;
+  PyObject *__pyx_t_8 = NULL;
+  Py_ssize_t __pyx_t_9;
   int __pyx_lineno = 0;
   const char *__pyx_filename = NULL;
   int __pyx_clineno = 0;
-  __Pyx_TraceFrameInit(__pyx_codeobj__5)
+  __Pyx_TraceFrameInit(__pyx_codeobj__6)
   __Pyx_RefNannySetupContext("quantile", 0);
-  __Pyx_TraceCall("quantile", __pyx_f[0], 28, 0, __PYX_ERR(0, 28, __pyx_L1_error));
+  __Pyx_TraceCall("quantile", __pyx_f[0], 72, 0, __PYX_ERR(0, 72, __pyx_L1_error));
 
-  /* "structureboost/pdf_discrete.pyx":29
+  /* "structureboost/pdf_discrete.pyx":73
  * 
  *     def quantile(self, qval):
+ *         if self.cum_prob is None:             # <<<<<<<<<<<<<<
+ *             self.calculate_cum_prob()
+ *         bin_lp = np.digitize(qval, self.cum_prob)-1
+ */
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_cum_prob); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 73, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __pyx_t_2 = (__pyx_t_1 == Py_None);
+  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+  __pyx_t_3 = (__pyx_t_2 != 0);
+  if (__pyx_t_3) {
+
+    /* "structureboost/pdf_discrete.pyx":74
+ *     def quantile(self, qval):
+ *         if self.cum_prob is None:
+ *             self.calculate_cum_prob()             # <<<<<<<<<<<<<<
+ *         bin_lp = np.digitize(qval, self.cum_prob)-1
+ * 
+ */
+    __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_calculate_cum_prob); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 74, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_4);
+    __pyx_t_5 = NULL;
+    if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_4))) {
+      __pyx_t_5 = PyMethod_GET_SELF(__pyx_t_4);
+      if (likely(__pyx_t_5)) {
+        PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_4);
+        __Pyx_INCREF(__pyx_t_5);
+        __Pyx_INCREF(function);
+        __Pyx_DECREF_SET(__pyx_t_4, function);
+      }
+    }
+    __pyx_t_1 = (__pyx_t_5) ? __Pyx_PyObject_CallOneArg(__pyx_t_4, __pyx_t_5) : __Pyx_PyObject_CallNoArg(__pyx_t_4);
+    __Pyx_XDECREF(__pyx_t_5); __pyx_t_5 = 0;
+    if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 74, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_1);
+    __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+    __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+
+    /* "structureboost/pdf_discrete.pyx":73
+ * 
+ *     def quantile(self, qval):
+ *         if self.cum_prob is None:             # <<<<<<<<<<<<<<
+ *             self.calculate_cum_prob()
+ *         bin_lp = np.digitize(qval, self.cum_prob)-1
+ */
+  }
+
+  /* "structureboost/pdf_discrete.pyx":75
+ *         if self.cum_prob is None:
+ *             self.calculate_cum_prob()
  *         bin_lp = np.digitize(qval, self.cum_prob)-1             # <<<<<<<<<<<<<<
  * 
  *         if bin_lp>=len(self.binvec)-1:
  */
-  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_np); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 29, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_digitize); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 29, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_3);
-  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_cum_prob); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 29, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_4 = NULL;
-  __pyx_t_5 = 0;
-  if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_3))) {
-    __pyx_t_4 = PyMethod_GET_SELF(__pyx_t_3);
-    if (likely(__pyx_t_4)) {
-      PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_3);
-      __Pyx_INCREF(__pyx_t_4);
+  __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_n_s_np); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 75, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_4);
+  __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_digitize); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 75, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_5);
+  __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_cum_prob); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 75, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_4);
+  __pyx_t_6 = NULL;
+  __pyx_t_7 = 0;
+  if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_5))) {
+    __pyx_t_6 = PyMethod_GET_SELF(__pyx_t_5);
+    if (likely(__pyx_t_6)) {
+      PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_5);
+      __Pyx_INCREF(__pyx_t_6);
       __Pyx_INCREF(function);
-      __Pyx_DECREF_SET(__pyx_t_3, function);
-      __pyx_t_5 = 1;
+      __Pyx_DECREF_SET(__pyx_t_5, function);
+      __pyx_t_7 = 1;
     }
   }
   #if CYTHON_FAST_PYCALL
-  if (PyFunction_Check(__pyx_t_3)) {
-    PyObject *__pyx_temp[3] = {__pyx_t_4, __pyx_v_qval, __pyx_t_2};
-    __pyx_t_1 = __Pyx_PyFunction_FastCall(__pyx_t_3, __pyx_temp+1-__pyx_t_5, 2+__pyx_t_5); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 29, __pyx_L1_error)
-    __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
+  if (PyFunction_Check(__pyx_t_5)) {
+    PyObject *__pyx_temp[3] = {__pyx_t_6, __pyx_v_qval, __pyx_t_4};
+    __pyx_t_1 = __Pyx_PyFunction_FastCall(__pyx_t_5, __pyx_temp+1-__pyx_t_7, 2+__pyx_t_7); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 75, __pyx_L1_error)
+    __Pyx_XDECREF(__pyx_t_6); __pyx_t_6 = 0;
     __Pyx_GOTREF(__pyx_t_1);
-    __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+    __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
   } else
   #endif
   #if CYTHON_FAST_PYCCALL
-  if (__Pyx_PyFastCFunction_Check(__pyx_t_3)) {
-    PyObject *__pyx_temp[3] = {__pyx_t_4, __pyx_v_qval, __pyx_t_2};
-    __pyx_t_1 = __Pyx_PyCFunction_FastCall(__pyx_t_3, __pyx_temp+1-__pyx_t_5, 2+__pyx_t_5); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 29, __pyx_L1_error)
-    __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
+  if (__Pyx_PyFastCFunction_Check(__pyx_t_5)) {
+    PyObject *__pyx_temp[3] = {__pyx_t_6, __pyx_v_qval, __pyx_t_4};
+    __pyx_t_1 = __Pyx_PyCFunction_FastCall(__pyx_t_5, __pyx_temp+1-__pyx_t_7, 2+__pyx_t_7); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 75, __pyx_L1_error)
+    __Pyx_XDECREF(__pyx_t_6); __pyx_t_6 = 0;
     __Pyx_GOTREF(__pyx_t_1);
-    __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+    __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
   } else
   #endif
   {
-    __pyx_t_6 = PyTuple_New(2+__pyx_t_5); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 29, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_6);
-    if (__pyx_t_4) {
-      __Pyx_GIVEREF(__pyx_t_4); PyTuple_SET_ITEM(__pyx_t_6, 0, __pyx_t_4); __pyx_t_4 = NULL;
+    __pyx_t_8 = PyTuple_New(2+__pyx_t_7); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 75, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_8);
+    if (__pyx_t_6) {
+      __Pyx_GIVEREF(__pyx_t_6); PyTuple_SET_ITEM(__pyx_t_8, 0, __pyx_t_6); __pyx_t_6 = NULL;
     }
     __Pyx_INCREF(__pyx_v_qval);
     __Pyx_GIVEREF(__pyx_v_qval);
-    PyTuple_SET_ITEM(__pyx_t_6, 0+__pyx_t_5, __pyx_v_qval);
-    __Pyx_GIVEREF(__pyx_t_2);
-    PyTuple_SET_ITEM(__pyx_t_6, 1+__pyx_t_5, __pyx_t_2);
-    __pyx_t_2 = 0;
-    __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_3, __pyx_t_6, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 29, __pyx_L1_error)
+    PyTuple_SET_ITEM(__pyx_t_8, 0+__pyx_t_7, __pyx_v_qval);
+    __Pyx_GIVEREF(__pyx_t_4);
+    PyTuple_SET_ITEM(__pyx_t_8, 1+__pyx_t_7, __pyx_t_4);
+    __pyx_t_4 = 0;
+    __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_5, __pyx_t_8, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 75, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
-    __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
+    __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
   }
-  __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  __pyx_t_3 = __Pyx_PyInt_SubtractObjC(__pyx_t_1, __pyx_int_1, 1, 0, 0); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 29, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_3);
+  __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
+  __pyx_t_5 = __Pyx_PyInt_SubtractObjC(__pyx_t_1, __pyx_int_1, 1, 0, 0); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 75, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_5);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_v_bin_lp = __pyx_t_3;
-  __pyx_t_3 = 0;
+  __pyx_v_bin_lp = __pyx_t_5;
+  __pyx_t_5 = 0;
 
-  /* "structureboost/pdf_discrete.pyx":31
+  /* "structureboost/pdf_discrete.pyx":77
  *         bin_lp = np.digitize(qval, self.cum_prob)-1
  * 
  *         if bin_lp>=len(self.binvec)-1:             # <<<<<<<<<<<<<<
  *             bin_lp = len(self.binvec)-2
  *         binpt_left = self.binvec[bin_lp]
  */
-  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_binvec); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 31, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_7 = PyObject_Length(__pyx_t_3); if (unlikely(__pyx_t_7 == ((Py_ssize_t)-1))) __PYX_ERR(0, 31, __pyx_L1_error)
-  __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  __pyx_t_3 = PyInt_FromSsize_t((__pyx_t_7 - 1)); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 31, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_1 = PyObject_RichCompare(__pyx_v_bin_lp, __pyx_t_3, Py_GE); __Pyx_XGOTREF(__pyx_t_1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 31, __pyx_L1_error)
-  __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  __pyx_t_8 = __Pyx_PyObject_IsTrue(__pyx_t_1); if (unlikely(__pyx_t_8 < 0)) __PYX_ERR(0, 31, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_binvec); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 77, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_5);
+  __pyx_t_9 = PyObject_Length(__pyx_t_5); if (unlikely(__pyx_t_9 == ((Py_ssize_t)-1))) __PYX_ERR(0, 77, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
+  __pyx_t_5 = PyInt_FromSsize_t((__pyx_t_9 - 1)); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 77, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_5);
+  __pyx_t_1 = PyObject_RichCompare(__pyx_v_bin_lp, __pyx_t_5, Py_GE); __Pyx_XGOTREF(__pyx_t_1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 77, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
+  __pyx_t_3 = __Pyx_PyObject_IsTrue(__pyx_t_1); if (unlikely(__pyx_t_3 < 0)) __PYX_ERR(0, 77, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  if (__pyx_t_8) {
+  if (__pyx_t_3) {
 
-    /* "structureboost/pdf_discrete.pyx":32
+    /* "structureboost/pdf_discrete.pyx":78
  * 
  *         if bin_lp>=len(self.binvec)-1:
  *             bin_lp = len(self.binvec)-2             # <<<<<<<<<<<<<<
  *         binpt_left = self.binvec[bin_lp]
  *         cumprob_left = self.cum_prob[bin_lp]
  */
-    __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_binvec); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 32, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_binvec); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 78, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
-    __pyx_t_7 = PyObject_Length(__pyx_t_1); if (unlikely(__pyx_t_7 == ((Py_ssize_t)-1))) __PYX_ERR(0, 32, __pyx_L1_error)
+    __pyx_t_9 = PyObject_Length(__pyx_t_1); if (unlikely(__pyx_t_9 == ((Py_ssize_t)-1))) __PYX_ERR(0, 78, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-    __pyx_t_1 = PyInt_FromSsize_t((__pyx_t_7 - 2)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 32, __pyx_L1_error)
+    __pyx_t_1 = PyInt_FromSsize_t((__pyx_t_9 - 2)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 78, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF_SET(__pyx_v_bin_lp, __pyx_t_1);
     __pyx_t_1 = 0;
 
-    /* "structureboost/pdf_discrete.pyx":31
+    /* "structureboost/pdf_discrete.pyx":77
  *         bin_lp = np.digitize(qval, self.cum_prob)-1
  * 
  *         if bin_lp>=len(self.binvec)-1:             # <<<<<<<<<<<<<<
@@ -3133,70 +3749,70 @@ static PyObject *__pyx_pf_14structureboost_12pdf_discrete_11PdfDiscrete_4quantil
  */
   }
 
-  /* "structureboost/pdf_discrete.pyx":33
+  /* "structureboost/pdf_discrete.pyx":79
  *         if bin_lp>=len(self.binvec)-1:
  *             bin_lp = len(self.binvec)-2
  *         binpt_left = self.binvec[bin_lp]             # <<<<<<<<<<<<<<
  *         cumprob_left = self.cum_prob[bin_lp]
  *         out_val =  binpt_left + self.bin_widths[bin_lp]*(qval-cumprob_left)/self.probvec[bin_lp]
  */
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_binvec); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 33, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_binvec); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 79, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_3 = __Pyx_PyObject_GetItem(__pyx_t_1, __pyx_v_bin_lp); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 33, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_3);
+  __pyx_t_5 = __Pyx_PyObject_GetItem(__pyx_t_1, __pyx_v_bin_lp); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 79, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_5);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_v_binpt_left = __pyx_t_3;
-  __pyx_t_3 = 0;
+  __pyx_v_binpt_left = __pyx_t_5;
+  __pyx_t_5 = 0;
 
-  /* "structureboost/pdf_discrete.pyx":34
+  /* "structureboost/pdf_discrete.pyx":80
  *             bin_lp = len(self.binvec)-2
  *         binpt_left = self.binvec[bin_lp]
  *         cumprob_left = self.cum_prob[bin_lp]             # <<<<<<<<<<<<<<
  *         out_val =  binpt_left + self.bin_widths[bin_lp]*(qval-cumprob_left)/self.probvec[bin_lp]
  *         return(out_val)
  */
-  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_cum_prob); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 34, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_1 = __Pyx_PyObject_GetItem(__pyx_t_3, __pyx_v_bin_lp); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 34, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_cum_prob); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 80, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_5);
+  __pyx_t_1 = __Pyx_PyObject_GetItem(__pyx_t_5, __pyx_v_bin_lp); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 80, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+  __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
   __pyx_v_cumprob_left = __pyx_t_1;
   __pyx_t_1 = 0;
 
-  /* "structureboost/pdf_discrete.pyx":35
+  /* "structureboost/pdf_discrete.pyx":81
  *         binpt_left = self.binvec[bin_lp]
  *         cumprob_left = self.cum_prob[bin_lp]
  *         out_val =  binpt_left + self.bin_widths[bin_lp]*(qval-cumprob_left)/self.probvec[bin_lp]             # <<<<<<<<<<<<<<
  *         return(out_val)
  * 
  */
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_bin_widths); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 35, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_bin_widths); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 81, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_3 = __Pyx_PyObject_GetItem(__pyx_t_1, __pyx_v_bin_lp); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 35, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_3);
+  __pyx_t_5 = __Pyx_PyObject_GetItem(__pyx_t_1, __pyx_v_bin_lp); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 81, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_5);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_t_1 = PyNumber_Subtract(__pyx_v_qval, __pyx_v_cumprob_left); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 35, __pyx_L1_error)
+  __pyx_t_1 = PyNumber_Subtract(__pyx_v_qval, __pyx_v_cumprob_left); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 81, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_6 = PyNumber_Multiply(__pyx_t_3, __pyx_t_1); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 35, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_6);
-  __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+  __pyx_t_8 = PyNumber_Multiply(__pyx_t_5, __pyx_t_1); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 81, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_8);
+  __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_probvec); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 35, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_probvec); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 81, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_3 = __Pyx_PyObject_GetItem(__pyx_t_1, __pyx_v_bin_lp); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 35, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_3);
+  __pyx_t_5 = __Pyx_PyObject_GetItem(__pyx_t_1, __pyx_v_bin_lp); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 81, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_5);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_t_1 = __Pyx_PyNumber_Divide(__pyx_t_6, __pyx_t_3); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 35, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyNumber_Divide(__pyx_t_8, __pyx_t_5); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 81, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
-  __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  __pyx_t_3 = PyNumber_Add(__pyx_v_binpt_left, __pyx_t_1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 35, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_3);
+  __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
+  __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
+  __pyx_t_5 = PyNumber_Add(__pyx_v_binpt_left, __pyx_t_1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 81, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_5);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_v_out_val = __pyx_t_3;
-  __pyx_t_3 = 0;
+  __pyx_v_out_val = __pyx_t_5;
+  __pyx_t_5 = 0;
 
-  /* "structureboost/pdf_discrete.pyx":36
+  /* "structureboost/pdf_discrete.pyx":82
  *         cumprob_left = self.cum_prob[bin_lp]
  *         out_val =  binpt_left + self.bin_widths[bin_lp]*(qval-cumprob_left)/self.probvec[bin_lp]
  *         return(out_val)             # <<<<<<<<<<<<<<
@@ -3208,21 +3824,21 @@ static PyObject *__pyx_pf_14structureboost_12pdf_discrete_11PdfDiscrete_4quantil
   __pyx_r = __pyx_v_out_val;
   goto __pyx_L0;
 
-  /* "structureboost/pdf_discrete.pyx":28
+  /* "structureboost/pdf_discrete.pyx":72
  *         return(val)
  * 
  *     def quantile(self, qval):             # <<<<<<<<<<<<<<
- *         bin_lp = np.digitize(qval, self.cum_prob)-1
- * 
+ *         if self.cum_prob is None:
+ *             self.calculate_cum_prob()
  */
 
   /* function exit code */
   __pyx_L1_error:;
   __Pyx_XDECREF(__pyx_t_1);
-  __Pyx_XDECREF(__pyx_t_2);
-  __Pyx_XDECREF(__pyx_t_3);
   __Pyx_XDECREF(__pyx_t_4);
+  __Pyx_XDECREF(__pyx_t_5);
   __Pyx_XDECREF(__pyx_t_6);
+  __Pyx_XDECREF(__pyx_t_8);
   __Pyx_AddTraceback("structureboost.pdf_discrete.PdfDiscrete.quantile", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
@@ -3236,18 +3852,18 @@ static PyObject *__pyx_pf_14structureboost_12pdf_discrete_11PdfDiscrete_4quantil
   return __pyx_r;
 }
 
-/* "structureboost/pdf_discrete.pyx":38
+/* "structureboost/pdf_discrete.pyx":84
  *         return(out_val)
  * 
  *     def quantiles(self, qval):             # <<<<<<<<<<<<<<
- *         bin_lp = np.digitize(qval, self.cum_prob)-1
- *         bin_lp[bin_lp>=len(self.binvec)-1] = len(self.binvec)-2
+ *         if self.cum_prob is None:
+ *             self.calculate_cum_prob()
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_14structureboost_12pdf_discrete_11PdfDiscrete_7quantiles(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
-static PyMethodDef __pyx_mdef_14structureboost_12pdf_discrete_11PdfDiscrete_7quantiles = {"quantiles", (PyCFunction)(void*)(PyCFunctionWithKeywords)__pyx_pw_14structureboost_12pdf_discrete_11PdfDiscrete_7quantiles, METH_VARARGS|METH_KEYWORDS, 0};
-static PyObject *__pyx_pw_14structureboost_12pdf_discrete_11PdfDiscrete_7quantiles(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
+static PyObject *__pyx_pw_14structureboost_12pdf_discrete_11PdfDiscrete_9quantiles(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
+static PyMethodDef __pyx_mdef_14structureboost_12pdf_discrete_11PdfDiscrete_9quantiles = {"quantiles", (PyCFunction)(void*)(PyCFunctionWithKeywords)__pyx_pw_14structureboost_12pdf_discrete_11PdfDiscrete_9quantiles, METH_VARARGS|METH_KEYWORDS, 0};
+static PyObject *__pyx_pw_14structureboost_12pdf_discrete_11PdfDiscrete_9quantiles(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
   PyObject *__pyx_v_self = 0;
   PyObject *__pyx_v_qval = 0;
   int __pyx_lineno = 0;
@@ -3279,11 +3895,11 @@ static PyObject *__pyx_pw_14structureboost_12pdf_discrete_11PdfDiscrete_7quantil
         case  1:
         if (likely((values[1] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_qval)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("quantiles", 1, 2, 2, 1); __PYX_ERR(0, 38, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("quantiles", 1, 2, 2, 1); __PYX_ERR(0, 84, __pyx_L3_error)
         }
       }
       if (unlikely(kw_args > 0)) {
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "quantiles") < 0)) __PYX_ERR(0, 38, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "quantiles") < 0)) __PYX_ERR(0, 84, __pyx_L3_error)
       }
     } else if (PyTuple_GET_SIZE(__pyx_args) != 2) {
       goto __pyx_L5_argtuple_error;
@@ -3296,20 +3912,20 @@ static PyObject *__pyx_pw_14structureboost_12pdf_discrete_11PdfDiscrete_7quantil
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("quantiles", 1, 2, 2, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 38, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("quantiles", 1, 2, 2, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 84, __pyx_L3_error)
   __pyx_L3_error:;
   __Pyx_AddTraceback("structureboost.pdf_discrete.PdfDiscrete.quantiles", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  __pyx_r = __pyx_pf_14structureboost_12pdf_discrete_11PdfDiscrete_6quantiles(__pyx_self, __pyx_v_self, __pyx_v_qval);
+  __pyx_r = __pyx_pf_14structureboost_12pdf_discrete_11PdfDiscrete_8quantiles(__pyx_self, __pyx_v_self, __pyx_v_qval);
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_14structureboost_12pdf_discrete_11PdfDiscrete_6quantiles(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self, PyObject *__pyx_v_qval) {
+static PyObject *__pyx_pf_14structureboost_12pdf_discrete_11PdfDiscrete_8quantiles(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self, PyObject *__pyx_v_qval) {
   PyObject *__pyx_v_bin_lp = NULL;
   PyObject *__pyx_v_binpt_left = NULL;
   PyObject *__pyx_v_cumprob_left = NULL;
@@ -3318,175 +3934,226 @@ static PyObject *__pyx_pf_14structureboost_12pdf_discrete_11PdfDiscrete_6quantil
   __Pyx_TraceDeclarations
   __Pyx_RefNannyDeclarations
   PyObject *__pyx_t_1 = NULL;
-  PyObject *__pyx_t_2 = NULL;
-  PyObject *__pyx_t_3 = NULL;
+  int __pyx_t_2;
+  int __pyx_t_3;
   PyObject *__pyx_t_4 = NULL;
-  int __pyx_t_5;
+  PyObject *__pyx_t_5 = NULL;
   PyObject *__pyx_t_6 = NULL;
-  Py_ssize_t __pyx_t_7;
+  int __pyx_t_7;
+  PyObject *__pyx_t_8 = NULL;
+  Py_ssize_t __pyx_t_9;
   int __pyx_lineno = 0;
   const char *__pyx_filename = NULL;
   int __pyx_clineno = 0;
-  __Pyx_TraceFrameInit(__pyx_codeobj__6)
+  __Pyx_TraceFrameInit(__pyx_codeobj__7)
   __Pyx_RefNannySetupContext("quantiles", 0);
-  __Pyx_TraceCall("quantiles", __pyx_f[0], 38, 0, __PYX_ERR(0, 38, __pyx_L1_error));
+  __Pyx_TraceCall("quantiles", __pyx_f[0], 84, 0, __PYX_ERR(0, 84, __pyx_L1_error));
 
-  /* "structureboost/pdf_discrete.pyx":39
+  /* "structureboost/pdf_discrete.pyx":85
  * 
  *     def quantiles(self, qval):
+ *         if self.cum_prob is None:             # <<<<<<<<<<<<<<
+ *             self.calculate_cum_prob()
+ *         bin_lp = np.digitize(qval, self.cum_prob)-1
+ */
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_cum_prob); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 85, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __pyx_t_2 = (__pyx_t_1 == Py_None);
+  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+  __pyx_t_3 = (__pyx_t_2 != 0);
+  if (__pyx_t_3) {
+
+    /* "structureboost/pdf_discrete.pyx":86
+ *     def quantiles(self, qval):
+ *         if self.cum_prob is None:
+ *             self.calculate_cum_prob()             # <<<<<<<<<<<<<<
+ *         bin_lp = np.digitize(qval, self.cum_prob)-1
+ *         bin_lp[bin_lp>=len(self.binvec)-1] = len(self.binvec)-2
+ */
+    __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_calculate_cum_prob); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 86, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_4);
+    __pyx_t_5 = NULL;
+    if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_4))) {
+      __pyx_t_5 = PyMethod_GET_SELF(__pyx_t_4);
+      if (likely(__pyx_t_5)) {
+        PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_4);
+        __Pyx_INCREF(__pyx_t_5);
+        __Pyx_INCREF(function);
+        __Pyx_DECREF_SET(__pyx_t_4, function);
+      }
+    }
+    __pyx_t_1 = (__pyx_t_5) ? __Pyx_PyObject_CallOneArg(__pyx_t_4, __pyx_t_5) : __Pyx_PyObject_CallNoArg(__pyx_t_4);
+    __Pyx_XDECREF(__pyx_t_5); __pyx_t_5 = 0;
+    if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 86, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_1);
+    __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+    __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+
+    /* "structureboost/pdf_discrete.pyx":85
+ * 
+ *     def quantiles(self, qval):
+ *         if self.cum_prob is None:             # <<<<<<<<<<<<<<
+ *             self.calculate_cum_prob()
+ *         bin_lp = np.digitize(qval, self.cum_prob)-1
+ */
+  }
+
+  /* "structureboost/pdf_discrete.pyx":87
+ *         if self.cum_prob is None:
+ *             self.calculate_cum_prob()
  *         bin_lp = np.digitize(qval, self.cum_prob)-1             # <<<<<<<<<<<<<<
  *         bin_lp[bin_lp>=len(self.binvec)-1] = len(self.binvec)-2
  *         binpt_left = self.binvec[bin_lp]
  */
-  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_np); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 39, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_digitize); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 39, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_3);
-  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_cum_prob); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 39, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_4 = NULL;
-  __pyx_t_5 = 0;
-  if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_3))) {
-    __pyx_t_4 = PyMethod_GET_SELF(__pyx_t_3);
-    if (likely(__pyx_t_4)) {
-      PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_3);
-      __Pyx_INCREF(__pyx_t_4);
+  __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_n_s_np); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 87, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_4);
+  __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_digitize); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 87, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_5);
+  __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_cum_prob); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 87, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_4);
+  __pyx_t_6 = NULL;
+  __pyx_t_7 = 0;
+  if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_5))) {
+    __pyx_t_6 = PyMethod_GET_SELF(__pyx_t_5);
+    if (likely(__pyx_t_6)) {
+      PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_5);
+      __Pyx_INCREF(__pyx_t_6);
       __Pyx_INCREF(function);
-      __Pyx_DECREF_SET(__pyx_t_3, function);
-      __pyx_t_5 = 1;
+      __Pyx_DECREF_SET(__pyx_t_5, function);
+      __pyx_t_7 = 1;
     }
   }
   #if CYTHON_FAST_PYCALL
-  if (PyFunction_Check(__pyx_t_3)) {
-    PyObject *__pyx_temp[3] = {__pyx_t_4, __pyx_v_qval, __pyx_t_2};
-    __pyx_t_1 = __Pyx_PyFunction_FastCall(__pyx_t_3, __pyx_temp+1-__pyx_t_5, 2+__pyx_t_5); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 39, __pyx_L1_error)
-    __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
+  if (PyFunction_Check(__pyx_t_5)) {
+    PyObject *__pyx_temp[3] = {__pyx_t_6, __pyx_v_qval, __pyx_t_4};
+    __pyx_t_1 = __Pyx_PyFunction_FastCall(__pyx_t_5, __pyx_temp+1-__pyx_t_7, 2+__pyx_t_7); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 87, __pyx_L1_error)
+    __Pyx_XDECREF(__pyx_t_6); __pyx_t_6 = 0;
     __Pyx_GOTREF(__pyx_t_1);
-    __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+    __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
   } else
   #endif
   #if CYTHON_FAST_PYCCALL
-  if (__Pyx_PyFastCFunction_Check(__pyx_t_3)) {
-    PyObject *__pyx_temp[3] = {__pyx_t_4, __pyx_v_qval, __pyx_t_2};
-    __pyx_t_1 = __Pyx_PyCFunction_FastCall(__pyx_t_3, __pyx_temp+1-__pyx_t_5, 2+__pyx_t_5); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 39, __pyx_L1_error)
-    __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
+  if (__Pyx_PyFastCFunction_Check(__pyx_t_5)) {
+    PyObject *__pyx_temp[3] = {__pyx_t_6, __pyx_v_qval, __pyx_t_4};
+    __pyx_t_1 = __Pyx_PyCFunction_FastCall(__pyx_t_5, __pyx_temp+1-__pyx_t_7, 2+__pyx_t_7); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 87, __pyx_L1_error)
+    __Pyx_XDECREF(__pyx_t_6); __pyx_t_6 = 0;
     __Pyx_GOTREF(__pyx_t_1);
-    __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+    __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
   } else
   #endif
   {
-    __pyx_t_6 = PyTuple_New(2+__pyx_t_5); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 39, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_6);
-    if (__pyx_t_4) {
-      __Pyx_GIVEREF(__pyx_t_4); PyTuple_SET_ITEM(__pyx_t_6, 0, __pyx_t_4); __pyx_t_4 = NULL;
+    __pyx_t_8 = PyTuple_New(2+__pyx_t_7); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 87, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_8);
+    if (__pyx_t_6) {
+      __Pyx_GIVEREF(__pyx_t_6); PyTuple_SET_ITEM(__pyx_t_8, 0, __pyx_t_6); __pyx_t_6 = NULL;
     }
     __Pyx_INCREF(__pyx_v_qval);
     __Pyx_GIVEREF(__pyx_v_qval);
-    PyTuple_SET_ITEM(__pyx_t_6, 0+__pyx_t_5, __pyx_v_qval);
-    __Pyx_GIVEREF(__pyx_t_2);
-    PyTuple_SET_ITEM(__pyx_t_6, 1+__pyx_t_5, __pyx_t_2);
-    __pyx_t_2 = 0;
-    __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_3, __pyx_t_6, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 39, __pyx_L1_error)
+    PyTuple_SET_ITEM(__pyx_t_8, 0+__pyx_t_7, __pyx_v_qval);
+    __Pyx_GIVEREF(__pyx_t_4);
+    PyTuple_SET_ITEM(__pyx_t_8, 1+__pyx_t_7, __pyx_t_4);
+    __pyx_t_4 = 0;
+    __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_5, __pyx_t_8, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 87, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
-    __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
+    __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
   }
-  __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  __pyx_t_3 = __Pyx_PyInt_SubtractObjC(__pyx_t_1, __pyx_int_1, 1, 0, 0); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 39, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_3);
+  __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
+  __pyx_t_5 = __Pyx_PyInt_SubtractObjC(__pyx_t_1, __pyx_int_1, 1, 0, 0); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 87, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_5);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_v_bin_lp = __pyx_t_3;
-  __pyx_t_3 = 0;
+  __pyx_v_bin_lp = __pyx_t_5;
+  __pyx_t_5 = 0;
 
-  /* "structureboost/pdf_discrete.pyx":40
- *     def quantiles(self, qval):
+  /* "structureboost/pdf_discrete.pyx":88
+ *             self.calculate_cum_prob()
  *         bin_lp = np.digitize(qval, self.cum_prob)-1
  *         bin_lp[bin_lp>=len(self.binvec)-1] = len(self.binvec)-2             # <<<<<<<<<<<<<<
  *         binpt_left = self.binvec[bin_lp]
  *         cumprob_left = self.cum_prob[bin_lp]
  */
-  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_binvec); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 40, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_7 = PyObject_Length(__pyx_t_3); if (unlikely(__pyx_t_7 == ((Py_ssize_t)-1))) __PYX_ERR(0, 40, __pyx_L1_error)
-  __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  __pyx_t_3 = PyInt_FromSsize_t((__pyx_t_7 - 2)); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 40, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_binvec); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 40, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_binvec); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 88, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_5);
+  __pyx_t_9 = PyObject_Length(__pyx_t_5); if (unlikely(__pyx_t_9 == ((Py_ssize_t)-1))) __PYX_ERR(0, 88, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
+  __pyx_t_5 = PyInt_FromSsize_t((__pyx_t_9 - 2)); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 88, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_5);
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_binvec); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 88, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_7 = PyObject_Length(__pyx_t_1); if (unlikely(__pyx_t_7 == ((Py_ssize_t)-1))) __PYX_ERR(0, 40, __pyx_L1_error)
+  __pyx_t_9 = PyObject_Length(__pyx_t_1); if (unlikely(__pyx_t_9 == ((Py_ssize_t)-1))) __PYX_ERR(0, 88, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_t_1 = PyInt_FromSsize_t((__pyx_t_7 - 1)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 40, __pyx_L1_error)
+  __pyx_t_1 = PyInt_FromSsize_t((__pyx_t_9 - 1)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 88, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_6 = PyObject_RichCompare(__pyx_v_bin_lp, __pyx_t_1, Py_GE); __Pyx_XGOTREF(__pyx_t_6); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 40, __pyx_L1_error)
+  __pyx_t_8 = PyObject_RichCompare(__pyx_v_bin_lp, __pyx_t_1, Py_GE); __Pyx_XGOTREF(__pyx_t_8); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 88, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  if (unlikely(PyObject_SetItem(__pyx_v_bin_lp, __pyx_t_6, __pyx_t_3) < 0)) __PYX_ERR(0, 40, __pyx_L1_error)
-  __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
-  __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+  if (unlikely(PyObject_SetItem(__pyx_v_bin_lp, __pyx_t_8, __pyx_t_5) < 0)) __PYX_ERR(0, 88, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
+  __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
 
-  /* "structureboost/pdf_discrete.pyx":41
+  /* "structureboost/pdf_discrete.pyx":89
  *         bin_lp = np.digitize(qval, self.cum_prob)-1
  *         bin_lp[bin_lp>=len(self.binvec)-1] = len(self.binvec)-2
  *         binpt_left = self.binvec[bin_lp]             # <<<<<<<<<<<<<<
  *         cumprob_left = self.cum_prob[bin_lp]
  *         out_val =  binpt_left + self.bin_widths[bin_lp]*(qval-cumprob_left)/self.probvec[bin_lp]
  */
-  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_binvec); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 41, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_6 = __Pyx_PyObject_GetItem(__pyx_t_3, __pyx_v_bin_lp); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 41, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_6);
-  __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  __pyx_v_binpt_left = __pyx_t_6;
-  __pyx_t_6 = 0;
+  __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_binvec); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 89, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_5);
+  __pyx_t_8 = __Pyx_PyObject_GetItem(__pyx_t_5, __pyx_v_bin_lp); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 89, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_8);
+  __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
+  __pyx_v_binpt_left = __pyx_t_8;
+  __pyx_t_8 = 0;
 
-  /* "structureboost/pdf_discrete.pyx":42
+  /* "structureboost/pdf_discrete.pyx":90
  *         bin_lp[bin_lp>=len(self.binvec)-1] = len(self.binvec)-2
  *         binpt_left = self.binvec[bin_lp]
  *         cumprob_left = self.cum_prob[bin_lp]             # <<<<<<<<<<<<<<
  *         out_val =  binpt_left + self.bin_widths[bin_lp]*(qval-cumprob_left)/self.probvec[bin_lp]
  *         return(out_val)
  */
-  __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_cum_prob); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 42, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_6);
-  __pyx_t_3 = __Pyx_PyObject_GetItem(__pyx_t_6, __pyx_v_bin_lp); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 42, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_3);
-  __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
-  __pyx_v_cumprob_left = __pyx_t_3;
-  __pyx_t_3 = 0;
+  __pyx_t_8 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_cum_prob); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 90, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_8);
+  __pyx_t_5 = __Pyx_PyObject_GetItem(__pyx_t_8, __pyx_v_bin_lp); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 90, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_5);
+  __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
+  __pyx_v_cumprob_left = __pyx_t_5;
+  __pyx_t_5 = 0;
 
-  /* "structureboost/pdf_discrete.pyx":43
+  /* "structureboost/pdf_discrete.pyx":91
  *         binpt_left = self.binvec[bin_lp]
  *         cumprob_left = self.cum_prob[bin_lp]
  *         out_val =  binpt_left + self.bin_widths[bin_lp]*(qval-cumprob_left)/self.probvec[bin_lp]             # <<<<<<<<<<<<<<
  *         return(out_val)
  * 
  */
-  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_bin_widths); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 43, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_6 = __Pyx_PyObject_GetItem(__pyx_t_3, __pyx_v_bin_lp); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 43, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_6);
-  __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  __pyx_t_3 = PyNumber_Subtract(__pyx_v_qval, __pyx_v_cumprob_left); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 43, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_1 = PyNumber_Multiply(__pyx_t_6, __pyx_t_3); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 43, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_bin_widths); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 91, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_5);
+  __pyx_t_8 = __Pyx_PyObject_GetItem(__pyx_t_5, __pyx_v_bin_lp); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 91, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_8);
+  __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
+  __pyx_t_5 = PyNumber_Subtract(__pyx_v_qval, __pyx_v_cumprob_left); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 91, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_5);
+  __pyx_t_1 = PyNumber_Multiply(__pyx_t_8, __pyx_t_5); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 91, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
-  __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_probvec); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 43, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_6 = __Pyx_PyObject_GetItem(__pyx_t_3, __pyx_v_bin_lp); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 43, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_6);
-  __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  __pyx_t_3 = __Pyx_PyNumber_Divide(__pyx_t_1, __pyx_t_6); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 43, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_3);
+  __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
+  __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
+  __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_probvec); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 91, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_5);
+  __pyx_t_8 = __Pyx_PyObject_GetItem(__pyx_t_5, __pyx_v_bin_lp); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 91, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_8);
+  __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
+  __pyx_t_5 = __Pyx_PyNumber_Divide(__pyx_t_1, __pyx_t_8); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 91, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_5);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
-  __pyx_t_6 = PyNumber_Add(__pyx_v_binpt_left, __pyx_t_3); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 43, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_6);
-  __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  __pyx_v_out_val = __pyx_t_6;
-  __pyx_t_6 = 0;
+  __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
+  __pyx_t_8 = PyNumber_Add(__pyx_v_binpt_left, __pyx_t_5); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 91, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_8);
+  __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
+  __pyx_v_out_val = __pyx_t_8;
+  __pyx_t_8 = 0;
 
-  /* "structureboost/pdf_discrete.pyx":44
+  /* "structureboost/pdf_discrete.pyx":92
  *         cumprob_left = self.cum_prob[bin_lp]
  *         out_val =  binpt_left + self.bin_widths[bin_lp]*(qval-cumprob_left)/self.probvec[bin_lp]
  *         return(out_val)             # <<<<<<<<<<<<<<
@@ -3498,21 +4165,21 @@ static PyObject *__pyx_pf_14structureboost_12pdf_discrete_11PdfDiscrete_6quantil
   __pyx_r = __pyx_v_out_val;
   goto __pyx_L0;
 
-  /* "structureboost/pdf_discrete.pyx":38
+  /* "structureboost/pdf_discrete.pyx":84
  *         return(out_val)
  * 
  *     def quantiles(self, qval):             # <<<<<<<<<<<<<<
- *         bin_lp = np.digitize(qval, self.cum_prob)-1
- *         bin_lp[bin_lp>=len(self.binvec)-1] = len(self.binvec)-2
+ *         if self.cum_prob is None:
+ *             self.calculate_cum_prob()
  */
 
   /* function exit code */
   __pyx_L1_error:;
   __Pyx_XDECREF(__pyx_t_1);
-  __Pyx_XDECREF(__pyx_t_2);
-  __Pyx_XDECREF(__pyx_t_3);
   __Pyx_XDECREF(__pyx_t_4);
+  __Pyx_XDECREF(__pyx_t_5);
   __Pyx_XDECREF(__pyx_t_6);
+  __Pyx_XDECREF(__pyx_t_8);
   __Pyx_AddTraceback("structureboost.pdf_discrete.PdfDiscrete.quantiles", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
@@ -3526,7 +4193,7 @@ static PyObject *__pyx_pf_14structureboost_12pdf_discrete_11PdfDiscrete_6quantil
   return __pyx_r;
 }
 
-/* "structureboost/pdf_discrete.pyx":46
+/* "structureboost/pdf_discrete.pyx":94
  *         return(out_val)
  * 
  *     def median(self):             # <<<<<<<<<<<<<<
@@ -3535,20 +4202,20 @@ static PyObject *__pyx_pf_14structureboost_12pdf_discrete_11PdfDiscrete_6quantil
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_14structureboost_12pdf_discrete_11PdfDiscrete_9median(PyObject *__pyx_self, PyObject *__pyx_v_self); /*proto*/
-static PyMethodDef __pyx_mdef_14structureboost_12pdf_discrete_11PdfDiscrete_9median = {"median", (PyCFunction)__pyx_pw_14structureboost_12pdf_discrete_11PdfDiscrete_9median, METH_O, 0};
-static PyObject *__pyx_pw_14structureboost_12pdf_discrete_11PdfDiscrete_9median(PyObject *__pyx_self, PyObject *__pyx_v_self) {
+static PyObject *__pyx_pw_14structureboost_12pdf_discrete_11PdfDiscrete_11median(PyObject *__pyx_self, PyObject *__pyx_v_self); /*proto*/
+static PyMethodDef __pyx_mdef_14structureboost_12pdf_discrete_11PdfDiscrete_11median = {"median", (PyCFunction)__pyx_pw_14structureboost_12pdf_discrete_11PdfDiscrete_11median, METH_O, 0};
+static PyObject *__pyx_pw_14structureboost_12pdf_discrete_11PdfDiscrete_11median(PyObject *__pyx_self, PyObject *__pyx_v_self) {
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("median (wrapper)", 0);
-  __pyx_r = __pyx_pf_14structureboost_12pdf_discrete_11PdfDiscrete_8median(__pyx_self, ((PyObject *)__pyx_v_self));
+  __pyx_r = __pyx_pf_14structureboost_12pdf_discrete_11PdfDiscrete_10median(__pyx_self, ((PyObject *)__pyx_v_self));
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_14structureboost_12pdf_discrete_11PdfDiscrete_8median(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self) {
+static PyObject *__pyx_pf_14structureboost_12pdf_discrete_11PdfDiscrete_10median(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self) {
   PyObject *__pyx_r = NULL;
   __Pyx_TraceDeclarations
   __Pyx_RefNannyDeclarations
@@ -3558,11 +4225,11 @@ static PyObject *__pyx_pf_14structureboost_12pdf_discrete_11PdfDiscrete_8median(
   int __pyx_lineno = 0;
   const char *__pyx_filename = NULL;
   int __pyx_clineno = 0;
-  __Pyx_TraceFrameInit(__pyx_codeobj__7)
+  __Pyx_TraceFrameInit(__pyx_codeobj__8)
   __Pyx_RefNannySetupContext("median", 0);
-  __Pyx_TraceCall("median", __pyx_f[0], 46, 0, __PYX_ERR(0, 46, __pyx_L1_error));
+  __Pyx_TraceCall("median", __pyx_f[0], 94, 0, __PYX_ERR(0, 94, __pyx_L1_error));
 
-  /* "structureboost/pdf_discrete.pyx":47
+  /* "structureboost/pdf_discrete.pyx":95
  * 
  *     def median(self):
  *         return(self.quantile(.5))             # <<<<<<<<<<<<<<
@@ -3570,7 +4237,7 @@ static PyObject *__pyx_pf_14structureboost_12pdf_discrete_11PdfDiscrete_8median(
  *     def density(self, value_vec, include_right=True):
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_quantile); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 47, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_quantile); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 95, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __pyx_t_3 = NULL;
   if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_2))) {
@@ -3584,14 +4251,14 @@ static PyObject *__pyx_pf_14structureboost_12pdf_discrete_11PdfDiscrete_8median(
   }
   __pyx_t_1 = (__pyx_t_3) ? __Pyx_PyObject_Call2Args(__pyx_t_2, __pyx_t_3, __pyx_float__5) : __Pyx_PyObject_CallOneArg(__pyx_t_2, __pyx_float__5);
   __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
-  if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 47, __pyx_L1_error)
+  if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 95, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "structureboost/pdf_discrete.pyx":46
+  /* "structureboost/pdf_discrete.pyx":94
  *         return(out_val)
  * 
  *     def median(self):             # <<<<<<<<<<<<<<
@@ -3613,7 +4280,7 @@ static PyObject *__pyx_pf_14structureboost_12pdf_discrete_11PdfDiscrete_8median(
   return __pyx_r;
 }
 
-/* "structureboost/pdf_discrete.pyx":49
+/* "structureboost/pdf_discrete.pyx":97
  *         return(self.quantile(.5))
  * 
  *     def density(self, value_vec, include_right=True):             # <<<<<<<<<<<<<<
@@ -3622,9 +4289,9 @@ static PyObject *__pyx_pf_14structureboost_12pdf_discrete_11PdfDiscrete_8median(
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_14structureboost_12pdf_discrete_11PdfDiscrete_11density(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
-static PyMethodDef __pyx_mdef_14structureboost_12pdf_discrete_11PdfDiscrete_11density = {"density", (PyCFunction)(void*)(PyCFunctionWithKeywords)__pyx_pw_14structureboost_12pdf_discrete_11PdfDiscrete_11density, METH_VARARGS|METH_KEYWORDS, 0};
-static PyObject *__pyx_pw_14structureboost_12pdf_discrete_11PdfDiscrete_11density(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
+static PyObject *__pyx_pw_14structureboost_12pdf_discrete_11PdfDiscrete_13density(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
+static PyMethodDef __pyx_mdef_14structureboost_12pdf_discrete_11PdfDiscrete_13density = {"density", (PyCFunction)(void*)(PyCFunctionWithKeywords)__pyx_pw_14structureboost_12pdf_discrete_11PdfDiscrete_13density, METH_VARARGS|METH_KEYWORDS, 0};
+static PyObject *__pyx_pw_14structureboost_12pdf_discrete_11PdfDiscrete_13density(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
   PyObject *__pyx_v_self = 0;
   PyObject *__pyx_v_value_vec = 0;
   PyObject *__pyx_v_include_right = 0;
@@ -3660,7 +4327,7 @@ static PyObject *__pyx_pw_14structureboost_12pdf_discrete_11PdfDiscrete_11densit
         case  1:
         if (likely((values[1] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_value_vec)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("density", 0, 2, 3, 1); __PYX_ERR(0, 49, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("density", 0, 2, 3, 1); __PYX_ERR(0, 97, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  2:
@@ -3670,7 +4337,7 @@ static PyObject *__pyx_pw_14structureboost_12pdf_discrete_11PdfDiscrete_11densit
         }
       }
       if (unlikely(kw_args > 0)) {
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "density") < 0)) __PYX_ERR(0, 49, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "density") < 0)) __PYX_ERR(0, 97, __pyx_L3_error)
       }
     } else {
       switch (PyTuple_GET_SIZE(__pyx_args)) {
@@ -3688,20 +4355,20 @@ static PyObject *__pyx_pw_14structureboost_12pdf_discrete_11PdfDiscrete_11densit
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("density", 0, 2, 3, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 49, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("density", 0, 2, 3, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 97, __pyx_L3_error)
   __pyx_L3_error:;
   __Pyx_AddTraceback("structureboost.pdf_discrete.PdfDiscrete.density", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  __pyx_r = __pyx_pf_14structureboost_12pdf_discrete_11PdfDiscrete_10density(__pyx_self, __pyx_v_self, __pyx_v_value_vec, __pyx_v_include_right);
+  __pyx_r = __pyx_pf_14structureboost_12pdf_discrete_11PdfDiscrete_12density(__pyx_self, __pyx_v_self, __pyx_v_value_vec, __pyx_v_include_right);
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_14structureboost_12pdf_discrete_11PdfDiscrete_10density(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self, PyObject *__pyx_v_value_vec, PyObject *__pyx_v_include_right) {
+static PyObject *__pyx_pf_14structureboost_12pdf_discrete_11PdfDiscrete_12density(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self, PyObject *__pyx_v_value_vec, PyObject *__pyx_v_include_right) {
   PyObject *__pyx_v_bin_ind = NULL;
   PyObject *__pyx_v_aug_dens_vec = NULL;
   Py_ssize_t __pyx_7genexpr__pyx_v_i;
@@ -3722,23 +4389,23 @@ static PyObject *__pyx_pf_14structureboost_12pdf_discrete_11PdfDiscrete_10densit
   int __pyx_lineno = 0;
   const char *__pyx_filename = NULL;
   int __pyx_clineno = 0;
-  __Pyx_TraceFrameInit(__pyx_codeobj__8)
+  __Pyx_TraceFrameInit(__pyx_codeobj__9)
   __Pyx_RefNannySetupContext("density", 0);
-  __Pyx_TraceCall("density", __pyx_f[0], 49, 0, __PYX_ERR(0, 49, __pyx_L1_error));
+  __Pyx_TraceCall("density", __pyx_f[0], 97, 0, __PYX_ERR(0, 97, __pyx_L1_error));
 
-  /* "structureboost/pdf_discrete.pyx":50
+  /* "structureboost/pdf_discrete.pyx":98
  * 
  *     def density(self, value_vec, include_right=True):
  *         bin_ind = np.digitize(value_vec, self.binvec)             # <<<<<<<<<<<<<<
  *         if include_right:
  *             bin_ind[value_vec==self.support_max] = self.num_bins
  */
-  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_np); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 50, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_np); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 98, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_digitize); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 50, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_digitize); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 98, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_binvec); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 50, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_binvec); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 98, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __pyx_t_4 = NULL;
   __pyx_t_5 = 0;
@@ -3755,7 +4422,7 @@ static PyObject *__pyx_pf_14structureboost_12pdf_discrete_11PdfDiscrete_10densit
   #if CYTHON_FAST_PYCALL
   if (PyFunction_Check(__pyx_t_3)) {
     PyObject *__pyx_temp[3] = {__pyx_t_4, __pyx_v_value_vec, __pyx_t_2};
-    __pyx_t_1 = __Pyx_PyFunction_FastCall(__pyx_t_3, __pyx_temp+1-__pyx_t_5, 2+__pyx_t_5); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 50, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyFunction_FastCall(__pyx_t_3, __pyx_temp+1-__pyx_t_5, 2+__pyx_t_5); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 98, __pyx_L1_error)
     __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
@@ -3764,14 +4431,14 @@ static PyObject *__pyx_pf_14structureboost_12pdf_discrete_11PdfDiscrete_10densit
   #if CYTHON_FAST_PYCCALL
   if (__Pyx_PyFastCFunction_Check(__pyx_t_3)) {
     PyObject *__pyx_temp[3] = {__pyx_t_4, __pyx_v_value_vec, __pyx_t_2};
-    __pyx_t_1 = __Pyx_PyCFunction_FastCall(__pyx_t_3, __pyx_temp+1-__pyx_t_5, 2+__pyx_t_5); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 50, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyCFunction_FastCall(__pyx_t_3, __pyx_temp+1-__pyx_t_5, 2+__pyx_t_5); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 98, __pyx_L1_error)
     __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   } else
   #endif
   {
-    __pyx_t_6 = PyTuple_New(2+__pyx_t_5); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 50, __pyx_L1_error)
+    __pyx_t_6 = PyTuple_New(2+__pyx_t_5); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 98, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_6);
     if (__pyx_t_4) {
       __Pyx_GIVEREF(__pyx_t_4); PyTuple_SET_ITEM(__pyx_t_6, 0, __pyx_t_4); __pyx_t_4 = NULL;
@@ -3782,7 +4449,7 @@ static PyObject *__pyx_pf_14structureboost_12pdf_discrete_11PdfDiscrete_10densit
     __Pyx_GIVEREF(__pyx_t_2);
     PyTuple_SET_ITEM(__pyx_t_6, 1+__pyx_t_5, __pyx_t_2);
     __pyx_t_2 = 0;
-    __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_3, __pyx_t_6, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 50, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_3, __pyx_t_6, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 98, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
   }
@@ -3790,67 +4457,67 @@ static PyObject *__pyx_pf_14structureboost_12pdf_discrete_11PdfDiscrete_10densit
   __pyx_v_bin_ind = __pyx_t_1;
   __pyx_t_1 = 0;
 
-  /* "structureboost/pdf_discrete.pyx":51
+  /* "structureboost/pdf_discrete.pyx":99
  *     def density(self, value_vec, include_right=True):
  *         bin_ind = np.digitize(value_vec, self.binvec)
  *         if include_right:             # <<<<<<<<<<<<<<
  *             bin_ind[value_vec==self.support_max] = self.num_bins
- *         aug_dens_vec = np.concatenate(([0],self.bin_densities,[0]))
+ *         aug_dens_vec = np.concatenate(([0],self.densityvec,[0]))
  */
-  __pyx_t_7 = __Pyx_PyObject_IsTrue(__pyx_v_include_right); if (unlikely(__pyx_t_7 < 0)) __PYX_ERR(0, 51, __pyx_L1_error)
+  __pyx_t_7 = __Pyx_PyObject_IsTrue(__pyx_v_include_right); if (unlikely(__pyx_t_7 < 0)) __PYX_ERR(0, 99, __pyx_L1_error)
   if (__pyx_t_7) {
 
-    /* "structureboost/pdf_discrete.pyx":52
+    /* "structureboost/pdf_discrete.pyx":100
  *         bin_ind = np.digitize(value_vec, self.binvec)
  *         if include_right:
  *             bin_ind[value_vec==self.support_max] = self.num_bins             # <<<<<<<<<<<<<<
- *         aug_dens_vec = np.concatenate(([0],self.bin_densities,[0]))
+ *         aug_dens_vec = np.concatenate(([0],self.densityvec,[0]))
  *         return(np.array([aug_dens_vec[bin_ind[i]] for i in range(len(bin_ind))]))
  */
-    __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_num_bins); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 52, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_num_bins); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 100, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
-    __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_support_max); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 52, __pyx_L1_error)
+    __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_support_max); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 100, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
-    __pyx_t_6 = PyObject_RichCompare(__pyx_v_value_vec, __pyx_t_3, Py_EQ); __Pyx_XGOTREF(__pyx_t_6); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 52, __pyx_L1_error)
+    __pyx_t_6 = PyObject_RichCompare(__pyx_v_value_vec, __pyx_t_3, Py_EQ); __Pyx_XGOTREF(__pyx_t_6); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 100, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-    if (unlikely(PyObject_SetItem(__pyx_v_bin_ind, __pyx_t_6, __pyx_t_1) < 0)) __PYX_ERR(0, 52, __pyx_L1_error)
+    if (unlikely(PyObject_SetItem(__pyx_v_bin_ind, __pyx_t_6, __pyx_t_1) < 0)) __PYX_ERR(0, 100, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-    /* "structureboost/pdf_discrete.pyx":51
+    /* "structureboost/pdf_discrete.pyx":99
  *     def density(self, value_vec, include_right=True):
  *         bin_ind = np.digitize(value_vec, self.binvec)
  *         if include_right:             # <<<<<<<<<<<<<<
  *             bin_ind[value_vec==self.support_max] = self.num_bins
- *         aug_dens_vec = np.concatenate(([0],self.bin_densities,[0]))
+ *         aug_dens_vec = np.concatenate(([0],self.densityvec,[0]))
  */
   }
 
-  /* "structureboost/pdf_discrete.pyx":53
+  /* "structureboost/pdf_discrete.pyx":101
  *         if include_right:
  *             bin_ind[value_vec==self.support_max] = self.num_bins
- *         aug_dens_vec = np.concatenate(([0],self.bin_densities,[0]))             # <<<<<<<<<<<<<<
+ *         aug_dens_vec = np.concatenate(([0],self.densityvec,[0]))             # <<<<<<<<<<<<<<
  *         return(np.array([aug_dens_vec[bin_ind[i]] for i in range(len(bin_ind))]))
  * 
  */
-  __Pyx_GetModuleGlobalName(__pyx_t_6, __pyx_n_s_np); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 53, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_6, __pyx_n_s_np); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 101, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_6);
-  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_6, __pyx_n_s_concatenate); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 53, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_6, __pyx_n_s_concatenate); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 101, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
-  __pyx_t_6 = PyList_New(1); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 53, __pyx_L1_error)
+  __pyx_t_6 = PyList_New(1); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 101, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_6);
   __Pyx_INCREF(__pyx_int_0);
   __Pyx_GIVEREF(__pyx_int_0);
   PyList_SET_ITEM(__pyx_t_6, 0, __pyx_int_0);
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_bin_densities); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 53, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_densityvec); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 101, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_4 = PyList_New(1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 53, __pyx_L1_error)
+  __pyx_t_4 = PyList_New(1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 101, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_INCREF(__pyx_int_0);
   __Pyx_GIVEREF(__pyx_int_0);
   PyList_SET_ITEM(__pyx_t_4, 0, __pyx_int_0);
-  __pyx_t_8 = PyTuple_New(3); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 53, __pyx_L1_error)
+  __pyx_t_8 = PyTuple_New(3); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 101, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_8);
   __Pyx_GIVEREF(__pyx_t_6);
   PyTuple_SET_ITEM(__pyx_t_8, 0, __pyx_t_6);
@@ -3874,38 +4541,38 @@ static PyObject *__pyx_pf_14structureboost_12pdf_discrete_11PdfDiscrete_10densit
   __pyx_t_1 = (__pyx_t_4) ? __Pyx_PyObject_Call2Args(__pyx_t_3, __pyx_t_4, __pyx_t_8) : __Pyx_PyObject_CallOneArg(__pyx_t_3, __pyx_t_8);
   __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
   __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
-  if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 53, __pyx_L1_error)
+  if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 101, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   __pyx_v_aug_dens_vec = __pyx_t_1;
   __pyx_t_1 = 0;
 
-  /* "structureboost/pdf_discrete.pyx":54
+  /* "structureboost/pdf_discrete.pyx":102
  *             bin_ind[value_vec==self.support_max] = self.num_bins
- *         aug_dens_vec = np.concatenate(([0],self.bin_densities,[0]))
+ *         aug_dens_vec = np.concatenate(([0],self.densityvec,[0]))
  *         return(np.array([aug_dens_vec[bin_ind[i]] for i in range(len(bin_ind))]))             # <<<<<<<<<<<<<<
  * 
  *     def cdf(self, x_vals):
  */
   __Pyx_XDECREF(__pyx_r);
-  __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_n_s_np); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 54, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_n_s_np); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 102, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_8 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_array); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 54, __pyx_L1_error)
+  __pyx_t_8 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_array); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 102, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_8);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   { /* enter inner scope */
-    __pyx_t_3 = PyList_New(0); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 54, __pyx_L1_error)
+    __pyx_t_3 = PyList_New(0); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 102, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
-    __pyx_t_9 = PyObject_Length(__pyx_v_bin_ind); if (unlikely(__pyx_t_9 == ((Py_ssize_t)-1))) __PYX_ERR(0, 54, __pyx_L1_error)
+    __pyx_t_9 = PyObject_Length(__pyx_v_bin_ind); if (unlikely(__pyx_t_9 == ((Py_ssize_t)-1))) __PYX_ERR(0, 102, __pyx_L1_error)
     __pyx_t_10 = __pyx_t_9;
     for (__pyx_t_11 = 0; __pyx_t_11 < __pyx_t_10; __pyx_t_11+=1) {
       __pyx_7genexpr__pyx_v_i = __pyx_t_11;
-      __pyx_t_4 = __Pyx_GetItemInt(__pyx_v_bin_ind, __pyx_7genexpr__pyx_v_i, Py_ssize_t, 1, PyInt_FromSsize_t, 0, 1, 1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 54, __pyx_L1_error)
+      __pyx_t_4 = __Pyx_GetItemInt(__pyx_v_bin_ind, __pyx_7genexpr__pyx_v_i, Py_ssize_t, 1, PyInt_FromSsize_t, 0, 1, 1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 102, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_4);
-      __pyx_t_2 = __Pyx_PyObject_GetItem(__pyx_v_aug_dens_vec, __pyx_t_4); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 54, __pyx_L1_error)
+      __pyx_t_2 = __Pyx_PyObject_GetItem(__pyx_v_aug_dens_vec, __pyx_t_4); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 102, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_2);
       __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-      if (unlikely(__Pyx_ListComp_Append(__pyx_t_3, (PyObject*)__pyx_t_2))) __PYX_ERR(0, 54, __pyx_L1_error)
+      if (unlikely(__Pyx_ListComp_Append(__pyx_t_3, (PyObject*)__pyx_t_2))) __PYX_ERR(0, 102, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
     }
   } /* exit inner scope */
@@ -3922,14 +4589,14 @@ static PyObject *__pyx_pf_14structureboost_12pdf_discrete_11PdfDiscrete_10densit
   __pyx_t_1 = (__pyx_t_2) ? __Pyx_PyObject_Call2Args(__pyx_t_8, __pyx_t_2, __pyx_t_3) : __Pyx_PyObject_CallOneArg(__pyx_t_8, __pyx_t_3);
   __Pyx_XDECREF(__pyx_t_2); __pyx_t_2 = 0;
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 54, __pyx_L1_error)
+  if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 102, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "structureboost/pdf_discrete.pyx":49
+  /* "structureboost/pdf_discrete.pyx":97
  *         return(self.quantile(.5))
  * 
  *     def density(self, value_vec, include_right=True):             # <<<<<<<<<<<<<<
@@ -3956,18 +4623,18 @@ static PyObject *__pyx_pf_14structureboost_12pdf_discrete_11PdfDiscrete_10densit
   return __pyx_r;
 }
 
-/* "structureboost/pdf_discrete.pyx":56
+/* "structureboost/pdf_discrete.pyx":104
  *         return(np.array([aug_dens_vec[bin_ind[i]] for i in range(len(bin_ind))]))
  * 
  *     def cdf(self, x_vals):             # <<<<<<<<<<<<<<
+ *         # TODO: Check if I got the digitize right or if I need a -1
  *         bin_ind = np.digitize(x_vals, self.binvec)
- *         aug_bin_vec = np.concatenate(([-np.inf],self.binvec))
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_14structureboost_12pdf_discrete_11PdfDiscrete_13cdf(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
-static PyMethodDef __pyx_mdef_14structureboost_12pdf_discrete_11PdfDiscrete_13cdf = {"cdf", (PyCFunction)(void*)(PyCFunctionWithKeywords)__pyx_pw_14structureboost_12pdf_discrete_11PdfDiscrete_13cdf, METH_VARARGS|METH_KEYWORDS, 0};
-static PyObject *__pyx_pw_14structureboost_12pdf_discrete_11PdfDiscrete_13cdf(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
+static PyObject *__pyx_pw_14structureboost_12pdf_discrete_11PdfDiscrete_15cdf(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
+static PyMethodDef __pyx_mdef_14structureboost_12pdf_discrete_11PdfDiscrete_15cdf = {"cdf", (PyCFunction)(void*)(PyCFunctionWithKeywords)__pyx_pw_14structureboost_12pdf_discrete_11PdfDiscrete_15cdf, METH_VARARGS|METH_KEYWORDS, 0};
+static PyObject *__pyx_pw_14structureboost_12pdf_discrete_11PdfDiscrete_15cdf(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
   PyObject *__pyx_v_self = 0;
   PyObject *__pyx_v_x_vals = 0;
   int __pyx_lineno = 0;
@@ -3999,11 +4666,11 @@ static PyObject *__pyx_pw_14structureboost_12pdf_discrete_11PdfDiscrete_13cdf(Py
         case  1:
         if (likely((values[1] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_x_vals)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("cdf", 1, 2, 2, 1); __PYX_ERR(0, 56, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("cdf", 1, 2, 2, 1); __PYX_ERR(0, 104, __pyx_L3_error)
         }
       }
       if (unlikely(kw_args > 0)) {
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "cdf") < 0)) __PYX_ERR(0, 56, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "cdf") < 0)) __PYX_ERR(0, 104, __pyx_L3_error)
       }
     } else if (PyTuple_GET_SIZE(__pyx_args) != 2) {
       goto __pyx_L5_argtuple_error;
@@ -4016,20 +4683,20 @@ static PyObject *__pyx_pw_14structureboost_12pdf_discrete_11PdfDiscrete_13cdf(Py
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("cdf", 1, 2, 2, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 56, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("cdf", 1, 2, 2, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 104, __pyx_L3_error)
   __pyx_L3_error:;
   __Pyx_AddTraceback("structureboost.pdf_discrete.PdfDiscrete.cdf", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  __pyx_r = __pyx_pf_14structureboost_12pdf_discrete_11PdfDiscrete_12cdf(__pyx_self, __pyx_v_self, __pyx_v_x_vals);
+  __pyx_r = __pyx_pf_14structureboost_12pdf_discrete_11PdfDiscrete_14cdf(__pyx_self, __pyx_v_self, __pyx_v_x_vals);
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_14structureboost_12pdf_discrete_11PdfDiscrete_12cdf(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self, PyObject *__pyx_v_x_vals) {
+static PyObject *__pyx_pf_14structureboost_12pdf_discrete_11PdfDiscrete_14cdf(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self, PyObject *__pyx_v_x_vals) {
   PyObject *__pyx_v_bin_ind = NULL;
   PyObject *__pyx_v_aug_bin_vec = NULL;
   PyObject *__pyx_v_aug_cum_prob = NULL;
@@ -4045,27 +4712,29 @@ static PyObject *__pyx_pf_14structureboost_12pdf_discrete_11PdfDiscrete_12cdf(CY
   PyObject *__pyx_t_4 = NULL;
   int __pyx_t_5;
   PyObject *__pyx_t_6 = NULL;
-  PyObject *__pyx_t_7 = NULL;
+  int __pyx_t_7;
+  int __pyx_t_8;
+  PyObject *__pyx_t_9 = NULL;
   int __pyx_lineno = 0;
   const char *__pyx_filename = NULL;
   int __pyx_clineno = 0;
-  __Pyx_TraceFrameInit(__pyx_codeobj__9)
+  __Pyx_TraceFrameInit(__pyx_codeobj__10)
   __Pyx_RefNannySetupContext("cdf", 0);
-  __Pyx_TraceCall("cdf", __pyx_f[0], 56, 0, __PYX_ERR(0, 56, __pyx_L1_error));
+  __Pyx_TraceCall("cdf", __pyx_f[0], 104, 0, __PYX_ERR(0, 104, __pyx_L1_error));
 
-  /* "structureboost/pdf_discrete.pyx":57
- * 
+  /* "structureboost/pdf_discrete.pyx":106
  *     def cdf(self, x_vals):
+ *         # TODO: Check if I got the digitize right or if I need a -1
  *         bin_ind = np.digitize(x_vals, self.binvec)             # <<<<<<<<<<<<<<
  *         aug_bin_vec = np.concatenate(([-np.inf],self.binvec))
- *         aug_cum_prob = np.concatenate(([0],self.cum_prob))
+ *         if self.cum_prob is None:
  */
-  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_np); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 57, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_np); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 106, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_digitize); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 57, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_digitize); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 106, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_binvec); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 57, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_binvec); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 106, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __pyx_t_4 = NULL;
   __pyx_t_5 = 0;
@@ -4082,7 +4751,7 @@ static PyObject *__pyx_pf_14structureboost_12pdf_discrete_11PdfDiscrete_12cdf(CY
   #if CYTHON_FAST_PYCALL
   if (PyFunction_Check(__pyx_t_3)) {
     PyObject *__pyx_temp[3] = {__pyx_t_4, __pyx_v_x_vals, __pyx_t_2};
-    __pyx_t_1 = __Pyx_PyFunction_FastCall(__pyx_t_3, __pyx_temp+1-__pyx_t_5, 2+__pyx_t_5); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 57, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyFunction_FastCall(__pyx_t_3, __pyx_temp+1-__pyx_t_5, 2+__pyx_t_5); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 106, __pyx_L1_error)
     __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
@@ -4091,14 +4760,14 @@ static PyObject *__pyx_pf_14structureboost_12pdf_discrete_11PdfDiscrete_12cdf(CY
   #if CYTHON_FAST_PYCCALL
   if (__Pyx_PyFastCFunction_Check(__pyx_t_3)) {
     PyObject *__pyx_temp[3] = {__pyx_t_4, __pyx_v_x_vals, __pyx_t_2};
-    __pyx_t_1 = __Pyx_PyCFunction_FastCall(__pyx_t_3, __pyx_temp+1-__pyx_t_5, 2+__pyx_t_5); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 57, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyCFunction_FastCall(__pyx_t_3, __pyx_temp+1-__pyx_t_5, 2+__pyx_t_5); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 106, __pyx_L1_error)
     __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   } else
   #endif
   {
-    __pyx_t_6 = PyTuple_New(2+__pyx_t_5); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 57, __pyx_L1_error)
+    __pyx_t_6 = PyTuple_New(2+__pyx_t_5); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 106, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_6);
     if (__pyx_t_4) {
       __Pyx_GIVEREF(__pyx_t_4); PyTuple_SET_ITEM(__pyx_t_6, 0, __pyx_t_4); __pyx_t_4 = NULL;
@@ -4109,7 +4778,7 @@ static PyObject *__pyx_pf_14structureboost_12pdf_discrete_11PdfDiscrete_12cdf(CY
     __Pyx_GIVEREF(__pyx_t_2);
     PyTuple_SET_ITEM(__pyx_t_6, 1+__pyx_t_5, __pyx_t_2);
     __pyx_t_2 = 0;
-    __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_3, __pyx_t_6, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 57, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_3, __pyx_t_6, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 106, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
   }
@@ -4117,34 +4786,34 @@ static PyObject *__pyx_pf_14structureboost_12pdf_discrete_11PdfDiscrete_12cdf(CY
   __pyx_v_bin_ind = __pyx_t_1;
   __pyx_t_1 = 0;
 
-  /* "structureboost/pdf_discrete.pyx":58
- *     def cdf(self, x_vals):
+  /* "structureboost/pdf_discrete.pyx":107
+ *         # TODO: Check if I got the digitize right or if I need a -1
  *         bin_ind = np.digitize(x_vals, self.binvec)
  *         aug_bin_vec = np.concatenate(([-np.inf],self.binvec))             # <<<<<<<<<<<<<<
- *         aug_cum_prob = np.concatenate(([0],self.cum_prob))
- *         aug_densities = np.concatenate(([0],self.bin_densities,[0]))
+ *         if self.cum_prob is None:
+ *             self.calculate_cum_prob()
  */
-  __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_n_s_np); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 58, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_n_s_np); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 107, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_concatenate); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 58, __pyx_L1_error)
+  __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_concatenate); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 107, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_6);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_n_s_np); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 58, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_n_s_np); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 107, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_inf); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 58, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_inf); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 107, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  __pyx_t_3 = PyNumber_Negative(__pyx_t_2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 58, __pyx_L1_error)
+  __pyx_t_3 = PyNumber_Negative(__pyx_t_2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 107, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __pyx_t_2 = PyList_New(1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 58, __pyx_L1_error)
+  __pyx_t_2 = PyList_New(1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 107, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_GIVEREF(__pyx_t_3);
   PyList_SET_ITEM(__pyx_t_2, 0, __pyx_t_3);
   __pyx_t_3 = 0;
-  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_binvec); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 58, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_binvec); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 107, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_4 = PyTuple_New(2); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 58, __pyx_L1_error)
+  __pyx_t_4 = PyTuple_New(2); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 107, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_GIVEREF(__pyx_t_2);
   PyTuple_SET_ITEM(__pyx_t_4, 0, __pyx_t_2);
@@ -4165,32 +4834,81 @@ static PyObject *__pyx_pf_14structureboost_12pdf_discrete_11PdfDiscrete_12cdf(CY
   __pyx_t_1 = (__pyx_t_3) ? __Pyx_PyObject_Call2Args(__pyx_t_6, __pyx_t_3, __pyx_t_4) : __Pyx_PyObject_CallOneArg(__pyx_t_6, __pyx_t_4);
   __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-  if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 58, __pyx_L1_error)
+  if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 107, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
   __pyx_v_aug_bin_vec = __pyx_t_1;
   __pyx_t_1 = 0;
 
-  /* "structureboost/pdf_discrete.pyx":59
+  /* "structureboost/pdf_discrete.pyx":108
  *         bin_ind = np.digitize(x_vals, self.binvec)
  *         aug_bin_vec = np.concatenate(([-np.inf],self.binvec))
+ *         if self.cum_prob is None:             # <<<<<<<<<<<<<<
+ *             self.calculate_cum_prob()
+ *         aug_cum_prob = np.concatenate(([0],self.cum_prob))
+ */
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_cum_prob); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 108, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __pyx_t_7 = (__pyx_t_1 == Py_None);
+  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+  __pyx_t_8 = (__pyx_t_7 != 0);
+  if (__pyx_t_8) {
+
+    /* "structureboost/pdf_discrete.pyx":109
+ *         aug_bin_vec = np.concatenate(([-np.inf],self.binvec))
+ *         if self.cum_prob is None:
+ *             self.calculate_cum_prob()             # <<<<<<<<<<<<<<
+ *         aug_cum_prob = np.concatenate(([0],self.cum_prob))
+ *         aug_densities = np.concatenate(([0],self.densityvec,[0]))
+ */
+    __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_calculate_cum_prob); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 109, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_6);
+    __pyx_t_4 = NULL;
+    if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_6))) {
+      __pyx_t_4 = PyMethod_GET_SELF(__pyx_t_6);
+      if (likely(__pyx_t_4)) {
+        PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_6);
+        __Pyx_INCREF(__pyx_t_4);
+        __Pyx_INCREF(function);
+        __Pyx_DECREF_SET(__pyx_t_6, function);
+      }
+    }
+    __pyx_t_1 = (__pyx_t_4) ? __Pyx_PyObject_CallOneArg(__pyx_t_6, __pyx_t_4) : __Pyx_PyObject_CallNoArg(__pyx_t_6);
+    __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
+    if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 109, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_1);
+    __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
+    __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+
+    /* "structureboost/pdf_discrete.pyx":108
+ *         bin_ind = np.digitize(x_vals, self.binvec)
+ *         aug_bin_vec = np.concatenate(([-np.inf],self.binvec))
+ *         if self.cum_prob is None:             # <<<<<<<<<<<<<<
+ *             self.calculate_cum_prob()
+ *         aug_cum_prob = np.concatenate(([0],self.cum_prob))
+ */
+  }
+
+  /* "structureboost/pdf_discrete.pyx":110
+ *         if self.cum_prob is None:
+ *             self.calculate_cum_prob()
  *         aug_cum_prob = np.concatenate(([0],self.cum_prob))             # <<<<<<<<<<<<<<
- *         aug_densities = np.concatenate(([0],self.bin_densities,[0]))
+ *         aug_densities = np.concatenate(([0],self.densityvec,[0]))
  *         remainder_x = x_vals - aug_bin_vec[bin_ind]
  */
-  __Pyx_GetModuleGlobalName(__pyx_t_6, __pyx_n_s_np); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 59, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_6, __pyx_n_s_np); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 110, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_6);
-  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_6, __pyx_n_s_concatenate); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 59, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_6, __pyx_n_s_concatenate); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 110, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
-  __pyx_t_6 = PyList_New(1); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 59, __pyx_L1_error)
+  __pyx_t_6 = PyList_New(1); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 110, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_6);
   __Pyx_INCREF(__pyx_int_0);
   __Pyx_GIVEREF(__pyx_int_0);
   PyList_SET_ITEM(__pyx_t_6, 0, __pyx_int_0);
-  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_cum_prob); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 59, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_cum_prob); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 110, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_2 = PyTuple_New(2); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 59, __pyx_L1_error)
+  __pyx_t_2 = PyTuple_New(2); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 110, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_GIVEREF(__pyx_t_6);
   PyTuple_SET_ITEM(__pyx_t_2, 0, __pyx_t_6);
@@ -4211,44 +4929,44 @@ static PyObject *__pyx_pf_14structureboost_12pdf_discrete_11PdfDiscrete_12cdf(CY
   __pyx_t_1 = (__pyx_t_3) ? __Pyx_PyObject_Call2Args(__pyx_t_4, __pyx_t_3, __pyx_t_2) : __Pyx_PyObject_CallOneArg(__pyx_t_4, __pyx_t_2);
   __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 59, __pyx_L1_error)
+  if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 110, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
   __pyx_v_aug_cum_prob = __pyx_t_1;
   __pyx_t_1 = 0;
 
-  /* "structureboost/pdf_discrete.pyx":60
- *         aug_bin_vec = np.concatenate(([-np.inf],self.binvec))
+  /* "structureboost/pdf_discrete.pyx":111
+ *             self.calculate_cum_prob()
  *         aug_cum_prob = np.concatenate(([0],self.cum_prob))
- *         aug_densities = np.concatenate(([0],self.bin_densities,[0]))             # <<<<<<<<<<<<<<
+ *         aug_densities = np.concatenate(([0],self.densityvec,[0]))             # <<<<<<<<<<<<<<
  *         remainder_x = x_vals - aug_bin_vec[bin_ind]
  *         remainder_x[np.isinf(remainder_x)] = 0
  */
-  __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_n_s_np); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 60, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_n_s_np); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 111, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_concatenate); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 60, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_concatenate); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 111, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-  __pyx_t_4 = PyList_New(1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 60, __pyx_L1_error)
+  __pyx_t_4 = PyList_New(1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 111, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_INCREF(__pyx_int_0);
   __Pyx_GIVEREF(__pyx_int_0);
   PyList_SET_ITEM(__pyx_t_4, 0, __pyx_int_0);
-  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_bin_densities); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 60, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_densityvec); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 111, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_6 = PyList_New(1); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 60, __pyx_L1_error)
+  __pyx_t_6 = PyList_New(1); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 111, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_6);
   __Pyx_INCREF(__pyx_int_0);
   __Pyx_GIVEREF(__pyx_int_0);
   PyList_SET_ITEM(__pyx_t_6, 0, __pyx_int_0);
-  __pyx_t_7 = PyTuple_New(3); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 60, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_7);
+  __pyx_t_9 = PyTuple_New(3); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 111, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_9);
   __Pyx_GIVEREF(__pyx_t_4);
-  PyTuple_SET_ITEM(__pyx_t_7, 0, __pyx_t_4);
+  PyTuple_SET_ITEM(__pyx_t_9, 0, __pyx_t_4);
   __Pyx_GIVEREF(__pyx_t_3);
-  PyTuple_SET_ITEM(__pyx_t_7, 1, __pyx_t_3);
+  PyTuple_SET_ITEM(__pyx_t_9, 1, __pyx_t_3);
   __Pyx_GIVEREF(__pyx_t_6);
-  PyTuple_SET_ITEM(__pyx_t_7, 2, __pyx_t_6);
+  PyTuple_SET_ITEM(__pyx_t_9, 2, __pyx_t_6);
   __pyx_t_4 = 0;
   __pyx_t_3 = 0;
   __pyx_t_6 = 0;
@@ -4262,99 +4980,99 @@ static PyObject *__pyx_pf_14structureboost_12pdf_discrete_11PdfDiscrete_12cdf(CY
       __Pyx_DECREF_SET(__pyx_t_2, function);
     }
   }
-  __pyx_t_1 = (__pyx_t_6) ? __Pyx_PyObject_Call2Args(__pyx_t_2, __pyx_t_6, __pyx_t_7) : __Pyx_PyObject_CallOneArg(__pyx_t_2, __pyx_t_7);
+  __pyx_t_1 = (__pyx_t_6) ? __Pyx_PyObject_Call2Args(__pyx_t_2, __pyx_t_6, __pyx_t_9) : __Pyx_PyObject_CallOneArg(__pyx_t_2, __pyx_t_9);
   __Pyx_XDECREF(__pyx_t_6); __pyx_t_6 = 0;
-  __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
-  if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 60, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
+  if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 111, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __pyx_v_aug_densities = __pyx_t_1;
   __pyx_t_1 = 0;
 
-  /* "structureboost/pdf_discrete.pyx":61
+  /* "structureboost/pdf_discrete.pyx":112
  *         aug_cum_prob = np.concatenate(([0],self.cum_prob))
- *         aug_densities = np.concatenate(([0],self.bin_densities,[0]))
+ *         aug_densities = np.concatenate(([0],self.densityvec,[0]))
  *         remainder_x = x_vals - aug_bin_vec[bin_ind]             # <<<<<<<<<<<<<<
  *         remainder_x[np.isinf(remainder_x)] = 0
  *         out_vec = aug_cum_prob[bin_ind] +  remainder_x * aug_densities[bin_ind]
  */
-  __pyx_t_1 = __Pyx_PyObject_GetItem(__pyx_v_aug_bin_vec, __pyx_v_bin_ind); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 61, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_GetItem(__pyx_v_aug_bin_vec, __pyx_v_bin_ind); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 112, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = PyNumber_Subtract(__pyx_v_x_vals, __pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 61, __pyx_L1_error)
+  __pyx_t_2 = PyNumber_Subtract(__pyx_v_x_vals, __pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 112, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __pyx_v_remainder_x = __pyx_t_2;
   __pyx_t_2 = 0;
 
-  /* "structureboost/pdf_discrete.pyx":62
- *         aug_densities = np.concatenate(([0],self.bin_densities,[0]))
+  /* "structureboost/pdf_discrete.pyx":113
+ *         aug_densities = np.concatenate(([0],self.densityvec,[0]))
  *         remainder_x = x_vals - aug_bin_vec[bin_ind]
  *         remainder_x[np.isinf(remainder_x)] = 0             # <<<<<<<<<<<<<<
  *         out_vec = aug_cum_prob[bin_ind] +  remainder_x * aug_densities[bin_ind]
  *         return(out_vec)
  */
-  __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_np); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 62, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_np); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 113, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_7 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_isinf); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 62, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_7);
+  __pyx_t_9 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_isinf); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 113, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_9);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __pyx_t_1 = NULL;
-  if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_7))) {
-    __pyx_t_1 = PyMethod_GET_SELF(__pyx_t_7);
+  if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_9))) {
+    __pyx_t_1 = PyMethod_GET_SELF(__pyx_t_9);
     if (likely(__pyx_t_1)) {
-      PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_7);
+      PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_9);
       __Pyx_INCREF(__pyx_t_1);
       __Pyx_INCREF(function);
-      __Pyx_DECREF_SET(__pyx_t_7, function);
+      __Pyx_DECREF_SET(__pyx_t_9, function);
     }
   }
-  __pyx_t_2 = (__pyx_t_1) ? __Pyx_PyObject_Call2Args(__pyx_t_7, __pyx_t_1, __pyx_v_remainder_x) : __Pyx_PyObject_CallOneArg(__pyx_t_7, __pyx_v_remainder_x);
+  __pyx_t_2 = (__pyx_t_1) ? __Pyx_PyObject_Call2Args(__pyx_t_9, __pyx_t_1, __pyx_v_remainder_x) : __Pyx_PyObject_CallOneArg(__pyx_t_9, __pyx_v_remainder_x);
   __Pyx_XDECREF(__pyx_t_1); __pyx_t_1 = 0;
-  if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 62, __pyx_L1_error)
+  if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 113, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
-  if (unlikely(PyObject_SetItem(__pyx_v_remainder_x, __pyx_t_2, __pyx_int_0) < 0)) __PYX_ERR(0, 62, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
+  if (unlikely(PyObject_SetItem(__pyx_v_remainder_x, __pyx_t_2, __pyx_int_0) < 0)) __PYX_ERR(0, 113, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "structureboost/pdf_discrete.pyx":63
+  /* "structureboost/pdf_discrete.pyx":114
  *         remainder_x = x_vals - aug_bin_vec[bin_ind]
  *         remainder_x[np.isinf(remainder_x)] = 0
  *         out_vec = aug_cum_prob[bin_ind] +  remainder_x * aug_densities[bin_ind]             # <<<<<<<<<<<<<<
  *         return(out_vec)
  * 
  */
-  __pyx_t_2 = __Pyx_PyObject_GetItem(__pyx_v_aug_cum_prob, __pyx_v_bin_ind); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 63, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_GetItem(__pyx_v_aug_cum_prob, __pyx_v_bin_ind); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 114, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_7 = __Pyx_PyObject_GetItem(__pyx_v_aug_densities, __pyx_v_bin_ind); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 63, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_7);
-  __pyx_t_1 = PyNumber_Multiply(__pyx_v_remainder_x, __pyx_t_7); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 63, __pyx_L1_error)
+  __pyx_t_9 = __Pyx_PyObject_GetItem(__pyx_v_aug_densities, __pyx_v_bin_ind); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 114, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_9);
+  __pyx_t_1 = PyNumber_Multiply(__pyx_v_remainder_x, __pyx_t_9); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 114, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
-  __pyx_t_7 = PyNumber_Add(__pyx_t_2, __pyx_t_1); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 63, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_7);
+  __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
+  __pyx_t_9 = PyNumber_Add(__pyx_t_2, __pyx_t_1); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 114, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_9);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_v_out_vec = __pyx_t_7;
-  __pyx_t_7 = 0;
+  __pyx_v_out_vec = __pyx_t_9;
+  __pyx_t_9 = 0;
 
-  /* "structureboost/pdf_discrete.pyx":64
+  /* "structureboost/pdf_discrete.pyx":115
  *         remainder_x[np.isinf(remainder_x)] = 0
  *         out_vec = aug_cum_prob[bin_ind] +  remainder_x * aug_densities[bin_ind]
  *         return(out_vec)             # <<<<<<<<<<<<<<
  * 
- *     def __add__(self, pd2):
+ *     def add_binpts(self, binpts_to_add):
  */
   __Pyx_XDECREF(__pyx_r);
   __Pyx_INCREF(__pyx_v_out_vec);
   __pyx_r = __pyx_v_out_vec;
   goto __pyx_L0;
 
-  /* "structureboost/pdf_discrete.pyx":56
+  /* "structureboost/pdf_discrete.pyx":104
  *         return(np.array([aug_dens_vec[bin_ind[i]] for i in range(len(bin_ind))]))
  * 
  *     def cdf(self, x_vals):             # <<<<<<<<<<<<<<
+ *         # TODO: Check if I got the digitize right or if I need a -1
  *         bin_ind = np.digitize(x_vals, self.binvec)
- *         aug_bin_vec = np.concatenate(([-np.inf],self.binvec))
  */
 
   /* function exit code */
@@ -4364,7 +5082,7 @@ static PyObject *__pyx_pf_14structureboost_12pdf_discrete_11PdfDiscrete_12cdf(CY
   __Pyx_XDECREF(__pyx_t_3);
   __Pyx_XDECREF(__pyx_t_4);
   __Pyx_XDECREF(__pyx_t_6);
-  __Pyx_XDECREF(__pyx_t_7);
+  __Pyx_XDECREF(__pyx_t_9);
   __Pyx_AddTraceback("structureboost.pdf_discrete.PdfDiscrete.cdf", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
@@ -4380,28 +5098,28 @@ static PyObject *__pyx_pf_14structureboost_12pdf_discrete_11PdfDiscrete_12cdf(CY
   return __pyx_r;
 }
 
-/* "structureboost/pdf_discrete.pyx":66
+/* "structureboost/pdf_discrete.pyx":117
  *         return(out_vec)
  * 
- *     def __add__(self, pd2):             # <<<<<<<<<<<<<<
- *         new_binvec = np.unique(np.concatenate((self.binvec, pd2.binvec)))
+ *     def add_binpts(self, binpts_to_add):             # <<<<<<<<<<<<<<
+ *         new_binvec = np.unique(np.concatenate((self.binvec, binpts_to_add)))
  *         new_midpts = (new_binvec[1:] + new_binvec[:-1])/2
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_14structureboost_12pdf_discrete_11PdfDiscrete_15__add__(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
-static PyMethodDef __pyx_mdef_14structureboost_12pdf_discrete_11PdfDiscrete_15__add__ = {"__add__", (PyCFunction)(void*)(PyCFunctionWithKeywords)__pyx_pw_14structureboost_12pdf_discrete_11PdfDiscrete_15__add__, METH_VARARGS|METH_KEYWORDS, 0};
-static PyObject *__pyx_pw_14structureboost_12pdf_discrete_11PdfDiscrete_15__add__(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
+static PyObject *__pyx_pw_14structureboost_12pdf_discrete_11PdfDiscrete_17add_binpts(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
+static PyMethodDef __pyx_mdef_14structureboost_12pdf_discrete_11PdfDiscrete_17add_binpts = {"add_binpts", (PyCFunction)(void*)(PyCFunctionWithKeywords)__pyx_pw_14structureboost_12pdf_discrete_11PdfDiscrete_17add_binpts, METH_VARARGS|METH_KEYWORDS, 0};
+static PyObject *__pyx_pw_14structureboost_12pdf_discrete_11PdfDiscrete_17add_binpts(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
   PyObject *__pyx_v_self = 0;
-  PyObject *__pyx_v_pd2 = 0;
+  PyObject *__pyx_v_binpts_to_add = 0;
   int __pyx_lineno = 0;
   const char *__pyx_filename = NULL;
   int __pyx_clineno = 0;
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
-  __Pyx_RefNannySetupContext("__add__ (wrapper)", 0);
+  __Pyx_RefNannySetupContext("add_binpts (wrapper)", 0);
   {
-    static PyObject **__pyx_pyargnames[] = {&__pyx_n_s_self,&__pyx_n_s_pd2,0};
+    static PyObject **__pyx_pyargnames[] = {&__pyx_n_s_self,&__pyx_n_s_binpts_to_add,0};
     PyObject* values[2] = {0,0};
     if (unlikely(__pyx_kwds)) {
       Py_ssize_t kw_args;
@@ -4421,13 +5139,13 @@ static PyObject *__pyx_pw_14structureboost_12pdf_discrete_11PdfDiscrete_15__add_
         else goto __pyx_L5_argtuple_error;
         CYTHON_FALLTHROUGH;
         case  1:
-        if (likely((values[1] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_pd2)) != 0)) kw_args--;
+        if (likely((values[1] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_binpts_to_add)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("__add__", 1, 2, 2, 1); __PYX_ERR(0, 66, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("add_binpts", 1, 2, 2, 1); __PYX_ERR(0, 117, __pyx_L3_error)
         }
       }
       if (unlikely(kw_args > 0)) {
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "__add__") < 0)) __PYX_ERR(0, 66, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "add_binpts") < 0)) __PYX_ERR(0, 117, __pyx_L3_error)
       }
     } else if (PyTuple_GET_SIZE(__pyx_args) != 2) {
       goto __pyx_L5_argtuple_error;
@@ -4436,28 +5154,28 @@ static PyObject *__pyx_pw_14structureboost_12pdf_discrete_11PdfDiscrete_15__add_
       values[1] = PyTuple_GET_ITEM(__pyx_args, 1);
     }
     __pyx_v_self = values[0];
-    __pyx_v_pd2 = values[1];
+    __pyx_v_binpts_to_add = values[1];
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("__add__", 1, 2, 2, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 66, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("add_binpts", 1, 2, 2, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 117, __pyx_L3_error)
   __pyx_L3_error:;
-  __Pyx_AddTraceback("structureboost.pdf_discrete.PdfDiscrete.__add__", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("structureboost.pdf_discrete.PdfDiscrete.add_binpts", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  __pyx_r = __pyx_pf_14structureboost_12pdf_discrete_11PdfDiscrete_14__add__(__pyx_self, __pyx_v_self, __pyx_v_pd2);
+  __pyx_r = __pyx_pf_14structureboost_12pdf_discrete_11PdfDiscrete_16add_binpts(__pyx_self, __pyx_v_self, __pyx_v_binpts_to_add);
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_14structureboost_12pdf_discrete_11PdfDiscrete_14__add__(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self, PyObject *__pyx_v_pd2) {
+static PyObject *__pyx_pf_14structureboost_12pdf_discrete_11PdfDiscrete_16add_binpts(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self, PyObject *__pyx_v_binpts_to_add) {
   PyObject *__pyx_v_new_binvec = NULL;
   PyObject *__pyx_v_new_midpts = NULL;
+  PyObject *__pyx_v_new_bin_widths = NULL;
   PyObject *__pyx_v_pv1 = NULL;
-  PyObject *__pyx_v_pv2 = NULL;
   PyObject *__pyx_r = NULL;
   __Pyx_TraceDeclarations
   __Pyx_RefNannyDeclarations
@@ -4467,58 +5185,55 @@ static PyObject *__pyx_pf_14structureboost_12pdf_discrete_11PdfDiscrete_14__add_
   PyObject *__pyx_t_4 = NULL;
   PyObject *__pyx_t_5 = NULL;
   PyObject *__pyx_t_6 = NULL;
-  PyObject *__pyx_t_7 = NULL;
-  int __pyx_t_8;
+  int __pyx_t_7;
   int __pyx_lineno = 0;
   const char *__pyx_filename = NULL;
   int __pyx_clineno = 0;
-  __Pyx_TraceFrameInit(__pyx_codeobj__10)
-  __Pyx_RefNannySetupContext("__add__", 0);
-  __Pyx_TraceCall("__add__", __pyx_f[0], 66, 0, __PYX_ERR(0, 66, __pyx_L1_error));
+  __Pyx_TraceFrameInit(__pyx_codeobj__11)
+  __Pyx_RefNannySetupContext("add_binpts", 0);
+  __Pyx_TraceCall("add_binpts", __pyx_f[0], 117, 0, __PYX_ERR(0, 117, __pyx_L1_error));
 
-  /* "structureboost/pdf_discrete.pyx":67
+  /* "structureboost/pdf_discrete.pyx":118
  * 
- *     def __add__(self, pd2):
- *         new_binvec = np.unique(np.concatenate((self.binvec, pd2.binvec)))             # <<<<<<<<<<<<<<
+ *     def add_binpts(self, binpts_to_add):
+ *         new_binvec = np.unique(np.concatenate((self.binvec, binpts_to_add)))             # <<<<<<<<<<<<<<
  *         new_midpts = (new_binvec[1:] + new_binvec[:-1])/2
- *         pv1 = self.density(new_midpts)*self.bin_widths
+ *         new_bin_widths = new_binvec[1:] - new_binvec[:-1]
  */
-  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_np); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 67, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_np); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 118, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_unique); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 67, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_unique); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 118, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_n_s_np); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 67, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_n_s_np); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 118, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
-  __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_concatenate); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 67, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_concatenate); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 118, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_binvec); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 67, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_binvec); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 118, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
-  __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_v_pd2, __pyx_n_s_binvec); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 67, __pyx_L1_error)
+  __pyx_t_6 = PyTuple_New(2); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 118, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_6);
-  __pyx_t_7 = PyTuple_New(2); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 67, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_7);
   __Pyx_GIVEREF(__pyx_t_4);
-  PyTuple_SET_ITEM(__pyx_t_7, 0, __pyx_t_4);
-  __Pyx_GIVEREF(__pyx_t_6);
-  PyTuple_SET_ITEM(__pyx_t_7, 1, __pyx_t_6);
+  PyTuple_SET_ITEM(__pyx_t_6, 0, __pyx_t_4);
+  __Pyx_INCREF(__pyx_v_binpts_to_add);
+  __Pyx_GIVEREF(__pyx_v_binpts_to_add);
+  PyTuple_SET_ITEM(__pyx_t_6, 1, __pyx_v_binpts_to_add);
   __pyx_t_4 = 0;
-  __pyx_t_6 = 0;
-  __pyx_t_6 = NULL;
+  __pyx_t_4 = NULL;
   if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_5))) {
-    __pyx_t_6 = PyMethod_GET_SELF(__pyx_t_5);
-    if (likely(__pyx_t_6)) {
+    __pyx_t_4 = PyMethod_GET_SELF(__pyx_t_5);
+    if (likely(__pyx_t_4)) {
       PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_5);
-      __Pyx_INCREF(__pyx_t_6);
+      __Pyx_INCREF(__pyx_t_4);
       __Pyx_INCREF(function);
       __Pyx_DECREF_SET(__pyx_t_5, function);
     }
   }
-  __pyx_t_2 = (__pyx_t_6) ? __Pyx_PyObject_Call2Args(__pyx_t_5, __pyx_t_6, __pyx_t_7) : __Pyx_PyObject_CallOneArg(__pyx_t_5, __pyx_t_7);
-  __Pyx_XDECREF(__pyx_t_6); __pyx_t_6 = 0;
-  __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
-  if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 67, __pyx_L1_error)
+  __pyx_t_2 = (__pyx_t_4) ? __Pyx_PyObject_Call2Args(__pyx_t_5, __pyx_t_4, __pyx_t_6) : __Pyx_PyObject_CallOneArg(__pyx_t_5, __pyx_t_6);
+  __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
+  __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
+  if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 118, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
   __pyx_t_5 = NULL;
@@ -4534,74 +5249,59 @@ static PyObject *__pyx_pf_14structureboost_12pdf_discrete_11PdfDiscrete_14__add_
   __pyx_t_1 = (__pyx_t_5) ? __Pyx_PyObject_Call2Args(__pyx_t_3, __pyx_t_5, __pyx_t_2) : __Pyx_PyObject_CallOneArg(__pyx_t_3, __pyx_t_2);
   __Pyx_XDECREF(__pyx_t_5); __pyx_t_5 = 0;
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 67, __pyx_L1_error)
+  if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 118, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   __pyx_v_new_binvec = __pyx_t_1;
   __pyx_t_1 = 0;
 
-  /* "structureboost/pdf_discrete.pyx":68
- *     def __add__(self, pd2):
- *         new_binvec = np.unique(np.concatenate((self.binvec, pd2.binvec)))
+  /* "structureboost/pdf_discrete.pyx":119
+ *     def add_binpts(self, binpts_to_add):
+ *         new_binvec = np.unique(np.concatenate((self.binvec, binpts_to_add)))
  *         new_midpts = (new_binvec[1:] + new_binvec[:-1])/2             # <<<<<<<<<<<<<<
- *         pv1 = self.density(new_midpts)*self.bin_widths
- *         pv2 = pd2.density(new_midpts)*pd2.bin_widths
+ *         new_bin_widths = new_binvec[1:] - new_binvec[:-1]
+ *         pv1 = self.density(new_midpts)*new_bin_widths
  */
-  __pyx_t_1 = __Pyx_PyObject_GetSlice(__pyx_v_new_binvec, 1, 0, NULL, NULL, &__pyx_slice__3, 1, 0, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 68, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_GetSlice(__pyx_v_new_binvec, 1, 0, NULL, NULL, &__pyx_slice__2, 1, 0, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 119, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_3 = __Pyx_PyObject_GetSlice(__pyx_v_new_binvec, 0, -1L, NULL, NULL, &__pyx_slice__2, 0, 1, 1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 68, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyObject_GetSlice(__pyx_v_new_binvec, 0, -1L, NULL, NULL, &__pyx_slice__3, 0, 1, 1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 119, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_2 = PyNumber_Add(__pyx_t_1, __pyx_t_3); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 68, __pyx_L1_error)
+  __pyx_t_2 = PyNumber_Add(__pyx_t_1, __pyx_t_3); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 119, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  __pyx_t_3 = __Pyx_PyInt_TrueDivideObjC(__pyx_t_2, __pyx_int_2, 2, 0, 0); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 68, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyInt_TrueDivideObjC(__pyx_t_2, __pyx_int_2, 2, 0, 0); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 119, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __pyx_v_new_midpts = __pyx_t_3;
   __pyx_t_3 = 0;
 
-  /* "structureboost/pdf_discrete.pyx":69
- *         new_binvec = np.unique(np.concatenate((self.binvec, pd2.binvec)))
+  /* "structureboost/pdf_discrete.pyx":120
+ *         new_binvec = np.unique(np.concatenate((self.binvec, binpts_to_add)))
  *         new_midpts = (new_binvec[1:] + new_binvec[:-1])/2
- *         pv1 = self.density(new_midpts)*self.bin_widths             # <<<<<<<<<<<<<<
- *         pv2 = pd2.density(new_midpts)*pd2.bin_widths
- *         return(PdfDiscrete(new_binvec, (pv1+pv2)/2))
+ *         new_bin_widths = new_binvec[1:] - new_binvec[:-1]             # <<<<<<<<<<<<<<
+ *         pv1 = self.density(new_midpts)*new_bin_widths
+ *         return(PdfDiscrete(new_binvec, pv1))
  */
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_density); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 69, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_1 = NULL;
-  if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_2))) {
-    __pyx_t_1 = PyMethod_GET_SELF(__pyx_t_2);
-    if (likely(__pyx_t_1)) {
-      PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_2);
-      __Pyx_INCREF(__pyx_t_1);
-      __Pyx_INCREF(function);
-      __Pyx_DECREF_SET(__pyx_t_2, function);
-    }
-  }
-  __pyx_t_3 = (__pyx_t_1) ? __Pyx_PyObject_Call2Args(__pyx_t_2, __pyx_t_1, __pyx_v_new_midpts) : __Pyx_PyObject_CallOneArg(__pyx_t_2, __pyx_v_new_midpts);
-  __Pyx_XDECREF(__pyx_t_1); __pyx_t_1 = 0;
-  if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 69, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyObject_GetSlice(__pyx_v_new_binvec, 1, 0, NULL, NULL, &__pyx_slice__2, 1, 0, 1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 120, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_bin_widths); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 69, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_GetSlice(__pyx_v_new_binvec, 0, -1L, NULL, NULL, &__pyx_slice__3, 0, 1, 1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 120, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_1 = PyNumber_Multiply(__pyx_t_3, __pyx_t_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 69, __pyx_L1_error)
+  __pyx_t_1 = PyNumber_Subtract(__pyx_t_3, __pyx_t_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 120, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __pyx_v_pv1 = __pyx_t_1;
+  __pyx_v_new_bin_widths = __pyx_t_1;
   __pyx_t_1 = 0;
 
-  /* "structureboost/pdf_discrete.pyx":70
+  /* "structureboost/pdf_discrete.pyx":121
  *         new_midpts = (new_binvec[1:] + new_binvec[:-1])/2
- *         pv1 = self.density(new_midpts)*self.bin_widths
- *         pv2 = pd2.density(new_midpts)*pd2.bin_widths             # <<<<<<<<<<<<<<
- *         return(PdfDiscrete(new_binvec, (pv1+pv2)/2))
+ *         new_bin_widths = new_binvec[1:] - new_binvec[:-1]
+ *         pv1 = self.density(new_midpts)*new_bin_widths             # <<<<<<<<<<<<<<
+ *         return(PdfDiscrete(new_binvec, pv1))
  * 
  */
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_pd2, __pyx_n_s_density); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 70, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_density); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 121, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __pyx_t_3 = NULL;
   if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_2))) {
@@ -4615,89 +5315,79 @@ static PyObject *__pyx_pf_14structureboost_12pdf_discrete_11PdfDiscrete_14__add_
   }
   __pyx_t_1 = (__pyx_t_3) ? __Pyx_PyObject_Call2Args(__pyx_t_2, __pyx_t_3, __pyx_v_new_midpts) : __Pyx_PyObject_CallOneArg(__pyx_t_2, __pyx_v_new_midpts);
   __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
-  if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 70, __pyx_L1_error)
+  if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 121, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_pd2, __pyx_n_s_bin_widths); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 70, __pyx_L1_error)
+  __pyx_t_2 = PyNumber_Multiply(__pyx_t_1, __pyx_v_new_bin_widths); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 121, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_3 = PyNumber_Multiply(__pyx_t_1, __pyx_t_2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 70, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __pyx_v_pv2 = __pyx_t_3;
-  __pyx_t_3 = 0;
+  __pyx_v_pv1 = __pyx_t_2;
+  __pyx_t_2 = 0;
 
-  /* "structureboost/pdf_discrete.pyx":71
- *         pv1 = self.density(new_midpts)*self.bin_widths
- *         pv2 = pd2.density(new_midpts)*pd2.bin_widths
- *         return(PdfDiscrete(new_binvec, (pv1+pv2)/2))             # <<<<<<<<<<<<<<
+  /* "structureboost/pdf_discrete.pyx":122
+ *         new_bin_widths = new_binvec[1:] - new_binvec[:-1]
+ *         pv1 = self.density(new_midpts)*new_bin_widths
+ *         return(PdfDiscrete(new_binvec, pv1))             # <<<<<<<<<<<<<<
  * 
- * 
+ *     def bins_to_probs(self, new_binpt_vec):
  */
   __Pyx_XDECREF(__pyx_r);
-  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_PdfDiscrete); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 71, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_1 = PyNumber_Add(__pyx_v_pv1, __pyx_v_pv2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 71, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_PdfDiscrete); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 122, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_5 = __Pyx_PyInt_TrueDivideObjC(__pyx_t_1, __pyx_int_2, 2, 0, 0); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 71, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_5);
-  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_t_1 = NULL;
-  __pyx_t_8 = 0;
-  if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_2))) {
-    __pyx_t_1 = PyMethod_GET_SELF(__pyx_t_2);
-    if (likely(__pyx_t_1)) {
-      PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_2);
-      __Pyx_INCREF(__pyx_t_1);
+  __pyx_t_3 = NULL;
+  __pyx_t_7 = 0;
+  if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_1))) {
+    __pyx_t_3 = PyMethod_GET_SELF(__pyx_t_1);
+    if (likely(__pyx_t_3)) {
+      PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_1);
+      __Pyx_INCREF(__pyx_t_3);
       __Pyx_INCREF(function);
-      __Pyx_DECREF_SET(__pyx_t_2, function);
-      __pyx_t_8 = 1;
+      __Pyx_DECREF_SET(__pyx_t_1, function);
+      __pyx_t_7 = 1;
     }
   }
   #if CYTHON_FAST_PYCALL
-  if (PyFunction_Check(__pyx_t_2)) {
-    PyObject *__pyx_temp[3] = {__pyx_t_1, __pyx_v_new_binvec, __pyx_t_5};
-    __pyx_t_3 = __Pyx_PyFunction_FastCall(__pyx_t_2, __pyx_temp+1-__pyx_t_8, 2+__pyx_t_8); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 71, __pyx_L1_error)
-    __Pyx_XDECREF(__pyx_t_1); __pyx_t_1 = 0;
-    __Pyx_GOTREF(__pyx_t_3);
-    __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
+  if (PyFunction_Check(__pyx_t_1)) {
+    PyObject *__pyx_temp[3] = {__pyx_t_3, __pyx_v_new_binvec, __pyx_v_pv1};
+    __pyx_t_2 = __Pyx_PyFunction_FastCall(__pyx_t_1, __pyx_temp+1-__pyx_t_7, 2+__pyx_t_7); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 122, __pyx_L1_error)
+    __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
+    __Pyx_GOTREF(__pyx_t_2);
   } else
   #endif
   #if CYTHON_FAST_PYCCALL
-  if (__Pyx_PyFastCFunction_Check(__pyx_t_2)) {
-    PyObject *__pyx_temp[3] = {__pyx_t_1, __pyx_v_new_binvec, __pyx_t_5};
-    __pyx_t_3 = __Pyx_PyCFunction_FastCall(__pyx_t_2, __pyx_temp+1-__pyx_t_8, 2+__pyx_t_8); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 71, __pyx_L1_error)
-    __Pyx_XDECREF(__pyx_t_1); __pyx_t_1 = 0;
-    __Pyx_GOTREF(__pyx_t_3);
-    __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
+  if (__Pyx_PyFastCFunction_Check(__pyx_t_1)) {
+    PyObject *__pyx_temp[3] = {__pyx_t_3, __pyx_v_new_binvec, __pyx_v_pv1};
+    __pyx_t_2 = __Pyx_PyCFunction_FastCall(__pyx_t_1, __pyx_temp+1-__pyx_t_7, 2+__pyx_t_7); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 122, __pyx_L1_error)
+    __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
+    __Pyx_GOTREF(__pyx_t_2);
   } else
   #endif
   {
-    __pyx_t_7 = PyTuple_New(2+__pyx_t_8); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 71, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_7);
-    if (__pyx_t_1) {
-      __Pyx_GIVEREF(__pyx_t_1); PyTuple_SET_ITEM(__pyx_t_7, 0, __pyx_t_1); __pyx_t_1 = NULL;
+    __pyx_t_5 = PyTuple_New(2+__pyx_t_7); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 122, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_5);
+    if (__pyx_t_3) {
+      __Pyx_GIVEREF(__pyx_t_3); PyTuple_SET_ITEM(__pyx_t_5, 0, __pyx_t_3); __pyx_t_3 = NULL;
     }
     __Pyx_INCREF(__pyx_v_new_binvec);
     __Pyx_GIVEREF(__pyx_v_new_binvec);
-    PyTuple_SET_ITEM(__pyx_t_7, 0+__pyx_t_8, __pyx_v_new_binvec);
-    __Pyx_GIVEREF(__pyx_t_5);
-    PyTuple_SET_ITEM(__pyx_t_7, 1+__pyx_t_8, __pyx_t_5);
-    __pyx_t_5 = 0;
-    __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_7, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 71, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_3);
-    __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
+    PyTuple_SET_ITEM(__pyx_t_5, 0+__pyx_t_7, __pyx_v_new_binvec);
+    __Pyx_INCREF(__pyx_v_pv1);
+    __Pyx_GIVEREF(__pyx_v_pv1);
+    PyTuple_SET_ITEM(__pyx_t_5, 1+__pyx_t_7, __pyx_v_pv1);
+    __pyx_t_2 = __Pyx_PyObject_Call(__pyx_t_1, __pyx_t_5, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 122, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_2);
+    __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
   }
-  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __pyx_r = __pyx_t_3;
-  __pyx_t_3 = 0;
+  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+  __pyx_r = __pyx_t_2;
+  __pyx_t_2 = 0;
   goto __pyx_L0;
 
-  /* "structureboost/pdf_discrete.pyx":66
+  /* "structureboost/pdf_discrete.pyx":117
  *         return(out_vec)
  * 
- *     def __add__(self, pd2):             # <<<<<<<<<<<<<<
- *         new_binvec = np.unique(np.concatenate((self.binvec, pd2.binvec)))
+ *     def add_binpts(self, binpts_to_add):             # <<<<<<<<<<<<<<
+ *         new_binvec = np.unique(np.concatenate((self.binvec, binpts_to_add)))
  *         new_midpts = (new_binvec[1:] + new_binvec[:-1])/2
  */
 
@@ -4709,34 +5399,197 @@ static PyObject *__pyx_pf_14structureboost_12pdf_discrete_11PdfDiscrete_14__add_
   __Pyx_XDECREF(__pyx_t_4);
   __Pyx_XDECREF(__pyx_t_5);
   __Pyx_XDECREF(__pyx_t_6);
-  __Pyx_XDECREF(__pyx_t_7);
-  __Pyx_AddTraceback("structureboost.pdf_discrete.PdfDiscrete.__add__", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("structureboost.pdf_discrete.PdfDiscrete.add_binpts", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
   __Pyx_XDECREF(__pyx_v_new_binvec);
   __Pyx_XDECREF(__pyx_v_new_midpts);
+  __Pyx_XDECREF(__pyx_v_new_bin_widths);
   __Pyx_XDECREF(__pyx_v_pv1);
-  __Pyx_XDECREF(__pyx_v_pv2);
   __Pyx_XGIVEREF(__pyx_r);
   __Pyx_TraceReturn(__pyx_r, 0);
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-/* "structureboost/pdf_discrete.pyx":74
+/* "structureboost/pdf_discrete.pyx":124
+ *         return(PdfDiscrete(new_binvec, pv1))
  * 
+ *     def bins_to_probs(self, new_binpt_vec):             # <<<<<<<<<<<<<<
+ *         """Given a new set of binpts, return the probabilities in each bin"""
+ *         return(np.diff(self.cdf(new_binpt_vec)))
+ */
+
+/* Python wrapper */
+static PyObject *__pyx_pw_14structureboost_12pdf_discrete_11PdfDiscrete_19bins_to_probs(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
+static char __pyx_doc_14structureboost_12pdf_discrete_11PdfDiscrete_18bins_to_probs[] = "Given a new set of binpts, return the probabilities in each bin";
+static PyMethodDef __pyx_mdef_14structureboost_12pdf_discrete_11PdfDiscrete_19bins_to_probs = {"bins_to_probs", (PyCFunction)(void*)(PyCFunctionWithKeywords)__pyx_pw_14structureboost_12pdf_discrete_11PdfDiscrete_19bins_to_probs, METH_VARARGS|METH_KEYWORDS, __pyx_doc_14structureboost_12pdf_discrete_11PdfDiscrete_18bins_to_probs};
+static PyObject *__pyx_pw_14structureboost_12pdf_discrete_11PdfDiscrete_19bins_to_probs(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
+  PyObject *__pyx_v_self = 0;
+  PyObject *__pyx_v_new_binpt_vec = 0;
+  int __pyx_lineno = 0;
+  const char *__pyx_filename = NULL;
+  int __pyx_clineno = 0;
+  PyObject *__pyx_r = 0;
+  __Pyx_RefNannyDeclarations
+  __Pyx_RefNannySetupContext("bins_to_probs (wrapper)", 0);
+  {
+    static PyObject **__pyx_pyargnames[] = {&__pyx_n_s_self,&__pyx_n_s_new_binpt_vec,0};
+    PyObject* values[2] = {0,0};
+    if (unlikely(__pyx_kwds)) {
+      Py_ssize_t kw_args;
+      const Py_ssize_t pos_args = PyTuple_GET_SIZE(__pyx_args);
+      switch (pos_args) {
+        case  2: values[1] = PyTuple_GET_ITEM(__pyx_args, 1);
+        CYTHON_FALLTHROUGH;
+        case  1: values[0] = PyTuple_GET_ITEM(__pyx_args, 0);
+        CYTHON_FALLTHROUGH;
+        case  0: break;
+        default: goto __pyx_L5_argtuple_error;
+      }
+      kw_args = PyDict_Size(__pyx_kwds);
+      switch (pos_args) {
+        case  0:
+        if (likely((values[0] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_self)) != 0)) kw_args--;
+        else goto __pyx_L5_argtuple_error;
+        CYTHON_FALLTHROUGH;
+        case  1:
+        if (likely((values[1] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_new_binpt_vec)) != 0)) kw_args--;
+        else {
+          __Pyx_RaiseArgtupleInvalid("bins_to_probs", 1, 2, 2, 1); __PYX_ERR(0, 124, __pyx_L3_error)
+        }
+      }
+      if (unlikely(kw_args > 0)) {
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "bins_to_probs") < 0)) __PYX_ERR(0, 124, __pyx_L3_error)
+      }
+    } else if (PyTuple_GET_SIZE(__pyx_args) != 2) {
+      goto __pyx_L5_argtuple_error;
+    } else {
+      values[0] = PyTuple_GET_ITEM(__pyx_args, 0);
+      values[1] = PyTuple_GET_ITEM(__pyx_args, 1);
+    }
+    __pyx_v_self = values[0];
+    __pyx_v_new_binpt_vec = values[1];
+  }
+  goto __pyx_L4_argument_unpacking_done;
+  __pyx_L5_argtuple_error:;
+  __Pyx_RaiseArgtupleInvalid("bins_to_probs", 1, 2, 2, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 124, __pyx_L3_error)
+  __pyx_L3_error:;
+  __Pyx_AddTraceback("structureboost.pdf_discrete.PdfDiscrete.bins_to_probs", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_RefNannyFinishContext();
+  return NULL;
+  __pyx_L4_argument_unpacking_done:;
+  __pyx_r = __pyx_pf_14structureboost_12pdf_discrete_11PdfDiscrete_18bins_to_probs(__pyx_self, __pyx_v_self, __pyx_v_new_binpt_vec);
+
+  /* function exit code */
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+static PyObject *__pyx_pf_14structureboost_12pdf_discrete_11PdfDiscrete_18bins_to_probs(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self, PyObject *__pyx_v_new_binpt_vec) {
+  PyObject *__pyx_r = NULL;
+  __Pyx_TraceDeclarations
+  __Pyx_RefNannyDeclarations
+  PyObject *__pyx_t_1 = NULL;
+  PyObject *__pyx_t_2 = NULL;
+  PyObject *__pyx_t_3 = NULL;
+  PyObject *__pyx_t_4 = NULL;
+  PyObject *__pyx_t_5 = NULL;
+  int __pyx_lineno = 0;
+  const char *__pyx_filename = NULL;
+  int __pyx_clineno = 0;
+  __Pyx_TraceFrameInit(__pyx_codeobj__12)
+  __Pyx_RefNannySetupContext("bins_to_probs", 0);
+  __Pyx_TraceCall("bins_to_probs", __pyx_f[0], 124, 0, __PYX_ERR(0, 124, __pyx_L1_error));
+
+  /* "structureboost/pdf_discrete.pyx":126
+ *     def bins_to_probs(self, new_binpt_vec):
+ *         """Given a new set of binpts, return the probabilities in each bin"""
+ *         return(np.diff(self.cdf(new_binpt_vec)))             # <<<<<<<<<<<<<<
  * 
- *     def plot_density(self, pred_alpha=None,             # <<<<<<<<<<<<<<
+ *     def plot_density(self, coverage=None,
+ */
+  __Pyx_XDECREF(__pyx_r);
+  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_np); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 126, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_2);
+  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_diff); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 126, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_3);
+  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_cdf); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 126, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_4);
+  __pyx_t_5 = NULL;
+  if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_4))) {
+    __pyx_t_5 = PyMethod_GET_SELF(__pyx_t_4);
+    if (likely(__pyx_t_5)) {
+      PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_4);
+      __Pyx_INCREF(__pyx_t_5);
+      __Pyx_INCREF(function);
+      __Pyx_DECREF_SET(__pyx_t_4, function);
+    }
+  }
+  __pyx_t_2 = (__pyx_t_5) ? __Pyx_PyObject_Call2Args(__pyx_t_4, __pyx_t_5, __pyx_v_new_binpt_vec) : __Pyx_PyObject_CallOneArg(__pyx_t_4, __pyx_v_new_binpt_vec);
+  __Pyx_XDECREF(__pyx_t_5); __pyx_t_5 = 0;
+  if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 126, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_2);
+  __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+  __pyx_t_4 = NULL;
+  if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_3))) {
+    __pyx_t_4 = PyMethod_GET_SELF(__pyx_t_3);
+    if (likely(__pyx_t_4)) {
+      PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_3);
+      __Pyx_INCREF(__pyx_t_4);
+      __Pyx_INCREF(function);
+      __Pyx_DECREF_SET(__pyx_t_3, function);
+    }
+  }
+  __pyx_t_1 = (__pyx_t_4) ? __Pyx_PyObject_Call2Args(__pyx_t_3, __pyx_t_4, __pyx_t_2) : __Pyx_PyObject_CallOneArg(__pyx_t_3, __pyx_t_2);
+  __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
+  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+  if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 126, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+  __pyx_r = __pyx_t_1;
+  __pyx_t_1 = 0;
+  goto __pyx_L0;
+
+  /* "structureboost/pdf_discrete.pyx":124
+ *         return(PdfDiscrete(new_binvec, pv1))
+ * 
+ *     def bins_to_probs(self, new_binpt_vec):             # <<<<<<<<<<<<<<
+ *         """Given a new set of binpts, return the probabilities in each bin"""
+ *         return(np.diff(self.cdf(new_binpt_vec)))
+ */
+
+  /* function exit code */
+  __pyx_L1_error:;
+  __Pyx_XDECREF(__pyx_t_1);
+  __Pyx_XDECREF(__pyx_t_2);
+  __Pyx_XDECREF(__pyx_t_3);
+  __Pyx_XDECREF(__pyx_t_4);
+  __Pyx_XDECREF(__pyx_t_5);
+  __Pyx_AddTraceback("structureboost.pdf_discrete.PdfDiscrete.bins_to_probs", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __pyx_r = NULL;
+  __pyx_L0:;
+  __Pyx_XGIVEREF(__pyx_r);
+  __Pyx_TraceReturn(__pyx_r, 0);
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+/* "structureboost/pdf_discrete.pyx":128
+ *         return(np.diff(self.cdf(new_binpt_vec)))
+ * 
+ *     def plot_density(self, coverage=None,             # <<<<<<<<<<<<<<
  *                     pred_type='interval', pred_color='orange',
  *                     **kwargs):
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_14structureboost_12pdf_discrete_11PdfDiscrete_17plot_density(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
-static PyMethodDef __pyx_mdef_14structureboost_12pdf_discrete_11PdfDiscrete_17plot_density = {"plot_density", (PyCFunction)(void*)(PyCFunctionWithKeywords)__pyx_pw_14structureboost_12pdf_discrete_11PdfDiscrete_17plot_density, METH_VARARGS|METH_KEYWORDS, 0};
-static PyObject *__pyx_pw_14structureboost_12pdf_discrete_11PdfDiscrete_17plot_density(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
+static PyObject *__pyx_pw_14structureboost_12pdf_discrete_11PdfDiscrete_21plot_density(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
+static PyMethodDef __pyx_mdef_14structureboost_12pdf_discrete_11PdfDiscrete_21plot_density = {"plot_density", (PyCFunction)(void*)(PyCFunctionWithKeywords)__pyx_pw_14structureboost_12pdf_discrete_11PdfDiscrete_21plot_density, METH_VARARGS|METH_KEYWORDS, 0};
+static PyObject *__pyx_pw_14structureboost_12pdf_discrete_11PdfDiscrete_21plot_density(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
   PyObject *__pyx_v_self = 0;
-  PyObject *__pyx_v_pred_alpha = 0;
+  PyObject *__pyx_v_coverage = 0;
   PyObject *__pyx_v_pred_type = 0;
   PyObject *__pyx_v_pred_color = 0;
   PyObject *__pyx_v_kwargs = 0;
@@ -4749,7 +5602,7 @@ static PyObject *__pyx_pw_14structureboost_12pdf_discrete_11PdfDiscrete_17plot_d
   __pyx_v_kwargs = PyDict_New(); if (unlikely(!__pyx_v_kwargs)) return NULL;
   __Pyx_GOTREF(__pyx_v_kwargs);
   {
-    static PyObject **__pyx_pyargnames[] = {&__pyx_n_s_self,&__pyx_n_s_pred_alpha,&__pyx_n_s_pred_type,&__pyx_n_s_pred_color,0};
+    static PyObject **__pyx_pyargnames[] = {&__pyx_n_s_self,&__pyx_n_s_coverage,&__pyx_n_s_pred_type,&__pyx_n_s_pred_color,0};
     PyObject* values[4] = {0,0,0,0};
     values[1] = ((PyObject *)((PyObject *)Py_None));
     values[2] = ((PyObject *)((PyObject*)__pyx_n_u_interval));
@@ -4777,7 +5630,7 @@ static PyObject *__pyx_pw_14structureboost_12pdf_discrete_11PdfDiscrete_17plot_d
         CYTHON_FALLTHROUGH;
         case  1:
         if (kw_args > 0) {
-          PyObject* value = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_pred_alpha);
+          PyObject* value = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_coverage);
           if (value) { values[1] = value; kw_args--; }
         }
         CYTHON_FALLTHROUGH;
@@ -4794,7 +5647,7 @@ static PyObject *__pyx_pw_14structureboost_12pdf_discrete_11PdfDiscrete_17plot_d
         }
       }
       if (unlikely(kw_args > 0)) {
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, __pyx_v_kwargs, values, pos_args, "plot_density") < 0)) __PYX_ERR(0, 74, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, __pyx_v_kwargs, values, pos_args, "plot_density") < 0)) __PYX_ERR(0, 128, __pyx_L3_error)
       }
     } else {
       switch (PyTuple_GET_SIZE(__pyx_args)) {
@@ -4810,20 +5663,20 @@ static PyObject *__pyx_pw_14structureboost_12pdf_discrete_11PdfDiscrete_17plot_d
       }
     }
     __pyx_v_self = values[0];
-    __pyx_v_pred_alpha = values[1];
+    __pyx_v_coverage = values[1];
     __pyx_v_pred_type = values[2];
     __pyx_v_pred_color = values[3];
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("plot_density", 0, 1, 4, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 74, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("plot_density", 0, 1, 4, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 128, __pyx_L3_error)
   __pyx_L3_error:;
   __Pyx_DECREF(__pyx_v_kwargs); __pyx_v_kwargs = 0;
   __Pyx_AddTraceback("structureboost.pdf_discrete.PdfDiscrete.plot_density", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  __pyx_r = __pyx_pf_14structureboost_12pdf_discrete_11PdfDiscrete_16plot_density(__pyx_self, __pyx_v_self, __pyx_v_pred_alpha, __pyx_v_pred_type, __pyx_v_pred_color, __pyx_v_kwargs);
+  __pyx_r = __pyx_pf_14structureboost_12pdf_discrete_11PdfDiscrete_20plot_density(__pyx_self, __pyx_v_self, __pyx_v_coverage, __pyx_v_pred_type, __pyx_v_pred_color, __pyx_v_kwargs);
 
   /* function exit code */
   __Pyx_XDECREF(__pyx_v_kwargs);
@@ -4831,9 +5684,10 @@ static PyObject *__pyx_pw_14structureboost_12pdf_discrete_11PdfDiscrete_17plot_d
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_14structureboost_12pdf_discrete_11PdfDiscrete_16plot_density(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self, PyObject *__pyx_v_pred_alpha, PyObject *__pyx_v_pred_type, PyObject *__pyx_v_pred_color, PyObject *__pyx_v_kwargs) {
+static PyObject *__pyx_pf_14structureboost_12pdf_discrete_11PdfDiscrete_20plot_density(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self, PyObject *__pyx_v_coverage, PyObject *__pyx_v_pred_type, PyObject *__pyx_v_pred_color, PyObject *__pyx_v_kwargs) {
   PyObject *__pyx_v_included_intervals = NULL;
   PyObject *__pyx_v_index = NULL;
+  PyObject *__pyx_v_beta = NULL;
   PyObject *__pyx_v_left_pi = NULL;
   PyObject *__pyx_v_right_pi = NULL;
   PyObject *__pyx_v_left_xpt = NULL;
@@ -4860,24 +5714,24 @@ static PyObject *__pyx_pf_14structureboost_12pdf_discrete_11PdfDiscrete_16plot_d
   int __pyx_lineno = 0;
   const char *__pyx_filename = NULL;
   int __pyx_clineno = 0;
-  __Pyx_TraceFrameInit(__pyx_codeobj__11)
+  __Pyx_TraceFrameInit(__pyx_codeobj__13)
   __Pyx_RefNannySetupContext("plot_density", 0);
-  __Pyx_TraceCall("plot_density", __pyx_f[0], 74, 0, __PYX_ERR(0, 74, __pyx_L1_error));
+  __Pyx_TraceCall("plot_density", __pyx_f[0], 128, 0, __PYX_ERR(0, 128, __pyx_L1_error));
 
-  /* "structureboost/pdf_discrete.pyx":77
+  /* "structureboost/pdf_discrete.pyx":131
  *                     pred_type='interval', pred_color='orange',
  *                     **kwargs):
- *         density_plot(self.binvec, self.probvec, **kwargs)             # <<<<<<<<<<<<<<
- *         if pred_alpha is not None:
+ *         basic_density_plot(self.binvec, self.densityvec, **kwargs)             # <<<<<<<<<<<<<<
+ *         if coverage is not None:
  *             if pred_type=='region':
  */
-  __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_density_plot); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 77, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_basic_density_plot); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 131, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_binvec); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 77, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_binvec); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 131, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_probvec); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 77, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_densityvec); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 131, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_4 = PyTuple_New(2); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 77, __pyx_L1_error)
+  __pyx_t_4 = PyTuple_New(2); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 131, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_GIVEREF(__pyx_t_2);
   PyTuple_SET_ITEM(__pyx_t_4, 0, __pyx_t_2);
@@ -4885,44 +5739,44 @@ static PyObject *__pyx_pf_14structureboost_12pdf_discrete_11PdfDiscrete_16plot_d
   PyTuple_SET_ITEM(__pyx_t_4, 1, __pyx_t_3);
   __pyx_t_2 = 0;
   __pyx_t_3 = 0;
-  __pyx_t_3 = PyDict_Copy(__pyx_v_kwargs); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 77, __pyx_L1_error)
+  __pyx_t_3 = PyDict_Copy(__pyx_v_kwargs); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 131, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_2 = __Pyx_PyObject_Call(__pyx_t_1, __pyx_t_4, __pyx_t_3); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 77, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_Call(__pyx_t_1, __pyx_t_4, __pyx_t_3); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 131, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "structureboost/pdf_discrete.pyx":78
+  /* "structureboost/pdf_discrete.pyx":132
  *                     **kwargs):
- *         density_plot(self.binvec, self.probvec, **kwargs)
- *         if pred_alpha is not None:             # <<<<<<<<<<<<<<
+ *         basic_density_plot(self.binvec, self.densityvec, **kwargs)
+ *         if coverage is not None:             # <<<<<<<<<<<<<<
  *             if pred_type=='region':
- *                 included_intervals = self.pred_region_bins(pred_alpha)
+ *                 included_intervals = self.pred_region_bins(coverage)
  */
-  __pyx_t_5 = (__pyx_v_pred_alpha != Py_None);
+  __pyx_t_5 = (__pyx_v_coverage != Py_None);
   __pyx_t_6 = (__pyx_t_5 != 0);
   if (__pyx_t_6) {
 
-    /* "structureboost/pdf_discrete.pyx":79
- *         density_plot(self.binvec, self.probvec, **kwargs)
- *         if pred_alpha is not None:
+    /* "structureboost/pdf_discrete.pyx":133
+ *         basic_density_plot(self.binvec, self.densityvec, **kwargs)
+ *         if coverage is not None:
  *             if pred_type=='region':             # <<<<<<<<<<<<<<
- *                 included_intervals = self.pred_region_bins(pred_alpha)
+ *                 included_intervals = self.pred_region_bins(coverage)
  *                 for index in included_intervals:
  */
-    __pyx_t_6 = (__Pyx_PyUnicode_Equals(__pyx_v_pred_type, __pyx_n_u_region, Py_EQ)); if (unlikely(__pyx_t_6 < 0)) __PYX_ERR(0, 79, __pyx_L1_error)
+    __pyx_t_6 = (__Pyx_PyUnicode_Equals(__pyx_v_pred_type, __pyx_n_u_region, Py_EQ)); if (unlikely(__pyx_t_6 < 0)) __PYX_ERR(0, 133, __pyx_L1_error)
     if (__pyx_t_6) {
 
-      /* "structureboost/pdf_discrete.pyx":80
- *         if pred_alpha is not None:
+      /* "structureboost/pdf_discrete.pyx":134
+ *         if coverage is not None:
  *             if pred_type=='region':
- *                 included_intervals = self.pred_region_bins(pred_alpha)             # <<<<<<<<<<<<<<
+ *                 included_intervals = self.pred_region_bins(coverage)             # <<<<<<<<<<<<<<
  *                 for index in included_intervals:
- *                     plt.bar(x=self.bin_midpts[index], height=self.bin_densities[index],
+ *                     plt.bar(x=self.bin_midpts[index], height=self.densityvec[index],
  */
-      __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_pred_region_bins); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 80, __pyx_L1_error)
+      __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_pred_region_bins); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 134, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_3);
       __pyx_t_4 = NULL;
       if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_3))) {
@@ -4934,45 +5788,45 @@ static PyObject *__pyx_pf_14structureboost_12pdf_discrete_11PdfDiscrete_16plot_d
           __Pyx_DECREF_SET(__pyx_t_3, function);
         }
       }
-      __pyx_t_2 = (__pyx_t_4) ? __Pyx_PyObject_Call2Args(__pyx_t_3, __pyx_t_4, __pyx_v_pred_alpha) : __Pyx_PyObject_CallOneArg(__pyx_t_3, __pyx_v_pred_alpha);
+      __pyx_t_2 = (__pyx_t_4) ? __Pyx_PyObject_Call2Args(__pyx_t_3, __pyx_t_4, __pyx_v_coverage) : __Pyx_PyObject_CallOneArg(__pyx_t_3, __pyx_v_coverage);
       __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
-      if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 80, __pyx_L1_error)
+      if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 134, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_2);
       __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
       __pyx_v_included_intervals = __pyx_t_2;
       __pyx_t_2 = 0;
 
-      /* "structureboost/pdf_discrete.pyx":81
+      /* "structureboost/pdf_discrete.pyx":135
  *             if pred_type=='region':
- *                 included_intervals = self.pred_region_bins(pred_alpha)
+ *                 included_intervals = self.pred_region_bins(coverage)
  *                 for index in included_intervals:             # <<<<<<<<<<<<<<
- *                     plt.bar(x=self.bin_midpts[index], height=self.bin_densities[index],
+ *                     plt.bar(x=self.bin_midpts[index], height=self.densityvec[index],
  *                         width = self.bin_widths[index], color=pred_color)
  */
       if (likely(PyList_CheckExact(__pyx_v_included_intervals)) || PyTuple_CheckExact(__pyx_v_included_intervals)) {
         __pyx_t_2 = __pyx_v_included_intervals; __Pyx_INCREF(__pyx_t_2); __pyx_t_7 = 0;
         __pyx_t_8 = NULL;
       } else {
-        __pyx_t_7 = -1; __pyx_t_2 = PyObject_GetIter(__pyx_v_included_intervals); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 81, __pyx_L1_error)
+        __pyx_t_7 = -1; __pyx_t_2 = PyObject_GetIter(__pyx_v_included_intervals); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 135, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_2);
-        __pyx_t_8 = Py_TYPE(__pyx_t_2)->tp_iternext; if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 81, __pyx_L1_error)
+        __pyx_t_8 = Py_TYPE(__pyx_t_2)->tp_iternext; if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 135, __pyx_L1_error)
       }
       for (;;) {
         if (likely(!__pyx_t_8)) {
           if (likely(PyList_CheckExact(__pyx_t_2))) {
             if (__pyx_t_7 >= PyList_GET_SIZE(__pyx_t_2)) break;
             #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-            __pyx_t_3 = PyList_GET_ITEM(__pyx_t_2, __pyx_t_7); __Pyx_INCREF(__pyx_t_3); __pyx_t_7++; if (unlikely(0 < 0)) __PYX_ERR(0, 81, __pyx_L1_error)
+            __pyx_t_3 = PyList_GET_ITEM(__pyx_t_2, __pyx_t_7); __Pyx_INCREF(__pyx_t_3); __pyx_t_7++; if (unlikely(0 < 0)) __PYX_ERR(0, 135, __pyx_L1_error)
             #else
-            __pyx_t_3 = PySequence_ITEM(__pyx_t_2, __pyx_t_7); __pyx_t_7++; if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 81, __pyx_L1_error)
+            __pyx_t_3 = PySequence_ITEM(__pyx_t_2, __pyx_t_7); __pyx_t_7++; if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 135, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_3);
             #endif
           } else {
             if (__pyx_t_7 >= PyTuple_GET_SIZE(__pyx_t_2)) break;
             #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-            __pyx_t_3 = PyTuple_GET_ITEM(__pyx_t_2, __pyx_t_7); __Pyx_INCREF(__pyx_t_3); __pyx_t_7++; if (unlikely(0 < 0)) __PYX_ERR(0, 81, __pyx_L1_error)
+            __pyx_t_3 = PyTuple_GET_ITEM(__pyx_t_2, __pyx_t_7); __Pyx_INCREF(__pyx_t_3); __pyx_t_7++; if (unlikely(0 < 0)) __PYX_ERR(0, 135, __pyx_L1_error)
             #else
-            __pyx_t_3 = PySequence_ITEM(__pyx_t_2, __pyx_t_7); __pyx_t_7++; if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 81, __pyx_L1_error)
+            __pyx_t_3 = PySequence_ITEM(__pyx_t_2, __pyx_t_7); __pyx_t_7++; if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 135, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_3);
             #endif
           }
@@ -4982,7 +5836,7 @@ static PyObject *__pyx_pf_14structureboost_12pdf_discrete_11PdfDiscrete_16plot_d
             PyObject* exc_type = PyErr_Occurred();
             if (exc_type) {
               if (likely(__Pyx_PyErr_GivenExceptionMatches(exc_type, PyExc_StopIteration))) PyErr_Clear();
-              else __PYX_ERR(0, 81, __pyx_L1_error)
+              else __PYX_ERR(0, 135, __pyx_L1_error)
             }
             break;
           }
@@ -4991,115 +5845,181 @@ static PyObject *__pyx_pf_14structureboost_12pdf_discrete_11PdfDiscrete_16plot_d
         __Pyx_XDECREF_SET(__pyx_v_index, __pyx_t_3);
         __pyx_t_3 = 0;
 
-        /* "structureboost/pdf_discrete.pyx":82
- *                 included_intervals = self.pred_region_bins(pred_alpha)
+        /* "structureboost/pdf_discrete.pyx":136
+ *                 included_intervals = self.pred_region_bins(coverage)
  *                 for index in included_intervals:
- *                     plt.bar(x=self.bin_midpts[index], height=self.bin_densities[index],             # <<<<<<<<<<<<<<
+ *                     plt.bar(x=self.bin_midpts[index], height=self.densityvec[index],             # <<<<<<<<<<<<<<
  *                         width = self.bin_widths[index], color=pred_color)
  *             if pred_type=='interval':
  */
-        __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_n_s_plt); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 82, __pyx_L1_error)
+        __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_n_s_plt); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 136, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_3);
-        __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_bar); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 82, __pyx_L1_error)
+        __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_bar); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 136, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_4);
         __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-        __pyx_t_3 = __Pyx_PyDict_NewPresized(4); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 82, __pyx_L1_error)
+        __pyx_t_3 = __Pyx_PyDict_NewPresized(4); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 136, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_3);
-        __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_bin_midpts); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 82, __pyx_L1_error)
+        __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_bin_midpts); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 136, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_1);
-        __pyx_t_9 = __Pyx_PyObject_GetItem(__pyx_t_1, __pyx_v_index); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 82, __pyx_L1_error)
+        __pyx_t_9 = __Pyx_PyObject_GetItem(__pyx_t_1, __pyx_v_index); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 136, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_9);
         __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-        if (PyDict_SetItem(__pyx_t_3, __pyx_n_s_x, __pyx_t_9) < 0) __PYX_ERR(0, 82, __pyx_L1_error)
+        if (PyDict_SetItem(__pyx_t_3, __pyx_n_s_x, __pyx_t_9) < 0) __PYX_ERR(0, 136, __pyx_L1_error)
         __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
-        __pyx_t_9 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_bin_densities); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 82, __pyx_L1_error)
+        __pyx_t_9 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_densityvec); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 136, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_9);
-        __pyx_t_1 = __Pyx_PyObject_GetItem(__pyx_t_9, __pyx_v_index); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 82, __pyx_L1_error)
+        __pyx_t_1 = __Pyx_PyObject_GetItem(__pyx_t_9, __pyx_v_index); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 136, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_1);
         __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
-        if (PyDict_SetItem(__pyx_t_3, __pyx_n_s_height, __pyx_t_1) < 0) __PYX_ERR(0, 82, __pyx_L1_error)
+        if (PyDict_SetItem(__pyx_t_3, __pyx_n_s_height, __pyx_t_1) < 0) __PYX_ERR(0, 136, __pyx_L1_error)
         __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-        /* "structureboost/pdf_discrete.pyx":83
+        /* "structureboost/pdf_discrete.pyx":137
  *                 for index in included_intervals:
- *                     plt.bar(x=self.bin_midpts[index], height=self.bin_densities[index],
+ *                     plt.bar(x=self.bin_midpts[index], height=self.densityvec[index],
  *                         width = self.bin_widths[index], color=pred_color)             # <<<<<<<<<<<<<<
  *             if pred_type=='interval':
- *                 left_pi, right_pi = np.digitize([.05, .95], self.cum_prob)-1
+ *                 # TODO: double check this
  */
-        __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_bin_widths); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 83, __pyx_L1_error)
+        __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_bin_widths); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 137, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_1);
-        __pyx_t_9 = __Pyx_PyObject_GetItem(__pyx_t_1, __pyx_v_index); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 83, __pyx_L1_error)
+        __pyx_t_9 = __Pyx_PyObject_GetItem(__pyx_t_1, __pyx_v_index); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 137, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_9);
         __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-        if (PyDict_SetItem(__pyx_t_3, __pyx_n_s_width, __pyx_t_9) < 0) __PYX_ERR(0, 82, __pyx_L1_error)
+        if (PyDict_SetItem(__pyx_t_3, __pyx_n_s_width, __pyx_t_9) < 0) __PYX_ERR(0, 136, __pyx_L1_error)
         __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
-        if (PyDict_SetItem(__pyx_t_3, __pyx_n_s_color, __pyx_v_pred_color) < 0) __PYX_ERR(0, 82, __pyx_L1_error)
+        if (PyDict_SetItem(__pyx_t_3, __pyx_n_s_color, __pyx_v_pred_color) < 0) __PYX_ERR(0, 136, __pyx_L1_error)
 
-        /* "structureboost/pdf_discrete.pyx":82
- *                 included_intervals = self.pred_region_bins(pred_alpha)
+        /* "structureboost/pdf_discrete.pyx":136
+ *                 included_intervals = self.pred_region_bins(coverage)
  *                 for index in included_intervals:
- *                     plt.bar(x=self.bin_midpts[index], height=self.bin_densities[index],             # <<<<<<<<<<<<<<
+ *                     plt.bar(x=self.bin_midpts[index], height=self.densityvec[index],             # <<<<<<<<<<<<<<
  *                         width = self.bin_widths[index], color=pred_color)
  *             if pred_type=='interval':
  */
-        __pyx_t_9 = __Pyx_PyObject_Call(__pyx_t_4, __pyx_empty_tuple, __pyx_t_3); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 82, __pyx_L1_error)
+        __pyx_t_9 = __Pyx_PyObject_Call(__pyx_t_4, __pyx_empty_tuple, __pyx_t_3); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 136, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_9);
         __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
         __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
         __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
 
-        /* "structureboost/pdf_discrete.pyx":81
+        /* "structureboost/pdf_discrete.pyx":135
  *             if pred_type=='region':
- *                 included_intervals = self.pred_region_bins(pred_alpha)
+ *                 included_intervals = self.pred_region_bins(coverage)
  *                 for index in included_intervals:             # <<<<<<<<<<<<<<
- *                     plt.bar(x=self.bin_midpts[index], height=self.bin_densities[index],
+ *                     plt.bar(x=self.bin_midpts[index], height=self.densityvec[index],
  *                         width = self.bin_widths[index], color=pred_color)
  */
       }
       __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-      /* "structureboost/pdf_discrete.pyx":79
- *         density_plot(self.binvec, self.probvec, **kwargs)
- *         if pred_alpha is not None:
+      /* "structureboost/pdf_discrete.pyx":133
+ *         basic_density_plot(self.binvec, self.densityvec, **kwargs)
+ *         if coverage is not None:
  *             if pred_type=='region':             # <<<<<<<<<<<<<<
- *                 included_intervals = self.pred_region_bins(pred_alpha)
+ *                 included_intervals = self.pred_region_bins(coverage)
  *                 for index in included_intervals:
  */
     }
 
-    /* "structureboost/pdf_discrete.pyx":84
- *                     plt.bar(x=self.bin_midpts[index], height=self.bin_densities[index],
+    /* "structureboost/pdf_discrete.pyx":138
+ *                     plt.bar(x=self.bin_midpts[index], height=self.densityvec[index],
  *                         width = self.bin_widths[index], color=pred_color)
  *             if pred_type=='interval':             # <<<<<<<<<<<<<<
- *                 left_pi, right_pi = np.digitize([.05, .95], self.cum_prob)-1
- *                 left_xpt, right_xpt = self.quantiles([.05,.95])
+ *                 # TODO: double check this
+ *                 if self.cum_prob is None:
  */
-    __pyx_t_6 = (__Pyx_PyUnicode_Equals(__pyx_v_pred_type, __pyx_n_u_interval, Py_EQ)); if (unlikely(__pyx_t_6 < 0)) __PYX_ERR(0, 84, __pyx_L1_error)
+    __pyx_t_6 = (__Pyx_PyUnicode_Equals(__pyx_v_pred_type, __pyx_n_u_interval, Py_EQ)); if (unlikely(__pyx_t_6 < 0)) __PYX_ERR(0, 138, __pyx_L1_error)
     if (__pyx_t_6) {
 
-      /* "structureboost/pdf_discrete.pyx":85
- *                         width = self.bin_widths[index], color=pred_color)
+      /* "structureboost/pdf_discrete.pyx":140
  *             if pred_type=='interval':
- *                 left_pi, right_pi = np.digitize([.05, .95], self.cum_prob)-1             # <<<<<<<<<<<<<<
- *                 left_xpt, right_xpt = self.quantiles([.05,.95])
+ *                 # TODO: double check this
+ *                 if self.cum_prob is None:             # <<<<<<<<<<<<<<
+ *                     self.calculate_cum_prob()
+ *                 beta = (1-coverage)/2
+ */
+      __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_cum_prob); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 140, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_2);
+      __pyx_t_6 = (__pyx_t_2 == Py_None);
+      __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+      __pyx_t_5 = (__pyx_t_6 != 0);
+      if (__pyx_t_5) {
+
+        /* "structureboost/pdf_discrete.pyx":141
+ *                 # TODO: double check this
+ *                 if self.cum_prob is None:
+ *                     self.calculate_cum_prob()             # <<<<<<<<<<<<<<
+ *                 beta = (1-coverage)/2
+ *                 left_pi, right_pi = np.digitize([beta, 1-beta], self.cum_prob)-1
+ */
+        __pyx_t_9 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_calculate_cum_prob); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 141, __pyx_L1_error)
+        __Pyx_GOTREF(__pyx_t_9);
+        __pyx_t_3 = NULL;
+        if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_9))) {
+          __pyx_t_3 = PyMethod_GET_SELF(__pyx_t_9);
+          if (likely(__pyx_t_3)) {
+            PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_9);
+            __Pyx_INCREF(__pyx_t_3);
+            __Pyx_INCREF(function);
+            __Pyx_DECREF_SET(__pyx_t_9, function);
+          }
+        }
+        __pyx_t_2 = (__pyx_t_3) ? __Pyx_PyObject_CallOneArg(__pyx_t_9, __pyx_t_3) : __Pyx_PyObject_CallNoArg(__pyx_t_9);
+        __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
+        if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 141, __pyx_L1_error)
+        __Pyx_GOTREF(__pyx_t_2);
+        __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
+        __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+
+        /* "structureboost/pdf_discrete.pyx":140
+ *             if pred_type=='interval':
+ *                 # TODO: double check this
+ *                 if self.cum_prob is None:             # <<<<<<<<<<<<<<
+ *                     self.calculate_cum_prob()
+ *                 beta = (1-coverage)/2
+ */
+      }
+
+      /* "structureboost/pdf_discrete.pyx":142
+ *                 if self.cum_prob is None:
+ *                     self.calculate_cum_prob()
+ *                 beta = (1-coverage)/2             # <<<<<<<<<<<<<<
+ *                 left_pi, right_pi = np.digitize([beta, 1-beta], self.cum_prob)-1
+ *                 left_xpt, right_xpt = self.quantiles([beta,1-beta])
+ */
+      __pyx_t_2 = __Pyx_PyInt_SubtractCObj(__pyx_int_1, __pyx_v_coverage, 1, 0, 0); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 142, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_2);
+      __pyx_t_9 = __Pyx_PyInt_TrueDivideObjC(__pyx_t_2, __pyx_int_2, 2, 0, 0); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 142, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_9);
+      __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+      __pyx_v_beta = __pyx_t_9;
+      __pyx_t_9 = 0;
+
+      /* "structureboost/pdf_discrete.pyx":143
+ *                     self.calculate_cum_prob()
+ *                 beta = (1-coverage)/2
+ *                 left_pi, right_pi = np.digitize([beta, 1-beta], self.cum_prob)-1             # <<<<<<<<<<<<<<
+ *                 left_xpt, right_xpt = self.quantiles([beta,1-beta])
  *                 included_intervals = list(range(left_pi+1, right_pi))
  */
-      __Pyx_GetModuleGlobalName(__pyx_t_9, __pyx_n_s_np); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 85, __pyx_L1_error)
-      __Pyx_GOTREF(__pyx_t_9);
-      __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_9, __pyx_n_s_digitize); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 85, __pyx_L1_error)
+      __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_np); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 143, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_2);
+      __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_digitize); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 143, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_3);
-      __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
-      __pyx_t_9 = PyList_New(2); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 85, __pyx_L1_error)
-      __Pyx_GOTREF(__pyx_t_9);
-      __Pyx_INCREF(__pyx_float__05);
-      __Pyx_GIVEREF(__pyx_float__05);
-      PyList_SET_ITEM(__pyx_t_9, 0, __pyx_float__05);
-      __Pyx_INCREF(__pyx_float__95);
-      __Pyx_GIVEREF(__pyx_float__95);
-      PyList_SET_ITEM(__pyx_t_9, 1, __pyx_float__95);
-      __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_cum_prob); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 85, __pyx_L1_error)
+      __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+      __pyx_t_2 = __Pyx_PyInt_SubtractCObj(__pyx_int_1, __pyx_v_beta, 1, 0, 0); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 143, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_2);
+      __pyx_t_4 = PyList_New(2); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 143, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_4);
+      __Pyx_INCREF(__pyx_v_beta);
+      __Pyx_GIVEREF(__pyx_v_beta);
+      PyList_SET_ITEM(__pyx_t_4, 0, __pyx_v_beta);
+      __Pyx_GIVEREF(__pyx_t_2);
+      PyList_SET_ITEM(__pyx_t_4, 1, __pyx_t_2);
+      __pyx_t_2 = 0;
+      __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_cum_prob); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 143, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_2);
       __pyx_t_1 = NULL;
       __pyx_t_10 = 0;
       if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_3))) {
@@ -5114,126 +6034,128 @@ static PyObject *__pyx_pf_14structureboost_12pdf_discrete_11PdfDiscrete_16plot_d
       }
       #if CYTHON_FAST_PYCALL
       if (PyFunction_Check(__pyx_t_3)) {
-        PyObject *__pyx_temp[3] = {__pyx_t_1, __pyx_t_9, __pyx_t_4};
-        __pyx_t_2 = __Pyx_PyFunction_FastCall(__pyx_t_3, __pyx_temp+1-__pyx_t_10, 2+__pyx_t_10); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 85, __pyx_L1_error)
+        PyObject *__pyx_temp[3] = {__pyx_t_1, __pyx_t_4, __pyx_t_2};
+        __pyx_t_9 = __Pyx_PyFunction_FastCall(__pyx_t_3, __pyx_temp+1-__pyx_t_10, 2+__pyx_t_10); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 143, __pyx_L1_error)
         __Pyx_XDECREF(__pyx_t_1); __pyx_t_1 = 0;
-        __Pyx_GOTREF(__pyx_t_2);
-        __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
+        __Pyx_GOTREF(__pyx_t_9);
         __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+        __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
       } else
       #endif
       #if CYTHON_FAST_PYCCALL
       if (__Pyx_PyFastCFunction_Check(__pyx_t_3)) {
-        PyObject *__pyx_temp[3] = {__pyx_t_1, __pyx_t_9, __pyx_t_4};
-        __pyx_t_2 = __Pyx_PyCFunction_FastCall(__pyx_t_3, __pyx_temp+1-__pyx_t_10, 2+__pyx_t_10); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 85, __pyx_L1_error)
+        PyObject *__pyx_temp[3] = {__pyx_t_1, __pyx_t_4, __pyx_t_2};
+        __pyx_t_9 = __Pyx_PyCFunction_FastCall(__pyx_t_3, __pyx_temp+1-__pyx_t_10, 2+__pyx_t_10); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 143, __pyx_L1_error)
         __Pyx_XDECREF(__pyx_t_1); __pyx_t_1 = 0;
-        __Pyx_GOTREF(__pyx_t_2);
-        __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
+        __Pyx_GOTREF(__pyx_t_9);
         __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+        __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
       } else
       #endif
       {
-        __pyx_t_11 = PyTuple_New(2+__pyx_t_10); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 85, __pyx_L1_error)
+        __pyx_t_11 = PyTuple_New(2+__pyx_t_10); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 143, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_11);
         if (__pyx_t_1) {
           __Pyx_GIVEREF(__pyx_t_1); PyTuple_SET_ITEM(__pyx_t_11, 0, __pyx_t_1); __pyx_t_1 = NULL;
         }
-        __Pyx_GIVEREF(__pyx_t_9);
-        PyTuple_SET_ITEM(__pyx_t_11, 0+__pyx_t_10, __pyx_t_9);
         __Pyx_GIVEREF(__pyx_t_4);
-        PyTuple_SET_ITEM(__pyx_t_11, 1+__pyx_t_10, __pyx_t_4);
-        __pyx_t_9 = 0;
+        PyTuple_SET_ITEM(__pyx_t_11, 0+__pyx_t_10, __pyx_t_4);
+        __Pyx_GIVEREF(__pyx_t_2);
+        PyTuple_SET_ITEM(__pyx_t_11, 1+__pyx_t_10, __pyx_t_2);
         __pyx_t_4 = 0;
-        __pyx_t_2 = __Pyx_PyObject_Call(__pyx_t_3, __pyx_t_11, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 85, __pyx_L1_error)
-        __Pyx_GOTREF(__pyx_t_2);
+        __pyx_t_2 = 0;
+        __pyx_t_9 = __Pyx_PyObject_Call(__pyx_t_3, __pyx_t_11, NULL); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 143, __pyx_L1_error)
+        __Pyx_GOTREF(__pyx_t_9);
         __Pyx_DECREF(__pyx_t_11); __pyx_t_11 = 0;
       }
       __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-      __pyx_t_3 = __Pyx_PyInt_SubtractObjC(__pyx_t_2, __pyx_int_1, 1, 0, 0); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 85, __pyx_L1_error)
+      __pyx_t_3 = __Pyx_PyInt_SubtractObjC(__pyx_t_9, __pyx_int_1, 1, 0, 0); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 143, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_3);
-      __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+      __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
       if ((likely(PyTuple_CheckExact(__pyx_t_3))) || (PyList_CheckExact(__pyx_t_3))) {
         PyObject* sequence = __pyx_t_3;
         Py_ssize_t size = __Pyx_PySequence_SIZE(sequence);
         if (unlikely(size != 2)) {
           if (size > 2) __Pyx_RaiseTooManyValuesError(2);
           else if (size >= 0) __Pyx_RaiseNeedMoreValuesError(size);
-          __PYX_ERR(0, 85, __pyx_L1_error)
+          __PYX_ERR(0, 143, __pyx_L1_error)
         }
         #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
         if (likely(PyTuple_CheckExact(sequence))) {
-          __pyx_t_2 = PyTuple_GET_ITEM(sequence, 0); 
+          __pyx_t_9 = PyTuple_GET_ITEM(sequence, 0); 
           __pyx_t_11 = PyTuple_GET_ITEM(sequence, 1); 
         } else {
-          __pyx_t_2 = PyList_GET_ITEM(sequence, 0); 
+          __pyx_t_9 = PyList_GET_ITEM(sequence, 0); 
           __pyx_t_11 = PyList_GET_ITEM(sequence, 1); 
         }
-        __Pyx_INCREF(__pyx_t_2);
+        __Pyx_INCREF(__pyx_t_9);
         __Pyx_INCREF(__pyx_t_11);
         #else
-        __pyx_t_2 = PySequence_ITEM(sequence, 0); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 85, __pyx_L1_error)
-        __Pyx_GOTREF(__pyx_t_2);
-        __pyx_t_11 = PySequence_ITEM(sequence, 1); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 85, __pyx_L1_error)
+        __pyx_t_9 = PySequence_ITEM(sequence, 0); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 143, __pyx_L1_error)
+        __Pyx_GOTREF(__pyx_t_9);
+        __pyx_t_11 = PySequence_ITEM(sequence, 1); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 143, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_11);
         #endif
         __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
       } else {
         Py_ssize_t index = -1;
-        __pyx_t_4 = PyObject_GetIter(__pyx_t_3); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 85, __pyx_L1_error)
-        __Pyx_GOTREF(__pyx_t_4);
-        __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-        __pyx_t_12 = Py_TYPE(__pyx_t_4)->tp_iternext;
-        index = 0; __pyx_t_2 = __pyx_t_12(__pyx_t_4); if (unlikely(!__pyx_t_2)) goto __pyx_L8_unpacking_failed;
+        __pyx_t_2 = PyObject_GetIter(__pyx_t_3); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 143, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_2);
-        index = 1; __pyx_t_11 = __pyx_t_12(__pyx_t_4); if (unlikely(!__pyx_t_11)) goto __pyx_L8_unpacking_failed;
+        __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+        __pyx_t_12 = Py_TYPE(__pyx_t_2)->tp_iternext;
+        index = 0; __pyx_t_9 = __pyx_t_12(__pyx_t_2); if (unlikely(!__pyx_t_9)) goto __pyx_L9_unpacking_failed;
+        __Pyx_GOTREF(__pyx_t_9);
+        index = 1; __pyx_t_11 = __pyx_t_12(__pyx_t_2); if (unlikely(!__pyx_t_11)) goto __pyx_L9_unpacking_failed;
         __Pyx_GOTREF(__pyx_t_11);
-        if (__Pyx_IternextUnpackEndCheck(__pyx_t_12(__pyx_t_4), 2) < 0) __PYX_ERR(0, 85, __pyx_L1_error)
+        if (__Pyx_IternextUnpackEndCheck(__pyx_t_12(__pyx_t_2), 2) < 0) __PYX_ERR(0, 143, __pyx_L1_error)
         __pyx_t_12 = NULL;
-        __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-        goto __pyx_L9_unpacking_done;
-        __pyx_L8_unpacking_failed:;
-        __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+        __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+        goto __pyx_L10_unpacking_done;
+        __pyx_L9_unpacking_failed:;
+        __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
         __pyx_t_12 = NULL;
         if (__Pyx_IterFinish() == 0) __Pyx_RaiseNeedMoreValuesError(index);
-        __PYX_ERR(0, 85, __pyx_L1_error)
-        __pyx_L9_unpacking_done:;
+        __PYX_ERR(0, 143, __pyx_L1_error)
+        __pyx_L10_unpacking_done:;
       }
-      __pyx_v_left_pi = __pyx_t_2;
-      __pyx_t_2 = 0;
+      __pyx_v_left_pi = __pyx_t_9;
+      __pyx_t_9 = 0;
       __pyx_v_right_pi = __pyx_t_11;
       __pyx_t_11 = 0;
 
-      /* "structureboost/pdf_discrete.pyx":86
- *             if pred_type=='interval':
- *                 left_pi, right_pi = np.digitize([.05, .95], self.cum_prob)-1
- *                 left_xpt, right_xpt = self.quantiles([.05,.95])             # <<<<<<<<<<<<<<
+      /* "structureboost/pdf_discrete.pyx":144
+ *                 beta = (1-coverage)/2
+ *                 left_pi, right_pi = np.digitize([beta, 1-beta], self.cum_prob)-1
+ *                 left_xpt, right_xpt = self.quantiles([beta,1-beta])             # <<<<<<<<<<<<<<
  *                 included_intervals = list(range(left_pi+1, right_pi))
  *                 left_midpt = (left_xpt + self.binvec[left_pi+1])/2
  */
-      __pyx_t_11 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_quantiles); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 86, __pyx_L1_error)
+      __pyx_t_11 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_quantiles); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 144, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_11);
-      __pyx_t_2 = PyList_New(2); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 86, __pyx_L1_error)
+      __pyx_t_9 = __Pyx_PyInt_SubtractCObj(__pyx_int_1, __pyx_v_beta, 1, 0, 0); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 144, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_9);
+      __pyx_t_2 = PyList_New(2); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 144, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_2);
-      __Pyx_INCREF(__pyx_float__05);
-      __Pyx_GIVEREF(__pyx_float__05);
-      PyList_SET_ITEM(__pyx_t_2, 0, __pyx_float__05);
-      __Pyx_INCREF(__pyx_float__95);
-      __Pyx_GIVEREF(__pyx_float__95);
-      PyList_SET_ITEM(__pyx_t_2, 1, __pyx_float__95);
-      __pyx_t_4 = NULL;
+      __Pyx_INCREF(__pyx_v_beta);
+      __Pyx_GIVEREF(__pyx_v_beta);
+      PyList_SET_ITEM(__pyx_t_2, 0, __pyx_v_beta);
+      __Pyx_GIVEREF(__pyx_t_9);
+      PyList_SET_ITEM(__pyx_t_2, 1, __pyx_t_9);
+      __pyx_t_9 = 0;
+      __pyx_t_9 = NULL;
       if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_11))) {
-        __pyx_t_4 = PyMethod_GET_SELF(__pyx_t_11);
-        if (likely(__pyx_t_4)) {
+        __pyx_t_9 = PyMethod_GET_SELF(__pyx_t_11);
+        if (likely(__pyx_t_9)) {
           PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_11);
-          __Pyx_INCREF(__pyx_t_4);
+          __Pyx_INCREF(__pyx_t_9);
           __Pyx_INCREF(function);
           __Pyx_DECREF_SET(__pyx_t_11, function);
         }
       }
-      __pyx_t_3 = (__pyx_t_4) ? __Pyx_PyObject_Call2Args(__pyx_t_11, __pyx_t_4, __pyx_t_2) : __Pyx_PyObject_CallOneArg(__pyx_t_11, __pyx_t_2);
-      __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
+      __pyx_t_3 = (__pyx_t_9) ? __Pyx_PyObject_Call2Args(__pyx_t_11, __pyx_t_9, __pyx_t_2) : __Pyx_PyObject_CallOneArg(__pyx_t_11, __pyx_t_2);
+      __Pyx_XDECREF(__pyx_t_9); __pyx_t_9 = 0;
       __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-      if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 86, __pyx_L1_error)
+      if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 144, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_3);
       __Pyx_DECREF(__pyx_t_11); __pyx_t_11 = 0;
       if ((likely(PyTuple_CheckExact(__pyx_t_3))) || (PyList_CheckExact(__pyx_t_3))) {
@@ -5242,7 +6164,7 @@ static PyObject *__pyx_pf_14structureboost_12pdf_discrete_11PdfDiscrete_16plot_d
         if (unlikely(size != 2)) {
           if (size > 2) __Pyx_RaiseTooManyValuesError(2);
           else if (size >= 0) __Pyx_RaiseNeedMoreValuesError(size);
-          __PYX_ERR(0, 86, __pyx_L1_error)
+          __PYX_ERR(0, 144, __pyx_L1_error)
         }
         #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
         if (likely(PyTuple_CheckExact(sequence))) {
@@ -5255,48 +6177,48 @@ static PyObject *__pyx_pf_14structureboost_12pdf_discrete_11PdfDiscrete_16plot_d
         __Pyx_INCREF(__pyx_t_11);
         __Pyx_INCREF(__pyx_t_2);
         #else
-        __pyx_t_11 = PySequence_ITEM(sequence, 0); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 86, __pyx_L1_error)
+        __pyx_t_11 = PySequence_ITEM(sequence, 0); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 144, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_11);
-        __pyx_t_2 = PySequence_ITEM(sequence, 1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 86, __pyx_L1_error)
+        __pyx_t_2 = PySequence_ITEM(sequence, 1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 144, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_2);
         #endif
         __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
       } else {
         Py_ssize_t index = -1;
-        __pyx_t_4 = PyObject_GetIter(__pyx_t_3); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 86, __pyx_L1_error)
-        __Pyx_GOTREF(__pyx_t_4);
+        __pyx_t_9 = PyObject_GetIter(__pyx_t_3); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 144, __pyx_L1_error)
+        __Pyx_GOTREF(__pyx_t_9);
         __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-        __pyx_t_12 = Py_TYPE(__pyx_t_4)->tp_iternext;
-        index = 0; __pyx_t_11 = __pyx_t_12(__pyx_t_4); if (unlikely(!__pyx_t_11)) goto __pyx_L10_unpacking_failed;
+        __pyx_t_12 = Py_TYPE(__pyx_t_9)->tp_iternext;
+        index = 0; __pyx_t_11 = __pyx_t_12(__pyx_t_9); if (unlikely(!__pyx_t_11)) goto __pyx_L11_unpacking_failed;
         __Pyx_GOTREF(__pyx_t_11);
-        index = 1; __pyx_t_2 = __pyx_t_12(__pyx_t_4); if (unlikely(!__pyx_t_2)) goto __pyx_L10_unpacking_failed;
+        index = 1; __pyx_t_2 = __pyx_t_12(__pyx_t_9); if (unlikely(!__pyx_t_2)) goto __pyx_L11_unpacking_failed;
         __Pyx_GOTREF(__pyx_t_2);
-        if (__Pyx_IternextUnpackEndCheck(__pyx_t_12(__pyx_t_4), 2) < 0) __PYX_ERR(0, 86, __pyx_L1_error)
+        if (__Pyx_IternextUnpackEndCheck(__pyx_t_12(__pyx_t_9), 2) < 0) __PYX_ERR(0, 144, __pyx_L1_error)
         __pyx_t_12 = NULL;
-        __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-        goto __pyx_L11_unpacking_done;
-        __pyx_L10_unpacking_failed:;
-        __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+        __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
+        goto __pyx_L12_unpacking_done;
+        __pyx_L11_unpacking_failed:;
+        __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
         __pyx_t_12 = NULL;
         if (__Pyx_IterFinish() == 0) __Pyx_RaiseNeedMoreValuesError(index);
-        __PYX_ERR(0, 86, __pyx_L1_error)
-        __pyx_L11_unpacking_done:;
+        __PYX_ERR(0, 144, __pyx_L1_error)
+        __pyx_L12_unpacking_done:;
       }
       __pyx_v_left_xpt = __pyx_t_11;
       __pyx_t_11 = 0;
       __pyx_v_right_xpt = __pyx_t_2;
       __pyx_t_2 = 0;
 
-      /* "structureboost/pdf_discrete.pyx":87
- *                 left_pi, right_pi = np.digitize([.05, .95], self.cum_prob)-1
- *                 left_xpt, right_xpt = self.quantiles([.05,.95])
+      /* "structureboost/pdf_discrete.pyx":145
+ *                 left_pi, right_pi = np.digitize([beta, 1-beta], self.cum_prob)-1
+ *                 left_xpt, right_xpt = self.quantiles([beta,1-beta])
  *                 included_intervals = list(range(left_pi+1, right_pi))             # <<<<<<<<<<<<<<
  *                 left_midpt = (left_xpt + self.binvec[left_pi+1])/2
  *                 left_width = self.binvec[left_pi+1] -left_xpt
  */
-      __pyx_t_3 = __Pyx_PyInt_AddObjC(__pyx_v_left_pi, __pyx_int_1, 1, 0, 0); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 87, __pyx_L1_error)
+      __pyx_t_3 = __Pyx_PyInt_AddObjC(__pyx_v_left_pi, __pyx_int_1, 1, 0, 0); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 145, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_3);
-      __pyx_t_2 = PyTuple_New(2); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 87, __pyx_L1_error)
+      __pyx_t_2 = PyTuple_New(2); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 145, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_2);
       __Pyx_GIVEREF(__pyx_t_3);
       PyTuple_SET_ITEM(__pyx_t_2, 0, __pyx_t_3);
@@ -5304,326 +6226,330 @@ static PyObject *__pyx_pf_14structureboost_12pdf_discrete_11PdfDiscrete_16plot_d
       __Pyx_GIVEREF(__pyx_v_right_pi);
       PyTuple_SET_ITEM(__pyx_t_2, 1, __pyx_v_right_pi);
       __pyx_t_3 = 0;
-      __pyx_t_3 = __Pyx_PyObject_Call(__pyx_builtin_range, __pyx_t_2, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 87, __pyx_L1_error)
+      __pyx_t_3 = __Pyx_PyObject_Call(__pyx_builtin_range, __pyx_t_2, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 145, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_3);
       __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-      __pyx_t_2 = PySequence_List(__pyx_t_3); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 87, __pyx_L1_error)
+      __pyx_t_2 = PySequence_List(__pyx_t_3); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 145, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_2);
       __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
       __Pyx_XDECREF_SET(__pyx_v_included_intervals, __pyx_t_2);
       __pyx_t_2 = 0;
 
-      /* "structureboost/pdf_discrete.pyx":88
- *                 left_xpt, right_xpt = self.quantiles([.05,.95])
+      /* "structureboost/pdf_discrete.pyx":146
+ *                 left_xpt, right_xpt = self.quantiles([beta,1-beta])
  *                 included_intervals = list(range(left_pi+1, right_pi))
  *                 left_midpt = (left_xpt + self.binvec[left_pi+1])/2             # <<<<<<<<<<<<<<
  *                 left_width = self.binvec[left_pi+1] -left_xpt
  *                 right_midpt = (right_xpt + self.binvec[right_pi])/2
  */
-      __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_binvec); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 88, __pyx_L1_error)
+      __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_binvec); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 146, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_2);
-      __pyx_t_3 = __Pyx_PyInt_AddObjC(__pyx_v_left_pi, __pyx_int_1, 1, 0, 0); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 88, __pyx_L1_error)
+      __pyx_t_3 = __Pyx_PyInt_AddObjC(__pyx_v_left_pi, __pyx_int_1, 1, 0, 0); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 146, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_3);
-      __pyx_t_11 = __Pyx_PyObject_GetItem(__pyx_t_2, __pyx_t_3); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 88, __pyx_L1_error)
+      __pyx_t_11 = __Pyx_PyObject_GetItem(__pyx_t_2, __pyx_t_3); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 146, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_11);
       __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
       __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-      __pyx_t_3 = PyNumber_Add(__pyx_v_left_xpt, __pyx_t_11); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 88, __pyx_L1_error)
+      __pyx_t_3 = PyNumber_Add(__pyx_v_left_xpt, __pyx_t_11); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 146, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_3);
       __Pyx_DECREF(__pyx_t_11); __pyx_t_11 = 0;
-      __pyx_t_11 = __Pyx_PyInt_TrueDivideObjC(__pyx_t_3, __pyx_int_2, 2, 0, 0); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 88, __pyx_L1_error)
+      __pyx_t_11 = __Pyx_PyInt_TrueDivideObjC(__pyx_t_3, __pyx_int_2, 2, 0, 0); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 146, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_11);
       __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
       __pyx_v_left_midpt = __pyx_t_11;
       __pyx_t_11 = 0;
 
-      /* "structureboost/pdf_discrete.pyx":89
+      /* "structureboost/pdf_discrete.pyx":147
  *                 included_intervals = list(range(left_pi+1, right_pi))
  *                 left_midpt = (left_xpt + self.binvec[left_pi+1])/2
  *                 left_width = self.binvec[left_pi+1] -left_xpt             # <<<<<<<<<<<<<<
  *                 right_midpt = (right_xpt + self.binvec[right_pi])/2
  *                 right_width = right_xpt - self.binvec[right_pi]
  */
-      __pyx_t_11 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_binvec); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 89, __pyx_L1_error)
+      __pyx_t_11 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_binvec); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 147, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_11);
-      __pyx_t_3 = __Pyx_PyInt_AddObjC(__pyx_v_left_pi, __pyx_int_1, 1, 0, 0); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 89, __pyx_L1_error)
+      __pyx_t_3 = __Pyx_PyInt_AddObjC(__pyx_v_left_pi, __pyx_int_1, 1, 0, 0); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 147, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_3);
-      __pyx_t_2 = __Pyx_PyObject_GetItem(__pyx_t_11, __pyx_t_3); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 89, __pyx_L1_error)
+      __pyx_t_2 = __Pyx_PyObject_GetItem(__pyx_t_11, __pyx_t_3); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 147, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_2);
       __Pyx_DECREF(__pyx_t_11); __pyx_t_11 = 0;
       __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-      __pyx_t_3 = PyNumber_Subtract(__pyx_t_2, __pyx_v_left_xpt); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 89, __pyx_L1_error)
+      __pyx_t_3 = PyNumber_Subtract(__pyx_t_2, __pyx_v_left_xpt); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 147, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_3);
       __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
       __pyx_v_left_width = __pyx_t_3;
       __pyx_t_3 = 0;
 
-      /* "structureboost/pdf_discrete.pyx":90
+      /* "structureboost/pdf_discrete.pyx":148
  *                 left_midpt = (left_xpt + self.binvec[left_pi+1])/2
  *                 left_width = self.binvec[left_pi+1] -left_xpt
  *                 right_midpt = (right_xpt + self.binvec[right_pi])/2             # <<<<<<<<<<<<<<
  *                 right_width = right_xpt - self.binvec[right_pi]
- *                 self.plot_density()
+ *                 #self.plot_density()
  */
-      __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_binvec); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 90, __pyx_L1_error)
+      __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_binvec); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 148, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_3);
-      __pyx_t_2 = __Pyx_PyObject_GetItem(__pyx_t_3, __pyx_v_right_pi); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 90, __pyx_L1_error)
+      __pyx_t_2 = __Pyx_PyObject_GetItem(__pyx_t_3, __pyx_v_right_pi); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 148, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_2);
       __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-      __pyx_t_3 = PyNumber_Add(__pyx_v_right_xpt, __pyx_t_2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 90, __pyx_L1_error)
+      __pyx_t_3 = PyNumber_Add(__pyx_v_right_xpt, __pyx_t_2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 148, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_3);
       __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-      __pyx_t_2 = __Pyx_PyInt_TrueDivideObjC(__pyx_t_3, __pyx_int_2, 2, 0, 0); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 90, __pyx_L1_error)
+      __pyx_t_2 = __Pyx_PyInt_TrueDivideObjC(__pyx_t_3, __pyx_int_2, 2, 0, 0); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 148, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_2);
       __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
       __pyx_v_right_midpt = __pyx_t_2;
       __pyx_t_2 = 0;
 
-      /* "structureboost/pdf_discrete.pyx":91
+      /* "structureboost/pdf_discrete.pyx":149
  *                 left_width = self.binvec[left_pi+1] -left_xpt
  *                 right_midpt = (right_xpt + self.binvec[right_pi])/2
  *                 right_width = right_xpt - self.binvec[right_pi]             # <<<<<<<<<<<<<<
- *                 self.plot_density()
- *                 for index in included_intervals:
+ *                 #self.plot_density()
+ *                 basic_density_plot(self.binvec, self.densityvec, **kwargs)
  */
-      __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_binvec); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 91, __pyx_L1_error)
+      __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_binvec); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 149, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_2);
-      __pyx_t_3 = __Pyx_PyObject_GetItem(__pyx_t_2, __pyx_v_right_pi); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 91, __pyx_L1_error)
+      __pyx_t_3 = __Pyx_PyObject_GetItem(__pyx_t_2, __pyx_v_right_pi); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 149, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_3);
       __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-      __pyx_t_2 = PyNumber_Subtract(__pyx_v_right_xpt, __pyx_t_3); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 91, __pyx_L1_error)
+      __pyx_t_2 = PyNumber_Subtract(__pyx_v_right_xpt, __pyx_t_3); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 149, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_2);
       __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
       __pyx_v_right_width = __pyx_t_2;
       __pyx_t_2 = 0;
 
-      /* "structureboost/pdf_discrete.pyx":92
- *                 right_midpt = (right_xpt + self.binvec[right_pi])/2
+      /* "structureboost/pdf_discrete.pyx":151
  *                 right_width = right_xpt - self.binvec[right_pi]
- *                 self.plot_density()             # <<<<<<<<<<<<<<
+ *                 #self.plot_density()
+ *                 basic_density_plot(self.binvec, self.densityvec, **kwargs)             # <<<<<<<<<<<<<<
  *                 for index in included_intervals:
- *                     plt.bar(x=self.bin_midpts[index], height=self.bin_densities[index],
+ *                     plt.bar(x=self.bin_midpts[index], height=self.densityvec[index],
  */
-      __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_plot_density); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 92, __pyx_L1_error)
-      __Pyx_GOTREF(__pyx_t_3);
-      __pyx_t_11 = NULL;
-      if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_3))) {
-        __pyx_t_11 = PyMethod_GET_SELF(__pyx_t_3);
-        if (likely(__pyx_t_11)) {
-          PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_3);
-          __Pyx_INCREF(__pyx_t_11);
-          __Pyx_INCREF(function);
-          __Pyx_DECREF_SET(__pyx_t_3, function);
-        }
-      }
-      __pyx_t_2 = (__pyx_t_11) ? __Pyx_PyObject_CallOneArg(__pyx_t_3, __pyx_t_11) : __Pyx_PyObject_CallNoArg(__pyx_t_3);
-      __Pyx_XDECREF(__pyx_t_11); __pyx_t_11 = 0;
-      if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 92, __pyx_L1_error)
+      __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_basic_density_plot); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 151, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_2);
-      __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+      __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_binvec); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 151, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_3);
+      __pyx_t_11 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_densityvec); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 151, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_11);
+      __pyx_t_9 = PyTuple_New(2); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 151, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_9);
+      __Pyx_GIVEREF(__pyx_t_3);
+      PyTuple_SET_ITEM(__pyx_t_9, 0, __pyx_t_3);
+      __Pyx_GIVEREF(__pyx_t_11);
+      PyTuple_SET_ITEM(__pyx_t_9, 1, __pyx_t_11);
+      __pyx_t_3 = 0;
+      __pyx_t_11 = 0;
+      __pyx_t_11 = PyDict_Copy(__pyx_v_kwargs); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 151, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_11);
+      __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_9, __pyx_t_11); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 151, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_3);
       __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+      __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
+      __Pyx_DECREF(__pyx_t_11); __pyx_t_11 = 0;
+      __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-      /* "structureboost/pdf_discrete.pyx":93
- *                 right_width = right_xpt - self.binvec[right_pi]
- *                 self.plot_density()
+      /* "structureboost/pdf_discrete.pyx":152
+ *                 #self.plot_density()
+ *                 basic_density_plot(self.binvec, self.densityvec, **kwargs)
  *                 for index in included_intervals:             # <<<<<<<<<<<<<<
- *                     plt.bar(x=self.bin_midpts[index], height=self.bin_densities[index],
+ *                     plt.bar(x=self.bin_midpts[index], height=self.densityvec[index],
  *                         width = self.bin_widths[index], color=pred_color)
  */
-      __pyx_t_2 = __pyx_v_included_intervals; __Pyx_INCREF(__pyx_t_2); __pyx_t_7 = 0;
+      __pyx_t_3 = __pyx_v_included_intervals; __Pyx_INCREF(__pyx_t_3); __pyx_t_7 = 0;
       for (;;) {
-        if (__pyx_t_7 >= PyList_GET_SIZE(__pyx_t_2)) break;
+        if (__pyx_t_7 >= PyList_GET_SIZE(__pyx_t_3)) break;
         #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-        __pyx_t_3 = PyList_GET_ITEM(__pyx_t_2, __pyx_t_7); __Pyx_INCREF(__pyx_t_3); __pyx_t_7++; if (unlikely(0 < 0)) __PYX_ERR(0, 93, __pyx_L1_error)
+        __pyx_t_11 = PyList_GET_ITEM(__pyx_t_3, __pyx_t_7); __Pyx_INCREF(__pyx_t_11); __pyx_t_7++; if (unlikely(0 < 0)) __PYX_ERR(0, 152, __pyx_L1_error)
         #else
-        __pyx_t_3 = PySequence_ITEM(__pyx_t_2, __pyx_t_7); __pyx_t_7++; if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 93, __pyx_L1_error)
-        __Pyx_GOTREF(__pyx_t_3);
-        #endif
-        __Pyx_XDECREF_SET(__pyx_v_index, __pyx_t_3);
-        __pyx_t_3 = 0;
-
-        /* "structureboost/pdf_discrete.pyx":94
- *                 self.plot_density()
- *                 for index in included_intervals:
- *                     plt.bar(x=self.bin_midpts[index], height=self.bin_densities[index],             # <<<<<<<<<<<<<<
- *                         width = self.bin_widths[index], color=pred_color)
- * 
- */
-        __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_n_s_plt); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 94, __pyx_L1_error)
-        __Pyx_GOTREF(__pyx_t_3);
-        __pyx_t_11 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_bar); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 94, __pyx_L1_error)
+        __pyx_t_11 = PySequence_ITEM(__pyx_t_3, __pyx_t_7); __pyx_t_7++; if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 152, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_11);
-        __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-        __pyx_t_3 = __Pyx_PyDict_NewPresized(4); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 94, __pyx_L1_error)
-        __Pyx_GOTREF(__pyx_t_3);
-        __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_bin_midpts); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 94, __pyx_L1_error)
-        __Pyx_GOTREF(__pyx_t_4);
-        __pyx_t_9 = __Pyx_PyObject_GetItem(__pyx_t_4, __pyx_v_index); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 94, __pyx_L1_error)
-        __Pyx_GOTREF(__pyx_t_9);
-        __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-        if (PyDict_SetItem(__pyx_t_3, __pyx_n_s_x, __pyx_t_9) < 0) __PYX_ERR(0, 94, __pyx_L1_error)
-        __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
-        __pyx_t_9 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_bin_densities); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 94, __pyx_L1_error)
-        __Pyx_GOTREF(__pyx_t_9);
-        __pyx_t_4 = __Pyx_PyObject_GetItem(__pyx_t_9, __pyx_v_index); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 94, __pyx_L1_error)
-        __Pyx_GOTREF(__pyx_t_4);
-        __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
-        if (PyDict_SetItem(__pyx_t_3, __pyx_n_s_height, __pyx_t_4) < 0) __PYX_ERR(0, 94, __pyx_L1_error)
-        __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+        #endif
+        __Pyx_XDECREF_SET(__pyx_v_index, __pyx_t_11);
+        __pyx_t_11 = 0;
 
-        /* "structureboost/pdf_discrete.pyx":95
+        /* "structureboost/pdf_discrete.pyx":153
+ *                 basic_density_plot(self.binvec, self.densityvec, **kwargs)
  *                 for index in included_intervals:
- *                     plt.bar(x=self.bin_midpts[index], height=self.bin_densities[index],
- *                         width = self.bin_widths[index], color=pred_color)             # <<<<<<<<<<<<<<
- * 
- *                 plt.bar(x=left_midpt, height=self.bin_densities[left_pi],
- */
-        __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_bin_widths); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 95, __pyx_L1_error)
-        __Pyx_GOTREF(__pyx_t_4);
-        __pyx_t_9 = __Pyx_PyObject_GetItem(__pyx_t_4, __pyx_v_index); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 95, __pyx_L1_error)
-        __Pyx_GOTREF(__pyx_t_9);
-        __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-        if (PyDict_SetItem(__pyx_t_3, __pyx_n_s_width, __pyx_t_9) < 0) __PYX_ERR(0, 94, __pyx_L1_error)
-        __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
-        if (PyDict_SetItem(__pyx_t_3, __pyx_n_s_color, __pyx_v_pred_color) < 0) __PYX_ERR(0, 94, __pyx_L1_error)
-
-        /* "structureboost/pdf_discrete.pyx":94
- *                 self.plot_density()
- *                 for index in included_intervals:
- *                     plt.bar(x=self.bin_midpts[index], height=self.bin_densities[index],             # <<<<<<<<<<<<<<
+ *                     plt.bar(x=self.bin_midpts[index], height=self.densityvec[index],             # <<<<<<<<<<<<<<
  *                         width = self.bin_widths[index], color=pred_color)
  * 
  */
-        __pyx_t_9 = __Pyx_PyObject_Call(__pyx_t_11, __pyx_empty_tuple, __pyx_t_3); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 94, __pyx_L1_error)
+        __Pyx_GetModuleGlobalName(__pyx_t_11, __pyx_n_s_plt); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 153, __pyx_L1_error)
+        __Pyx_GOTREF(__pyx_t_11);
+        __pyx_t_9 = __Pyx_PyObject_GetAttrStr(__pyx_t_11, __pyx_n_s_bar); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 153, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_9);
         __Pyx_DECREF(__pyx_t_11); __pyx_t_11 = 0;
-        __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-        __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
+        __pyx_t_11 = __Pyx_PyDict_NewPresized(4); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 153, __pyx_L1_error)
+        __Pyx_GOTREF(__pyx_t_11);
+        __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_bin_midpts); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 153, __pyx_L1_error)
+        __Pyx_GOTREF(__pyx_t_2);
+        __pyx_t_4 = __Pyx_PyObject_GetItem(__pyx_t_2, __pyx_v_index); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 153, __pyx_L1_error)
+        __Pyx_GOTREF(__pyx_t_4);
+        __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+        if (PyDict_SetItem(__pyx_t_11, __pyx_n_s_x, __pyx_t_4) < 0) __PYX_ERR(0, 153, __pyx_L1_error)
+        __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+        __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_densityvec); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 153, __pyx_L1_error)
+        __Pyx_GOTREF(__pyx_t_4);
+        __pyx_t_2 = __Pyx_PyObject_GetItem(__pyx_t_4, __pyx_v_index); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 153, __pyx_L1_error)
+        __Pyx_GOTREF(__pyx_t_2);
+        __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+        if (PyDict_SetItem(__pyx_t_11, __pyx_n_s_height, __pyx_t_2) < 0) __PYX_ERR(0, 153, __pyx_L1_error)
+        __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-        /* "structureboost/pdf_discrete.pyx":93
- *                 right_width = right_xpt - self.binvec[right_pi]
- *                 self.plot_density()
+        /* "structureboost/pdf_discrete.pyx":154
+ *                 for index in included_intervals:
+ *                     plt.bar(x=self.bin_midpts[index], height=self.densityvec[index],
+ *                         width = self.bin_widths[index], color=pred_color)             # <<<<<<<<<<<<<<
+ * 
+ *                 plt.bar(x=left_midpt, height=self.densityvec[left_pi],
+ */
+        __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_bin_widths); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 154, __pyx_L1_error)
+        __Pyx_GOTREF(__pyx_t_2);
+        __pyx_t_4 = __Pyx_PyObject_GetItem(__pyx_t_2, __pyx_v_index); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 154, __pyx_L1_error)
+        __Pyx_GOTREF(__pyx_t_4);
+        __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+        if (PyDict_SetItem(__pyx_t_11, __pyx_n_s_width, __pyx_t_4) < 0) __PYX_ERR(0, 153, __pyx_L1_error)
+        __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+        if (PyDict_SetItem(__pyx_t_11, __pyx_n_s_color, __pyx_v_pred_color) < 0) __PYX_ERR(0, 153, __pyx_L1_error)
+
+        /* "structureboost/pdf_discrete.pyx":153
+ *                 basic_density_plot(self.binvec, self.densityvec, **kwargs)
+ *                 for index in included_intervals:
+ *                     plt.bar(x=self.bin_midpts[index], height=self.densityvec[index],             # <<<<<<<<<<<<<<
+ *                         width = self.bin_widths[index], color=pred_color)
+ * 
+ */
+        __pyx_t_4 = __Pyx_PyObject_Call(__pyx_t_9, __pyx_empty_tuple, __pyx_t_11); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 153, __pyx_L1_error)
+        __Pyx_GOTREF(__pyx_t_4);
+        __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
+        __Pyx_DECREF(__pyx_t_11); __pyx_t_11 = 0;
+        __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+
+        /* "structureboost/pdf_discrete.pyx":152
+ *                 #self.plot_density()
+ *                 basic_density_plot(self.binvec, self.densityvec, **kwargs)
  *                 for index in included_intervals:             # <<<<<<<<<<<<<<
- *                     plt.bar(x=self.bin_midpts[index], height=self.bin_densities[index],
+ *                     plt.bar(x=self.bin_midpts[index], height=self.densityvec[index],
  *                         width = self.bin_widths[index], color=pred_color)
  */
       }
-      __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+      __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-      /* "structureboost/pdf_discrete.pyx":97
+      /* "structureboost/pdf_discrete.pyx":156
  *                         width = self.bin_widths[index], color=pred_color)
  * 
- *                 plt.bar(x=left_midpt, height=self.bin_densities[left_pi],             # <<<<<<<<<<<<<<
+ *                 plt.bar(x=left_midpt, height=self.densityvec[left_pi],             # <<<<<<<<<<<<<<
  *                         width=left_width, color=pred_color)
- *                 plt.bar(x=right_midpt, height=self.bin_densities[right_pi],
+ *                 plt.bar(x=right_midpt, height=self.densityvec[right_pi],
  */
-      __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_plt); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 97, __pyx_L1_error)
-      __Pyx_GOTREF(__pyx_t_2);
-      __pyx_t_9 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_bar); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 97, __pyx_L1_error)
-      __Pyx_GOTREF(__pyx_t_9);
-      __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-      __pyx_t_2 = __Pyx_PyDict_NewPresized(4); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 97, __pyx_L1_error)
-      __Pyx_GOTREF(__pyx_t_2);
-      if (PyDict_SetItem(__pyx_t_2, __pyx_n_s_x, __pyx_v_left_midpt) < 0) __PYX_ERR(0, 97, __pyx_L1_error)
-      __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_bin_densities); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 97, __pyx_L1_error)
+      __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_n_s_plt); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 156, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_3);
-      __pyx_t_11 = __Pyx_PyObject_GetItem(__pyx_t_3, __pyx_v_left_pi); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 97, __pyx_L1_error)
-      __Pyx_GOTREF(__pyx_t_11);
+      __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_bar); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 156, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_4);
       __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-      if (PyDict_SetItem(__pyx_t_2, __pyx_n_s_height, __pyx_t_11) < 0) __PYX_ERR(0, 97, __pyx_L1_error)
+      __pyx_t_3 = __Pyx_PyDict_NewPresized(4); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 156, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_3);
+      if (PyDict_SetItem(__pyx_t_3, __pyx_n_s_x, __pyx_v_left_midpt) < 0) __PYX_ERR(0, 156, __pyx_L1_error)
+      __pyx_t_11 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_densityvec); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 156, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_11);
+      __pyx_t_9 = __Pyx_PyObject_GetItem(__pyx_t_11, __pyx_v_left_pi); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 156, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_9);
       __Pyx_DECREF(__pyx_t_11); __pyx_t_11 = 0;
+      if (PyDict_SetItem(__pyx_t_3, __pyx_n_s_height, __pyx_t_9) < 0) __PYX_ERR(0, 156, __pyx_L1_error)
+      __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
 
-      /* "structureboost/pdf_discrete.pyx":98
+      /* "structureboost/pdf_discrete.pyx":157
  * 
- *                 plt.bar(x=left_midpt, height=self.bin_densities[left_pi],
+ *                 plt.bar(x=left_midpt, height=self.densityvec[left_pi],
  *                         width=left_width, color=pred_color)             # <<<<<<<<<<<<<<
- *                 plt.bar(x=right_midpt, height=self.bin_densities[right_pi],
+ *                 plt.bar(x=right_midpt, height=self.densityvec[right_pi],
  *                         width=right_width, color=pred_color)
  */
-      if (PyDict_SetItem(__pyx_t_2, __pyx_n_s_width, __pyx_v_left_width) < 0) __PYX_ERR(0, 97, __pyx_L1_error)
-      if (PyDict_SetItem(__pyx_t_2, __pyx_n_s_color, __pyx_v_pred_color) < 0) __PYX_ERR(0, 97, __pyx_L1_error)
+      if (PyDict_SetItem(__pyx_t_3, __pyx_n_s_width, __pyx_v_left_width) < 0) __PYX_ERR(0, 156, __pyx_L1_error)
+      if (PyDict_SetItem(__pyx_t_3, __pyx_n_s_color, __pyx_v_pred_color) < 0) __PYX_ERR(0, 156, __pyx_L1_error)
 
-      /* "structureboost/pdf_discrete.pyx":97
+      /* "structureboost/pdf_discrete.pyx":156
  *                         width = self.bin_widths[index], color=pred_color)
  * 
- *                 plt.bar(x=left_midpt, height=self.bin_densities[left_pi],             # <<<<<<<<<<<<<<
+ *                 plt.bar(x=left_midpt, height=self.densityvec[left_pi],             # <<<<<<<<<<<<<<
  *                         width=left_width, color=pred_color)
- *                 plt.bar(x=right_midpt, height=self.bin_densities[right_pi],
+ *                 plt.bar(x=right_midpt, height=self.densityvec[right_pi],
  */
-      __pyx_t_11 = __Pyx_PyObject_Call(__pyx_t_9, __pyx_empty_tuple, __pyx_t_2); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 97, __pyx_L1_error)
-      __Pyx_GOTREF(__pyx_t_11);
+      __pyx_t_9 = __Pyx_PyObject_Call(__pyx_t_4, __pyx_empty_tuple, __pyx_t_3); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 156, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_9);
+      __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+      __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
       __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
-      __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-      __Pyx_DECREF(__pyx_t_11); __pyx_t_11 = 0;
 
-      /* "structureboost/pdf_discrete.pyx":99
- *                 plt.bar(x=left_midpt, height=self.bin_densities[left_pi],
+      /* "structureboost/pdf_discrete.pyx":158
+ *                 plt.bar(x=left_midpt, height=self.densityvec[left_pi],
  *                         width=left_width, color=pred_color)
- *                 plt.bar(x=right_midpt, height=self.bin_densities[right_pi],             # <<<<<<<<<<<<<<
+ *                 plt.bar(x=right_midpt, height=self.densityvec[right_pi],             # <<<<<<<<<<<<<<
  *                         width=right_width, color=pred_color)
  * 
  */
-      __Pyx_GetModuleGlobalName(__pyx_t_11, __pyx_n_s_plt); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 99, __pyx_L1_error)
-      __Pyx_GOTREF(__pyx_t_11);
-      __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_11, __pyx_n_s_bar); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 99, __pyx_L1_error)
-      __Pyx_GOTREF(__pyx_t_2);
-      __Pyx_DECREF(__pyx_t_11); __pyx_t_11 = 0;
-      __pyx_t_11 = __Pyx_PyDict_NewPresized(4); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 99, __pyx_L1_error)
-      __Pyx_GOTREF(__pyx_t_11);
-      if (PyDict_SetItem(__pyx_t_11, __pyx_n_s_x, __pyx_v_right_midpt) < 0) __PYX_ERR(0, 99, __pyx_L1_error)
-      __pyx_t_9 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_bin_densities); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 99, __pyx_L1_error)
+      __Pyx_GetModuleGlobalName(__pyx_t_9, __pyx_n_s_plt); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 158, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_9);
-      __pyx_t_3 = __Pyx_PyObject_GetItem(__pyx_t_9, __pyx_v_right_pi); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 99, __pyx_L1_error)
+      __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_9, __pyx_n_s_bar); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 158, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_3);
       __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
-      if (PyDict_SetItem(__pyx_t_11, __pyx_n_s_height, __pyx_t_3) < 0) __PYX_ERR(0, 99, __pyx_L1_error)
-      __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+      __pyx_t_9 = __Pyx_PyDict_NewPresized(4); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 158, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_9);
+      if (PyDict_SetItem(__pyx_t_9, __pyx_n_s_x, __pyx_v_right_midpt) < 0) __PYX_ERR(0, 158, __pyx_L1_error)
+      __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_densityvec); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 158, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_4);
+      __pyx_t_11 = __Pyx_PyObject_GetItem(__pyx_t_4, __pyx_v_right_pi); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 158, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_11);
+      __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+      if (PyDict_SetItem(__pyx_t_9, __pyx_n_s_height, __pyx_t_11) < 0) __PYX_ERR(0, 158, __pyx_L1_error)
+      __Pyx_DECREF(__pyx_t_11); __pyx_t_11 = 0;
 
-      /* "structureboost/pdf_discrete.pyx":100
+      /* "structureboost/pdf_discrete.pyx":159
  *                         width=left_width, color=pred_color)
- *                 plt.bar(x=right_midpt, height=self.bin_densities[right_pi],
+ *                 plt.bar(x=right_midpt, height=self.densityvec[right_pi],
  *                         width=right_width, color=pred_color)             # <<<<<<<<<<<<<<
  * 
  * 
  */
-      if (PyDict_SetItem(__pyx_t_11, __pyx_n_s_width, __pyx_v_right_width) < 0) __PYX_ERR(0, 99, __pyx_L1_error)
-      if (PyDict_SetItem(__pyx_t_11, __pyx_n_s_color, __pyx_v_pred_color) < 0) __PYX_ERR(0, 99, __pyx_L1_error)
+      if (PyDict_SetItem(__pyx_t_9, __pyx_n_s_width, __pyx_v_right_width) < 0) __PYX_ERR(0, 158, __pyx_L1_error)
+      if (PyDict_SetItem(__pyx_t_9, __pyx_n_s_color, __pyx_v_pred_color) < 0) __PYX_ERR(0, 158, __pyx_L1_error)
 
-      /* "structureboost/pdf_discrete.pyx":99
- *                 plt.bar(x=left_midpt, height=self.bin_densities[left_pi],
+      /* "structureboost/pdf_discrete.pyx":158
+ *                 plt.bar(x=left_midpt, height=self.densityvec[left_pi],
  *                         width=left_width, color=pred_color)
- *                 plt.bar(x=right_midpt, height=self.bin_densities[right_pi],             # <<<<<<<<<<<<<<
+ *                 plt.bar(x=right_midpt, height=self.densityvec[right_pi],             # <<<<<<<<<<<<<<
  *                         width=right_width, color=pred_color)
  * 
  */
-      __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_empty_tuple, __pyx_t_11); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 99, __pyx_L1_error)
-      __Pyx_GOTREF(__pyx_t_3);
-      __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-      __Pyx_DECREF(__pyx_t_11); __pyx_t_11 = 0;
+      __pyx_t_11 = __Pyx_PyObject_Call(__pyx_t_3, __pyx_empty_tuple, __pyx_t_9); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 158, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_11);
       __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+      __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
+      __Pyx_DECREF(__pyx_t_11); __pyx_t_11 = 0;
 
-      /* "structureboost/pdf_discrete.pyx":84
- *                     plt.bar(x=self.bin_midpts[index], height=self.bin_densities[index],
+      /* "structureboost/pdf_discrete.pyx":138
+ *                     plt.bar(x=self.bin_midpts[index], height=self.densityvec[index],
  *                         width = self.bin_widths[index], color=pred_color)
  *             if pred_type=='interval':             # <<<<<<<<<<<<<<
- *                 left_pi, right_pi = np.digitize([.05, .95], self.cum_prob)-1
- *                 left_xpt, right_xpt = self.quantiles([.05,.95])
+ *                 # TODO: double check this
+ *                 if self.cum_prob is None:
  */
     }
 
-    /* "structureboost/pdf_discrete.pyx":78
+    /* "structureboost/pdf_discrete.pyx":132
  *                     **kwargs):
- *         density_plot(self.binvec, self.probvec, **kwargs)
- *         if pred_alpha is not None:             # <<<<<<<<<<<<<<
+ *         basic_density_plot(self.binvec, self.densityvec, **kwargs)
+ *         if coverage is not None:             # <<<<<<<<<<<<<<
  *             if pred_type=='region':
- *                 included_intervals = self.pred_region_bins(pred_alpha)
+ *                 included_intervals = self.pred_region_bins(coverage)
  */
   }
 
-  /* "structureboost/pdf_discrete.pyx":74
+  /* "structureboost/pdf_discrete.pyx":128
+ *         return(np.diff(self.cdf(new_binpt_vec)))
  * 
- * 
- *     def plot_density(self, pred_alpha=None,             # <<<<<<<<<<<<<<
+ *     def plot_density(self, coverage=None,             # <<<<<<<<<<<<<<
  *                     pred_type='interval', pred_color='orange',
  *                     **kwargs):
  */
@@ -5643,6 +6569,7 @@ static PyObject *__pyx_pf_14structureboost_12pdf_discrete_11PdfDiscrete_16plot_d
   __pyx_L0:;
   __Pyx_XDECREF(__pyx_v_included_intervals);
   __Pyx_XDECREF(__pyx_v_index);
+  __Pyx_XDECREF(__pyx_v_beta);
   __Pyx_XDECREF(__pyx_v_left_pi);
   __Pyx_XDECREF(__pyx_v_right_pi);
   __Pyx_XDECREF(__pyx_v_left_xpt);
@@ -5657,18 +6584,18 @@ static PyObject *__pyx_pf_14structureboost_12pdf_discrete_11PdfDiscrete_16plot_d
   return __pyx_r;
 }
 
-/* "structureboost/pdf_discrete.pyx":103
+/* "structureboost/pdf_discrete.pyx":162
  * 
  * 
  *     def plot_cdf(self, **kwargs):             # <<<<<<<<<<<<<<
- *         plt.plot(self.binvec, self.cum_prob, **kwargs)
- * 
+ *         if self.cum_prob is None:
+ *             self.calculate_cum_prob()
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_14structureboost_12pdf_discrete_11PdfDiscrete_19plot_cdf(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
-static PyMethodDef __pyx_mdef_14structureboost_12pdf_discrete_11PdfDiscrete_19plot_cdf = {"plot_cdf", (PyCFunction)(void*)(PyCFunctionWithKeywords)__pyx_pw_14structureboost_12pdf_discrete_11PdfDiscrete_19plot_cdf, METH_VARARGS|METH_KEYWORDS, 0};
-static PyObject *__pyx_pw_14structureboost_12pdf_discrete_11PdfDiscrete_19plot_cdf(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
+static PyObject *__pyx_pw_14structureboost_12pdf_discrete_11PdfDiscrete_23plot_cdf(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
+static PyMethodDef __pyx_mdef_14structureboost_12pdf_discrete_11PdfDiscrete_23plot_cdf = {"plot_cdf", (PyCFunction)(void*)(PyCFunctionWithKeywords)__pyx_pw_14structureboost_12pdf_discrete_11PdfDiscrete_23plot_cdf, METH_VARARGS|METH_KEYWORDS, 0};
+static PyObject *__pyx_pw_14structureboost_12pdf_discrete_11PdfDiscrete_23plot_cdf(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
   PyObject *__pyx_v_self = 0;
   PyObject *__pyx_v_kwargs = 0;
   int __pyx_lineno = 0;
@@ -5698,7 +6625,7 @@ static PyObject *__pyx_pw_14structureboost_12pdf_discrete_11PdfDiscrete_19plot_c
         else goto __pyx_L5_argtuple_error;
       }
       if (unlikely(kw_args > 0)) {
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, __pyx_v_kwargs, values, pos_args, "plot_cdf") < 0)) __PYX_ERR(0, 103, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, __pyx_v_kwargs, values, pos_args, "plot_cdf") < 0)) __PYX_ERR(0, 162, __pyx_L3_error)
       }
     } else if (PyTuple_GET_SIZE(__pyx_args) != 1) {
       goto __pyx_L5_argtuple_error;
@@ -5709,14 +6636,14 @@ static PyObject *__pyx_pw_14structureboost_12pdf_discrete_11PdfDiscrete_19plot_c
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("plot_cdf", 1, 1, 1, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 103, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("plot_cdf", 1, 1, 1, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 162, __pyx_L3_error)
   __pyx_L3_error:;
   __Pyx_DECREF(__pyx_v_kwargs); __pyx_v_kwargs = 0;
   __Pyx_AddTraceback("structureboost.pdf_discrete.PdfDiscrete.plot_cdf", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  __pyx_r = __pyx_pf_14structureboost_12pdf_discrete_11PdfDiscrete_18plot_cdf(__pyx_self, __pyx_v_self, __pyx_v_kwargs);
+  __pyx_r = __pyx_pf_14structureboost_12pdf_discrete_11PdfDiscrete_22plot_cdf(__pyx_self, __pyx_v_self, __pyx_v_kwargs);
 
   /* function exit code */
   __Pyx_XDECREF(__pyx_v_kwargs);
@@ -5724,60 +6651,111 @@ static PyObject *__pyx_pw_14structureboost_12pdf_discrete_11PdfDiscrete_19plot_c
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_14structureboost_12pdf_discrete_11PdfDiscrete_18plot_cdf(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self, PyObject *__pyx_v_kwargs) {
+static PyObject *__pyx_pf_14structureboost_12pdf_discrete_11PdfDiscrete_22plot_cdf(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self, PyObject *__pyx_v_kwargs) {
   PyObject *__pyx_r = NULL;
   __Pyx_TraceDeclarations
   __Pyx_RefNannyDeclarations
   PyObject *__pyx_t_1 = NULL;
-  PyObject *__pyx_t_2 = NULL;
-  PyObject *__pyx_t_3 = NULL;
+  int __pyx_t_2;
+  int __pyx_t_3;
   PyObject *__pyx_t_4 = NULL;
+  PyObject *__pyx_t_5 = NULL;
+  PyObject *__pyx_t_6 = NULL;
   int __pyx_lineno = 0;
   const char *__pyx_filename = NULL;
   int __pyx_clineno = 0;
-  __Pyx_TraceFrameInit(__pyx_codeobj__12)
+  __Pyx_TraceFrameInit(__pyx_codeobj__14)
   __Pyx_RefNannySetupContext("plot_cdf", 0);
-  __Pyx_TraceCall("plot_cdf", __pyx_f[0], 103, 0, __PYX_ERR(0, 103, __pyx_L1_error));
+  __Pyx_TraceCall("plot_cdf", __pyx_f[0], 162, 0, __PYX_ERR(0, 162, __pyx_L1_error));
 
-  /* "structureboost/pdf_discrete.pyx":104
+  /* "structureboost/pdf_discrete.pyx":163
  * 
  *     def plot_cdf(self, **kwargs):
+ *         if self.cum_prob is None:             # <<<<<<<<<<<<<<
+ *             self.calculate_cum_prob()
+ *         plt.plot(self.binvec, self.cum_prob, **kwargs)
+ */
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_cum_prob); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 163, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __pyx_t_2 = (__pyx_t_1 == Py_None);
+  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+  __pyx_t_3 = (__pyx_t_2 != 0);
+  if (__pyx_t_3) {
+
+    /* "structureboost/pdf_discrete.pyx":164
+ *     def plot_cdf(self, **kwargs):
+ *         if self.cum_prob is None:
+ *             self.calculate_cum_prob()             # <<<<<<<<<<<<<<
+ *         plt.plot(self.binvec, self.cum_prob, **kwargs)
+ * 
+ */
+    __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_calculate_cum_prob); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 164, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_4);
+    __pyx_t_5 = NULL;
+    if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_4))) {
+      __pyx_t_5 = PyMethod_GET_SELF(__pyx_t_4);
+      if (likely(__pyx_t_5)) {
+        PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_4);
+        __Pyx_INCREF(__pyx_t_5);
+        __Pyx_INCREF(function);
+        __Pyx_DECREF_SET(__pyx_t_4, function);
+      }
+    }
+    __pyx_t_1 = (__pyx_t_5) ? __Pyx_PyObject_CallOneArg(__pyx_t_4, __pyx_t_5) : __Pyx_PyObject_CallNoArg(__pyx_t_4);
+    __Pyx_XDECREF(__pyx_t_5); __pyx_t_5 = 0;
+    if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 164, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_1);
+    __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+    __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+
+    /* "structureboost/pdf_discrete.pyx":163
+ * 
+ *     def plot_cdf(self, **kwargs):
+ *         if self.cum_prob is None:             # <<<<<<<<<<<<<<
+ *             self.calculate_cum_prob()
+ *         plt.plot(self.binvec, self.cum_prob, **kwargs)
+ */
+  }
+
+  /* "structureboost/pdf_discrete.pyx":165
+ *         if self.cum_prob is None:
+ *             self.calculate_cum_prob()
  *         plt.plot(self.binvec, self.cum_prob, **kwargs)             # <<<<<<<<<<<<<<
  * 
  *     def pred_region(self, alpha):
  */
-  __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_plt); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 104, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_plt); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 165, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_plot); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 104, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_2);
-  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_binvec); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 104, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_cum_prob); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 104, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_4 = PyTuple_New(2); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 104, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_plot); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 165, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
-  __Pyx_GIVEREF(__pyx_t_1);
-  PyTuple_SET_ITEM(__pyx_t_4, 0, __pyx_t_1);
-  __Pyx_GIVEREF(__pyx_t_3);
-  PyTuple_SET_ITEM(__pyx_t_4, 1, __pyx_t_3);
-  __pyx_t_1 = 0;
-  __pyx_t_3 = 0;
-  __pyx_t_3 = PyDict_Copy(__pyx_v_kwargs); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 104, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_4, __pyx_t_3); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 104, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_binvec); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 165, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+  __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_cum_prob); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 165, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_5);
+  __pyx_t_6 = PyTuple_New(2); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 165, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_6);
+  __Pyx_GIVEREF(__pyx_t_1);
+  PyTuple_SET_ITEM(__pyx_t_6, 0, __pyx_t_1);
+  __Pyx_GIVEREF(__pyx_t_5);
+  PyTuple_SET_ITEM(__pyx_t_6, 1, __pyx_t_5);
+  __pyx_t_1 = 0;
+  __pyx_t_5 = 0;
+  __pyx_t_5 = PyDict_Copy(__pyx_v_kwargs); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 165, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_5);
+  __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_4, __pyx_t_6, __pyx_t_5); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 165, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-  __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+  __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
+  __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "structureboost/pdf_discrete.pyx":103
+  /* "structureboost/pdf_discrete.pyx":162
  * 
  * 
  *     def plot_cdf(self, **kwargs):             # <<<<<<<<<<<<<<
- *         plt.plot(self.binvec, self.cum_prob, **kwargs)
- * 
+ *         if self.cum_prob is None:
+ *             self.calculate_cum_prob()
  */
 
   /* function exit code */
@@ -5785,9 +6763,9 @@ static PyObject *__pyx_pf_14structureboost_12pdf_discrete_11PdfDiscrete_18plot_c
   goto __pyx_L0;
   __pyx_L1_error:;
   __Pyx_XDECREF(__pyx_t_1);
-  __Pyx_XDECREF(__pyx_t_2);
-  __Pyx_XDECREF(__pyx_t_3);
   __Pyx_XDECREF(__pyx_t_4);
+  __Pyx_XDECREF(__pyx_t_5);
+  __Pyx_XDECREF(__pyx_t_6);
   __Pyx_AddTraceback("structureboost.pdf_discrete.PdfDiscrete.plot_cdf", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
@@ -5797,18 +6775,18 @@ static PyObject *__pyx_pf_14structureboost_12pdf_discrete_11PdfDiscrete_18plot_c
   return __pyx_r;
 }
 
-/* "structureboost/pdf_discrete.pyx":106
+/* "structureboost/pdf_discrete.pyx":167
  *         plt.plot(self.binvec, self.cum_prob, **kwargs)
  * 
  *     def pred_region(self, alpha):             # <<<<<<<<<<<<<<
- *         order = np.argsort(-self.bin_densities)
+ *         order = np.argsort(-self.densityvec)
  *         cum_prob = np.cumsum(self.probvec[order])
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_14structureboost_12pdf_discrete_11PdfDiscrete_21pred_region(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
-static PyMethodDef __pyx_mdef_14structureboost_12pdf_discrete_11PdfDiscrete_21pred_region = {"pred_region", (PyCFunction)(void*)(PyCFunctionWithKeywords)__pyx_pw_14structureboost_12pdf_discrete_11PdfDiscrete_21pred_region, METH_VARARGS|METH_KEYWORDS, 0};
-static PyObject *__pyx_pw_14structureboost_12pdf_discrete_11PdfDiscrete_21pred_region(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
+static PyObject *__pyx_pw_14structureboost_12pdf_discrete_11PdfDiscrete_25pred_region(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
+static PyMethodDef __pyx_mdef_14structureboost_12pdf_discrete_11PdfDiscrete_25pred_region = {"pred_region", (PyCFunction)(void*)(PyCFunctionWithKeywords)__pyx_pw_14structureboost_12pdf_discrete_11PdfDiscrete_25pred_region, METH_VARARGS|METH_KEYWORDS, 0};
+static PyObject *__pyx_pw_14structureboost_12pdf_discrete_11PdfDiscrete_25pred_region(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
   PyObject *__pyx_v_self = 0;
   PyObject *__pyx_v_alpha = 0;
   int __pyx_lineno = 0;
@@ -5840,11 +6818,11 @@ static PyObject *__pyx_pw_14structureboost_12pdf_discrete_11PdfDiscrete_21pred_r
         case  1:
         if (likely((values[1] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_alpha)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("pred_region", 1, 2, 2, 1); __PYX_ERR(0, 106, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("pred_region", 1, 2, 2, 1); __PYX_ERR(0, 167, __pyx_L3_error)
         }
       }
       if (unlikely(kw_args > 0)) {
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "pred_region") < 0)) __PYX_ERR(0, 106, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "pred_region") < 0)) __PYX_ERR(0, 167, __pyx_L3_error)
       }
     } else if (PyTuple_GET_SIZE(__pyx_args) != 2) {
       goto __pyx_L5_argtuple_error;
@@ -5857,20 +6835,20 @@ static PyObject *__pyx_pw_14structureboost_12pdf_discrete_11PdfDiscrete_21pred_r
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("pred_region", 1, 2, 2, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 106, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("pred_region", 1, 2, 2, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 167, __pyx_L3_error)
   __pyx_L3_error:;
   __Pyx_AddTraceback("structureboost.pdf_discrete.PdfDiscrete.pred_region", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  __pyx_r = __pyx_pf_14structureboost_12pdf_discrete_11PdfDiscrete_20pred_region(__pyx_self, __pyx_v_self, __pyx_v_alpha);
+  __pyx_r = __pyx_pf_14structureboost_12pdf_discrete_11PdfDiscrete_24pred_region(__pyx_self, __pyx_v_self, __pyx_v_alpha);
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_14structureboost_12pdf_discrete_11PdfDiscrete_20pred_region(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self, PyObject *__pyx_v_alpha) {
+static PyObject *__pyx_pf_14structureboost_12pdf_discrete_11PdfDiscrete_24pred_region(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self, PyObject *__pyx_v_alpha) {
   PyObject *__pyx_v_order = NULL;
   PyObject *__pyx_v_cum_prob = NULL;
   PyObject *__pyx_v_index = NULL;
@@ -5897,25 +6875,25 @@ static PyObject *__pyx_pf_14structureboost_12pdf_discrete_11PdfDiscrete_20pred_r
   int __pyx_lineno = 0;
   const char *__pyx_filename = NULL;
   int __pyx_clineno = 0;
-  __Pyx_TraceFrameInit(__pyx_codeobj__13)
+  __Pyx_TraceFrameInit(__pyx_codeobj__15)
   __Pyx_RefNannySetupContext("pred_region", 0);
-  __Pyx_TraceCall("pred_region", __pyx_f[0], 106, 0, __PYX_ERR(0, 106, __pyx_L1_error));
+  __Pyx_TraceCall("pred_region", __pyx_f[0], 167, 0, __PYX_ERR(0, 167, __pyx_L1_error));
 
-  /* "structureboost/pdf_discrete.pyx":107
+  /* "structureboost/pdf_discrete.pyx":168
  * 
  *     def pred_region(self, alpha):
- *         order = np.argsort(-self.bin_densities)             # <<<<<<<<<<<<<<
+ *         order = np.argsort(-self.densityvec)             # <<<<<<<<<<<<<<
  *         cum_prob = np.cumsum(self.probvec[order])
  *         index = np.min(np.where(cum_prob>=alpha))
  */
-  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_np); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 107, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_np); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 168, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_argsort); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 107, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_argsort); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 168, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_bin_densities); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 107, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_densityvec); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 168, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_4 = PyNumber_Negative(__pyx_t_2); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 107, __pyx_L1_error)
+  __pyx_t_4 = PyNumber_Negative(__pyx_t_2); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 168, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __pyx_t_2 = NULL;
@@ -5931,27 +6909,27 @@ static PyObject *__pyx_pf_14structureboost_12pdf_discrete_11PdfDiscrete_20pred_r
   __pyx_t_1 = (__pyx_t_2) ? __Pyx_PyObject_Call2Args(__pyx_t_3, __pyx_t_2, __pyx_t_4) : __Pyx_PyObject_CallOneArg(__pyx_t_3, __pyx_t_4);
   __Pyx_XDECREF(__pyx_t_2); __pyx_t_2 = 0;
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-  if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 107, __pyx_L1_error)
+  if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 168, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   __pyx_v_order = __pyx_t_1;
   __pyx_t_1 = 0;
 
-  /* "structureboost/pdf_discrete.pyx":108
+  /* "structureboost/pdf_discrete.pyx":169
  *     def pred_region(self, alpha):
- *         order = np.argsort(-self.bin_densities)
+ *         order = np.argsort(-self.densityvec)
  *         cum_prob = np.cumsum(self.probvec[order])             # <<<<<<<<<<<<<<
  *         index = np.min(np.where(cum_prob>=alpha))
  *         inc_int = np.sort(order[:index+1])
  */
-  __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_n_s_np); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 108, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_n_s_np); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 169, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_cumsum); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 108, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_cumsum); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 169, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_probvec); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 108, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_probvec); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 169, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_2 = __Pyx_PyObject_GetItem(__pyx_t_3, __pyx_v_order); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 108, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_GetItem(__pyx_t_3, __pyx_v_order); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 169, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   __pyx_t_3 = NULL;
@@ -5967,30 +6945,30 @@ static PyObject *__pyx_pf_14structureboost_12pdf_discrete_11PdfDiscrete_20pred_r
   __pyx_t_1 = (__pyx_t_3) ? __Pyx_PyObject_Call2Args(__pyx_t_4, __pyx_t_3, __pyx_t_2) : __Pyx_PyObject_CallOneArg(__pyx_t_4, __pyx_t_2);
   __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 108, __pyx_L1_error)
+  if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 169, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
   __pyx_v_cum_prob = __pyx_t_1;
   __pyx_t_1 = 0;
 
-  /* "structureboost/pdf_discrete.pyx":109
- *         order = np.argsort(-self.bin_densities)
+  /* "structureboost/pdf_discrete.pyx":170
+ *         order = np.argsort(-self.densityvec)
  *         cum_prob = np.cumsum(self.probvec[order])
  *         index = np.min(np.where(cum_prob>=alpha))             # <<<<<<<<<<<<<<
  *         inc_int = np.sort(order[:index+1])
  * 
  */
-  __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_n_s_np); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 109, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_n_s_np); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 170, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_min); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 109, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_min); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 170, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-  __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_n_s_np); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 109, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_n_s_np); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 170, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_where); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 109, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_where); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 170, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  __pyx_t_3 = PyObject_RichCompare(__pyx_v_cum_prob, __pyx_v_alpha, Py_GE); __Pyx_XGOTREF(__pyx_t_3); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 109, __pyx_L1_error)
+  __pyx_t_3 = PyObject_RichCompare(__pyx_v_cum_prob, __pyx_v_alpha, Py_GE); __Pyx_XGOTREF(__pyx_t_3); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 170, __pyx_L1_error)
   __pyx_t_6 = NULL;
   if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_5))) {
     __pyx_t_6 = PyMethod_GET_SELF(__pyx_t_5);
@@ -6004,7 +6982,7 @@ static PyObject *__pyx_pf_14structureboost_12pdf_discrete_11PdfDiscrete_20pred_r
   __pyx_t_4 = (__pyx_t_6) ? __Pyx_PyObject_Call2Args(__pyx_t_5, __pyx_t_6, __pyx_t_3) : __Pyx_PyObject_CallOneArg(__pyx_t_5, __pyx_t_3);
   __Pyx_XDECREF(__pyx_t_6); __pyx_t_6 = 0;
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 109, __pyx_L1_error)
+  if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 170, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
   __pyx_t_5 = NULL;
@@ -6020,27 +6998,27 @@ static PyObject *__pyx_pf_14structureboost_12pdf_discrete_11PdfDiscrete_20pred_r
   __pyx_t_1 = (__pyx_t_5) ? __Pyx_PyObject_Call2Args(__pyx_t_2, __pyx_t_5, __pyx_t_4) : __Pyx_PyObject_CallOneArg(__pyx_t_2, __pyx_t_4);
   __Pyx_XDECREF(__pyx_t_5); __pyx_t_5 = 0;
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-  if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 109, __pyx_L1_error)
+  if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 170, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __pyx_v_index = __pyx_t_1;
   __pyx_t_1 = 0;
 
-  /* "structureboost/pdf_discrete.pyx":110
+  /* "structureboost/pdf_discrete.pyx":171
  *         cum_prob = np.cumsum(self.probvec[order])
  *         index = np.min(np.where(cum_prob>=alpha))
  *         inc_int = np.sort(order[:index+1])             # <<<<<<<<<<<<<<
  * 
  *         num_ints = len(inc_int)
  */
-  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_np); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 110, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_np); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 171, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_sort); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 110, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_sort); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 171, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __pyx_t_2 = __Pyx_PyInt_AddObjC(__pyx_v_index, __pyx_int_1, 1, 0, 0); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 110, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyInt_AddObjC(__pyx_v_index, __pyx_int_1, 1, 0, 0); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 171, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_5 = __Pyx_PyObject_GetSlice(__pyx_v_order, 0, 0, NULL, &__pyx_t_2, NULL, 0, 0, 1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 110, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_PyObject_GetSlice(__pyx_v_order, 0, 0, NULL, &__pyx_t_2, NULL, 0, 0, 1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 171, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __pyx_t_2 = NULL;
@@ -6056,26 +7034,26 @@ static PyObject *__pyx_pf_14structureboost_12pdf_discrete_11PdfDiscrete_20pred_r
   __pyx_t_1 = (__pyx_t_2) ? __Pyx_PyObject_Call2Args(__pyx_t_4, __pyx_t_2, __pyx_t_5) : __Pyx_PyObject_CallOneArg(__pyx_t_4, __pyx_t_5);
   __Pyx_XDECREF(__pyx_t_2); __pyx_t_2 = 0;
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-  if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 110, __pyx_L1_error)
+  if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 171, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
   __pyx_v_inc_int = __pyx_t_1;
   __pyx_t_1 = 0;
 
-  /* "structureboost/pdf_discrete.pyx":112
+  /* "structureboost/pdf_discrete.pyx":173
  *         inc_int = np.sort(order[:index+1])
  * 
  *         num_ints = len(inc_int)             # <<<<<<<<<<<<<<
  *         jkl = 0
  *         int_list = []
  */
-  __pyx_t_7 = PyObject_Length(__pyx_v_inc_int); if (unlikely(__pyx_t_7 == ((Py_ssize_t)-1))) __PYX_ERR(0, 112, __pyx_L1_error)
-  __pyx_t_1 = PyInt_FromSsize_t(__pyx_t_7); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 112, __pyx_L1_error)
+  __pyx_t_7 = PyObject_Length(__pyx_v_inc_int); if (unlikely(__pyx_t_7 == ((Py_ssize_t)-1))) __PYX_ERR(0, 173, __pyx_L1_error)
+  __pyx_t_1 = PyInt_FromSsize_t(__pyx_t_7); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 173, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_v_num_ints = __pyx_t_1;
   __pyx_t_1 = 0;
 
-  /* "structureboost/pdf_discrete.pyx":113
+  /* "structureboost/pdf_discrete.pyx":174
  * 
  *         num_ints = len(inc_int)
  *         jkl = 0             # <<<<<<<<<<<<<<
@@ -6085,19 +7063,19 @@ static PyObject *__pyx_pf_14structureboost_12pdf_discrete_11PdfDiscrete_20pred_r
   __Pyx_INCREF(__pyx_int_0);
   __pyx_v_jkl = __pyx_int_0;
 
-  /* "structureboost/pdf_discrete.pyx":114
+  /* "structureboost/pdf_discrete.pyx":175
  *         num_ints = len(inc_int)
  *         jkl = 0
  *         int_list = []             # <<<<<<<<<<<<<<
  *         while (jkl<(num_ints-1)):
  *             interval_index = inc_int[jkl]
  */
-  __pyx_t_1 = PyList_New(0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 114, __pyx_L1_error)
+  __pyx_t_1 = PyList_New(0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 175, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_v_int_list = ((PyObject*)__pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "structureboost/pdf_discrete.pyx":115
+  /* "structureboost/pdf_discrete.pyx":176
  *         jkl = 0
  *         int_list = []
  *         while (jkl<(num_ints-1)):             # <<<<<<<<<<<<<<
@@ -6105,42 +7083,42 @@ static PyObject *__pyx_pf_14structureboost_12pdf_discrete_11PdfDiscrete_20pred_r
  *             left_pt = self.binvec[interval_index]
  */
   while (1) {
-    __pyx_t_1 = __Pyx_PyInt_SubtractObjC(__pyx_v_num_ints, __pyx_int_1, 1, 0, 0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 115, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyInt_SubtractObjC(__pyx_v_num_ints, __pyx_int_1, 1, 0, 0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 176, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
-    __pyx_t_4 = PyObject_RichCompare(__pyx_v_jkl, __pyx_t_1, Py_LT); __Pyx_XGOTREF(__pyx_t_4); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 115, __pyx_L1_error)
+    __pyx_t_4 = PyObject_RichCompare(__pyx_v_jkl, __pyx_t_1, Py_LT); __Pyx_XGOTREF(__pyx_t_4); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 176, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-    __pyx_t_8 = __Pyx_PyObject_IsTrue(__pyx_t_4); if (unlikely(__pyx_t_8 < 0)) __PYX_ERR(0, 115, __pyx_L1_error)
+    __pyx_t_8 = __Pyx_PyObject_IsTrue(__pyx_t_4); if (unlikely(__pyx_t_8 < 0)) __PYX_ERR(0, 176, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
     if (!__pyx_t_8) break;
 
-    /* "structureboost/pdf_discrete.pyx":116
+    /* "structureboost/pdf_discrete.pyx":177
  *         int_list = []
  *         while (jkl<(num_ints-1)):
  *             interval_index = inc_int[jkl]             # <<<<<<<<<<<<<<
  *             left_pt = self.binvec[interval_index]
  * 
  */
-    __pyx_t_4 = __Pyx_PyObject_GetItem(__pyx_v_inc_int, __pyx_v_jkl); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 116, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_PyObject_GetItem(__pyx_v_inc_int, __pyx_v_jkl); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 177, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
     __Pyx_XDECREF_SET(__pyx_v_interval_index, __pyx_t_4);
     __pyx_t_4 = 0;
 
-    /* "structureboost/pdf_discrete.pyx":117
+    /* "structureboost/pdf_discrete.pyx":178
  *         while (jkl<(num_ints-1)):
  *             interval_index = inc_int[jkl]
  *             left_pt = self.binvec[interval_index]             # <<<<<<<<<<<<<<
  * 
  *             # advance until the intervals are non-consecutive
  */
-    __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_binvec); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 117, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_binvec); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 178, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
-    __pyx_t_1 = __Pyx_PyObject_GetItem(__pyx_t_4, __pyx_v_interval_index); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 117, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyObject_GetItem(__pyx_t_4, __pyx_v_interval_index); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 178, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
     __Pyx_XDECREF_SET(__pyx_v_left_pt, __pyx_t_1);
     __pyx_t_1 = 0;
 
-    /* "structureboost/pdf_discrete.pyx":120
+    /* "structureboost/pdf_discrete.pyx":181
  * 
  *             # advance until the intervals are non-consecutive
  *             while (jkl<(num_ints-1)) and (inc_int[jkl+1] == (inc_int[jkl]+1)):             # <<<<<<<<<<<<<<
@@ -6148,78 +7126,78 @@ static PyObject *__pyx_pf_14structureboost_12pdf_discrete_11PdfDiscrete_20pred_r
  *             right_pt = self.binvec[inc_int[jkl]+1]
  */
     while (1) {
-      __pyx_t_1 = __Pyx_PyInt_SubtractObjC(__pyx_v_num_ints, __pyx_int_1, 1, 0, 0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 120, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyInt_SubtractObjC(__pyx_v_num_ints, __pyx_int_1, 1, 0, 0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 181, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
-      __pyx_t_4 = PyObject_RichCompare(__pyx_v_jkl, __pyx_t_1, Py_LT); __Pyx_XGOTREF(__pyx_t_4); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 120, __pyx_L1_error)
+      __pyx_t_4 = PyObject_RichCompare(__pyx_v_jkl, __pyx_t_1, Py_LT); __Pyx_XGOTREF(__pyx_t_4); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 181, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-      __pyx_t_9 = __Pyx_PyObject_IsTrue(__pyx_t_4); if (unlikely(__pyx_t_9 < 0)) __PYX_ERR(0, 120, __pyx_L1_error)
+      __pyx_t_9 = __Pyx_PyObject_IsTrue(__pyx_t_4); if (unlikely(__pyx_t_9 < 0)) __PYX_ERR(0, 181, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
       if (__pyx_t_9) {
       } else {
         __pyx_t_8 = __pyx_t_9;
         goto __pyx_L7_bool_binop_done;
       }
-      __pyx_t_4 = __Pyx_PyInt_AddObjC(__pyx_v_jkl, __pyx_int_1, 1, 0, 0); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 120, __pyx_L1_error)
+      __pyx_t_4 = __Pyx_PyInt_AddObjC(__pyx_v_jkl, __pyx_int_1, 1, 0, 0); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 181, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_4);
-      __pyx_t_1 = __Pyx_PyObject_GetItem(__pyx_v_inc_int, __pyx_t_4); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 120, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyObject_GetItem(__pyx_v_inc_int, __pyx_t_4); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 181, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
       __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-      __pyx_t_4 = __Pyx_PyObject_GetItem(__pyx_v_inc_int, __pyx_v_jkl); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 120, __pyx_L1_error)
+      __pyx_t_4 = __Pyx_PyObject_GetItem(__pyx_v_inc_int, __pyx_v_jkl); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 181, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_4);
-      __pyx_t_5 = __Pyx_PyInt_AddObjC(__pyx_t_4, __pyx_int_1, 1, 0, 0); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 120, __pyx_L1_error)
+      __pyx_t_5 = __Pyx_PyInt_AddObjC(__pyx_t_4, __pyx_int_1, 1, 0, 0); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 181, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_5);
       __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-      __pyx_t_4 = PyObject_RichCompare(__pyx_t_1, __pyx_t_5, Py_EQ); __Pyx_XGOTREF(__pyx_t_4); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 120, __pyx_L1_error)
+      __pyx_t_4 = PyObject_RichCompare(__pyx_t_1, __pyx_t_5, Py_EQ); __Pyx_XGOTREF(__pyx_t_4); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 181, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
       __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-      __pyx_t_9 = __Pyx_PyObject_IsTrue(__pyx_t_4); if (unlikely(__pyx_t_9 < 0)) __PYX_ERR(0, 120, __pyx_L1_error)
+      __pyx_t_9 = __Pyx_PyObject_IsTrue(__pyx_t_4); if (unlikely(__pyx_t_9 < 0)) __PYX_ERR(0, 181, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
       __pyx_t_8 = __pyx_t_9;
       __pyx_L7_bool_binop_done:;
       if (!__pyx_t_8) break;
 
-      /* "structureboost/pdf_discrete.pyx":121
+      /* "structureboost/pdf_discrete.pyx":182
  *             # advance until the intervals are non-consecutive
  *             while (jkl<(num_ints-1)) and (inc_int[jkl+1] == (inc_int[jkl]+1)):
  *                 jkl+=1             # <<<<<<<<<<<<<<
  *             right_pt = self.binvec[inc_int[jkl]+1]
  *             int_list.append((left_pt, right_pt))
  */
-      __pyx_t_4 = __Pyx_PyInt_AddObjC(__pyx_v_jkl, __pyx_int_1, 1, 1, 0); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 121, __pyx_L1_error)
+      __pyx_t_4 = __Pyx_PyInt_AddObjC(__pyx_v_jkl, __pyx_int_1, 1, 1, 0); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 182, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_4);
       __Pyx_DECREF_SET(__pyx_v_jkl, __pyx_t_4);
       __pyx_t_4 = 0;
     }
 
-    /* "structureboost/pdf_discrete.pyx":122
+    /* "structureboost/pdf_discrete.pyx":183
  *             while (jkl<(num_ints-1)) and (inc_int[jkl+1] == (inc_int[jkl]+1)):
  *                 jkl+=1
  *             right_pt = self.binvec[inc_int[jkl]+1]             # <<<<<<<<<<<<<<
  *             int_list.append((left_pt, right_pt))
  *             jkl+=1
  */
-    __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_binvec); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 122, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_binvec); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 183, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
-    __pyx_t_5 = __Pyx_PyObject_GetItem(__pyx_v_inc_int, __pyx_v_jkl); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 122, __pyx_L1_error)
+    __pyx_t_5 = __Pyx_PyObject_GetItem(__pyx_v_inc_int, __pyx_v_jkl); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 183, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_5);
-    __pyx_t_1 = __Pyx_PyInt_AddObjC(__pyx_t_5, __pyx_int_1, 1, 0, 0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 122, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyInt_AddObjC(__pyx_t_5, __pyx_int_1, 1, 0, 0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 183, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-    __pyx_t_5 = __Pyx_PyObject_GetItem(__pyx_t_4, __pyx_t_1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 122, __pyx_L1_error)
+    __pyx_t_5 = __Pyx_PyObject_GetItem(__pyx_t_4, __pyx_t_1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 183, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_5);
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
     __Pyx_XDECREF_SET(__pyx_v_right_pt, __pyx_t_5);
     __pyx_t_5 = 0;
 
-    /* "structureboost/pdf_discrete.pyx":123
+    /* "structureboost/pdf_discrete.pyx":184
  *                 jkl+=1
  *             right_pt = self.binvec[inc_int[jkl]+1]
  *             int_list.append((left_pt, right_pt))             # <<<<<<<<<<<<<<
  *             jkl+=1
  *         return(int_list)
  */
-    __pyx_t_5 = PyTuple_New(2); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 123, __pyx_L1_error)
+    __pyx_t_5 = PyTuple_New(2); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 184, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_5);
     __Pyx_INCREF(__pyx_v_left_pt);
     __Pyx_GIVEREF(__pyx_v_left_pt);
@@ -6227,39 +7205,39 @@ static PyObject *__pyx_pf_14structureboost_12pdf_discrete_11PdfDiscrete_20pred_r
     __Pyx_INCREF(__pyx_v_right_pt);
     __Pyx_GIVEREF(__pyx_v_right_pt);
     PyTuple_SET_ITEM(__pyx_t_5, 1, __pyx_v_right_pt);
-    __pyx_t_10 = __Pyx_PyList_Append(__pyx_v_int_list, __pyx_t_5); if (unlikely(__pyx_t_10 == ((int)-1))) __PYX_ERR(0, 123, __pyx_L1_error)
+    __pyx_t_10 = __Pyx_PyList_Append(__pyx_v_int_list, __pyx_t_5); if (unlikely(__pyx_t_10 == ((int)-1))) __PYX_ERR(0, 184, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
 
-    /* "structureboost/pdf_discrete.pyx":124
+    /* "structureboost/pdf_discrete.pyx":185
  *             right_pt = self.binvec[inc_int[jkl]+1]
  *             int_list.append((left_pt, right_pt))
  *             jkl+=1             # <<<<<<<<<<<<<<
  *         return(int_list)
  * 
  */
-    __pyx_t_5 = __Pyx_PyInt_AddObjC(__pyx_v_jkl, __pyx_int_1, 1, 1, 0); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 124, __pyx_L1_error)
+    __pyx_t_5 = __Pyx_PyInt_AddObjC(__pyx_v_jkl, __pyx_int_1, 1, 1, 0); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 185, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_5);
     __Pyx_DECREF_SET(__pyx_v_jkl, __pyx_t_5);
     __pyx_t_5 = 0;
   }
 
-  /* "structureboost/pdf_discrete.pyx":125
+  /* "structureboost/pdf_discrete.pyx":186
  *             int_list.append((left_pt, right_pt))
  *             jkl+=1
  *         return(int_list)             # <<<<<<<<<<<<<<
  * 
- *     def pred_region_bins(self, alpha):
+ *     def pred_region_bins(self, coverage):
  */
   __Pyx_XDECREF(__pyx_r);
   __Pyx_INCREF(__pyx_v_int_list);
   __pyx_r = __pyx_v_int_list;
   goto __pyx_L0;
 
-  /* "structureboost/pdf_discrete.pyx":106
+  /* "structureboost/pdf_discrete.pyx":167
  *         plt.plot(self.binvec, self.cum_prob, **kwargs)
  * 
  *     def pred_region(self, alpha):             # <<<<<<<<<<<<<<
- *         order = np.argsort(-self.bin_densities)
+ *         order = np.argsort(-self.densityvec)
  *         cum_prob = np.cumsum(self.probvec[order])
  */
 
@@ -6290,20 +7268,20 @@ static PyObject *__pyx_pf_14structureboost_12pdf_discrete_11PdfDiscrete_20pred_r
   return __pyx_r;
 }
 
-/* "structureboost/pdf_discrete.pyx":127
+/* "structureboost/pdf_discrete.pyx":188
  *         return(int_list)
  * 
- *     def pred_region_bins(self, alpha):             # <<<<<<<<<<<<<<
- *         order = np.argsort(-self.bin_densities)
+ *     def pred_region_bins(self, coverage):             # <<<<<<<<<<<<<<
+ *         order = np.argsort(-self.densityvec)
  *         cum_prob = np.cumsum(self.probvec[order])
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_14structureboost_12pdf_discrete_11PdfDiscrete_23pred_region_bins(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
-static PyMethodDef __pyx_mdef_14structureboost_12pdf_discrete_11PdfDiscrete_23pred_region_bins = {"pred_region_bins", (PyCFunction)(void*)(PyCFunctionWithKeywords)__pyx_pw_14structureboost_12pdf_discrete_11PdfDiscrete_23pred_region_bins, METH_VARARGS|METH_KEYWORDS, 0};
-static PyObject *__pyx_pw_14structureboost_12pdf_discrete_11PdfDiscrete_23pred_region_bins(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
+static PyObject *__pyx_pw_14structureboost_12pdf_discrete_11PdfDiscrete_27pred_region_bins(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
+static PyMethodDef __pyx_mdef_14structureboost_12pdf_discrete_11PdfDiscrete_27pred_region_bins = {"pred_region_bins", (PyCFunction)(void*)(PyCFunctionWithKeywords)__pyx_pw_14structureboost_12pdf_discrete_11PdfDiscrete_27pred_region_bins, METH_VARARGS|METH_KEYWORDS, 0};
+static PyObject *__pyx_pw_14structureboost_12pdf_discrete_11PdfDiscrete_27pred_region_bins(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
   PyObject *__pyx_v_self = 0;
-  PyObject *__pyx_v_alpha = 0;
+  PyObject *__pyx_v_coverage = 0;
   int __pyx_lineno = 0;
   const char *__pyx_filename = NULL;
   int __pyx_clineno = 0;
@@ -6311,7 +7289,7 @@ static PyObject *__pyx_pw_14structureboost_12pdf_discrete_11PdfDiscrete_23pred_r
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("pred_region_bins (wrapper)", 0);
   {
-    static PyObject **__pyx_pyargnames[] = {&__pyx_n_s_self,&__pyx_n_s_alpha,0};
+    static PyObject **__pyx_pyargnames[] = {&__pyx_n_s_self,&__pyx_n_s_coverage,0};
     PyObject* values[2] = {0,0};
     if (unlikely(__pyx_kwds)) {
       Py_ssize_t kw_args;
@@ -6331,13 +7309,13 @@ static PyObject *__pyx_pw_14structureboost_12pdf_discrete_11PdfDiscrete_23pred_r
         else goto __pyx_L5_argtuple_error;
         CYTHON_FALLTHROUGH;
         case  1:
-        if (likely((values[1] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_alpha)) != 0)) kw_args--;
+        if (likely((values[1] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_coverage)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("pred_region_bins", 1, 2, 2, 1); __PYX_ERR(0, 127, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("pred_region_bins", 1, 2, 2, 1); __PYX_ERR(0, 188, __pyx_L3_error)
         }
       }
       if (unlikely(kw_args > 0)) {
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "pred_region_bins") < 0)) __PYX_ERR(0, 127, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "pred_region_bins") < 0)) __PYX_ERR(0, 188, __pyx_L3_error)
       }
     } else if (PyTuple_GET_SIZE(__pyx_args) != 2) {
       goto __pyx_L5_argtuple_error;
@@ -6346,24 +7324,24 @@ static PyObject *__pyx_pw_14structureboost_12pdf_discrete_11PdfDiscrete_23pred_r
       values[1] = PyTuple_GET_ITEM(__pyx_args, 1);
     }
     __pyx_v_self = values[0];
-    __pyx_v_alpha = values[1];
+    __pyx_v_coverage = values[1];
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("pred_region_bins", 1, 2, 2, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 127, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("pred_region_bins", 1, 2, 2, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 188, __pyx_L3_error)
   __pyx_L3_error:;
   __Pyx_AddTraceback("structureboost.pdf_discrete.PdfDiscrete.pred_region_bins", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  __pyx_r = __pyx_pf_14structureboost_12pdf_discrete_11PdfDiscrete_22pred_region_bins(__pyx_self, __pyx_v_self, __pyx_v_alpha);
+  __pyx_r = __pyx_pf_14structureboost_12pdf_discrete_11PdfDiscrete_26pred_region_bins(__pyx_self, __pyx_v_self, __pyx_v_coverage);
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_14structureboost_12pdf_discrete_11PdfDiscrete_22pred_region_bins(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self, PyObject *__pyx_v_alpha) {
+static PyObject *__pyx_pf_14structureboost_12pdf_discrete_11PdfDiscrete_26pred_region_bins(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self, PyObject *__pyx_v_coverage) {
   PyObject *__pyx_v_order = NULL;
   PyObject *__pyx_v_cum_prob = NULL;
   PyObject *__pyx_v_index = NULL;
@@ -6380,25 +7358,25 @@ static PyObject *__pyx_pf_14structureboost_12pdf_discrete_11PdfDiscrete_22pred_r
   int __pyx_lineno = 0;
   const char *__pyx_filename = NULL;
   int __pyx_clineno = 0;
-  __Pyx_TraceFrameInit(__pyx_codeobj__14)
+  __Pyx_TraceFrameInit(__pyx_codeobj__16)
   __Pyx_RefNannySetupContext("pred_region_bins", 0);
-  __Pyx_TraceCall("pred_region_bins", __pyx_f[0], 127, 0, __PYX_ERR(0, 127, __pyx_L1_error));
+  __Pyx_TraceCall("pred_region_bins", __pyx_f[0], 188, 0, __PYX_ERR(0, 188, __pyx_L1_error));
 
-  /* "structureboost/pdf_discrete.pyx":128
+  /* "structureboost/pdf_discrete.pyx":189
  * 
- *     def pred_region_bins(self, alpha):
- *         order = np.argsort(-self.bin_densities)             # <<<<<<<<<<<<<<
+ *     def pred_region_bins(self, coverage):
+ *         order = np.argsort(-self.densityvec)             # <<<<<<<<<<<<<<
  *         cum_prob = np.cumsum(self.probvec[order])
- *         index = np.min(np.where(cum_prob>=alpha))
+ *         index = np.min(np.where(cum_prob>=(coverage)))
  */
-  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_np); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 128, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_np); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 189, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_argsort); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 128, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_argsort); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 189, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_bin_densities); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 128, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_densityvec); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 189, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_4 = PyNumber_Negative(__pyx_t_2); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 128, __pyx_L1_error)
+  __pyx_t_4 = PyNumber_Negative(__pyx_t_2); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 189, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __pyx_t_2 = NULL;
@@ -6414,27 +7392,27 @@ static PyObject *__pyx_pf_14structureboost_12pdf_discrete_11PdfDiscrete_22pred_r
   __pyx_t_1 = (__pyx_t_2) ? __Pyx_PyObject_Call2Args(__pyx_t_3, __pyx_t_2, __pyx_t_4) : __Pyx_PyObject_CallOneArg(__pyx_t_3, __pyx_t_4);
   __Pyx_XDECREF(__pyx_t_2); __pyx_t_2 = 0;
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-  if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 128, __pyx_L1_error)
+  if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 189, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   __pyx_v_order = __pyx_t_1;
   __pyx_t_1 = 0;
 
-  /* "structureboost/pdf_discrete.pyx":129
- *     def pred_region_bins(self, alpha):
- *         order = np.argsort(-self.bin_densities)
+  /* "structureboost/pdf_discrete.pyx":190
+ *     def pred_region_bins(self, coverage):
+ *         order = np.argsort(-self.densityvec)
  *         cum_prob = np.cumsum(self.probvec[order])             # <<<<<<<<<<<<<<
- *         index = np.min(np.where(cum_prob>=alpha))
+ *         index = np.min(np.where(cum_prob>=(coverage)))
  *         inc_int = np.sort(order[:index+1])
  */
-  __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_n_s_np); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 129, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_n_s_np); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 190, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_cumsum); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 129, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_cumsum); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 190, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_probvec); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 129, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_probvec); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 190, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_2 = __Pyx_PyObject_GetItem(__pyx_t_3, __pyx_v_order); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 129, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_GetItem(__pyx_t_3, __pyx_v_order); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 190, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   __pyx_t_3 = NULL;
@@ -6450,30 +7428,30 @@ static PyObject *__pyx_pf_14structureboost_12pdf_discrete_11PdfDiscrete_22pred_r
   __pyx_t_1 = (__pyx_t_3) ? __Pyx_PyObject_Call2Args(__pyx_t_4, __pyx_t_3, __pyx_t_2) : __Pyx_PyObject_CallOneArg(__pyx_t_4, __pyx_t_2);
   __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 129, __pyx_L1_error)
+  if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 190, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
   __pyx_v_cum_prob = __pyx_t_1;
   __pyx_t_1 = 0;
 
-  /* "structureboost/pdf_discrete.pyx":130
- *         order = np.argsort(-self.bin_densities)
+  /* "structureboost/pdf_discrete.pyx":191
+ *         order = np.argsort(-self.densityvec)
  *         cum_prob = np.cumsum(self.probvec[order])
- *         index = np.min(np.where(cum_prob>=alpha))             # <<<<<<<<<<<<<<
+ *         index = np.min(np.where(cum_prob>=(coverage)))             # <<<<<<<<<<<<<<
  *         inc_int = np.sort(order[:index+1])
  *         return(inc_int)
  */
-  __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_n_s_np); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 130, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_n_s_np); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 191, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_min); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 130, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_min); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 191, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-  __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_n_s_np); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 130, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_n_s_np); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 191, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_where); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 130, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_where); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 191, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  __pyx_t_3 = PyObject_RichCompare(__pyx_v_cum_prob, __pyx_v_alpha, Py_GE); __Pyx_XGOTREF(__pyx_t_3); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 130, __pyx_L1_error)
+  __pyx_t_3 = PyObject_RichCompare(__pyx_v_cum_prob, __pyx_v_coverage, Py_GE); __Pyx_XGOTREF(__pyx_t_3); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 191, __pyx_L1_error)
   __pyx_t_6 = NULL;
   if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_5))) {
     __pyx_t_6 = PyMethod_GET_SELF(__pyx_t_5);
@@ -6487,7 +7465,7 @@ static PyObject *__pyx_pf_14structureboost_12pdf_discrete_11PdfDiscrete_22pred_r
   __pyx_t_4 = (__pyx_t_6) ? __Pyx_PyObject_Call2Args(__pyx_t_5, __pyx_t_6, __pyx_t_3) : __Pyx_PyObject_CallOneArg(__pyx_t_5, __pyx_t_3);
   __Pyx_XDECREF(__pyx_t_6); __pyx_t_6 = 0;
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 130, __pyx_L1_error)
+  if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 191, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
   __pyx_t_5 = NULL;
@@ -6503,27 +7481,27 @@ static PyObject *__pyx_pf_14structureboost_12pdf_discrete_11PdfDiscrete_22pred_r
   __pyx_t_1 = (__pyx_t_5) ? __Pyx_PyObject_Call2Args(__pyx_t_2, __pyx_t_5, __pyx_t_4) : __Pyx_PyObject_CallOneArg(__pyx_t_2, __pyx_t_4);
   __Pyx_XDECREF(__pyx_t_5); __pyx_t_5 = 0;
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-  if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 130, __pyx_L1_error)
+  if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 191, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __pyx_v_index = __pyx_t_1;
   __pyx_t_1 = 0;
 
-  /* "structureboost/pdf_discrete.pyx":131
+  /* "structureboost/pdf_discrete.pyx":192
  *         cum_prob = np.cumsum(self.probvec[order])
- *         index = np.min(np.where(cum_prob>=alpha))
+ *         index = np.min(np.where(cum_prob>=(coverage)))
  *         inc_int = np.sort(order[:index+1])             # <<<<<<<<<<<<<<
  *         return(inc_int)
  * 
  */
-  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_np); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 131, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_np); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 192, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_sort); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 131, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_sort); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 192, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __pyx_t_2 = __Pyx_PyInt_AddObjC(__pyx_v_index, __pyx_int_1, 1, 0, 0); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 131, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyInt_AddObjC(__pyx_v_index, __pyx_int_1, 1, 0, 0); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 192, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_5 = __Pyx_PyObject_GetSlice(__pyx_v_order, 0, 0, NULL, &__pyx_t_2, NULL, 0, 0, 1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 131, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_PyObject_GetSlice(__pyx_v_order, 0, 0, NULL, &__pyx_t_2, NULL, 0, 0, 1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 192, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __pyx_t_2 = NULL;
@@ -6539,29 +7517,29 @@ static PyObject *__pyx_pf_14structureboost_12pdf_discrete_11PdfDiscrete_22pred_r
   __pyx_t_1 = (__pyx_t_2) ? __Pyx_PyObject_Call2Args(__pyx_t_4, __pyx_t_2, __pyx_t_5) : __Pyx_PyObject_CallOneArg(__pyx_t_4, __pyx_t_5);
   __Pyx_XDECREF(__pyx_t_2); __pyx_t_2 = 0;
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-  if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 131, __pyx_L1_error)
+  if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 192, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
   __pyx_v_inc_int = __pyx_t_1;
   __pyx_t_1 = 0;
 
-  /* "structureboost/pdf_discrete.pyx":132
- *         index = np.min(np.where(cum_prob>=alpha))
+  /* "structureboost/pdf_discrete.pyx":193
+ *         index = np.min(np.where(cum_prob>=(coverage)))
  *         inc_int = np.sort(order[:index+1])
  *         return(inc_int)             # <<<<<<<<<<<<<<
  * 
- *     def pred_interval(self, alpha):
+ *     def pred_region_cdf(self, val):
  */
   __Pyx_XDECREF(__pyx_r);
   __Pyx_INCREF(__pyx_v_inc_int);
   __pyx_r = __pyx_v_inc_int;
   goto __pyx_L0;
 
-  /* "structureboost/pdf_discrete.pyx":127
+  /* "structureboost/pdf_discrete.pyx":188
  *         return(int_list)
  * 
- *     def pred_region_bins(self, alpha):             # <<<<<<<<<<<<<<
- *         order = np.argsort(-self.bin_densities)
+ *     def pred_region_bins(self, coverage):             # <<<<<<<<<<<<<<
+ *         order = np.argsort(-self.densityvec)
  *         cum_prob = np.cumsum(self.probvec[order])
  */
 
@@ -6586,28 +7564,28 @@ static PyObject *__pyx_pf_14structureboost_12pdf_discrete_11PdfDiscrete_22pred_r
   return __pyx_r;
 }
 
-/* "structureboost/pdf_discrete.pyx":134
+/* "structureboost/pdf_discrete.pyx":195
  *         return(inc_int)
  * 
- *     def pred_interval(self, alpha):             # <<<<<<<<<<<<<<
- *         return((self.quantile(alpha/2), self.quantile(1-(alpha/2))))
- * 
+ *     def pred_region_cdf(self, val):             # <<<<<<<<<<<<<<
+ *         bin_num = np.digitize(val, self.binvec) - 1
+ *         order = np.argsort(-self.densityvec)
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_14structureboost_12pdf_discrete_11PdfDiscrete_25pred_interval(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
-static PyMethodDef __pyx_mdef_14structureboost_12pdf_discrete_11PdfDiscrete_25pred_interval = {"pred_interval", (PyCFunction)(void*)(PyCFunctionWithKeywords)__pyx_pw_14structureboost_12pdf_discrete_11PdfDiscrete_25pred_interval, METH_VARARGS|METH_KEYWORDS, 0};
-static PyObject *__pyx_pw_14structureboost_12pdf_discrete_11PdfDiscrete_25pred_interval(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
+static PyObject *__pyx_pw_14structureboost_12pdf_discrete_11PdfDiscrete_29pred_region_cdf(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
+static PyMethodDef __pyx_mdef_14structureboost_12pdf_discrete_11PdfDiscrete_29pred_region_cdf = {"pred_region_cdf", (PyCFunction)(void*)(PyCFunctionWithKeywords)__pyx_pw_14structureboost_12pdf_discrete_11PdfDiscrete_29pred_region_cdf, METH_VARARGS|METH_KEYWORDS, 0};
+static PyObject *__pyx_pw_14structureboost_12pdf_discrete_11PdfDiscrete_29pred_region_cdf(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
   PyObject *__pyx_v_self = 0;
-  PyObject *__pyx_v_alpha = 0;
+  PyObject *__pyx_v_val = 0;
   int __pyx_lineno = 0;
   const char *__pyx_filename = NULL;
   int __pyx_clineno = 0;
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
-  __Pyx_RefNannySetupContext("pred_interval (wrapper)", 0);
+  __Pyx_RefNannySetupContext("pred_region_cdf (wrapper)", 0);
   {
-    static PyObject **__pyx_pyargnames[] = {&__pyx_n_s_self,&__pyx_n_s_alpha,0};
+    static PyObject **__pyx_pyargnames[] = {&__pyx_n_s_self,&__pyx_n_s_val,0};
     PyObject* values[2] = {0,0};
     if (unlikely(__pyx_kwds)) {
       Py_ssize_t kw_args;
@@ -6627,13 +7605,13 @@ static PyObject *__pyx_pw_14structureboost_12pdf_discrete_11PdfDiscrete_25pred_i
         else goto __pyx_L5_argtuple_error;
         CYTHON_FALLTHROUGH;
         case  1:
-        if (likely((values[1] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_alpha)) != 0)) kw_args--;
+        if (likely((values[1] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_val)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("pred_interval", 1, 2, 2, 1); __PYX_ERR(0, 134, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("pred_region_cdf", 1, 2, 2, 1); __PYX_ERR(0, 195, __pyx_L3_error)
         }
       }
       if (unlikely(kw_args > 0)) {
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "pred_interval") < 0)) __PYX_ERR(0, 134, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "pred_region_cdf") < 0)) __PYX_ERR(0, 195, __pyx_L3_error)
       }
     } else if (PyTuple_GET_SIZE(__pyx_args) != 2) {
       goto __pyx_L5_argtuple_error;
@@ -6642,24 +7620,399 @@ static PyObject *__pyx_pw_14structureboost_12pdf_discrete_11PdfDiscrete_25pred_i
       values[1] = PyTuple_GET_ITEM(__pyx_args, 1);
     }
     __pyx_v_self = values[0];
-    __pyx_v_alpha = values[1];
+    __pyx_v_val = values[1];
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("pred_interval", 1, 2, 2, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 134, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("pred_region_cdf", 1, 2, 2, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 195, __pyx_L3_error)
   __pyx_L3_error:;
-  __Pyx_AddTraceback("structureboost.pdf_discrete.PdfDiscrete.pred_interval", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("structureboost.pdf_discrete.PdfDiscrete.pred_region_cdf", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  __pyx_r = __pyx_pf_14structureboost_12pdf_discrete_11PdfDiscrete_24pred_interval(__pyx_self, __pyx_v_self, __pyx_v_alpha);
+  __pyx_r = __pyx_pf_14structureboost_12pdf_discrete_11PdfDiscrete_28pred_region_cdf(__pyx_self, __pyx_v_self, __pyx_v_val);
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_14structureboost_12pdf_discrete_11PdfDiscrete_24pred_interval(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self, PyObject *__pyx_v_alpha) {
+static PyObject *__pyx_pf_14structureboost_12pdf_discrete_11PdfDiscrete_28pred_region_cdf(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self, PyObject *__pyx_v_val) {
+  PyObject *__pyx_v_bin_num = NULL;
+  PyObject *__pyx_v_order = NULL;
+  PyObject *__pyx_v_loc = NULL;
+  PyObject *__pyx_v_cum_prob = NULL;
+  PyObject *__pyx_v_cdf_val = NULL;
+  PyObject *__pyx_r = NULL;
+  __Pyx_TraceDeclarations
+  __Pyx_RefNannyDeclarations
+  PyObject *__pyx_t_1 = NULL;
+  PyObject *__pyx_t_2 = NULL;
+  PyObject *__pyx_t_3 = NULL;
+  PyObject *__pyx_t_4 = NULL;
+  int __pyx_t_5;
+  PyObject *__pyx_t_6 = NULL;
+  PyObject *__pyx_t_7 = NULL;
+  PyObject *__pyx_t_8 = NULL;
+  int __pyx_lineno = 0;
+  const char *__pyx_filename = NULL;
+  int __pyx_clineno = 0;
+  __Pyx_TraceFrameInit(__pyx_codeobj__17)
+  __Pyx_RefNannySetupContext("pred_region_cdf", 0);
+  __Pyx_TraceCall("pred_region_cdf", __pyx_f[0], 195, 0, __PYX_ERR(0, 195, __pyx_L1_error));
+
+  /* "structureboost/pdf_discrete.pyx":196
+ * 
+ *     def pred_region_cdf(self, val):
+ *         bin_num = np.digitize(val, self.binvec) - 1             # <<<<<<<<<<<<<<
+ *         order = np.argsort(-self.densityvec)
+ *         loc = np.where(order==bin_num)[0][0]
+ */
+  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_np); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 196, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_2);
+  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_digitize); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 196, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_3);
+  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_binvec); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 196, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_2);
+  __pyx_t_4 = NULL;
+  __pyx_t_5 = 0;
+  if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_3))) {
+    __pyx_t_4 = PyMethod_GET_SELF(__pyx_t_3);
+    if (likely(__pyx_t_4)) {
+      PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_3);
+      __Pyx_INCREF(__pyx_t_4);
+      __Pyx_INCREF(function);
+      __Pyx_DECREF_SET(__pyx_t_3, function);
+      __pyx_t_5 = 1;
+    }
+  }
+  #if CYTHON_FAST_PYCALL
+  if (PyFunction_Check(__pyx_t_3)) {
+    PyObject *__pyx_temp[3] = {__pyx_t_4, __pyx_v_val, __pyx_t_2};
+    __pyx_t_1 = __Pyx_PyFunction_FastCall(__pyx_t_3, __pyx_temp+1-__pyx_t_5, 2+__pyx_t_5); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 196, __pyx_L1_error)
+    __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
+    __Pyx_GOTREF(__pyx_t_1);
+    __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+  } else
+  #endif
+  #if CYTHON_FAST_PYCCALL
+  if (__Pyx_PyFastCFunction_Check(__pyx_t_3)) {
+    PyObject *__pyx_temp[3] = {__pyx_t_4, __pyx_v_val, __pyx_t_2};
+    __pyx_t_1 = __Pyx_PyCFunction_FastCall(__pyx_t_3, __pyx_temp+1-__pyx_t_5, 2+__pyx_t_5); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 196, __pyx_L1_error)
+    __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
+    __Pyx_GOTREF(__pyx_t_1);
+    __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+  } else
+  #endif
+  {
+    __pyx_t_6 = PyTuple_New(2+__pyx_t_5); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 196, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_6);
+    if (__pyx_t_4) {
+      __Pyx_GIVEREF(__pyx_t_4); PyTuple_SET_ITEM(__pyx_t_6, 0, __pyx_t_4); __pyx_t_4 = NULL;
+    }
+    __Pyx_INCREF(__pyx_v_val);
+    __Pyx_GIVEREF(__pyx_v_val);
+    PyTuple_SET_ITEM(__pyx_t_6, 0+__pyx_t_5, __pyx_v_val);
+    __Pyx_GIVEREF(__pyx_t_2);
+    PyTuple_SET_ITEM(__pyx_t_6, 1+__pyx_t_5, __pyx_t_2);
+    __pyx_t_2 = 0;
+    __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_3, __pyx_t_6, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 196, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_1);
+    __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
+  }
+  __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+  __pyx_t_3 = __Pyx_PyInt_SubtractObjC(__pyx_t_1, __pyx_int_1, 1, 0, 0); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 196, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_3);
+  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+  __pyx_v_bin_num = __pyx_t_3;
+  __pyx_t_3 = 0;
+
+  /* "structureboost/pdf_discrete.pyx":197
+ *     def pred_region_cdf(self, val):
+ *         bin_num = np.digitize(val, self.binvec) - 1
+ *         order = np.argsort(-self.densityvec)             # <<<<<<<<<<<<<<
+ *         loc = np.where(order==bin_num)[0][0]
+ *         cum_prob = np.cumsum(np.concatenate(([0],self.probvec[order])))
+ */
+  __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_np); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 197, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_argsort); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 197, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_6);
+  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_densityvec); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 197, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __pyx_t_2 = PyNumber_Negative(__pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 197, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_2);
+  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+  __pyx_t_1 = NULL;
+  if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_6))) {
+    __pyx_t_1 = PyMethod_GET_SELF(__pyx_t_6);
+    if (likely(__pyx_t_1)) {
+      PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_6);
+      __Pyx_INCREF(__pyx_t_1);
+      __Pyx_INCREF(function);
+      __Pyx_DECREF_SET(__pyx_t_6, function);
+    }
+  }
+  __pyx_t_3 = (__pyx_t_1) ? __Pyx_PyObject_Call2Args(__pyx_t_6, __pyx_t_1, __pyx_t_2) : __Pyx_PyObject_CallOneArg(__pyx_t_6, __pyx_t_2);
+  __Pyx_XDECREF(__pyx_t_1); __pyx_t_1 = 0;
+  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+  if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 197, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_3);
+  __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
+  __pyx_v_order = __pyx_t_3;
+  __pyx_t_3 = 0;
+
+  /* "structureboost/pdf_discrete.pyx":198
+ *         bin_num = np.digitize(val, self.binvec) - 1
+ *         order = np.argsort(-self.densityvec)
+ *         loc = np.where(order==bin_num)[0][0]             # <<<<<<<<<<<<<<
+ *         cum_prob = np.cumsum(np.concatenate(([0],self.probvec[order])))
+ *         cdf_val = (cum_prob[loc+1] + cum_prob[loc])/2
+ */
+  __Pyx_GetModuleGlobalName(__pyx_t_6, __pyx_n_s_np); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 198, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_6);
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_6, __pyx_n_s_where); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 198, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_2);
+  __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
+  __pyx_t_6 = PyObject_RichCompare(__pyx_v_order, __pyx_v_bin_num, Py_EQ); __Pyx_XGOTREF(__pyx_t_6); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 198, __pyx_L1_error)
+  __pyx_t_1 = NULL;
+  if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_2))) {
+    __pyx_t_1 = PyMethod_GET_SELF(__pyx_t_2);
+    if (likely(__pyx_t_1)) {
+      PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_2);
+      __Pyx_INCREF(__pyx_t_1);
+      __Pyx_INCREF(function);
+      __Pyx_DECREF_SET(__pyx_t_2, function);
+    }
+  }
+  __pyx_t_3 = (__pyx_t_1) ? __Pyx_PyObject_Call2Args(__pyx_t_2, __pyx_t_1, __pyx_t_6) : __Pyx_PyObject_CallOneArg(__pyx_t_2, __pyx_t_6);
+  __Pyx_XDECREF(__pyx_t_1); __pyx_t_1 = 0;
+  __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
+  if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 198, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_3);
+  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+  __pyx_t_2 = __Pyx_GetItemInt(__pyx_t_3, 0, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 198, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_2);
+  __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+  __pyx_t_3 = __Pyx_GetItemInt(__pyx_t_2, 0, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 198, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_3);
+  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+  __pyx_v_loc = __pyx_t_3;
+  __pyx_t_3 = 0;
+
+  /* "structureboost/pdf_discrete.pyx":199
+ *         order = np.argsort(-self.densityvec)
+ *         loc = np.where(order==bin_num)[0][0]
+ *         cum_prob = np.cumsum(np.concatenate(([0],self.probvec[order])))             # <<<<<<<<<<<<<<
+ *         cdf_val = (cum_prob[loc+1] + cum_prob[loc])/2
+ *         return(cdf_val)
+ */
+  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_np); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 199, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_2);
+  __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_cumsum); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 199, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_6);
+  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+  __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_np); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 199, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_concatenate); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 199, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_4);
+  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+  __pyx_t_1 = PyList_New(1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 199, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __Pyx_INCREF(__pyx_int_0);
+  __Pyx_GIVEREF(__pyx_int_0);
+  PyList_SET_ITEM(__pyx_t_1, 0, __pyx_int_0);
+  __pyx_t_7 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_probvec); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 199, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_7);
+  __pyx_t_8 = __Pyx_PyObject_GetItem(__pyx_t_7, __pyx_v_order); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 199, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_8);
+  __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
+  __pyx_t_7 = PyTuple_New(2); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 199, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_7);
+  __Pyx_GIVEREF(__pyx_t_1);
+  PyTuple_SET_ITEM(__pyx_t_7, 0, __pyx_t_1);
+  __Pyx_GIVEREF(__pyx_t_8);
+  PyTuple_SET_ITEM(__pyx_t_7, 1, __pyx_t_8);
+  __pyx_t_1 = 0;
+  __pyx_t_8 = 0;
+  __pyx_t_8 = NULL;
+  if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_4))) {
+    __pyx_t_8 = PyMethod_GET_SELF(__pyx_t_4);
+    if (likely(__pyx_t_8)) {
+      PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_4);
+      __Pyx_INCREF(__pyx_t_8);
+      __Pyx_INCREF(function);
+      __Pyx_DECREF_SET(__pyx_t_4, function);
+    }
+  }
+  __pyx_t_2 = (__pyx_t_8) ? __Pyx_PyObject_Call2Args(__pyx_t_4, __pyx_t_8, __pyx_t_7) : __Pyx_PyObject_CallOneArg(__pyx_t_4, __pyx_t_7);
+  __Pyx_XDECREF(__pyx_t_8); __pyx_t_8 = 0;
+  __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
+  if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 199, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_2);
+  __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+  __pyx_t_4 = NULL;
+  if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_6))) {
+    __pyx_t_4 = PyMethod_GET_SELF(__pyx_t_6);
+    if (likely(__pyx_t_4)) {
+      PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_6);
+      __Pyx_INCREF(__pyx_t_4);
+      __Pyx_INCREF(function);
+      __Pyx_DECREF_SET(__pyx_t_6, function);
+    }
+  }
+  __pyx_t_3 = (__pyx_t_4) ? __Pyx_PyObject_Call2Args(__pyx_t_6, __pyx_t_4, __pyx_t_2) : __Pyx_PyObject_CallOneArg(__pyx_t_6, __pyx_t_2);
+  __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
+  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+  if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 199, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_3);
+  __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
+  __pyx_v_cum_prob = __pyx_t_3;
+  __pyx_t_3 = 0;
+
+  /* "structureboost/pdf_discrete.pyx":200
+ *         loc = np.where(order==bin_num)[0][0]
+ *         cum_prob = np.cumsum(np.concatenate(([0],self.probvec[order])))
+ *         cdf_val = (cum_prob[loc+1] + cum_prob[loc])/2             # <<<<<<<<<<<<<<
+ *         return(cdf_val)
+ * 
+ */
+  __pyx_t_3 = __Pyx_PyInt_AddObjC(__pyx_v_loc, __pyx_int_1, 1, 0, 0); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 200, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_3);
+  __pyx_t_6 = __Pyx_PyObject_GetItem(__pyx_v_cum_prob, __pyx_t_3); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 200, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_6);
+  __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+  __pyx_t_3 = __Pyx_PyObject_GetItem(__pyx_v_cum_prob, __pyx_v_loc); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 200, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_3);
+  __pyx_t_2 = PyNumber_Add(__pyx_t_6, __pyx_t_3); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 200, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_2);
+  __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
+  __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+  __pyx_t_3 = __Pyx_PyInt_TrueDivideObjC(__pyx_t_2, __pyx_int_2, 2, 0, 0); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 200, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_3);
+  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+  __pyx_v_cdf_val = __pyx_t_3;
+  __pyx_t_3 = 0;
+
+  /* "structureboost/pdf_discrete.pyx":201
+ *         cum_prob = np.cumsum(np.concatenate(([0],self.probvec[order])))
+ *         cdf_val = (cum_prob[loc+1] + cum_prob[loc])/2
+ *         return(cdf_val)             # <<<<<<<<<<<<<<
+ * 
+ * 
+ */
+  __Pyx_XDECREF(__pyx_r);
+  __Pyx_INCREF(__pyx_v_cdf_val);
+  __pyx_r = __pyx_v_cdf_val;
+  goto __pyx_L0;
+
+  /* "structureboost/pdf_discrete.pyx":195
+ *         return(inc_int)
+ * 
+ *     def pred_region_cdf(self, val):             # <<<<<<<<<<<<<<
+ *         bin_num = np.digitize(val, self.binvec) - 1
+ *         order = np.argsort(-self.densityvec)
+ */
+
+  /* function exit code */
+  __pyx_L1_error:;
+  __Pyx_XDECREF(__pyx_t_1);
+  __Pyx_XDECREF(__pyx_t_2);
+  __Pyx_XDECREF(__pyx_t_3);
+  __Pyx_XDECREF(__pyx_t_4);
+  __Pyx_XDECREF(__pyx_t_6);
+  __Pyx_XDECREF(__pyx_t_7);
+  __Pyx_XDECREF(__pyx_t_8);
+  __Pyx_AddTraceback("structureboost.pdf_discrete.PdfDiscrete.pred_region_cdf", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __pyx_r = NULL;
+  __pyx_L0:;
+  __Pyx_XDECREF(__pyx_v_bin_num);
+  __Pyx_XDECREF(__pyx_v_order);
+  __Pyx_XDECREF(__pyx_v_loc);
+  __Pyx_XDECREF(__pyx_v_cum_prob);
+  __Pyx_XDECREF(__pyx_v_cdf_val);
+  __Pyx_XGIVEREF(__pyx_r);
+  __Pyx_TraceReturn(__pyx_r, 0);
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+/* "structureboost/pdf_discrete.pyx":204
+ * 
+ * 
+ *     def pred_interval(self, coverage):             # <<<<<<<<<<<<<<
+ *         return((self.quantile((1-coverage)/2), self.quantile(1-((1-coverage)/2))))
+ * 
+ */
+
+/* Python wrapper */
+static PyObject *__pyx_pw_14structureboost_12pdf_discrete_11PdfDiscrete_31pred_interval(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
+static PyMethodDef __pyx_mdef_14structureboost_12pdf_discrete_11PdfDiscrete_31pred_interval = {"pred_interval", (PyCFunction)(void*)(PyCFunctionWithKeywords)__pyx_pw_14structureboost_12pdf_discrete_11PdfDiscrete_31pred_interval, METH_VARARGS|METH_KEYWORDS, 0};
+static PyObject *__pyx_pw_14structureboost_12pdf_discrete_11PdfDiscrete_31pred_interval(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
+  PyObject *__pyx_v_self = 0;
+  PyObject *__pyx_v_coverage = 0;
+  int __pyx_lineno = 0;
+  const char *__pyx_filename = NULL;
+  int __pyx_clineno = 0;
+  PyObject *__pyx_r = 0;
+  __Pyx_RefNannyDeclarations
+  __Pyx_RefNannySetupContext("pred_interval (wrapper)", 0);
+  {
+    static PyObject **__pyx_pyargnames[] = {&__pyx_n_s_self,&__pyx_n_s_coverage,0};
+    PyObject* values[2] = {0,0};
+    if (unlikely(__pyx_kwds)) {
+      Py_ssize_t kw_args;
+      const Py_ssize_t pos_args = PyTuple_GET_SIZE(__pyx_args);
+      switch (pos_args) {
+        case  2: values[1] = PyTuple_GET_ITEM(__pyx_args, 1);
+        CYTHON_FALLTHROUGH;
+        case  1: values[0] = PyTuple_GET_ITEM(__pyx_args, 0);
+        CYTHON_FALLTHROUGH;
+        case  0: break;
+        default: goto __pyx_L5_argtuple_error;
+      }
+      kw_args = PyDict_Size(__pyx_kwds);
+      switch (pos_args) {
+        case  0:
+        if (likely((values[0] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_self)) != 0)) kw_args--;
+        else goto __pyx_L5_argtuple_error;
+        CYTHON_FALLTHROUGH;
+        case  1:
+        if (likely((values[1] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_coverage)) != 0)) kw_args--;
+        else {
+          __Pyx_RaiseArgtupleInvalid("pred_interval", 1, 2, 2, 1); __PYX_ERR(0, 204, __pyx_L3_error)
+        }
+      }
+      if (unlikely(kw_args > 0)) {
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "pred_interval") < 0)) __PYX_ERR(0, 204, __pyx_L3_error)
+      }
+    } else if (PyTuple_GET_SIZE(__pyx_args) != 2) {
+      goto __pyx_L5_argtuple_error;
+    } else {
+      values[0] = PyTuple_GET_ITEM(__pyx_args, 0);
+      values[1] = PyTuple_GET_ITEM(__pyx_args, 1);
+    }
+    __pyx_v_self = values[0];
+    __pyx_v_coverage = values[1];
+  }
+  goto __pyx_L4_argument_unpacking_done;
+  __pyx_L5_argtuple_error:;
+  __Pyx_RaiseArgtupleInvalid("pred_interval", 1, 2, 2, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 204, __pyx_L3_error)
+  __pyx_L3_error:;
+  __Pyx_AddTraceback("structureboost.pdf_discrete.PdfDiscrete.pred_interval", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_RefNannyFinishContext();
+  return NULL;
+  __pyx_L4_argument_unpacking_done:;
+  __pyx_r = __pyx_pf_14structureboost_12pdf_discrete_11PdfDiscrete_30pred_interval(__pyx_self, __pyx_v_self, __pyx_v_coverage);
+
+  /* function exit code */
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+static PyObject *__pyx_pf_14structureboost_12pdf_discrete_11PdfDiscrete_30pred_interval(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self, PyObject *__pyx_v_coverage) {
   PyObject *__pyx_r = NULL;
   __Pyx_TraceDeclarations
   __Pyx_RefNannyDeclarations
@@ -6671,78 +8024,84 @@ static PyObject *__pyx_pf_14structureboost_12pdf_discrete_11PdfDiscrete_24pred_i
   int __pyx_lineno = 0;
   const char *__pyx_filename = NULL;
   int __pyx_clineno = 0;
-  __Pyx_TraceFrameInit(__pyx_codeobj__15)
+  __Pyx_TraceFrameInit(__pyx_codeobj__18)
   __Pyx_RefNannySetupContext("pred_interval", 0);
-  __Pyx_TraceCall("pred_interval", __pyx_f[0], 134, 0, __PYX_ERR(0, 134, __pyx_L1_error));
+  __Pyx_TraceCall("pred_interval", __pyx_f[0], 204, 0, __PYX_ERR(0, 204, __pyx_L1_error));
 
-  /* "structureboost/pdf_discrete.pyx":135
+  /* "structureboost/pdf_discrete.pyx":205
  * 
- *     def pred_interval(self, alpha):
- *         return((self.quantile(alpha/2), self.quantile(1-(alpha/2))))             # <<<<<<<<<<<<<<
+ *     def pred_interval(self, coverage):
+ *         return((self.quantile((1-coverage)/2), self.quantile(1-((1-coverage)/2))))             # <<<<<<<<<<<<<<
  * 
- *     # def plot_density_with_pr(self, alpha, bar_color='black', **kwargs):
+ * def get_part(nc, blocksize, start_val):
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_quantile); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 135, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_quantile); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 205, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_3 = __Pyx_PyInt_TrueDivideObjC(__pyx_v_alpha, __pyx_int_2, 2, 0, 0); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 135, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyInt_SubtractCObj(__pyx_int_1, __pyx_v_coverage, 1, 0, 0); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 205, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_4 = NULL;
+  __pyx_t_4 = __Pyx_PyInt_TrueDivideObjC(__pyx_t_3, __pyx_int_2, 2, 0, 0); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 205, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_4);
+  __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+  __pyx_t_3 = NULL;
   if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_2))) {
-    __pyx_t_4 = PyMethod_GET_SELF(__pyx_t_2);
-    if (likely(__pyx_t_4)) {
+    __pyx_t_3 = PyMethod_GET_SELF(__pyx_t_2);
+    if (likely(__pyx_t_3)) {
       PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_2);
-      __Pyx_INCREF(__pyx_t_4);
+      __Pyx_INCREF(__pyx_t_3);
       __Pyx_INCREF(function);
       __Pyx_DECREF_SET(__pyx_t_2, function);
     }
   }
-  __pyx_t_1 = (__pyx_t_4) ? __Pyx_PyObject_Call2Args(__pyx_t_2, __pyx_t_4, __pyx_t_3) : __Pyx_PyObject_CallOneArg(__pyx_t_2, __pyx_t_3);
-  __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
-  __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 135, __pyx_L1_error)
+  __pyx_t_1 = (__pyx_t_3) ? __Pyx_PyObject_Call2Args(__pyx_t_2, __pyx_t_3, __pyx_t_4) : __Pyx_PyObject_CallOneArg(__pyx_t_2, __pyx_t_4);
+  __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
+  __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+  if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 205, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_quantile); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 135, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_4 = __Pyx_PyInt_TrueDivideObjC(__pyx_v_alpha, __pyx_int_2, 2, 0, 0); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 135, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_quantile); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 205, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
-  __pyx_t_5 = __Pyx_PyInt_SubtractCObj(__pyx_int_1, __pyx_t_4, 1, 0, 0); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 135, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyInt_SubtractCObj(__pyx_int_1, __pyx_v_coverage, 1, 0, 0); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 205, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_3);
+  __pyx_t_5 = __Pyx_PyInt_TrueDivideObjC(__pyx_t_3, __pyx_int_2, 2, 0, 0); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 205, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
-  __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-  __pyx_t_4 = NULL;
-  if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_3))) {
-    __pyx_t_4 = PyMethod_GET_SELF(__pyx_t_3);
-    if (likely(__pyx_t_4)) {
-      PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_3);
-      __Pyx_INCREF(__pyx_t_4);
+  __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+  __pyx_t_3 = __Pyx_PyInt_SubtractCObj(__pyx_int_1, __pyx_t_5, 1, 0, 0); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 205, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_3);
+  __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
+  __pyx_t_5 = NULL;
+  if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_4))) {
+    __pyx_t_5 = PyMethod_GET_SELF(__pyx_t_4);
+    if (likely(__pyx_t_5)) {
+      PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_4);
+      __Pyx_INCREF(__pyx_t_5);
       __Pyx_INCREF(function);
-      __Pyx_DECREF_SET(__pyx_t_3, function);
+      __Pyx_DECREF_SET(__pyx_t_4, function);
     }
   }
-  __pyx_t_2 = (__pyx_t_4) ? __Pyx_PyObject_Call2Args(__pyx_t_3, __pyx_t_4, __pyx_t_5) : __Pyx_PyObject_CallOneArg(__pyx_t_3, __pyx_t_5);
-  __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
-  __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-  if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 135, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_2);
+  __pyx_t_2 = (__pyx_t_5) ? __Pyx_PyObject_Call2Args(__pyx_t_4, __pyx_t_5, __pyx_t_3) : __Pyx_PyObject_CallOneArg(__pyx_t_4, __pyx_t_3);
+  __Pyx_XDECREF(__pyx_t_5); __pyx_t_5 = 0;
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  __pyx_t_3 = PyTuple_New(2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 135, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_3);
+  if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 205, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_2);
+  __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+  __pyx_t_4 = PyTuple_New(2); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 205, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_4);
   __Pyx_GIVEREF(__pyx_t_1);
-  PyTuple_SET_ITEM(__pyx_t_3, 0, __pyx_t_1);
+  PyTuple_SET_ITEM(__pyx_t_4, 0, __pyx_t_1);
   __Pyx_GIVEREF(__pyx_t_2);
-  PyTuple_SET_ITEM(__pyx_t_3, 1, __pyx_t_2);
+  PyTuple_SET_ITEM(__pyx_t_4, 1, __pyx_t_2);
   __pyx_t_1 = 0;
   __pyx_t_2 = 0;
-  __pyx_r = __pyx_t_3;
-  __pyx_t_3 = 0;
+  __pyx_r = __pyx_t_4;
+  __pyx_t_4 = 0;
   goto __pyx_L0;
 
-  /* "structureboost/pdf_discrete.pyx":134
- *         return(inc_int)
+  /* "structureboost/pdf_discrete.pyx":204
  * 
- *     def pred_interval(self, alpha):             # <<<<<<<<<<<<<<
- *         return((self.quantile(alpha/2), self.quantile(1-(alpha/2))))
+ * 
+ *     def pred_interval(self, coverage):             # <<<<<<<<<<<<<<
+ *         return((self.quantile((1-coverage)/2), self.quantile(1-((1-coverage)/2))))
  * 
  */
 
@@ -6762,8 +8121,8 @@ static PyObject *__pyx_pf_14structureboost_12pdf_discrete_11PdfDiscrete_24pred_i
   return __pyx_r;
 }
 
-/* "structureboost/pdf_discrete.pyx":144
- *     #             width = self.bin_widths[index], color=bar_color)
+/* "structureboost/pdf_discrete.pyx":207
+ *         return((self.quantile((1-coverage)/2), self.quantile(1-((1-coverage)/2))))
  * 
  * def get_part(nc, blocksize, start_val):             # <<<<<<<<<<<<<<
  *     list1=[]
@@ -6808,17 +8167,17 @@ static PyObject *__pyx_pw_14structureboost_12pdf_discrete_1get_part(PyObject *__
         case  1:
         if (likely((values[1] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_blocksize)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("get_part", 1, 3, 3, 1); __PYX_ERR(0, 144, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("get_part", 1, 3, 3, 1); __PYX_ERR(0, 207, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  2:
         if (likely((values[2] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_start_val)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("get_part", 1, 3, 3, 2); __PYX_ERR(0, 144, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("get_part", 1, 3, 3, 2); __PYX_ERR(0, 207, __pyx_L3_error)
         }
       }
       if (unlikely(kw_args > 0)) {
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "get_part") < 0)) __PYX_ERR(0, 144, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "get_part") < 0)) __PYX_ERR(0, 207, __pyx_L3_error)
       }
     } else if (PyTuple_GET_SIZE(__pyx_args) != 3) {
       goto __pyx_L5_argtuple_error;
@@ -6833,7 +8192,7 @@ static PyObject *__pyx_pw_14structureboost_12pdf_discrete_1get_part(PyObject *__
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("get_part", 1, 3, 3, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 144, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("get_part", 1, 3, 3, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 207, __pyx_L3_error)
   __pyx_L3_error:;
   __Pyx_AddTraceback("structureboost.pdf_discrete.get_part", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
@@ -6847,7 +8206,7 @@ static PyObject *__pyx_pw_14structureboost_12pdf_discrete_1get_part(PyObject *__
 }
 static PyObject *__pyx_gb_14structureboost_12pdf_discrete_8get_part_2generator(__pyx_CoroutineObject *__pyx_generator, CYTHON_UNUSED PyThreadState *__pyx_tstate, PyObject *__pyx_sent_value); /* proto */
 
-/* "structureboost/pdf_discrete.pyx":150
+/* "structureboost/pdf_discrete.pyx":213
  *     if start_val>0:
  *         list1.append(list(range(0,start_val)))
  *     list1+=(list(range(i*blocksize+start_val, (i+1)*blocksize+start_val)) for i in range(num_full_blocks))             # <<<<<<<<<<<<<<
@@ -6867,7 +8226,7 @@ static PyObject *__pyx_pf_14structureboost_12pdf_discrete_8get_part_genexpr(PyOb
   if (unlikely(!__pyx_cur_scope)) {
     __pyx_cur_scope = ((struct __pyx_obj_14structureboost_12pdf_discrete___pyx_scope_struct_1_genexpr *)Py_None);
     __Pyx_INCREF(Py_None);
-    __PYX_ERR(0, 150, __pyx_L1_error)
+    __PYX_ERR(0, 213, __pyx_L1_error)
   } else {
     __Pyx_GOTREF(__pyx_cur_scope);
   }
@@ -6875,7 +8234,7 @@ static PyObject *__pyx_pf_14structureboost_12pdf_discrete_8get_part_genexpr(PyOb
   __Pyx_INCREF(((PyObject *)__pyx_cur_scope->__pyx_outer_scope));
   __Pyx_GIVEREF(__pyx_cur_scope->__pyx_outer_scope);
   {
-    __pyx_CoroutineObject *gen = __Pyx_Generator_New((__pyx_coroutine_body_t) __pyx_gb_14structureboost_12pdf_discrete_8get_part_2generator, NULL, (PyObject *) __pyx_cur_scope, __pyx_n_s_genexpr, __pyx_n_s_get_part_locals_genexpr, __pyx_n_s_structureboost_pdf_discrete); if (unlikely(!gen)) __PYX_ERR(0, 150, __pyx_L1_error)
+    __pyx_CoroutineObject *gen = __Pyx_Generator_New((__pyx_coroutine_body_t) __pyx_gb_14structureboost_12pdf_discrete_8get_part_2generator, NULL, (PyObject *) __pyx_cur_scope, __pyx_n_s_genexpr, __pyx_n_s_get_part_locals_genexpr, __pyx_n_s_structureboost_pdf_discrete); if (unlikely(!gen)) __PYX_ERR(0, 213, __pyx_L1_error)
     __Pyx_DECREF(__pyx_cur_scope);
     __Pyx_RefNannyFinishContext();
     return (PyObject *) gen;
@@ -6907,7 +8266,7 @@ static PyObject *__pyx_gb_14structureboost_12pdf_discrete_8get_part_2generator(_
   int __pyx_clineno = 0;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("genexpr", 0);
-  __Pyx_TraceCall("genexpr", __pyx_f[0], 150, 0, __PYX_ERR(0, 150, __pyx_L1_error));
+  __Pyx_TraceCall("genexpr", __pyx_f[0], 213, 0, __PYX_ERR(0, 213, __pyx_L1_error));
   switch (__pyx_generator->resume_label) {
     case 0: goto __pyx_L3_first_run;
     case 1: goto __pyx_L6_resume_from_yield;
@@ -6917,17 +8276,17 @@ static PyObject *__pyx_gb_14structureboost_12pdf_discrete_8get_part_2generator(_
     return NULL;
   }
   __pyx_L3_first_run:;
-  if (unlikely(!__pyx_sent_value)) __PYX_ERR(0, 150, __pyx_L1_error)
-  if (unlikely(!__pyx_cur_scope->__pyx_outer_scope->__pyx_v_num_full_blocks)) { __Pyx_RaiseClosureNameError("num_full_blocks"); __PYX_ERR(0, 150, __pyx_L1_error) }
-  __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_builtin_range, __pyx_cur_scope->__pyx_outer_scope->__pyx_v_num_full_blocks); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 150, __pyx_L1_error)
+  if (unlikely(!__pyx_sent_value)) __PYX_ERR(0, 213, __pyx_L1_error)
+  if (unlikely(!__pyx_cur_scope->__pyx_outer_scope->__pyx_v_num_full_blocks)) { __Pyx_RaiseClosureNameError("num_full_blocks"); __PYX_ERR(0, 213, __pyx_L1_error) }
+  __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_builtin_range, __pyx_cur_scope->__pyx_outer_scope->__pyx_v_num_full_blocks); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 213, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   if (likely(PyList_CheckExact(__pyx_t_1)) || PyTuple_CheckExact(__pyx_t_1)) {
     __pyx_t_2 = __pyx_t_1; __Pyx_INCREF(__pyx_t_2); __pyx_t_3 = 0;
     __pyx_t_4 = NULL;
   } else {
-    __pyx_t_3 = -1; __pyx_t_2 = PyObject_GetIter(__pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 150, __pyx_L1_error)
+    __pyx_t_3 = -1; __pyx_t_2 = PyObject_GetIter(__pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 213, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
-    __pyx_t_4 = Py_TYPE(__pyx_t_2)->tp_iternext; if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 150, __pyx_L1_error)
+    __pyx_t_4 = Py_TYPE(__pyx_t_2)->tp_iternext; if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 213, __pyx_L1_error)
   }
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   for (;;) {
@@ -6935,17 +8294,17 @@ static PyObject *__pyx_gb_14structureboost_12pdf_discrete_8get_part_2generator(_
       if (likely(PyList_CheckExact(__pyx_t_2))) {
         if (__pyx_t_3 >= PyList_GET_SIZE(__pyx_t_2)) break;
         #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-        __pyx_t_1 = PyList_GET_ITEM(__pyx_t_2, __pyx_t_3); __Pyx_INCREF(__pyx_t_1); __pyx_t_3++; if (unlikely(0 < 0)) __PYX_ERR(0, 150, __pyx_L1_error)
+        __pyx_t_1 = PyList_GET_ITEM(__pyx_t_2, __pyx_t_3); __Pyx_INCREF(__pyx_t_1); __pyx_t_3++; if (unlikely(0 < 0)) __PYX_ERR(0, 213, __pyx_L1_error)
         #else
-        __pyx_t_1 = PySequence_ITEM(__pyx_t_2, __pyx_t_3); __pyx_t_3++; if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 150, __pyx_L1_error)
+        __pyx_t_1 = PySequence_ITEM(__pyx_t_2, __pyx_t_3); __pyx_t_3++; if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 213, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_1);
         #endif
       } else {
         if (__pyx_t_3 >= PyTuple_GET_SIZE(__pyx_t_2)) break;
         #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-        __pyx_t_1 = PyTuple_GET_ITEM(__pyx_t_2, __pyx_t_3); __Pyx_INCREF(__pyx_t_1); __pyx_t_3++; if (unlikely(0 < 0)) __PYX_ERR(0, 150, __pyx_L1_error)
+        __pyx_t_1 = PyTuple_GET_ITEM(__pyx_t_2, __pyx_t_3); __Pyx_INCREF(__pyx_t_1); __pyx_t_3++; if (unlikely(0 < 0)) __PYX_ERR(0, 213, __pyx_L1_error)
         #else
-        __pyx_t_1 = PySequence_ITEM(__pyx_t_2, __pyx_t_3); __pyx_t_3++; if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 150, __pyx_L1_error)
+        __pyx_t_1 = PySequence_ITEM(__pyx_t_2, __pyx_t_3); __pyx_t_3++; if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 213, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_1);
         #endif
       }
@@ -6955,7 +8314,7 @@ static PyObject *__pyx_gb_14structureboost_12pdf_discrete_8get_part_2generator(_
         PyObject* exc_type = PyErr_Occurred();
         if (exc_type) {
           if (likely(__Pyx_PyErr_GivenExceptionMatches(exc_type, PyExc_StopIteration))) PyErr_Clear();
-          else __PYX_ERR(0, 150, __pyx_L1_error)
+          else __PYX_ERR(0, 213, __pyx_L1_error)
         }
         break;
       }
@@ -6965,24 +8324,24 @@ static PyObject *__pyx_gb_14structureboost_12pdf_discrete_8get_part_2generator(_
     __Pyx_XDECREF_SET(__pyx_cur_scope->__pyx_v_i, __pyx_t_1);
     __Pyx_GIVEREF(__pyx_t_1);
     __pyx_t_1 = 0;
-    if (unlikely(!__pyx_cur_scope->__pyx_outer_scope->__pyx_v_blocksize)) { __Pyx_RaiseClosureNameError("blocksize"); __PYX_ERR(0, 150, __pyx_L1_error) }
-    __pyx_t_1 = PyNumber_Multiply(__pyx_cur_scope->__pyx_v_i, __pyx_cur_scope->__pyx_outer_scope->__pyx_v_blocksize); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 150, __pyx_L1_error)
+    if (unlikely(!__pyx_cur_scope->__pyx_outer_scope->__pyx_v_blocksize)) { __Pyx_RaiseClosureNameError("blocksize"); __PYX_ERR(0, 213, __pyx_L1_error) }
+    __pyx_t_1 = PyNumber_Multiply(__pyx_cur_scope->__pyx_v_i, __pyx_cur_scope->__pyx_outer_scope->__pyx_v_blocksize); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 213, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
-    if (unlikely(!__pyx_cur_scope->__pyx_outer_scope->__pyx_v_start_val)) { __Pyx_RaiseClosureNameError("start_val"); __PYX_ERR(0, 150, __pyx_L1_error) }
-    __pyx_t_5 = PyNumber_Add(__pyx_t_1, __pyx_cur_scope->__pyx_outer_scope->__pyx_v_start_val); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 150, __pyx_L1_error)
+    if (unlikely(!__pyx_cur_scope->__pyx_outer_scope->__pyx_v_start_val)) { __Pyx_RaiseClosureNameError("start_val"); __PYX_ERR(0, 213, __pyx_L1_error) }
+    __pyx_t_5 = PyNumber_Add(__pyx_t_1, __pyx_cur_scope->__pyx_outer_scope->__pyx_v_start_val); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 213, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_5);
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-    __pyx_t_1 = __Pyx_PyInt_AddObjC(__pyx_cur_scope->__pyx_v_i, __pyx_int_1, 1, 0, 0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 150, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyInt_AddObjC(__pyx_cur_scope->__pyx_v_i, __pyx_int_1, 1, 0, 0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 213, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
-    if (unlikely(!__pyx_cur_scope->__pyx_outer_scope->__pyx_v_blocksize)) { __Pyx_RaiseClosureNameError("blocksize"); __PYX_ERR(0, 150, __pyx_L1_error) }
-    __pyx_t_6 = PyNumber_Multiply(__pyx_t_1, __pyx_cur_scope->__pyx_outer_scope->__pyx_v_blocksize); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 150, __pyx_L1_error)
+    if (unlikely(!__pyx_cur_scope->__pyx_outer_scope->__pyx_v_blocksize)) { __Pyx_RaiseClosureNameError("blocksize"); __PYX_ERR(0, 213, __pyx_L1_error) }
+    __pyx_t_6 = PyNumber_Multiply(__pyx_t_1, __pyx_cur_scope->__pyx_outer_scope->__pyx_v_blocksize); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 213, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_6);
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-    if (unlikely(!__pyx_cur_scope->__pyx_outer_scope->__pyx_v_start_val)) { __Pyx_RaiseClosureNameError("start_val"); __PYX_ERR(0, 150, __pyx_L1_error) }
-    __pyx_t_1 = PyNumber_Add(__pyx_t_6, __pyx_cur_scope->__pyx_outer_scope->__pyx_v_start_val); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 150, __pyx_L1_error)
+    if (unlikely(!__pyx_cur_scope->__pyx_outer_scope->__pyx_v_start_val)) { __Pyx_RaiseClosureNameError("start_val"); __PYX_ERR(0, 213, __pyx_L1_error) }
+    __pyx_t_1 = PyNumber_Add(__pyx_t_6, __pyx_cur_scope->__pyx_outer_scope->__pyx_v_start_val); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 213, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
-    __pyx_t_6 = PyTuple_New(2); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 150, __pyx_L1_error)
+    __pyx_t_6 = PyTuple_New(2); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 213, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_6);
     __Pyx_GIVEREF(__pyx_t_5);
     PyTuple_SET_ITEM(__pyx_t_6, 0, __pyx_t_5);
@@ -6990,10 +8349,10 @@ static PyObject *__pyx_gb_14structureboost_12pdf_discrete_8get_part_2generator(_
     PyTuple_SET_ITEM(__pyx_t_6, 1, __pyx_t_1);
     __pyx_t_5 = 0;
     __pyx_t_1 = 0;
-    __pyx_t_1 = __Pyx_PyObject_Call(__pyx_builtin_range, __pyx_t_6, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 150, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyObject_Call(__pyx_builtin_range, __pyx_t_6, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 213, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
-    __pyx_t_6 = PySequence_List(__pyx_t_1); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 150, __pyx_L1_error)
+    __pyx_t_6 = PySequence_List(__pyx_t_1); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 213, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_6);
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
     __pyx_r = __pyx_t_6;
@@ -7015,7 +8374,7 @@ static PyObject *__pyx_gb_14structureboost_12pdf_discrete_8get_part_2generator(_
     __Pyx_XGOTREF(__pyx_t_2);
     __pyx_t_3 = __pyx_cur_scope->__pyx_t_1;
     __pyx_t_4 = __pyx_cur_scope->__pyx_t_2;
-    if (unlikely(!__pyx_sent_value)) __PYX_ERR(0, 150, __pyx_L1_error)
+    if (unlikely(!__pyx_sent_value)) __PYX_ERR(0, 213, __pyx_L1_error)
   }
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   CYTHON_MAYBE_UNUSED_VAR(__pyx_cur_scope);
@@ -7041,8 +8400,8 @@ static PyObject *__pyx_gb_14structureboost_12pdf_discrete_8get_part_2generator(_
   return __pyx_r;
 }
 
-/* "structureboost/pdf_discrete.pyx":144
- *     #             width = self.bin_widths[index], color=bar_color)
+/* "structureboost/pdf_discrete.pyx":207
+ *         return((self.quantile((1-coverage)/2), self.quantile(1-((1-coverage)/2))))
  * 
  * def get_part(nc, blocksize, start_val):             # <<<<<<<<<<<<<<
  *     list1=[]
@@ -7064,17 +8423,17 @@ static PyObject *__pyx_pf_14structureboost_12pdf_discrete_get_part(CYTHON_UNUSED
   int __pyx_lineno = 0;
   const char *__pyx_filename = NULL;
   int __pyx_clineno = 0;
-  __Pyx_TraceFrameInit(__pyx_codeobj__16)
+  __Pyx_TraceFrameInit(__pyx_codeobj__19)
   __Pyx_RefNannySetupContext("get_part", 0);
   __pyx_cur_scope = (struct __pyx_obj_14structureboost_12pdf_discrete___pyx_scope_struct__get_part *)__pyx_tp_new_14structureboost_12pdf_discrete___pyx_scope_struct__get_part(__pyx_ptype_14structureboost_12pdf_discrete___pyx_scope_struct__get_part, __pyx_empty_tuple, NULL);
   if (unlikely(!__pyx_cur_scope)) {
     __pyx_cur_scope = ((struct __pyx_obj_14structureboost_12pdf_discrete___pyx_scope_struct__get_part *)Py_None);
     __Pyx_INCREF(Py_None);
-    __PYX_ERR(0, 144, __pyx_L1_error)
+    __PYX_ERR(0, 207, __pyx_L1_error)
   } else {
     __Pyx_GOTREF(__pyx_cur_scope);
   }
-  __Pyx_TraceCall("get_part", __pyx_f[0], 144, 0, __PYX_ERR(0, 144, __pyx_L1_error));
+  __Pyx_TraceCall("get_part", __pyx_f[0], 207, 0, __PYX_ERR(0, 207, __pyx_L1_error));
   __pyx_cur_scope->__pyx_v_blocksize = __pyx_v_blocksize;
   __Pyx_INCREF(__pyx_cur_scope->__pyx_v_blocksize);
   __Pyx_GIVEREF(__pyx_cur_scope->__pyx_v_blocksize);
@@ -7082,72 +8441,72 @@ static PyObject *__pyx_pf_14structureboost_12pdf_discrete_get_part(CYTHON_UNUSED
   __Pyx_INCREF(__pyx_cur_scope->__pyx_v_start_val);
   __Pyx_GIVEREF(__pyx_cur_scope->__pyx_v_start_val);
 
-  /* "structureboost/pdf_discrete.pyx":145
+  /* "structureboost/pdf_discrete.pyx":208
  * 
  * def get_part(nc, blocksize, start_val):
  *     list1=[]             # <<<<<<<<<<<<<<
  *     num_full_blocks = int((nc-start_val)/blocksize)
  *     upper_lim = num_full_blocks*blocksize+start_val
  */
-  __pyx_t_1 = PyList_New(0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 145, __pyx_L1_error)
+  __pyx_t_1 = PyList_New(0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 208, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_v_list1 = __pyx_t_1;
   __pyx_t_1 = 0;
 
-  /* "structureboost/pdf_discrete.pyx":146
+  /* "structureboost/pdf_discrete.pyx":209
  * def get_part(nc, blocksize, start_val):
  *     list1=[]
  *     num_full_blocks = int((nc-start_val)/blocksize)             # <<<<<<<<<<<<<<
  *     upper_lim = num_full_blocks*blocksize+start_val
  *     if start_val>0:
  */
-  __pyx_t_1 = PyNumber_Subtract(__pyx_v_nc, __pyx_cur_scope->__pyx_v_start_val); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 146, __pyx_L1_error)
+  __pyx_t_1 = PyNumber_Subtract(__pyx_v_nc, __pyx_cur_scope->__pyx_v_start_val); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 209, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = __Pyx_PyNumber_Divide(__pyx_t_1, __pyx_cur_scope->__pyx_v_blocksize); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 146, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyNumber_Divide(__pyx_t_1, __pyx_cur_scope->__pyx_v_blocksize); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 209, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_t_1 = __Pyx_PyNumber_Int(__pyx_t_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 146, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyNumber_Int(__pyx_t_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 209, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __Pyx_GIVEREF(__pyx_t_1);
   __pyx_cur_scope->__pyx_v_num_full_blocks = __pyx_t_1;
   __pyx_t_1 = 0;
 
-  /* "structureboost/pdf_discrete.pyx":147
+  /* "structureboost/pdf_discrete.pyx":210
  *     list1=[]
  *     num_full_blocks = int((nc-start_val)/blocksize)
  *     upper_lim = num_full_blocks*blocksize+start_val             # <<<<<<<<<<<<<<
  *     if start_val>0:
  *         list1.append(list(range(0,start_val)))
  */
-  __pyx_t_1 = PyNumber_Multiply(__pyx_cur_scope->__pyx_v_num_full_blocks, __pyx_cur_scope->__pyx_v_blocksize); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 147, __pyx_L1_error)
+  __pyx_t_1 = PyNumber_Multiply(__pyx_cur_scope->__pyx_v_num_full_blocks, __pyx_cur_scope->__pyx_v_blocksize); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 210, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = PyNumber_Add(__pyx_t_1, __pyx_cur_scope->__pyx_v_start_val); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 147, __pyx_L1_error)
+  __pyx_t_2 = PyNumber_Add(__pyx_t_1, __pyx_cur_scope->__pyx_v_start_val); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 210, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __pyx_v_upper_lim = __pyx_t_2;
   __pyx_t_2 = 0;
 
-  /* "structureboost/pdf_discrete.pyx":148
+  /* "structureboost/pdf_discrete.pyx":211
  *     num_full_blocks = int((nc-start_val)/blocksize)
  *     upper_lim = num_full_blocks*blocksize+start_val
  *     if start_val>0:             # <<<<<<<<<<<<<<
  *         list1.append(list(range(0,start_val)))
  *     list1+=(list(range(i*blocksize+start_val, (i+1)*blocksize+start_val)) for i in range(num_full_blocks))
  */
-  __pyx_t_2 = PyObject_RichCompare(__pyx_cur_scope->__pyx_v_start_val, __pyx_int_0, Py_GT); __Pyx_XGOTREF(__pyx_t_2); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 148, __pyx_L1_error)
-  __pyx_t_3 = __Pyx_PyObject_IsTrue(__pyx_t_2); if (unlikely(__pyx_t_3 < 0)) __PYX_ERR(0, 148, __pyx_L1_error)
+  __pyx_t_2 = PyObject_RichCompare(__pyx_cur_scope->__pyx_v_start_val, __pyx_int_0, Py_GT); __Pyx_XGOTREF(__pyx_t_2); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 211, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyObject_IsTrue(__pyx_t_2); if (unlikely(__pyx_t_3 < 0)) __PYX_ERR(0, 211, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   if (__pyx_t_3) {
 
-    /* "structureboost/pdf_discrete.pyx":149
+    /* "structureboost/pdf_discrete.pyx":212
  *     upper_lim = num_full_blocks*blocksize+start_val
  *     if start_val>0:
  *         list1.append(list(range(0,start_val)))             # <<<<<<<<<<<<<<
  *     list1+=(list(range(i*blocksize+start_val, (i+1)*blocksize+start_val)) for i in range(num_full_blocks))
  *     if upper_lim<nc:
  */
-    __pyx_t_2 = PyTuple_New(2); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 149, __pyx_L1_error)
+    __pyx_t_2 = PyTuple_New(2); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 212, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
     __Pyx_INCREF(__pyx_int_0);
     __Pyx_GIVEREF(__pyx_int_0);
@@ -7155,16 +8514,16 @@ static PyObject *__pyx_pf_14structureboost_12pdf_discrete_get_part(CYTHON_UNUSED
     __Pyx_INCREF(__pyx_cur_scope->__pyx_v_start_val);
     __Pyx_GIVEREF(__pyx_cur_scope->__pyx_v_start_val);
     PyTuple_SET_ITEM(__pyx_t_2, 1, __pyx_cur_scope->__pyx_v_start_val);
-    __pyx_t_1 = __Pyx_PyObject_Call(__pyx_builtin_range, __pyx_t_2, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 149, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyObject_Call(__pyx_builtin_range, __pyx_t_2, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 212, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-    __pyx_t_2 = PySequence_List(__pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 149, __pyx_L1_error)
+    __pyx_t_2 = PySequence_List(__pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 212, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-    __pyx_t_4 = __Pyx_PyObject_Append(__pyx_v_list1, __pyx_t_2); if (unlikely(__pyx_t_4 == ((int)-1))) __PYX_ERR(0, 149, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_PyObject_Append(__pyx_v_list1, __pyx_t_2); if (unlikely(__pyx_t_4 == ((int)-1))) __PYX_ERR(0, 212, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-    /* "structureboost/pdf_discrete.pyx":148
+    /* "structureboost/pdf_discrete.pyx":211
  *     num_full_blocks = int((nc-start_val)/blocksize)
  *     upper_lim = num_full_blocks*blocksize+start_val
  *     if start_val>0:             # <<<<<<<<<<<<<<
@@ -7173,41 +8532,41 @@ static PyObject *__pyx_pf_14structureboost_12pdf_discrete_get_part(CYTHON_UNUSED
  */
   }
 
-  /* "structureboost/pdf_discrete.pyx":150
+  /* "structureboost/pdf_discrete.pyx":213
  *     if start_val>0:
  *         list1.append(list(range(0,start_val)))
  *     list1+=(list(range(i*blocksize+start_val, (i+1)*blocksize+start_val)) for i in range(num_full_blocks))             # <<<<<<<<<<<<<<
  *     if upper_lim<nc:
  *         list1.append(list(range(upper_lim, nc)))
  */
-  __pyx_t_2 = __pyx_pf_14structureboost_12pdf_discrete_8get_part_genexpr(((PyObject*)__pyx_cur_scope)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 150, __pyx_L1_error)
+  __pyx_t_2 = __pyx_pf_14structureboost_12pdf_discrete_8get_part_genexpr(((PyObject*)__pyx_cur_scope)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 213, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_1 = PyNumber_InPlaceAdd(__pyx_v_list1, __pyx_t_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 150, __pyx_L1_error)
+  __pyx_t_1 = PyNumber_InPlaceAdd(__pyx_v_list1, __pyx_t_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 213, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __Pyx_DECREF_SET(__pyx_v_list1, __pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "structureboost/pdf_discrete.pyx":151
+  /* "structureboost/pdf_discrete.pyx":214
  *         list1.append(list(range(0,start_val)))
  *     list1+=(list(range(i*blocksize+start_val, (i+1)*blocksize+start_val)) for i in range(num_full_blocks))
  *     if upper_lim<nc:             # <<<<<<<<<<<<<<
  *         list1.append(list(range(upper_lim, nc)))
  *     return(list1)
  */
-  __pyx_t_1 = PyObject_RichCompare(__pyx_v_upper_lim, __pyx_v_nc, Py_LT); __Pyx_XGOTREF(__pyx_t_1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 151, __pyx_L1_error)
-  __pyx_t_3 = __Pyx_PyObject_IsTrue(__pyx_t_1); if (unlikely(__pyx_t_3 < 0)) __PYX_ERR(0, 151, __pyx_L1_error)
+  __pyx_t_1 = PyObject_RichCompare(__pyx_v_upper_lim, __pyx_v_nc, Py_LT); __Pyx_XGOTREF(__pyx_t_1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 214, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyObject_IsTrue(__pyx_t_1); if (unlikely(__pyx_t_3 < 0)) __PYX_ERR(0, 214, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   if (__pyx_t_3) {
 
-    /* "structureboost/pdf_discrete.pyx":152
+    /* "structureboost/pdf_discrete.pyx":215
  *     list1+=(list(range(i*blocksize+start_val, (i+1)*blocksize+start_val)) for i in range(num_full_blocks))
  *     if upper_lim<nc:
  *         list1.append(list(range(upper_lim, nc)))             # <<<<<<<<<<<<<<
  *     return(list1)
  * 
  */
-    __pyx_t_1 = PyTuple_New(2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 152, __pyx_L1_error)
+    __pyx_t_1 = PyTuple_New(2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 215, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_INCREF(__pyx_v_upper_lim);
     __Pyx_GIVEREF(__pyx_v_upper_lim);
@@ -7215,16 +8574,16 @@ static PyObject *__pyx_pf_14structureboost_12pdf_discrete_get_part(CYTHON_UNUSED
     __Pyx_INCREF(__pyx_v_nc);
     __Pyx_GIVEREF(__pyx_v_nc);
     PyTuple_SET_ITEM(__pyx_t_1, 1, __pyx_v_nc);
-    __pyx_t_2 = __Pyx_PyObject_Call(__pyx_builtin_range, __pyx_t_1, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 152, __pyx_L1_error)
+    __pyx_t_2 = __Pyx_PyObject_Call(__pyx_builtin_range, __pyx_t_1, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 215, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-    __pyx_t_1 = PySequence_List(__pyx_t_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 152, __pyx_L1_error)
+    __pyx_t_1 = PySequence_List(__pyx_t_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 215, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-    __pyx_t_4 = __Pyx_PyObject_Append(__pyx_v_list1, __pyx_t_1); if (unlikely(__pyx_t_4 == ((int)-1))) __PYX_ERR(0, 152, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_PyObject_Append(__pyx_v_list1, __pyx_t_1); if (unlikely(__pyx_t_4 == ((int)-1))) __PYX_ERR(0, 215, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-    /* "structureboost/pdf_discrete.pyx":151
+    /* "structureboost/pdf_discrete.pyx":214
  *         list1.append(list(range(0,start_val)))
  *     list1+=(list(range(i*blocksize+start_val, (i+1)*blocksize+start_val)) for i in range(num_full_blocks))
  *     if upper_lim<nc:             # <<<<<<<<<<<<<<
@@ -7233,7 +8592,7 @@ static PyObject *__pyx_pf_14structureboost_12pdf_discrete_get_part(CYTHON_UNUSED
  */
   }
 
-  /* "structureboost/pdf_discrete.pyx":153
+  /* "structureboost/pdf_discrete.pyx":216
  *     if upper_lim<nc:
  *         list1.append(list(range(upper_lim, nc)))
  *     return(list1)             # <<<<<<<<<<<<<<
@@ -7245,8 +8604,8 @@ static PyObject *__pyx_pf_14structureboost_12pdf_discrete_get_part(CYTHON_UNUSED
   __pyx_r = __pyx_v_list1;
   goto __pyx_L0;
 
-  /* "structureboost/pdf_discrete.pyx":144
- *     #             width = self.bin_widths[index], color=bar_color)
+  /* "structureboost/pdf_discrete.pyx":207
+ *         return((self.quantile((1-coverage)/2), self.quantile(1-((1-coverage)/2))))
  * 
  * def get_part(nc, blocksize, start_val):             # <<<<<<<<<<<<<<
  *     list1=[]
@@ -7270,7 +8629,7 @@ static PyObject *__pyx_pf_14structureboost_12pdf_discrete_get_part(CYTHON_UNUSED
   return __pyx_r;
 }
 
-/* "structureboost/pdf_discrete.pyx":155
+/* "structureboost/pdf_discrete.pyx":218
  *     return(list1)
  * 
  * def chain_partition(nc, blocksize):             # <<<<<<<<<<<<<<
@@ -7313,11 +8672,11 @@ static PyObject *__pyx_pw_14structureboost_12pdf_discrete_3chain_partition(PyObj
         case  1:
         if (likely((values[1] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_blocksize)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("chain_partition", 1, 2, 2, 1); __PYX_ERR(0, 155, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("chain_partition", 1, 2, 2, 1); __PYX_ERR(0, 218, __pyx_L3_error)
         }
       }
       if (unlikely(kw_args > 0)) {
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "chain_partition") < 0)) __PYX_ERR(0, 155, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "chain_partition") < 0)) __PYX_ERR(0, 218, __pyx_L3_error)
       }
     } else if (PyTuple_GET_SIZE(__pyx_args) != 2) {
       goto __pyx_L5_argtuple_error;
@@ -7330,7 +8689,7 @@ static PyObject *__pyx_pw_14structureboost_12pdf_discrete_3chain_partition(PyObj
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("chain_partition", 1, 2, 2, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 155, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("chain_partition", 1, 2, 2, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 218, __pyx_L3_error)
   __pyx_L3_error:;
   __Pyx_AddTraceback("structureboost.pdf_discrete.chain_partition", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
@@ -7361,11 +8720,11 @@ static PyObject *__pyx_pf_14structureboost_12pdf_discrete_2chain_partition(CYTHO
   int __pyx_lineno = 0;
   const char *__pyx_filename = NULL;
   int __pyx_clineno = 0;
-  __Pyx_TraceFrameInit(__pyx_codeobj__17)
+  __Pyx_TraceFrameInit(__pyx_codeobj__20)
   __Pyx_RefNannySetupContext("chain_partition", 0);
-  __Pyx_TraceCall("chain_partition", __pyx_f[0], 155, 0, __PYX_ERR(0, 155, __pyx_L1_error));
+  __Pyx_TraceCall("chain_partition", __pyx_f[0], 218, 0, __PYX_ERR(0, 218, __pyx_L1_error));
 
-  /* "structureboost/pdf_discrete.pyx":156
+  /* "structureboost/pdf_discrete.pyx":219
  * 
  * def chain_partition(nc, blocksize):
  *     part = [get_part(nc, blocksize, sv) for sv in range(blocksize)]             # <<<<<<<<<<<<<<
@@ -7373,17 +8732,17 @@ static PyObject *__pyx_pf_14structureboost_12pdf_discrete_2chain_partition(CYTHO
  * 
  */
   { /* enter inner scope */
-    __pyx_t_1 = PyList_New(0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 156, __pyx_L5_error)
+    __pyx_t_1 = PyList_New(0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 219, __pyx_L5_error)
     __Pyx_GOTREF(__pyx_t_1);
-    __pyx_t_2 = __Pyx_PyObject_CallOneArg(__pyx_builtin_range, __pyx_v_blocksize); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 156, __pyx_L5_error)
+    __pyx_t_2 = __Pyx_PyObject_CallOneArg(__pyx_builtin_range, __pyx_v_blocksize); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 219, __pyx_L5_error)
     __Pyx_GOTREF(__pyx_t_2);
     if (likely(PyList_CheckExact(__pyx_t_2)) || PyTuple_CheckExact(__pyx_t_2)) {
       __pyx_t_3 = __pyx_t_2; __Pyx_INCREF(__pyx_t_3); __pyx_t_4 = 0;
       __pyx_t_5 = NULL;
     } else {
-      __pyx_t_4 = -1; __pyx_t_3 = PyObject_GetIter(__pyx_t_2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 156, __pyx_L5_error)
+      __pyx_t_4 = -1; __pyx_t_3 = PyObject_GetIter(__pyx_t_2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 219, __pyx_L5_error)
       __Pyx_GOTREF(__pyx_t_3);
-      __pyx_t_5 = Py_TYPE(__pyx_t_3)->tp_iternext; if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 156, __pyx_L5_error)
+      __pyx_t_5 = Py_TYPE(__pyx_t_3)->tp_iternext; if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 219, __pyx_L5_error)
     }
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
     for (;;) {
@@ -7391,17 +8750,17 @@ static PyObject *__pyx_pf_14structureboost_12pdf_discrete_2chain_partition(CYTHO
         if (likely(PyList_CheckExact(__pyx_t_3))) {
           if (__pyx_t_4 >= PyList_GET_SIZE(__pyx_t_3)) break;
           #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-          __pyx_t_2 = PyList_GET_ITEM(__pyx_t_3, __pyx_t_4); __Pyx_INCREF(__pyx_t_2); __pyx_t_4++; if (unlikely(0 < 0)) __PYX_ERR(0, 156, __pyx_L5_error)
+          __pyx_t_2 = PyList_GET_ITEM(__pyx_t_3, __pyx_t_4); __Pyx_INCREF(__pyx_t_2); __pyx_t_4++; if (unlikely(0 < 0)) __PYX_ERR(0, 219, __pyx_L5_error)
           #else
-          __pyx_t_2 = PySequence_ITEM(__pyx_t_3, __pyx_t_4); __pyx_t_4++; if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 156, __pyx_L5_error)
+          __pyx_t_2 = PySequence_ITEM(__pyx_t_3, __pyx_t_4); __pyx_t_4++; if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 219, __pyx_L5_error)
           __Pyx_GOTREF(__pyx_t_2);
           #endif
         } else {
           if (__pyx_t_4 >= PyTuple_GET_SIZE(__pyx_t_3)) break;
           #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-          __pyx_t_2 = PyTuple_GET_ITEM(__pyx_t_3, __pyx_t_4); __Pyx_INCREF(__pyx_t_2); __pyx_t_4++; if (unlikely(0 < 0)) __PYX_ERR(0, 156, __pyx_L5_error)
+          __pyx_t_2 = PyTuple_GET_ITEM(__pyx_t_3, __pyx_t_4); __Pyx_INCREF(__pyx_t_2); __pyx_t_4++; if (unlikely(0 < 0)) __PYX_ERR(0, 219, __pyx_L5_error)
           #else
-          __pyx_t_2 = PySequence_ITEM(__pyx_t_3, __pyx_t_4); __pyx_t_4++; if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 156, __pyx_L5_error)
+          __pyx_t_2 = PySequence_ITEM(__pyx_t_3, __pyx_t_4); __pyx_t_4++; if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 219, __pyx_L5_error)
           __Pyx_GOTREF(__pyx_t_2);
           #endif
         }
@@ -7411,7 +8770,7 @@ static PyObject *__pyx_pf_14structureboost_12pdf_discrete_2chain_partition(CYTHO
           PyObject* exc_type = PyErr_Occurred();
           if (exc_type) {
             if (likely(__Pyx_PyErr_GivenExceptionMatches(exc_type, PyExc_StopIteration))) PyErr_Clear();
-            else __PYX_ERR(0, 156, __pyx_L5_error)
+            else __PYX_ERR(0, 219, __pyx_L5_error)
           }
           break;
         }
@@ -7419,7 +8778,7 @@ static PyObject *__pyx_pf_14structureboost_12pdf_discrete_2chain_partition(CYTHO
       }
       __Pyx_XDECREF_SET(__pyx_8genexpr2__pyx_v_sv, __pyx_t_2);
       __pyx_t_2 = 0;
-      __Pyx_GetModuleGlobalName(__pyx_t_6, __pyx_n_s_get_part); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 156, __pyx_L5_error)
+      __Pyx_GetModuleGlobalName(__pyx_t_6, __pyx_n_s_get_part); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 219, __pyx_L5_error)
       __Pyx_GOTREF(__pyx_t_6);
       __pyx_t_7 = NULL;
       __pyx_t_8 = 0;
@@ -7436,7 +8795,7 @@ static PyObject *__pyx_pf_14structureboost_12pdf_discrete_2chain_partition(CYTHO
       #if CYTHON_FAST_PYCALL
       if (PyFunction_Check(__pyx_t_6)) {
         PyObject *__pyx_temp[4] = {__pyx_t_7, __pyx_v_nc, __pyx_v_blocksize, __pyx_8genexpr2__pyx_v_sv};
-        __pyx_t_2 = __Pyx_PyFunction_FastCall(__pyx_t_6, __pyx_temp+1-__pyx_t_8, 3+__pyx_t_8); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 156, __pyx_L5_error)
+        __pyx_t_2 = __Pyx_PyFunction_FastCall(__pyx_t_6, __pyx_temp+1-__pyx_t_8, 3+__pyx_t_8); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 219, __pyx_L5_error)
         __Pyx_XDECREF(__pyx_t_7); __pyx_t_7 = 0;
         __Pyx_GOTREF(__pyx_t_2);
       } else
@@ -7444,13 +8803,13 @@ static PyObject *__pyx_pf_14structureboost_12pdf_discrete_2chain_partition(CYTHO
       #if CYTHON_FAST_PYCCALL
       if (__Pyx_PyFastCFunction_Check(__pyx_t_6)) {
         PyObject *__pyx_temp[4] = {__pyx_t_7, __pyx_v_nc, __pyx_v_blocksize, __pyx_8genexpr2__pyx_v_sv};
-        __pyx_t_2 = __Pyx_PyCFunction_FastCall(__pyx_t_6, __pyx_temp+1-__pyx_t_8, 3+__pyx_t_8); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 156, __pyx_L5_error)
+        __pyx_t_2 = __Pyx_PyCFunction_FastCall(__pyx_t_6, __pyx_temp+1-__pyx_t_8, 3+__pyx_t_8); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 219, __pyx_L5_error)
         __Pyx_XDECREF(__pyx_t_7); __pyx_t_7 = 0;
         __Pyx_GOTREF(__pyx_t_2);
       } else
       #endif
       {
-        __pyx_t_9 = PyTuple_New(3+__pyx_t_8); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 156, __pyx_L5_error)
+        __pyx_t_9 = PyTuple_New(3+__pyx_t_8); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 219, __pyx_L5_error)
         __Pyx_GOTREF(__pyx_t_9);
         if (__pyx_t_7) {
           __Pyx_GIVEREF(__pyx_t_7); PyTuple_SET_ITEM(__pyx_t_9, 0, __pyx_t_7); __pyx_t_7 = NULL;
@@ -7464,12 +8823,12 @@ static PyObject *__pyx_pf_14structureboost_12pdf_discrete_2chain_partition(CYTHO
         __Pyx_INCREF(__pyx_8genexpr2__pyx_v_sv);
         __Pyx_GIVEREF(__pyx_8genexpr2__pyx_v_sv);
         PyTuple_SET_ITEM(__pyx_t_9, 2+__pyx_t_8, __pyx_8genexpr2__pyx_v_sv);
-        __pyx_t_2 = __Pyx_PyObject_Call(__pyx_t_6, __pyx_t_9, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 156, __pyx_L5_error)
+        __pyx_t_2 = __Pyx_PyObject_Call(__pyx_t_6, __pyx_t_9, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 219, __pyx_L5_error)
         __Pyx_GOTREF(__pyx_t_2);
         __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
       }
       __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
-      if (unlikely(__Pyx_ListComp_Append(__pyx_t_1, (PyObject*)__pyx_t_2))) __PYX_ERR(0, 156, __pyx_L5_error)
+      if (unlikely(__Pyx_ListComp_Append(__pyx_t_1, (PyObject*)__pyx_t_2))) __PYX_ERR(0, 219, __pyx_L5_error)
       __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
     }
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
@@ -7483,19 +8842,19 @@ static PyObject *__pyx_pf_14structureboost_12pdf_discrete_2chain_partition(CYTHO
   __pyx_v_part = ((PyObject*)__pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "structureboost/pdf_discrete.pyx":157
+  /* "structureboost/pdf_discrete.pyx":220
  * def chain_partition(nc, blocksize):
  *     part = [get_part(nc, blocksize, sv) for sv in range(blocksize)]
  *     return(part)             # <<<<<<<<<<<<<<
  * 
- * def density_plot(bin_vec, prob_vec, **kwargs):
+ * def basic_density_plot(bin_vec, dens_vec, **kwargs):
  */
   __Pyx_XDECREF(__pyx_r);
   __Pyx_INCREF(__pyx_v_part);
   __pyx_r = __pyx_v_part;
   goto __pyx_L0;
 
-  /* "structureboost/pdf_discrete.pyx":155
+  /* "structureboost/pdf_discrete.pyx":218
  *     return(list1)
  * 
  * def chain_partition(nc, blocksize):             # <<<<<<<<<<<<<<
@@ -7522,31 +8881,31 @@ static PyObject *__pyx_pf_14structureboost_12pdf_discrete_2chain_partition(CYTHO
   return __pyx_r;
 }
 
-/* "structureboost/pdf_discrete.pyx":159
+/* "structureboost/pdf_discrete.pyx":222
  *     return(part)
  * 
- * def density_plot(bin_vec, prob_vec, **kwargs):             # <<<<<<<<<<<<<<
+ * def basic_density_plot(bin_vec, dens_vec, **kwargs):             # <<<<<<<<<<<<<<
  *     binvec_plot = np.vstack((bin_vec, bin_vec)).T.reshape(-1)
- *     prob_dens = prob_vec / np.diff(bin_vec)
+ *     dens_plot = np.concatenate(([0],np.vstack((dens_vec, dens_vec)).T.reshape(-1),[0]))
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_14structureboost_12pdf_discrete_5density_plot(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
-static PyMethodDef __pyx_mdef_14structureboost_12pdf_discrete_5density_plot = {"density_plot", (PyCFunction)(void*)(PyCFunctionWithKeywords)__pyx_pw_14structureboost_12pdf_discrete_5density_plot, METH_VARARGS|METH_KEYWORDS, 0};
-static PyObject *__pyx_pw_14structureboost_12pdf_discrete_5density_plot(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
+static PyObject *__pyx_pw_14structureboost_12pdf_discrete_5basic_density_plot(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
+static PyMethodDef __pyx_mdef_14structureboost_12pdf_discrete_5basic_density_plot = {"basic_density_plot", (PyCFunction)(void*)(PyCFunctionWithKeywords)__pyx_pw_14structureboost_12pdf_discrete_5basic_density_plot, METH_VARARGS|METH_KEYWORDS, 0};
+static PyObject *__pyx_pw_14structureboost_12pdf_discrete_5basic_density_plot(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
   PyObject *__pyx_v_bin_vec = 0;
-  PyObject *__pyx_v_prob_vec = 0;
+  PyObject *__pyx_v_dens_vec = 0;
   PyObject *__pyx_v_kwargs = 0;
   int __pyx_lineno = 0;
   const char *__pyx_filename = NULL;
   int __pyx_clineno = 0;
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
-  __Pyx_RefNannySetupContext("density_plot (wrapper)", 0);
+  __Pyx_RefNannySetupContext("basic_density_plot (wrapper)", 0);
   __pyx_v_kwargs = PyDict_New(); if (unlikely(!__pyx_v_kwargs)) return NULL;
   __Pyx_GOTREF(__pyx_v_kwargs);
   {
-    static PyObject **__pyx_pyargnames[] = {&__pyx_n_s_bin_vec,&__pyx_n_s_prob_vec,0};
+    static PyObject **__pyx_pyargnames[] = {&__pyx_n_s_bin_vec,&__pyx_n_s_dens_vec,0};
     PyObject* values[2] = {0,0};
     if (unlikely(__pyx_kwds)) {
       Py_ssize_t kw_args;
@@ -7566,13 +8925,13 @@ static PyObject *__pyx_pw_14structureboost_12pdf_discrete_5density_plot(PyObject
         else goto __pyx_L5_argtuple_error;
         CYTHON_FALLTHROUGH;
         case  1:
-        if (likely((values[1] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_prob_vec)) != 0)) kw_args--;
+        if (likely((values[1] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_dens_vec)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("density_plot", 1, 2, 2, 1); __PYX_ERR(0, 159, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("basic_density_plot", 1, 2, 2, 1); __PYX_ERR(0, 222, __pyx_L3_error)
         }
       }
       if (unlikely(kw_args > 0)) {
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, __pyx_v_kwargs, values, pos_args, "density_plot") < 0)) __PYX_ERR(0, 159, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, __pyx_v_kwargs, values, pos_args, "basic_density_plot") < 0)) __PYX_ERR(0, 222, __pyx_L3_error)
       }
     } else if (PyTuple_GET_SIZE(__pyx_args) != 2) {
       goto __pyx_L5_argtuple_error;
@@ -7581,18 +8940,18 @@ static PyObject *__pyx_pw_14structureboost_12pdf_discrete_5density_plot(PyObject
       values[1] = PyTuple_GET_ITEM(__pyx_args, 1);
     }
     __pyx_v_bin_vec = values[0];
-    __pyx_v_prob_vec = values[1];
+    __pyx_v_dens_vec = values[1];
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("density_plot", 1, 2, 2, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 159, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("basic_density_plot", 1, 2, 2, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 222, __pyx_L3_error)
   __pyx_L3_error:;
   __Pyx_DECREF(__pyx_v_kwargs); __pyx_v_kwargs = 0;
-  __Pyx_AddTraceback("structureboost.pdf_discrete.density_plot", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("structureboost.pdf_discrete.basic_density_plot", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  __pyx_r = __pyx_pf_14structureboost_12pdf_discrete_4density_plot(__pyx_self, __pyx_v_bin_vec, __pyx_v_prob_vec, __pyx_v_kwargs);
+  __pyx_r = __pyx_pf_14structureboost_12pdf_discrete_4basic_density_plot(__pyx_self, __pyx_v_bin_vec, __pyx_v_dens_vec, __pyx_v_kwargs);
 
   /* function exit code */
   __Pyx_XDECREF(__pyx_v_kwargs);
@@ -7600,10 +8959,9 @@ static PyObject *__pyx_pw_14structureboost_12pdf_discrete_5density_plot(PyObject
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_14structureboost_12pdf_discrete_4density_plot(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_bin_vec, PyObject *__pyx_v_prob_vec, PyObject *__pyx_v_kwargs) {
+static PyObject *__pyx_pf_14structureboost_12pdf_discrete_4basic_density_plot(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_bin_vec, PyObject *__pyx_v_dens_vec, PyObject *__pyx_v_kwargs) {
   PyObject *__pyx_v_binvec_plot = NULL;
-  PyObject *__pyx_v_prob_dens = NULL;
-  PyObject *__pyx_v_prob_plot = NULL;
+  PyObject *__pyx_v_dens_plot = NULL;
   PyObject *__pyx_r = NULL;
   __Pyx_TraceDeclarations
   __Pyx_RefNannyDeclarations
@@ -7618,23 +8976,23 @@ static PyObject *__pyx_pf_14structureboost_12pdf_discrete_4density_plot(CYTHON_U
   int __pyx_lineno = 0;
   const char *__pyx_filename = NULL;
   int __pyx_clineno = 0;
-  __Pyx_TraceFrameInit(__pyx_codeobj__18)
-  __Pyx_RefNannySetupContext("density_plot", 0);
-  __Pyx_TraceCall("density_plot", __pyx_f[0], 159, 0, __PYX_ERR(0, 159, __pyx_L1_error));
+  __Pyx_TraceFrameInit(__pyx_codeobj__21)
+  __Pyx_RefNannySetupContext("basic_density_plot", 0);
+  __Pyx_TraceCall("basic_density_plot", __pyx_f[0], 222, 0, __PYX_ERR(0, 222, __pyx_L1_error));
 
-  /* "structureboost/pdf_discrete.pyx":160
+  /* "structureboost/pdf_discrete.pyx":223
  * 
- * def density_plot(bin_vec, prob_vec, **kwargs):
+ * def basic_density_plot(bin_vec, dens_vec, **kwargs):
  *     binvec_plot = np.vstack((bin_vec, bin_vec)).T.reshape(-1)             # <<<<<<<<<<<<<<
- *     prob_dens = prob_vec / np.diff(bin_vec)
- *     prob_plot = np.concatenate(([0],np.vstack((prob_dens, prob_dens)).T.reshape(-1),[0]))
+ *     dens_plot = np.concatenate(([0],np.vstack((dens_vec, dens_vec)).T.reshape(-1),[0]))
+ *     plt.plot(binvec_plot, dens_plot, **kwargs)
  */
-  __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_n_s_np); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 160, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_n_s_np); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 223, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_vstack); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 160, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_vstack); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 223, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  __pyx_t_3 = PyTuple_New(2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 160, __pyx_L1_error)
+  __pyx_t_3 = PyTuple_New(2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 223, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_INCREF(__pyx_v_bin_vec);
   __Pyx_GIVEREF(__pyx_v_bin_vec);
@@ -7655,13 +9013,13 @@ static PyObject *__pyx_pf_14structureboost_12pdf_discrete_4density_plot(CYTHON_U
   __pyx_t_2 = (__pyx_t_5) ? __Pyx_PyObject_Call2Args(__pyx_t_4, __pyx_t_5, __pyx_t_3) : __Pyx_PyObject_CallOneArg(__pyx_t_4, __pyx_t_3);
   __Pyx_XDECREF(__pyx_t_5); __pyx_t_5 = 0;
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 160, __pyx_L1_error)
+  if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 223, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_T); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 160, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_T); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 223, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_reshape); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 160, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_reshape); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 223, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
   __pyx_t_4 = NULL;
@@ -7676,75 +9034,42 @@ static PyObject *__pyx_pf_14structureboost_12pdf_discrete_4density_plot(CYTHON_U
   }
   __pyx_t_1 = (__pyx_t_4) ? __Pyx_PyObject_Call2Args(__pyx_t_2, __pyx_t_4, __pyx_int_neg_1) : __Pyx_PyObject_CallOneArg(__pyx_t_2, __pyx_int_neg_1);
   __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
-  if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 160, __pyx_L1_error)
+  if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 223, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __pyx_v_binvec_plot = __pyx_t_1;
   __pyx_t_1 = 0;
 
-  /* "structureboost/pdf_discrete.pyx":161
- * def density_plot(bin_vec, prob_vec, **kwargs):
+  /* "structureboost/pdf_discrete.pyx":224
+ * def basic_density_plot(bin_vec, dens_vec, **kwargs):
  *     binvec_plot = np.vstack((bin_vec, bin_vec)).T.reshape(-1)
- *     prob_dens = prob_vec / np.diff(bin_vec)             # <<<<<<<<<<<<<<
- *     prob_plot = np.concatenate(([0],np.vstack((prob_dens, prob_dens)).T.reshape(-1),[0]))
- *     plt.plot(binvec_plot, prob_plot, **kwargs)
- */
-  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_np); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 161, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_diff); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 161, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_4);
-  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __pyx_t_2 = NULL;
-  if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_4))) {
-    __pyx_t_2 = PyMethod_GET_SELF(__pyx_t_4);
-    if (likely(__pyx_t_2)) {
-      PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_4);
-      __Pyx_INCREF(__pyx_t_2);
-      __Pyx_INCREF(function);
-      __Pyx_DECREF_SET(__pyx_t_4, function);
-    }
-  }
-  __pyx_t_1 = (__pyx_t_2) ? __Pyx_PyObject_Call2Args(__pyx_t_4, __pyx_t_2, __pyx_v_bin_vec) : __Pyx_PyObject_CallOneArg(__pyx_t_4, __pyx_v_bin_vec);
-  __Pyx_XDECREF(__pyx_t_2); __pyx_t_2 = 0;
-  if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 161, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_1);
-  __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-  __pyx_t_4 = __Pyx_PyNumber_Divide(__pyx_v_prob_vec, __pyx_t_1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 161, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_4);
-  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_v_prob_dens = __pyx_t_4;
-  __pyx_t_4 = 0;
-
-  /* "structureboost/pdf_discrete.pyx":162
- *     binvec_plot = np.vstack((bin_vec, bin_vec)).T.reshape(-1)
- *     prob_dens = prob_vec / np.diff(bin_vec)
- *     prob_plot = np.concatenate(([0],np.vstack((prob_dens, prob_dens)).T.reshape(-1),[0]))             # <<<<<<<<<<<<<<
- *     plt.plot(binvec_plot, prob_plot, **kwargs)
+ *     dens_plot = np.concatenate(([0],np.vstack((dens_vec, dens_vec)).T.reshape(-1),[0]))             # <<<<<<<<<<<<<<
+ *     plt.plot(binvec_plot, dens_plot, **kwargs)
  * 
  */
-  __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_np); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 162, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_concatenate); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 162, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_np); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 224, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_t_1 = PyList_New(1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 162, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_1);
+  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_concatenate); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 224, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_4);
+  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+  __pyx_t_2 = PyList_New(1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 224, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_2);
   __Pyx_INCREF(__pyx_int_0);
   __Pyx_GIVEREF(__pyx_int_0);
-  PyList_SET_ITEM(__pyx_t_1, 0, __pyx_int_0);
-  __Pyx_GetModuleGlobalName(__pyx_t_6, __pyx_n_s_np); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 162, __pyx_L1_error)
+  PyList_SET_ITEM(__pyx_t_2, 0, __pyx_int_0);
+  __Pyx_GetModuleGlobalName(__pyx_t_6, __pyx_n_s_np); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 224, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_6);
-  __pyx_t_7 = __Pyx_PyObject_GetAttrStr(__pyx_t_6, __pyx_n_s_vstack); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 162, __pyx_L1_error)
+  __pyx_t_7 = __Pyx_PyObject_GetAttrStr(__pyx_t_6, __pyx_n_s_vstack); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 224, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_7);
   __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
-  __pyx_t_6 = PyTuple_New(2); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 162, __pyx_L1_error)
+  __pyx_t_6 = PyTuple_New(2); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 224, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_6);
-  __Pyx_INCREF(__pyx_v_prob_dens);
-  __Pyx_GIVEREF(__pyx_v_prob_dens);
-  PyTuple_SET_ITEM(__pyx_t_6, 0, __pyx_v_prob_dens);
-  __Pyx_INCREF(__pyx_v_prob_dens);
-  __Pyx_GIVEREF(__pyx_v_prob_dens);
-  PyTuple_SET_ITEM(__pyx_t_6, 1, __pyx_v_prob_dens);
+  __Pyx_INCREF(__pyx_v_dens_vec);
+  __Pyx_GIVEREF(__pyx_v_dens_vec);
+  PyTuple_SET_ITEM(__pyx_t_6, 0, __pyx_v_dens_vec);
+  __Pyx_INCREF(__pyx_v_dens_vec);
+  __Pyx_GIVEREF(__pyx_v_dens_vec);
+  PyTuple_SET_ITEM(__pyx_t_6, 1, __pyx_v_dens_vec);
   __pyx_t_8 = NULL;
   if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_7))) {
     __pyx_t_8 = PyMethod_GET_SELF(__pyx_t_7);
@@ -7758,13 +9083,13 @@ static PyObject *__pyx_pf_14structureboost_12pdf_discrete_4density_plot(CYTHON_U
   __pyx_t_5 = (__pyx_t_8) ? __Pyx_PyObject_Call2Args(__pyx_t_7, __pyx_t_8, __pyx_t_6) : __Pyx_PyObject_CallOneArg(__pyx_t_7, __pyx_t_6);
   __Pyx_XDECREF(__pyx_t_8); __pyx_t_8 = 0;
   __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
-  if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 162, __pyx_L1_error)
+  if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 224, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
   __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
-  __pyx_t_7 = __Pyx_PyObject_GetAttrStr(__pyx_t_5, __pyx_n_s_T); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 162, __pyx_L1_error)
+  __pyx_t_7 = __Pyx_PyObject_GetAttrStr(__pyx_t_5, __pyx_n_s_T); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 224, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_7);
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-  __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_t_7, __pyx_n_s_reshape); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 162, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_t_7, __pyx_n_s_reshape); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 224, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
   __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
   __pyx_t_7 = NULL;
@@ -7779,79 +9104,79 @@ static PyObject *__pyx_pf_14structureboost_12pdf_discrete_4density_plot(CYTHON_U
   }
   __pyx_t_3 = (__pyx_t_7) ? __Pyx_PyObject_Call2Args(__pyx_t_5, __pyx_t_7, __pyx_int_neg_1) : __Pyx_PyObject_CallOneArg(__pyx_t_5, __pyx_int_neg_1);
   __Pyx_XDECREF(__pyx_t_7); __pyx_t_7 = 0;
-  if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 162, __pyx_L1_error)
+  if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 224, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-  __pyx_t_5 = PyList_New(1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 162, __pyx_L1_error)
+  __pyx_t_5 = PyList_New(1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 224, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
   __Pyx_INCREF(__pyx_int_0);
   __Pyx_GIVEREF(__pyx_int_0);
   PyList_SET_ITEM(__pyx_t_5, 0, __pyx_int_0);
-  __pyx_t_7 = PyTuple_New(3); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 162, __pyx_L1_error)
+  __pyx_t_7 = PyTuple_New(3); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 224, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_7);
-  __Pyx_GIVEREF(__pyx_t_1);
-  PyTuple_SET_ITEM(__pyx_t_7, 0, __pyx_t_1);
+  __Pyx_GIVEREF(__pyx_t_2);
+  PyTuple_SET_ITEM(__pyx_t_7, 0, __pyx_t_2);
   __Pyx_GIVEREF(__pyx_t_3);
   PyTuple_SET_ITEM(__pyx_t_7, 1, __pyx_t_3);
   __Pyx_GIVEREF(__pyx_t_5);
   PyTuple_SET_ITEM(__pyx_t_7, 2, __pyx_t_5);
-  __pyx_t_1 = 0;
+  __pyx_t_2 = 0;
   __pyx_t_3 = 0;
   __pyx_t_5 = 0;
   __pyx_t_5 = NULL;
-  if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_2))) {
-    __pyx_t_5 = PyMethod_GET_SELF(__pyx_t_2);
+  if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_4))) {
+    __pyx_t_5 = PyMethod_GET_SELF(__pyx_t_4);
     if (likely(__pyx_t_5)) {
-      PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_2);
+      PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_4);
       __Pyx_INCREF(__pyx_t_5);
       __Pyx_INCREF(function);
-      __Pyx_DECREF_SET(__pyx_t_2, function);
+      __Pyx_DECREF_SET(__pyx_t_4, function);
     }
   }
-  __pyx_t_4 = (__pyx_t_5) ? __Pyx_PyObject_Call2Args(__pyx_t_2, __pyx_t_5, __pyx_t_7) : __Pyx_PyObject_CallOneArg(__pyx_t_2, __pyx_t_7);
+  __pyx_t_1 = (__pyx_t_5) ? __Pyx_PyObject_Call2Args(__pyx_t_4, __pyx_t_5, __pyx_t_7) : __Pyx_PyObject_CallOneArg(__pyx_t_4, __pyx_t_7);
   __Pyx_XDECREF(__pyx_t_5); __pyx_t_5 = 0;
   __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
-  if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 162, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_4);
-  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __pyx_v_prob_plot = __pyx_t_4;
-  __pyx_t_4 = 0;
-
-  /* "structureboost/pdf_discrete.pyx":163
- *     prob_dens = prob_vec / np.diff(bin_vec)
- *     prob_plot = np.concatenate(([0],np.vstack((prob_dens, prob_dens)).T.reshape(-1),[0]))
- *     plt.plot(binvec_plot, prob_plot, **kwargs)             # <<<<<<<<<<<<<<
- * 
- * def average_densities(pd_list):
- */
-  __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_n_s_plt); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 163, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_4);
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_plot); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 163, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_2);
+  if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 224, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-  __pyx_t_4 = PyTuple_New(2); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 163, __pyx_L1_error)
+  __pyx_v_dens_plot = __pyx_t_1;
+  __pyx_t_1 = 0;
+
+  /* "structureboost/pdf_discrete.pyx":225
+ *     binvec_plot = np.vstack((bin_vec, bin_vec)).T.reshape(-1)
+ *     dens_plot = np.concatenate(([0],np.vstack((dens_vec, dens_vec)).T.reshape(-1),[0]))
+ *     plt.plot(binvec_plot, dens_plot, **kwargs)             # <<<<<<<<<<<<<<
+ * 
+ * def average_densities(pd_list, scaling='linear', weights=None):
+ */
+  __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_plt); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 225, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_plot); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 225, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
+  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+  __pyx_t_1 = PyTuple_New(2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 225, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
   __Pyx_INCREF(__pyx_v_binvec_plot);
   __Pyx_GIVEREF(__pyx_v_binvec_plot);
-  PyTuple_SET_ITEM(__pyx_t_4, 0, __pyx_v_binvec_plot);
-  __Pyx_INCREF(__pyx_v_prob_plot);
-  __Pyx_GIVEREF(__pyx_v_prob_plot);
-  PyTuple_SET_ITEM(__pyx_t_4, 1, __pyx_v_prob_plot);
-  __pyx_t_7 = PyDict_Copy(__pyx_v_kwargs); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 163, __pyx_L1_error)
+  PyTuple_SET_ITEM(__pyx_t_1, 0, __pyx_v_binvec_plot);
+  __Pyx_INCREF(__pyx_v_dens_plot);
+  __Pyx_GIVEREF(__pyx_v_dens_plot);
+  PyTuple_SET_ITEM(__pyx_t_1, 1, __pyx_v_dens_plot);
+  __pyx_t_7 = PyDict_Copy(__pyx_v_kwargs); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 225, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_7);
-  __pyx_t_5 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_4, __pyx_t_7); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 163, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_PyObject_Call(__pyx_t_4, __pyx_t_1, __pyx_t_7); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 225, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
-  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
 
-  /* "structureboost/pdf_discrete.pyx":159
+  /* "structureboost/pdf_discrete.pyx":222
  *     return(part)
  * 
- * def density_plot(bin_vec, prob_vec, **kwargs):             # <<<<<<<<<<<<<<
+ * def basic_density_plot(bin_vec, dens_vec, **kwargs):             # <<<<<<<<<<<<<<
  *     binvec_plot = np.vstack((bin_vec, bin_vec)).T.reshape(-1)
- *     prob_dens = prob_vec / np.diff(bin_vec)
+ *     dens_plot = np.concatenate(([0],np.vstack((dens_vec, dens_vec)).T.reshape(-1),[0]))
  */
 
   /* function exit code */
@@ -7866,41 +9191,108 @@ static PyObject *__pyx_pf_14structureboost_12pdf_discrete_4density_plot(CYTHON_U
   __Pyx_XDECREF(__pyx_t_6);
   __Pyx_XDECREF(__pyx_t_7);
   __Pyx_XDECREF(__pyx_t_8);
-  __Pyx_AddTraceback("structureboost.pdf_discrete.density_plot", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("structureboost.pdf_discrete.basic_density_plot", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
   __Pyx_XDECREF(__pyx_v_binvec_plot);
-  __Pyx_XDECREF(__pyx_v_prob_dens);
-  __Pyx_XDECREF(__pyx_v_prob_plot);
+  __Pyx_XDECREF(__pyx_v_dens_plot);
   __Pyx_XGIVEREF(__pyx_r);
   __Pyx_TraceReturn(__pyx_r, 0);
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-/* "structureboost/pdf_discrete.pyx":165
- *     plt.plot(binvec_plot, prob_plot, **kwargs)
+/* "structureboost/pdf_discrete.pyx":227
+ *     plt.plot(binvec_plot, dens_plot, **kwargs)
  * 
- * def average_densities(pd_list):             # <<<<<<<<<<<<<<
+ * def average_densities(pd_list, scaling='linear', weights=None):             # <<<<<<<<<<<<<<
  *     binpt_list = [pd.binvec for pd in pd_list]
  *     new_binvec = np.unique(np.concatenate(binpt_list))
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_14structureboost_12pdf_discrete_7average_densities(PyObject *__pyx_self, PyObject *__pyx_v_pd_list); /*proto*/
-static PyMethodDef __pyx_mdef_14structureboost_12pdf_discrete_7average_densities = {"average_densities", (PyCFunction)__pyx_pw_14structureboost_12pdf_discrete_7average_densities, METH_O, 0};
-static PyObject *__pyx_pw_14structureboost_12pdf_discrete_7average_densities(PyObject *__pyx_self, PyObject *__pyx_v_pd_list) {
+static PyObject *__pyx_pw_14structureboost_12pdf_discrete_7average_densities(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
+static PyMethodDef __pyx_mdef_14structureboost_12pdf_discrete_7average_densities = {"average_densities", (PyCFunction)(void*)(PyCFunctionWithKeywords)__pyx_pw_14structureboost_12pdf_discrete_7average_densities, METH_VARARGS|METH_KEYWORDS, 0};
+static PyObject *__pyx_pw_14structureboost_12pdf_discrete_7average_densities(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
+  PyObject *__pyx_v_pd_list = 0;
+  PyObject *__pyx_v_scaling = 0;
+  PyObject *__pyx_v_weights = 0;
+  int __pyx_lineno = 0;
+  const char *__pyx_filename = NULL;
+  int __pyx_clineno = 0;
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("average_densities (wrapper)", 0);
-  __pyx_r = __pyx_pf_14structureboost_12pdf_discrete_6average_densities(__pyx_self, ((PyObject *)__pyx_v_pd_list));
+  {
+    static PyObject **__pyx_pyargnames[] = {&__pyx_n_s_pd_list,&__pyx_n_s_scaling,&__pyx_n_s_weights,0};
+    PyObject* values[3] = {0,0,0};
+    values[1] = ((PyObject *)__pyx_n_u_linear);
+    values[2] = ((PyObject *)Py_None);
+    if (unlikely(__pyx_kwds)) {
+      Py_ssize_t kw_args;
+      const Py_ssize_t pos_args = PyTuple_GET_SIZE(__pyx_args);
+      switch (pos_args) {
+        case  3: values[2] = PyTuple_GET_ITEM(__pyx_args, 2);
+        CYTHON_FALLTHROUGH;
+        case  2: values[1] = PyTuple_GET_ITEM(__pyx_args, 1);
+        CYTHON_FALLTHROUGH;
+        case  1: values[0] = PyTuple_GET_ITEM(__pyx_args, 0);
+        CYTHON_FALLTHROUGH;
+        case  0: break;
+        default: goto __pyx_L5_argtuple_error;
+      }
+      kw_args = PyDict_Size(__pyx_kwds);
+      switch (pos_args) {
+        case  0:
+        if (likely((values[0] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_pd_list)) != 0)) kw_args--;
+        else goto __pyx_L5_argtuple_error;
+        CYTHON_FALLTHROUGH;
+        case  1:
+        if (kw_args > 0) {
+          PyObject* value = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_scaling);
+          if (value) { values[1] = value; kw_args--; }
+        }
+        CYTHON_FALLTHROUGH;
+        case  2:
+        if (kw_args > 0) {
+          PyObject* value = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_weights);
+          if (value) { values[2] = value; kw_args--; }
+        }
+      }
+      if (unlikely(kw_args > 0)) {
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "average_densities") < 0)) __PYX_ERR(0, 227, __pyx_L3_error)
+      }
+    } else {
+      switch (PyTuple_GET_SIZE(__pyx_args)) {
+        case  3: values[2] = PyTuple_GET_ITEM(__pyx_args, 2);
+        CYTHON_FALLTHROUGH;
+        case  2: values[1] = PyTuple_GET_ITEM(__pyx_args, 1);
+        CYTHON_FALLTHROUGH;
+        case  1: values[0] = PyTuple_GET_ITEM(__pyx_args, 0);
+        break;
+        default: goto __pyx_L5_argtuple_error;
+      }
+    }
+    __pyx_v_pd_list = values[0];
+    __pyx_v_scaling = values[1];
+    __pyx_v_weights = values[2];
+  }
+  goto __pyx_L4_argument_unpacking_done;
+  __pyx_L5_argtuple_error:;
+  __Pyx_RaiseArgtupleInvalid("average_densities", 0, 1, 3, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 227, __pyx_L3_error)
+  __pyx_L3_error:;
+  __Pyx_AddTraceback("structureboost.pdf_discrete.average_densities", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_RefNannyFinishContext();
+  return NULL;
+  __pyx_L4_argument_unpacking_done:;
+  __pyx_r = __pyx_pf_14structureboost_12pdf_discrete_6average_densities(__pyx_self, __pyx_v_pd_list, __pyx_v_scaling, __pyx_v_weights);
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_14structureboost_12pdf_discrete_6average_densities(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_pd_list) {
+static PyObject *__pyx_pf_14structureboost_12pdf_discrete_6average_densities(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_pd_list, PyObject *__pyx_v_scaling, PyObject *__pyx_v_weights) {
   PyObject *__pyx_v_binpt_list = NULL;
   PyObject *__pyx_v_new_binvec = NULL;
   PyObject *__pyx_v_new_bin_widths = NULL;
@@ -7911,6 +9303,9 @@ static PyObject *__pyx_pf_14structureboost_12pdf_discrete_6average_densities(CYT
   PyObject *__pyx_v_i = NULL;
   PyObject *__pyx_v_pd = NULL;
   PyObject *__pyx_v_new_probvec = NULL;
+  PyObject *__pyx_v_logprob_array = NULL;
+  PyObject *__pyx_v_new_logprobvec = NULL;
+  PyObject *__pyx_v_new_tempprobvec = NULL;
   PyObject *__pyx_8genexpr3__pyx_v_pd = NULL;
   PyObject *__pyx_r = NULL;
   __Pyx_TraceDeclarations
@@ -7923,47 +9318,50 @@ static PyObject *__pyx_pf_14structureboost_12pdf_discrete_6average_densities(CYT
   PyObject *__pyx_t_6 = NULL;
   PyObject *__pyx_t_7 = NULL;
   int __pyx_t_8;
+  int __pyx_t_9;
+  int __pyx_t_10;
+  PyObject *__pyx_t_11 = NULL;
   int __pyx_lineno = 0;
   const char *__pyx_filename = NULL;
   int __pyx_clineno = 0;
-  __Pyx_TraceFrameInit(__pyx_codeobj__19)
+  __Pyx_TraceFrameInit(__pyx_codeobj__22)
   __Pyx_RefNannySetupContext("average_densities", 0);
-  __Pyx_TraceCall("average_densities", __pyx_f[0], 165, 0, __PYX_ERR(0, 165, __pyx_L1_error));
+  __Pyx_TraceCall("average_densities", __pyx_f[0], 227, 0, __PYX_ERR(0, 227, __pyx_L1_error));
 
-  /* "structureboost/pdf_discrete.pyx":166
+  /* "structureboost/pdf_discrete.pyx":228
  * 
- * def average_densities(pd_list):
+ * def average_densities(pd_list, scaling='linear', weights=None):
  *     binpt_list = [pd.binvec for pd in pd_list]             # <<<<<<<<<<<<<<
  *     new_binvec = np.unique(np.concatenate(binpt_list))
  *     new_bin_widths = new_binvec[1:] - new_binvec[:-1]
  */
   { /* enter inner scope */
-    __pyx_t_1 = PyList_New(0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 166, __pyx_L5_error)
+    __pyx_t_1 = PyList_New(0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 228, __pyx_L5_error)
     __Pyx_GOTREF(__pyx_t_1);
     if (likely(PyList_CheckExact(__pyx_v_pd_list)) || PyTuple_CheckExact(__pyx_v_pd_list)) {
       __pyx_t_2 = __pyx_v_pd_list; __Pyx_INCREF(__pyx_t_2); __pyx_t_3 = 0;
       __pyx_t_4 = NULL;
     } else {
-      __pyx_t_3 = -1; __pyx_t_2 = PyObject_GetIter(__pyx_v_pd_list); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 166, __pyx_L5_error)
+      __pyx_t_3 = -1; __pyx_t_2 = PyObject_GetIter(__pyx_v_pd_list); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 228, __pyx_L5_error)
       __Pyx_GOTREF(__pyx_t_2);
-      __pyx_t_4 = Py_TYPE(__pyx_t_2)->tp_iternext; if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 166, __pyx_L5_error)
+      __pyx_t_4 = Py_TYPE(__pyx_t_2)->tp_iternext; if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 228, __pyx_L5_error)
     }
     for (;;) {
       if (likely(!__pyx_t_4)) {
         if (likely(PyList_CheckExact(__pyx_t_2))) {
           if (__pyx_t_3 >= PyList_GET_SIZE(__pyx_t_2)) break;
           #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-          __pyx_t_5 = PyList_GET_ITEM(__pyx_t_2, __pyx_t_3); __Pyx_INCREF(__pyx_t_5); __pyx_t_3++; if (unlikely(0 < 0)) __PYX_ERR(0, 166, __pyx_L5_error)
+          __pyx_t_5 = PyList_GET_ITEM(__pyx_t_2, __pyx_t_3); __Pyx_INCREF(__pyx_t_5); __pyx_t_3++; if (unlikely(0 < 0)) __PYX_ERR(0, 228, __pyx_L5_error)
           #else
-          __pyx_t_5 = PySequence_ITEM(__pyx_t_2, __pyx_t_3); __pyx_t_3++; if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 166, __pyx_L5_error)
+          __pyx_t_5 = PySequence_ITEM(__pyx_t_2, __pyx_t_3); __pyx_t_3++; if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 228, __pyx_L5_error)
           __Pyx_GOTREF(__pyx_t_5);
           #endif
         } else {
           if (__pyx_t_3 >= PyTuple_GET_SIZE(__pyx_t_2)) break;
           #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-          __pyx_t_5 = PyTuple_GET_ITEM(__pyx_t_2, __pyx_t_3); __Pyx_INCREF(__pyx_t_5); __pyx_t_3++; if (unlikely(0 < 0)) __PYX_ERR(0, 166, __pyx_L5_error)
+          __pyx_t_5 = PyTuple_GET_ITEM(__pyx_t_2, __pyx_t_3); __Pyx_INCREF(__pyx_t_5); __pyx_t_3++; if (unlikely(0 < 0)) __PYX_ERR(0, 228, __pyx_L5_error)
           #else
-          __pyx_t_5 = PySequence_ITEM(__pyx_t_2, __pyx_t_3); __pyx_t_3++; if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 166, __pyx_L5_error)
+          __pyx_t_5 = PySequence_ITEM(__pyx_t_2, __pyx_t_3); __pyx_t_3++; if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 228, __pyx_L5_error)
           __Pyx_GOTREF(__pyx_t_5);
           #endif
         }
@@ -7973,7 +9371,7 @@ static PyObject *__pyx_pf_14structureboost_12pdf_discrete_6average_densities(CYT
           PyObject* exc_type = PyErr_Occurred();
           if (exc_type) {
             if (likely(__Pyx_PyErr_GivenExceptionMatches(exc_type, PyExc_StopIteration))) PyErr_Clear();
-            else __PYX_ERR(0, 166, __pyx_L5_error)
+            else __PYX_ERR(0, 228, __pyx_L5_error)
           }
           break;
         }
@@ -7981,9 +9379,9 @@ static PyObject *__pyx_pf_14structureboost_12pdf_discrete_6average_densities(CYT
       }
       __Pyx_XDECREF_SET(__pyx_8genexpr3__pyx_v_pd, __pyx_t_5);
       __pyx_t_5 = 0;
-      __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_8genexpr3__pyx_v_pd, __pyx_n_s_binvec); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 166, __pyx_L5_error)
+      __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_8genexpr3__pyx_v_pd, __pyx_n_s_binvec); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 228, __pyx_L5_error)
       __Pyx_GOTREF(__pyx_t_5);
-      if (unlikely(__Pyx_ListComp_Append(__pyx_t_1, (PyObject*)__pyx_t_5))) __PYX_ERR(0, 166, __pyx_L5_error)
+      if (unlikely(__Pyx_ListComp_Append(__pyx_t_1, (PyObject*)__pyx_t_5))) __PYX_ERR(0, 228, __pyx_L5_error)
       __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
     }
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
@@ -7997,21 +9395,21 @@ static PyObject *__pyx_pf_14structureboost_12pdf_discrete_6average_densities(CYT
   __pyx_v_binpt_list = ((PyObject*)__pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "structureboost/pdf_discrete.pyx":167
- * def average_densities(pd_list):
+  /* "structureboost/pdf_discrete.pyx":229
+ * def average_densities(pd_list, scaling='linear', weights=None):
  *     binpt_list = [pd.binvec for pd in pd_list]
  *     new_binvec = np.unique(np.concatenate(binpt_list))             # <<<<<<<<<<<<<<
  *     new_bin_widths = new_binvec[1:] - new_binvec[:-1]
  *     new_midpts = (new_binvec[1:]+new_binvec[:-1])/2
  */
-  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_np); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 167, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_np); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 229, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_unique); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 167, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_unique); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 229, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __Pyx_GetModuleGlobalName(__pyx_t_6, __pyx_n_s_np); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 167, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_6, __pyx_n_s_np); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 229, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_6);
-  __pyx_t_7 = __Pyx_PyObject_GetAttrStr(__pyx_t_6, __pyx_n_s_concatenate); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 167, __pyx_L1_error)
+  __pyx_t_7 = __Pyx_PyObject_GetAttrStr(__pyx_t_6, __pyx_n_s_concatenate); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 229, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_7);
   __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
   __pyx_t_6 = NULL;
@@ -8026,7 +9424,7 @@ static PyObject *__pyx_pf_14structureboost_12pdf_discrete_6average_densities(CYT
   }
   __pyx_t_2 = (__pyx_t_6) ? __Pyx_PyObject_Call2Args(__pyx_t_7, __pyx_t_6, __pyx_v_binpt_list) : __Pyx_PyObject_CallOneArg(__pyx_t_7, __pyx_v_binpt_list);
   __Pyx_XDECREF(__pyx_t_6); __pyx_t_6 = 0;
-  if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 167, __pyx_L1_error)
+  if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 229, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
   __pyx_t_7 = NULL;
@@ -8042,88 +9440,88 @@ static PyObject *__pyx_pf_14structureboost_12pdf_discrete_6average_densities(CYT
   __pyx_t_1 = (__pyx_t_7) ? __Pyx_PyObject_Call2Args(__pyx_t_5, __pyx_t_7, __pyx_t_2) : __Pyx_PyObject_CallOneArg(__pyx_t_5, __pyx_t_2);
   __Pyx_XDECREF(__pyx_t_7); __pyx_t_7 = 0;
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 167, __pyx_L1_error)
+  if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 229, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
   __pyx_v_new_binvec = __pyx_t_1;
   __pyx_t_1 = 0;
 
-  /* "structureboost/pdf_discrete.pyx":168
+  /* "structureboost/pdf_discrete.pyx":230
  *     binpt_list = [pd.binvec for pd in pd_list]
  *     new_binvec = np.unique(np.concatenate(binpt_list))
  *     new_bin_widths = new_binvec[1:] - new_binvec[:-1]             # <<<<<<<<<<<<<<
  *     new_midpts = (new_binvec[1:]+new_binvec[:-1])/2
  *     num_dens = len(pd_list)
  */
-  __pyx_t_1 = __Pyx_PyObject_GetSlice(__pyx_v_new_binvec, 1, 0, NULL, NULL, &__pyx_slice__3, 1, 0, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 168, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_GetSlice(__pyx_v_new_binvec, 1, 0, NULL, NULL, &__pyx_slice__2, 1, 0, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 230, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_5 = __Pyx_PyObject_GetSlice(__pyx_v_new_binvec, 0, -1L, NULL, NULL, &__pyx_slice__2, 0, 1, 1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 168, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_PyObject_GetSlice(__pyx_v_new_binvec, 0, -1L, NULL, NULL, &__pyx_slice__3, 0, 1, 1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 230, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
-  __pyx_t_2 = PyNumber_Subtract(__pyx_t_1, __pyx_t_5); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 168, __pyx_L1_error)
+  __pyx_t_2 = PyNumber_Subtract(__pyx_t_1, __pyx_t_5); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 230, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
   __pyx_v_new_bin_widths = __pyx_t_2;
   __pyx_t_2 = 0;
 
-  /* "structureboost/pdf_discrete.pyx":169
+  /* "structureboost/pdf_discrete.pyx":231
  *     new_binvec = np.unique(np.concatenate(binpt_list))
  *     new_bin_widths = new_binvec[1:] - new_binvec[:-1]
  *     new_midpts = (new_binvec[1:]+new_binvec[:-1])/2             # <<<<<<<<<<<<<<
  *     num_dens = len(pd_list)
  *     num_bins = len(new_midpts)
  */
-  __pyx_t_2 = __Pyx_PyObject_GetSlice(__pyx_v_new_binvec, 1, 0, NULL, NULL, &__pyx_slice__3, 1, 0, 1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 169, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_GetSlice(__pyx_v_new_binvec, 1, 0, NULL, NULL, &__pyx_slice__2, 1, 0, 1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 231, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_5 = __Pyx_PyObject_GetSlice(__pyx_v_new_binvec, 0, -1L, NULL, NULL, &__pyx_slice__2, 0, 1, 1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 169, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_PyObject_GetSlice(__pyx_v_new_binvec, 0, -1L, NULL, NULL, &__pyx_slice__3, 0, 1, 1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 231, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
-  __pyx_t_1 = PyNumber_Add(__pyx_t_2, __pyx_t_5); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 169, __pyx_L1_error)
+  __pyx_t_1 = PyNumber_Add(__pyx_t_2, __pyx_t_5); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 231, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-  __pyx_t_5 = __Pyx_PyInt_TrueDivideObjC(__pyx_t_1, __pyx_int_2, 2, 0, 0); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 169, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_PyInt_TrueDivideObjC(__pyx_t_1, __pyx_int_2, 2, 0, 0); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 231, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __pyx_v_new_midpts = __pyx_t_5;
   __pyx_t_5 = 0;
 
-  /* "structureboost/pdf_discrete.pyx":170
+  /* "structureboost/pdf_discrete.pyx":232
  *     new_bin_widths = new_binvec[1:] - new_binvec[:-1]
  *     new_midpts = (new_binvec[1:]+new_binvec[:-1])/2
  *     num_dens = len(pd_list)             # <<<<<<<<<<<<<<
  *     num_bins = len(new_midpts)
  *     prob_array = np.zeros((num_dens, num_bins))
  */
-  __pyx_t_3 = PyObject_Length(__pyx_v_pd_list); if (unlikely(__pyx_t_3 == ((Py_ssize_t)-1))) __PYX_ERR(0, 170, __pyx_L1_error)
+  __pyx_t_3 = PyObject_Length(__pyx_v_pd_list); if (unlikely(__pyx_t_3 == ((Py_ssize_t)-1))) __PYX_ERR(0, 232, __pyx_L1_error)
   __pyx_v_num_dens = __pyx_t_3;
 
-  /* "structureboost/pdf_discrete.pyx":171
+  /* "structureboost/pdf_discrete.pyx":233
  *     new_midpts = (new_binvec[1:]+new_binvec[:-1])/2
  *     num_dens = len(pd_list)
  *     num_bins = len(new_midpts)             # <<<<<<<<<<<<<<
  *     prob_array = np.zeros((num_dens, num_bins))
- *     for i,pd in enumerate(pd_list):
+ *     if scaling=='linear':
  */
-  __pyx_t_3 = PyObject_Length(__pyx_v_new_midpts); if (unlikely(__pyx_t_3 == ((Py_ssize_t)-1))) __PYX_ERR(0, 171, __pyx_L1_error)
+  __pyx_t_3 = PyObject_Length(__pyx_v_new_midpts); if (unlikely(__pyx_t_3 == ((Py_ssize_t)-1))) __PYX_ERR(0, 233, __pyx_L1_error)
   __pyx_v_num_bins = __pyx_t_3;
 
-  /* "structureboost/pdf_discrete.pyx":172
+  /* "structureboost/pdf_discrete.pyx":234
  *     num_dens = len(pd_list)
  *     num_bins = len(new_midpts)
  *     prob_array = np.zeros((num_dens, num_bins))             # <<<<<<<<<<<<<<
- *     for i,pd in enumerate(pd_list):
- *         prob_array[i,:] = pd.density(new_midpts)*new_bin_widths
+ *     if scaling=='linear':
+ *         for i,pd in enumerate(pd_list):
  */
-  __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_np); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 172, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_np); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 234, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_zeros); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 172, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_zeros); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 234, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_t_1 = PyInt_FromSsize_t(__pyx_v_num_dens); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 172, __pyx_L1_error)
+  __pyx_t_1 = PyInt_FromSsize_t(__pyx_v_num_dens); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 234, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_7 = PyInt_FromSsize_t(__pyx_v_num_bins); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 172, __pyx_L1_error)
+  __pyx_t_7 = PyInt_FromSsize_t(__pyx_v_num_bins); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 234, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_7);
-  __pyx_t_6 = PyTuple_New(2); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 172, __pyx_L1_error)
+  __pyx_t_6 = PyTuple_New(2); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 234, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_6);
   __Pyx_GIVEREF(__pyx_t_1);
   PyTuple_SET_ITEM(__pyx_t_6, 0, __pyx_t_1);
@@ -8144,209 +9542,685 @@ static PyObject *__pyx_pf_14structureboost_12pdf_discrete_6average_densities(CYT
   __pyx_t_5 = (__pyx_t_7) ? __Pyx_PyObject_Call2Args(__pyx_t_2, __pyx_t_7, __pyx_t_6) : __Pyx_PyObject_CallOneArg(__pyx_t_2, __pyx_t_6);
   __Pyx_XDECREF(__pyx_t_7); __pyx_t_7 = 0;
   __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
-  if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 172, __pyx_L1_error)
+  if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 234, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __pyx_v_prob_array = __pyx_t_5;
   __pyx_t_5 = 0;
 
-  /* "structureboost/pdf_discrete.pyx":173
+  /* "structureboost/pdf_discrete.pyx":235
  *     num_bins = len(new_midpts)
  *     prob_array = np.zeros((num_dens, num_bins))
- *     for i,pd in enumerate(pd_list):             # <<<<<<<<<<<<<<
- *         prob_array[i,:] = pd.density(new_midpts)*new_bin_widths
- *     new_probvec = np.mean(prob_array, axis=0)
+ *     if scaling=='linear':             # <<<<<<<<<<<<<<
+ *         for i,pd in enumerate(pd_list):
+ *             prob_array[i,:] = pd.density(new_midpts)*new_bin_widths
  */
-  __Pyx_INCREF(__pyx_int_0);
-  __pyx_t_5 = __pyx_int_0;
-  if (likely(PyList_CheckExact(__pyx_v_pd_list)) || PyTuple_CheckExact(__pyx_v_pd_list)) {
-    __pyx_t_2 = __pyx_v_pd_list; __Pyx_INCREF(__pyx_t_2); __pyx_t_3 = 0;
-    __pyx_t_4 = NULL;
-  } else {
-    __pyx_t_3 = -1; __pyx_t_2 = PyObject_GetIter(__pyx_v_pd_list); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 173, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_2);
-    __pyx_t_4 = Py_TYPE(__pyx_t_2)->tp_iternext; if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 173, __pyx_L1_error)
-  }
-  for (;;) {
-    if (likely(!__pyx_t_4)) {
-      if (likely(PyList_CheckExact(__pyx_t_2))) {
-        if (__pyx_t_3 >= PyList_GET_SIZE(__pyx_t_2)) break;
-        #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-        __pyx_t_6 = PyList_GET_ITEM(__pyx_t_2, __pyx_t_3); __Pyx_INCREF(__pyx_t_6); __pyx_t_3++; if (unlikely(0 < 0)) __PYX_ERR(0, 173, __pyx_L1_error)
-        #else
-        __pyx_t_6 = PySequence_ITEM(__pyx_t_2, __pyx_t_3); __pyx_t_3++; if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 173, __pyx_L1_error)
-        __Pyx_GOTREF(__pyx_t_6);
-        #endif
-      } else {
-        if (__pyx_t_3 >= PyTuple_GET_SIZE(__pyx_t_2)) break;
-        #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-        __pyx_t_6 = PyTuple_GET_ITEM(__pyx_t_2, __pyx_t_3); __Pyx_INCREF(__pyx_t_6); __pyx_t_3++; if (unlikely(0 < 0)) __PYX_ERR(0, 173, __pyx_L1_error)
-        #else
-        __pyx_t_6 = PySequence_ITEM(__pyx_t_2, __pyx_t_3); __pyx_t_3++; if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 173, __pyx_L1_error)
-        __Pyx_GOTREF(__pyx_t_6);
-        #endif
-      }
+  __pyx_t_8 = (__Pyx_PyUnicode_Equals(__pyx_v_scaling, __pyx_n_u_linear, Py_EQ)); if (unlikely(__pyx_t_8 < 0)) __PYX_ERR(0, 235, __pyx_L1_error)
+  if (__pyx_t_8) {
+
+    /* "structureboost/pdf_discrete.pyx":236
+ *     prob_array = np.zeros((num_dens, num_bins))
+ *     if scaling=='linear':
+ *         for i,pd in enumerate(pd_list):             # <<<<<<<<<<<<<<
+ *             prob_array[i,:] = pd.density(new_midpts)*new_bin_widths
+ *         if weights is None:
+ */
+    __Pyx_INCREF(__pyx_int_0);
+    __pyx_t_5 = __pyx_int_0;
+    if (likely(PyList_CheckExact(__pyx_v_pd_list)) || PyTuple_CheckExact(__pyx_v_pd_list)) {
+      __pyx_t_2 = __pyx_v_pd_list; __Pyx_INCREF(__pyx_t_2); __pyx_t_3 = 0;
+      __pyx_t_4 = NULL;
     } else {
-      __pyx_t_6 = __pyx_t_4(__pyx_t_2);
-      if (unlikely(!__pyx_t_6)) {
-        PyObject* exc_type = PyErr_Occurred();
-        if (exc_type) {
-          if (likely(__Pyx_PyErr_GivenExceptionMatches(exc_type, PyExc_StopIteration))) PyErr_Clear();
-          else __PYX_ERR(0, 173, __pyx_L1_error)
+      __pyx_t_3 = -1; __pyx_t_2 = PyObject_GetIter(__pyx_v_pd_list); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 236, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_2);
+      __pyx_t_4 = Py_TYPE(__pyx_t_2)->tp_iternext; if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 236, __pyx_L1_error)
+    }
+    for (;;) {
+      if (likely(!__pyx_t_4)) {
+        if (likely(PyList_CheckExact(__pyx_t_2))) {
+          if (__pyx_t_3 >= PyList_GET_SIZE(__pyx_t_2)) break;
+          #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
+          __pyx_t_6 = PyList_GET_ITEM(__pyx_t_2, __pyx_t_3); __Pyx_INCREF(__pyx_t_6); __pyx_t_3++; if (unlikely(0 < 0)) __PYX_ERR(0, 236, __pyx_L1_error)
+          #else
+          __pyx_t_6 = PySequence_ITEM(__pyx_t_2, __pyx_t_3); __pyx_t_3++; if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 236, __pyx_L1_error)
+          __Pyx_GOTREF(__pyx_t_6);
+          #endif
+        } else {
+          if (__pyx_t_3 >= PyTuple_GET_SIZE(__pyx_t_2)) break;
+          #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
+          __pyx_t_6 = PyTuple_GET_ITEM(__pyx_t_2, __pyx_t_3); __Pyx_INCREF(__pyx_t_6); __pyx_t_3++; if (unlikely(0 < 0)) __PYX_ERR(0, 236, __pyx_L1_error)
+          #else
+          __pyx_t_6 = PySequence_ITEM(__pyx_t_2, __pyx_t_3); __pyx_t_3++; if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 236, __pyx_L1_error)
+          __Pyx_GOTREF(__pyx_t_6);
+          #endif
         }
-        break;
+      } else {
+        __pyx_t_6 = __pyx_t_4(__pyx_t_2);
+        if (unlikely(!__pyx_t_6)) {
+          PyObject* exc_type = PyErr_Occurred();
+          if (exc_type) {
+            if (likely(__Pyx_PyErr_GivenExceptionMatches(exc_type, PyExc_StopIteration))) PyErr_Clear();
+            else __PYX_ERR(0, 236, __pyx_L1_error)
+          }
+          break;
+        }
+        __Pyx_GOTREF(__pyx_t_6);
       }
+      __Pyx_XDECREF_SET(__pyx_v_pd, __pyx_t_6);
+      __pyx_t_6 = 0;
+      __Pyx_INCREF(__pyx_t_5);
+      __Pyx_XDECREF_SET(__pyx_v_i, __pyx_t_5);
+      __pyx_t_6 = __Pyx_PyInt_AddObjC(__pyx_t_5, __pyx_int_1, 1, 0, 0); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 236, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_6);
-    }
-    __Pyx_XDECREF_SET(__pyx_v_pd, __pyx_t_6);
-    __pyx_t_6 = 0;
-    __Pyx_INCREF(__pyx_t_5);
-    __Pyx_XDECREF_SET(__pyx_v_i, __pyx_t_5);
-    __pyx_t_6 = __Pyx_PyInt_AddObjC(__pyx_t_5, __pyx_int_1, 1, 0, 0); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 173, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_6);
-    __Pyx_DECREF(__pyx_t_5);
-    __pyx_t_5 = __pyx_t_6;
-    __pyx_t_6 = 0;
+      __Pyx_DECREF(__pyx_t_5);
+      __pyx_t_5 = __pyx_t_6;
+      __pyx_t_6 = 0;
 
-    /* "structureboost/pdf_discrete.pyx":174
- *     prob_array = np.zeros((num_dens, num_bins))
- *     for i,pd in enumerate(pd_list):
- *         prob_array[i,:] = pd.density(new_midpts)*new_bin_widths             # <<<<<<<<<<<<<<
- *     new_probvec = np.mean(prob_array, axis=0)
- *     # return(prob_array)
+      /* "structureboost/pdf_discrete.pyx":237
+ *     if scaling=='linear':
+ *         for i,pd in enumerate(pd_list):
+ *             prob_array[i,:] = pd.density(new_midpts)*new_bin_widths             # <<<<<<<<<<<<<<
+ *         if weights is None:
+ *             new_probvec = np.mean(prob_array, axis=0)
  */
-    __pyx_t_7 = __Pyx_PyObject_GetAttrStr(__pyx_v_pd, __pyx_n_s_density); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 174, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_7);
-    __pyx_t_1 = NULL;
-    if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_7))) {
-      __pyx_t_1 = PyMethod_GET_SELF(__pyx_t_7);
-      if (likely(__pyx_t_1)) {
-        PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_7);
-        __Pyx_INCREF(__pyx_t_1);
-        __Pyx_INCREF(function);
-        __Pyx_DECREF_SET(__pyx_t_7, function);
+      __pyx_t_7 = __Pyx_PyObject_GetAttrStr(__pyx_v_pd, __pyx_n_s_density); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 237, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_7);
+      __pyx_t_1 = NULL;
+      if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_7))) {
+        __pyx_t_1 = PyMethod_GET_SELF(__pyx_t_7);
+        if (likely(__pyx_t_1)) {
+          PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_7);
+          __Pyx_INCREF(__pyx_t_1);
+          __Pyx_INCREF(function);
+          __Pyx_DECREF_SET(__pyx_t_7, function);
+        }
       }
-    }
-    __pyx_t_6 = (__pyx_t_1) ? __Pyx_PyObject_Call2Args(__pyx_t_7, __pyx_t_1, __pyx_v_new_midpts) : __Pyx_PyObject_CallOneArg(__pyx_t_7, __pyx_v_new_midpts);
-    __Pyx_XDECREF(__pyx_t_1); __pyx_t_1 = 0;
-    if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 174, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_6);
-    __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
-    __pyx_t_7 = PyNumber_Multiply(__pyx_t_6, __pyx_v_new_bin_widths); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 174, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_7);
-    __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
-    __pyx_t_6 = PyTuple_New(2); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 174, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_6);
-    __Pyx_INCREF(__pyx_v_i);
-    __Pyx_GIVEREF(__pyx_v_i);
-    PyTuple_SET_ITEM(__pyx_t_6, 0, __pyx_v_i);
-    __Pyx_INCREF(__pyx_slice__20);
-    __Pyx_GIVEREF(__pyx_slice__20);
-    PyTuple_SET_ITEM(__pyx_t_6, 1, __pyx_slice__20);
-    if (unlikely(PyObject_SetItem(__pyx_v_prob_array, __pyx_t_6, __pyx_t_7) < 0)) __PYX_ERR(0, 174, __pyx_L1_error)
-    __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
-    __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
+      __pyx_t_6 = (__pyx_t_1) ? __Pyx_PyObject_Call2Args(__pyx_t_7, __pyx_t_1, __pyx_v_new_midpts) : __Pyx_PyObject_CallOneArg(__pyx_t_7, __pyx_v_new_midpts);
+      __Pyx_XDECREF(__pyx_t_1); __pyx_t_1 = 0;
+      if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 237, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_6);
+      __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
+      __pyx_t_7 = PyNumber_Multiply(__pyx_t_6, __pyx_v_new_bin_widths); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 237, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_7);
+      __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
+      __pyx_t_6 = PyTuple_New(2); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 237, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_6);
+      __Pyx_INCREF(__pyx_v_i);
+      __Pyx_GIVEREF(__pyx_v_i);
+      PyTuple_SET_ITEM(__pyx_t_6, 0, __pyx_v_i);
+      __Pyx_INCREF(__pyx_slice__23);
+      __Pyx_GIVEREF(__pyx_slice__23);
+      PyTuple_SET_ITEM(__pyx_t_6, 1, __pyx_slice__23);
+      if (unlikely(PyObject_SetItem(__pyx_v_prob_array, __pyx_t_6, __pyx_t_7) < 0)) __PYX_ERR(0, 237, __pyx_L1_error)
+      __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
+      __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
 
-    /* "structureboost/pdf_discrete.pyx":173
+      /* "structureboost/pdf_discrete.pyx":236
+ *     prob_array = np.zeros((num_dens, num_bins))
+ *     if scaling=='linear':
+ *         for i,pd in enumerate(pd_list):             # <<<<<<<<<<<<<<
+ *             prob_array[i,:] = pd.density(new_midpts)*new_bin_widths
+ *         if weights is None:
+ */
+    }
+    __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+    __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
+
+    /* "structureboost/pdf_discrete.pyx":238
+ *         for i,pd in enumerate(pd_list):
+ *             prob_array[i,:] = pd.density(new_midpts)*new_bin_widths
+ *         if weights is None:             # <<<<<<<<<<<<<<
+ *             new_probvec = np.mean(prob_array, axis=0)
+ *         else:
+ */
+    __pyx_t_8 = (__pyx_v_weights == Py_None);
+    __pyx_t_9 = (__pyx_t_8 != 0);
+    if (__pyx_t_9) {
+
+      /* "structureboost/pdf_discrete.pyx":239
+ *             prob_array[i,:] = pd.density(new_midpts)*new_bin_widths
+ *         if weights is None:
+ *             new_probvec = np.mean(prob_array, axis=0)             # <<<<<<<<<<<<<<
+ *         else:
+ *             new_probvec = np.array(weights).dot(prob_array)
+ */
+      __Pyx_GetModuleGlobalName(__pyx_t_5, __pyx_n_s_np); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 239, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_5);
+      __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_5, __pyx_n_s_mean); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 239, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_2);
+      __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
+      __pyx_t_5 = PyTuple_New(1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 239, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_5);
+      __Pyx_INCREF(__pyx_v_prob_array);
+      __Pyx_GIVEREF(__pyx_v_prob_array);
+      PyTuple_SET_ITEM(__pyx_t_5, 0, __pyx_v_prob_array);
+      __pyx_t_7 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 239, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_7);
+      if (PyDict_SetItem(__pyx_t_7, __pyx_n_s_axis, __pyx_int_0) < 0) __PYX_ERR(0, 239, __pyx_L1_error)
+      __pyx_t_6 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_5, __pyx_t_7); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 239, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_6);
+      __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+      __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
+      __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
+      __pyx_v_new_probvec = __pyx_t_6;
+      __pyx_t_6 = 0;
+
+      /* "structureboost/pdf_discrete.pyx":238
+ *         for i,pd in enumerate(pd_list):
+ *             prob_array[i,:] = pd.density(new_midpts)*new_bin_widths
+ *         if weights is None:             # <<<<<<<<<<<<<<
+ *             new_probvec = np.mean(prob_array, axis=0)
+ *         else:
+ */
+      goto __pyx_L12;
+    }
+
+    /* "structureboost/pdf_discrete.pyx":241
+ *             new_probvec = np.mean(prob_array, axis=0)
+ *         else:
+ *             new_probvec = np.array(weights).dot(prob_array)             # <<<<<<<<<<<<<<
+ *     if scaling=='log':
+ *         for i,pd in enumerate(pd_list):
+ */
+    /*else*/ {
+      __Pyx_GetModuleGlobalName(__pyx_t_5, __pyx_n_s_np); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 241, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_5);
+      __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_5, __pyx_n_s_array); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 241, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_2);
+      __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
+      __pyx_t_5 = NULL;
+      if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_2))) {
+        __pyx_t_5 = PyMethod_GET_SELF(__pyx_t_2);
+        if (likely(__pyx_t_5)) {
+          PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_2);
+          __Pyx_INCREF(__pyx_t_5);
+          __Pyx_INCREF(function);
+          __Pyx_DECREF_SET(__pyx_t_2, function);
+        }
+      }
+      __pyx_t_7 = (__pyx_t_5) ? __Pyx_PyObject_Call2Args(__pyx_t_2, __pyx_t_5, __pyx_v_weights) : __Pyx_PyObject_CallOneArg(__pyx_t_2, __pyx_v_weights);
+      __Pyx_XDECREF(__pyx_t_5); __pyx_t_5 = 0;
+      if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 241, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_7);
+      __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+      __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_7, __pyx_n_s_dot); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 241, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_2);
+      __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
+      __pyx_t_7 = NULL;
+      if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_2))) {
+        __pyx_t_7 = PyMethod_GET_SELF(__pyx_t_2);
+        if (likely(__pyx_t_7)) {
+          PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_2);
+          __Pyx_INCREF(__pyx_t_7);
+          __Pyx_INCREF(function);
+          __Pyx_DECREF_SET(__pyx_t_2, function);
+        }
+      }
+      __pyx_t_6 = (__pyx_t_7) ? __Pyx_PyObject_Call2Args(__pyx_t_2, __pyx_t_7, __pyx_v_prob_array) : __Pyx_PyObject_CallOneArg(__pyx_t_2, __pyx_v_prob_array);
+      __Pyx_XDECREF(__pyx_t_7); __pyx_t_7 = 0;
+      if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 241, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_6);
+      __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+      __pyx_v_new_probvec = __pyx_t_6;
+      __pyx_t_6 = 0;
+    }
+    __pyx_L12:;
+
+    /* "structureboost/pdf_discrete.pyx":235
  *     num_bins = len(new_midpts)
  *     prob_array = np.zeros((num_dens, num_bins))
- *     for i,pd in enumerate(pd_list):             # <<<<<<<<<<<<<<
- *         prob_array[i,:] = pd.density(new_midpts)*new_bin_widths
- *     new_probvec = np.mean(prob_array, axis=0)
+ *     if scaling=='linear':             # <<<<<<<<<<<<<<
+ *         for i,pd in enumerate(pd_list):
+ *             prob_array[i,:] = pd.density(new_midpts)*new_bin_widths
  */
   }
-  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
 
-  /* "structureboost/pdf_discrete.pyx":175
- *     for i,pd in enumerate(pd_list):
- *         prob_array[i,:] = pd.density(new_midpts)*new_bin_widths
- *     new_probvec = np.mean(prob_array, axis=0)             # <<<<<<<<<<<<<<
- *     # return(prob_array)
+  /* "structureboost/pdf_discrete.pyx":242
+ *         else:
+ *             new_probvec = np.array(weights).dot(prob_array)
+ *     if scaling=='log':             # <<<<<<<<<<<<<<
+ *         for i,pd in enumerate(pd_list):
+ *             prob_array[i,:] = pd.density(new_midpts)*new_bin_widths
+ */
+  __pyx_t_9 = (__Pyx_PyUnicode_Equals(__pyx_v_scaling, __pyx_n_u_log, Py_EQ)); if (unlikely(__pyx_t_9 < 0)) __PYX_ERR(0, 242, __pyx_L1_error)
+  if (__pyx_t_9) {
+
+    /* "structureboost/pdf_discrete.pyx":243
+ *             new_probvec = np.array(weights).dot(prob_array)
+ *     if scaling=='log':
+ *         for i,pd in enumerate(pd_list):             # <<<<<<<<<<<<<<
+ *             prob_array[i,:] = pd.density(new_midpts)*new_bin_widths
+ *             prob_array=np.maximum(prob_array, 1e-16)
+ */
+    __Pyx_INCREF(__pyx_int_0);
+    __pyx_t_6 = __pyx_int_0;
+    if (likely(PyList_CheckExact(__pyx_v_pd_list)) || PyTuple_CheckExact(__pyx_v_pd_list)) {
+      __pyx_t_2 = __pyx_v_pd_list; __Pyx_INCREF(__pyx_t_2); __pyx_t_3 = 0;
+      __pyx_t_4 = NULL;
+    } else {
+      __pyx_t_3 = -1; __pyx_t_2 = PyObject_GetIter(__pyx_v_pd_list); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 243, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_2);
+      __pyx_t_4 = Py_TYPE(__pyx_t_2)->tp_iternext; if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 243, __pyx_L1_error)
+    }
+    for (;;) {
+      if (likely(!__pyx_t_4)) {
+        if (likely(PyList_CheckExact(__pyx_t_2))) {
+          if (__pyx_t_3 >= PyList_GET_SIZE(__pyx_t_2)) break;
+          #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
+          __pyx_t_7 = PyList_GET_ITEM(__pyx_t_2, __pyx_t_3); __Pyx_INCREF(__pyx_t_7); __pyx_t_3++; if (unlikely(0 < 0)) __PYX_ERR(0, 243, __pyx_L1_error)
+          #else
+          __pyx_t_7 = PySequence_ITEM(__pyx_t_2, __pyx_t_3); __pyx_t_3++; if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 243, __pyx_L1_error)
+          __Pyx_GOTREF(__pyx_t_7);
+          #endif
+        } else {
+          if (__pyx_t_3 >= PyTuple_GET_SIZE(__pyx_t_2)) break;
+          #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
+          __pyx_t_7 = PyTuple_GET_ITEM(__pyx_t_2, __pyx_t_3); __Pyx_INCREF(__pyx_t_7); __pyx_t_3++; if (unlikely(0 < 0)) __PYX_ERR(0, 243, __pyx_L1_error)
+          #else
+          __pyx_t_7 = PySequence_ITEM(__pyx_t_2, __pyx_t_3); __pyx_t_3++; if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 243, __pyx_L1_error)
+          __Pyx_GOTREF(__pyx_t_7);
+          #endif
+        }
+      } else {
+        __pyx_t_7 = __pyx_t_4(__pyx_t_2);
+        if (unlikely(!__pyx_t_7)) {
+          PyObject* exc_type = PyErr_Occurred();
+          if (exc_type) {
+            if (likely(__Pyx_PyErr_GivenExceptionMatches(exc_type, PyExc_StopIteration))) PyErr_Clear();
+            else __PYX_ERR(0, 243, __pyx_L1_error)
+          }
+          break;
+        }
+        __Pyx_GOTREF(__pyx_t_7);
+      }
+      __Pyx_XDECREF_SET(__pyx_v_pd, __pyx_t_7);
+      __pyx_t_7 = 0;
+      __Pyx_INCREF(__pyx_t_6);
+      __Pyx_XDECREF_SET(__pyx_v_i, __pyx_t_6);
+      __pyx_t_7 = __Pyx_PyInt_AddObjC(__pyx_t_6, __pyx_int_1, 1, 0, 0); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 243, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_7);
+      __Pyx_DECREF(__pyx_t_6);
+      __pyx_t_6 = __pyx_t_7;
+      __pyx_t_7 = 0;
+
+      /* "structureboost/pdf_discrete.pyx":244
+ *     if scaling=='log':
+ *         for i,pd in enumerate(pd_list):
+ *             prob_array[i,:] = pd.density(new_midpts)*new_bin_widths             # <<<<<<<<<<<<<<
+ *             prob_array=np.maximum(prob_array, 1e-16)
+ *             logprob_array = np.log(prob_array)
+ */
+      __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_v_pd, __pyx_n_s_density); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 244, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_5);
+      __pyx_t_1 = NULL;
+      if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_5))) {
+        __pyx_t_1 = PyMethod_GET_SELF(__pyx_t_5);
+        if (likely(__pyx_t_1)) {
+          PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_5);
+          __Pyx_INCREF(__pyx_t_1);
+          __Pyx_INCREF(function);
+          __Pyx_DECREF_SET(__pyx_t_5, function);
+        }
+      }
+      __pyx_t_7 = (__pyx_t_1) ? __Pyx_PyObject_Call2Args(__pyx_t_5, __pyx_t_1, __pyx_v_new_midpts) : __Pyx_PyObject_CallOneArg(__pyx_t_5, __pyx_v_new_midpts);
+      __Pyx_XDECREF(__pyx_t_1); __pyx_t_1 = 0;
+      if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 244, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_7);
+      __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
+      __pyx_t_5 = PyNumber_Multiply(__pyx_t_7, __pyx_v_new_bin_widths); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 244, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_5);
+      __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
+      __pyx_t_7 = PyTuple_New(2); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 244, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_7);
+      __Pyx_INCREF(__pyx_v_i);
+      __Pyx_GIVEREF(__pyx_v_i);
+      PyTuple_SET_ITEM(__pyx_t_7, 0, __pyx_v_i);
+      __Pyx_INCREF(__pyx_slice__23);
+      __Pyx_GIVEREF(__pyx_slice__23);
+      PyTuple_SET_ITEM(__pyx_t_7, 1, __pyx_slice__23);
+      if (unlikely(PyObject_SetItem(__pyx_v_prob_array, __pyx_t_7, __pyx_t_5) < 0)) __PYX_ERR(0, 244, __pyx_L1_error)
+      __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
+      __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
+
+      /* "structureboost/pdf_discrete.pyx":245
+ *         for i,pd in enumerate(pd_list):
+ *             prob_array[i,:] = pd.density(new_midpts)*new_bin_widths
+ *             prob_array=np.maximum(prob_array, 1e-16)             # <<<<<<<<<<<<<<
+ *             logprob_array = np.log(prob_array)
+ *         if weights is None:
+ */
+      __Pyx_GetModuleGlobalName(__pyx_t_7, __pyx_n_s_np); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 245, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_7);
+      __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_7, __pyx_n_s_maximum); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 245, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_1);
+      __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
+      __pyx_t_7 = NULL;
+      __pyx_t_10 = 0;
+      if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_1))) {
+        __pyx_t_7 = PyMethod_GET_SELF(__pyx_t_1);
+        if (likely(__pyx_t_7)) {
+          PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_1);
+          __Pyx_INCREF(__pyx_t_7);
+          __Pyx_INCREF(function);
+          __Pyx_DECREF_SET(__pyx_t_1, function);
+          __pyx_t_10 = 1;
+        }
+      }
+      #if CYTHON_FAST_PYCALL
+      if (PyFunction_Check(__pyx_t_1)) {
+        PyObject *__pyx_temp[3] = {__pyx_t_7, __pyx_v_prob_array, __pyx_float_1eneg_16};
+        __pyx_t_5 = __Pyx_PyFunction_FastCall(__pyx_t_1, __pyx_temp+1-__pyx_t_10, 2+__pyx_t_10); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 245, __pyx_L1_error)
+        __Pyx_XDECREF(__pyx_t_7); __pyx_t_7 = 0;
+        __Pyx_GOTREF(__pyx_t_5);
+      } else
+      #endif
+      #if CYTHON_FAST_PYCCALL
+      if (__Pyx_PyFastCFunction_Check(__pyx_t_1)) {
+        PyObject *__pyx_temp[3] = {__pyx_t_7, __pyx_v_prob_array, __pyx_float_1eneg_16};
+        __pyx_t_5 = __Pyx_PyCFunction_FastCall(__pyx_t_1, __pyx_temp+1-__pyx_t_10, 2+__pyx_t_10); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 245, __pyx_L1_error)
+        __Pyx_XDECREF(__pyx_t_7); __pyx_t_7 = 0;
+        __Pyx_GOTREF(__pyx_t_5);
+      } else
+      #endif
+      {
+        __pyx_t_11 = PyTuple_New(2+__pyx_t_10); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 245, __pyx_L1_error)
+        __Pyx_GOTREF(__pyx_t_11);
+        if (__pyx_t_7) {
+          __Pyx_GIVEREF(__pyx_t_7); PyTuple_SET_ITEM(__pyx_t_11, 0, __pyx_t_7); __pyx_t_7 = NULL;
+        }
+        __Pyx_INCREF(__pyx_v_prob_array);
+        __Pyx_GIVEREF(__pyx_v_prob_array);
+        PyTuple_SET_ITEM(__pyx_t_11, 0+__pyx_t_10, __pyx_v_prob_array);
+        __Pyx_INCREF(__pyx_float_1eneg_16);
+        __Pyx_GIVEREF(__pyx_float_1eneg_16);
+        PyTuple_SET_ITEM(__pyx_t_11, 1+__pyx_t_10, __pyx_float_1eneg_16);
+        __pyx_t_5 = __Pyx_PyObject_Call(__pyx_t_1, __pyx_t_11, NULL); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 245, __pyx_L1_error)
+        __Pyx_GOTREF(__pyx_t_5);
+        __Pyx_DECREF(__pyx_t_11); __pyx_t_11 = 0;
+      }
+      __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+      __Pyx_DECREF_SET(__pyx_v_prob_array, __pyx_t_5);
+      __pyx_t_5 = 0;
+
+      /* "structureboost/pdf_discrete.pyx":246
+ *             prob_array[i,:] = pd.density(new_midpts)*new_bin_widths
+ *             prob_array=np.maximum(prob_array, 1e-16)
+ *             logprob_array = np.log(prob_array)             # <<<<<<<<<<<<<<
+ *         if weights is None:
+ *             new_logprobvec = np.mean(logprob_array, axis=0)
+ */
+      __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_np); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 246, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_1);
+      __pyx_t_11 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_log); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 246, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_11);
+      __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+      __pyx_t_1 = NULL;
+      if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_11))) {
+        __pyx_t_1 = PyMethod_GET_SELF(__pyx_t_11);
+        if (likely(__pyx_t_1)) {
+          PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_11);
+          __Pyx_INCREF(__pyx_t_1);
+          __Pyx_INCREF(function);
+          __Pyx_DECREF_SET(__pyx_t_11, function);
+        }
+      }
+      __pyx_t_5 = (__pyx_t_1) ? __Pyx_PyObject_Call2Args(__pyx_t_11, __pyx_t_1, __pyx_v_prob_array) : __Pyx_PyObject_CallOneArg(__pyx_t_11, __pyx_v_prob_array);
+      __Pyx_XDECREF(__pyx_t_1); __pyx_t_1 = 0;
+      if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 246, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_5);
+      __Pyx_DECREF(__pyx_t_11); __pyx_t_11 = 0;
+      __Pyx_XDECREF_SET(__pyx_v_logprob_array, __pyx_t_5);
+      __pyx_t_5 = 0;
+
+      /* "structureboost/pdf_discrete.pyx":243
+ *             new_probvec = np.array(weights).dot(prob_array)
+ *     if scaling=='log':
+ *         for i,pd in enumerate(pd_list):             # <<<<<<<<<<<<<<
+ *             prob_array[i,:] = pd.density(new_midpts)*new_bin_widths
+ *             prob_array=np.maximum(prob_array, 1e-16)
+ */
+    }
+    __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+    __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
+
+    /* "structureboost/pdf_discrete.pyx":247
+ *             prob_array=np.maximum(prob_array, 1e-16)
+ *             logprob_array = np.log(prob_array)
+ *         if weights is None:             # <<<<<<<<<<<<<<
+ *             new_logprobvec = np.mean(logprob_array, axis=0)
+ *         else:
+ */
+    __pyx_t_9 = (__pyx_v_weights == Py_None);
+    __pyx_t_8 = (__pyx_t_9 != 0);
+    if (__pyx_t_8) {
+
+      /* "structureboost/pdf_discrete.pyx":248
+ *             logprob_array = np.log(prob_array)
+ *         if weights is None:
+ *             new_logprobvec = np.mean(logprob_array, axis=0)             # <<<<<<<<<<<<<<
+ *         else:
+ *             new_logprobvec = np.array(weights).dot(logprob_array)
+ */
+      __Pyx_GetModuleGlobalName(__pyx_t_6, __pyx_n_s_np); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 248, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_6);
+      __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_6, __pyx_n_s_mean); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 248, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_2);
+      __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
+      if (unlikely(!__pyx_v_logprob_array)) { __Pyx_RaiseUnboundLocalError("logprob_array"); __PYX_ERR(0, 248, __pyx_L1_error) }
+      __pyx_t_6 = PyTuple_New(1); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 248, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_6);
+      __Pyx_INCREF(__pyx_v_logprob_array);
+      __Pyx_GIVEREF(__pyx_v_logprob_array);
+      PyTuple_SET_ITEM(__pyx_t_6, 0, __pyx_v_logprob_array);
+      __pyx_t_5 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 248, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_5);
+      if (PyDict_SetItem(__pyx_t_5, __pyx_n_s_axis, __pyx_int_0) < 0) __PYX_ERR(0, 248, __pyx_L1_error)
+      __pyx_t_11 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_6, __pyx_t_5); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 248, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_11);
+      __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+      __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
+      __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
+      __pyx_v_new_logprobvec = __pyx_t_11;
+      __pyx_t_11 = 0;
+
+      /* "structureboost/pdf_discrete.pyx":247
+ *             prob_array=np.maximum(prob_array, 1e-16)
+ *             logprob_array = np.log(prob_array)
+ *         if weights is None:             # <<<<<<<<<<<<<<
+ *             new_logprobvec = np.mean(logprob_array, axis=0)
+ *         else:
+ */
+      goto __pyx_L16;
+    }
+
+    /* "structureboost/pdf_discrete.pyx":250
+ *             new_logprobvec = np.mean(logprob_array, axis=0)
+ *         else:
+ *             new_logprobvec = np.array(weights).dot(logprob_array)             # <<<<<<<<<<<<<<
+ *         new_tempprobvec = np.exp(new_logprobvec)
+ *         new_probvec = new_tempprobvec/np.sum(new_tempprobvec)
+ */
+    /*else*/ {
+      __Pyx_GetModuleGlobalName(__pyx_t_6, __pyx_n_s_np); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 250, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_6);
+      __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_6, __pyx_n_s_array); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 250, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_2);
+      __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
+      __pyx_t_6 = NULL;
+      if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_2))) {
+        __pyx_t_6 = PyMethod_GET_SELF(__pyx_t_2);
+        if (likely(__pyx_t_6)) {
+          PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_2);
+          __Pyx_INCREF(__pyx_t_6);
+          __Pyx_INCREF(function);
+          __Pyx_DECREF_SET(__pyx_t_2, function);
+        }
+      }
+      __pyx_t_5 = (__pyx_t_6) ? __Pyx_PyObject_Call2Args(__pyx_t_2, __pyx_t_6, __pyx_v_weights) : __Pyx_PyObject_CallOneArg(__pyx_t_2, __pyx_v_weights);
+      __Pyx_XDECREF(__pyx_t_6); __pyx_t_6 = 0;
+      if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 250, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_5);
+      __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+      __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_5, __pyx_n_s_dot); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 250, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_2);
+      __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
+      if (unlikely(!__pyx_v_logprob_array)) { __Pyx_RaiseUnboundLocalError("logprob_array"); __PYX_ERR(0, 250, __pyx_L1_error) }
+      __pyx_t_5 = NULL;
+      if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_2))) {
+        __pyx_t_5 = PyMethod_GET_SELF(__pyx_t_2);
+        if (likely(__pyx_t_5)) {
+          PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_2);
+          __Pyx_INCREF(__pyx_t_5);
+          __Pyx_INCREF(function);
+          __Pyx_DECREF_SET(__pyx_t_2, function);
+        }
+      }
+      __pyx_t_11 = (__pyx_t_5) ? __Pyx_PyObject_Call2Args(__pyx_t_2, __pyx_t_5, __pyx_v_logprob_array) : __Pyx_PyObject_CallOneArg(__pyx_t_2, __pyx_v_logprob_array);
+      __Pyx_XDECREF(__pyx_t_5); __pyx_t_5 = 0;
+      if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 250, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_11);
+      __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+      __pyx_v_new_logprobvec = __pyx_t_11;
+      __pyx_t_11 = 0;
+    }
+    __pyx_L16:;
+
+    /* "structureboost/pdf_discrete.pyx":251
+ *         else:
+ *             new_logprobvec = np.array(weights).dot(logprob_array)
+ *         new_tempprobvec = np.exp(new_logprobvec)             # <<<<<<<<<<<<<<
+ *         new_probvec = new_tempprobvec/np.sum(new_tempprobvec)
  *     return(PdfDiscrete(new_binvec, new_probvec))
  */
-  __Pyx_GetModuleGlobalName(__pyx_t_5, __pyx_n_s_np); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 175, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_5);
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_5, __pyx_n_s_mean); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 175, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_2);
-  __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-  __pyx_t_5 = PyTuple_New(1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 175, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_5);
-  __Pyx_INCREF(__pyx_v_prob_array);
-  __Pyx_GIVEREF(__pyx_v_prob_array);
-  PyTuple_SET_ITEM(__pyx_t_5, 0, __pyx_v_prob_array);
-  __pyx_t_7 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 175, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_7);
-  if (PyDict_SetItem(__pyx_t_7, __pyx_n_s_axis, __pyx_int_0) < 0) __PYX_ERR(0, 175, __pyx_L1_error)
-  __pyx_t_6 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_5, __pyx_t_7); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 175, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_6);
-  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-  __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
-  __pyx_v_new_probvec = __pyx_t_6;
-  __pyx_t_6 = 0;
+    __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_np); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 251, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_2);
+    __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_exp); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 251, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_5);
+    __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+    __pyx_t_2 = NULL;
+    if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_5))) {
+      __pyx_t_2 = PyMethod_GET_SELF(__pyx_t_5);
+      if (likely(__pyx_t_2)) {
+        PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_5);
+        __Pyx_INCREF(__pyx_t_2);
+        __Pyx_INCREF(function);
+        __Pyx_DECREF_SET(__pyx_t_5, function);
+      }
+    }
+    __pyx_t_11 = (__pyx_t_2) ? __Pyx_PyObject_Call2Args(__pyx_t_5, __pyx_t_2, __pyx_v_new_logprobvec) : __Pyx_PyObject_CallOneArg(__pyx_t_5, __pyx_v_new_logprobvec);
+    __Pyx_XDECREF(__pyx_t_2); __pyx_t_2 = 0;
+    if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 251, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_11);
+    __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
+    __pyx_v_new_tempprobvec = __pyx_t_11;
+    __pyx_t_11 = 0;
 
-  /* "structureboost/pdf_discrete.pyx":177
- *     new_probvec = np.mean(prob_array, axis=0)
- *     # return(prob_array)
+    /* "structureboost/pdf_discrete.pyx":252
+ *             new_logprobvec = np.array(weights).dot(logprob_array)
+ *         new_tempprobvec = np.exp(new_logprobvec)
+ *         new_probvec = new_tempprobvec/np.sum(new_tempprobvec)             # <<<<<<<<<<<<<<
+ *     return(PdfDiscrete(new_binvec, new_probvec))
+ * 
+ */
+    __Pyx_GetModuleGlobalName(__pyx_t_5, __pyx_n_s_np); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 252, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_5);
+    __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_5, __pyx_n_s_sum); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 252, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_2);
+    __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
+    __pyx_t_5 = NULL;
+    if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_2))) {
+      __pyx_t_5 = PyMethod_GET_SELF(__pyx_t_2);
+      if (likely(__pyx_t_5)) {
+        PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_2);
+        __Pyx_INCREF(__pyx_t_5);
+        __Pyx_INCREF(function);
+        __Pyx_DECREF_SET(__pyx_t_2, function);
+      }
+    }
+    __pyx_t_11 = (__pyx_t_5) ? __Pyx_PyObject_Call2Args(__pyx_t_2, __pyx_t_5, __pyx_v_new_tempprobvec) : __Pyx_PyObject_CallOneArg(__pyx_t_2, __pyx_v_new_tempprobvec);
+    __Pyx_XDECREF(__pyx_t_5); __pyx_t_5 = 0;
+    if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 252, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_11);
+    __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+    __pyx_t_2 = __Pyx_PyNumber_Divide(__pyx_v_new_tempprobvec, __pyx_t_11); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 252, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_2);
+    __Pyx_DECREF(__pyx_t_11); __pyx_t_11 = 0;
+    __Pyx_XDECREF_SET(__pyx_v_new_probvec, __pyx_t_2);
+    __pyx_t_2 = 0;
+
+    /* "structureboost/pdf_discrete.pyx":242
+ *         else:
+ *             new_probvec = np.array(weights).dot(prob_array)
+ *     if scaling=='log':             # <<<<<<<<<<<<<<
+ *         for i,pd in enumerate(pd_list):
+ *             prob_array[i,:] = pd.density(new_midpts)*new_bin_widths
+ */
+  }
+
+  /* "structureboost/pdf_discrete.pyx":253
+ *         new_tempprobvec = np.exp(new_logprobvec)
+ *         new_probvec = new_tempprobvec/np.sum(new_tempprobvec)
  *     return(PdfDiscrete(new_binvec, new_probvec))             # <<<<<<<<<<<<<<
+ * 
+ * def get_bin_probs_from_data(binvec, value_vec, eps=1e-16):
  */
   __Pyx_XDECREF(__pyx_r);
-  __Pyx_GetModuleGlobalName(__pyx_t_7, __pyx_n_s_PdfDiscrete); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 177, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_7);
+  __Pyx_GetModuleGlobalName(__pyx_t_11, __pyx_n_s_PdfDiscrete); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 253, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_11);
+  if (unlikely(!__pyx_v_new_probvec)) { __Pyx_RaiseUnboundLocalError("new_probvec"); __PYX_ERR(0, 253, __pyx_L1_error) }
   __pyx_t_5 = NULL;
-  __pyx_t_8 = 0;
-  if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_7))) {
-    __pyx_t_5 = PyMethod_GET_SELF(__pyx_t_7);
+  __pyx_t_10 = 0;
+  if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_11))) {
+    __pyx_t_5 = PyMethod_GET_SELF(__pyx_t_11);
     if (likely(__pyx_t_5)) {
-      PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_7);
+      PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_11);
       __Pyx_INCREF(__pyx_t_5);
       __Pyx_INCREF(function);
-      __Pyx_DECREF_SET(__pyx_t_7, function);
-      __pyx_t_8 = 1;
+      __Pyx_DECREF_SET(__pyx_t_11, function);
+      __pyx_t_10 = 1;
     }
   }
   #if CYTHON_FAST_PYCALL
-  if (PyFunction_Check(__pyx_t_7)) {
+  if (PyFunction_Check(__pyx_t_11)) {
     PyObject *__pyx_temp[3] = {__pyx_t_5, __pyx_v_new_binvec, __pyx_v_new_probvec};
-    __pyx_t_6 = __Pyx_PyFunction_FastCall(__pyx_t_7, __pyx_temp+1-__pyx_t_8, 2+__pyx_t_8); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 177, __pyx_L1_error)
+    __pyx_t_2 = __Pyx_PyFunction_FastCall(__pyx_t_11, __pyx_temp+1-__pyx_t_10, 2+__pyx_t_10); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 253, __pyx_L1_error)
     __Pyx_XDECREF(__pyx_t_5); __pyx_t_5 = 0;
-    __Pyx_GOTREF(__pyx_t_6);
+    __Pyx_GOTREF(__pyx_t_2);
   } else
   #endif
   #if CYTHON_FAST_PYCCALL
-  if (__Pyx_PyFastCFunction_Check(__pyx_t_7)) {
+  if (__Pyx_PyFastCFunction_Check(__pyx_t_11)) {
     PyObject *__pyx_temp[3] = {__pyx_t_5, __pyx_v_new_binvec, __pyx_v_new_probvec};
-    __pyx_t_6 = __Pyx_PyCFunction_FastCall(__pyx_t_7, __pyx_temp+1-__pyx_t_8, 2+__pyx_t_8); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 177, __pyx_L1_error)
+    __pyx_t_2 = __Pyx_PyCFunction_FastCall(__pyx_t_11, __pyx_temp+1-__pyx_t_10, 2+__pyx_t_10); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 253, __pyx_L1_error)
     __Pyx_XDECREF(__pyx_t_5); __pyx_t_5 = 0;
-    __Pyx_GOTREF(__pyx_t_6);
+    __Pyx_GOTREF(__pyx_t_2);
   } else
   #endif
   {
-    __pyx_t_2 = PyTuple_New(2+__pyx_t_8); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 177, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_2);
+    __pyx_t_6 = PyTuple_New(2+__pyx_t_10); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 253, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_6);
     if (__pyx_t_5) {
-      __Pyx_GIVEREF(__pyx_t_5); PyTuple_SET_ITEM(__pyx_t_2, 0, __pyx_t_5); __pyx_t_5 = NULL;
+      __Pyx_GIVEREF(__pyx_t_5); PyTuple_SET_ITEM(__pyx_t_6, 0, __pyx_t_5); __pyx_t_5 = NULL;
     }
     __Pyx_INCREF(__pyx_v_new_binvec);
     __Pyx_GIVEREF(__pyx_v_new_binvec);
-    PyTuple_SET_ITEM(__pyx_t_2, 0+__pyx_t_8, __pyx_v_new_binvec);
+    PyTuple_SET_ITEM(__pyx_t_6, 0+__pyx_t_10, __pyx_v_new_binvec);
     __Pyx_INCREF(__pyx_v_new_probvec);
     __Pyx_GIVEREF(__pyx_v_new_probvec);
-    PyTuple_SET_ITEM(__pyx_t_2, 1+__pyx_t_8, __pyx_v_new_probvec);
-    __pyx_t_6 = __Pyx_PyObject_Call(__pyx_t_7, __pyx_t_2, NULL); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 177, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_6);
-    __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+    PyTuple_SET_ITEM(__pyx_t_6, 1+__pyx_t_10, __pyx_v_new_probvec);
+    __pyx_t_2 = __Pyx_PyObject_Call(__pyx_t_11, __pyx_t_6, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 253, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_2);
+    __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
   }
-  __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
-  __pyx_r = __pyx_t_6;
-  __pyx_t_6 = 0;
+  __Pyx_DECREF(__pyx_t_11); __pyx_t_11 = 0;
+  __pyx_r = __pyx_t_2;
+  __pyx_t_2 = 0;
   goto __pyx_L0;
 
-  /* "structureboost/pdf_discrete.pyx":165
- *     plt.plot(binvec_plot, prob_plot, **kwargs)
+  /* "structureboost/pdf_discrete.pyx":227
+ *     plt.plot(binvec_plot, dens_plot, **kwargs)
  * 
- * def average_densities(pd_list):             # <<<<<<<<<<<<<<
+ * def average_densities(pd_list, scaling='linear', weights=None):             # <<<<<<<<<<<<<<
  *     binpt_list = [pd.binvec for pd in pd_list]
  *     new_binvec = np.unique(np.concatenate(binpt_list))
  */
@@ -8358,6 +10232,7 @@ static PyObject *__pyx_pf_14structureboost_12pdf_discrete_6average_densities(CYT
   __Pyx_XDECREF(__pyx_t_5);
   __Pyx_XDECREF(__pyx_t_6);
   __Pyx_XDECREF(__pyx_t_7);
+  __Pyx_XDECREF(__pyx_t_11);
   __Pyx_AddTraceback("structureboost.pdf_discrete.average_densities", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
@@ -8369,7 +10244,781 @@ static PyObject *__pyx_pf_14structureboost_12pdf_discrete_6average_densities(CYT
   __Pyx_XDECREF(__pyx_v_i);
   __Pyx_XDECREF(__pyx_v_pd);
   __Pyx_XDECREF(__pyx_v_new_probvec);
+  __Pyx_XDECREF(__pyx_v_logprob_array);
+  __Pyx_XDECREF(__pyx_v_new_logprobvec);
+  __Pyx_XDECREF(__pyx_v_new_tempprobvec);
   __Pyx_XDECREF(__pyx_8genexpr3__pyx_v_pd);
+  __Pyx_XGIVEREF(__pyx_r);
+  __Pyx_TraceReturn(__pyx_r, 0);
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+/* "structureboost/pdf_discrete.pyx":255
+ *     return(PdfDiscrete(new_binvec, new_probvec))
+ * 
+ * def get_bin_probs_from_data(binvec, value_vec, eps=1e-16):             # <<<<<<<<<<<<<<
+ *     y_bin = np.digitize(value_vec,binvec[:-1]) -1
+ *     binvals, counts = np.unique(y_bin, return_counts=True)
+ */
+
+/* Python wrapper */
+static PyObject *__pyx_pw_14structureboost_12pdf_discrete_9get_bin_probs_from_data(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
+static PyMethodDef __pyx_mdef_14structureboost_12pdf_discrete_9get_bin_probs_from_data = {"get_bin_probs_from_data", (PyCFunction)(void*)(PyCFunctionWithKeywords)__pyx_pw_14structureboost_12pdf_discrete_9get_bin_probs_from_data, METH_VARARGS|METH_KEYWORDS, 0};
+static PyObject *__pyx_pw_14structureboost_12pdf_discrete_9get_bin_probs_from_data(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
+  PyObject *__pyx_v_binvec = 0;
+  PyObject *__pyx_v_value_vec = 0;
+  PyObject *__pyx_v_eps = 0;
+  int __pyx_lineno = 0;
+  const char *__pyx_filename = NULL;
+  int __pyx_clineno = 0;
+  PyObject *__pyx_r = 0;
+  __Pyx_RefNannyDeclarations
+  __Pyx_RefNannySetupContext("get_bin_probs_from_data (wrapper)", 0);
+  {
+    static PyObject **__pyx_pyargnames[] = {&__pyx_n_s_binvec,&__pyx_n_s_value_vec,&__pyx_n_s_eps,0};
+    PyObject* values[3] = {0,0,0};
+    values[2] = ((PyObject *)__pyx_float_1eneg_16);
+    if (unlikely(__pyx_kwds)) {
+      Py_ssize_t kw_args;
+      const Py_ssize_t pos_args = PyTuple_GET_SIZE(__pyx_args);
+      switch (pos_args) {
+        case  3: values[2] = PyTuple_GET_ITEM(__pyx_args, 2);
+        CYTHON_FALLTHROUGH;
+        case  2: values[1] = PyTuple_GET_ITEM(__pyx_args, 1);
+        CYTHON_FALLTHROUGH;
+        case  1: values[0] = PyTuple_GET_ITEM(__pyx_args, 0);
+        CYTHON_FALLTHROUGH;
+        case  0: break;
+        default: goto __pyx_L5_argtuple_error;
+      }
+      kw_args = PyDict_Size(__pyx_kwds);
+      switch (pos_args) {
+        case  0:
+        if (likely((values[0] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_binvec)) != 0)) kw_args--;
+        else goto __pyx_L5_argtuple_error;
+        CYTHON_FALLTHROUGH;
+        case  1:
+        if (likely((values[1] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_value_vec)) != 0)) kw_args--;
+        else {
+          __Pyx_RaiseArgtupleInvalid("get_bin_probs_from_data", 0, 2, 3, 1); __PYX_ERR(0, 255, __pyx_L3_error)
+        }
+        CYTHON_FALLTHROUGH;
+        case  2:
+        if (kw_args > 0) {
+          PyObject* value = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_eps);
+          if (value) { values[2] = value; kw_args--; }
+        }
+      }
+      if (unlikely(kw_args > 0)) {
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "get_bin_probs_from_data") < 0)) __PYX_ERR(0, 255, __pyx_L3_error)
+      }
+    } else {
+      switch (PyTuple_GET_SIZE(__pyx_args)) {
+        case  3: values[2] = PyTuple_GET_ITEM(__pyx_args, 2);
+        CYTHON_FALLTHROUGH;
+        case  2: values[1] = PyTuple_GET_ITEM(__pyx_args, 1);
+        values[0] = PyTuple_GET_ITEM(__pyx_args, 0);
+        break;
+        default: goto __pyx_L5_argtuple_error;
+      }
+    }
+    __pyx_v_binvec = values[0];
+    __pyx_v_value_vec = values[1];
+    __pyx_v_eps = values[2];
+  }
+  goto __pyx_L4_argument_unpacking_done;
+  __pyx_L5_argtuple_error:;
+  __Pyx_RaiseArgtupleInvalid("get_bin_probs_from_data", 0, 2, 3, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 255, __pyx_L3_error)
+  __pyx_L3_error:;
+  __Pyx_AddTraceback("structureboost.pdf_discrete.get_bin_probs_from_data", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_RefNannyFinishContext();
+  return NULL;
+  __pyx_L4_argument_unpacking_done:;
+  __pyx_r = __pyx_pf_14structureboost_12pdf_discrete_8get_bin_probs_from_data(__pyx_self, __pyx_v_binvec, __pyx_v_value_vec, __pyx_v_eps);
+
+  /* function exit code */
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+static PyObject *__pyx_pf_14structureboost_12pdf_discrete_8get_bin_probs_from_data(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_binvec, PyObject *__pyx_v_value_vec, PyObject *__pyx_v_eps) {
+  PyObject *__pyx_v_y_bin = NULL;
+  PyObject *__pyx_v_binvals = NULL;
+  PyObject *__pyx_v_counts = NULL;
+  PyObject *__pyx_v_probvec = NULL;
+  PyObject *__pyx_v_total = NULL;
+  PyObject *__pyx_v_i = NULL;
+  PyObject *__pyx_v_binnum = NULL;
+  PyObject *__pyx_r = NULL;
+  __Pyx_TraceDeclarations
+  __Pyx_RefNannyDeclarations
+  PyObject *__pyx_t_1 = NULL;
+  PyObject *__pyx_t_2 = NULL;
+  PyObject *__pyx_t_3 = NULL;
+  PyObject *__pyx_t_4 = NULL;
+  int __pyx_t_5;
+  PyObject *__pyx_t_6 = NULL;
+  PyObject *(*__pyx_t_7)(PyObject *);
+  Py_ssize_t __pyx_t_8;
+  PyObject *(*__pyx_t_9)(PyObject *);
+  int __pyx_lineno = 0;
+  const char *__pyx_filename = NULL;
+  int __pyx_clineno = 0;
+  __Pyx_TraceFrameInit(__pyx_codeobj__24)
+  __Pyx_RefNannySetupContext("get_bin_probs_from_data", 0);
+  __Pyx_TraceCall("get_bin_probs_from_data", __pyx_f[0], 255, 0, __PYX_ERR(0, 255, __pyx_L1_error));
+
+  /* "structureboost/pdf_discrete.pyx":256
+ * 
+ * def get_bin_probs_from_data(binvec, value_vec, eps=1e-16):
+ *     y_bin = np.digitize(value_vec,binvec[:-1]) -1             # <<<<<<<<<<<<<<
+ *     binvals, counts = np.unique(y_bin, return_counts=True)
+ *     probvec = np.zeros(len(binvec)-1)
+ */
+  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_np); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 256, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_2);
+  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_digitize); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 256, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_3);
+  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+  __pyx_t_2 = __Pyx_PyObject_GetSlice(__pyx_v_binvec, 0, -1L, NULL, NULL, &__pyx_slice__3, 0, 1, 1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 256, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_2);
+  __pyx_t_4 = NULL;
+  __pyx_t_5 = 0;
+  if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_3))) {
+    __pyx_t_4 = PyMethod_GET_SELF(__pyx_t_3);
+    if (likely(__pyx_t_4)) {
+      PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_3);
+      __Pyx_INCREF(__pyx_t_4);
+      __Pyx_INCREF(function);
+      __Pyx_DECREF_SET(__pyx_t_3, function);
+      __pyx_t_5 = 1;
+    }
+  }
+  #if CYTHON_FAST_PYCALL
+  if (PyFunction_Check(__pyx_t_3)) {
+    PyObject *__pyx_temp[3] = {__pyx_t_4, __pyx_v_value_vec, __pyx_t_2};
+    __pyx_t_1 = __Pyx_PyFunction_FastCall(__pyx_t_3, __pyx_temp+1-__pyx_t_5, 2+__pyx_t_5); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 256, __pyx_L1_error)
+    __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
+    __Pyx_GOTREF(__pyx_t_1);
+    __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+  } else
+  #endif
+  #if CYTHON_FAST_PYCCALL
+  if (__Pyx_PyFastCFunction_Check(__pyx_t_3)) {
+    PyObject *__pyx_temp[3] = {__pyx_t_4, __pyx_v_value_vec, __pyx_t_2};
+    __pyx_t_1 = __Pyx_PyCFunction_FastCall(__pyx_t_3, __pyx_temp+1-__pyx_t_5, 2+__pyx_t_5); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 256, __pyx_L1_error)
+    __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
+    __Pyx_GOTREF(__pyx_t_1);
+    __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+  } else
+  #endif
+  {
+    __pyx_t_6 = PyTuple_New(2+__pyx_t_5); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 256, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_6);
+    if (__pyx_t_4) {
+      __Pyx_GIVEREF(__pyx_t_4); PyTuple_SET_ITEM(__pyx_t_6, 0, __pyx_t_4); __pyx_t_4 = NULL;
+    }
+    __Pyx_INCREF(__pyx_v_value_vec);
+    __Pyx_GIVEREF(__pyx_v_value_vec);
+    PyTuple_SET_ITEM(__pyx_t_6, 0+__pyx_t_5, __pyx_v_value_vec);
+    __Pyx_GIVEREF(__pyx_t_2);
+    PyTuple_SET_ITEM(__pyx_t_6, 1+__pyx_t_5, __pyx_t_2);
+    __pyx_t_2 = 0;
+    __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_3, __pyx_t_6, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 256, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_1);
+    __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
+  }
+  __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+  __pyx_t_3 = __Pyx_PyInt_SubtractObjC(__pyx_t_1, __pyx_int_1, 1, 0, 0); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 256, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_3);
+  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+  __pyx_v_y_bin = __pyx_t_3;
+  __pyx_t_3 = 0;
+
+  /* "structureboost/pdf_discrete.pyx":257
+ * def get_bin_probs_from_data(binvec, value_vec, eps=1e-16):
+ *     y_bin = np.digitize(value_vec,binvec[:-1]) -1
+ *     binvals, counts = np.unique(y_bin, return_counts=True)             # <<<<<<<<<<<<<<
+ *     probvec = np.zeros(len(binvec)-1)
+ *     total = np.sum(counts)
+ */
+  __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_n_s_np); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 257, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_3);
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_unique); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 257, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+  __pyx_t_3 = PyTuple_New(1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 257, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_3);
+  __Pyx_INCREF(__pyx_v_y_bin);
+  __Pyx_GIVEREF(__pyx_v_y_bin);
+  PyTuple_SET_ITEM(__pyx_t_3, 0, __pyx_v_y_bin);
+  __pyx_t_6 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 257, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_6);
+  if (PyDict_SetItem(__pyx_t_6, __pyx_n_s_return_counts, Py_True) < 0) __PYX_ERR(0, 257, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_Call(__pyx_t_1, __pyx_t_3, __pyx_t_6); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 257, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_2);
+  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+  __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+  __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
+  if ((likely(PyTuple_CheckExact(__pyx_t_2))) || (PyList_CheckExact(__pyx_t_2))) {
+    PyObject* sequence = __pyx_t_2;
+    Py_ssize_t size = __Pyx_PySequence_SIZE(sequence);
+    if (unlikely(size != 2)) {
+      if (size > 2) __Pyx_RaiseTooManyValuesError(2);
+      else if (size >= 0) __Pyx_RaiseNeedMoreValuesError(size);
+      __PYX_ERR(0, 257, __pyx_L1_error)
+    }
+    #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
+    if (likely(PyTuple_CheckExact(sequence))) {
+      __pyx_t_6 = PyTuple_GET_ITEM(sequence, 0); 
+      __pyx_t_3 = PyTuple_GET_ITEM(sequence, 1); 
+    } else {
+      __pyx_t_6 = PyList_GET_ITEM(sequence, 0); 
+      __pyx_t_3 = PyList_GET_ITEM(sequence, 1); 
+    }
+    __Pyx_INCREF(__pyx_t_6);
+    __Pyx_INCREF(__pyx_t_3);
+    #else
+    __pyx_t_6 = PySequence_ITEM(sequence, 0); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 257, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_6);
+    __pyx_t_3 = PySequence_ITEM(sequence, 1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 257, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_3);
+    #endif
+    __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+  } else {
+    Py_ssize_t index = -1;
+    __pyx_t_1 = PyObject_GetIter(__pyx_t_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 257, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_1);
+    __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+    __pyx_t_7 = Py_TYPE(__pyx_t_1)->tp_iternext;
+    index = 0; __pyx_t_6 = __pyx_t_7(__pyx_t_1); if (unlikely(!__pyx_t_6)) goto __pyx_L3_unpacking_failed;
+    __Pyx_GOTREF(__pyx_t_6);
+    index = 1; __pyx_t_3 = __pyx_t_7(__pyx_t_1); if (unlikely(!__pyx_t_3)) goto __pyx_L3_unpacking_failed;
+    __Pyx_GOTREF(__pyx_t_3);
+    if (__Pyx_IternextUnpackEndCheck(__pyx_t_7(__pyx_t_1), 2) < 0) __PYX_ERR(0, 257, __pyx_L1_error)
+    __pyx_t_7 = NULL;
+    __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+    goto __pyx_L4_unpacking_done;
+    __pyx_L3_unpacking_failed:;
+    __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+    __pyx_t_7 = NULL;
+    if (__Pyx_IterFinish() == 0) __Pyx_RaiseNeedMoreValuesError(index);
+    __PYX_ERR(0, 257, __pyx_L1_error)
+    __pyx_L4_unpacking_done:;
+  }
+  __pyx_v_binvals = __pyx_t_6;
+  __pyx_t_6 = 0;
+  __pyx_v_counts = __pyx_t_3;
+  __pyx_t_3 = 0;
+
+  /* "structureboost/pdf_discrete.pyx":258
+ *     y_bin = np.digitize(value_vec,binvec[:-1]) -1
+ *     binvals, counts = np.unique(y_bin, return_counts=True)
+ *     probvec = np.zeros(len(binvec)-1)             # <<<<<<<<<<<<<<
+ *     total = np.sum(counts)
+ *     for i,binnum in enumerate(binvals):
+ */
+  __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_n_s_np); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 258, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_3);
+  __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_zeros); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 258, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_6);
+  __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+  __pyx_t_8 = PyObject_Length(__pyx_v_binvec); if (unlikely(__pyx_t_8 == ((Py_ssize_t)-1))) __PYX_ERR(0, 258, __pyx_L1_error)
+  __pyx_t_3 = PyInt_FromSsize_t((__pyx_t_8 - 1)); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 258, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_3);
+  __pyx_t_1 = NULL;
+  if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_6))) {
+    __pyx_t_1 = PyMethod_GET_SELF(__pyx_t_6);
+    if (likely(__pyx_t_1)) {
+      PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_6);
+      __Pyx_INCREF(__pyx_t_1);
+      __Pyx_INCREF(function);
+      __Pyx_DECREF_SET(__pyx_t_6, function);
+    }
+  }
+  __pyx_t_2 = (__pyx_t_1) ? __Pyx_PyObject_Call2Args(__pyx_t_6, __pyx_t_1, __pyx_t_3) : __Pyx_PyObject_CallOneArg(__pyx_t_6, __pyx_t_3);
+  __Pyx_XDECREF(__pyx_t_1); __pyx_t_1 = 0;
+  __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+  if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 258, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_2);
+  __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
+  __pyx_v_probvec = __pyx_t_2;
+  __pyx_t_2 = 0;
+
+  /* "structureboost/pdf_discrete.pyx":259
+ *     binvals, counts = np.unique(y_bin, return_counts=True)
+ *     probvec = np.zeros(len(binvec)-1)
+ *     total = np.sum(counts)             # <<<<<<<<<<<<<<
+ *     for i,binnum in enumerate(binvals):
+ *         probvec[binnum] =  counts[i]/total
+ */
+  __Pyx_GetModuleGlobalName(__pyx_t_6, __pyx_n_s_np); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 259, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_6);
+  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_6, __pyx_n_s_sum); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 259, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_3);
+  __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
+  __pyx_t_6 = NULL;
+  if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_3))) {
+    __pyx_t_6 = PyMethod_GET_SELF(__pyx_t_3);
+    if (likely(__pyx_t_6)) {
+      PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_3);
+      __Pyx_INCREF(__pyx_t_6);
+      __Pyx_INCREF(function);
+      __Pyx_DECREF_SET(__pyx_t_3, function);
+    }
+  }
+  __pyx_t_2 = (__pyx_t_6) ? __Pyx_PyObject_Call2Args(__pyx_t_3, __pyx_t_6, __pyx_v_counts) : __Pyx_PyObject_CallOneArg(__pyx_t_3, __pyx_v_counts);
+  __Pyx_XDECREF(__pyx_t_6); __pyx_t_6 = 0;
+  if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 259, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_2);
+  __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+  __pyx_v_total = __pyx_t_2;
+  __pyx_t_2 = 0;
+
+  /* "structureboost/pdf_discrete.pyx":260
+ *     probvec = np.zeros(len(binvec)-1)
+ *     total = np.sum(counts)
+ *     for i,binnum in enumerate(binvals):             # <<<<<<<<<<<<<<
+ *         probvec[binnum] =  counts[i]/total
+ *     probvec = np.maximum(probvec, eps)
+ */
+  __Pyx_INCREF(__pyx_int_0);
+  __pyx_t_2 = __pyx_int_0;
+  if (likely(PyList_CheckExact(__pyx_v_binvals)) || PyTuple_CheckExact(__pyx_v_binvals)) {
+    __pyx_t_3 = __pyx_v_binvals; __Pyx_INCREF(__pyx_t_3); __pyx_t_8 = 0;
+    __pyx_t_9 = NULL;
+  } else {
+    __pyx_t_8 = -1; __pyx_t_3 = PyObject_GetIter(__pyx_v_binvals); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 260, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_3);
+    __pyx_t_9 = Py_TYPE(__pyx_t_3)->tp_iternext; if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 260, __pyx_L1_error)
+  }
+  for (;;) {
+    if (likely(!__pyx_t_9)) {
+      if (likely(PyList_CheckExact(__pyx_t_3))) {
+        if (__pyx_t_8 >= PyList_GET_SIZE(__pyx_t_3)) break;
+        #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
+        __pyx_t_6 = PyList_GET_ITEM(__pyx_t_3, __pyx_t_8); __Pyx_INCREF(__pyx_t_6); __pyx_t_8++; if (unlikely(0 < 0)) __PYX_ERR(0, 260, __pyx_L1_error)
+        #else
+        __pyx_t_6 = PySequence_ITEM(__pyx_t_3, __pyx_t_8); __pyx_t_8++; if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 260, __pyx_L1_error)
+        __Pyx_GOTREF(__pyx_t_6);
+        #endif
+      } else {
+        if (__pyx_t_8 >= PyTuple_GET_SIZE(__pyx_t_3)) break;
+        #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
+        __pyx_t_6 = PyTuple_GET_ITEM(__pyx_t_3, __pyx_t_8); __Pyx_INCREF(__pyx_t_6); __pyx_t_8++; if (unlikely(0 < 0)) __PYX_ERR(0, 260, __pyx_L1_error)
+        #else
+        __pyx_t_6 = PySequence_ITEM(__pyx_t_3, __pyx_t_8); __pyx_t_8++; if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 260, __pyx_L1_error)
+        __Pyx_GOTREF(__pyx_t_6);
+        #endif
+      }
+    } else {
+      __pyx_t_6 = __pyx_t_9(__pyx_t_3);
+      if (unlikely(!__pyx_t_6)) {
+        PyObject* exc_type = PyErr_Occurred();
+        if (exc_type) {
+          if (likely(__Pyx_PyErr_GivenExceptionMatches(exc_type, PyExc_StopIteration))) PyErr_Clear();
+          else __PYX_ERR(0, 260, __pyx_L1_error)
+        }
+        break;
+      }
+      __Pyx_GOTREF(__pyx_t_6);
+    }
+    __Pyx_XDECREF_SET(__pyx_v_binnum, __pyx_t_6);
+    __pyx_t_6 = 0;
+    __Pyx_INCREF(__pyx_t_2);
+    __Pyx_XDECREF_SET(__pyx_v_i, __pyx_t_2);
+    __pyx_t_6 = __Pyx_PyInt_AddObjC(__pyx_t_2, __pyx_int_1, 1, 0, 0); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 260, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_6);
+    __Pyx_DECREF(__pyx_t_2);
+    __pyx_t_2 = __pyx_t_6;
+    __pyx_t_6 = 0;
+
+    /* "structureboost/pdf_discrete.pyx":261
+ *     total = np.sum(counts)
+ *     for i,binnum in enumerate(binvals):
+ *         probvec[binnum] =  counts[i]/total             # <<<<<<<<<<<<<<
+ *     probvec = np.maximum(probvec, eps)
+ *     probvec = probvec / np.sum(probvec)
+ */
+    __pyx_t_6 = __Pyx_PyObject_GetItem(__pyx_v_counts, __pyx_v_i); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 261, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_6);
+    __pyx_t_1 = __Pyx_PyNumber_Divide(__pyx_t_6, __pyx_v_total); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 261, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_1);
+    __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
+    if (unlikely(PyObject_SetItem(__pyx_v_probvec, __pyx_v_binnum, __pyx_t_1) < 0)) __PYX_ERR(0, 261, __pyx_L1_error)
+    __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+
+    /* "structureboost/pdf_discrete.pyx":260
+ *     probvec = np.zeros(len(binvec)-1)
+ *     total = np.sum(counts)
+ *     for i,binnum in enumerate(binvals):             # <<<<<<<<<<<<<<
+ *         probvec[binnum] =  counts[i]/total
+ *     probvec = np.maximum(probvec, eps)
+ */
+  }
+  __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+
+  /* "structureboost/pdf_discrete.pyx":262
+ *     for i,binnum in enumerate(binvals):
+ *         probvec[binnum] =  counts[i]/total
+ *     probvec = np.maximum(probvec, eps)             # <<<<<<<<<<<<<<
+ *     probvec = probvec / np.sum(probvec)
+ *     return(probvec)
+ */
+  __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_n_s_np); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 262, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_3);
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_maximum); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 262, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+  __pyx_t_3 = NULL;
+  __pyx_t_5 = 0;
+  if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_1))) {
+    __pyx_t_3 = PyMethod_GET_SELF(__pyx_t_1);
+    if (likely(__pyx_t_3)) {
+      PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_1);
+      __Pyx_INCREF(__pyx_t_3);
+      __Pyx_INCREF(function);
+      __Pyx_DECREF_SET(__pyx_t_1, function);
+      __pyx_t_5 = 1;
+    }
+  }
+  #if CYTHON_FAST_PYCALL
+  if (PyFunction_Check(__pyx_t_1)) {
+    PyObject *__pyx_temp[3] = {__pyx_t_3, __pyx_v_probvec, __pyx_v_eps};
+    __pyx_t_2 = __Pyx_PyFunction_FastCall(__pyx_t_1, __pyx_temp+1-__pyx_t_5, 2+__pyx_t_5); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 262, __pyx_L1_error)
+    __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
+    __Pyx_GOTREF(__pyx_t_2);
+  } else
+  #endif
+  #if CYTHON_FAST_PYCCALL
+  if (__Pyx_PyFastCFunction_Check(__pyx_t_1)) {
+    PyObject *__pyx_temp[3] = {__pyx_t_3, __pyx_v_probvec, __pyx_v_eps};
+    __pyx_t_2 = __Pyx_PyCFunction_FastCall(__pyx_t_1, __pyx_temp+1-__pyx_t_5, 2+__pyx_t_5); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 262, __pyx_L1_error)
+    __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
+    __Pyx_GOTREF(__pyx_t_2);
+  } else
+  #endif
+  {
+    __pyx_t_6 = PyTuple_New(2+__pyx_t_5); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 262, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_6);
+    if (__pyx_t_3) {
+      __Pyx_GIVEREF(__pyx_t_3); PyTuple_SET_ITEM(__pyx_t_6, 0, __pyx_t_3); __pyx_t_3 = NULL;
+    }
+    __Pyx_INCREF(__pyx_v_probvec);
+    __Pyx_GIVEREF(__pyx_v_probvec);
+    PyTuple_SET_ITEM(__pyx_t_6, 0+__pyx_t_5, __pyx_v_probvec);
+    __Pyx_INCREF(__pyx_v_eps);
+    __Pyx_GIVEREF(__pyx_v_eps);
+    PyTuple_SET_ITEM(__pyx_t_6, 1+__pyx_t_5, __pyx_v_eps);
+    __pyx_t_2 = __Pyx_PyObject_Call(__pyx_t_1, __pyx_t_6, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 262, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_2);
+    __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
+  }
+  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+  __Pyx_DECREF_SET(__pyx_v_probvec, __pyx_t_2);
+  __pyx_t_2 = 0;
+
+  /* "structureboost/pdf_discrete.pyx":263
+ *         probvec[binnum] =  counts[i]/total
+ *     probvec = np.maximum(probvec, eps)
+ *     probvec = probvec / np.sum(probvec)             # <<<<<<<<<<<<<<
+ *     return(probvec)
+ * 
+ */
+  __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_np); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 263, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_sum); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 263, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_6);
+  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+  __pyx_t_1 = NULL;
+  if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_6))) {
+    __pyx_t_1 = PyMethod_GET_SELF(__pyx_t_6);
+    if (likely(__pyx_t_1)) {
+      PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_6);
+      __Pyx_INCREF(__pyx_t_1);
+      __Pyx_INCREF(function);
+      __Pyx_DECREF_SET(__pyx_t_6, function);
+    }
+  }
+  __pyx_t_2 = (__pyx_t_1) ? __Pyx_PyObject_Call2Args(__pyx_t_6, __pyx_t_1, __pyx_v_probvec) : __Pyx_PyObject_CallOneArg(__pyx_t_6, __pyx_v_probvec);
+  __Pyx_XDECREF(__pyx_t_1); __pyx_t_1 = 0;
+  if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 263, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_2);
+  __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
+  __pyx_t_6 = __Pyx_PyNumber_Divide(__pyx_v_probvec, __pyx_t_2); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 263, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_6);
+  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+  __Pyx_DECREF_SET(__pyx_v_probvec, __pyx_t_6);
+  __pyx_t_6 = 0;
+
+  /* "structureboost/pdf_discrete.pyx":264
+ *     probvec = np.maximum(probvec, eps)
+ *     probvec = probvec / np.sum(probvec)
+ *     return(probvec)             # <<<<<<<<<<<<<<
+ * 
+ * def get_pdf_from_data(binvec, value_vec):
+ */
+  __Pyx_XDECREF(__pyx_r);
+  __Pyx_INCREF(__pyx_v_probvec);
+  __pyx_r = __pyx_v_probvec;
+  goto __pyx_L0;
+
+  /* "structureboost/pdf_discrete.pyx":255
+ *     return(PdfDiscrete(new_binvec, new_probvec))
+ * 
+ * def get_bin_probs_from_data(binvec, value_vec, eps=1e-16):             # <<<<<<<<<<<<<<
+ *     y_bin = np.digitize(value_vec,binvec[:-1]) -1
+ *     binvals, counts = np.unique(y_bin, return_counts=True)
+ */
+
+  /* function exit code */
+  __pyx_L1_error:;
+  __Pyx_XDECREF(__pyx_t_1);
+  __Pyx_XDECREF(__pyx_t_2);
+  __Pyx_XDECREF(__pyx_t_3);
+  __Pyx_XDECREF(__pyx_t_4);
+  __Pyx_XDECREF(__pyx_t_6);
+  __Pyx_AddTraceback("structureboost.pdf_discrete.get_bin_probs_from_data", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __pyx_r = NULL;
+  __pyx_L0:;
+  __Pyx_XDECREF(__pyx_v_y_bin);
+  __Pyx_XDECREF(__pyx_v_binvals);
+  __Pyx_XDECREF(__pyx_v_counts);
+  __Pyx_XDECREF(__pyx_v_probvec);
+  __Pyx_XDECREF(__pyx_v_total);
+  __Pyx_XDECREF(__pyx_v_i);
+  __Pyx_XDECREF(__pyx_v_binnum);
+  __Pyx_XGIVEREF(__pyx_r);
+  __Pyx_TraceReturn(__pyx_r, 0);
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+/* "structureboost/pdf_discrete.pyx":266
+ *     return(probvec)
+ * 
+ * def get_pdf_from_data(binvec, value_vec):             # <<<<<<<<<<<<<<
+ *     pv = get_bin_probs_from_data(binvec,value_vec)
+ *     return(PdfDiscrete(binvec, pv))
+ */
+
+/* Python wrapper */
+static PyObject *__pyx_pw_14structureboost_12pdf_discrete_11get_pdf_from_data(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
+static PyMethodDef __pyx_mdef_14structureboost_12pdf_discrete_11get_pdf_from_data = {"get_pdf_from_data", (PyCFunction)(void*)(PyCFunctionWithKeywords)__pyx_pw_14structureboost_12pdf_discrete_11get_pdf_from_data, METH_VARARGS|METH_KEYWORDS, 0};
+static PyObject *__pyx_pw_14structureboost_12pdf_discrete_11get_pdf_from_data(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
+  PyObject *__pyx_v_binvec = 0;
+  PyObject *__pyx_v_value_vec = 0;
+  int __pyx_lineno = 0;
+  const char *__pyx_filename = NULL;
+  int __pyx_clineno = 0;
+  PyObject *__pyx_r = 0;
+  __Pyx_RefNannyDeclarations
+  __Pyx_RefNannySetupContext("get_pdf_from_data (wrapper)", 0);
+  {
+    static PyObject **__pyx_pyargnames[] = {&__pyx_n_s_binvec,&__pyx_n_s_value_vec,0};
+    PyObject* values[2] = {0,0};
+    if (unlikely(__pyx_kwds)) {
+      Py_ssize_t kw_args;
+      const Py_ssize_t pos_args = PyTuple_GET_SIZE(__pyx_args);
+      switch (pos_args) {
+        case  2: values[1] = PyTuple_GET_ITEM(__pyx_args, 1);
+        CYTHON_FALLTHROUGH;
+        case  1: values[0] = PyTuple_GET_ITEM(__pyx_args, 0);
+        CYTHON_FALLTHROUGH;
+        case  0: break;
+        default: goto __pyx_L5_argtuple_error;
+      }
+      kw_args = PyDict_Size(__pyx_kwds);
+      switch (pos_args) {
+        case  0:
+        if (likely((values[0] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_binvec)) != 0)) kw_args--;
+        else goto __pyx_L5_argtuple_error;
+        CYTHON_FALLTHROUGH;
+        case  1:
+        if (likely((values[1] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_value_vec)) != 0)) kw_args--;
+        else {
+          __Pyx_RaiseArgtupleInvalid("get_pdf_from_data", 1, 2, 2, 1); __PYX_ERR(0, 266, __pyx_L3_error)
+        }
+      }
+      if (unlikely(kw_args > 0)) {
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "get_pdf_from_data") < 0)) __PYX_ERR(0, 266, __pyx_L3_error)
+      }
+    } else if (PyTuple_GET_SIZE(__pyx_args) != 2) {
+      goto __pyx_L5_argtuple_error;
+    } else {
+      values[0] = PyTuple_GET_ITEM(__pyx_args, 0);
+      values[1] = PyTuple_GET_ITEM(__pyx_args, 1);
+    }
+    __pyx_v_binvec = values[0];
+    __pyx_v_value_vec = values[1];
+  }
+  goto __pyx_L4_argument_unpacking_done;
+  __pyx_L5_argtuple_error:;
+  __Pyx_RaiseArgtupleInvalid("get_pdf_from_data", 1, 2, 2, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 266, __pyx_L3_error)
+  __pyx_L3_error:;
+  __Pyx_AddTraceback("structureboost.pdf_discrete.get_pdf_from_data", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_RefNannyFinishContext();
+  return NULL;
+  __pyx_L4_argument_unpacking_done:;
+  __pyx_r = __pyx_pf_14structureboost_12pdf_discrete_10get_pdf_from_data(__pyx_self, __pyx_v_binvec, __pyx_v_value_vec);
+
+  /* function exit code */
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+static PyObject *__pyx_pf_14structureboost_12pdf_discrete_10get_pdf_from_data(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_binvec, PyObject *__pyx_v_value_vec) {
+  PyObject *__pyx_v_pv = NULL;
+  PyObject *__pyx_r = NULL;
+  __Pyx_TraceDeclarations
+  __Pyx_RefNannyDeclarations
+  PyObject *__pyx_t_1 = NULL;
+  PyObject *__pyx_t_2 = NULL;
+  PyObject *__pyx_t_3 = NULL;
+  int __pyx_t_4;
+  PyObject *__pyx_t_5 = NULL;
+  int __pyx_lineno = 0;
+  const char *__pyx_filename = NULL;
+  int __pyx_clineno = 0;
+  __Pyx_TraceFrameInit(__pyx_codeobj__25)
+  __Pyx_RefNannySetupContext("get_pdf_from_data", 0);
+  __Pyx_TraceCall("get_pdf_from_data", __pyx_f[0], 266, 0, __PYX_ERR(0, 266, __pyx_L1_error));
+
+  /* "structureboost/pdf_discrete.pyx":267
+ * 
+ * def get_pdf_from_data(binvec, value_vec):
+ *     pv = get_bin_probs_from_data(binvec,value_vec)             # <<<<<<<<<<<<<<
+ *     return(PdfDiscrete(binvec, pv))
+ * 
+ */
+  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_get_bin_probs_from_data); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 267, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_2);
+  __pyx_t_3 = NULL;
+  __pyx_t_4 = 0;
+  if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_2))) {
+    __pyx_t_3 = PyMethod_GET_SELF(__pyx_t_2);
+    if (likely(__pyx_t_3)) {
+      PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_2);
+      __Pyx_INCREF(__pyx_t_3);
+      __Pyx_INCREF(function);
+      __Pyx_DECREF_SET(__pyx_t_2, function);
+      __pyx_t_4 = 1;
+    }
+  }
+  #if CYTHON_FAST_PYCALL
+  if (PyFunction_Check(__pyx_t_2)) {
+    PyObject *__pyx_temp[3] = {__pyx_t_3, __pyx_v_binvec, __pyx_v_value_vec};
+    __pyx_t_1 = __Pyx_PyFunction_FastCall(__pyx_t_2, __pyx_temp+1-__pyx_t_4, 2+__pyx_t_4); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 267, __pyx_L1_error)
+    __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
+    __Pyx_GOTREF(__pyx_t_1);
+  } else
+  #endif
+  #if CYTHON_FAST_PYCCALL
+  if (__Pyx_PyFastCFunction_Check(__pyx_t_2)) {
+    PyObject *__pyx_temp[3] = {__pyx_t_3, __pyx_v_binvec, __pyx_v_value_vec};
+    __pyx_t_1 = __Pyx_PyCFunction_FastCall(__pyx_t_2, __pyx_temp+1-__pyx_t_4, 2+__pyx_t_4); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 267, __pyx_L1_error)
+    __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
+    __Pyx_GOTREF(__pyx_t_1);
+  } else
+  #endif
+  {
+    __pyx_t_5 = PyTuple_New(2+__pyx_t_4); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 267, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_5);
+    if (__pyx_t_3) {
+      __Pyx_GIVEREF(__pyx_t_3); PyTuple_SET_ITEM(__pyx_t_5, 0, __pyx_t_3); __pyx_t_3 = NULL;
+    }
+    __Pyx_INCREF(__pyx_v_binvec);
+    __Pyx_GIVEREF(__pyx_v_binvec);
+    PyTuple_SET_ITEM(__pyx_t_5, 0+__pyx_t_4, __pyx_v_binvec);
+    __Pyx_INCREF(__pyx_v_value_vec);
+    __Pyx_GIVEREF(__pyx_v_value_vec);
+    PyTuple_SET_ITEM(__pyx_t_5, 1+__pyx_t_4, __pyx_v_value_vec);
+    __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_5, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 267, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_1);
+    __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
+  }
+  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+  __pyx_v_pv = __pyx_t_1;
+  __pyx_t_1 = 0;
+
+  /* "structureboost/pdf_discrete.pyx":268
+ * def get_pdf_from_data(binvec, value_vec):
+ *     pv = get_bin_probs_from_data(binvec,value_vec)
+ *     return(PdfDiscrete(binvec, pv))             # <<<<<<<<<<<<<<
+ * 
+ */
+  __Pyx_XDECREF(__pyx_r);
+  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_PdfDiscrete); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 268, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_2);
+  __pyx_t_5 = NULL;
+  __pyx_t_4 = 0;
+  if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_2))) {
+    __pyx_t_5 = PyMethod_GET_SELF(__pyx_t_2);
+    if (likely(__pyx_t_5)) {
+      PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_2);
+      __Pyx_INCREF(__pyx_t_5);
+      __Pyx_INCREF(function);
+      __Pyx_DECREF_SET(__pyx_t_2, function);
+      __pyx_t_4 = 1;
+    }
+  }
+  #if CYTHON_FAST_PYCALL
+  if (PyFunction_Check(__pyx_t_2)) {
+    PyObject *__pyx_temp[3] = {__pyx_t_5, __pyx_v_binvec, __pyx_v_pv};
+    __pyx_t_1 = __Pyx_PyFunction_FastCall(__pyx_t_2, __pyx_temp+1-__pyx_t_4, 2+__pyx_t_4); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 268, __pyx_L1_error)
+    __Pyx_XDECREF(__pyx_t_5); __pyx_t_5 = 0;
+    __Pyx_GOTREF(__pyx_t_1);
+  } else
+  #endif
+  #if CYTHON_FAST_PYCCALL
+  if (__Pyx_PyFastCFunction_Check(__pyx_t_2)) {
+    PyObject *__pyx_temp[3] = {__pyx_t_5, __pyx_v_binvec, __pyx_v_pv};
+    __pyx_t_1 = __Pyx_PyCFunction_FastCall(__pyx_t_2, __pyx_temp+1-__pyx_t_4, 2+__pyx_t_4); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 268, __pyx_L1_error)
+    __Pyx_XDECREF(__pyx_t_5); __pyx_t_5 = 0;
+    __Pyx_GOTREF(__pyx_t_1);
+  } else
+  #endif
+  {
+    __pyx_t_3 = PyTuple_New(2+__pyx_t_4); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 268, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_3);
+    if (__pyx_t_5) {
+      __Pyx_GIVEREF(__pyx_t_5); PyTuple_SET_ITEM(__pyx_t_3, 0, __pyx_t_5); __pyx_t_5 = NULL;
+    }
+    __Pyx_INCREF(__pyx_v_binvec);
+    __Pyx_GIVEREF(__pyx_v_binvec);
+    PyTuple_SET_ITEM(__pyx_t_3, 0+__pyx_t_4, __pyx_v_binvec);
+    __Pyx_INCREF(__pyx_v_pv);
+    __Pyx_GIVEREF(__pyx_v_pv);
+    PyTuple_SET_ITEM(__pyx_t_3, 1+__pyx_t_4, __pyx_v_pv);
+    __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_3, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 268, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_1);
+    __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+  }
+  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+  __pyx_r = __pyx_t_1;
+  __pyx_t_1 = 0;
+  goto __pyx_L0;
+
+  /* "structureboost/pdf_discrete.pyx":266
+ *     return(probvec)
+ * 
+ * def get_pdf_from_data(binvec, value_vec):             # <<<<<<<<<<<<<<
+ *     pv = get_bin_probs_from_data(binvec,value_vec)
+ *     return(PdfDiscrete(binvec, pv))
+ */
+
+  /* function exit code */
+  __pyx_L1_error:;
+  __Pyx_XDECREF(__pyx_t_1);
+  __Pyx_XDECREF(__pyx_t_2);
+  __Pyx_XDECREF(__pyx_t_3);
+  __Pyx_XDECREF(__pyx_t_5);
+  __Pyx_AddTraceback("structureboost.pdf_discrete.get_pdf_from_data", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __pyx_r = NULL;
+  __pyx_L0:;
+  __Pyx_XDECREF(__pyx_v_pv);
   __Pyx_XGIVEREF(__pyx_r);
   __Pyx_TraceReturn(__pyx_r, 0);
   __Pyx_RefNannyFinishContext();
@@ -8671,10 +11320,14 @@ static struct PyModuleDef __pyx_moduledef = {
 #endif
 
 static __Pyx_StringTabEntry __pyx_string_tab[] = {
+  {&__pyx_kp_u_Both_probs_and_densities_given_i, __pyx_k_Both_probs_and_densities_given_i, sizeof(__pyx_k_Both_probs_and_densities_given_i), 0, 1, 0, 0},
+  {&__pyx_kp_u_Number_of_densities_does_not_mat, __pyx_k_Number_of_densities_does_not_mat, sizeof(__pyx_k_Number_of_densities_does_not_mat), 0, 1, 0, 0},
   {&__pyx_kp_u_Number_of_probabilities_does_not, __pyx_k_Number_of_probabilities_does_not, sizeof(__pyx_k_Number_of_probabilities_does_not), 0, 1, 0, 0},
   {&__pyx_n_s_PdfDiscrete, __pyx_k_PdfDiscrete, sizeof(__pyx_k_PdfDiscrete), 0, 0, 1, 1},
-  {&__pyx_n_s_PdfDiscrete___add, __pyx_k_PdfDiscrete___add, sizeof(__pyx_k_PdfDiscrete___add), 0, 0, 1, 1},
   {&__pyx_n_s_PdfDiscrete___init, __pyx_k_PdfDiscrete___init, sizeof(__pyx_k_PdfDiscrete___init), 0, 0, 1, 1},
+  {&__pyx_n_s_PdfDiscrete_add_binpts, __pyx_k_PdfDiscrete_add_binpts, sizeof(__pyx_k_PdfDiscrete_add_binpts), 0, 0, 1, 1},
+  {&__pyx_n_s_PdfDiscrete_bins_to_probs, __pyx_k_PdfDiscrete_bins_to_probs, sizeof(__pyx_k_PdfDiscrete_bins_to_probs), 0, 0, 1, 1},
+  {&__pyx_n_s_PdfDiscrete_calculate_cum_prob, __pyx_k_PdfDiscrete_calculate_cum_prob, sizeof(__pyx_k_PdfDiscrete_calculate_cum_prob), 0, 0, 1, 1},
   {&__pyx_n_s_PdfDiscrete_cdf, __pyx_k_PdfDiscrete_cdf, sizeof(__pyx_k_PdfDiscrete_cdf), 0, 0, 1, 1},
   {&__pyx_n_s_PdfDiscrete_density, __pyx_k_PdfDiscrete_density, sizeof(__pyx_k_PdfDiscrete_density), 0, 0, 1, 1},
   {&__pyx_n_s_PdfDiscrete_mean, __pyx_k_PdfDiscrete_mean, sizeof(__pyx_k_PdfDiscrete_mean), 0, 0, 1, 1},
@@ -8684,13 +11337,15 @@ static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {&__pyx_n_s_PdfDiscrete_pred_interval, __pyx_k_PdfDiscrete_pred_interval, sizeof(__pyx_k_PdfDiscrete_pred_interval), 0, 0, 1, 1},
   {&__pyx_n_s_PdfDiscrete_pred_region, __pyx_k_PdfDiscrete_pred_region, sizeof(__pyx_k_PdfDiscrete_pred_region), 0, 0, 1, 1},
   {&__pyx_n_s_PdfDiscrete_pred_region_bins, __pyx_k_PdfDiscrete_pred_region_bins, sizeof(__pyx_k_PdfDiscrete_pred_region_bins), 0, 0, 1, 1},
+  {&__pyx_n_s_PdfDiscrete_pred_region_cdf, __pyx_k_PdfDiscrete_pred_region_cdf, sizeof(__pyx_k_PdfDiscrete_pred_region_cdf), 0, 0, 1, 1},
   {&__pyx_n_s_PdfDiscrete_quantile, __pyx_k_PdfDiscrete_quantile, sizeof(__pyx_k_PdfDiscrete_quantile), 0, 0, 1, 1},
   {&__pyx_n_s_PdfDiscrete_quantiles, __pyx_k_PdfDiscrete_quantiles, sizeof(__pyx_k_PdfDiscrete_quantiles), 0, 0, 1, 1},
   {&__pyx_kp_u_Probabilities_do_not_sum_to_1, __pyx_k_Probabilities_do_not_sum_to_1, sizeof(__pyx_k_Probabilities_do_not_sum_to_1), 0, 1, 0, 0},
+  {&__pyx_kp_s_Represents_a_piecewise_constant, __pyx_k_Represents_a_piecewise_constant, sizeof(__pyx_k_Represents_a_piecewise_constant), 0, 0, 1, 0},
   {&__pyx_n_s_T, __pyx_k_T, sizeof(__pyx_k_T), 0, 0, 1, 1},
-  {&__pyx_n_s__21, __pyx_k__21, sizeof(__pyx_k__21), 0, 0, 1, 1},
+  {&__pyx_n_s__26, __pyx_k__26, sizeof(__pyx_k__26), 0, 0, 1, 1},
   {&__pyx_n_s_abs, __pyx_k_abs, sizeof(__pyx_k_abs), 0, 0, 1, 1},
-  {&__pyx_n_s_add, __pyx_k_add, sizeof(__pyx_k_add), 0, 0, 1, 1},
+  {&__pyx_n_s_add_binpts, __pyx_k_add_binpts, sizeof(__pyx_k_add_binpts), 0, 0, 1, 1},
   {&__pyx_n_s_alpha, __pyx_k_alpha, sizeof(__pyx_k_alpha), 0, 0, 1, 1},
   {&__pyx_n_s_append, __pyx_k_append, sizeof(__pyx_k_append), 0, 0, 1, 1},
   {&__pyx_n_s_args, __pyx_k_args, sizeof(__pyx_k_args), 0, 0, 1, 1},
@@ -8703,35 +11358,53 @@ static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {&__pyx_n_s_average_densities, __pyx_k_average_densities, sizeof(__pyx_k_average_densities), 0, 0, 1, 1},
   {&__pyx_n_s_axis, __pyx_k_axis, sizeof(__pyx_k_axis), 0, 0, 1, 1},
   {&__pyx_n_s_bar, __pyx_k_bar, sizeof(__pyx_k_bar), 0, 0, 1, 1},
-  {&__pyx_n_s_bin_densities, __pyx_k_bin_densities, sizeof(__pyx_k_bin_densities), 0, 0, 1, 1},
+  {&__pyx_n_s_basic_density_plot, __pyx_k_basic_density_plot, sizeof(__pyx_k_basic_density_plot), 0, 0, 1, 1},
+  {&__pyx_n_s_beta, __pyx_k_beta, sizeof(__pyx_k_beta), 0, 0, 1, 1},
   {&__pyx_n_s_bin_ind, __pyx_k_bin_ind, sizeof(__pyx_k_bin_ind), 0, 0, 1, 1},
   {&__pyx_n_s_bin_lp, __pyx_k_bin_lp, sizeof(__pyx_k_bin_lp), 0, 0, 1, 1},
   {&__pyx_n_s_bin_midpts, __pyx_k_bin_midpts, sizeof(__pyx_k_bin_midpts), 0, 0, 1, 1},
+  {&__pyx_n_s_bin_num, __pyx_k_bin_num, sizeof(__pyx_k_bin_num), 0, 0, 1, 1},
   {&__pyx_n_s_bin_vec, __pyx_k_bin_vec, sizeof(__pyx_k_bin_vec), 0, 0, 1, 1},
   {&__pyx_n_s_bin_widths, __pyx_k_bin_widths, sizeof(__pyx_k_bin_widths), 0, 0, 1, 1},
+  {&__pyx_n_s_binnum, __pyx_k_binnum, sizeof(__pyx_k_binnum), 0, 0, 1, 1},
   {&__pyx_n_s_binpt_left, __pyx_k_binpt_left, sizeof(__pyx_k_binpt_left), 0, 0, 1, 1},
   {&__pyx_n_s_binpt_list, __pyx_k_binpt_list, sizeof(__pyx_k_binpt_list), 0, 0, 1, 1},
+  {&__pyx_n_s_binpts_to_add, __pyx_k_binpts_to_add, sizeof(__pyx_k_binpts_to_add), 0, 0, 1, 1},
+  {&__pyx_n_s_bins_to_probs, __pyx_k_bins_to_probs, sizeof(__pyx_k_bins_to_probs), 0, 0, 1, 1},
+  {&__pyx_n_s_binvals, __pyx_k_binvals, sizeof(__pyx_k_binvals), 0, 0, 1, 1},
   {&__pyx_n_s_binvec, __pyx_k_binvec, sizeof(__pyx_k_binvec), 0, 0, 1, 1},
   {&__pyx_n_s_binvec_plot, __pyx_k_binvec_plot, sizeof(__pyx_k_binvec_plot), 0, 0, 1, 1},
   {&__pyx_n_s_blocksize, __pyx_k_blocksize, sizeof(__pyx_k_blocksize), 0, 0, 1, 1},
+  {&__pyx_n_s_calculate_cum_prob, __pyx_k_calculate_cum_prob, sizeof(__pyx_k_calculate_cum_prob), 0, 0, 1, 1},
   {&__pyx_n_s_cdf, __pyx_k_cdf, sizeof(__pyx_k_cdf), 0, 0, 1, 1},
+  {&__pyx_n_s_cdf_val, __pyx_k_cdf_val, sizeof(__pyx_k_cdf_val), 0, 0, 1, 1},
   {&__pyx_n_s_chain_partition, __pyx_k_chain_partition, sizeof(__pyx_k_chain_partition), 0, 0, 1, 1},
+  {&__pyx_n_s_check_sum, __pyx_k_check_sum, sizeof(__pyx_k_check_sum), 0, 0, 1, 1},
   {&__pyx_n_s_cline_in_traceback, __pyx_k_cline_in_traceback, sizeof(__pyx_k_cline_in_traceback), 0, 0, 1, 1},
   {&__pyx_n_s_close, __pyx_k_close, sizeof(__pyx_k_close), 0, 0, 1, 1},
   {&__pyx_n_s_color, __pyx_k_color, sizeof(__pyx_k_color), 0, 0, 1, 1},
   {&__pyx_n_s_concatenate, __pyx_k_concatenate, sizeof(__pyx_k_concatenate), 0, 0, 1, 1},
+  {&__pyx_n_s_counts, __pyx_k_counts, sizeof(__pyx_k_counts), 0, 0, 1, 1},
+  {&__pyx_n_s_coverage, __pyx_k_coverage, sizeof(__pyx_k_coverage), 0, 0, 1, 1},
   {&__pyx_n_s_cum_prob, __pyx_k_cum_prob, sizeof(__pyx_k_cum_prob), 0, 0, 1, 1},
   {&__pyx_n_s_cumprob_left, __pyx_k_cumprob_left, sizeof(__pyx_k_cumprob_left), 0, 0, 1, 1},
   {&__pyx_n_s_cumsum, __pyx_k_cumsum, sizeof(__pyx_k_cumsum), 0, 0, 1, 1},
+  {&__pyx_n_s_dens_plot, __pyx_k_dens_plot, sizeof(__pyx_k_dens_plot), 0, 0, 1, 1},
+  {&__pyx_n_s_dens_vec, __pyx_k_dens_vec, sizeof(__pyx_k_dens_vec), 0, 0, 1, 1},
   {&__pyx_n_s_density, __pyx_k_density, sizeof(__pyx_k_density), 0, 0, 1, 1},
-  {&__pyx_n_s_density_plot, __pyx_k_density_plot, sizeof(__pyx_k_density_plot), 0, 0, 1, 1},
+  {&__pyx_n_s_densityvec, __pyx_k_densityvec, sizeof(__pyx_k_densityvec), 0, 0, 1, 1},
   {&__pyx_n_s_diff, __pyx_k_diff, sizeof(__pyx_k_diff), 0, 0, 1, 1},
   {&__pyx_n_s_digitize, __pyx_k_digitize, sizeof(__pyx_k_digitize), 0, 0, 1, 1},
   {&__pyx_n_s_doc, __pyx_k_doc, sizeof(__pyx_k_doc), 0, 0, 1, 1},
+  {&__pyx_n_s_dot, __pyx_k_dot, sizeof(__pyx_k_dot), 0, 0, 1, 1},
   {&__pyx_n_s_enumerate, __pyx_k_enumerate, sizeof(__pyx_k_enumerate), 0, 0, 1, 1},
+  {&__pyx_n_s_eps, __pyx_k_eps, sizeof(__pyx_k_eps), 0, 0, 1, 1},
+  {&__pyx_n_s_exp, __pyx_k_exp, sizeof(__pyx_k_exp), 0, 0, 1, 1},
   {&__pyx_n_s_genexpr, __pyx_k_genexpr, sizeof(__pyx_k_genexpr), 0, 0, 1, 1},
+  {&__pyx_n_s_get_bin_probs_from_data, __pyx_k_get_bin_probs_from_data, sizeof(__pyx_k_get_bin_probs_from_data), 0, 0, 1, 1},
   {&__pyx_n_s_get_part, __pyx_k_get_part, sizeof(__pyx_k_get_part), 0, 0, 1, 1},
   {&__pyx_n_s_get_part_locals_genexpr, __pyx_k_get_part_locals_genexpr, sizeof(__pyx_k_get_part_locals_genexpr), 0, 0, 1, 1},
+  {&__pyx_n_s_get_pdf_from_data, __pyx_k_get_pdf_from_data, sizeof(__pyx_k_get_pdf_from_data), 0, 0, 1, 1},
   {&__pyx_n_s_height, __pyx_k_height, sizeof(__pyx_k_height), 0, 0, 1, 1},
   {&__pyx_n_s_i, __pyx_k_i, sizeof(__pyx_k_i), 0, 0, 1, 1},
   {&__pyx_n_s_import, __pyx_k_import, sizeof(__pyx_k_import), 0, 0, 1, 1},
@@ -8752,9 +11425,15 @@ static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {&__pyx_n_s_left_pt, __pyx_k_left_pt, sizeof(__pyx_k_left_pt), 0, 0, 1, 1},
   {&__pyx_n_s_left_width, __pyx_k_left_width, sizeof(__pyx_k_left_width), 0, 0, 1, 1},
   {&__pyx_n_s_left_xpt, __pyx_k_left_xpt, sizeof(__pyx_k_left_xpt), 0, 0, 1, 1},
+  {&__pyx_n_u_linear, __pyx_k_linear, sizeof(__pyx_k_linear), 0, 1, 0, 1},
   {&__pyx_n_s_list1, __pyx_k_list1, sizeof(__pyx_k_list1), 0, 0, 1, 1},
+  {&__pyx_n_s_loc, __pyx_k_loc, sizeof(__pyx_k_loc), 0, 0, 1, 1},
+  {&__pyx_n_s_log, __pyx_k_log, sizeof(__pyx_k_log), 0, 0, 1, 1},
+  {&__pyx_n_u_log, __pyx_k_log, sizeof(__pyx_k_log), 0, 1, 0, 1},
+  {&__pyx_n_s_logprob_array, __pyx_k_logprob_array, sizeof(__pyx_k_logprob_array), 0, 0, 1, 1},
   {&__pyx_n_s_main, __pyx_k_main, sizeof(__pyx_k_main), 0, 0, 1, 1},
   {&__pyx_n_s_matplotlib_pyplot, __pyx_k_matplotlib_pyplot, sizeof(__pyx_k_matplotlib_pyplot), 0, 0, 1, 1},
+  {&__pyx_n_s_maximum, __pyx_k_maximum, sizeof(__pyx_k_maximum), 0, 0, 1, 1},
   {&__pyx_n_s_mean, __pyx_k_mean, sizeof(__pyx_k_mean), 0, 0, 1, 1},
   {&__pyx_n_s_median, __pyx_k_median, sizeof(__pyx_k_median), 0, 0, 1, 1},
   {&__pyx_n_s_metaclass, __pyx_k_metaclass, sizeof(__pyx_k_metaclass), 0, 0, 1, 1},
@@ -8763,9 +11442,12 @@ static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {&__pyx_n_s_name, __pyx_k_name, sizeof(__pyx_k_name), 0, 0, 1, 1},
   {&__pyx_n_s_nc, __pyx_k_nc, sizeof(__pyx_k_nc), 0, 0, 1, 1},
   {&__pyx_n_s_new_bin_widths, __pyx_k_new_bin_widths, sizeof(__pyx_k_new_bin_widths), 0, 0, 1, 1},
+  {&__pyx_n_s_new_binpt_vec, __pyx_k_new_binpt_vec, sizeof(__pyx_k_new_binpt_vec), 0, 0, 1, 1},
   {&__pyx_n_s_new_binvec, __pyx_k_new_binvec, sizeof(__pyx_k_new_binvec), 0, 0, 1, 1},
+  {&__pyx_n_s_new_logprobvec, __pyx_k_new_logprobvec, sizeof(__pyx_k_new_logprobvec), 0, 0, 1, 1},
   {&__pyx_n_s_new_midpts, __pyx_k_new_midpts, sizeof(__pyx_k_new_midpts), 0, 0, 1, 1},
   {&__pyx_n_s_new_probvec, __pyx_k_new_probvec, sizeof(__pyx_k_new_probvec), 0, 0, 1, 1},
+  {&__pyx_n_s_new_tempprobvec, __pyx_k_new_tempprobvec, sizeof(__pyx_k_new_tempprobvec), 0, 0, 1, 1},
   {&__pyx_n_s_np, __pyx_k_np, sizeof(__pyx_k_np), 0, 0, 1, 1},
   {&__pyx_n_s_num_bins, __pyx_k_num_bins, sizeof(__pyx_k_num_bins), 0, 0, 1, 1},
   {&__pyx_n_s_num_dens, __pyx_k_num_dens, sizeof(__pyx_k_num_dens), 0, 0, 1, 1},
@@ -8779,28 +11461,25 @@ static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {&__pyx_n_s_out_vec, __pyx_k_out_vec, sizeof(__pyx_k_out_vec), 0, 0, 1, 1},
   {&__pyx_n_s_part, __pyx_k_part, sizeof(__pyx_k_part), 0, 0, 1, 1},
   {&__pyx_n_s_pd, __pyx_k_pd, sizeof(__pyx_k_pd), 0, 0, 1, 1},
-  {&__pyx_n_s_pd2, __pyx_k_pd2, sizeof(__pyx_k_pd2), 0, 0, 1, 1},
   {&__pyx_n_s_pd_list, __pyx_k_pd_list, sizeof(__pyx_k_pd_list), 0, 0, 1, 1},
   {&__pyx_kp_s_pdf_discrete_pyx, __pyx_k_pdf_discrete_pyx, sizeof(__pyx_k_pdf_discrete_pyx), 0, 0, 1, 0},
   {&__pyx_n_s_plot, __pyx_k_plot, sizeof(__pyx_k_plot), 0, 0, 1, 1},
   {&__pyx_n_s_plot_cdf, __pyx_k_plot_cdf, sizeof(__pyx_k_plot_cdf), 0, 0, 1, 1},
   {&__pyx_n_s_plot_density, __pyx_k_plot_density, sizeof(__pyx_k_plot_density), 0, 0, 1, 1},
   {&__pyx_n_s_plt, __pyx_k_plt, sizeof(__pyx_k_plt), 0, 0, 1, 1},
-  {&__pyx_n_s_pred_alpha, __pyx_k_pred_alpha, sizeof(__pyx_k_pred_alpha), 0, 0, 1, 1},
   {&__pyx_n_s_pred_color, __pyx_k_pred_color, sizeof(__pyx_k_pred_color), 0, 0, 1, 1},
   {&__pyx_n_s_pred_interval, __pyx_k_pred_interval, sizeof(__pyx_k_pred_interval), 0, 0, 1, 1},
   {&__pyx_n_s_pred_region, __pyx_k_pred_region, sizeof(__pyx_k_pred_region), 0, 0, 1, 1},
   {&__pyx_n_s_pred_region_bins, __pyx_k_pred_region_bins, sizeof(__pyx_k_pred_region_bins), 0, 0, 1, 1},
+  {&__pyx_n_s_pred_region_cdf, __pyx_k_pred_region_cdf, sizeof(__pyx_k_pred_region_cdf), 0, 0, 1, 1},
   {&__pyx_n_s_pred_type, __pyx_k_pred_type, sizeof(__pyx_k_pred_type), 0, 0, 1, 1},
   {&__pyx_n_s_prepare, __pyx_k_prepare, sizeof(__pyx_k_prepare), 0, 0, 1, 1},
+  {&__pyx_n_s_print, __pyx_k_print, sizeof(__pyx_k_print), 0, 0, 1, 1},
   {&__pyx_n_s_prob_array, __pyx_k_prob_array, sizeof(__pyx_k_prob_array), 0, 0, 1, 1},
-  {&__pyx_n_s_prob_dens, __pyx_k_prob_dens, sizeof(__pyx_k_prob_dens), 0, 0, 1, 1},
-  {&__pyx_n_s_prob_plot, __pyx_k_prob_plot, sizeof(__pyx_k_prob_plot), 0, 0, 1, 1},
-  {&__pyx_n_s_prob_vec, __pyx_k_prob_vec, sizeof(__pyx_k_prob_vec), 0, 0, 1, 1},
   {&__pyx_n_s_probvec, __pyx_k_probvec, sizeof(__pyx_k_probvec), 0, 0, 1, 1},
   {&__pyx_n_s_ptol, __pyx_k_ptol, sizeof(__pyx_k_ptol), 0, 0, 1, 1},
+  {&__pyx_n_s_pv, __pyx_k_pv, sizeof(__pyx_k_pv), 0, 0, 1, 1},
   {&__pyx_n_s_pv1, __pyx_k_pv1, sizeof(__pyx_k_pv1), 0, 0, 1, 1},
-  {&__pyx_n_s_pv2, __pyx_k_pv2, sizeof(__pyx_k_pv2), 0, 0, 1, 1},
   {&__pyx_n_s_qualname, __pyx_k_qualname, sizeof(__pyx_k_qualname), 0, 0, 1, 1},
   {&__pyx_n_s_quantile, __pyx_k_quantile, sizeof(__pyx_k_quantile), 0, 0, 1, 1},
   {&__pyx_n_s_quantiles, __pyx_k_quantiles, sizeof(__pyx_k_quantiles), 0, 0, 1, 1},
@@ -8809,11 +11488,13 @@ static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {&__pyx_n_u_region, __pyx_k_region, sizeof(__pyx_k_region), 0, 1, 0, 1},
   {&__pyx_n_s_remainder_x, __pyx_k_remainder_x, sizeof(__pyx_k_remainder_x), 0, 0, 1, 1},
   {&__pyx_n_s_reshape, __pyx_k_reshape, sizeof(__pyx_k_reshape), 0, 0, 1, 1},
+  {&__pyx_n_s_return_counts, __pyx_k_return_counts, sizeof(__pyx_k_return_counts), 0, 0, 1, 1},
   {&__pyx_n_s_right_midpt, __pyx_k_right_midpt, sizeof(__pyx_k_right_midpt), 0, 0, 1, 1},
   {&__pyx_n_s_right_pi, __pyx_k_right_pi, sizeof(__pyx_k_right_pi), 0, 0, 1, 1},
   {&__pyx_n_s_right_pt, __pyx_k_right_pt, sizeof(__pyx_k_right_pt), 0, 0, 1, 1},
   {&__pyx_n_s_right_width, __pyx_k_right_width, sizeof(__pyx_k_right_width), 0, 0, 1, 1},
   {&__pyx_n_s_right_xpt, __pyx_k_right_xpt, sizeof(__pyx_k_right_xpt), 0, 0, 1, 1},
+  {&__pyx_n_s_scaling, __pyx_k_scaling, sizeof(__pyx_k_scaling), 0, 0, 1, 1},
   {&__pyx_n_s_self, __pyx_k_self, sizeof(__pyx_k_self), 0, 0, 1, 1},
   {&__pyx_n_s_send, __pyx_k_send, sizeof(__pyx_k_send), 0, 0, 1, 1},
   {&__pyx_n_s_sort, __pyx_k_sort, sizeof(__pyx_k_sort), 0, 0, 1, 1},
@@ -8825,6 +11506,7 @@ static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {&__pyx_n_s_sv, __pyx_k_sv, sizeof(__pyx_k_sv), 0, 0, 1, 1},
   {&__pyx_n_s_test, __pyx_k_test, sizeof(__pyx_k_test), 0, 0, 1, 1},
   {&__pyx_n_s_throw, __pyx_k_throw, sizeof(__pyx_k_throw), 0, 0, 1, 1},
+  {&__pyx_n_s_total, __pyx_k_total, sizeof(__pyx_k_total), 0, 0, 1, 1},
   {&__pyx_n_s_unique, __pyx_k_unique, sizeof(__pyx_k_unique), 0, 0, 1, 1},
   {&__pyx_n_s_upper_lim, __pyx_k_upper_lim, sizeof(__pyx_k_upper_lim), 0, 0, 1, 1},
   {&__pyx_n_s_val, __pyx_k_val, sizeof(__pyx_k_val), 0, 0, 1, 1},
@@ -8832,17 +11514,20 @@ static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {&__pyx_n_s_vstack, __pyx_k_vstack, sizeof(__pyx_k_vstack), 0, 0, 1, 1},
   {&__pyx_n_s_warn, __pyx_k_warn, sizeof(__pyx_k_warn), 0, 0, 1, 1},
   {&__pyx_n_s_warnings, __pyx_k_warnings, sizeof(__pyx_k_warnings), 0, 0, 1, 1},
+  {&__pyx_n_s_weights, __pyx_k_weights, sizeof(__pyx_k_weights), 0, 0, 1, 1},
   {&__pyx_n_s_where, __pyx_k_where, sizeof(__pyx_k_where), 0, 0, 1, 1},
   {&__pyx_n_s_width, __pyx_k_width, sizeof(__pyx_k_width), 0, 0, 1, 1},
   {&__pyx_n_s_x, __pyx_k_x, sizeof(__pyx_k_x), 0, 0, 1, 1},
   {&__pyx_n_s_x_vals, __pyx_k_x_vals, sizeof(__pyx_k_x_vals), 0, 0, 1, 1},
+  {&__pyx_n_s_y_bin, __pyx_k_y_bin, sizeof(__pyx_k_y_bin), 0, 0, 1, 1},
   {&__pyx_n_s_zeros, __pyx_k_zeros, sizeof(__pyx_k_zeros), 0, 0, 1, 1},
   {0, 0, 0, 0, 0, 0, 0}
 };
 static CYTHON_SMALL_CODE int __Pyx_InitCachedBuiltins(void) {
   __pyx_builtin_object = __Pyx_GetBuiltinName(__pyx_n_s_object); if (!__pyx_builtin_object) __PYX_ERR(0, 8, __pyx_L1_error)
-  __pyx_builtin_range = __Pyx_GetBuiltinName(__pyx_n_s_range); if (!__pyx_builtin_range) __PYX_ERR(0, 54, __pyx_L1_error)
-  __pyx_builtin_enumerate = __Pyx_GetBuiltinName(__pyx_n_s_enumerate); if (!__pyx_builtin_enumerate) __PYX_ERR(0, 173, __pyx_L1_error)
+  __pyx_builtin_print = __Pyx_GetBuiltinName(__pyx_n_s_print); if (!__pyx_builtin_print) __PYX_ERR(0, 59, __pyx_L1_error)
+  __pyx_builtin_range = __Pyx_GetBuiltinName(__pyx_n_s_range); if (!__pyx_builtin_range) __PYX_ERR(0, 102, __pyx_L1_error)
+  __pyx_builtin_enumerate = __Pyx_GetBuiltinName(__pyx_n_s_enumerate); if (!__pyx_builtin_enumerate) __PYX_ERR(0, 236, __pyx_L1_error)
   return 0;
   __pyx_L1_error:;
   return -1;
@@ -8852,254 +11537,314 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__Pyx_InitCachedConstants", 0);
 
-  /* "structureboost/pdf_discrete.pyx":18
- *         if np.abs(np.sum(self.probvec)-1.0)>ptol:
- *             warnings.warn('Probabilities do not sum to 1.')
- *         self.bin_midpts = (self.binvec[:-1]+self.binvec[1:])/2             # <<<<<<<<<<<<<<
- *         self.bin_widths = self.binvec[1:] - self.binvec[:-1]
- *         self.support_min, self.support_max = self.binvec[0], self.binvec[-1]
+  /* "structureboost/pdf_discrete.pyx":47
+ *                 if np.abs(np.sum(self.probvec)-1.0)>ptol:
+ *                     warnings.warn('Probabilities do not sum to 1.')
+ *             self.bin_widths = self.binvec[1:] - self.binvec[:-1]             # <<<<<<<<<<<<<<
+ *             self.densityvec = self.probvec / self.bin_widths
+ *             if densityvec is not None:
  */
-  __pyx_slice__2 = PySlice_New(Py_None, __pyx_int_neg_1, Py_None); if (unlikely(!__pyx_slice__2)) __PYX_ERR(0, 18, __pyx_L1_error)
+  __pyx_slice__2 = PySlice_New(__pyx_int_1, Py_None, Py_None); if (unlikely(!__pyx_slice__2)) __PYX_ERR(0, 47, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_slice__2);
   __Pyx_GIVEREF(__pyx_slice__2);
-  __pyx_slice__3 = PySlice_New(__pyx_int_1, Py_None, Py_None); if (unlikely(!__pyx_slice__3)) __PYX_ERR(0, 18, __pyx_L1_error)
+  __pyx_slice__3 = PySlice_New(Py_None, __pyx_int_neg_1, Py_None); if (unlikely(!__pyx_slice__3)) __PYX_ERR(0, 47, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_slice__3);
   __Pyx_GIVEREF(__pyx_slice__3);
 
-  /* "structureboost/pdf_discrete.pyx":174
- *     prob_array = np.zeros((num_dens, num_bins))
- *     for i,pd in enumerate(pd_list):
- *         prob_array[i,:] = pd.density(new_midpts)*new_bin_widths             # <<<<<<<<<<<<<<
- *     new_probvec = np.mean(prob_array, axis=0)
- *     # return(prob_array)
+  /* "structureboost/pdf_discrete.pyx":237
+ *     if scaling=='linear':
+ *         for i,pd in enumerate(pd_list):
+ *             prob_array[i,:] = pd.density(new_midpts)*new_bin_widths             # <<<<<<<<<<<<<<
+ *         if weights is None:
+ *             new_probvec = np.mean(prob_array, axis=0)
  */
-  __pyx_slice__20 = PySlice_New(Py_None, Py_None, Py_None); if (unlikely(!__pyx_slice__20)) __PYX_ERR(0, 174, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_slice__20);
-  __Pyx_GIVEREF(__pyx_slice__20);
+  __pyx_slice__23 = PySlice_New(Py_None, Py_None, Py_None); if (unlikely(!__pyx_slice__23)) __PYX_ERR(0, 237, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_slice__23);
+  __Pyx_GIVEREF(__pyx_slice__23);
 
   /* "structureboost/pdf_discrete.pyx":8
  * import matplotlib.pyplot as plt
  * 
  * class PdfDiscrete(object):             # <<<<<<<<<<<<<<
+ *     """Represents a piecewise constant probability density function.
  * 
- *     def __init__(self, binvec, probvec, ptol=1e-6):
  */
-  __pyx_tuple__22 = PyTuple_Pack(1, __pyx_builtin_object); if (unlikely(!__pyx_tuple__22)) __PYX_ERR(0, 8, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__22);
-  __Pyx_GIVEREF(__pyx_tuple__22);
+  __pyx_tuple__27 = PyTuple_Pack(1, __pyx_builtin_object); if (unlikely(!__pyx_tuple__27)) __PYX_ERR(0, 8, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__27);
+  __Pyx_GIVEREF(__pyx_tuple__27);
 
-  /* "structureboost/pdf_discrete.pyx":10
- * class PdfDiscrete(object):
- * 
- *     def __init__(self, binvec, probvec, ptol=1e-6):             # <<<<<<<<<<<<<<
+  /* "structureboost/pdf_discrete.pyx":36
+ *         True.  Can be turned off for computational efficiency.
+ * """
+ *     def __init__(self, binvec, probvec=None, densityvec=None,             # <<<<<<<<<<<<<<
+ *                  ptol=1e-6, check_sum=True):
  *         self.binvec = np.array(binvec)
- *         self.probvec = np.array(probvec)
  */
-  __pyx_tuple__23 = PyTuple_Pack(4, __pyx_n_s_self, __pyx_n_s_binvec, __pyx_n_s_probvec, __pyx_n_s_ptol); if (unlikely(!__pyx_tuple__23)) __PYX_ERR(0, 10, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__23);
-  __Pyx_GIVEREF(__pyx_tuple__23);
-  __pyx_codeobj_ = (PyObject*)__Pyx_PyCode_New(4, 0, 4, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__23, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_pdf_discrete_pyx, __pyx_n_s_init, 10, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj_)) __PYX_ERR(0, 10, __pyx_L1_error)
-  __pyx_tuple__24 = PyTuple_Pack(1, ((PyObject*)__pyx_float_1eneg_6)); if (unlikely(!__pyx_tuple__24)) __PYX_ERR(0, 10, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__24);
-  __Pyx_GIVEREF(__pyx_tuple__24);
+  __pyx_tuple__28 = PyTuple_Pack(6, __pyx_n_s_self, __pyx_n_s_binvec, __pyx_n_s_probvec, __pyx_n_s_densityvec, __pyx_n_s_ptol, __pyx_n_s_check_sum); if (unlikely(!__pyx_tuple__28)) __PYX_ERR(0, 36, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__28);
+  __Pyx_GIVEREF(__pyx_tuple__28);
+  __pyx_codeobj_ = (PyObject*)__Pyx_PyCode_New(6, 0, 6, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__28, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_pdf_discrete_pyx, __pyx_n_s_init, 36, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj_)) __PYX_ERR(0, 36, __pyx_L1_error)
+  __pyx_tuple__29 = PyTuple_Pack(4, ((PyObject *)Py_None), ((PyObject *)Py_None), ((PyObject*)__pyx_float_1eneg_6), ((PyObject *)Py_True)); if (unlikely(!__pyx_tuple__29)) __PYX_ERR(0, 36, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__29);
+  __Pyx_GIVEREF(__pyx_tuple__29);
 
-  /* "structureboost/pdf_discrete.pyx":24
+  /* "structureboost/pdf_discrete.pyx":65
+ *         self.cum_prob = None
+ * 
+ *     def calculate_cum_prob(self):             # <<<<<<<<<<<<<<
+ *         self.cum_prob = np.concatenate(([0],np.cumsum(self.probvec)))
+ * 
+ */
+  __pyx_tuple__30 = PyTuple_Pack(1, __pyx_n_s_self); if (unlikely(!__pyx_tuple__30)) __PYX_ERR(0, 65, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__30);
+  __Pyx_GIVEREF(__pyx_tuple__30);
+  __pyx_codeobj__4 = (PyObject*)__Pyx_PyCode_New(1, 0, 1, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__30, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_pdf_discrete_pyx, __pyx_n_s_calculate_cum_prob, 65, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__4)) __PYX_ERR(0, 65, __pyx_L1_error)
+
+  /* "structureboost/pdf_discrete.pyx":68
  *         self.cum_prob = np.concatenate(([0],np.cumsum(self.probvec)))
  * 
  *     def mean(self):             # <<<<<<<<<<<<<<
  *         val = np.sum(self.bin_midpts*self.probvec)
  *         return(val)
  */
-  __pyx_tuple__25 = PyTuple_Pack(2, __pyx_n_s_self, __pyx_n_s_val); if (unlikely(!__pyx_tuple__25)) __PYX_ERR(0, 24, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__25);
-  __Pyx_GIVEREF(__pyx_tuple__25);
-  __pyx_codeobj__4 = (PyObject*)__Pyx_PyCode_New(1, 0, 2, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__25, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_pdf_discrete_pyx, __pyx_n_s_mean, 24, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__4)) __PYX_ERR(0, 24, __pyx_L1_error)
+  __pyx_tuple__31 = PyTuple_Pack(2, __pyx_n_s_self, __pyx_n_s_val); if (unlikely(!__pyx_tuple__31)) __PYX_ERR(0, 68, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__31);
+  __Pyx_GIVEREF(__pyx_tuple__31);
+  __pyx_codeobj__5 = (PyObject*)__Pyx_PyCode_New(1, 0, 2, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__31, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_pdf_discrete_pyx, __pyx_n_s_mean, 68, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__5)) __PYX_ERR(0, 68, __pyx_L1_error)
 
-  /* "structureboost/pdf_discrete.pyx":28
+  /* "structureboost/pdf_discrete.pyx":72
  *         return(val)
  * 
  *     def quantile(self, qval):             # <<<<<<<<<<<<<<
- *         bin_lp = np.digitize(qval, self.cum_prob)-1
- * 
+ *         if self.cum_prob is None:
+ *             self.calculate_cum_prob()
  */
-  __pyx_tuple__26 = PyTuple_Pack(6, __pyx_n_s_self, __pyx_n_s_qval, __pyx_n_s_bin_lp, __pyx_n_s_binpt_left, __pyx_n_s_cumprob_left, __pyx_n_s_out_val); if (unlikely(!__pyx_tuple__26)) __PYX_ERR(0, 28, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__26);
-  __Pyx_GIVEREF(__pyx_tuple__26);
-  __pyx_codeobj__5 = (PyObject*)__Pyx_PyCode_New(2, 0, 6, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__26, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_pdf_discrete_pyx, __pyx_n_s_quantile, 28, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__5)) __PYX_ERR(0, 28, __pyx_L1_error)
+  __pyx_tuple__32 = PyTuple_Pack(6, __pyx_n_s_self, __pyx_n_s_qval, __pyx_n_s_bin_lp, __pyx_n_s_binpt_left, __pyx_n_s_cumprob_left, __pyx_n_s_out_val); if (unlikely(!__pyx_tuple__32)) __PYX_ERR(0, 72, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__32);
+  __Pyx_GIVEREF(__pyx_tuple__32);
+  __pyx_codeobj__6 = (PyObject*)__Pyx_PyCode_New(2, 0, 6, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__32, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_pdf_discrete_pyx, __pyx_n_s_quantile, 72, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__6)) __PYX_ERR(0, 72, __pyx_L1_error)
 
-  /* "structureboost/pdf_discrete.pyx":38
+  /* "structureboost/pdf_discrete.pyx":84
  *         return(out_val)
  * 
  *     def quantiles(self, qval):             # <<<<<<<<<<<<<<
- *         bin_lp = np.digitize(qval, self.cum_prob)-1
- *         bin_lp[bin_lp>=len(self.binvec)-1] = len(self.binvec)-2
+ *         if self.cum_prob is None:
+ *             self.calculate_cum_prob()
  */
-  __pyx_tuple__27 = PyTuple_Pack(6, __pyx_n_s_self, __pyx_n_s_qval, __pyx_n_s_bin_lp, __pyx_n_s_binpt_left, __pyx_n_s_cumprob_left, __pyx_n_s_out_val); if (unlikely(!__pyx_tuple__27)) __PYX_ERR(0, 38, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__27);
-  __Pyx_GIVEREF(__pyx_tuple__27);
-  __pyx_codeobj__6 = (PyObject*)__Pyx_PyCode_New(2, 0, 6, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__27, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_pdf_discrete_pyx, __pyx_n_s_quantiles, 38, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__6)) __PYX_ERR(0, 38, __pyx_L1_error)
+  __pyx_tuple__33 = PyTuple_Pack(6, __pyx_n_s_self, __pyx_n_s_qval, __pyx_n_s_bin_lp, __pyx_n_s_binpt_left, __pyx_n_s_cumprob_left, __pyx_n_s_out_val); if (unlikely(!__pyx_tuple__33)) __PYX_ERR(0, 84, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__33);
+  __Pyx_GIVEREF(__pyx_tuple__33);
+  __pyx_codeobj__7 = (PyObject*)__Pyx_PyCode_New(2, 0, 6, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__33, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_pdf_discrete_pyx, __pyx_n_s_quantiles, 84, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__7)) __PYX_ERR(0, 84, __pyx_L1_error)
 
-  /* "structureboost/pdf_discrete.pyx":46
+  /* "structureboost/pdf_discrete.pyx":94
  *         return(out_val)
  * 
  *     def median(self):             # <<<<<<<<<<<<<<
  *         return(self.quantile(.5))
  * 
  */
-  __pyx_tuple__28 = PyTuple_Pack(1, __pyx_n_s_self); if (unlikely(!__pyx_tuple__28)) __PYX_ERR(0, 46, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__28);
-  __Pyx_GIVEREF(__pyx_tuple__28);
-  __pyx_codeobj__7 = (PyObject*)__Pyx_PyCode_New(1, 0, 1, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__28, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_pdf_discrete_pyx, __pyx_n_s_median, 46, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__7)) __PYX_ERR(0, 46, __pyx_L1_error)
+  __pyx_tuple__34 = PyTuple_Pack(1, __pyx_n_s_self); if (unlikely(!__pyx_tuple__34)) __PYX_ERR(0, 94, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__34);
+  __Pyx_GIVEREF(__pyx_tuple__34);
+  __pyx_codeobj__8 = (PyObject*)__Pyx_PyCode_New(1, 0, 1, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__34, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_pdf_discrete_pyx, __pyx_n_s_median, 94, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__8)) __PYX_ERR(0, 94, __pyx_L1_error)
 
-  /* "structureboost/pdf_discrete.pyx":49
+  /* "structureboost/pdf_discrete.pyx":97
  *         return(self.quantile(.5))
  * 
  *     def density(self, value_vec, include_right=True):             # <<<<<<<<<<<<<<
  *         bin_ind = np.digitize(value_vec, self.binvec)
  *         if include_right:
  */
-  __pyx_tuple__29 = PyTuple_Pack(6, __pyx_n_s_self, __pyx_n_s_value_vec, __pyx_n_s_include_right, __pyx_n_s_bin_ind, __pyx_n_s_aug_dens_vec, __pyx_n_s_i); if (unlikely(!__pyx_tuple__29)) __PYX_ERR(0, 49, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__29);
-  __Pyx_GIVEREF(__pyx_tuple__29);
-  __pyx_codeobj__8 = (PyObject*)__Pyx_PyCode_New(3, 0, 6, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__29, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_pdf_discrete_pyx, __pyx_n_s_density, 49, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__8)) __PYX_ERR(0, 49, __pyx_L1_error)
-  __pyx_tuple__30 = PyTuple_Pack(1, ((PyObject *)Py_True)); if (unlikely(!__pyx_tuple__30)) __PYX_ERR(0, 49, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__30);
-  __Pyx_GIVEREF(__pyx_tuple__30);
+  __pyx_tuple__35 = PyTuple_Pack(6, __pyx_n_s_self, __pyx_n_s_value_vec, __pyx_n_s_include_right, __pyx_n_s_bin_ind, __pyx_n_s_aug_dens_vec, __pyx_n_s_i); if (unlikely(!__pyx_tuple__35)) __PYX_ERR(0, 97, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__35);
+  __Pyx_GIVEREF(__pyx_tuple__35);
+  __pyx_codeobj__9 = (PyObject*)__Pyx_PyCode_New(3, 0, 6, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__35, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_pdf_discrete_pyx, __pyx_n_s_density, 97, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__9)) __PYX_ERR(0, 97, __pyx_L1_error)
+  __pyx_tuple__36 = PyTuple_Pack(1, ((PyObject *)Py_True)); if (unlikely(!__pyx_tuple__36)) __PYX_ERR(0, 97, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__36);
+  __Pyx_GIVEREF(__pyx_tuple__36);
 
-  /* "structureboost/pdf_discrete.pyx":56
+  /* "structureboost/pdf_discrete.pyx":104
  *         return(np.array([aug_dens_vec[bin_ind[i]] for i in range(len(bin_ind))]))
  * 
  *     def cdf(self, x_vals):             # <<<<<<<<<<<<<<
+ *         # TODO: Check if I got the digitize right or if I need a -1
  *         bin_ind = np.digitize(x_vals, self.binvec)
- *         aug_bin_vec = np.concatenate(([-np.inf],self.binvec))
  */
-  __pyx_tuple__31 = PyTuple_Pack(8, __pyx_n_s_self, __pyx_n_s_x_vals, __pyx_n_s_bin_ind, __pyx_n_s_aug_bin_vec, __pyx_n_s_aug_cum_prob, __pyx_n_s_aug_densities, __pyx_n_s_remainder_x, __pyx_n_s_out_vec); if (unlikely(!__pyx_tuple__31)) __PYX_ERR(0, 56, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__31);
-  __Pyx_GIVEREF(__pyx_tuple__31);
-  __pyx_codeobj__9 = (PyObject*)__Pyx_PyCode_New(2, 0, 8, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__31, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_pdf_discrete_pyx, __pyx_n_s_cdf, 56, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__9)) __PYX_ERR(0, 56, __pyx_L1_error)
+  __pyx_tuple__37 = PyTuple_Pack(8, __pyx_n_s_self, __pyx_n_s_x_vals, __pyx_n_s_bin_ind, __pyx_n_s_aug_bin_vec, __pyx_n_s_aug_cum_prob, __pyx_n_s_aug_densities, __pyx_n_s_remainder_x, __pyx_n_s_out_vec); if (unlikely(!__pyx_tuple__37)) __PYX_ERR(0, 104, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__37);
+  __Pyx_GIVEREF(__pyx_tuple__37);
+  __pyx_codeobj__10 = (PyObject*)__Pyx_PyCode_New(2, 0, 8, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__37, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_pdf_discrete_pyx, __pyx_n_s_cdf, 104, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__10)) __PYX_ERR(0, 104, __pyx_L1_error)
 
-  /* "structureboost/pdf_discrete.pyx":66
+  /* "structureboost/pdf_discrete.pyx":117
  *         return(out_vec)
  * 
- *     def __add__(self, pd2):             # <<<<<<<<<<<<<<
- *         new_binvec = np.unique(np.concatenate((self.binvec, pd2.binvec)))
+ *     def add_binpts(self, binpts_to_add):             # <<<<<<<<<<<<<<
+ *         new_binvec = np.unique(np.concatenate((self.binvec, binpts_to_add)))
  *         new_midpts = (new_binvec[1:] + new_binvec[:-1])/2
  */
-  __pyx_tuple__32 = PyTuple_Pack(6, __pyx_n_s_self, __pyx_n_s_pd2, __pyx_n_s_new_binvec, __pyx_n_s_new_midpts, __pyx_n_s_pv1, __pyx_n_s_pv2); if (unlikely(!__pyx_tuple__32)) __PYX_ERR(0, 66, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__32);
-  __Pyx_GIVEREF(__pyx_tuple__32);
-  __pyx_codeobj__10 = (PyObject*)__Pyx_PyCode_New(2, 0, 6, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__32, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_pdf_discrete_pyx, __pyx_n_s_add, 66, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__10)) __PYX_ERR(0, 66, __pyx_L1_error)
+  __pyx_tuple__38 = PyTuple_Pack(6, __pyx_n_s_self, __pyx_n_s_binpts_to_add, __pyx_n_s_new_binvec, __pyx_n_s_new_midpts, __pyx_n_s_new_bin_widths, __pyx_n_s_pv1); if (unlikely(!__pyx_tuple__38)) __PYX_ERR(0, 117, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__38);
+  __Pyx_GIVEREF(__pyx_tuple__38);
+  __pyx_codeobj__11 = (PyObject*)__Pyx_PyCode_New(2, 0, 6, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__38, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_pdf_discrete_pyx, __pyx_n_s_add_binpts, 117, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__11)) __PYX_ERR(0, 117, __pyx_L1_error)
 
-  /* "structureboost/pdf_discrete.pyx":74
+  /* "structureboost/pdf_discrete.pyx":124
+ *         return(PdfDiscrete(new_binvec, pv1))
  * 
+ *     def bins_to_probs(self, new_binpt_vec):             # <<<<<<<<<<<<<<
+ *         """Given a new set of binpts, return the probabilities in each bin"""
+ *         return(np.diff(self.cdf(new_binpt_vec)))
+ */
+  __pyx_tuple__39 = PyTuple_Pack(2, __pyx_n_s_self, __pyx_n_s_new_binpt_vec); if (unlikely(!__pyx_tuple__39)) __PYX_ERR(0, 124, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__39);
+  __Pyx_GIVEREF(__pyx_tuple__39);
+  __pyx_codeobj__12 = (PyObject*)__Pyx_PyCode_New(2, 0, 2, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__39, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_pdf_discrete_pyx, __pyx_n_s_bins_to_probs, 124, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__12)) __PYX_ERR(0, 124, __pyx_L1_error)
+
+  /* "structureboost/pdf_discrete.pyx":128
+ *         return(np.diff(self.cdf(new_binpt_vec)))
  * 
- *     def plot_density(self, pred_alpha=None,             # <<<<<<<<<<<<<<
+ *     def plot_density(self, coverage=None,             # <<<<<<<<<<<<<<
  *                     pred_type='interval', pred_color='orange',
  *                     **kwargs):
  */
-  __pyx_tuple__33 = PyTuple_Pack(15, __pyx_n_s_self, __pyx_n_s_pred_alpha, __pyx_n_s_pred_type, __pyx_n_s_pred_color, __pyx_n_s_kwargs, __pyx_n_s_included_intervals, __pyx_n_s_index, __pyx_n_s_left_pi, __pyx_n_s_right_pi, __pyx_n_s_left_xpt, __pyx_n_s_right_xpt, __pyx_n_s_left_midpt, __pyx_n_s_left_width, __pyx_n_s_right_midpt, __pyx_n_s_right_width); if (unlikely(!__pyx_tuple__33)) __PYX_ERR(0, 74, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__33);
-  __Pyx_GIVEREF(__pyx_tuple__33);
-  __pyx_codeobj__11 = (PyObject*)__Pyx_PyCode_New(4, 0, 15, 0, CO_OPTIMIZED|CO_NEWLOCALS|CO_VARKEYWORDS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__33, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_pdf_discrete_pyx, __pyx_n_s_plot_density, 74, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__11)) __PYX_ERR(0, 74, __pyx_L1_error)
-  __pyx_tuple__34 = PyTuple_Pack(3, ((PyObject *)Py_None), ((PyObject*)__pyx_n_u_interval), ((PyObject*)__pyx_n_u_orange)); if (unlikely(!__pyx_tuple__34)) __PYX_ERR(0, 74, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__34);
-  __Pyx_GIVEREF(__pyx_tuple__34);
+  __pyx_tuple__40 = PyTuple_Pack(16, __pyx_n_s_self, __pyx_n_s_coverage, __pyx_n_s_pred_type, __pyx_n_s_pred_color, __pyx_n_s_kwargs, __pyx_n_s_included_intervals, __pyx_n_s_index, __pyx_n_s_beta, __pyx_n_s_left_pi, __pyx_n_s_right_pi, __pyx_n_s_left_xpt, __pyx_n_s_right_xpt, __pyx_n_s_left_midpt, __pyx_n_s_left_width, __pyx_n_s_right_midpt, __pyx_n_s_right_width); if (unlikely(!__pyx_tuple__40)) __PYX_ERR(0, 128, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__40);
+  __Pyx_GIVEREF(__pyx_tuple__40);
+  __pyx_codeobj__13 = (PyObject*)__Pyx_PyCode_New(4, 0, 16, 0, CO_OPTIMIZED|CO_NEWLOCALS|CO_VARKEYWORDS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__40, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_pdf_discrete_pyx, __pyx_n_s_plot_density, 128, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__13)) __PYX_ERR(0, 128, __pyx_L1_error)
+  __pyx_tuple__41 = PyTuple_Pack(3, ((PyObject *)Py_None), ((PyObject*)__pyx_n_u_interval), ((PyObject*)__pyx_n_u_orange)); if (unlikely(!__pyx_tuple__41)) __PYX_ERR(0, 128, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__41);
+  __Pyx_GIVEREF(__pyx_tuple__41);
 
-  /* "structureboost/pdf_discrete.pyx":103
+  /* "structureboost/pdf_discrete.pyx":162
  * 
  * 
  *     def plot_cdf(self, **kwargs):             # <<<<<<<<<<<<<<
- *         plt.plot(self.binvec, self.cum_prob, **kwargs)
- * 
+ *         if self.cum_prob is None:
+ *             self.calculate_cum_prob()
  */
-  __pyx_tuple__35 = PyTuple_Pack(2, __pyx_n_s_self, __pyx_n_s_kwargs); if (unlikely(!__pyx_tuple__35)) __PYX_ERR(0, 103, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__35);
-  __Pyx_GIVEREF(__pyx_tuple__35);
-  __pyx_codeobj__12 = (PyObject*)__Pyx_PyCode_New(1, 0, 2, 0, CO_OPTIMIZED|CO_NEWLOCALS|CO_VARKEYWORDS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__35, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_pdf_discrete_pyx, __pyx_n_s_plot_cdf, 103, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__12)) __PYX_ERR(0, 103, __pyx_L1_error)
+  __pyx_tuple__42 = PyTuple_Pack(2, __pyx_n_s_self, __pyx_n_s_kwargs); if (unlikely(!__pyx_tuple__42)) __PYX_ERR(0, 162, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__42);
+  __Pyx_GIVEREF(__pyx_tuple__42);
+  __pyx_codeobj__14 = (PyObject*)__Pyx_PyCode_New(1, 0, 2, 0, CO_OPTIMIZED|CO_NEWLOCALS|CO_VARKEYWORDS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__42, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_pdf_discrete_pyx, __pyx_n_s_plot_cdf, 162, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__14)) __PYX_ERR(0, 162, __pyx_L1_error)
 
-  /* "structureboost/pdf_discrete.pyx":106
+  /* "structureboost/pdf_discrete.pyx":167
  *         plt.plot(self.binvec, self.cum_prob, **kwargs)
  * 
  *     def pred_region(self, alpha):             # <<<<<<<<<<<<<<
- *         order = np.argsort(-self.bin_densities)
+ *         order = np.argsort(-self.densityvec)
  *         cum_prob = np.cumsum(self.probvec[order])
  */
-  __pyx_tuple__36 = PyTuple_Pack(12, __pyx_n_s_self, __pyx_n_s_alpha, __pyx_n_s_order, __pyx_n_s_cum_prob, __pyx_n_s_index, __pyx_n_s_inc_int, __pyx_n_s_num_ints, __pyx_n_s_jkl, __pyx_n_s_int_list, __pyx_n_s_interval_index, __pyx_n_s_left_pt, __pyx_n_s_right_pt); if (unlikely(!__pyx_tuple__36)) __PYX_ERR(0, 106, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__36);
-  __Pyx_GIVEREF(__pyx_tuple__36);
-  __pyx_codeobj__13 = (PyObject*)__Pyx_PyCode_New(2, 0, 12, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__36, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_pdf_discrete_pyx, __pyx_n_s_pred_region, 106, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__13)) __PYX_ERR(0, 106, __pyx_L1_error)
+  __pyx_tuple__43 = PyTuple_Pack(12, __pyx_n_s_self, __pyx_n_s_alpha, __pyx_n_s_order, __pyx_n_s_cum_prob, __pyx_n_s_index, __pyx_n_s_inc_int, __pyx_n_s_num_ints, __pyx_n_s_jkl, __pyx_n_s_int_list, __pyx_n_s_interval_index, __pyx_n_s_left_pt, __pyx_n_s_right_pt); if (unlikely(!__pyx_tuple__43)) __PYX_ERR(0, 167, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__43);
+  __Pyx_GIVEREF(__pyx_tuple__43);
+  __pyx_codeobj__15 = (PyObject*)__Pyx_PyCode_New(2, 0, 12, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__43, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_pdf_discrete_pyx, __pyx_n_s_pred_region, 167, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__15)) __PYX_ERR(0, 167, __pyx_L1_error)
 
-  /* "structureboost/pdf_discrete.pyx":127
+  /* "structureboost/pdf_discrete.pyx":188
  *         return(int_list)
  * 
- *     def pred_region_bins(self, alpha):             # <<<<<<<<<<<<<<
- *         order = np.argsort(-self.bin_densities)
+ *     def pred_region_bins(self, coverage):             # <<<<<<<<<<<<<<
+ *         order = np.argsort(-self.densityvec)
  *         cum_prob = np.cumsum(self.probvec[order])
  */
-  __pyx_tuple__37 = PyTuple_Pack(6, __pyx_n_s_self, __pyx_n_s_alpha, __pyx_n_s_order, __pyx_n_s_cum_prob, __pyx_n_s_index, __pyx_n_s_inc_int); if (unlikely(!__pyx_tuple__37)) __PYX_ERR(0, 127, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__37);
-  __Pyx_GIVEREF(__pyx_tuple__37);
-  __pyx_codeobj__14 = (PyObject*)__Pyx_PyCode_New(2, 0, 6, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__37, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_pdf_discrete_pyx, __pyx_n_s_pred_region_bins, 127, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__14)) __PYX_ERR(0, 127, __pyx_L1_error)
+  __pyx_tuple__44 = PyTuple_Pack(6, __pyx_n_s_self, __pyx_n_s_coverage, __pyx_n_s_order, __pyx_n_s_cum_prob, __pyx_n_s_index, __pyx_n_s_inc_int); if (unlikely(!__pyx_tuple__44)) __PYX_ERR(0, 188, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__44);
+  __Pyx_GIVEREF(__pyx_tuple__44);
+  __pyx_codeobj__16 = (PyObject*)__Pyx_PyCode_New(2, 0, 6, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__44, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_pdf_discrete_pyx, __pyx_n_s_pred_region_bins, 188, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__16)) __PYX_ERR(0, 188, __pyx_L1_error)
 
-  /* "structureboost/pdf_discrete.pyx":134
+  /* "structureboost/pdf_discrete.pyx":195
  *         return(inc_int)
  * 
- *     def pred_interval(self, alpha):             # <<<<<<<<<<<<<<
- *         return((self.quantile(alpha/2), self.quantile(1-(alpha/2))))
+ *     def pred_region_cdf(self, val):             # <<<<<<<<<<<<<<
+ *         bin_num = np.digitize(val, self.binvec) - 1
+ *         order = np.argsort(-self.densityvec)
+ */
+  __pyx_tuple__45 = PyTuple_Pack(7, __pyx_n_s_self, __pyx_n_s_val, __pyx_n_s_bin_num, __pyx_n_s_order, __pyx_n_s_loc, __pyx_n_s_cum_prob, __pyx_n_s_cdf_val); if (unlikely(!__pyx_tuple__45)) __PYX_ERR(0, 195, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__45);
+  __Pyx_GIVEREF(__pyx_tuple__45);
+  __pyx_codeobj__17 = (PyObject*)__Pyx_PyCode_New(2, 0, 7, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__45, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_pdf_discrete_pyx, __pyx_n_s_pred_region_cdf, 195, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__17)) __PYX_ERR(0, 195, __pyx_L1_error)
+
+  /* "structureboost/pdf_discrete.pyx":204
+ * 
+ * 
+ *     def pred_interval(self, coverage):             # <<<<<<<<<<<<<<
+ *         return((self.quantile((1-coverage)/2), self.quantile(1-((1-coverage)/2))))
  * 
  */
-  __pyx_tuple__38 = PyTuple_Pack(2, __pyx_n_s_self, __pyx_n_s_alpha); if (unlikely(!__pyx_tuple__38)) __PYX_ERR(0, 134, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__38);
-  __Pyx_GIVEREF(__pyx_tuple__38);
-  __pyx_codeobj__15 = (PyObject*)__Pyx_PyCode_New(2, 0, 2, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__38, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_pdf_discrete_pyx, __pyx_n_s_pred_interval, 134, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__15)) __PYX_ERR(0, 134, __pyx_L1_error)
+  __pyx_tuple__46 = PyTuple_Pack(2, __pyx_n_s_self, __pyx_n_s_coverage); if (unlikely(!__pyx_tuple__46)) __PYX_ERR(0, 204, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__46);
+  __Pyx_GIVEREF(__pyx_tuple__46);
+  __pyx_codeobj__18 = (PyObject*)__Pyx_PyCode_New(2, 0, 2, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__46, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_pdf_discrete_pyx, __pyx_n_s_pred_interval, 204, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__18)) __PYX_ERR(0, 204, __pyx_L1_error)
 
-  /* "structureboost/pdf_discrete.pyx":144
- *     #             width = self.bin_widths[index], color=bar_color)
+  /* "structureboost/pdf_discrete.pyx":207
+ *         return((self.quantile((1-coverage)/2), self.quantile(1-((1-coverage)/2))))
  * 
  * def get_part(nc, blocksize, start_val):             # <<<<<<<<<<<<<<
  *     list1=[]
  *     num_full_blocks = int((nc-start_val)/blocksize)
  */
-  __pyx_tuple__39 = PyTuple_Pack(8, __pyx_n_s_nc, __pyx_n_s_blocksize, __pyx_n_s_start_val, __pyx_n_s_list1, __pyx_n_s_num_full_blocks, __pyx_n_s_upper_lim, __pyx_n_s_genexpr, __pyx_n_s_genexpr); if (unlikely(!__pyx_tuple__39)) __PYX_ERR(0, 144, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__39);
-  __Pyx_GIVEREF(__pyx_tuple__39);
-  __pyx_codeobj__16 = (PyObject*)__Pyx_PyCode_New(3, 0, 8, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__39, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_pdf_discrete_pyx, __pyx_n_s_get_part, 144, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__16)) __PYX_ERR(0, 144, __pyx_L1_error)
+  __pyx_tuple__47 = PyTuple_Pack(8, __pyx_n_s_nc, __pyx_n_s_blocksize, __pyx_n_s_start_val, __pyx_n_s_list1, __pyx_n_s_num_full_blocks, __pyx_n_s_upper_lim, __pyx_n_s_genexpr, __pyx_n_s_genexpr); if (unlikely(!__pyx_tuple__47)) __PYX_ERR(0, 207, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__47);
+  __Pyx_GIVEREF(__pyx_tuple__47);
+  __pyx_codeobj__19 = (PyObject*)__Pyx_PyCode_New(3, 0, 8, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__47, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_pdf_discrete_pyx, __pyx_n_s_get_part, 207, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__19)) __PYX_ERR(0, 207, __pyx_L1_error)
 
-  /* "structureboost/pdf_discrete.pyx":155
+  /* "structureboost/pdf_discrete.pyx":218
  *     return(list1)
  * 
  * def chain_partition(nc, blocksize):             # <<<<<<<<<<<<<<
  *     part = [get_part(nc, blocksize, sv) for sv in range(blocksize)]
  *     return(part)
  */
-  __pyx_tuple__40 = PyTuple_Pack(4, __pyx_n_s_nc, __pyx_n_s_blocksize, __pyx_n_s_part, __pyx_n_s_sv); if (unlikely(!__pyx_tuple__40)) __PYX_ERR(0, 155, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__40);
-  __Pyx_GIVEREF(__pyx_tuple__40);
-  __pyx_codeobj__17 = (PyObject*)__Pyx_PyCode_New(2, 0, 4, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__40, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_pdf_discrete_pyx, __pyx_n_s_chain_partition, 155, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__17)) __PYX_ERR(0, 155, __pyx_L1_error)
+  __pyx_tuple__48 = PyTuple_Pack(4, __pyx_n_s_nc, __pyx_n_s_blocksize, __pyx_n_s_part, __pyx_n_s_sv); if (unlikely(!__pyx_tuple__48)) __PYX_ERR(0, 218, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__48);
+  __Pyx_GIVEREF(__pyx_tuple__48);
+  __pyx_codeobj__20 = (PyObject*)__Pyx_PyCode_New(2, 0, 4, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__48, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_pdf_discrete_pyx, __pyx_n_s_chain_partition, 218, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__20)) __PYX_ERR(0, 218, __pyx_L1_error)
 
-  /* "structureboost/pdf_discrete.pyx":159
+  /* "structureboost/pdf_discrete.pyx":222
  *     return(part)
  * 
- * def density_plot(bin_vec, prob_vec, **kwargs):             # <<<<<<<<<<<<<<
+ * def basic_density_plot(bin_vec, dens_vec, **kwargs):             # <<<<<<<<<<<<<<
  *     binvec_plot = np.vstack((bin_vec, bin_vec)).T.reshape(-1)
- *     prob_dens = prob_vec / np.diff(bin_vec)
+ *     dens_plot = np.concatenate(([0],np.vstack((dens_vec, dens_vec)).T.reshape(-1),[0]))
  */
-  __pyx_tuple__41 = PyTuple_Pack(6, __pyx_n_s_bin_vec, __pyx_n_s_prob_vec, __pyx_n_s_kwargs, __pyx_n_s_binvec_plot, __pyx_n_s_prob_dens, __pyx_n_s_prob_plot); if (unlikely(!__pyx_tuple__41)) __PYX_ERR(0, 159, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__41);
-  __Pyx_GIVEREF(__pyx_tuple__41);
-  __pyx_codeobj__18 = (PyObject*)__Pyx_PyCode_New(2, 0, 6, 0, CO_OPTIMIZED|CO_NEWLOCALS|CO_VARKEYWORDS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__41, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_pdf_discrete_pyx, __pyx_n_s_density_plot, 159, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__18)) __PYX_ERR(0, 159, __pyx_L1_error)
+  __pyx_tuple__49 = PyTuple_Pack(5, __pyx_n_s_bin_vec, __pyx_n_s_dens_vec, __pyx_n_s_kwargs, __pyx_n_s_binvec_plot, __pyx_n_s_dens_plot); if (unlikely(!__pyx_tuple__49)) __PYX_ERR(0, 222, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__49);
+  __Pyx_GIVEREF(__pyx_tuple__49);
+  __pyx_codeobj__21 = (PyObject*)__Pyx_PyCode_New(2, 0, 5, 0, CO_OPTIMIZED|CO_NEWLOCALS|CO_VARKEYWORDS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__49, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_pdf_discrete_pyx, __pyx_n_s_basic_density_plot, 222, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__21)) __PYX_ERR(0, 222, __pyx_L1_error)
 
-  /* "structureboost/pdf_discrete.pyx":165
- *     plt.plot(binvec_plot, prob_plot, **kwargs)
+  /* "structureboost/pdf_discrete.pyx":227
+ *     plt.plot(binvec_plot, dens_plot, **kwargs)
  * 
- * def average_densities(pd_list):             # <<<<<<<<<<<<<<
+ * def average_densities(pd_list, scaling='linear', weights=None):             # <<<<<<<<<<<<<<
  *     binpt_list = [pd.binvec for pd in pd_list]
  *     new_binvec = np.unique(np.concatenate(binpt_list))
  */
-  __pyx_tuple__42 = PyTuple_Pack(12, __pyx_n_s_pd_list, __pyx_n_s_binpt_list, __pyx_n_s_new_binvec, __pyx_n_s_new_bin_widths, __pyx_n_s_new_midpts, __pyx_n_s_num_dens, __pyx_n_s_num_bins, __pyx_n_s_prob_array, __pyx_n_s_i, __pyx_n_s_pd, __pyx_n_s_new_probvec, __pyx_n_s_pd); if (unlikely(!__pyx_tuple__42)) __PYX_ERR(0, 165, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__42);
-  __Pyx_GIVEREF(__pyx_tuple__42);
-  __pyx_codeobj__19 = (PyObject*)__Pyx_PyCode_New(1, 0, 12, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__42, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_pdf_discrete_pyx, __pyx_n_s_average_densities, 165, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__19)) __PYX_ERR(0, 165, __pyx_L1_error)
+  __pyx_tuple__50 = PyTuple_Pack(17, __pyx_n_s_pd_list, __pyx_n_s_scaling, __pyx_n_s_weights, __pyx_n_s_binpt_list, __pyx_n_s_new_binvec, __pyx_n_s_new_bin_widths, __pyx_n_s_new_midpts, __pyx_n_s_num_dens, __pyx_n_s_num_bins, __pyx_n_s_prob_array, __pyx_n_s_i, __pyx_n_s_pd, __pyx_n_s_new_probvec, __pyx_n_s_logprob_array, __pyx_n_s_new_logprobvec, __pyx_n_s_new_tempprobvec, __pyx_n_s_pd); if (unlikely(!__pyx_tuple__50)) __PYX_ERR(0, 227, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__50);
+  __Pyx_GIVEREF(__pyx_tuple__50);
+  __pyx_codeobj__22 = (PyObject*)__Pyx_PyCode_New(3, 0, 17, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__50, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_pdf_discrete_pyx, __pyx_n_s_average_densities, 227, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__22)) __PYX_ERR(0, 227, __pyx_L1_error)
+
+  /* "structureboost/pdf_discrete.pyx":255
+ *     return(PdfDiscrete(new_binvec, new_probvec))
+ * 
+ * def get_bin_probs_from_data(binvec, value_vec, eps=1e-16):             # <<<<<<<<<<<<<<
+ *     y_bin = np.digitize(value_vec,binvec[:-1]) -1
+ *     binvals, counts = np.unique(y_bin, return_counts=True)
+ */
+  __pyx_tuple__51 = PyTuple_Pack(10, __pyx_n_s_binvec, __pyx_n_s_value_vec, __pyx_n_s_eps, __pyx_n_s_y_bin, __pyx_n_s_binvals, __pyx_n_s_counts, __pyx_n_s_probvec, __pyx_n_s_total, __pyx_n_s_i, __pyx_n_s_binnum); if (unlikely(!__pyx_tuple__51)) __PYX_ERR(0, 255, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__51);
+  __Pyx_GIVEREF(__pyx_tuple__51);
+  __pyx_codeobj__24 = (PyObject*)__Pyx_PyCode_New(3, 0, 10, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__51, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_pdf_discrete_pyx, __pyx_n_s_get_bin_probs_from_data, 255, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__24)) __PYX_ERR(0, 255, __pyx_L1_error)
+
+  /* "structureboost/pdf_discrete.pyx":266
+ *     return(probvec)
+ * 
+ * def get_pdf_from_data(binvec, value_vec):             # <<<<<<<<<<<<<<
+ *     pv = get_bin_probs_from_data(binvec,value_vec)
+ *     return(PdfDiscrete(binvec, pv))
+ */
+  __pyx_tuple__52 = PyTuple_Pack(3, __pyx_n_s_binvec, __pyx_n_s_value_vec, __pyx_n_s_pv); if (unlikely(!__pyx_tuple__52)) __PYX_ERR(0, 266, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__52);
+  __Pyx_GIVEREF(__pyx_tuple__52);
+  __pyx_codeobj__25 = (PyObject*)__Pyx_PyCode_New(2, 0, 3, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__52, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_pdf_discrete_pyx, __pyx_n_s_get_pdf_from_data, 266, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__25)) __PYX_ERR(0, 266, __pyx_L1_error)
   __Pyx_RefNannyFinishContext();
   return 0;
   __pyx_L1_error:;
@@ -9110,10 +11855,9 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
 static CYTHON_SMALL_CODE int __Pyx_InitGlobals(void) {
   if (__Pyx_InitStrings(__pyx_string_tab) < 0) __PYX_ERR(0, 1, __pyx_L1_error);
   __pyx_float__5 = PyFloat_FromDouble(.5); if (unlikely(!__pyx_float__5)) __PYX_ERR(0, 1, __pyx_L1_error)
-  __pyx_float__05 = PyFloat_FromDouble(.05); if (unlikely(!__pyx_float__05)) __PYX_ERR(0, 1, __pyx_L1_error)
-  __pyx_float__95 = PyFloat_FromDouble(.95); if (unlikely(!__pyx_float__95)) __PYX_ERR(0, 1, __pyx_L1_error)
   __pyx_float_1_0 = PyFloat_FromDouble(1.0); if (unlikely(!__pyx_float_1_0)) __PYX_ERR(0, 1, __pyx_L1_error)
   __pyx_float_1eneg_6 = PyFloat_FromDouble(1e-6); if (unlikely(!__pyx_float_1eneg_6)) __PYX_ERR(0, 1, __pyx_L1_error)
+  __pyx_float_1eneg_16 = PyFloat_FromDouble(1e-16); if (unlikely(!__pyx_float_1eneg_16)) __PYX_ERR(0, 1, __pyx_L1_error)
   __pyx_int_0 = PyInt_FromLong(0); if (unlikely(!__pyx_int_0)) __PYX_ERR(0, 1, __pyx_L1_error)
   __pyx_int_1 = PyInt_FromLong(1); if (unlikely(!__pyx_int_1)) __PYX_ERR(0, 1, __pyx_L1_error)
   __pyx_int_2 = PyInt_FromLong(2); if (unlikely(!__pyx_int_2)) __PYX_ERR(0, 1, __pyx_L1_error)
@@ -9162,7 +11906,7 @@ static int __Pyx_modinit_type_init_code(void) {
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("__Pyx_modinit_type_init_code", 0);
   /*--- Type init code ---*/
-  if (PyType_Ready(&__pyx_type_14structureboost_12pdf_discrete___pyx_scope_struct__get_part) < 0) __PYX_ERR(0, 144, __pyx_L1_error)
+  if (PyType_Ready(&__pyx_type_14structureboost_12pdf_discrete___pyx_scope_struct__get_part) < 0) __PYX_ERR(0, 207, __pyx_L1_error)
   #if PY_VERSION_HEX < 0x030800B1
   __pyx_type_14structureboost_12pdf_discrete___pyx_scope_struct__get_part.tp_print = 0;
   #endif
@@ -9170,7 +11914,7 @@ static int __Pyx_modinit_type_init_code(void) {
     __pyx_type_14structureboost_12pdf_discrete___pyx_scope_struct__get_part.tp_getattro = __Pyx_PyObject_GenericGetAttrNoDict;
   }
   __pyx_ptype_14structureboost_12pdf_discrete___pyx_scope_struct__get_part = &__pyx_type_14structureboost_12pdf_discrete___pyx_scope_struct__get_part;
-  if (PyType_Ready(&__pyx_type_14structureboost_12pdf_discrete___pyx_scope_struct_1_genexpr) < 0) __PYX_ERR(0, 150, __pyx_L1_error)
+  if (PyType_Ready(&__pyx_type_14structureboost_12pdf_discrete___pyx_scope_struct_1_genexpr) < 0) __PYX_ERR(0, 213, __pyx_L1_error)
   #if PY_VERSION_HEX < 0x030800B1
   __pyx_type_14structureboost_12pdf_discrete___pyx_scope_struct_1_genexpr.tp_print = 0;
   #endif
@@ -9446,9 +12190,9 @@ if (!__Pyx_RefNanny) {
  */
   __pyx_t_1 = PyList_New(1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 6, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __Pyx_INCREF(__pyx_n_s__21);
-  __Pyx_GIVEREF(__pyx_n_s__21);
-  PyList_SET_ITEM(__pyx_t_1, 0, __pyx_n_s__21);
+  __Pyx_INCREF(__pyx_n_s__26);
+  __Pyx_GIVEREF(__pyx_n_s__26);
+  PyList_SET_ITEM(__pyx_t_1, 0, __pyx_n_s__26);
   __pyx_t_2 = __Pyx_Import(__pyx_n_s_matplotlib_pyplot, __pyx_t_1, 0); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 6, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
@@ -9459,233 +12203,293 @@ if (!__Pyx_RefNanny) {
  * import matplotlib.pyplot as plt
  * 
  * class PdfDiscrete(object):             # <<<<<<<<<<<<<<
+ *     """Represents a piecewise constant probability density function.
  * 
- *     def __init__(self, binvec, probvec, ptol=1e-6):
  */
-  __pyx_t_2 = __Pyx_CalculateMetaclass(NULL, __pyx_tuple__22); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 8, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_CalculateMetaclass(NULL, __pyx_tuple__27); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 8, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_1 = __Pyx_Py3MetaclassPrepare(__pyx_t_2, __pyx_tuple__22, __pyx_n_s_PdfDiscrete, __pyx_n_s_PdfDiscrete, (PyObject *) NULL, __pyx_n_s_structureboost_pdf_discrete, (PyObject *) NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 8, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_Py3MetaclassPrepare(__pyx_t_2, __pyx_tuple__27, __pyx_n_s_PdfDiscrete, __pyx_n_s_PdfDiscrete, (PyObject *) NULL, __pyx_n_s_structureboost_pdf_discrete, __pyx_kp_s_Represents_a_piecewise_constant); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 8, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
 
-  /* "structureboost/pdf_discrete.pyx":10
- * class PdfDiscrete(object):
- * 
- *     def __init__(self, binvec, probvec, ptol=1e-6):             # <<<<<<<<<<<<<<
+  /* "structureboost/pdf_discrete.pyx":36
+ *         True.  Can be turned off for computational efficiency.
+ * """
+ *     def __init__(self, binvec, probvec=None, densityvec=None,             # <<<<<<<<<<<<<<
+ *                  ptol=1e-6, check_sum=True):
  *         self.binvec = np.array(binvec)
- *         self.probvec = np.array(probvec)
  */
-  __pyx_t_3 = __Pyx_CyFunction_New(&__pyx_mdef_14structureboost_12pdf_discrete_11PdfDiscrete_1__init__, 0, __pyx_n_s_PdfDiscrete___init, NULL, __pyx_n_s_structureboost_pdf_discrete, __pyx_d, ((PyObject *)__pyx_codeobj_)); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 10, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_CyFunction_New(&__pyx_mdef_14structureboost_12pdf_discrete_11PdfDiscrete_1__init__, 0, __pyx_n_s_PdfDiscrete___init, NULL, __pyx_n_s_structureboost_pdf_discrete, __pyx_d, ((PyObject *)__pyx_codeobj_)); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 36, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  __Pyx_CyFunction_SetDefaultsTuple(__pyx_t_3, __pyx_tuple__24);
-  if (__Pyx_SetNameInClass(__pyx_t_1, __pyx_n_s_init, __pyx_t_3) < 0) __PYX_ERR(0, 10, __pyx_L1_error)
+  __Pyx_CyFunction_SetDefaultsTuple(__pyx_t_3, __pyx_tuple__29);
+  if (__Pyx_SetNameInClass(__pyx_t_1, __pyx_n_s_init, __pyx_t_3) < 0) __PYX_ERR(0, 36, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-  /* "structureboost/pdf_discrete.pyx":24
+  /* "structureboost/pdf_discrete.pyx":65
+ *         self.cum_prob = None
+ * 
+ *     def calculate_cum_prob(self):             # <<<<<<<<<<<<<<
+ *         self.cum_prob = np.concatenate(([0],np.cumsum(self.probvec)))
+ * 
+ */
+  __pyx_t_3 = __Pyx_CyFunction_New(&__pyx_mdef_14structureboost_12pdf_discrete_11PdfDiscrete_3calculate_cum_prob, 0, __pyx_n_s_PdfDiscrete_calculate_cum_prob, NULL, __pyx_n_s_structureboost_pdf_discrete, __pyx_d, ((PyObject *)__pyx_codeobj__4)); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 65, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_3);
+  if (__Pyx_SetNameInClass(__pyx_t_1, __pyx_n_s_calculate_cum_prob, __pyx_t_3) < 0) __PYX_ERR(0, 65, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+
+  /* "structureboost/pdf_discrete.pyx":68
  *         self.cum_prob = np.concatenate(([0],np.cumsum(self.probvec)))
  * 
  *     def mean(self):             # <<<<<<<<<<<<<<
  *         val = np.sum(self.bin_midpts*self.probvec)
  *         return(val)
  */
-  __pyx_t_3 = __Pyx_CyFunction_New(&__pyx_mdef_14structureboost_12pdf_discrete_11PdfDiscrete_3mean, 0, __pyx_n_s_PdfDiscrete_mean, NULL, __pyx_n_s_structureboost_pdf_discrete, __pyx_d, ((PyObject *)__pyx_codeobj__4)); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 24, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_CyFunction_New(&__pyx_mdef_14structureboost_12pdf_discrete_11PdfDiscrete_5mean, 0, __pyx_n_s_PdfDiscrete_mean, NULL, __pyx_n_s_structureboost_pdf_discrete, __pyx_d, ((PyObject *)__pyx_codeobj__5)); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 68, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  if (__Pyx_SetNameInClass(__pyx_t_1, __pyx_n_s_mean, __pyx_t_3) < 0) __PYX_ERR(0, 24, __pyx_L1_error)
+  if (__Pyx_SetNameInClass(__pyx_t_1, __pyx_n_s_mean, __pyx_t_3) < 0) __PYX_ERR(0, 68, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-  /* "structureboost/pdf_discrete.pyx":28
+  /* "structureboost/pdf_discrete.pyx":72
  *         return(val)
  * 
  *     def quantile(self, qval):             # <<<<<<<<<<<<<<
- *         bin_lp = np.digitize(qval, self.cum_prob)-1
- * 
+ *         if self.cum_prob is None:
+ *             self.calculate_cum_prob()
  */
-  __pyx_t_3 = __Pyx_CyFunction_New(&__pyx_mdef_14structureboost_12pdf_discrete_11PdfDiscrete_5quantile, 0, __pyx_n_s_PdfDiscrete_quantile, NULL, __pyx_n_s_structureboost_pdf_discrete, __pyx_d, ((PyObject *)__pyx_codeobj__5)); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 28, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_CyFunction_New(&__pyx_mdef_14structureboost_12pdf_discrete_11PdfDiscrete_7quantile, 0, __pyx_n_s_PdfDiscrete_quantile, NULL, __pyx_n_s_structureboost_pdf_discrete, __pyx_d, ((PyObject *)__pyx_codeobj__6)); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 72, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  if (__Pyx_SetNameInClass(__pyx_t_1, __pyx_n_s_quantile, __pyx_t_3) < 0) __PYX_ERR(0, 28, __pyx_L1_error)
+  if (__Pyx_SetNameInClass(__pyx_t_1, __pyx_n_s_quantile, __pyx_t_3) < 0) __PYX_ERR(0, 72, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-  /* "structureboost/pdf_discrete.pyx":38
+  /* "structureboost/pdf_discrete.pyx":84
  *         return(out_val)
  * 
  *     def quantiles(self, qval):             # <<<<<<<<<<<<<<
- *         bin_lp = np.digitize(qval, self.cum_prob)-1
- *         bin_lp[bin_lp>=len(self.binvec)-1] = len(self.binvec)-2
+ *         if self.cum_prob is None:
+ *             self.calculate_cum_prob()
  */
-  __pyx_t_3 = __Pyx_CyFunction_New(&__pyx_mdef_14structureboost_12pdf_discrete_11PdfDiscrete_7quantiles, 0, __pyx_n_s_PdfDiscrete_quantiles, NULL, __pyx_n_s_structureboost_pdf_discrete, __pyx_d, ((PyObject *)__pyx_codeobj__6)); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 38, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_CyFunction_New(&__pyx_mdef_14structureboost_12pdf_discrete_11PdfDiscrete_9quantiles, 0, __pyx_n_s_PdfDiscrete_quantiles, NULL, __pyx_n_s_structureboost_pdf_discrete, __pyx_d, ((PyObject *)__pyx_codeobj__7)); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 84, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  if (__Pyx_SetNameInClass(__pyx_t_1, __pyx_n_s_quantiles, __pyx_t_3) < 0) __PYX_ERR(0, 38, __pyx_L1_error)
+  if (__Pyx_SetNameInClass(__pyx_t_1, __pyx_n_s_quantiles, __pyx_t_3) < 0) __PYX_ERR(0, 84, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-  /* "structureboost/pdf_discrete.pyx":46
+  /* "structureboost/pdf_discrete.pyx":94
  *         return(out_val)
  * 
  *     def median(self):             # <<<<<<<<<<<<<<
  *         return(self.quantile(.5))
  * 
  */
-  __pyx_t_3 = __Pyx_CyFunction_New(&__pyx_mdef_14structureboost_12pdf_discrete_11PdfDiscrete_9median, 0, __pyx_n_s_PdfDiscrete_median, NULL, __pyx_n_s_structureboost_pdf_discrete, __pyx_d, ((PyObject *)__pyx_codeobj__7)); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 46, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_CyFunction_New(&__pyx_mdef_14structureboost_12pdf_discrete_11PdfDiscrete_11median, 0, __pyx_n_s_PdfDiscrete_median, NULL, __pyx_n_s_structureboost_pdf_discrete, __pyx_d, ((PyObject *)__pyx_codeobj__8)); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 94, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  if (__Pyx_SetNameInClass(__pyx_t_1, __pyx_n_s_median, __pyx_t_3) < 0) __PYX_ERR(0, 46, __pyx_L1_error)
+  if (__Pyx_SetNameInClass(__pyx_t_1, __pyx_n_s_median, __pyx_t_3) < 0) __PYX_ERR(0, 94, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-  /* "structureboost/pdf_discrete.pyx":49
+  /* "structureboost/pdf_discrete.pyx":97
  *         return(self.quantile(.5))
  * 
  *     def density(self, value_vec, include_right=True):             # <<<<<<<<<<<<<<
  *         bin_ind = np.digitize(value_vec, self.binvec)
  *         if include_right:
  */
-  __pyx_t_3 = __Pyx_CyFunction_New(&__pyx_mdef_14structureboost_12pdf_discrete_11PdfDiscrete_11density, 0, __pyx_n_s_PdfDiscrete_density, NULL, __pyx_n_s_structureboost_pdf_discrete, __pyx_d, ((PyObject *)__pyx_codeobj__8)); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 49, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_CyFunction_New(&__pyx_mdef_14structureboost_12pdf_discrete_11PdfDiscrete_13density, 0, __pyx_n_s_PdfDiscrete_density, NULL, __pyx_n_s_structureboost_pdf_discrete, __pyx_d, ((PyObject *)__pyx_codeobj__9)); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 97, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  __Pyx_CyFunction_SetDefaultsTuple(__pyx_t_3, __pyx_tuple__30);
-  if (__Pyx_SetNameInClass(__pyx_t_1, __pyx_n_s_density, __pyx_t_3) < 0) __PYX_ERR(0, 49, __pyx_L1_error)
+  __Pyx_CyFunction_SetDefaultsTuple(__pyx_t_3, __pyx_tuple__36);
+  if (__Pyx_SetNameInClass(__pyx_t_1, __pyx_n_s_density, __pyx_t_3) < 0) __PYX_ERR(0, 97, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-  /* "structureboost/pdf_discrete.pyx":56
+  /* "structureboost/pdf_discrete.pyx":104
  *         return(np.array([aug_dens_vec[bin_ind[i]] for i in range(len(bin_ind))]))
  * 
  *     def cdf(self, x_vals):             # <<<<<<<<<<<<<<
+ *         # TODO: Check if I got the digitize right or if I need a -1
  *         bin_ind = np.digitize(x_vals, self.binvec)
- *         aug_bin_vec = np.concatenate(([-np.inf],self.binvec))
  */
-  __pyx_t_3 = __Pyx_CyFunction_New(&__pyx_mdef_14structureboost_12pdf_discrete_11PdfDiscrete_13cdf, 0, __pyx_n_s_PdfDiscrete_cdf, NULL, __pyx_n_s_structureboost_pdf_discrete, __pyx_d, ((PyObject *)__pyx_codeobj__9)); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 56, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_CyFunction_New(&__pyx_mdef_14structureboost_12pdf_discrete_11PdfDiscrete_15cdf, 0, __pyx_n_s_PdfDiscrete_cdf, NULL, __pyx_n_s_structureboost_pdf_discrete, __pyx_d, ((PyObject *)__pyx_codeobj__10)); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 104, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  if (__Pyx_SetNameInClass(__pyx_t_1, __pyx_n_s_cdf, __pyx_t_3) < 0) __PYX_ERR(0, 56, __pyx_L1_error)
+  if (__Pyx_SetNameInClass(__pyx_t_1, __pyx_n_s_cdf, __pyx_t_3) < 0) __PYX_ERR(0, 104, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-  /* "structureboost/pdf_discrete.pyx":66
+  /* "structureboost/pdf_discrete.pyx":117
  *         return(out_vec)
  * 
- *     def __add__(self, pd2):             # <<<<<<<<<<<<<<
- *         new_binvec = np.unique(np.concatenate((self.binvec, pd2.binvec)))
+ *     def add_binpts(self, binpts_to_add):             # <<<<<<<<<<<<<<
+ *         new_binvec = np.unique(np.concatenate((self.binvec, binpts_to_add)))
  *         new_midpts = (new_binvec[1:] + new_binvec[:-1])/2
  */
-  __pyx_t_3 = __Pyx_CyFunction_New(&__pyx_mdef_14structureboost_12pdf_discrete_11PdfDiscrete_15__add__, 0, __pyx_n_s_PdfDiscrete___add, NULL, __pyx_n_s_structureboost_pdf_discrete, __pyx_d, ((PyObject *)__pyx_codeobj__10)); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 66, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_CyFunction_New(&__pyx_mdef_14structureboost_12pdf_discrete_11PdfDiscrete_17add_binpts, 0, __pyx_n_s_PdfDiscrete_add_binpts, NULL, __pyx_n_s_structureboost_pdf_discrete, __pyx_d, ((PyObject *)__pyx_codeobj__11)); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 117, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  if (__Pyx_SetNameInClass(__pyx_t_1, __pyx_n_s_add, __pyx_t_3) < 0) __PYX_ERR(0, 66, __pyx_L1_error)
+  if (__Pyx_SetNameInClass(__pyx_t_1, __pyx_n_s_add_binpts, __pyx_t_3) < 0) __PYX_ERR(0, 117, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-  /* "structureboost/pdf_discrete.pyx":74
+  /* "structureboost/pdf_discrete.pyx":124
+ *         return(PdfDiscrete(new_binvec, pv1))
  * 
+ *     def bins_to_probs(self, new_binpt_vec):             # <<<<<<<<<<<<<<
+ *         """Given a new set of binpts, return the probabilities in each bin"""
+ *         return(np.diff(self.cdf(new_binpt_vec)))
+ */
+  __pyx_t_3 = __Pyx_CyFunction_New(&__pyx_mdef_14structureboost_12pdf_discrete_11PdfDiscrete_19bins_to_probs, 0, __pyx_n_s_PdfDiscrete_bins_to_probs, NULL, __pyx_n_s_structureboost_pdf_discrete, __pyx_d, ((PyObject *)__pyx_codeobj__12)); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 124, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_3);
+  if (__Pyx_SetNameInClass(__pyx_t_1, __pyx_n_s_bins_to_probs, __pyx_t_3) < 0) __PYX_ERR(0, 124, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+
+  /* "structureboost/pdf_discrete.pyx":128
+ *         return(np.diff(self.cdf(new_binpt_vec)))
  * 
- *     def plot_density(self, pred_alpha=None,             # <<<<<<<<<<<<<<
+ *     def plot_density(self, coverage=None,             # <<<<<<<<<<<<<<
  *                     pred_type='interval', pred_color='orange',
  *                     **kwargs):
  */
-  __pyx_t_3 = __Pyx_CyFunction_New(&__pyx_mdef_14structureboost_12pdf_discrete_11PdfDiscrete_17plot_density, 0, __pyx_n_s_PdfDiscrete_plot_density, NULL, __pyx_n_s_structureboost_pdf_discrete, __pyx_d, ((PyObject *)__pyx_codeobj__11)); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 74, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_CyFunction_New(&__pyx_mdef_14structureboost_12pdf_discrete_11PdfDiscrete_21plot_density, 0, __pyx_n_s_PdfDiscrete_plot_density, NULL, __pyx_n_s_structureboost_pdf_discrete, __pyx_d, ((PyObject *)__pyx_codeobj__13)); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 128, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  __Pyx_CyFunction_SetDefaultsTuple(__pyx_t_3, __pyx_tuple__34);
-  if (__Pyx_SetNameInClass(__pyx_t_1, __pyx_n_s_plot_density, __pyx_t_3) < 0) __PYX_ERR(0, 74, __pyx_L1_error)
+  __Pyx_CyFunction_SetDefaultsTuple(__pyx_t_3, __pyx_tuple__41);
+  if (__Pyx_SetNameInClass(__pyx_t_1, __pyx_n_s_plot_density, __pyx_t_3) < 0) __PYX_ERR(0, 128, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-  /* "structureboost/pdf_discrete.pyx":103
+  /* "structureboost/pdf_discrete.pyx":162
  * 
  * 
  *     def plot_cdf(self, **kwargs):             # <<<<<<<<<<<<<<
- *         plt.plot(self.binvec, self.cum_prob, **kwargs)
- * 
+ *         if self.cum_prob is None:
+ *             self.calculate_cum_prob()
  */
-  __pyx_t_3 = __Pyx_CyFunction_New(&__pyx_mdef_14structureboost_12pdf_discrete_11PdfDiscrete_19plot_cdf, 0, __pyx_n_s_PdfDiscrete_plot_cdf, NULL, __pyx_n_s_structureboost_pdf_discrete, __pyx_d, ((PyObject *)__pyx_codeobj__12)); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 103, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_CyFunction_New(&__pyx_mdef_14structureboost_12pdf_discrete_11PdfDiscrete_23plot_cdf, 0, __pyx_n_s_PdfDiscrete_plot_cdf, NULL, __pyx_n_s_structureboost_pdf_discrete, __pyx_d, ((PyObject *)__pyx_codeobj__14)); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 162, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  if (__Pyx_SetNameInClass(__pyx_t_1, __pyx_n_s_plot_cdf, __pyx_t_3) < 0) __PYX_ERR(0, 103, __pyx_L1_error)
+  if (__Pyx_SetNameInClass(__pyx_t_1, __pyx_n_s_plot_cdf, __pyx_t_3) < 0) __PYX_ERR(0, 162, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-  /* "structureboost/pdf_discrete.pyx":106
+  /* "structureboost/pdf_discrete.pyx":167
  *         plt.plot(self.binvec, self.cum_prob, **kwargs)
  * 
  *     def pred_region(self, alpha):             # <<<<<<<<<<<<<<
- *         order = np.argsort(-self.bin_densities)
+ *         order = np.argsort(-self.densityvec)
  *         cum_prob = np.cumsum(self.probvec[order])
  */
-  __pyx_t_3 = __Pyx_CyFunction_New(&__pyx_mdef_14structureboost_12pdf_discrete_11PdfDiscrete_21pred_region, 0, __pyx_n_s_PdfDiscrete_pred_region, NULL, __pyx_n_s_structureboost_pdf_discrete, __pyx_d, ((PyObject *)__pyx_codeobj__13)); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 106, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_CyFunction_New(&__pyx_mdef_14structureboost_12pdf_discrete_11PdfDiscrete_25pred_region, 0, __pyx_n_s_PdfDiscrete_pred_region, NULL, __pyx_n_s_structureboost_pdf_discrete, __pyx_d, ((PyObject *)__pyx_codeobj__15)); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 167, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  if (__Pyx_SetNameInClass(__pyx_t_1, __pyx_n_s_pred_region, __pyx_t_3) < 0) __PYX_ERR(0, 106, __pyx_L1_error)
+  if (__Pyx_SetNameInClass(__pyx_t_1, __pyx_n_s_pred_region, __pyx_t_3) < 0) __PYX_ERR(0, 167, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-  /* "structureboost/pdf_discrete.pyx":127
+  /* "structureboost/pdf_discrete.pyx":188
  *         return(int_list)
  * 
- *     def pred_region_bins(self, alpha):             # <<<<<<<<<<<<<<
- *         order = np.argsort(-self.bin_densities)
+ *     def pred_region_bins(self, coverage):             # <<<<<<<<<<<<<<
+ *         order = np.argsort(-self.densityvec)
  *         cum_prob = np.cumsum(self.probvec[order])
  */
-  __pyx_t_3 = __Pyx_CyFunction_New(&__pyx_mdef_14structureboost_12pdf_discrete_11PdfDiscrete_23pred_region_bins, 0, __pyx_n_s_PdfDiscrete_pred_region_bins, NULL, __pyx_n_s_structureboost_pdf_discrete, __pyx_d, ((PyObject *)__pyx_codeobj__14)); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 127, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_CyFunction_New(&__pyx_mdef_14structureboost_12pdf_discrete_11PdfDiscrete_27pred_region_bins, 0, __pyx_n_s_PdfDiscrete_pred_region_bins, NULL, __pyx_n_s_structureboost_pdf_discrete, __pyx_d, ((PyObject *)__pyx_codeobj__16)); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 188, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  if (__Pyx_SetNameInClass(__pyx_t_1, __pyx_n_s_pred_region_bins, __pyx_t_3) < 0) __PYX_ERR(0, 127, __pyx_L1_error)
+  if (__Pyx_SetNameInClass(__pyx_t_1, __pyx_n_s_pred_region_bins, __pyx_t_3) < 0) __PYX_ERR(0, 188, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-  /* "structureboost/pdf_discrete.pyx":134
+  /* "structureboost/pdf_discrete.pyx":195
  *         return(inc_int)
  * 
- *     def pred_interval(self, alpha):             # <<<<<<<<<<<<<<
- *         return((self.quantile(alpha/2), self.quantile(1-(alpha/2))))
+ *     def pred_region_cdf(self, val):             # <<<<<<<<<<<<<<
+ *         bin_num = np.digitize(val, self.binvec) - 1
+ *         order = np.argsort(-self.densityvec)
+ */
+  __pyx_t_3 = __Pyx_CyFunction_New(&__pyx_mdef_14structureboost_12pdf_discrete_11PdfDiscrete_29pred_region_cdf, 0, __pyx_n_s_PdfDiscrete_pred_region_cdf, NULL, __pyx_n_s_structureboost_pdf_discrete, __pyx_d, ((PyObject *)__pyx_codeobj__17)); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 195, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_3);
+  if (__Pyx_SetNameInClass(__pyx_t_1, __pyx_n_s_pred_region_cdf, __pyx_t_3) < 0) __PYX_ERR(0, 195, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+
+  /* "structureboost/pdf_discrete.pyx":204
+ * 
+ * 
+ *     def pred_interval(self, coverage):             # <<<<<<<<<<<<<<
+ *         return((self.quantile((1-coverage)/2), self.quantile(1-((1-coverage)/2))))
  * 
  */
-  __pyx_t_3 = __Pyx_CyFunction_New(&__pyx_mdef_14structureboost_12pdf_discrete_11PdfDiscrete_25pred_interval, 0, __pyx_n_s_PdfDiscrete_pred_interval, NULL, __pyx_n_s_structureboost_pdf_discrete, __pyx_d, ((PyObject *)__pyx_codeobj__15)); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 134, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_CyFunction_New(&__pyx_mdef_14structureboost_12pdf_discrete_11PdfDiscrete_31pred_interval, 0, __pyx_n_s_PdfDiscrete_pred_interval, NULL, __pyx_n_s_structureboost_pdf_discrete, __pyx_d, ((PyObject *)__pyx_codeobj__18)); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 204, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  if (__Pyx_SetNameInClass(__pyx_t_1, __pyx_n_s_pred_interval, __pyx_t_3) < 0) __PYX_ERR(0, 134, __pyx_L1_error)
+  if (__Pyx_SetNameInClass(__pyx_t_1, __pyx_n_s_pred_interval, __pyx_t_3) < 0) __PYX_ERR(0, 204, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
   /* "structureboost/pdf_discrete.pyx":8
  * import matplotlib.pyplot as plt
  * 
  * class PdfDiscrete(object):             # <<<<<<<<<<<<<<
+ *     """Represents a piecewise constant probability density function.
  * 
- *     def __init__(self, binvec, probvec, ptol=1e-6):
  */
-  __pyx_t_3 = __Pyx_Py3ClassCreate(__pyx_t_2, __pyx_n_s_PdfDiscrete, __pyx_tuple__22, __pyx_t_1, NULL, 0, 0); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 8, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_Py3ClassCreate(__pyx_t_2, __pyx_n_s_PdfDiscrete, __pyx_tuple__27, __pyx_t_1, NULL, 0, 0); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 8, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   if (PyDict_SetItem(__pyx_d, __pyx_n_s_PdfDiscrete, __pyx_t_3) < 0) __PYX_ERR(0, 8, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "structureboost/pdf_discrete.pyx":144
- *     #             width = self.bin_widths[index], color=bar_color)
+  /* "structureboost/pdf_discrete.pyx":207
+ *         return((self.quantile((1-coverage)/2), self.quantile(1-((1-coverage)/2))))
  * 
  * def get_part(nc, blocksize, start_val):             # <<<<<<<<<<<<<<
  *     list1=[]
  *     num_full_blocks = int((nc-start_val)/blocksize)
  */
-  __pyx_t_2 = PyCFunction_NewEx(&__pyx_mdef_14structureboost_12pdf_discrete_1get_part, NULL, __pyx_n_s_structureboost_pdf_discrete); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 144, __pyx_L1_error)
+  __pyx_t_2 = PyCFunction_NewEx(&__pyx_mdef_14structureboost_12pdf_discrete_1get_part, NULL, __pyx_n_s_structureboost_pdf_discrete); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 207, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_get_part, __pyx_t_2) < 0) __PYX_ERR(0, 144, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_get_part, __pyx_t_2) < 0) __PYX_ERR(0, 207, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "structureboost/pdf_discrete.pyx":155
+  /* "structureboost/pdf_discrete.pyx":218
  *     return(list1)
  * 
  * def chain_partition(nc, blocksize):             # <<<<<<<<<<<<<<
  *     part = [get_part(nc, blocksize, sv) for sv in range(blocksize)]
  *     return(part)
  */
-  __pyx_t_2 = PyCFunction_NewEx(&__pyx_mdef_14structureboost_12pdf_discrete_3chain_partition, NULL, __pyx_n_s_structureboost_pdf_discrete); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 155, __pyx_L1_error)
+  __pyx_t_2 = PyCFunction_NewEx(&__pyx_mdef_14structureboost_12pdf_discrete_3chain_partition, NULL, __pyx_n_s_structureboost_pdf_discrete); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 218, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_chain_partition, __pyx_t_2) < 0) __PYX_ERR(0, 155, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_chain_partition, __pyx_t_2) < 0) __PYX_ERR(0, 218, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "structureboost/pdf_discrete.pyx":159
+  /* "structureboost/pdf_discrete.pyx":222
  *     return(part)
  * 
- * def density_plot(bin_vec, prob_vec, **kwargs):             # <<<<<<<<<<<<<<
+ * def basic_density_plot(bin_vec, dens_vec, **kwargs):             # <<<<<<<<<<<<<<
  *     binvec_plot = np.vstack((bin_vec, bin_vec)).T.reshape(-1)
- *     prob_dens = prob_vec / np.diff(bin_vec)
+ *     dens_plot = np.concatenate(([0],np.vstack((dens_vec, dens_vec)).T.reshape(-1),[0]))
  */
-  __pyx_t_2 = PyCFunction_NewEx(&__pyx_mdef_14structureboost_12pdf_discrete_5density_plot, NULL, __pyx_n_s_structureboost_pdf_discrete); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 159, __pyx_L1_error)
+  __pyx_t_2 = PyCFunction_NewEx(&__pyx_mdef_14structureboost_12pdf_discrete_5basic_density_plot, NULL, __pyx_n_s_structureboost_pdf_discrete); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 222, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_density_plot, __pyx_t_2) < 0) __PYX_ERR(0, 159, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_basic_density_plot, __pyx_t_2) < 0) __PYX_ERR(0, 222, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "structureboost/pdf_discrete.pyx":165
- *     plt.plot(binvec_plot, prob_plot, **kwargs)
+  /* "structureboost/pdf_discrete.pyx":227
+ *     plt.plot(binvec_plot, dens_plot, **kwargs)
  * 
- * def average_densities(pd_list):             # <<<<<<<<<<<<<<
+ * def average_densities(pd_list, scaling='linear', weights=None):             # <<<<<<<<<<<<<<
  *     binpt_list = [pd.binvec for pd in pd_list]
  *     new_binvec = np.unique(np.concatenate(binpt_list))
  */
-  __pyx_t_2 = PyCFunction_NewEx(&__pyx_mdef_14structureboost_12pdf_discrete_7average_densities, NULL, __pyx_n_s_structureboost_pdf_discrete); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 165, __pyx_L1_error)
+  __pyx_t_2 = PyCFunction_NewEx(&__pyx_mdef_14structureboost_12pdf_discrete_7average_densities, NULL, __pyx_n_s_structureboost_pdf_discrete); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 227, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_average_densities, __pyx_t_2) < 0) __PYX_ERR(0, 165, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_average_densities, __pyx_t_2) < 0) __PYX_ERR(0, 227, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+
+  /* "structureboost/pdf_discrete.pyx":255
+ *     return(PdfDiscrete(new_binvec, new_probvec))
+ * 
+ * def get_bin_probs_from_data(binvec, value_vec, eps=1e-16):             # <<<<<<<<<<<<<<
+ *     y_bin = np.digitize(value_vec,binvec[:-1]) -1
+ *     binvals, counts = np.unique(y_bin, return_counts=True)
+ */
+  __pyx_t_2 = PyCFunction_NewEx(&__pyx_mdef_14structureboost_12pdf_discrete_9get_bin_probs_from_data, NULL, __pyx_n_s_structureboost_pdf_discrete); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 255, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_2);
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_get_bin_probs_from_data, __pyx_t_2) < 0) __PYX_ERR(0, 255, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+
+  /* "structureboost/pdf_discrete.pyx":266
+ *     return(probvec)
+ * 
+ * def get_pdf_from_data(binvec, value_vec):             # <<<<<<<<<<<<<<
+ *     pv = get_bin_probs_from_data(binvec,value_vec)
+ *     return(PdfDiscrete(binvec, pv))
+ */
+  __pyx_t_2 = PyCFunction_NewEx(&__pyx_mdef_14structureboost_12pdf_discrete_11get_pdf_from_data, NULL, __pyx_n_s_structureboost_pdf_discrete); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 266, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_2);
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_get_pdf_from_data, __pyx_t_2) < 0) __PYX_ERR(0, 266, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
   /* "structureboost/pdf_discrete.pyx":1
@@ -10430,6 +13234,103 @@ static PyObject* __Pyx_PyFloat_SubtractObjC(PyObject *op1, PyObject *op2, double
 }
 #endif
 
+/* SliceObject */
+  static CYTHON_INLINE PyObject* __Pyx_PyObject_GetSlice(PyObject* obj,
+        Py_ssize_t cstart, Py_ssize_t cstop,
+        PyObject** _py_start, PyObject** _py_stop, PyObject** _py_slice,
+        int has_cstart, int has_cstop, CYTHON_UNUSED int wraparound) {
+#if CYTHON_USE_TYPE_SLOTS
+    PyMappingMethods* mp;
+#if PY_MAJOR_VERSION < 3
+    PySequenceMethods* ms = Py_TYPE(obj)->tp_as_sequence;
+    if (likely(ms && ms->sq_slice)) {
+        if (!has_cstart) {
+            if (_py_start && (*_py_start != Py_None)) {
+                cstart = __Pyx_PyIndex_AsSsize_t(*_py_start);
+                if ((cstart == (Py_ssize_t)-1) && PyErr_Occurred()) goto bad;
+            } else
+                cstart = 0;
+        }
+        if (!has_cstop) {
+            if (_py_stop && (*_py_stop != Py_None)) {
+                cstop = __Pyx_PyIndex_AsSsize_t(*_py_stop);
+                if ((cstop == (Py_ssize_t)-1) && PyErr_Occurred()) goto bad;
+            } else
+                cstop = PY_SSIZE_T_MAX;
+        }
+        if (wraparound && unlikely((cstart < 0) | (cstop < 0)) && likely(ms->sq_length)) {
+            Py_ssize_t l = ms->sq_length(obj);
+            if (likely(l >= 0)) {
+                if (cstop < 0) {
+                    cstop += l;
+                    if (cstop < 0) cstop = 0;
+                }
+                if (cstart < 0) {
+                    cstart += l;
+                    if (cstart < 0) cstart = 0;
+                }
+            } else {
+                if (!PyErr_ExceptionMatches(PyExc_OverflowError))
+                    goto bad;
+                PyErr_Clear();
+            }
+        }
+        return ms->sq_slice(obj, cstart, cstop);
+    }
+#endif
+    mp = Py_TYPE(obj)->tp_as_mapping;
+    if (likely(mp && mp->mp_subscript))
+#endif
+    {
+        PyObject* result;
+        PyObject *py_slice, *py_start, *py_stop;
+        if (_py_slice) {
+            py_slice = *_py_slice;
+        } else {
+            PyObject* owned_start = NULL;
+            PyObject* owned_stop = NULL;
+            if (_py_start) {
+                py_start = *_py_start;
+            } else {
+                if (has_cstart) {
+                    owned_start = py_start = PyInt_FromSsize_t(cstart);
+                    if (unlikely(!py_start)) goto bad;
+                } else
+                    py_start = Py_None;
+            }
+            if (_py_stop) {
+                py_stop = *_py_stop;
+            } else {
+                if (has_cstop) {
+                    owned_stop = py_stop = PyInt_FromSsize_t(cstop);
+                    if (unlikely(!py_stop)) {
+                        Py_XDECREF(owned_start);
+                        goto bad;
+                    }
+                } else
+                    py_stop = Py_None;
+            }
+            py_slice = PySlice_New(py_start, py_stop, Py_None);
+            Py_XDECREF(owned_start);
+            Py_XDECREF(owned_stop);
+            if (unlikely(!py_slice)) goto bad;
+        }
+#if CYTHON_USE_TYPE_SLOTS
+        result = mp->mp_subscript(obj, py_slice);
+#else
+        result = PyObject_GetItem(obj, py_slice);
+#endif
+        if (!_py_slice) {
+            Py_DECREF(py_slice);
+        }
+        return result;
+    }
+    PyErr_Format(PyExc_TypeError,
+        "'%.200s' object is unsliceable", Py_TYPE(obj)->tp_name);
+bad:
+    return NULL;
+}
+
 /* PyIntBinop */
   #if !CYTHON_COMPILING_IN_PYPY
 #if PY_MAJOR_VERSION < 3 || CYTHON_USE_PYLONG_INTERNALS
@@ -10530,103 +13431,6 @@ static PyObject* __Pyx_PyInt_TrueDivideObjC(PyObject *op1, PyObject *op2, CYTHON
 }
 #endif
 
-/* SliceObject */
-  static CYTHON_INLINE PyObject* __Pyx_PyObject_GetSlice(PyObject* obj,
-        Py_ssize_t cstart, Py_ssize_t cstop,
-        PyObject** _py_start, PyObject** _py_stop, PyObject** _py_slice,
-        int has_cstart, int has_cstop, CYTHON_UNUSED int wraparound) {
-#if CYTHON_USE_TYPE_SLOTS
-    PyMappingMethods* mp;
-#if PY_MAJOR_VERSION < 3
-    PySequenceMethods* ms = Py_TYPE(obj)->tp_as_sequence;
-    if (likely(ms && ms->sq_slice)) {
-        if (!has_cstart) {
-            if (_py_start && (*_py_start != Py_None)) {
-                cstart = __Pyx_PyIndex_AsSsize_t(*_py_start);
-                if ((cstart == (Py_ssize_t)-1) && PyErr_Occurred()) goto bad;
-            } else
-                cstart = 0;
-        }
-        if (!has_cstop) {
-            if (_py_stop && (*_py_stop != Py_None)) {
-                cstop = __Pyx_PyIndex_AsSsize_t(*_py_stop);
-                if ((cstop == (Py_ssize_t)-1) && PyErr_Occurred()) goto bad;
-            } else
-                cstop = PY_SSIZE_T_MAX;
-        }
-        if (wraparound && unlikely((cstart < 0) | (cstop < 0)) && likely(ms->sq_length)) {
-            Py_ssize_t l = ms->sq_length(obj);
-            if (likely(l >= 0)) {
-                if (cstop < 0) {
-                    cstop += l;
-                    if (cstop < 0) cstop = 0;
-                }
-                if (cstart < 0) {
-                    cstart += l;
-                    if (cstart < 0) cstart = 0;
-                }
-            } else {
-                if (!PyErr_ExceptionMatches(PyExc_OverflowError))
-                    goto bad;
-                PyErr_Clear();
-            }
-        }
-        return ms->sq_slice(obj, cstart, cstop);
-    }
-#endif
-    mp = Py_TYPE(obj)->tp_as_mapping;
-    if (likely(mp && mp->mp_subscript))
-#endif
-    {
-        PyObject* result;
-        PyObject *py_slice, *py_start, *py_stop;
-        if (_py_slice) {
-            py_slice = *_py_slice;
-        } else {
-            PyObject* owned_start = NULL;
-            PyObject* owned_stop = NULL;
-            if (_py_start) {
-                py_start = *_py_start;
-            } else {
-                if (has_cstart) {
-                    owned_start = py_start = PyInt_FromSsize_t(cstart);
-                    if (unlikely(!py_start)) goto bad;
-                } else
-                    py_start = Py_None;
-            }
-            if (_py_stop) {
-                py_stop = *_py_stop;
-            } else {
-                if (has_cstop) {
-                    owned_stop = py_stop = PyInt_FromSsize_t(cstop);
-                    if (unlikely(!py_stop)) {
-                        Py_XDECREF(owned_start);
-                        goto bad;
-                    }
-                } else
-                    py_stop = Py_None;
-            }
-            py_slice = PySlice_New(py_start, py_stop, Py_None);
-            Py_XDECREF(owned_start);
-            Py_XDECREF(owned_stop);
-            if (unlikely(!py_slice)) goto bad;
-        }
-#if CYTHON_USE_TYPE_SLOTS
-        result = mp->mp_subscript(obj, py_slice);
-#else
-        result = PyObject_GetItem(obj, py_slice);
-#endif
-        if (!_py_slice) {
-            Py_DECREF(py_slice);
-        }
-        return result;
-    }
-    PyErr_Format(PyExc_TypeError,
-        "'%.200s' object is unsliceable", Py_TYPE(obj)->tp_name);
-bad:
-    return NULL;
-}
-
 /* GetItemInt */
   static PyObject *__Pyx_GetItemInt_Generic(PyObject *o, PyObject* j) {
     PyObject *r;
@@ -10713,6 +13517,28 @@ static CYTHON_INLINE PyObject *__Pyx_GetItemInt_Fast(PyObject *o, Py_ssize_t i, 
 #endif
     return __Pyx_GetItemInt_Generic(o, PyInt_FromSsize_t(i));
 }
+
+/* PyObjectCallNoArg */
+  #if CYTHON_COMPILING_IN_CPYTHON
+static CYTHON_INLINE PyObject* __Pyx_PyObject_CallNoArg(PyObject *func) {
+#if CYTHON_FAST_PYCALL
+    if (PyFunction_Check(func)) {
+        return __Pyx_PyFunction_FastCall(func, NULL, 0);
+    }
+#endif
+#ifdef __Pyx_CyFunction_USED
+    if (likely(PyCFunction_Check(func) || __Pyx_CyFunction_Check(func)))
+#else
+    if (likely(PyCFunction_Check(func)))
+#endif
+    {
+        if (likely(PyCFunction_GET_FLAGS(func) & METH_NOARGS)) {
+            return __Pyx_PyObject_CallMethO(func, NULL);
+        }
+    }
+    return __Pyx_PyObject_Call(func, __pyx_empty_tuple, NULL);
+}
+#endif
 
 /* PyIntBinop */
   #if !CYTHON_COMPILING_IN_PYPY
@@ -11016,6 +13842,130 @@ return_ne:
 #endif
 }
 
+/* PyIntBinop */
+  #if !CYTHON_COMPILING_IN_PYPY
+static PyObject* __Pyx_PyInt_SubtractCObj(PyObject *op1, PyObject *op2, CYTHON_UNUSED long intval, int inplace, int zerodivision_check) {
+    (void)inplace;
+    (void)zerodivision_check;
+    #if PY_MAJOR_VERSION < 3
+    if (likely(PyInt_CheckExact(op2))) {
+        const long a = intval;
+        long x;
+        long b = PyInt_AS_LONG(op2);
+            x = (long)((unsigned long)a - b);
+            if (likely((x^a) >= 0 || (x^~b) >= 0))
+                return PyInt_FromLong(x);
+            return PyLong_Type.tp_as_number->nb_subtract(op1, op2);
+    }
+    #endif
+    #if CYTHON_USE_PYLONG_INTERNALS
+    if (likely(PyLong_CheckExact(op2))) {
+        const long a = intval;
+        long b, x;
+#ifdef HAVE_LONG_LONG
+        const PY_LONG_LONG lla = intval;
+        PY_LONG_LONG llb, llx;
+#endif
+        const digit* digits = ((PyLongObject*)op2)->ob_digit;
+        const Py_ssize_t size = Py_SIZE(op2);
+        if (likely(__Pyx_sst_abs(size) <= 1)) {
+            b = likely(size) ? digits[0] : 0;
+            if (size == -1) b = -b;
+        } else {
+            switch (size) {
+                case -2:
+                    if (8 * sizeof(long) - 1 > 2 * PyLong_SHIFT) {
+                        b = -(long) (((((unsigned long)digits[1]) << PyLong_SHIFT) | (unsigned long)digits[0]));
+                        break;
+#ifdef HAVE_LONG_LONG
+                    } else if (8 * sizeof(PY_LONG_LONG) - 1 > 2 * PyLong_SHIFT) {
+                        llb = -(PY_LONG_LONG) (((((unsigned PY_LONG_LONG)digits[1]) << PyLong_SHIFT) | (unsigned PY_LONG_LONG)digits[0]));
+                        goto long_long;
+#endif
+                    }
+                    CYTHON_FALLTHROUGH;
+                case 2:
+                    if (8 * sizeof(long) - 1 > 2 * PyLong_SHIFT) {
+                        b = (long) (((((unsigned long)digits[1]) << PyLong_SHIFT) | (unsigned long)digits[0]));
+                        break;
+#ifdef HAVE_LONG_LONG
+                    } else if (8 * sizeof(PY_LONG_LONG) - 1 > 2 * PyLong_SHIFT) {
+                        llb = (PY_LONG_LONG) (((((unsigned PY_LONG_LONG)digits[1]) << PyLong_SHIFT) | (unsigned PY_LONG_LONG)digits[0]));
+                        goto long_long;
+#endif
+                    }
+                    CYTHON_FALLTHROUGH;
+                case -3:
+                    if (8 * sizeof(long) - 1 > 3 * PyLong_SHIFT) {
+                        b = -(long) (((((((unsigned long)digits[2]) << PyLong_SHIFT) | (unsigned long)digits[1]) << PyLong_SHIFT) | (unsigned long)digits[0]));
+                        break;
+#ifdef HAVE_LONG_LONG
+                    } else if (8 * sizeof(PY_LONG_LONG) - 1 > 3 * PyLong_SHIFT) {
+                        llb = -(PY_LONG_LONG) (((((((unsigned PY_LONG_LONG)digits[2]) << PyLong_SHIFT) | (unsigned PY_LONG_LONG)digits[1]) << PyLong_SHIFT) | (unsigned PY_LONG_LONG)digits[0]));
+                        goto long_long;
+#endif
+                    }
+                    CYTHON_FALLTHROUGH;
+                case 3:
+                    if (8 * sizeof(long) - 1 > 3 * PyLong_SHIFT) {
+                        b = (long) (((((((unsigned long)digits[2]) << PyLong_SHIFT) | (unsigned long)digits[1]) << PyLong_SHIFT) | (unsigned long)digits[0]));
+                        break;
+#ifdef HAVE_LONG_LONG
+                    } else if (8 * sizeof(PY_LONG_LONG) - 1 > 3 * PyLong_SHIFT) {
+                        llb = (PY_LONG_LONG) (((((((unsigned PY_LONG_LONG)digits[2]) << PyLong_SHIFT) | (unsigned PY_LONG_LONG)digits[1]) << PyLong_SHIFT) | (unsigned PY_LONG_LONG)digits[0]));
+                        goto long_long;
+#endif
+                    }
+                    CYTHON_FALLTHROUGH;
+                case -4:
+                    if (8 * sizeof(long) - 1 > 4 * PyLong_SHIFT) {
+                        b = -(long) (((((((((unsigned long)digits[3]) << PyLong_SHIFT) | (unsigned long)digits[2]) << PyLong_SHIFT) | (unsigned long)digits[1]) << PyLong_SHIFT) | (unsigned long)digits[0]));
+                        break;
+#ifdef HAVE_LONG_LONG
+                    } else if (8 * sizeof(PY_LONG_LONG) - 1 > 4 * PyLong_SHIFT) {
+                        llb = -(PY_LONG_LONG) (((((((((unsigned PY_LONG_LONG)digits[3]) << PyLong_SHIFT) | (unsigned PY_LONG_LONG)digits[2]) << PyLong_SHIFT) | (unsigned PY_LONG_LONG)digits[1]) << PyLong_SHIFT) | (unsigned PY_LONG_LONG)digits[0]));
+                        goto long_long;
+#endif
+                    }
+                    CYTHON_FALLTHROUGH;
+                case 4:
+                    if (8 * sizeof(long) - 1 > 4 * PyLong_SHIFT) {
+                        b = (long) (((((((((unsigned long)digits[3]) << PyLong_SHIFT) | (unsigned long)digits[2]) << PyLong_SHIFT) | (unsigned long)digits[1]) << PyLong_SHIFT) | (unsigned long)digits[0]));
+                        break;
+#ifdef HAVE_LONG_LONG
+                    } else if (8 * sizeof(PY_LONG_LONG) - 1 > 4 * PyLong_SHIFT) {
+                        llb = (PY_LONG_LONG) (((((((((unsigned PY_LONG_LONG)digits[3]) << PyLong_SHIFT) | (unsigned PY_LONG_LONG)digits[2]) << PyLong_SHIFT) | (unsigned PY_LONG_LONG)digits[1]) << PyLong_SHIFT) | (unsigned PY_LONG_LONG)digits[0]));
+                        goto long_long;
+#endif
+                    }
+                    CYTHON_FALLTHROUGH;
+                default: return PyLong_Type.tp_as_number->nb_subtract(op1, op2);
+            }
+        }
+                x = a - b;
+            return PyLong_FromLong(x);
+#ifdef HAVE_LONG_LONG
+        long_long:
+                llx = lla - llb;
+            return PyLong_FromLongLong(llx);
+#endif
+        
+        
+    }
+    #endif
+    if (PyFloat_CheckExact(op2)) {
+        const long a = intval;
+        double b = PyFloat_AS_DOUBLE(op2);
+            double result;
+            PyFPE_START_PROTECT("subtract", return NULL)
+            result = ((double)a) - (double)b;
+            PyFPE_END_PROTECT(result)
+            return PyFloat_FromDouble(result);
+    }
+    return (inplace ? PyNumber_InPlaceSubtract : PyNumber_Subtract)(op1, op2);
+}
+#endif
+
 /* RaiseTooManyValuesToUnpack */
   static CYTHON_INLINE void __Pyx_RaiseTooManyValuesError(Py_ssize_t expected) {
     PyErr_Format(PyExc_ValueError,
@@ -11200,152 +14150,6 @@ static PyObject* __Pyx_PyInt_AddObjC(PyObject *op1, PyObject *op2, CYTHON_UNUSED
 }
 #endif
 
-/* PyObjectCallNoArg */
-  #if CYTHON_COMPILING_IN_CPYTHON
-static CYTHON_INLINE PyObject* __Pyx_PyObject_CallNoArg(PyObject *func) {
-#if CYTHON_FAST_PYCALL
-    if (PyFunction_Check(func)) {
-        return __Pyx_PyFunction_FastCall(func, NULL, 0);
-    }
-#endif
-#ifdef __Pyx_CyFunction_USED
-    if (likely(PyCFunction_Check(func) || __Pyx_CyFunction_Check(func)))
-#else
-    if (likely(PyCFunction_Check(func)))
-#endif
-    {
-        if (likely(PyCFunction_GET_FLAGS(func) & METH_NOARGS)) {
-            return __Pyx_PyObject_CallMethO(func, NULL);
-        }
-    }
-    return __Pyx_PyObject_Call(func, __pyx_empty_tuple, NULL);
-}
-#endif
-
-/* PyIntBinop */
-  #if !CYTHON_COMPILING_IN_PYPY
-static PyObject* __Pyx_PyInt_SubtractCObj(PyObject *op1, PyObject *op2, CYTHON_UNUSED long intval, int inplace, int zerodivision_check) {
-    (void)inplace;
-    (void)zerodivision_check;
-    #if PY_MAJOR_VERSION < 3
-    if (likely(PyInt_CheckExact(op2))) {
-        const long a = intval;
-        long x;
-        long b = PyInt_AS_LONG(op2);
-            x = (long)((unsigned long)a - b);
-            if (likely((x^a) >= 0 || (x^~b) >= 0))
-                return PyInt_FromLong(x);
-            return PyLong_Type.tp_as_number->nb_subtract(op1, op2);
-    }
-    #endif
-    #if CYTHON_USE_PYLONG_INTERNALS
-    if (likely(PyLong_CheckExact(op2))) {
-        const long a = intval;
-        long b, x;
-#ifdef HAVE_LONG_LONG
-        const PY_LONG_LONG lla = intval;
-        PY_LONG_LONG llb, llx;
-#endif
-        const digit* digits = ((PyLongObject*)op2)->ob_digit;
-        const Py_ssize_t size = Py_SIZE(op2);
-        if (likely(__Pyx_sst_abs(size) <= 1)) {
-            b = likely(size) ? digits[0] : 0;
-            if (size == -1) b = -b;
-        } else {
-            switch (size) {
-                case -2:
-                    if (8 * sizeof(long) - 1 > 2 * PyLong_SHIFT) {
-                        b = -(long) (((((unsigned long)digits[1]) << PyLong_SHIFT) | (unsigned long)digits[0]));
-                        break;
-#ifdef HAVE_LONG_LONG
-                    } else if (8 * sizeof(PY_LONG_LONG) - 1 > 2 * PyLong_SHIFT) {
-                        llb = -(PY_LONG_LONG) (((((unsigned PY_LONG_LONG)digits[1]) << PyLong_SHIFT) | (unsigned PY_LONG_LONG)digits[0]));
-                        goto long_long;
-#endif
-                    }
-                    CYTHON_FALLTHROUGH;
-                case 2:
-                    if (8 * sizeof(long) - 1 > 2 * PyLong_SHIFT) {
-                        b = (long) (((((unsigned long)digits[1]) << PyLong_SHIFT) | (unsigned long)digits[0]));
-                        break;
-#ifdef HAVE_LONG_LONG
-                    } else if (8 * sizeof(PY_LONG_LONG) - 1 > 2 * PyLong_SHIFT) {
-                        llb = (PY_LONG_LONG) (((((unsigned PY_LONG_LONG)digits[1]) << PyLong_SHIFT) | (unsigned PY_LONG_LONG)digits[0]));
-                        goto long_long;
-#endif
-                    }
-                    CYTHON_FALLTHROUGH;
-                case -3:
-                    if (8 * sizeof(long) - 1 > 3 * PyLong_SHIFT) {
-                        b = -(long) (((((((unsigned long)digits[2]) << PyLong_SHIFT) | (unsigned long)digits[1]) << PyLong_SHIFT) | (unsigned long)digits[0]));
-                        break;
-#ifdef HAVE_LONG_LONG
-                    } else if (8 * sizeof(PY_LONG_LONG) - 1 > 3 * PyLong_SHIFT) {
-                        llb = -(PY_LONG_LONG) (((((((unsigned PY_LONG_LONG)digits[2]) << PyLong_SHIFT) | (unsigned PY_LONG_LONG)digits[1]) << PyLong_SHIFT) | (unsigned PY_LONG_LONG)digits[0]));
-                        goto long_long;
-#endif
-                    }
-                    CYTHON_FALLTHROUGH;
-                case 3:
-                    if (8 * sizeof(long) - 1 > 3 * PyLong_SHIFT) {
-                        b = (long) (((((((unsigned long)digits[2]) << PyLong_SHIFT) | (unsigned long)digits[1]) << PyLong_SHIFT) | (unsigned long)digits[0]));
-                        break;
-#ifdef HAVE_LONG_LONG
-                    } else if (8 * sizeof(PY_LONG_LONG) - 1 > 3 * PyLong_SHIFT) {
-                        llb = (PY_LONG_LONG) (((((((unsigned PY_LONG_LONG)digits[2]) << PyLong_SHIFT) | (unsigned PY_LONG_LONG)digits[1]) << PyLong_SHIFT) | (unsigned PY_LONG_LONG)digits[0]));
-                        goto long_long;
-#endif
-                    }
-                    CYTHON_FALLTHROUGH;
-                case -4:
-                    if (8 * sizeof(long) - 1 > 4 * PyLong_SHIFT) {
-                        b = -(long) (((((((((unsigned long)digits[3]) << PyLong_SHIFT) | (unsigned long)digits[2]) << PyLong_SHIFT) | (unsigned long)digits[1]) << PyLong_SHIFT) | (unsigned long)digits[0]));
-                        break;
-#ifdef HAVE_LONG_LONG
-                    } else if (8 * sizeof(PY_LONG_LONG) - 1 > 4 * PyLong_SHIFT) {
-                        llb = -(PY_LONG_LONG) (((((((((unsigned PY_LONG_LONG)digits[3]) << PyLong_SHIFT) | (unsigned PY_LONG_LONG)digits[2]) << PyLong_SHIFT) | (unsigned PY_LONG_LONG)digits[1]) << PyLong_SHIFT) | (unsigned PY_LONG_LONG)digits[0]));
-                        goto long_long;
-#endif
-                    }
-                    CYTHON_FALLTHROUGH;
-                case 4:
-                    if (8 * sizeof(long) - 1 > 4 * PyLong_SHIFT) {
-                        b = (long) (((((((((unsigned long)digits[3]) << PyLong_SHIFT) | (unsigned long)digits[2]) << PyLong_SHIFT) | (unsigned long)digits[1]) << PyLong_SHIFT) | (unsigned long)digits[0]));
-                        break;
-#ifdef HAVE_LONG_LONG
-                    } else if (8 * sizeof(PY_LONG_LONG) - 1 > 4 * PyLong_SHIFT) {
-                        llb = (PY_LONG_LONG) (((((((((unsigned PY_LONG_LONG)digits[3]) << PyLong_SHIFT) | (unsigned PY_LONG_LONG)digits[2]) << PyLong_SHIFT) | (unsigned PY_LONG_LONG)digits[1]) << PyLong_SHIFT) | (unsigned PY_LONG_LONG)digits[0]));
-                        goto long_long;
-#endif
-                    }
-                    CYTHON_FALLTHROUGH;
-                default: return PyLong_Type.tp_as_number->nb_subtract(op1, op2);
-            }
-        }
-                x = a - b;
-            return PyLong_FromLong(x);
-#ifdef HAVE_LONG_LONG
-        long_long:
-                llx = lla - llb;
-            return PyLong_FromLongLong(llx);
-#endif
-        
-        
-    }
-    #endif
-    if (PyFloat_CheckExact(op2)) {
-        const long a = intval;
-        double b = PyFloat_AS_DOUBLE(op2);
-            double result;
-            PyFPE_START_PROTECT("subtract", return NULL)
-            result = ((double)a) - (double)b;
-            PyFPE_END_PROTECT(result)
-            return PyFloat_FromDouble(result);
-    }
-    return (inplace ? PyNumber_InPlaceSubtract : PyNumber_Subtract)(op1, op2);
-}
-#endif
-
 /* None */
   static CYTHON_INLINE void __Pyx_RaiseClosureNameError(const char *varname) {
     PyErr_Format(PyExc_NameError, "free variable '%s' referenced before assignment in enclosing scope", varname);
@@ -11476,6 +14280,11 @@ static PyObject* __Pyx_PyObject_CallMethod1(PyObject* obj, PyObject* method_name
         Py_DECREF(retval);
     }
     return 0;
+}
+
+/* None */
+  static CYTHON_INLINE void __Pyx_RaiseUnboundLocalError(const char *varname) {
+    PyErr_Format(PyExc_UnboundLocalError, "local variable '%s' referenced before assignment", varname);
 }
 
 /* PyObject_GenericGetAttrNoDict */

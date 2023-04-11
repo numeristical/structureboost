@@ -1693,6 +1693,8 @@ static const char __pyx_k_log_loss_pdf[] = "log_loss_pdf";
 static const char __pyx_k_pred_regions[] = "pred_regions";
 static const char __pyx_k_PdfSet___init[] = "PdfSet.__init__";
 static const char __pyx_k_PdfSet_median[] = "PdfSet.median";
+static const char __pyx_k_bins_to_probs[] = "bins_to_probs";
+static const char __pyx_k_new_binpt_vec[] = "new_binpt_vec";
 static const char __pyx_k_PdfSet_log_loss[] = "PdfSet.log_loss";
 static const char __pyx_k_PdfSet_quantile[] = "PdfSet.quantile";
 static const char __pyx_k_quantile_widths[] = "quantile_widths";
@@ -1700,6 +1702,7 @@ static const char __pyx_k_PdfSet___getitem[] = "PdfSet.__getitem__";
 static const char __pyx_k_PdfSet_quantiles[] = "PdfSet.quantiles";
 static const char __pyx_k_cline_in_traceback[] = "cline_in_traceback";
 static const char __pyx_k_PdfSet_pred_regions[] = "PdfSet.pred_regions";
+static const char __pyx_k_PdfSet_bins_to_probs[] = "PdfSet.bins_to_probs";
 static const char __pyx_k_test_in_pred_regions[] = "test_in_pred_regions";
 static const char __pyx_k_PdfSet_quantile_widths[] = "PdfSet.quantile_widths";
 static const char __pyx_k_structureboost_pdf_set[] = "structureboost.pdf_set";
@@ -1710,6 +1713,7 @@ static const char __pyx_k_PdfSet_test_between_quantiles[] = "PdfSet.test_between
 static PyObject *__pyx_n_s_PdfSet;
 static PyObject *__pyx_n_s_PdfSet___getitem;
 static PyObject *__pyx_n_s_PdfSet___init;
+static PyObject *__pyx_n_s_PdfSet_bins_to_probs;
 static PyObject *__pyx_n_s_PdfSet_len;
 static PyObject *__pyx_n_s_PdfSet_log_loss;
 static PyObject *__pyx_n_s_PdfSet_mean;
@@ -1724,6 +1728,7 @@ static PyObject *__pyx_n_s_alpha;
 static PyObject *__pyx_n_s_any;
 static PyObject *__pyx_n_s_arg;
 static PyObject *__pyx_n_s_array;
+static PyObject *__pyx_n_s_bins_to_probs;
 static PyObject *__pyx_n_s_cline_in_traceback;
 static PyObject *__pyx_n_s_density;
 static PyObject *__pyx_n_s_density_vals;
@@ -1748,6 +1753,7 @@ static PyObject *__pyx_n_s_metaclass;
 static PyObject *__pyx_n_s_module;
 static PyObject *__pyx_n_s_name;
 static PyObject *__pyx_n_s_ndarray;
+static PyObject *__pyx_n_s_new_binpt_vec;
 static PyObject *__pyx_n_s_np;
 static PyObject *__pyx_n_s_numpy;
 static PyObject *__pyx_n_s_object;
@@ -1789,6 +1795,7 @@ static PyObject *__pyx_pf_14structureboost_7pdf_set_6PdfSet_16test_between_quant
 static PyObject *__pyx_pf_14structureboost_7pdf_set_6PdfSet_18test_in_pred_regions(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self, PyObject *__pyx_v_test_vals, PyObject *__pyx_v_alpha); /* proto */
 static PyObject *__pyx_pf_14structureboost_7pdf_set_6PdfSet_20quantile_widths(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self, PyObject *__pyx_v_q_left, PyObject *__pyx_v_q_right); /* proto */
 static PyObject *__pyx_pf_14structureboost_7pdf_set_6PdfSet_22pred_regions(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self, PyObject *__pyx_v_alpha); /* proto */
+static PyObject *__pyx_pf_14structureboost_7pdf_set_6PdfSet_24bins_to_probs(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self, PyObject *__pyx_v_new_binpt_vec); /* proto */
 static PyObject *__pyx_pf_14structureboost_7pdf_set_test_in_pred_regions(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_test_vals, PyObject *__pyx_v_regions); /* proto */
 static PyObject *__pyx_pf_14structureboost_7pdf_set_2log_loss_pdf(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_y_true, PyObject *__pyx_v_pdf_set); /* proto */
 static PyObject *__pyx_pf_14structureboost_7pdf_set_4test_between_quantiles_pdf(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_test_vals, PyObject *__pyx_v_pdf_set, PyObject *__pyx_v_q_left, PyObject *__pyx_v_q_right); /* proto */
@@ -1796,7 +1803,6 @@ static PyObject *__pyx_float_1eneg_16;
 static PyObject *__pyx_int_0;
 static PyObject *__pyx_int_1;
 static PyObject *__pyx_codeobj_;
-static PyObject *__pyx_tuple__16;
 static PyObject *__pyx_tuple__17;
 static PyObject *__pyx_tuple__18;
 static PyObject *__pyx_tuple__19;
@@ -1813,6 +1819,8 @@ static PyObject *__pyx_tuple__29;
 static PyObject *__pyx_tuple__30;
 static PyObject *__pyx_tuple__31;
 static PyObject *__pyx_tuple__32;
+static PyObject *__pyx_tuple__33;
+static PyObject *__pyx_tuple__34;
 static PyObject *__pyx_codeobj__2;
 static PyObject *__pyx_codeobj__3;
 static PyObject *__pyx_codeobj__4;
@@ -1827,6 +1835,7 @@ static PyObject *__pyx_codeobj__12;
 static PyObject *__pyx_codeobj__13;
 static PyObject *__pyx_codeobj__14;
 static PyObject *__pyx_codeobj__15;
+static PyObject *__pyx_codeobj__16;
 /* Late includes */
 
 /* "structureboost/pdf_set.pyx":7
@@ -4198,6 +4207,235 @@ static PyObject *__pyx_pf_14structureboost_7pdf_set_6PdfSet_22pred_regions(CYTHO
 /* "structureboost/pdf_set.pyx":51
  *     #     return()
  * 
+ *     def bins_to_probs(self, new_binpt_vec):             # <<<<<<<<<<<<<<
+ *         return(np.array([pdf.bins_to_probs(new_binpt_vec) for pdf in self.pdf_list]))
+ * 
+ */
+
+/* Python wrapper */
+static PyObject *__pyx_pw_14structureboost_7pdf_set_6PdfSet_25bins_to_probs(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
+static PyMethodDef __pyx_mdef_14structureboost_7pdf_set_6PdfSet_25bins_to_probs = {"bins_to_probs", (PyCFunction)(void*)(PyCFunctionWithKeywords)__pyx_pw_14structureboost_7pdf_set_6PdfSet_25bins_to_probs, METH_VARARGS|METH_KEYWORDS, 0};
+static PyObject *__pyx_pw_14structureboost_7pdf_set_6PdfSet_25bins_to_probs(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
+  PyObject *__pyx_v_self = 0;
+  PyObject *__pyx_v_new_binpt_vec = 0;
+  int __pyx_lineno = 0;
+  const char *__pyx_filename = NULL;
+  int __pyx_clineno = 0;
+  PyObject *__pyx_r = 0;
+  __Pyx_RefNannyDeclarations
+  __Pyx_RefNannySetupContext("bins_to_probs (wrapper)", 0);
+  {
+    static PyObject **__pyx_pyargnames[] = {&__pyx_n_s_self,&__pyx_n_s_new_binpt_vec,0};
+    PyObject* values[2] = {0,0};
+    if (unlikely(__pyx_kwds)) {
+      Py_ssize_t kw_args;
+      const Py_ssize_t pos_args = PyTuple_GET_SIZE(__pyx_args);
+      switch (pos_args) {
+        case  2: values[1] = PyTuple_GET_ITEM(__pyx_args, 1);
+        CYTHON_FALLTHROUGH;
+        case  1: values[0] = PyTuple_GET_ITEM(__pyx_args, 0);
+        CYTHON_FALLTHROUGH;
+        case  0: break;
+        default: goto __pyx_L5_argtuple_error;
+      }
+      kw_args = PyDict_Size(__pyx_kwds);
+      switch (pos_args) {
+        case  0:
+        if (likely((values[0] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_self)) != 0)) kw_args--;
+        else goto __pyx_L5_argtuple_error;
+        CYTHON_FALLTHROUGH;
+        case  1:
+        if (likely((values[1] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_new_binpt_vec)) != 0)) kw_args--;
+        else {
+          __Pyx_RaiseArgtupleInvalid("bins_to_probs", 1, 2, 2, 1); __PYX_ERR(0, 51, __pyx_L3_error)
+        }
+      }
+      if (unlikely(kw_args > 0)) {
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "bins_to_probs") < 0)) __PYX_ERR(0, 51, __pyx_L3_error)
+      }
+    } else if (PyTuple_GET_SIZE(__pyx_args) != 2) {
+      goto __pyx_L5_argtuple_error;
+    } else {
+      values[0] = PyTuple_GET_ITEM(__pyx_args, 0);
+      values[1] = PyTuple_GET_ITEM(__pyx_args, 1);
+    }
+    __pyx_v_self = values[0];
+    __pyx_v_new_binpt_vec = values[1];
+  }
+  goto __pyx_L4_argument_unpacking_done;
+  __pyx_L5_argtuple_error:;
+  __Pyx_RaiseArgtupleInvalid("bins_to_probs", 1, 2, 2, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 51, __pyx_L3_error)
+  __pyx_L3_error:;
+  __Pyx_AddTraceback("structureboost.pdf_set.PdfSet.bins_to_probs", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_RefNannyFinishContext();
+  return NULL;
+  __pyx_L4_argument_unpacking_done:;
+  __pyx_r = __pyx_pf_14structureboost_7pdf_set_6PdfSet_24bins_to_probs(__pyx_self, __pyx_v_self, __pyx_v_new_binpt_vec);
+
+  /* function exit code */
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+static PyObject *__pyx_pf_14structureboost_7pdf_set_6PdfSet_24bins_to_probs(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self, PyObject *__pyx_v_new_binpt_vec) {
+  PyObject *__pyx_8genexpr6__pyx_v_pdf = NULL;
+  PyObject *__pyx_r = NULL;
+  __Pyx_TraceDeclarations
+  __Pyx_RefNannyDeclarations
+  PyObject *__pyx_t_1 = NULL;
+  PyObject *__pyx_t_2 = NULL;
+  PyObject *__pyx_t_3 = NULL;
+  PyObject *__pyx_t_4 = NULL;
+  PyObject *__pyx_t_5 = NULL;
+  Py_ssize_t __pyx_t_6;
+  PyObject *(*__pyx_t_7)(PyObject *);
+  PyObject *__pyx_t_8 = NULL;
+  PyObject *__pyx_t_9 = NULL;
+  int __pyx_lineno = 0;
+  const char *__pyx_filename = NULL;
+  int __pyx_clineno = 0;
+  __Pyx_TraceFrameInit(__pyx_codeobj__13)
+  __Pyx_RefNannySetupContext("bins_to_probs", 0);
+  __Pyx_TraceCall("bins_to_probs", __pyx_f[0], 51, 0, __PYX_ERR(0, 51, __pyx_L1_error));
+
+  /* "structureboost/pdf_set.pyx":52
+ * 
+ *     def bins_to_probs(self, new_binpt_vec):
+ *         return(np.array([pdf.bins_to_probs(new_binpt_vec) for pdf in self.pdf_list]))             # <<<<<<<<<<<<<<
+ * 
+ * def test_in_pred_regions(test_vals, regions):
+ */
+  __Pyx_XDECREF(__pyx_r);
+  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_np); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 52, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_2);
+  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_array); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 52, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_3);
+  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+  { /* enter inner scope */
+    __pyx_t_2 = PyList_New(0); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 52, __pyx_L5_error)
+    __Pyx_GOTREF(__pyx_t_2);
+    __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_pdf_list); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 52, __pyx_L5_error)
+    __Pyx_GOTREF(__pyx_t_4);
+    if (likely(PyList_CheckExact(__pyx_t_4)) || PyTuple_CheckExact(__pyx_t_4)) {
+      __pyx_t_5 = __pyx_t_4; __Pyx_INCREF(__pyx_t_5); __pyx_t_6 = 0;
+      __pyx_t_7 = NULL;
+    } else {
+      __pyx_t_6 = -1; __pyx_t_5 = PyObject_GetIter(__pyx_t_4); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 52, __pyx_L5_error)
+      __Pyx_GOTREF(__pyx_t_5);
+      __pyx_t_7 = Py_TYPE(__pyx_t_5)->tp_iternext; if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 52, __pyx_L5_error)
+    }
+    __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+    for (;;) {
+      if (likely(!__pyx_t_7)) {
+        if (likely(PyList_CheckExact(__pyx_t_5))) {
+          if (__pyx_t_6 >= PyList_GET_SIZE(__pyx_t_5)) break;
+          #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
+          __pyx_t_4 = PyList_GET_ITEM(__pyx_t_5, __pyx_t_6); __Pyx_INCREF(__pyx_t_4); __pyx_t_6++; if (unlikely(0 < 0)) __PYX_ERR(0, 52, __pyx_L5_error)
+          #else
+          __pyx_t_4 = PySequence_ITEM(__pyx_t_5, __pyx_t_6); __pyx_t_6++; if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 52, __pyx_L5_error)
+          __Pyx_GOTREF(__pyx_t_4);
+          #endif
+        } else {
+          if (__pyx_t_6 >= PyTuple_GET_SIZE(__pyx_t_5)) break;
+          #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
+          __pyx_t_4 = PyTuple_GET_ITEM(__pyx_t_5, __pyx_t_6); __Pyx_INCREF(__pyx_t_4); __pyx_t_6++; if (unlikely(0 < 0)) __PYX_ERR(0, 52, __pyx_L5_error)
+          #else
+          __pyx_t_4 = PySequence_ITEM(__pyx_t_5, __pyx_t_6); __pyx_t_6++; if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 52, __pyx_L5_error)
+          __Pyx_GOTREF(__pyx_t_4);
+          #endif
+        }
+      } else {
+        __pyx_t_4 = __pyx_t_7(__pyx_t_5);
+        if (unlikely(!__pyx_t_4)) {
+          PyObject* exc_type = PyErr_Occurred();
+          if (exc_type) {
+            if (likely(__Pyx_PyErr_GivenExceptionMatches(exc_type, PyExc_StopIteration))) PyErr_Clear();
+            else __PYX_ERR(0, 52, __pyx_L5_error)
+          }
+          break;
+        }
+        __Pyx_GOTREF(__pyx_t_4);
+      }
+      __Pyx_XDECREF_SET(__pyx_8genexpr6__pyx_v_pdf, __pyx_t_4);
+      __pyx_t_4 = 0;
+      __pyx_t_8 = __Pyx_PyObject_GetAttrStr(__pyx_8genexpr6__pyx_v_pdf, __pyx_n_s_bins_to_probs); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 52, __pyx_L5_error)
+      __Pyx_GOTREF(__pyx_t_8);
+      __pyx_t_9 = NULL;
+      if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_8))) {
+        __pyx_t_9 = PyMethod_GET_SELF(__pyx_t_8);
+        if (likely(__pyx_t_9)) {
+          PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_8);
+          __Pyx_INCREF(__pyx_t_9);
+          __Pyx_INCREF(function);
+          __Pyx_DECREF_SET(__pyx_t_8, function);
+        }
+      }
+      __pyx_t_4 = (__pyx_t_9) ? __Pyx_PyObject_Call2Args(__pyx_t_8, __pyx_t_9, __pyx_v_new_binpt_vec) : __Pyx_PyObject_CallOneArg(__pyx_t_8, __pyx_v_new_binpt_vec);
+      __Pyx_XDECREF(__pyx_t_9); __pyx_t_9 = 0;
+      if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 52, __pyx_L5_error)
+      __Pyx_GOTREF(__pyx_t_4);
+      __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
+      if (unlikely(__Pyx_ListComp_Append(__pyx_t_2, (PyObject*)__pyx_t_4))) __PYX_ERR(0, 52, __pyx_L5_error)
+      __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+    }
+    __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
+    __Pyx_XDECREF(__pyx_8genexpr6__pyx_v_pdf); __pyx_8genexpr6__pyx_v_pdf = 0;
+    goto __pyx_L8_exit_scope;
+    __pyx_L5_error:;
+    __Pyx_XDECREF(__pyx_8genexpr6__pyx_v_pdf); __pyx_8genexpr6__pyx_v_pdf = 0;
+    goto __pyx_L1_error;
+    __pyx_L8_exit_scope:;
+  } /* exit inner scope */
+  __pyx_t_5 = NULL;
+  if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_3))) {
+    __pyx_t_5 = PyMethod_GET_SELF(__pyx_t_3);
+    if (likely(__pyx_t_5)) {
+      PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_3);
+      __Pyx_INCREF(__pyx_t_5);
+      __Pyx_INCREF(function);
+      __Pyx_DECREF_SET(__pyx_t_3, function);
+    }
+  }
+  __pyx_t_1 = (__pyx_t_5) ? __Pyx_PyObject_Call2Args(__pyx_t_3, __pyx_t_5, __pyx_t_2) : __Pyx_PyObject_CallOneArg(__pyx_t_3, __pyx_t_2);
+  __Pyx_XDECREF(__pyx_t_5); __pyx_t_5 = 0;
+  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+  if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 52, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+  __pyx_r = __pyx_t_1;
+  __pyx_t_1 = 0;
+  goto __pyx_L0;
+
+  /* "structureboost/pdf_set.pyx":51
+ *     #     return()
+ * 
+ *     def bins_to_probs(self, new_binpt_vec):             # <<<<<<<<<<<<<<
+ *         return(np.array([pdf.bins_to_probs(new_binpt_vec) for pdf in self.pdf_list]))
+ * 
+ */
+
+  /* function exit code */
+  __pyx_L1_error:;
+  __Pyx_XDECREF(__pyx_t_1);
+  __Pyx_XDECREF(__pyx_t_2);
+  __Pyx_XDECREF(__pyx_t_3);
+  __Pyx_XDECREF(__pyx_t_4);
+  __Pyx_XDECREF(__pyx_t_5);
+  __Pyx_XDECREF(__pyx_t_8);
+  __Pyx_XDECREF(__pyx_t_9);
+  __Pyx_AddTraceback("structureboost.pdf_set.PdfSet.bins_to_probs", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __pyx_r = NULL;
+  __pyx_L0:;
+  __Pyx_XDECREF(__pyx_8genexpr6__pyx_v_pdf);
+  __Pyx_XGIVEREF(__pyx_r);
+  __Pyx_TraceReturn(__pyx_r, 0);
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+/* "structureboost/pdf_set.pyx":54
+ *         return(np.array([pdf.bins_to_probs(new_binpt_vec) for pdf in self.pdf_list]))
+ * 
  * def test_in_pred_regions(test_vals, regions):             # <<<<<<<<<<<<<<
  *     return(np.array([np.any([((test_vals[i]>=interval[0]) and (test_vals[i]<=interval[1]))
  *                      for interval in regions[i]])
@@ -4238,11 +4476,11 @@ static PyObject *__pyx_pw_14structureboost_7pdf_set_1test_in_pred_regions(PyObje
         case  1:
         if (likely((values[1] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_regions)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("test_in_pred_regions", 1, 2, 2, 1); __PYX_ERR(0, 51, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("test_in_pred_regions", 1, 2, 2, 1); __PYX_ERR(0, 54, __pyx_L3_error)
         }
       }
       if (unlikely(kw_args > 0)) {
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "test_in_pred_regions") < 0)) __PYX_ERR(0, 51, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "test_in_pred_regions") < 0)) __PYX_ERR(0, 54, __pyx_L3_error)
       }
     } else if (PyTuple_GET_SIZE(__pyx_args) != 2) {
       goto __pyx_L5_argtuple_error;
@@ -4255,7 +4493,7 @@ static PyObject *__pyx_pw_14structureboost_7pdf_set_1test_in_pred_regions(PyObje
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("test_in_pred_regions", 1, 2, 2, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 51, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("test_in_pred_regions", 1, 2, 2, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 54, __pyx_L3_error)
   __pyx_L3_error:;
   __Pyx_AddTraceback("structureboost.pdf_set.test_in_pred_regions", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
@@ -4269,8 +4507,8 @@ static PyObject *__pyx_pw_14structureboost_7pdf_set_1test_in_pred_regions(PyObje
 }
 
 static PyObject *__pyx_pf_14structureboost_7pdf_set_test_in_pred_regions(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_test_vals, PyObject *__pyx_v_regions) {
-  Py_ssize_t __pyx_8genexpr6__pyx_v_i;
-  PyObject *__pyx_8genexpr7__pyx_v_interval = NULL;
+  Py_ssize_t __pyx_8genexpr7__pyx_v_i;
+  PyObject *__pyx_8genexpr8__pyx_v_interval = NULL;
   PyObject *__pyx_r = NULL;
   __Pyx_TraceDeclarations
   __Pyx_RefNannyDeclarations
@@ -4294,11 +4532,11 @@ static PyObject *__pyx_pf_14structureboost_7pdf_set_test_in_pred_regions(CYTHON_
   int __pyx_lineno = 0;
   const char *__pyx_filename = NULL;
   int __pyx_clineno = 0;
-  __Pyx_TraceFrameInit(__pyx_codeobj__13)
+  __Pyx_TraceFrameInit(__pyx_codeobj__14)
   __Pyx_RefNannySetupContext("test_in_pred_regions", 0);
-  __Pyx_TraceCall("test_in_pred_regions", __pyx_f[0], 51, 0, __PYX_ERR(0, 51, __pyx_L1_error));
+  __Pyx_TraceCall("test_in_pred_regions", __pyx_f[0], 54, 0, __PYX_ERR(0, 54, __pyx_L1_error));
 
-  /* "structureboost/pdf_set.pyx":52
+  /* "structureboost/pdf_set.pyx":55
  * 
  * def test_in_pred_regions(test_vals, regions):
  *     return(np.array([np.any([((test_vals[i]>=interval[0]) and (test_vals[i]<=interval[1]))             # <<<<<<<<<<<<<<
@@ -4306,59 +4544,59 @@ static PyObject *__pyx_pf_14structureboost_7pdf_set_test_in_pred_regions(CYTHON_
  *                         for i in range(len(test_vals))]))
  */
   __Pyx_XDECREF(__pyx_r);
-  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_np); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 52, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_np); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 55, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_array); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 52, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_array); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 55, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   { /* enter inner scope */
-    __pyx_t_2 = PyList_New(0); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 52, __pyx_L1_error)
+    __pyx_t_2 = PyList_New(0); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 55, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
 
-    /* "structureboost/pdf_set.pyx":54
+    /* "structureboost/pdf_set.pyx":57
  *     return(np.array([np.any([((test_vals[i]>=interval[0]) and (test_vals[i]<=interval[1]))
  *                      for interval in regions[i]])
  *                         for i in range(len(test_vals))]))             # <<<<<<<<<<<<<<
  * 
  * 
  */
-    __pyx_t_4 = PyObject_Length(__pyx_v_test_vals); if (unlikely(__pyx_t_4 == ((Py_ssize_t)-1))) __PYX_ERR(0, 54, __pyx_L1_error)
+    __pyx_t_4 = PyObject_Length(__pyx_v_test_vals); if (unlikely(__pyx_t_4 == ((Py_ssize_t)-1))) __PYX_ERR(0, 57, __pyx_L1_error)
     __pyx_t_5 = __pyx_t_4;
     for (__pyx_t_6 = 0; __pyx_t_6 < __pyx_t_5; __pyx_t_6+=1) {
-      __pyx_8genexpr6__pyx_v_i = __pyx_t_6;
+      __pyx_8genexpr7__pyx_v_i = __pyx_t_6;
 
-      /* "structureboost/pdf_set.pyx":52
+      /* "structureboost/pdf_set.pyx":55
  * 
  * def test_in_pred_regions(test_vals, regions):
  *     return(np.array([np.any([((test_vals[i]>=interval[0]) and (test_vals[i]<=interval[1]))             # <<<<<<<<<<<<<<
  *                      for interval in regions[i]])
  *                         for i in range(len(test_vals))]))
  */
-      __Pyx_GetModuleGlobalName(__pyx_t_8, __pyx_n_s_np); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 52, __pyx_L1_error)
+      __Pyx_GetModuleGlobalName(__pyx_t_8, __pyx_n_s_np); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 55, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_8);
-      __pyx_t_9 = __Pyx_PyObject_GetAttrStr(__pyx_t_8, __pyx_n_s_any); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 52, __pyx_L1_error)
+      __pyx_t_9 = __Pyx_PyObject_GetAttrStr(__pyx_t_8, __pyx_n_s_any); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 55, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_9);
       __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
       { /* enter inner scope */
-        __pyx_t_8 = PyList_New(0); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 52, __pyx_L7_error)
+        __pyx_t_8 = PyList_New(0); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 55, __pyx_L7_error)
         __Pyx_GOTREF(__pyx_t_8);
 
-        /* "structureboost/pdf_set.pyx":53
+        /* "structureboost/pdf_set.pyx":56
  * def test_in_pred_regions(test_vals, regions):
  *     return(np.array([np.any([((test_vals[i]>=interval[0]) and (test_vals[i]<=interval[1]))
  *                      for interval in regions[i]])             # <<<<<<<<<<<<<<
  *                         for i in range(len(test_vals))]))
  * 
  */
-        __pyx_t_10 = __Pyx_GetItemInt(__pyx_v_regions, __pyx_8genexpr6__pyx_v_i, Py_ssize_t, 1, PyInt_FromSsize_t, 0, 1, 1); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 53, __pyx_L7_error)
+        __pyx_t_10 = __Pyx_GetItemInt(__pyx_v_regions, __pyx_8genexpr7__pyx_v_i, Py_ssize_t, 1, PyInt_FromSsize_t, 0, 1, 1); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 56, __pyx_L7_error)
         __Pyx_GOTREF(__pyx_t_10);
         if (likely(PyList_CheckExact(__pyx_t_10)) || PyTuple_CheckExact(__pyx_t_10)) {
           __pyx_t_11 = __pyx_t_10; __Pyx_INCREF(__pyx_t_11); __pyx_t_12 = 0;
           __pyx_t_13 = NULL;
         } else {
-          __pyx_t_12 = -1; __pyx_t_11 = PyObject_GetIter(__pyx_t_10); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 53, __pyx_L7_error)
+          __pyx_t_12 = -1; __pyx_t_11 = PyObject_GetIter(__pyx_t_10); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 56, __pyx_L7_error)
           __Pyx_GOTREF(__pyx_t_11);
-          __pyx_t_13 = Py_TYPE(__pyx_t_11)->tp_iternext; if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 53, __pyx_L7_error)
+          __pyx_t_13 = Py_TYPE(__pyx_t_11)->tp_iternext; if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 56, __pyx_L7_error)
         }
         __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
         for (;;) {
@@ -4366,17 +4604,17 @@ static PyObject *__pyx_pf_14structureboost_7pdf_set_test_in_pred_regions(CYTHON_
             if (likely(PyList_CheckExact(__pyx_t_11))) {
               if (__pyx_t_12 >= PyList_GET_SIZE(__pyx_t_11)) break;
               #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-              __pyx_t_10 = PyList_GET_ITEM(__pyx_t_11, __pyx_t_12); __Pyx_INCREF(__pyx_t_10); __pyx_t_12++; if (unlikely(0 < 0)) __PYX_ERR(0, 53, __pyx_L7_error)
+              __pyx_t_10 = PyList_GET_ITEM(__pyx_t_11, __pyx_t_12); __Pyx_INCREF(__pyx_t_10); __pyx_t_12++; if (unlikely(0 < 0)) __PYX_ERR(0, 56, __pyx_L7_error)
               #else
-              __pyx_t_10 = PySequence_ITEM(__pyx_t_11, __pyx_t_12); __pyx_t_12++; if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 53, __pyx_L7_error)
+              __pyx_t_10 = PySequence_ITEM(__pyx_t_11, __pyx_t_12); __pyx_t_12++; if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 56, __pyx_L7_error)
               __Pyx_GOTREF(__pyx_t_10);
               #endif
             } else {
               if (__pyx_t_12 >= PyTuple_GET_SIZE(__pyx_t_11)) break;
               #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-              __pyx_t_10 = PyTuple_GET_ITEM(__pyx_t_11, __pyx_t_12); __Pyx_INCREF(__pyx_t_10); __pyx_t_12++; if (unlikely(0 < 0)) __PYX_ERR(0, 53, __pyx_L7_error)
+              __pyx_t_10 = PyTuple_GET_ITEM(__pyx_t_11, __pyx_t_12); __Pyx_INCREF(__pyx_t_10); __pyx_t_12++; if (unlikely(0 < 0)) __PYX_ERR(0, 56, __pyx_L7_error)
               #else
-              __pyx_t_10 = PySequence_ITEM(__pyx_t_11, __pyx_t_12); __pyx_t_12++; if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 53, __pyx_L7_error)
+              __pyx_t_10 = PySequence_ITEM(__pyx_t_11, __pyx_t_12); __pyx_t_12++; if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 56, __pyx_L7_error)
               __Pyx_GOTREF(__pyx_t_10);
               #endif
             }
@@ -4386,30 +4624,30 @@ static PyObject *__pyx_pf_14structureboost_7pdf_set_test_in_pred_regions(CYTHON_
               PyObject* exc_type = PyErr_Occurred();
               if (exc_type) {
                 if (likely(__Pyx_PyErr_GivenExceptionMatches(exc_type, PyExc_StopIteration))) PyErr_Clear();
-                else __PYX_ERR(0, 53, __pyx_L7_error)
+                else __PYX_ERR(0, 56, __pyx_L7_error)
               }
               break;
             }
             __Pyx_GOTREF(__pyx_t_10);
           }
-          __Pyx_XDECREF_SET(__pyx_8genexpr7__pyx_v_interval, __pyx_t_10);
+          __Pyx_XDECREF_SET(__pyx_8genexpr8__pyx_v_interval, __pyx_t_10);
           __pyx_t_10 = 0;
 
-          /* "structureboost/pdf_set.pyx":52
+          /* "structureboost/pdf_set.pyx":55
  * 
  * def test_in_pred_regions(test_vals, regions):
  *     return(np.array([np.any([((test_vals[i]>=interval[0]) and (test_vals[i]<=interval[1]))             # <<<<<<<<<<<<<<
  *                      for interval in regions[i]])
  *                         for i in range(len(test_vals))]))
  */
-          __pyx_t_14 = __Pyx_GetItemInt(__pyx_v_test_vals, __pyx_8genexpr6__pyx_v_i, Py_ssize_t, 1, PyInt_FromSsize_t, 0, 1, 1); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 52, __pyx_L7_error)
+          __pyx_t_14 = __Pyx_GetItemInt(__pyx_v_test_vals, __pyx_8genexpr7__pyx_v_i, Py_ssize_t, 1, PyInt_FromSsize_t, 0, 1, 1); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 55, __pyx_L7_error)
           __Pyx_GOTREF(__pyx_t_14);
-          __pyx_t_15 = __Pyx_GetItemInt(__pyx_8genexpr7__pyx_v_interval, 0, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_15)) __PYX_ERR(0, 52, __pyx_L7_error)
+          __pyx_t_15 = __Pyx_GetItemInt(__pyx_8genexpr8__pyx_v_interval, 0, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_15)) __PYX_ERR(0, 55, __pyx_L7_error)
           __Pyx_GOTREF(__pyx_t_15);
-          __pyx_t_16 = PyObject_RichCompare(__pyx_t_14, __pyx_t_15, Py_GE); __Pyx_XGOTREF(__pyx_t_16); if (unlikely(!__pyx_t_16)) __PYX_ERR(0, 52, __pyx_L7_error)
+          __pyx_t_16 = PyObject_RichCompare(__pyx_t_14, __pyx_t_15, Py_GE); __Pyx_XGOTREF(__pyx_t_16); if (unlikely(!__pyx_t_16)) __PYX_ERR(0, 55, __pyx_L7_error)
           __Pyx_DECREF(__pyx_t_14); __pyx_t_14 = 0;
           __Pyx_DECREF(__pyx_t_15); __pyx_t_15 = 0;
-          __pyx_t_17 = __Pyx_PyObject_IsTrue(__pyx_t_16); if (unlikely(__pyx_t_17 < 0)) __PYX_ERR(0, 52, __pyx_L7_error)
+          __pyx_t_17 = __Pyx_PyObject_IsTrue(__pyx_t_16); if (unlikely(__pyx_t_17 < 0)) __PYX_ERR(0, 55, __pyx_L7_error)
           if (__pyx_t_17) {
             __Pyx_DECREF(__pyx_t_16); __pyx_t_16 = 0;
           } else {
@@ -4418,21 +4656,21 @@ static PyObject *__pyx_pf_14structureboost_7pdf_set_test_in_pred_regions(CYTHON_
             __Pyx_DECREF(__pyx_t_16); __pyx_t_16 = 0;
             goto __pyx_L10_bool_binop_done;
           }
-          __pyx_t_16 = __Pyx_GetItemInt(__pyx_v_test_vals, __pyx_8genexpr6__pyx_v_i, Py_ssize_t, 1, PyInt_FromSsize_t, 0, 1, 1); if (unlikely(!__pyx_t_16)) __PYX_ERR(0, 52, __pyx_L7_error)
+          __pyx_t_16 = __Pyx_GetItemInt(__pyx_v_test_vals, __pyx_8genexpr7__pyx_v_i, Py_ssize_t, 1, PyInt_FromSsize_t, 0, 1, 1); if (unlikely(!__pyx_t_16)) __PYX_ERR(0, 55, __pyx_L7_error)
           __Pyx_GOTREF(__pyx_t_16);
-          __pyx_t_15 = __Pyx_GetItemInt(__pyx_8genexpr7__pyx_v_interval, 1, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_15)) __PYX_ERR(0, 52, __pyx_L7_error)
+          __pyx_t_15 = __Pyx_GetItemInt(__pyx_8genexpr8__pyx_v_interval, 1, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_15)) __PYX_ERR(0, 55, __pyx_L7_error)
           __Pyx_GOTREF(__pyx_t_15);
-          __pyx_t_14 = PyObject_RichCompare(__pyx_t_16, __pyx_t_15, Py_LE); __Pyx_XGOTREF(__pyx_t_14); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 52, __pyx_L7_error)
+          __pyx_t_14 = PyObject_RichCompare(__pyx_t_16, __pyx_t_15, Py_LE); __Pyx_XGOTREF(__pyx_t_14); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 55, __pyx_L7_error)
           __Pyx_DECREF(__pyx_t_16); __pyx_t_16 = 0;
           __Pyx_DECREF(__pyx_t_15); __pyx_t_15 = 0;
           __Pyx_INCREF(__pyx_t_14);
           __pyx_t_10 = __pyx_t_14;
           __Pyx_DECREF(__pyx_t_14); __pyx_t_14 = 0;
           __pyx_L10_bool_binop_done:;
-          if (unlikely(__Pyx_ListComp_Append(__pyx_t_8, (PyObject*)__pyx_t_10))) __PYX_ERR(0, 52, __pyx_L7_error)
+          if (unlikely(__Pyx_ListComp_Append(__pyx_t_8, (PyObject*)__pyx_t_10))) __PYX_ERR(0, 55, __pyx_L7_error)
           __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
 
-          /* "structureboost/pdf_set.pyx":53
+          /* "structureboost/pdf_set.pyx":56
  * def test_in_pred_regions(test_vals, regions):
  *     return(np.array([np.any([((test_vals[i]>=interval[0]) and (test_vals[i]<=interval[1]))
  *                      for interval in regions[i]])             # <<<<<<<<<<<<<<
@@ -4441,10 +4679,10 @@ static PyObject *__pyx_pf_14structureboost_7pdf_set_test_in_pred_regions(CYTHON_
  */
         }
         __Pyx_DECREF(__pyx_t_11); __pyx_t_11 = 0;
-        __Pyx_XDECREF(__pyx_8genexpr7__pyx_v_interval); __pyx_8genexpr7__pyx_v_interval = 0;
+        __Pyx_XDECREF(__pyx_8genexpr8__pyx_v_interval); __pyx_8genexpr8__pyx_v_interval = 0;
         goto __pyx_L12_exit_scope;
         __pyx_L7_error:;
-        __Pyx_XDECREF(__pyx_8genexpr7__pyx_v_interval); __pyx_8genexpr7__pyx_v_interval = 0;
+        __Pyx_XDECREF(__pyx_8genexpr8__pyx_v_interval); __pyx_8genexpr8__pyx_v_interval = 0;
         goto __pyx_L1_error;
         __pyx_L12_exit_scope:;
       } /* exit inner scope */
@@ -4461,10 +4699,10 @@ static PyObject *__pyx_pf_14structureboost_7pdf_set_test_in_pred_regions(CYTHON_
       __pyx_t_7 = (__pyx_t_11) ? __Pyx_PyObject_Call2Args(__pyx_t_9, __pyx_t_11, __pyx_t_8) : __Pyx_PyObject_CallOneArg(__pyx_t_9, __pyx_t_8);
       __Pyx_XDECREF(__pyx_t_11); __pyx_t_11 = 0;
       __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
-      if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 52, __pyx_L1_error)
+      if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 55, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_7);
       __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
-      if (unlikely(__Pyx_ListComp_Append(__pyx_t_2, (PyObject*)__pyx_t_7))) __PYX_ERR(0, 52, __pyx_L1_error)
+      if (unlikely(__Pyx_ListComp_Append(__pyx_t_2, (PyObject*)__pyx_t_7))) __PYX_ERR(0, 55, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
     }
   } /* exit inner scope */
@@ -4481,15 +4719,15 @@ static PyObject *__pyx_pf_14structureboost_7pdf_set_test_in_pred_regions(CYTHON_
   __pyx_t_1 = (__pyx_t_7) ? __Pyx_PyObject_Call2Args(__pyx_t_3, __pyx_t_7, __pyx_t_2) : __Pyx_PyObject_CallOneArg(__pyx_t_3, __pyx_t_2);
   __Pyx_XDECREF(__pyx_t_7); __pyx_t_7 = 0;
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 52, __pyx_L1_error)
+  if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 55, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "structureboost/pdf_set.pyx":51
- *     #     return()
+  /* "structureboost/pdf_set.pyx":54
+ *         return(np.array([pdf.bins_to_probs(new_binpt_vec) for pdf in self.pdf_list]))
  * 
  * def test_in_pred_regions(test_vals, regions):             # <<<<<<<<<<<<<<
  *     return(np.array([np.any([((test_vals[i]>=interval[0]) and (test_vals[i]<=interval[1]))
@@ -4512,14 +4750,14 @@ static PyObject *__pyx_pf_14structureboost_7pdf_set_test_in_pred_regions(CYTHON_
   __Pyx_AddTraceback("structureboost.pdf_set.test_in_pred_regions", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
-  __Pyx_XDECREF(__pyx_8genexpr7__pyx_v_interval);
+  __Pyx_XDECREF(__pyx_8genexpr8__pyx_v_interval);
   __Pyx_XGIVEREF(__pyx_r);
   __Pyx_TraceReturn(__pyx_r, 0);
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-/* "structureboost/pdf_set.pyx":57
+/* "structureboost/pdf_set.pyx":60
  * 
  * 
  * def log_loss_pdf(y_true, pdf_set):             # <<<<<<<<<<<<<<
@@ -4563,11 +4801,11 @@ static PyObject *__pyx_pw_14structureboost_7pdf_set_3log_loss_pdf(PyObject *__py
         case  1:
         if (likely((values[1] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_pdf_set)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("log_loss_pdf", 1, 2, 2, 1); __PYX_ERR(0, 57, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("log_loss_pdf", 1, 2, 2, 1); __PYX_ERR(0, 60, __pyx_L3_error)
         }
       }
       if (unlikely(kw_args > 0)) {
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "log_loss_pdf") < 0)) __PYX_ERR(0, 57, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "log_loss_pdf") < 0)) __PYX_ERR(0, 60, __pyx_L3_error)
       }
     } else if (PyTuple_GET_SIZE(__pyx_args) != 2) {
       goto __pyx_L5_argtuple_error;
@@ -4580,7 +4818,7 @@ static PyObject *__pyx_pw_14structureboost_7pdf_set_3log_loss_pdf(PyObject *__py
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("log_loss_pdf", 1, 2, 2, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 57, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("log_loss_pdf", 1, 2, 2, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 60, __pyx_L3_error)
   __pyx_L3_error:;
   __Pyx_AddTraceback("structureboost.pdf_set.log_loss_pdf", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
@@ -4603,11 +4841,11 @@ static PyObject *__pyx_pf_14structureboost_7pdf_set_2log_loss_pdf(CYTHON_UNUSED 
   int __pyx_lineno = 0;
   const char *__pyx_filename = NULL;
   int __pyx_clineno = 0;
-  __Pyx_TraceFrameInit(__pyx_codeobj__14)
+  __Pyx_TraceFrameInit(__pyx_codeobj__15)
   __Pyx_RefNannySetupContext("log_loss_pdf", 0);
-  __Pyx_TraceCall("log_loss_pdf", __pyx_f[0], 57, 0, __PYX_ERR(0, 57, __pyx_L1_error));
+  __Pyx_TraceCall("log_loss_pdf", __pyx_f[0], 60, 0, __PYX_ERR(0, 60, __pyx_L1_error));
 
-  /* "structureboost/pdf_set.pyx":59
+  /* "structureboost/pdf_set.pyx":62
  * def log_loss_pdf(y_true, pdf_set):
  *     """This computes the log loss for a truth set and a DensitySet object"""
  *     return pdf_set.log_loss(y_true)             # <<<<<<<<<<<<<<
@@ -4615,7 +4853,7 @@ static PyObject *__pyx_pf_14structureboost_7pdf_set_2log_loss_pdf(CYTHON_UNUSED 
  * def test_between_quantiles_pdf(test_vals, pdf_set, q_left, q_right):
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_pdf_set, __pyx_n_s_log_loss); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 59, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_pdf_set, __pyx_n_s_log_loss); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 62, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __pyx_t_3 = NULL;
   if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_2))) {
@@ -4629,14 +4867,14 @@ static PyObject *__pyx_pf_14structureboost_7pdf_set_2log_loss_pdf(CYTHON_UNUSED 
   }
   __pyx_t_1 = (__pyx_t_3) ? __Pyx_PyObject_Call2Args(__pyx_t_2, __pyx_t_3, __pyx_v_y_true) : __Pyx_PyObject_CallOneArg(__pyx_t_2, __pyx_v_y_true);
   __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
-  if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 59, __pyx_L1_error)
+  if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 62, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "structureboost/pdf_set.pyx":57
+  /* "structureboost/pdf_set.pyx":60
  * 
  * 
  * def log_loss_pdf(y_true, pdf_set):             # <<<<<<<<<<<<<<
@@ -4658,7 +4896,7 @@ static PyObject *__pyx_pf_14structureboost_7pdf_set_2log_loss_pdf(CYTHON_UNUSED 
   return __pyx_r;
 }
 
-/* "structureboost/pdf_set.pyx":61
+/* "structureboost/pdf_set.pyx":64
  *     return pdf_set.log_loss(y_true)
  * 
  * def test_between_quantiles_pdf(test_vals, pdf_set, q_left, q_right):             # <<<<<<<<<<<<<<
@@ -4708,23 +4946,23 @@ static PyObject *__pyx_pw_14structureboost_7pdf_set_5test_between_quantiles_pdf(
         case  1:
         if (likely((values[1] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_pdf_set)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("test_between_quantiles_pdf", 1, 4, 4, 1); __PYX_ERR(0, 61, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("test_between_quantiles_pdf", 1, 4, 4, 1); __PYX_ERR(0, 64, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  2:
         if (likely((values[2] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_q_left)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("test_between_quantiles_pdf", 1, 4, 4, 2); __PYX_ERR(0, 61, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("test_between_quantiles_pdf", 1, 4, 4, 2); __PYX_ERR(0, 64, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  3:
         if (likely((values[3] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_q_right)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("test_between_quantiles_pdf", 1, 4, 4, 3); __PYX_ERR(0, 61, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("test_between_quantiles_pdf", 1, 4, 4, 3); __PYX_ERR(0, 64, __pyx_L3_error)
         }
       }
       if (unlikely(kw_args > 0)) {
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "test_between_quantiles_pdf") < 0)) __PYX_ERR(0, 61, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "test_between_quantiles_pdf") < 0)) __PYX_ERR(0, 64, __pyx_L3_error)
       }
     } else if (PyTuple_GET_SIZE(__pyx_args) != 4) {
       goto __pyx_L5_argtuple_error;
@@ -4741,7 +4979,7 @@ static PyObject *__pyx_pw_14structureboost_7pdf_set_5test_between_quantiles_pdf(
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("test_between_quantiles_pdf", 1, 4, 4, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 61, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("test_between_quantiles_pdf", 1, 4, 4, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 64, __pyx_L3_error)
   __pyx_L3_error:;
   __Pyx_AddTraceback("structureboost.pdf_set.test_between_quantiles_pdf", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
@@ -4766,18 +5004,18 @@ static PyObject *__pyx_pf_14structureboost_7pdf_set_4test_between_quantiles_pdf(
   int __pyx_lineno = 0;
   const char *__pyx_filename = NULL;
   int __pyx_clineno = 0;
-  __Pyx_TraceFrameInit(__pyx_codeobj__15)
+  __Pyx_TraceFrameInit(__pyx_codeobj__16)
   __Pyx_RefNannySetupContext("test_between_quantiles_pdf", 0);
-  __Pyx_TraceCall("test_between_quantiles_pdf", __pyx_f[0], 61, 0, __PYX_ERR(0, 61, __pyx_L1_error));
+  __Pyx_TraceCall("test_between_quantiles_pdf", __pyx_f[0], 64, 0, __PYX_ERR(0, 64, __pyx_L1_error));
 
-  /* "structureboost/pdf_set.pyx":63
+  /* "structureboost/pdf_set.pyx":66
  * def test_between_quantiles_pdf(test_vals, pdf_set, q_left, q_right):
  *     """Tests inclusion of the test_vals in the interval defined by the given quantiles"""
  *     return(pdf_set.test_between_quantiles(test_vals, q_left, q_right))             # <<<<<<<<<<<<<<
  * 
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_pdf_set, __pyx_n_s_test_between_quantiles); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 63, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_pdf_set, __pyx_n_s_test_between_quantiles); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 66, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __pyx_t_3 = NULL;
   __pyx_t_4 = 0;
@@ -4794,7 +5032,7 @@ static PyObject *__pyx_pf_14structureboost_7pdf_set_4test_between_quantiles_pdf(
   #if CYTHON_FAST_PYCALL
   if (PyFunction_Check(__pyx_t_2)) {
     PyObject *__pyx_temp[4] = {__pyx_t_3, __pyx_v_test_vals, __pyx_v_q_left, __pyx_v_q_right};
-    __pyx_t_1 = __Pyx_PyFunction_FastCall(__pyx_t_2, __pyx_temp+1-__pyx_t_4, 3+__pyx_t_4); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 63, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyFunction_FastCall(__pyx_t_2, __pyx_temp+1-__pyx_t_4, 3+__pyx_t_4); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 66, __pyx_L1_error)
     __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
     __Pyx_GOTREF(__pyx_t_1);
   } else
@@ -4802,13 +5040,13 @@ static PyObject *__pyx_pf_14structureboost_7pdf_set_4test_between_quantiles_pdf(
   #if CYTHON_FAST_PYCCALL
   if (__Pyx_PyFastCFunction_Check(__pyx_t_2)) {
     PyObject *__pyx_temp[4] = {__pyx_t_3, __pyx_v_test_vals, __pyx_v_q_left, __pyx_v_q_right};
-    __pyx_t_1 = __Pyx_PyCFunction_FastCall(__pyx_t_2, __pyx_temp+1-__pyx_t_4, 3+__pyx_t_4); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 63, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyCFunction_FastCall(__pyx_t_2, __pyx_temp+1-__pyx_t_4, 3+__pyx_t_4); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 66, __pyx_L1_error)
     __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
     __Pyx_GOTREF(__pyx_t_1);
   } else
   #endif
   {
-    __pyx_t_5 = PyTuple_New(3+__pyx_t_4); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 63, __pyx_L1_error)
+    __pyx_t_5 = PyTuple_New(3+__pyx_t_4); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 66, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_5);
     if (__pyx_t_3) {
       __Pyx_GIVEREF(__pyx_t_3); PyTuple_SET_ITEM(__pyx_t_5, 0, __pyx_t_3); __pyx_t_3 = NULL;
@@ -4822,7 +5060,7 @@ static PyObject *__pyx_pf_14structureboost_7pdf_set_4test_between_quantiles_pdf(
     __Pyx_INCREF(__pyx_v_q_right);
     __Pyx_GIVEREF(__pyx_v_q_right);
     PyTuple_SET_ITEM(__pyx_t_5, 2+__pyx_t_4, __pyx_v_q_right);
-    __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_5, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 63, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_5, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 66, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
   }
@@ -4831,7 +5069,7 @@ static PyObject *__pyx_pf_14structureboost_7pdf_set_4test_between_quantiles_pdf(
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "structureboost/pdf_set.pyx":61
+  /* "structureboost/pdf_set.pyx":64
  *     return pdf_set.log_loss(y_true)
  * 
  * def test_between_quantiles_pdf(test_vals, pdf_set, q_left, q_right):             # <<<<<<<<<<<<<<
@@ -4903,6 +5141,7 @@ static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {&__pyx_n_s_PdfSet, __pyx_k_PdfSet, sizeof(__pyx_k_PdfSet), 0, 0, 1, 1},
   {&__pyx_n_s_PdfSet___getitem, __pyx_k_PdfSet___getitem, sizeof(__pyx_k_PdfSet___getitem), 0, 0, 1, 1},
   {&__pyx_n_s_PdfSet___init, __pyx_k_PdfSet___init, sizeof(__pyx_k_PdfSet___init), 0, 0, 1, 1},
+  {&__pyx_n_s_PdfSet_bins_to_probs, __pyx_k_PdfSet_bins_to_probs, sizeof(__pyx_k_PdfSet_bins_to_probs), 0, 0, 1, 1},
   {&__pyx_n_s_PdfSet_len, __pyx_k_PdfSet_len, sizeof(__pyx_k_PdfSet_len), 0, 0, 1, 1},
   {&__pyx_n_s_PdfSet_log_loss, __pyx_k_PdfSet_log_loss, sizeof(__pyx_k_PdfSet_log_loss), 0, 0, 1, 1},
   {&__pyx_n_s_PdfSet_mean, __pyx_k_PdfSet_mean, sizeof(__pyx_k_PdfSet_mean), 0, 0, 1, 1},
@@ -4917,6 +5156,7 @@ static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {&__pyx_n_s_any, __pyx_k_any, sizeof(__pyx_k_any), 0, 0, 1, 1},
   {&__pyx_n_s_arg, __pyx_k_arg, sizeof(__pyx_k_arg), 0, 0, 1, 1},
   {&__pyx_n_s_array, __pyx_k_array, sizeof(__pyx_k_array), 0, 0, 1, 1},
+  {&__pyx_n_s_bins_to_probs, __pyx_k_bins_to_probs, sizeof(__pyx_k_bins_to_probs), 0, 0, 1, 1},
   {&__pyx_n_s_cline_in_traceback, __pyx_k_cline_in_traceback, sizeof(__pyx_k_cline_in_traceback), 0, 0, 1, 1},
   {&__pyx_n_s_density, __pyx_k_density, sizeof(__pyx_k_density), 0, 0, 1, 1},
   {&__pyx_n_s_density_vals, __pyx_k_density_vals, sizeof(__pyx_k_density_vals), 0, 0, 1, 1},
@@ -4941,6 +5181,7 @@ static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {&__pyx_n_s_module, __pyx_k_module, sizeof(__pyx_k_module), 0, 0, 1, 1},
   {&__pyx_n_s_name, __pyx_k_name, sizeof(__pyx_k_name), 0, 0, 1, 1},
   {&__pyx_n_s_ndarray, __pyx_k_ndarray, sizeof(__pyx_k_ndarray), 0, 0, 1, 1},
+  {&__pyx_n_s_new_binpt_vec, __pyx_k_new_binpt_vec, sizeof(__pyx_k_new_binpt_vec), 0, 0, 1, 1},
   {&__pyx_n_s_np, __pyx_k_np, sizeof(__pyx_k_np), 0, 0, 1, 1},
   {&__pyx_n_s_numpy, __pyx_k_numpy, sizeof(__pyx_k_numpy), 0, 0, 1, 1},
   {&__pyx_n_s_object, __pyx_k_object, sizeof(__pyx_k_object), 0, 0, 1, 1},
@@ -4975,7 +5216,7 @@ static __Pyx_StringTabEntry __pyx_string_tab[] = {
 static CYTHON_SMALL_CODE int __Pyx_InitCachedBuiltins(void) {
   __pyx_builtin_object = __Pyx_GetBuiltinName(__pyx_n_s_object); if (!__pyx_builtin_object) __PYX_ERR(0, 6, __pyx_L1_error)
   __pyx_builtin_enumerate = __Pyx_GetBuiltinName(__pyx_n_s_enumerate); if (!__pyx_builtin_enumerate) __PYX_ERR(0, 20, __pyx_L1_error)
-  __pyx_builtin_range = __Pyx_GetBuiltinName(__pyx_n_s_range); if (!__pyx_builtin_range) __PYX_ERR(0, 54, __pyx_L1_error)
+  __pyx_builtin_range = __Pyx_GetBuiltinName(__pyx_n_s_range); if (!__pyx_builtin_range) __PYX_ERR(0, 57, __pyx_L1_error)
   return 0;
   __pyx_L1_error:;
   return -1;
@@ -4992,9 +5233,9 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
  *     def __init__(self, pdf_list):
  *         self.pdf_list = pdf_list
  */
-  __pyx_tuple__16 = PyTuple_Pack(1, __pyx_builtin_object); if (unlikely(!__pyx_tuple__16)) __PYX_ERR(0, 6, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__16);
-  __Pyx_GIVEREF(__pyx_tuple__16);
+  __pyx_tuple__17 = PyTuple_Pack(1, __pyx_builtin_object); if (unlikely(!__pyx_tuple__17)) __PYX_ERR(0, 6, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__17);
+  __Pyx_GIVEREF(__pyx_tuple__17);
 
   /* "structureboost/pdf_set.pyx":7
  * 
@@ -5003,10 +5244,10 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
  *         self.pdf_list = pdf_list
  * 
  */
-  __pyx_tuple__17 = PyTuple_Pack(2, __pyx_n_s_self, __pyx_n_s_pdf_list); if (unlikely(!__pyx_tuple__17)) __PYX_ERR(0, 7, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__17);
-  __Pyx_GIVEREF(__pyx_tuple__17);
-  __pyx_codeobj_ = (PyObject*)__Pyx_PyCode_New(2, 0, 2, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__17, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_pdf_set_pyx, __pyx_n_s_init, 7, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj_)) __PYX_ERR(0, 7, __pyx_L1_error)
+  __pyx_tuple__18 = PyTuple_Pack(2, __pyx_n_s_self, __pyx_n_s_pdf_list); if (unlikely(!__pyx_tuple__18)) __PYX_ERR(0, 7, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__18);
+  __Pyx_GIVEREF(__pyx_tuple__18);
+  __pyx_codeobj_ = (PyObject*)__Pyx_PyCode_New(2, 0, 2, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__18, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_pdf_set_pyx, __pyx_n_s_init, 7, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj_)) __PYX_ERR(0, 7, __pyx_L1_error)
 
   /* "structureboost/pdf_set.pyx":10
  *         self.pdf_list = pdf_list
@@ -5015,10 +5256,10 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
  *         return(self.pdf_list[arg])
  * 
  */
-  __pyx_tuple__18 = PyTuple_Pack(2, __pyx_n_s_self, __pyx_n_s_arg); if (unlikely(!__pyx_tuple__18)) __PYX_ERR(0, 10, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__18);
-  __Pyx_GIVEREF(__pyx_tuple__18);
-  __pyx_codeobj__2 = (PyObject*)__Pyx_PyCode_New(2, 0, 2, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__18, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_pdf_set_pyx, __pyx_n_s_getitem, 10, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__2)) __PYX_ERR(0, 10, __pyx_L1_error)
+  __pyx_tuple__19 = PyTuple_Pack(2, __pyx_n_s_self, __pyx_n_s_arg); if (unlikely(!__pyx_tuple__19)) __PYX_ERR(0, 10, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__19);
+  __Pyx_GIVEREF(__pyx_tuple__19);
+  __pyx_codeobj__2 = (PyObject*)__Pyx_PyCode_New(2, 0, 2, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__19, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_pdf_set_pyx, __pyx_n_s_getitem, 10, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__2)) __PYX_ERR(0, 10, __pyx_L1_error)
 
   /* "structureboost/pdf_set.pyx":13
  *         return(self.pdf_list[arg])
@@ -5027,10 +5268,10 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
  *         return(len(self.pdf_list))
  * 
  */
-  __pyx_tuple__19 = PyTuple_Pack(1, __pyx_n_s_self); if (unlikely(!__pyx_tuple__19)) __PYX_ERR(0, 13, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__19);
-  __Pyx_GIVEREF(__pyx_tuple__19);
-  __pyx_codeobj__3 = (PyObject*)__Pyx_PyCode_New(1, 0, 1, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__19, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_pdf_set_pyx, __pyx_n_s_len, 13, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__3)) __PYX_ERR(0, 13, __pyx_L1_error)
+  __pyx_tuple__20 = PyTuple_Pack(1, __pyx_n_s_self); if (unlikely(!__pyx_tuple__20)) __PYX_ERR(0, 13, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__20);
+  __Pyx_GIVEREF(__pyx_tuple__20);
+  __pyx_codeobj__3 = (PyObject*)__Pyx_PyCode_New(1, 0, 1, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__20, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_pdf_set_pyx, __pyx_n_s_len, 13, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__3)) __PYX_ERR(0, 13, __pyx_L1_error)
 
   /* "structureboost/pdf_set.pyx":16
  *         return(len(self.pdf_list))
@@ -5039,13 +5280,13 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
  *         if type(y_test)!= np.ndarray:
  *             y_test = np.array(y_test)
  */
-  __pyx_tuple__20 = PyTuple_Pack(6, __pyx_n_s_self, __pyx_n_s_y_test, __pyx_n_s_eps, __pyx_n_s_density_vals, __pyx_n_s_i, __pyx_n_s_pdf); if (unlikely(!__pyx_tuple__20)) __PYX_ERR(0, 16, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__20);
-  __Pyx_GIVEREF(__pyx_tuple__20);
-  __pyx_codeobj__4 = (PyObject*)__Pyx_PyCode_New(3, 0, 6, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__20, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_pdf_set_pyx, __pyx_n_s_log_loss, 16, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__4)) __PYX_ERR(0, 16, __pyx_L1_error)
-  __pyx_tuple__21 = PyTuple_Pack(1, ((PyObject*)__pyx_float_1eneg_16)); if (unlikely(!__pyx_tuple__21)) __PYX_ERR(0, 16, __pyx_L1_error)
+  __pyx_tuple__21 = PyTuple_Pack(6, __pyx_n_s_self, __pyx_n_s_y_test, __pyx_n_s_eps, __pyx_n_s_density_vals, __pyx_n_s_i, __pyx_n_s_pdf); if (unlikely(!__pyx_tuple__21)) __PYX_ERR(0, 16, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__21);
   __Pyx_GIVEREF(__pyx_tuple__21);
+  __pyx_codeobj__4 = (PyObject*)__Pyx_PyCode_New(3, 0, 6, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__21, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_pdf_set_pyx, __pyx_n_s_log_loss, 16, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__4)) __PYX_ERR(0, 16, __pyx_L1_error)
+  __pyx_tuple__22 = PyTuple_Pack(1, ((PyObject*)__pyx_float_1eneg_16)); if (unlikely(!__pyx_tuple__22)) __PYX_ERR(0, 16, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__22);
+  __Pyx_GIVEREF(__pyx_tuple__22);
 
   /* "structureboost/pdf_set.pyx":24
  *         return(-np.mean(np.log(density_vals)))
@@ -5054,10 +5295,10 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
  *         return(np.array([pdf.mean() for pdf in self.pdf_list]))
  * 
  */
-  __pyx_tuple__22 = PyTuple_Pack(2, __pyx_n_s_self, __pyx_n_s_pdf); if (unlikely(!__pyx_tuple__22)) __PYX_ERR(0, 24, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__22);
-  __Pyx_GIVEREF(__pyx_tuple__22);
-  __pyx_codeobj__5 = (PyObject*)__Pyx_PyCode_New(1, 0, 2, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__22, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_pdf_set_pyx, __pyx_n_s_mean, 24, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__5)) __PYX_ERR(0, 24, __pyx_L1_error)
+  __pyx_tuple__23 = PyTuple_Pack(2, __pyx_n_s_self, __pyx_n_s_pdf); if (unlikely(!__pyx_tuple__23)) __PYX_ERR(0, 24, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__23);
+  __Pyx_GIVEREF(__pyx_tuple__23);
+  __pyx_codeobj__5 = (PyObject*)__Pyx_PyCode_New(1, 0, 2, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__23, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_pdf_set_pyx, __pyx_n_s_mean, 24, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__5)) __PYX_ERR(0, 24, __pyx_L1_error)
 
   /* "structureboost/pdf_set.pyx":27
  *         return(np.array([pdf.mean() for pdf in self.pdf_list]))
@@ -5066,10 +5307,10 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
  *         return(np.array([pdf.median() for pdf in self.pdf_list]))
  * 
  */
-  __pyx_tuple__23 = PyTuple_Pack(2, __pyx_n_s_self, __pyx_n_s_pdf); if (unlikely(!__pyx_tuple__23)) __PYX_ERR(0, 27, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__23);
-  __Pyx_GIVEREF(__pyx_tuple__23);
-  __pyx_codeobj__6 = (PyObject*)__Pyx_PyCode_New(1, 0, 2, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__23, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_pdf_set_pyx, __pyx_n_s_median, 27, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__6)) __PYX_ERR(0, 27, __pyx_L1_error)
+  __pyx_tuple__24 = PyTuple_Pack(2, __pyx_n_s_self, __pyx_n_s_pdf); if (unlikely(!__pyx_tuple__24)) __PYX_ERR(0, 27, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__24);
+  __Pyx_GIVEREF(__pyx_tuple__24);
+  __pyx_codeobj__6 = (PyObject*)__Pyx_PyCode_New(1, 0, 2, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__24, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_pdf_set_pyx, __pyx_n_s_median, 27, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__6)) __PYX_ERR(0, 27, __pyx_L1_error)
 
   /* "structureboost/pdf_set.pyx":30
  *         return(np.array([pdf.median() for pdf in self.pdf_list]))
@@ -5078,10 +5319,10 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
  *         return(np.array([pdf.quantile(val) for pdf in self.pdf_list]))
  * 
  */
-  __pyx_tuple__24 = PyTuple_Pack(3, __pyx_n_s_self, __pyx_n_s_val, __pyx_n_s_pdf); if (unlikely(!__pyx_tuple__24)) __PYX_ERR(0, 30, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__24);
-  __Pyx_GIVEREF(__pyx_tuple__24);
-  __pyx_codeobj__7 = (PyObject*)__Pyx_PyCode_New(2, 0, 3, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__24, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_pdf_set_pyx, __pyx_n_s_quantile, 30, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__7)) __PYX_ERR(0, 30, __pyx_L1_error)
+  __pyx_tuple__25 = PyTuple_Pack(3, __pyx_n_s_self, __pyx_n_s_val, __pyx_n_s_pdf); if (unlikely(!__pyx_tuple__25)) __PYX_ERR(0, 30, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__25);
+  __Pyx_GIVEREF(__pyx_tuple__25);
+  __pyx_codeobj__7 = (PyObject*)__Pyx_PyCode_New(2, 0, 3, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__25, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_pdf_set_pyx, __pyx_n_s_quantile, 30, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__7)) __PYX_ERR(0, 30, __pyx_L1_error)
 
   /* "structureboost/pdf_set.pyx":33
  *         return(np.array([pdf.quantile(val) for pdf in self.pdf_list]))
@@ -5090,10 +5331,10 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
  *         return(np.array([pdf.quantiles(vals) for pdf in self.pdf_list]))
  * 
  */
-  __pyx_tuple__25 = PyTuple_Pack(3, __pyx_n_s_self, __pyx_n_s_vals, __pyx_n_s_pdf); if (unlikely(!__pyx_tuple__25)) __PYX_ERR(0, 33, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__25);
-  __Pyx_GIVEREF(__pyx_tuple__25);
-  __pyx_codeobj__8 = (PyObject*)__Pyx_PyCode_New(2, 0, 3, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__25, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_pdf_set_pyx, __pyx_n_s_quantiles, 33, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__8)) __PYX_ERR(0, 33, __pyx_L1_error)
+  __pyx_tuple__26 = PyTuple_Pack(3, __pyx_n_s_self, __pyx_n_s_vals, __pyx_n_s_pdf); if (unlikely(!__pyx_tuple__26)) __PYX_ERR(0, 33, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__26);
+  __Pyx_GIVEREF(__pyx_tuple__26);
+  __pyx_codeobj__8 = (PyObject*)__Pyx_PyCode_New(2, 0, 3, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__26, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_pdf_set_pyx, __pyx_n_s_quantiles, 33, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__8)) __PYX_ERR(0, 33, __pyx_L1_error)
 
   /* "structureboost/pdf_set.pyx":36
  *         return(np.array([pdf.quantiles(vals) for pdf in self.pdf_list]))
@@ -5102,10 +5343,10 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
  *         return((test_vals>=self.quantile(q_left)) & (test_vals<=self.quantile(q_right)))
  * 
  */
-  __pyx_tuple__26 = PyTuple_Pack(4, __pyx_n_s_self, __pyx_n_s_test_vals, __pyx_n_s_q_left, __pyx_n_s_q_right); if (unlikely(!__pyx_tuple__26)) __PYX_ERR(0, 36, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__26);
-  __Pyx_GIVEREF(__pyx_tuple__26);
-  __pyx_codeobj__9 = (PyObject*)__Pyx_PyCode_New(4, 0, 4, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__26, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_pdf_set_pyx, __pyx_n_s_test_between_quantiles, 36, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__9)) __PYX_ERR(0, 36, __pyx_L1_error)
+  __pyx_tuple__27 = PyTuple_Pack(4, __pyx_n_s_self, __pyx_n_s_test_vals, __pyx_n_s_q_left, __pyx_n_s_q_right); if (unlikely(!__pyx_tuple__27)) __PYX_ERR(0, 36, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__27);
+  __Pyx_GIVEREF(__pyx_tuple__27);
+  __pyx_codeobj__9 = (PyObject*)__Pyx_PyCode_New(4, 0, 4, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__27, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_pdf_set_pyx, __pyx_n_s_test_between_quantiles, 36, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__9)) __PYX_ERR(0, 36, __pyx_L1_error)
 
   /* "structureboost/pdf_set.pyx":39
  *         return((test_vals>=self.quantile(q_left)) & (test_vals<=self.quantile(q_right)))
@@ -5114,10 +5355,10 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
  *         return(test_in_pred_regions(test_vals, self.pred_regions(alpha)))
  * 
  */
-  __pyx_tuple__27 = PyTuple_Pack(3, __pyx_n_s_self, __pyx_n_s_test_vals, __pyx_n_s_alpha); if (unlikely(!__pyx_tuple__27)) __PYX_ERR(0, 39, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__27);
-  __Pyx_GIVEREF(__pyx_tuple__27);
-  __pyx_codeobj__10 = (PyObject*)__Pyx_PyCode_New(3, 0, 3, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__27, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_pdf_set_pyx, __pyx_n_s_test_in_pred_regions, 39, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__10)) __PYX_ERR(0, 39, __pyx_L1_error)
+  __pyx_tuple__28 = PyTuple_Pack(3, __pyx_n_s_self, __pyx_n_s_test_vals, __pyx_n_s_alpha); if (unlikely(!__pyx_tuple__28)) __PYX_ERR(0, 39, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__28);
+  __Pyx_GIVEREF(__pyx_tuple__28);
+  __pyx_codeobj__10 = (PyObject*)__Pyx_PyCode_New(3, 0, 3, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__28, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_pdf_set_pyx, __pyx_n_s_test_in_pred_regions, 39, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__10)) __PYX_ERR(0, 39, __pyx_L1_error)
 
   /* "structureboost/pdf_set.pyx":42
  *         return(test_in_pred_regions(test_vals, self.pred_regions(alpha)))
@@ -5126,10 +5367,10 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
  *         return(self.quantile(q_right)-self.quantile(q_left))
  * 
  */
-  __pyx_tuple__28 = PyTuple_Pack(3, __pyx_n_s_self, __pyx_n_s_q_left, __pyx_n_s_q_right); if (unlikely(!__pyx_tuple__28)) __PYX_ERR(0, 42, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__28);
-  __Pyx_GIVEREF(__pyx_tuple__28);
-  __pyx_codeobj__11 = (PyObject*)__Pyx_PyCode_New(3, 0, 3, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__28, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_pdf_set_pyx, __pyx_n_s_quantile_widths, 42, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__11)) __PYX_ERR(0, 42, __pyx_L1_error)
+  __pyx_tuple__29 = PyTuple_Pack(3, __pyx_n_s_self, __pyx_n_s_q_left, __pyx_n_s_q_right); if (unlikely(!__pyx_tuple__29)) __PYX_ERR(0, 42, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__29);
+  __Pyx_GIVEREF(__pyx_tuple__29);
+  __pyx_codeobj__11 = (PyObject*)__Pyx_PyCode_New(3, 0, 3, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__29, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_pdf_set_pyx, __pyx_n_s_quantile_widths, 42, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__11)) __PYX_ERR(0, 42, __pyx_L1_error)
 
   /* "structureboost/pdf_set.pyx":45
  *         return(self.quantile(q_right)-self.quantile(q_left))
@@ -5138,46 +5379,58 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
  *         return(np.array([pdf.pred_region(alpha) for pdf in self.pdf_list], dtype=object))
  * 
  */
-  __pyx_tuple__29 = PyTuple_Pack(3, __pyx_n_s_self, __pyx_n_s_alpha, __pyx_n_s_pdf); if (unlikely(!__pyx_tuple__29)) __PYX_ERR(0, 45, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__29);
-  __Pyx_GIVEREF(__pyx_tuple__29);
-  __pyx_codeobj__12 = (PyObject*)__Pyx_PyCode_New(2, 0, 3, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__29, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_pdf_set_pyx, __pyx_n_s_pred_regions, 45, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__12)) __PYX_ERR(0, 45, __pyx_L1_error)
+  __pyx_tuple__30 = PyTuple_Pack(3, __pyx_n_s_self, __pyx_n_s_alpha, __pyx_n_s_pdf); if (unlikely(!__pyx_tuple__30)) __PYX_ERR(0, 45, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__30);
+  __Pyx_GIVEREF(__pyx_tuple__30);
+  __pyx_codeobj__12 = (PyObject*)__Pyx_PyCode_New(2, 0, 3, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__30, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_pdf_set_pyx, __pyx_n_s_pred_regions, 45, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__12)) __PYX_ERR(0, 45, __pyx_L1_error)
 
   /* "structureboost/pdf_set.pyx":51
  *     #     return()
+ * 
+ *     def bins_to_probs(self, new_binpt_vec):             # <<<<<<<<<<<<<<
+ *         return(np.array([pdf.bins_to_probs(new_binpt_vec) for pdf in self.pdf_list]))
+ * 
+ */
+  __pyx_tuple__31 = PyTuple_Pack(3, __pyx_n_s_self, __pyx_n_s_new_binpt_vec, __pyx_n_s_pdf); if (unlikely(!__pyx_tuple__31)) __PYX_ERR(0, 51, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__31);
+  __Pyx_GIVEREF(__pyx_tuple__31);
+  __pyx_codeobj__13 = (PyObject*)__Pyx_PyCode_New(2, 0, 3, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__31, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_pdf_set_pyx, __pyx_n_s_bins_to_probs, 51, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__13)) __PYX_ERR(0, 51, __pyx_L1_error)
+
+  /* "structureboost/pdf_set.pyx":54
+ *         return(np.array([pdf.bins_to_probs(new_binpt_vec) for pdf in self.pdf_list]))
  * 
  * def test_in_pred_regions(test_vals, regions):             # <<<<<<<<<<<<<<
  *     return(np.array([np.any([((test_vals[i]>=interval[0]) and (test_vals[i]<=interval[1]))
  *                      for interval in regions[i]])
  */
-  __pyx_tuple__30 = PyTuple_Pack(4, __pyx_n_s_test_vals, __pyx_n_s_regions, __pyx_n_s_i, __pyx_n_s_interval); if (unlikely(!__pyx_tuple__30)) __PYX_ERR(0, 51, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__30);
-  __Pyx_GIVEREF(__pyx_tuple__30);
-  __pyx_codeobj__13 = (PyObject*)__Pyx_PyCode_New(2, 0, 4, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__30, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_pdf_set_pyx, __pyx_n_s_test_in_pred_regions, 51, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__13)) __PYX_ERR(0, 51, __pyx_L1_error)
+  __pyx_tuple__32 = PyTuple_Pack(4, __pyx_n_s_test_vals, __pyx_n_s_regions, __pyx_n_s_i, __pyx_n_s_interval); if (unlikely(!__pyx_tuple__32)) __PYX_ERR(0, 54, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__32);
+  __Pyx_GIVEREF(__pyx_tuple__32);
+  __pyx_codeobj__14 = (PyObject*)__Pyx_PyCode_New(2, 0, 4, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__32, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_pdf_set_pyx, __pyx_n_s_test_in_pred_regions, 54, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__14)) __PYX_ERR(0, 54, __pyx_L1_error)
 
-  /* "structureboost/pdf_set.pyx":57
+  /* "structureboost/pdf_set.pyx":60
  * 
  * 
  * def log_loss_pdf(y_true, pdf_set):             # <<<<<<<<<<<<<<
  *     """This computes the log loss for a truth set and a DensitySet object"""
  *     return pdf_set.log_loss(y_true)
  */
-  __pyx_tuple__31 = PyTuple_Pack(2, __pyx_n_s_y_true, __pyx_n_s_pdf_set); if (unlikely(!__pyx_tuple__31)) __PYX_ERR(0, 57, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__31);
-  __Pyx_GIVEREF(__pyx_tuple__31);
-  __pyx_codeobj__14 = (PyObject*)__Pyx_PyCode_New(2, 0, 2, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__31, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_pdf_set_pyx, __pyx_n_s_log_loss_pdf, 57, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__14)) __PYX_ERR(0, 57, __pyx_L1_error)
+  __pyx_tuple__33 = PyTuple_Pack(2, __pyx_n_s_y_true, __pyx_n_s_pdf_set); if (unlikely(!__pyx_tuple__33)) __PYX_ERR(0, 60, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__33);
+  __Pyx_GIVEREF(__pyx_tuple__33);
+  __pyx_codeobj__15 = (PyObject*)__Pyx_PyCode_New(2, 0, 2, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__33, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_pdf_set_pyx, __pyx_n_s_log_loss_pdf, 60, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__15)) __PYX_ERR(0, 60, __pyx_L1_error)
 
-  /* "structureboost/pdf_set.pyx":61
+  /* "structureboost/pdf_set.pyx":64
  *     return pdf_set.log_loss(y_true)
  * 
  * def test_between_quantiles_pdf(test_vals, pdf_set, q_left, q_right):             # <<<<<<<<<<<<<<
  *     """Tests inclusion of the test_vals in the interval defined by the given quantiles"""
  *     return(pdf_set.test_between_quantiles(test_vals, q_left, q_right))
  */
-  __pyx_tuple__32 = PyTuple_Pack(4, __pyx_n_s_test_vals, __pyx_n_s_pdf_set, __pyx_n_s_q_left, __pyx_n_s_q_right); if (unlikely(!__pyx_tuple__32)) __PYX_ERR(0, 61, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__32);
-  __Pyx_GIVEREF(__pyx_tuple__32);
-  __pyx_codeobj__15 = (PyObject*)__Pyx_PyCode_New(4, 0, 4, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__32, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_pdf_set_pyx, __pyx_n_s_test_between_quantiles_pdf, 61, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__15)) __PYX_ERR(0, 61, __pyx_L1_error)
+  __pyx_tuple__34 = PyTuple_Pack(4, __pyx_n_s_test_vals, __pyx_n_s_pdf_set, __pyx_n_s_q_left, __pyx_n_s_q_right); if (unlikely(!__pyx_tuple__34)) __PYX_ERR(0, 64, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__34);
+  __Pyx_GIVEREF(__pyx_tuple__34);
+  __pyx_codeobj__16 = (PyObject*)__Pyx_PyCode_New(4, 0, 4, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__34, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_pdf_set_pyx, __pyx_n_s_test_between_quantiles_pdf, 64, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__16)) __PYX_ERR(0, 64, __pyx_L1_error)
   __Pyx_RefNannyFinishContext();
   return 0;
   __pyx_L1_error:;
@@ -5482,9 +5735,9 @@ if (!__Pyx_RefNanny) {
  *     def __init__(self, pdf_list):
  *         self.pdf_list = pdf_list
  */
-  __pyx_t_1 = __Pyx_CalculateMetaclass(NULL, __pyx_tuple__16); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 6, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_CalculateMetaclass(NULL, __pyx_tuple__17); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 6, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = __Pyx_Py3MetaclassPrepare(__pyx_t_1, __pyx_tuple__16, __pyx_n_s_PdfSet, __pyx_n_s_PdfSet, (PyObject *) NULL, __pyx_n_s_structureboost_pdf_set, (PyObject *) NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 6, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_Py3MetaclassPrepare(__pyx_t_1, __pyx_tuple__17, __pyx_n_s_PdfSet, __pyx_n_s_PdfSet, (PyObject *) NULL, __pyx_n_s_structureboost_pdf_set, (PyObject *) NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 6, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
 
   /* "structureboost/pdf_set.pyx":7
@@ -5532,7 +5785,7 @@ if (!__Pyx_RefNanny) {
  */
   __pyx_t_3 = __Pyx_CyFunction_New(&__pyx_mdef_14structureboost_7pdf_set_6PdfSet_7log_loss, 0, __pyx_n_s_PdfSet_log_loss, NULL, __pyx_n_s_structureboost_pdf_set, __pyx_d, ((PyObject *)__pyx_codeobj__4)); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 16, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  __Pyx_CyFunction_SetDefaultsTuple(__pyx_t_3, __pyx_tuple__21);
+  __Pyx_CyFunction_SetDefaultsTuple(__pyx_t_3, __pyx_tuple__22);
   if (__Pyx_SetNameInClass(__pyx_t_2, __pyx_n_s_log_loss, __pyx_t_3) < 0) __PYX_ERR(0, 16, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
@@ -5632,6 +5885,18 @@ if (!__Pyx_RefNanny) {
   if (__Pyx_SetNameInClass(__pyx_t_2, __pyx_n_s_pred_regions, __pyx_t_3) < 0) __PYX_ERR(0, 45, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
+  /* "structureboost/pdf_set.pyx":51
+ *     #     return()
+ * 
+ *     def bins_to_probs(self, new_binpt_vec):             # <<<<<<<<<<<<<<
+ *         return(np.array([pdf.bins_to_probs(new_binpt_vec) for pdf in self.pdf_list]))
+ * 
+ */
+  __pyx_t_3 = __Pyx_CyFunction_New(&__pyx_mdef_14structureboost_7pdf_set_6PdfSet_25bins_to_probs, 0, __pyx_n_s_PdfSet_bins_to_probs, NULL, __pyx_n_s_structureboost_pdf_set, __pyx_d, ((PyObject *)__pyx_codeobj__13)); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 51, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_3);
+  if (__Pyx_SetNameInClass(__pyx_t_2, __pyx_n_s_bins_to_probs, __pyx_t_3) < 0) __PYX_ERR(0, 51, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+
   /* "structureboost/pdf_set.pyx":6
  * import numpy as np
  * 
@@ -5639,47 +5904,47 @@ if (!__Pyx_RefNanny) {
  *     def __init__(self, pdf_list):
  *         self.pdf_list = pdf_list
  */
-  __pyx_t_3 = __Pyx_Py3ClassCreate(__pyx_t_1, __pyx_n_s_PdfSet, __pyx_tuple__16, __pyx_t_2, NULL, 0, 0); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 6, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_Py3ClassCreate(__pyx_t_1, __pyx_n_s_PdfSet, __pyx_tuple__17, __pyx_t_2, NULL, 0, 0); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 6, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   if (PyDict_SetItem(__pyx_d, __pyx_n_s_PdfSet, __pyx_t_3) < 0) __PYX_ERR(0, 6, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "structureboost/pdf_set.pyx":51
- *     #     return()
+  /* "structureboost/pdf_set.pyx":54
+ *         return(np.array([pdf.bins_to_probs(new_binpt_vec) for pdf in self.pdf_list]))
  * 
  * def test_in_pred_regions(test_vals, regions):             # <<<<<<<<<<<<<<
  *     return(np.array([np.any([((test_vals[i]>=interval[0]) and (test_vals[i]<=interval[1]))
  *                      for interval in regions[i]])
  */
-  __pyx_t_1 = PyCFunction_NewEx(&__pyx_mdef_14structureboost_7pdf_set_1test_in_pred_regions, NULL, __pyx_n_s_structureboost_pdf_set); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 51, __pyx_L1_error)
+  __pyx_t_1 = PyCFunction_NewEx(&__pyx_mdef_14structureboost_7pdf_set_1test_in_pred_regions, NULL, __pyx_n_s_structureboost_pdf_set); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 54, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_test_in_pred_regions, __pyx_t_1) < 0) __PYX_ERR(0, 51, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_test_in_pred_regions, __pyx_t_1) < 0) __PYX_ERR(0, 54, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "structureboost/pdf_set.pyx":57
+  /* "structureboost/pdf_set.pyx":60
  * 
  * 
  * def log_loss_pdf(y_true, pdf_set):             # <<<<<<<<<<<<<<
  *     """This computes the log loss for a truth set and a DensitySet object"""
  *     return pdf_set.log_loss(y_true)
  */
-  __pyx_t_1 = PyCFunction_NewEx(&__pyx_mdef_14structureboost_7pdf_set_3log_loss_pdf, NULL, __pyx_n_s_structureboost_pdf_set); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 57, __pyx_L1_error)
+  __pyx_t_1 = PyCFunction_NewEx(&__pyx_mdef_14structureboost_7pdf_set_3log_loss_pdf, NULL, __pyx_n_s_structureboost_pdf_set); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 60, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_log_loss_pdf, __pyx_t_1) < 0) __PYX_ERR(0, 57, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_log_loss_pdf, __pyx_t_1) < 0) __PYX_ERR(0, 60, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "structureboost/pdf_set.pyx":61
+  /* "structureboost/pdf_set.pyx":64
  *     return pdf_set.log_loss(y_true)
  * 
  * def test_between_quantiles_pdf(test_vals, pdf_set, q_left, q_right):             # <<<<<<<<<<<<<<
  *     """Tests inclusion of the test_vals in the interval defined by the given quantiles"""
  *     return(pdf_set.test_between_quantiles(test_vals, q_left, q_right))
  */
-  __pyx_t_1 = PyCFunction_NewEx(&__pyx_mdef_14structureboost_7pdf_set_5test_between_quantiles_pdf, NULL, __pyx_n_s_structureboost_pdf_set); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 61, __pyx_L1_error)
+  __pyx_t_1 = PyCFunction_NewEx(&__pyx_mdef_14structureboost_7pdf_set_5test_between_quantiles_pdf, NULL, __pyx_n_s_structureboost_pdf_set); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 64, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_test_between_quantiles_pdf, __pyx_t_1) < 0) __PYX_ERR(0, 61, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_test_between_quantiles_pdf, __pyx_t_1) < 0) __PYX_ERR(0, 64, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
   /* "structureboost/pdf_set.pyx":1

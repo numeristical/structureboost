@@ -190,21 +190,6 @@ def get_g_h_feature_sum_matrix(np.ndarray[dtype_int64_t] feature_vec_node,
     return g_h_val_arr
 
 
-# @cython.boundscheck(False)  # Deactivate bounds checking
-# @cython.wraparound(False)   # Deactivate negative indexing.
-# def get_g_h_feature_sum_matrix_gen(feature_vec_node, dict mapping_dict,
-#                                    np.ndarray[double, ndim=2] g_h_train_node,
-#                                    np.ndarray[double, ndim=2] g_h_val_arr,
-#                                    long num_classes):
-#     cdef long i, ind
-#     cdef long array_size = len(feature_vec_node)
-#     for i in range(array_size):
-#         for j in range(2*num_classes):
-#             ind = mapping_dict[feature_vec_node[i]]
-#             g_h_val_arr[ind,j] += g_h_train_node[i,j]
-#     return g_h_val_arr
-
-
 def _get_gh_score_num_mc(np.ndarray[double] g_left,
                       np.ndarray[double] g_right,
                       np.ndarray[double] h_left,

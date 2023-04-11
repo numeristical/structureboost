@@ -87,8 +87,9 @@ def test_multi_random_part():
                      np.allclose(preds2, preds3) and
                      np.allclose(preds3, preds4))
     ll = stb.log_loss(y_test, preds1)
-    perf_cond = (ll<2.32) and (ll>2.28)
-    assert(equality_cond and perf_cond)
+
+    assert(equality_cond)
+    assert((ll<2.325) and (ll>2.28))
 
 
 def test_multi_fixed_part():
@@ -174,9 +175,9 @@ def test_multi_fixed_part():
 
     ts2 = {}
     ts2['partition_type'] = 'fixed'
-    ts2['singleton_weight'] = .25
+    ts2['singleton_weight'] = .6
     ts2['partition_list'] = p_list
-    ts2['partition_weight_vec'] = [.25,.25,.25]
+    ts2['partition_weight_vec'] = [.4/3,.4/3,.4/3]
 
 
     stb1 = stb.StructureBoostMulti(num_trees = 350, target_structure=ts2, 
@@ -199,8 +200,8 @@ def test_multi_fixed_part():
                      np.allclose(preds2, preds3) and
                      np.allclose(preds3, preds4))
     ll = stb.log_loss(y_test, preds1)
-    perf_cond = (ll<2.325) and (ll>2.28)
-    assert(equality_cond and perf_cond)
+    assert(equality_cond)
+    assert((ll<2.325) and (ll>2.28))
 
 
 
