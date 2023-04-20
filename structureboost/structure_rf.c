@@ -2358,6 +2358,7 @@ static PyTypeObject *__pyx_ptype_5numpy_ufunc = 0;
 
 /* Module declarations from 'structureboost.structure_rf' */
 static __Pyx_TypeInfo __Pyx_TypeInfo_double = { "double", NULL, sizeof(double), { 0 }, 0, 'R', 0, 0 };
+static __Pyx_TypeInfo __Pyx_TypeInfo_nn___pyx_t_5numpy_int_t = { "int_t", NULL, sizeof(__pyx_t_5numpy_int_t), { 0 }, 0, IS_UNSIGNED(__pyx_t_5numpy_int_t) ? 'U' : 'I', IS_UNSIGNED(__pyx_t_5numpy_int_t), 0 };
 static __Pyx_TypeInfo __Pyx_TypeInfo_long = { "long", NULL, sizeof(long), { 0 }, 0, IS_UNSIGNED(long) ? 'U' : 'I', IS_UNSIGNED(long), 0 };
 #define __Pyx_MODULE_NAME "structureboost.structure_rf"
 extern int __pyx_module_is_main_structureboost__structure_rf;
@@ -2387,6 +2388,7 @@ static const char __pyx_k_doc[] = "__doc__";
 static const char __pyx_k_dtm[] = "dtm";
 static const char __pyx_k_fit[] = "fit";
 static const char __pyx_k_ind[] = "ind";
+static const char __pyx_k_int[] = "int_";
 static const char __pyx_k_max[] = "max";
 static const char __pyx_k_LEAF[] = "LEAF";
 static const char __pyx_k_axis[] = "axis";
@@ -2410,7 +2412,6 @@ static const char __pyx_k_NUMER[] = "NUMER";
 static const char __pyx_k_array[] = "array";
 static const char __pyx_k_dtype[] = "dtype";
 static const char __pyx_k_graph[] = "graph";
-static const char __pyx_k_int64[] = "int64";
 static const char __pyx_k_isnan[] = "isnan";
 static const char __pyx_k_items[] = "items";
 static const char __pyx_k_numpy[] = "numpy";
@@ -2678,7 +2679,7 @@ static PyObject *__pyx_n_s_import;
 static PyObject *__pyx_n_s_ind;
 static PyObject *__pyx_n_s_ind_doub;
 static PyObject *__pyx_n_s_init;
-static PyObject *__pyx_n_s_int64;
+static PyObject *__pyx_n_s_int;
 static PyObject *__pyx_n_u_interior;
 static PyObject *__pyx_n_s_interval;
 static PyObject *__pyx_n_s_inv_cti;
@@ -7628,7 +7629,7 @@ static PyObject *__pyx_pf_14structureboost_12structure_rf_11StructureRF_16get_te
  *             cat_size = np.max(np.array([dt.get_max_split_size() for dt in self.dec_tree_list]))
  *             num_dt = len(self.dec_tree_list)             # <<<<<<<<<<<<<<
  *             max_nodes = np.max(np.array([dt.num_nodes for dt in self.dec_tree_list]))
- *             self.pred_tens_int = np.zeros((num_dt, max_nodes, cat_size+6), dtype=np.int64)-1
+ *             self.pred_tens_int = np.zeros((num_dt, max_nodes, cat_size+6), dtype=np.int_)-1
  */
     __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_dec_tree_list); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 372, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
@@ -7640,7 +7641,7 @@ static PyObject *__pyx_pf_14structureboost_12structure_rf_11StructureRF_16get_te
  *             cat_size = np.max(np.array([dt.get_max_split_size() for dt in self.dec_tree_list]))
  *             num_dt = len(self.dec_tree_list)
  *             max_nodes = np.max(np.array([dt.num_nodes for dt in self.dec_tree_list]))             # <<<<<<<<<<<<<<
- *             self.pred_tens_int = np.zeros((num_dt, max_nodes, cat_size+6), dtype=np.int64)-1
+ *             self.pred_tens_int = np.zeros((num_dt, max_nodes, cat_size+6), dtype=np.int_)-1
  *             self.pred_tens_float = np.zeros((num_dt, max_nodes, 3))
  */
     __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_n_s_np); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 373, __pyx_L1_error)
@@ -7751,7 +7752,7 @@ static PyObject *__pyx_pf_14structureboost_12structure_rf_11StructureRF_16get_te
     /* "structureboost/structure_rf.pyx":374
  *             num_dt = len(self.dec_tree_list)
  *             max_nodes = np.max(np.array([dt.num_nodes for dt in self.dec_tree_list]))
- *             self.pred_tens_int = np.zeros((num_dt, max_nodes, cat_size+6), dtype=np.int64)-1             # <<<<<<<<<<<<<<
+ *             self.pred_tens_int = np.zeros((num_dt, max_nodes, cat_size+6), dtype=np.int_)-1             # <<<<<<<<<<<<<<
  *             self.pred_tens_float = np.zeros((num_dt, max_nodes, 3))
  *             for i in range(num_dt):
  */
@@ -7784,7 +7785,7 @@ static PyObject *__pyx_pf_14structureboost_12structure_rf_11StructureRF_16get_te
     __Pyx_GOTREF(__pyx_t_5);
     __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_np); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 374, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
-    __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_int64); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 374, __pyx_L1_error)
+    __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_int); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 374, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_6);
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
     if (PyDict_SetItem(__pyx_t_5, __pyx_n_s_dtype, __pyx_t_6) < 0) __PYX_ERR(0, 374, __pyx_L1_error)
@@ -7802,7 +7803,7 @@ static PyObject *__pyx_pf_14structureboost_12structure_rf_11StructureRF_16get_te
 
     /* "structureboost/structure_rf.pyx":375
  *             max_nodes = np.max(np.array([dt.num_nodes for dt in self.dec_tree_list]))
- *             self.pred_tens_int = np.zeros((num_dt, max_nodes, cat_size+6), dtype=np.int64)-1
+ *             self.pred_tens_int = np.zeros((num_dt, max_nodes, cat_size+6), dtype=np.int_)-1
  *             self.pred_tens_float = np.zeros((num_dt, max_nodes, 3))             # <<<<<<<<<<<<<<
  *             for i in range(num_dt):
  *                 self.convert_dt_to_matrix(i)
@@ -7845,7 +7846,7 @@ static PyObject *__pyx_pf_14structureboost_12structure_rf_11StructureRF_16get_te
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
 
     /* "structureboost/structure_rf.pyx":376
- *             self.pred_tens_int = np.zeros((num_dt, max_nodes, cat_size+6), dtype=np.int64)-1
+ *             self.pred_tens_int = np.zeros((num_dt, max_nodes, cat_size+6), dtype=np.int_)-1
  *             self.pred_tens_float = np.zeros((num_dt, max_nodes, 3))
  *             for i in range(num_dt):             # <<<<<<<<<<<<<<
  *                 self.convert_dt_to_matrix(i)
@@ -9650,7 +9651,7 @@ static PyObject *__pyx_pf_14structureboost_12structure_rf_2randomize_node_na_dir
  * @cython.boundscheck(False)
  * @cython.wraparound(False)
  * def predict_with_tensor_c(np.ndarray[double, ndim=3] dtm_float,             # <<<<<<<<<<<<<<
- *                       np.ndarray[long, ndim=3] dtm,
+ *                       np.ndarray[np.int_t, ndim=3] dtm,
  *                       np.ndarray[double, ndim=2] feat_array):
  */
 
@@ -9793,7 +9794,7 @@ static PyObject *__pyx_pf_14structureboost_12structure_rf_4predict_with_tensor_c
   Py_ssize_t __pyx_t_17;
   Py_ssize_t __pyx_t_18;
   Py_ssize_t __pyx_t_19;
-  long __pyx_t_20;
+  __pyx_t_5numpy_int_t __pyx_t_20;
   Py_ssize_t __pyx_t_21;
   int __pyx_lineno = 0;
   const char *__pyx_filename = NULL;
@@ -9828,7 +9829,7 @@ static PyObject *__pyx_pf_14structureboost_12structure_rf_4predict_with_tensor_c
   __pyx_pybuffernd_dtm_float.diminfo[0].strides = __pyx_pybuffernd_dtm_float.rcbuffer->pybuffer.strides[0]; __pyx_pybuffernd_dtm_float.diminfo[0].shape = __pyx_pybuffernd_dtm_float.rcbuffer->pybuffer.shape[0]; __pyx_pybuffernd_dtm_float.diminfo[1].strides = __pyx_pybuffernd_dtm_float.rcbuffer->pybuffer.strides[1]; __pyx_pybuffernd_dtm_float.diminfo[1].shape = __pyx_pybuffernd_dtm_float.rcbuffer->pybuffer.shape[1]; __pyx_pybuffernd_dtm_float.diminfo[2].strides = __pyx_pybuffernd_dtm_float.rcbuffer->pybuffer.strides[2]; __pyx_pybuffernd_dtm_float.diminfo[2].shape = __pyx_pybuffernd_dtm_float.rcbuffer->pybuffer.shape[2];
   {
     __Pyx_BufFmt_StackElem __pyx_stack[1];
-    if (unlikely(__Pyx_GetBufferAndValidate(&__pyx_pybuffernd_dtm.rcbuffer->pybuffer, (PyObject*)__pyx_v_dtm, &__Pyx_TypeInfo_long, PyBUF_FORMAT| PyBUF_STRIDES, 3, 0, __pyx_stack) == -1)) __PYX_ERR(0, 457, __pyx_L1_error)
+    if (unlikely(__Pyx_GetBufferAndValidate(&__pyx_pybuffernd_dtm.rcbuffer->pybuffer, (PyObject*)__pyx_v_dtm, &__Pyx_TypeInfo_nn___pyx_t_5numpy_int_t, PyBUF_FORMAT| PyBUF_STRIDES, 3, 0, __pyx_stack) == -1)) __PYX_ERR(0, 457, __pyx_L1_error)
   }
   __pyx_pybuffernd_dtm.diminfo[0].strides = __pyx_pybuffernd_dtm.rcbuffer->pybuffer.strides[0]; __pyx_pybuffernd_dtm.diminfo[0].shape = __pyx_pybuffernd_dtm.rcbuffer->pybuffer.shape[0]; __pyx_pybuffernd_dtm.diminfo[1].strides = __pyx_pybuffernd_dtm.rcbuffer->pybuffer.strides[1]; __pyx_pybuffernd_dtm.diminfo[1].shape = __pyx_pybuffernd_dtm.rcbuffer->pybuffer.shape[1]; __pyx_pybuffernd_dtm.diminfo[2].strides = __pyx_pybuffernd_dtm.rcbuffer->pybuffer.strides[2]; __pyx_pybuffernd_dtm.diminfo[2].shape = __pyx_pybuffernd_dtm.rcbuffer->pybuffer.shape[2];
   {
@@ -10121,7 +10122,7 @@ static PyObject *__pyx_pf_14structureboost_12structure_rf_4predict_with_tensor_c
         __pyx_t_15 = __pyx_v_k;
         __pyx_t_16 = __pyx_v_cn;
         __pyx_t_17 = __pyx_v_NODE_TYPE;
-        __pyx_t_14 = (((*__Pyx_BufPtrStrided3d(long *, __pyx_pybuffernd_dtm.rcbuffer->pybuffer.buf, __pyx_t_15, __pyx_pybuffernd_dtm.diminfo[0].strides, __pyx_t_16, __pyx_pybuffernd_dtm.diminfo[1].strides, __pyx_t_17, __pyx_pybuffernd_dtm.diminfo[2].strides)) == __pyx_v_LEAF) != 0);
+        __pyx_t_14 = (((*__Pyx_BufPtrStrided3d(__pyx_t_5numpy_int_t *, __pyx_pybuffernd_dtm.rcbuffer->pybuffer.buf, __pyx_t_15, __pyx_pybuffernd_dtm.diminfo[0].strides, __pyx_t_16, __pyx_pybuffernd_dtm.diminfo[1].strides, __pyx_t_17, __pyx_pybuffernd_dtm.diminfo[2].strides)) == __pyx_v_LEAF) != 0);
         if (__pyx_t_14) {
 
           /* "structureboost/structure_rf.pyx":493
@@ -10167,7 +10168,7 @@ static PyObject *__pyx_pf_14structureboost_12structure_rf_4predict_with_tensor_c
         __pyx_t_15 = __pyx_v_k;
         __pyx_t_16 = __pyx_v_cn;
         __pyx_t_17 = __pyx_v_NODE_TYPE;
-        __pyx_t_14 = (((*__Pyx_BufPtrStrided3d(long *, __pyx_pybuffernd_dtm.rcbuffer->pybuffer.buf, __pyx_t_15, __pyx_pybuffernd_dtm.diminfo[0].strides, __pyx_t_16, __pyx_pybuffernd_dtm.diminfo[1].strides, __pyx_t_17, __pyx_pybuffernd_dtm.diminfo[2].strides)) == __pyx_v_NUMER) != 0);
+        __pyx_t_14 = (((*__Pyx_BufPtrStrided3d(__pyx_t_5numpy_int_t *, __pyx_pybuffernd_dtm.rcbuffer->pybuffer.buf, __pyx_t_15, __pyx_pybuffernd_dtm.diminfo[0].strides, __pyx_t_16, __pyx_pybuffernd_dtm.diminfo[1].strides, __pyx_t_17, __pyx_pybuffernd_dtm.diminfo[2].strides)) == __pyx_v_NUMER) != 0);
         if (__pyx_t_14) {
 
           /* "structureboost/structure_rf.pyx":496
@@ -10180,7 +10181,7 @@ static PyObject *__pyx_pf_14structureboost_12structure_rf_4predict_with_tensor_c
           __pyx_t_17 = __pyx_v_k;
           __pyx_t_16 = __pyx_v_cn;
           __pyx_t_15 = __pyx_v_FEATURE_COL;
-          __pyx_v_ind = (*__Pyx_BufPtrStrided3d(long *, __pyx_pybuffernd_dtm.rcbuffer->pybuffer.buf, __pyx_t_17, __pyx_pybuffernd_dtm.diminfo[0].strides, __pyx_t_16, __pyx_pybuffernd_dtm.diminfo[1].strides, __pyx_t_15, __pyx_pybuffernd_dtm.diminfo[2].strides));
+          __pyx_v_ind = (*__Pyx_BufPtrStrided3d(__pyx_t_5numpy_int_t *, __pyx_pybuffernd_dtm.rcbuffer->pybuffer.buf, __pyx_t_17, __pyx_pybuffernd_dtm.diminfo[0].strides, __pyx_t_16, __pyx_pybuffernd_dtm.diminfo[1].strides, __pyx_t_15, __pyx_pybuffernd_dtm.diminfo[2].strides));
 
           /* "structureboost/structure_rf.pyx":497
  *                 elif dtm[k,cn, NODE_TYPE]==NUMER:
@@ -10204,16 +10205,16 @@ static PyObject *__pyx_pf_14structureboost_12structure_rf_4predict_with_tensor_c
             __pyx_t_16 = __pyx_v_k;
             __pyx_t_15 = __pyx_v_cn;
             __pyx_t_17 = __pyx_v_NA_LEFT;
-            if (((*__Pyx_BufPtrStrided3d(long *, __pyx_pybuffernd_dtm.rcbuffer->pybuffer.buf, __pyx_t_16, __pyx_pybuffernd_dtm.diminfo[0].strides, __pyx_t_15, __pyx_pybuffernd_dtm.diminfo[1].strides, __pyx_t_17, __pyx_pybuffernd_dtm.diminfo[2].strides)) != 0)) {
+            if (((*__Pyx_BufPtrStrided3d(__pyx_t_5numpy_int_t *, __pyx_pybuffernd_dtm.rcbuffer->pybuffer.buf, __pyx_t_16, __pyx_pybuffernd_dtm.diminfo[0].strides, __pyx_t_15, __pyx_pybuffernd_dtm.diminfo[1].strides, __pyx_t_17, __pyx_pybuffernd_dtm.diminfo[2].strides)) != 0)) {
               __pyx_t_19 = __pyx_v_k;
               __pyx_t_18 = __pyx_v_cn;
               __pyx_t_21 = __pyx_v_LEFT_CHILD;
-              __pyx_t_20 = (*__Pyx_BufPtrStrided3d(long *, __pyx_pybuffernd_dtm.rcbuffer->pybuffer.buf, __pyx_t_19, __pyx_pybuffernd_dtm.diminfo[0].strides, __pyx_t_18, __pyx_pybuffernd_dtm.diminfo[1].strides, __pyx_t_21, __pyx_pybuffernd_dtm.diminfo[2].strides));
+              __pyx_t_20 = (*__Pyx_BufPtrStrided3d(__pyx_t_5numpy_int_t *, __pyx_pybuffernd_dtm.rcbuffer->pybuffer.buf, __pyx_t_19, __pyx_pybuffernd_dtm.diminfo[0].strides, __pyx_t_18, __pyx_pybuffernd_dtm.diminfo[1].strides, __pyx_t_21, __pyx_pybuffernd_dtm.diminfo[2].strides));
             } else {
               __pyx_t_21 = __pyx_v_k;
               __pyx_t_18 = __pyx_v_cn;
               __pyx_t_19 = __pyx_v_RIGHT_CHILD;
-              __pyx_t_20 = (*__Pyx_BufPtrStrided3d(long *, __pyx_pybuffernd_dtm.rcbuffer->pybuffer.buf, __pyx_t_21, __pyx_pybuffernd_dtm.diminfo[0].strides, __pyx_t_18, __pyx_pybuffernd_dtm.diminfo[1].strides, __pyx_t_19, __pyx_pybuffernd_dtm.diminfo[2].strides));
+              __pyx_t_20 = (*__Pyx_BufPtrStrided3d(__pyx_t_5numpy_int_t *, __pyx_pybuffernd_dtm.rcbuffer->pybuffer.buf, __pyx_t_21, __pyx_pybuffernd_dtm.diminfo[0].strides, __pyx_t_18, __pyx_pybuffernd_dtm.diminfo[1].strides, __pyx_t_19, __pyx_pybuffernd_dtm.diminfo[2].strides));
             }
             __pyx_v_cn = __pyx_t_20;
 
@@ -10253,12 +10254,12 @@ static PyObject *__pyx_pf_14structureboost_12structure_rf_4predict_with_tensor_c
               __pyx_t_19 = __pyx_v_k;
               __pyx_t_18 = __pyx_v_cn;
               __pyx_t_21 = __pyx_v_LEFT_CHILD;
-              __pyx_t_20 = (*__Pyx_BufPtrStrided3d(long *, __pyx_pybuffernd_dtm.rcbuffer->pybuffer.buf, __pyx_t_19, __pyx_pybuffernd_dtm.diminfo[0].strides, __pyx_t_18, __pyx_pybuffernd_dtm.diminfo[1].strides, __pyx_t_21, __pyx_pybuffernd_dtm.diminfo[2].strides));
+              __pyx_t_20 = (*__Pyx_BufPtrStrided3d(__pyx_t_5numpy_int_t *, __pyx_pybuffernd_dtm.rcbuffer->pybuffer.buf, __pyx_t_19, __pyx_pybuffernd_dtm.diminfo[0].strides, __pyx_t_18, __pyx_pybuffernd_dtm.diminfo[1].strides, __pyx_t_21, __pyx_pybuffernd_dtm.diminfo[2].strides));
             } else {
               __pyx_t_21 = __pyx_v_k;
               __pyx_t_18 = __pyx_v_cn;
               __pyx_t_19 = __pyx_v_RIGHT_CHILD;
-              __pyx_t_20 = (*__Pyx_BufPtrStrided3d(long *, __pyx_pybuffernd_dtm.rcbuffer->pybuffer.buf, __pyx_t_21, __pyx_pybuffernd_dtm.diminfo[0].strides, __pyx_t_18, __pyx_pybuffernd_dtm.diminfo[1].strides, __pyx_t_19, __pyx_pybuffernd_dtm.diminfo[2].strides));
+              __pyx_t_20 = (*__Pyx_BufPtrStrided3d(__pyx_t_5numpy_int_t *, __pyx_pybuffernd_dtm.rcbuffer->pybuffer.buf, __pyx_t_21, __pyx_pybuffernd_dtm.diminfo[0].strides, __pyx_t_18, __pyx_pybuffernd_dtm.diminfo[1].strides, __pyx_t_19, __pyx_pybuffernd_dtm.diminfo[2].strides));
             }
             __pyx_v_cn = __pyx_t_20;
           }
@@ -10284,7 +10285,7 @@ static PyObject *__pyx_pf_14structureboost_12structure_rf_4predict_with_tensor_c
         __pyx_t_16 = __pyx_v_k;
         __pyx_t_17 = __pyx_v_cn;
         __pyx_t_15 = __pyx_v_NODE_TYPE;
-        __pyx_t_14 = (((*__Pyx_BufPtrStrided3d(long *, __pyx_pybuffernd_dtm.rcbuffer->pybuffer.buf, __pyx_t_16, __pyx_pybuffernd_dtm.diminfo[0].strides, __pyx_t_17, __pyx_pybuffernd_dtm.diminfo[1].strides, __pyx_t_15, __pyx_pybuffernd_dtm.diminfo[2].strides)) == __pyx_v_CATEG) != 0);
+        __pyx_t_14 = (((*__Pyx_BufPtrStrided3d(__pyx_t_5numpy_int_t *, __pyx_pybuffernd_dtm.rcbuffer->pybuffer.buf, __pyx_t_16, __pyx_pybuffernd_dtm.diminfo[0].strides, __pyx_t_17, __pyx_pybuffernd_dtm.diminfo[1].strides, __pyx_t_15, __pyx_pybuffernd_dtm.diminfo[2].strides)) == __pyx_v_CATEG) != 0);
         if (__pyx_t_14) {
 
           /* "structureboost/structure_rf.pyx":503
@@ -10298,7 +10299,7 @@ static PyObject *__pyx_pf_14structureboost_12structure_rf_4predict_with_tensor_c
           __pyx_t_17 = __pyx_v_cn;
           __pyx_t_16 = __pyx_v_FEATURE_COL;
           __pyx_t_19 = __pyx_v_ri;
-          __pyx_t_18 = (*__Pyx_BufPtrStrided3d(long *, __pyx_pybuffernd_dtm.rcbuffer->pybuffer.buf, __pyx_t_15, __pyx_pybuffernd_dtm.diminfo[0].strides, __pyx_t_17, __pyx_pybuffernd_dtm.diminfo[1].strides, __pyx_t_16, __pyx_pybuffernd_dtm.diminfo[2].strides));
+          __pyx_t_18 = (*__Pyx_BufPtrStrided3d(__pyx_t_5numpy_int_t *, __pyx_pybuffernd_dtm.rcbuffer->pybuffer.buf, __pyx_t_15, __pyx_pybuffernd_dtm.diminfo[0].strides, __pyx_t_17, __pyx_pybuffernd_dtm.diminfo[1].strides, __pyx_t_16, __pyx_pybuffernd_dtm.diminfo[2].strides));
           __pyx_v_curr_val = (*__Pyx_BufPtrStrided2d(double *, __pyx_pybuffernd_feat_array.rcbuffer->pybuffer.buf, __pyx_t_19, __pyx_pybuffernd_feat_array.diminfo[0].strides, __pyx_t_18, __pyx_pybuffernd_feat_array.diminfo[1].strides));
 
           /* "structureboost/structure_rf.pyx":504
@@ -10329,7 +10330,7 @@ static PyObject *__pyx_pf_14structureboost_12structure_rf_4predict_with_tensor_c
           __pyx_t_16 = __pyx_v_k;
           __pyx_t_17 = __pyx_v_cn;
           __pyx_t_15 = __pyx_v_NUM_CAT_VALS;
-          __pyx_v_cat_vals_end = (__pyx_v_CAT_VALS_START + (*__Pyx_BufPtrStrided3d(long *, __pyx_pybuffernd_dtm.rcbuffer->pybuffer.buf, __pyx_t_16, __pyx_pybuffernd_dtm.diminfo[0].strides, __pyx_t_17, __pyx_pybuffernd_dtm.diminfo[1].strides, __pyx_t_15, __pyx_pybuffernd_dtm.diminfo[2].strides)));
+          __pyx_v_cat_vals_end = (__pyx_v_CAT_VALS_START + (*__Pyx_BufPtrStrided3d(__pyx_t_5numpy_int_t *, __pyx_pybuffernd_dtm.rcbuffer->pybuffer.buf, __pyx_t_16, __pyx_pybuffernd_dtm.diminfo[0].strides, __pyx_t_17, __pyx_pybuffernd_dtm.diminfo[1].strides, __pyx_t_15, __pyx_pybuffernd_dtm.diminfo[2].strides)));
 
           /* "structureboost/structure_rf.pyx":507
  *                     j = CAT_VALS_START
@@ -10352,7 +10353,7 @@ static PyObject *__pyx_pf_14structureboost_12structure_rf_4predict_with_tensor_c
             __pyx_t_15 = __pyx_v_k;
             __pyx_t_17 = __pyx_v_cn;
             __pyx_t_16 = __pyx_v_j;
-            __pyx_t_14 = ((__pyx_v_curr_val == (*__Pyx_BufPtrStrided3d(long *, __pyx_pybuffernd_dtm.rcbuffer->pybuffer.buf, __pyx_t_15, __pyx_pybuffernd_dtm.diminfo[0].strides, __pyx_t_17, __pyx_pybuffernd_dtm.diminfo[1].strides, __pyx_t_16, __pyx_pybuffernd_dtm.diminfo[2].strides))) != 0);
+            __pyx_t_14 = ((__pyx_v_curr_val == (*__Pyx_BufPtrStrided3d(__pyx_t_5numpy_int_t *, __pyx_pybuffernd_dtm.rcbuffer->pybuffer.buf, __pyx_t_15, __pyx_pybuffernd_dtm.diminfo[0].strides, __pyx_t_17, __pyx_pybuffernd_dtm.diminfo[1].strides, __pyx_t_16, __pyx_pybuffernd_dtm.diminfo[2].strides))) != 0);
             if (__pyx_t_14) {
 
               /* "structureboost/structure_rf.pyx":509
@@ -10397,12 +10398,12 @@ static PyObject *__pyx_pf_14structureboost_12structure_rf_4predict_with_tensor_c
             __pyx_t_16 = __pyx_v_k;
             __pyx_t_17 = __pyx_v_cn;
             __pyx_t_15 = __pyx_v_LEFT_CHILD;
-            __pyx_t_20 = (*__Pyx_BufPtrStrided3d(long *, __pyx_pybuffernd_dtm.rcbuffer->pybuffer.buf, __pyx_t_16, __pyx_pybuffernd_dtm.diminfo[0].strides, __pyx_t_17, __pyx_pybuffernd_dtm.diminfo[1].strides, __pyx_t_15, __pyx_pybuffernd_dtm.diminfo[2].strides));
+            __pyx_t_20 = (*__Pyx_BufPtrStrided3d(__pyx_t_5numpy_int_t *, __pyx_pybuffernd_dtm.rcbuffer->pybuffer.buf, __pyx_t_16, __pyx_pybuffernd_dtm.diminfo[0].strides, __pyx_t_17, __pyx_pybuffernd_dtm.diminfo[1].strides, __pyx_t_15, __pyx_pybuffernd_dtm.diminfo[2].strides));
           } else {
             __pyx_t_15 = __pyx_v_k;
             __pyx_t_17 = __pyx_v_cn;
             __pyx_t_16 = __pyx_v_RIGHT_CHILD;
-            __pyx_t_20 = (*__Pyx_BufPtrStrided3d(long *, __pyx_pybuffernd_dtm.rcbuffer->pybuffer.buf, __pyx_t_15, __pyx_pybuffernd_dtm.diminfo[0].strides, __pyx_t_17, __pyx_pybuffernd_dtm.diminfo[1].strides, __pyx_t_16, __pyx_pybuffernd_dtm.diminfo[2].strides));
+            __pyx_t_20 = (*__Pyx_BufPtrStrided3d(__pyx_t_5numpy_int_t *, __pyx_pybuffernd_dtm.rcbuffer->pybuffer.buf, __pyx_t_15, __pyx_pybuffernd_dtm.diminfo[0].strides, __pyx_t_17, __pyx_pybuffernd_dtm.diminfo[1].strides, __pyx_t_16, __pyx_pybuffernd_dtm.diminfo[2].strides));
           }
           __pyx_v_cn = __pyx_t_20;
 
@@ -10433,7 +10434,7 @@ static PyObject *__pyx_pf_14structureboost_12structure_rf_4predict_with_tensor_c
  * @cython.boundscheck(False)
  * @cython.wraparound(False)
  * def predict_with_tensor_c(np.ndarray[double, ndim=3] dtm_float,             # <<<<<<<<<<<<<<
- *                       np.ndarray[long, ndim=3] dtm,
+ *                       np.ndarray[np.int_t, ndim=3] dtm,
  *                       np.ndarray[double, ndim=2] feat_array):
  */
 
@@ -11732,7 +11733,7 @@ static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {&__pyx_n_s_ind, __pyx_k_ind, sizeof(__pyx_k_ind), 0, 0, 1, 1},
   {&__pyx_n_s_ind_doub, __pyx_k_ind_doub, sizeof(__pyx_k_ind_doub), 0, 0, 1, 1},
   {&__pyx_n_s_init, __pyx_k_init, sizeof(__pyx_k_init), 0, 0, 1, 1},
-  {&__pyx_n_s_int64, __pyx_k_int64, sizeof(__pyx_k_int64), 0, 0, 1, 1},
+  {&__pyx_n_s_int, __pyx_k_int, sizeof(__pyx_k_int), 0, 0, 1, 1},
   {&__pyx_n_u_interior, __pyx_k_interior, sizeof(__pyx_k_interior), 0, 1, 0, 1},
   {&__pyx_n_s_interval, __pyx_k_interval, sizeof(__pyx_k_interval), 0, 0, 1, 1},
   {&__pyx_n_s_inv_cti, __pyx_k_inv_cti, sizeof(__pyx_k_inv_cti), 0, 0, 1, 1},
@@ -12089,7 +12090,7 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
  * @cython.boundscheck(False)
  * @cython.wraparound(False)
  * def predict_with_tensor_c(np.ndarray[double, ndim=3] dtm_float,             # <<<<<<<<<<<<<<
- *                       np.ndarray[long, ndim=3] dtm,
+ *                       np.ndarray[np.int_t, ndim=3] dtm,
  *                       np.ndarray[double, ndim=2] feat_array):
  */
   __pyx_tuple__36 = PyTuple_Pack(27, __pyx_n_s_dtm_float, __pyx_n_s_dtm, __pyx_n_s_feat_array, __pyx_n_s_cat_vals_end, __pyx_n_s_res_mat, __pyx_n_s_cn, __pyx_n_s_ri, __pyx_n_s_ind, __pyx_n_s_j, __pyx_n_s_k, __pyx_n_s_curr_val, __pyx_n_s_ind_doub, __pyx_n_s_at_leaf, __pyx_n_s_found_val, __pyx_n_s_isnan_array, __pyx_n_s_THRESH, __pyx_n_s_NODE_VALUE, __pyx_n_s_NODE_TYPE, __pyx_n_s_FEATURE_COL, __pyx_n_s_LEFT_CHILD, __pyx_n_s_RIGHT_CHILD, __pyx_n_s_NA_LEFT, __pyx_n_s_NUM_CAT_VALS, __pyx_n_s_CAT_VALS_START, __pyx_n_s_LEAF, __pyx_n_s_NUMER, __pyx_n_s_CATEG); if (unlikely(!__pyx_tuple__36)) __PYX_ERR(0, 457, __pyx_L1_error)
@@ -12741,7 +12742,7 @@ if (!__Pyx_RefNanny) {
  * @cython.boundscheck(False)
  * @cython.wraparound(False)
  * def predict_with_tensor_c(np.ndarray[double, ndim=3] dtm_float,             # <<<<<<<<<<<<<<
- *                       np.ndarray[long, ndim=3] dtm,
+ *                       np.ndarray[np.int_t, ndim=3] dtm,
  *                       np.ndarray[double, ndim=2] feat_array):
  */
   __pyx_t_1 = PyCFunction_NewEx(&__pyx_mdef_14structureboost_12structure_rf_5predict_with_tensor_c, NULL, __pyx_n_s_structureboost_structure_rf); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 457, __pyx_L1_error)

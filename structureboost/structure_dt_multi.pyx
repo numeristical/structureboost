@@ -16,7 +16,6 @@ import structure_dt as stdt
 cimport numpy as np
 cimport cython
 
-ctypedef np.int64_t dtype_int64_t
 
 class StructureDecisionTreeMulti(StructureDecisionTree):
     """Multi class Decision Tree using graphical structure.
@@ -51,7 +50,7 @@ class StructureDecisionTreeMulti(StructureDecisionTree):
         has_na_vals = np.isnan(split_vec[-1])
         bin_result_vec = np.searchsorted(split_vec,
                                          feature_vec,
-                                         side='right').astype(np.int64)
+                                         side='right').astype(np.int_)
         g_sum_bins, h_sum_bins = get_bin_sums_c_mc(g_h_mat,
                                                 bin_result_vec,
                                                 len(split_vec)+1, self.num_classes)
@@ -91,7 +90,7 @@ class StructureDecisionTreeMulti(StructureDecisionTree):
                        max_num_vertices):
         g_h_val_arr = np.zeros((max_num_vertices,2*self.num_classes))
         g_h_val_arr = get_g_h_feature_sum_matrix(
-                                        feature_vec_node.astype(np.int64),
+                                        feature_vec_node.astype(np.int_),
                                         g_h_train_node,
                                         g_h_val_arr, self.num_classes)
         return g_h_val_arr
@@ -141,7 +140,7 @@ class StructureDecisionTreeMulti(StructureDecisionTree):
 
 
     def get_prediction(self, tree_node, X_te, dict col_to_int_dict):
-        cdef np.ndarray[dtype_int64_t] ind_subset_left, ind_subset_right
+        cdef np.ndarray[np.int_t] ind_subset_left, ind_subset_right
         cdef long vec_len, lsize
         cdef np.ndarray[double,ndim=2] next_vec
 
@@ -151,12 +150,12 @@ class StructureDecisionTreeMulti(StructureDecisionTree):
             split_bool = stdt.get_node_response_df_val(X_te, tree_node, col_to_int_dict)
             vec_len = len(split_bool)
             next_vec = np.zeros((vec_len,self.num_classes))
-            ind_subset_left = np.empty(vec_len, dtype=np.int64)
-            ind_subset_right = np.empty(vec_len, dtype=np.int64)
+            ind_subset_left = np.empty(vec_len, dtype=np.int_)
+            ind_subset_right = np.empty(vec_len, dtype=np.int_)
             ind_subset_left, ind_subset_right, lsize = stdt.separate_indices(
                                                     ind_subset_left,
                                                     ind_subset_right,
-                                                    split_bool.astype(np.int64),
+                                                    split_bool.astype(np.int_),
                                                     vec_len)
             ind_subset_left = ind_subset_left[:lsize]
             ind_subset_right = ind_subset_right[:(vec_len-lsize)]
@@ -177,7 +176,7 @@ class StructureDecisionTreeMulti(StructureDecisionTree):
 
 @cython.boundscheck(False)  # Deactivate bounds checking
 @cython.wraparound(False)   # Deactivate negative indexing.
-def get_g_h_feature_sum_matrix(np.ndarray[dtype_int64_t] feature_vec_node,
+def get_g_h_feature_sum_matrix(np.ndarray[np.int_t] feature_vec_node,
                                np.ndarray[double, ndim=2] g_h_train_node,
                                np.ndarray[double, ndim=2] g_h_val_arr,
                                long num_classes):
@@ -218,7 +217,7 @@ def _get_gh_score_array_mc(np.ndarray[double, ndim=2] g_left,
 @cython.boundscheck(False)  # Deactivate bounds checking
 @cython.wraparound(False)   # Deactivate negative indexing.
 def get_bin_sums_c_mc(np.ndarray[double, ndim=2] g_h_mat,
-                   np.ndarray[dtype_int64_t] bin_result_vec,
+                   np.ndarray[np.int_t] bin_result_vec,
                    long out_vec_size, long num_classes):
     cdef int i,j
     cdef int m = bin_result_vec.shape[0]

@@ -2418,6 +2418,7 @@ static const char __pyx_k_fbp[] = "fbp";
 static const char __pyx_k_fbw[] = "fbw";
 static const char __pyx_k_fit[] = "fit";
 static const char __pyx_k_ind[] = "ind";
+static const char __pyx_k_int[] = "int_";
 static const char __pyx_k_log[] = "log";
 static const char __pyx_k_max[] = "max";
 static const char __pyx_k_min[] = "min";
@@ -2453,7 +2454,6 @@ static const char __pyx_k_dtype[] = "dtype";
 static const char __pyx_k_fixed[] = "fixed";
 static const char __pyx_k_gamma[] = "gamma";
 static const char __pyx_k_index[] = "index";
-static const char __pyx_k_int64[] = "int64";
 static const char __pyx_k_isnan[] = "isnan";
 static const char __pyx_k_items[] = "items";
 static const char __pyx_k_midpt[] = "midpt";
@@ -2965,7 +2965,7 @@ static PyObject *__pyx_n_s_init_pdf_fine;
 static PyObject *__pyx_n_s_initial_growth_steps;
 static PyObject *__pyx_n_s_initial_model;
 static PyObject *__pyx_n_s_initial_pred;
-static PyObject *__pyx_n_s_int64;
+static PyObject *__pyx_n_s_int;
 static PyObject *__pyx_n_s_inv_cti;
 static PyObject *__pyx_n_s_isin;
 static PyObject *__pyx_n_s_isnan;
@@ -7782,7 +7782,7 @@ static PyObject *__pyx_pf_14structureboost_8coarsage_8Coarsage_18_create_rpt_fro
  *     def _create_rpt_from_list(self, partition_list, num_classes):
  *         num_part = len(partition_list)             # <<<<<<<<<<<<<<
  *         max_part_size = np.max(np.array([len(qq) for qq in partition_list]))
- *         rpt = np.zeros((num_part, max_part_size, num_classes), dtype=np.int64)
+ *         rpt = np.zeros((num_part, max_part_size, num_classes), dtype=np.int_)
  */
   __pyx_t_1 = PyObject_Length(__pyx_v_partition_list); if (unlikely(__pyx_t_1 == ((Py_ssize_t)-1))) __PYX_ERR(0, 295, __pyx_L1_error)
   __pyx_v_num_part = __pyx_t_1;
@@ -7791,7 +7791,7 @@ static PyObject *__pyx_pf_14structureboost_8coarsage_8Coarsage_18_create_rpt_fro
  *     def _create_rpt_from_list(self, partition_list, num_classes):
  *         num_part = len(partition_list)
  *         max_part_size = np.max(np.array([len(qq) for qq in partition_list]))             # <<<<<<<<<<<<<<
- *         rpt = np.zeros((num_part, max_part_size, num_classes), dtype=np.int64)
+ *         rpt = np.zeros((num_part, max_part_size, num_classes), dtype=np.int_)
  *         flat_list = [j for sl in partition_list for i in sl for j in i]
  */
   __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_n_s_np); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 296, __pyx_L1_error)
@@ -7900,7 +7900,7 @@ static PyObject *__pyx_pf_14structureboost_8coarsage_8Coarsage_18_create_rpt_fro
   /* "structureboost/coarsage.pyx":297
  *         num_part = len(partition_list)
  *         max_part_size = np.max(np.array([len(qq) for qq in partition_list]))
- *         rpt = np.zeros((num_part, max_part_size, num_classes), dtype=np.int64)             # <<<<<<<<<<<<<<
+ *         rpt = np.zeros((num_part, max_part_size, num_classes), dtype=np.int_)             # <<<<<<<<<<<<<<
  *         flat_list = [j for sl in partition_list for i in sl for j in i]
  *         min_val, max_val = np.min(flat_list), np.max(flat_list)
  */
@@ -7931,7 +7931,7 @@ static PyObject *__pyx_pf_14structureboost_8coarsage_8Coarsage_18_create_rpt_fro
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_GetModuleGlobalName(__pyx_t_6, __pyx_n_s_np); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 297, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_6);
-  __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_t_6, __pyx_n_s_int64); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 297, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_t_6, __pyx_n_s_int); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 297, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
   __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
   if (PyDict_SetItem(__pyx_t_3, __pyx_n_s_dtype, __pyx_t_5) < 0) __PYX_ERR(0, 297, __pyx_L1_error)
@@ -7946,7 +7946,7 @@ static PyObject *__pyx_pf_14structureboost_8coarsage_8Coarsage_18_create_rpt_fro
 
   /* "structureboost/coarsage.pyx":298
  *         max_part_size = np.max(np.array([len(qq) for qq in partition_list]))
- *         rpt = np.zeros((num_part, max_part_size, num_classes), dtype=np.int64)
+ *         rpt = np.zeros((num_part, max_part_size, num_classes), dtype=np.int_)
  *         flat_list = [j for sl in partition_list for i in sl for j in i]             # <<<<<<<<<<<<<<
  *         min_val, max_val = np.min(flat_list), np.max(flat_list)
  *         if (min_val<0) or (max_val>num_classes-1):
@@ -8099,7 +8099,7 @@ static PyObject *__pyx_pf_14structureboost_8coarsage_8Coarsage_18_create_rpt_fro
   __pyx_t_5 = 0;
 
   /* "structureboost/coarsage.pyx":299
- *         rpt = np.zeros((num_part, max_part_size, num_classes), dtype=np.int64)
+ *         rpt = np.zeros((num_part, max_part_size, num_classes), dtype=np.int_)
  *         flat_list = [j for sl in partition_list for i in sl for j in i]
  *         min_val, max_val = np.min(flat_list), np.max(flat_list)             # <<<<<<<<<<<<<<
  *         if (min_val<0) or (max_val>num_classes-1):
@@ -8945,7 +8945,7 @@ static PyObject *__pyx_pf_14structureboost_8coarsage_8Coarsage_22get_tensors_for
  *             num_dt = len(self.dec_tree_list)
  *             max_nodes = np.max(np.array([dt.num_nodes for dt in self.dec_tree_list]))             # <<<<<<<<<<<<<<
  *             max_num_classes = np.max(self.num_classes)
- *             self.pred_tens_int = np.zeros((num_dt, max_nodes, cat_size+6), dtype=np.int64)-1
+ *             self.pred_tens_int = np.zeros((num_dt, max_nodes, cat_size+6), dtype=np.int_)-1
  */
     __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_n_s_np); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 327, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
@@ -9056,7 +9056,7 @@ static PyObject *__pyx_pf_14structureboost_8coarsage_8Coarsage_22get_tensors_for
  *             num_dt = len(self.dec_tree_list)
  *             max_nodes = np.max(np.array([dt.num_nodes for dt in self.dec_tree_list]))
  *             max_num_classes = np.max(self.num_classes)             # <<<<<<<<<<<<<<
- *             self.pred_tens_int = np.zeros((num_dt, max_nodes, cat_size+6), dtype=np.int64)-1
+ *             self.pred_tens_int = np.zeros((num_dt, max_nodes, cat_size+6), dtype=np.int_)-1
  *             self.pred_tens_float = np.zeros((num_dt, max_nodes, max_num_classes+2))
  */
     __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_n_s_np); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 328, __pyx_L1_error)
@@ -9088,7 +9088,7 @@ static PyObject *__pyx_pf_14structureboost_8coarsage_8Coarsage_22get_tensors_for
     /* "structureboost/coarsage.pyx":329
  *             max_nodes = np.max(np.array([dt.num_nodes for dt in self.dec_tree_list]))
  *             max_num_classes = np.max(self.num_classes)
- *             self.pred_tens_int = np.zeros((num_dt, max_nodes, cat_size+6), dtype=np.int64)-1             # <<<<<<<<<<<<<<
+ *             self.pred_tens_int = np.zeros((num_dt, max_nodes, cat_size+6), dtype=np.int_)-1             # <<<<<<<<<<<<<<
  *             self.pred_tens_float = np.zeros((num_dt, max_nodes, max_num_classes+2))
  *             for i in range(num_dt):
  */
@@ -9121,7 +9121,7 @@ static PyObject *__pyx_pf_14structureboost_8coarsage_8Coarsage_22get_tensors_for
     __Pyx_GOTREF(__pyx_t_5);
     __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_np); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 329, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
-    __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_int64); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 329, __pyx_L1_error)
+    __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_int); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 329, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_6);
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
     if (PyDict_SetItem(__pyx_t_5, __pyx_n_s_dtype, __pyx_t_6) < 0) __PYX_ERR(0, 329, __pyx_L1_error)
@@ -9139,7 +9139,7 @@ static PyObject *__pyx_pf_14structureboost_8coarsage_8Coarsage_22get_tensors_for
 
     /* "structureboost/coarsage.pyx":330
  *             max_num_classes = np.max(self.num_classes)
- *             self.pred_tens_int = np.zeros((num_dt, max_nodes, cat_size+6), dtype=np.int64)-1
+ *             self.pred_tens_int = np.zeros((num_dt, max_nodes, cat_size+6), dtype=np.int_)-1
  *             self.pred_tens_float = np.zeros((num_dt, max_nodes, max_num_classes+2))             # <<<<<<<<<<<<<<
  *             for i in range(num_dt):
  *                 self.convert_dt_to_matrix(i)
@@ -9184,7 +9184,7 @@ static PyObject *__pyx_pf_14structureboost_8coarsage_8Coarsage_22get_tensors_for
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
 
     /* "structureboost/coarsage.pyx":331
- *             self.pred_tens_int = np.zeros((num_dt, max_nodes, cat_size+6), dtype=np.int64)-1
+ *             self.pred_tens_int = np.zeros((num_dt, max_nodes, cat_size+6), dtype=np.int_)-1
  *             self.pred_tens_float = np.zeros((num_dt, max_nodes, max_num_classes+2))
  *             for i in range(num_dt):             # <<<<<<<<<<<<<<
  *                 self.convert_dt_to_matrix(i)
@@ -10203,7 +10203,7 @@ static PyObject *__pyx_pf_14structureboost_8coarsage_8Coarsage_24fit(CYTHON_UNUS
  *             self.binpt_vec_list.append(curr_binpt_vec.copy())
  *             self.num_classes.append(len(curr_binpt_vec)-1)             # <<<<<<<<<<<<<<
  *             i+=1
- *         self.num_classes=np.array(self.num_classes, dtype=np.int64)
+ *         self.num_classes=np.array(self.num_classes, dtype=np.int_)
  */
     __pyx_t_7 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_num_classes); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 418, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_7);
@@ -10218,7 +10218,7 @@ static PyObject *__pyx_pf_14structureboost_8coarsage_8Coarsage_24fit(CYTHON_UNUS
  *             self.binpt_vec_list.append(curr_binpt_vec.copy())
  *             self.num_classes.append(len(curr_binpt_vec)-1)
  *             i+=1             # <<<<<<<<<<<<<<
- *         self.num_classes=np.array(self.num_classes, dtype=np.int64)
+ *         self.num_classes=np.array(self.num_classes, dtype=np.int_)
  * 
  */
     __pyx_t_2 = __Pyx_PyInt_AddObjC(__pyx_v_i, __pyx_int_1, 1, 1, 0); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 419, __pyx_L1_error)
@@ -10230,7 +10230,7 @@ static PyObject *__pyx_pf_14structureboost_8coarsage_8Coarsage_24fit(CYTHON_UNUS
   /* "structureboost/coarsage.pyx":420
  *             self.num_classes.append(len(curr_binpt_vec)-1)
  *             i+=1
- *         self.num_classes=np.array(self.num_classes, dtype=np.int64)             # <<<<<<<<<<<<<<
+ *         self.num_classes=np.array(self.num_classes, dtype=np.int_)             # <<<<<<<<<<<<<<
  * 
  *         super().fit(X_train, y_train, eval_set=eval_set, eval_freq=eval_freq,
  */
@@ -10250,7 +10250,7 @@ static PyObject *__pyx_pf_14structureboost_8coarsage_8Coarsage_24fit(CYTHON_UNUS
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_GetModuleGlobalName(__pyx_t_6, __pyx_n_s_np); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 420, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_6);
-  __pyx_t_12 = __Pyx_PyObject_GetAttrStr(__pyx_t_6, __pyx_n_s_int64); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 420, __pyx_L1_error)
+  __pyx_t_12 = __Pyx_PyObject_GetAttrStr(__pyx_t_6, __pyx_n_s_int); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 420, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_12);
   __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
   if (PyDict_SetItem(__pyx_t_2, __pyx_n_s_dtype, __pyx_t_12) < 0) __PYX_ERR(0, 420, __pyx_L1_error)
@@ -10264,7 +10264,7 @@ static PyObject *__pyx_pf_14structureboost_8coarsage_8Coarsage_24fit(CYTHON_UNUS
   __Pyx_DECREF(__pyx_t_12); __pyx_t_12 = 0;
 
   /* "structureboost/coarsage.pyx":422
- *         self.num_classes=np.array(self.num_classes, dtype=np.int64)
+ *         self.num_classes=np.array(self.num_classes, dtype=np.int_)
  * 
  *         super().fit(X_train, y_train, eval_set=eval_set, eval_freq=eval_freq,             # <<<<<<<<<<<<<<
  *             early_stop_past_steps=early_stop_past_steps,
@@ -10320,7 +10320,7 @@ static PyObject *__pyx_pf_14structureboost_8coarsage_8Coarsage_24fit(CYTHON_UNUS
   if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_verbose, __pyx_v_verbose) < 0) __PYX_ERR(0, 422, __pyx_L1_error)
 
   /* "structureboost/coarsage.pyx":422
- *         self.num_classes=np.array(self.num_classes, dtype=np.int64)
+ *         self.num_classes=np.array(self.num_classes, dtype=np.int_)
  * 
  *         super().fit(X_train, y_train, eval_set=eval_set, eval_freq=eval_freq,             # <<<<<<<<<<<<<<
  *             early_stop_past_steps=early_stop_past_steps,
@@ -18899,7 +18899,7 @@ static PyObject *__pyx_pf_14structureboost_8coarsage_12tensor_result_sum_fine(CY
  *     cdef long num_fi = fine_binpts.shape[0]-1
  *     cdef np.ndarray[double, ndim=2] outmat = np.zeros((num_rows,num_fi))             # <<<<<<<<<<<<<<
  *     cdef long fi_ptr = 0
- *     cdef np.ndarray[long] coarse_ptr_arr = np.zeros(nt, dtype=np.int64)
+ *     cdef np.ndarray[long] coarse_ptr_arr = np.zeros(nt, dtype=np.int_)
  */
   __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_np); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 738, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
@@ -18952,7 +18952,7 @@ static PyObject *__pyx_pf_14structureboost_8coarsage_12tensor_result_sum_fine(CY
  *     cdef long num_fi = fine_binpts.shape[0]-1
  *     cdef np.ndarray[double, ndim=2] outmat = np.zeros((num_rows,num_fi))
  *     cdef long fi_ptr = 0             # <<<<<<<<<<<<<<
- *     cdef np.ndarray[long] coarse_ptr_arr = np.zeros(nt, dtype=np.int64)
+ *     cdef np.ndarray[long] coarse_ptr_arr = np.zeros(nt, dtype=np.int_)
  *     cdef long row_ptr = 0
  */
   __pyx_v_fi_ptr = 0;
@@ -18960,7 +18960,7 @@ static PyObject *__pyx_pf_14structureboost_8coarsage_12tensor_result_sum_fine(CY
   /* "structureboost/coarsage.pyx":740
  *     cdef np.ndarray[double, ndim=2] outmat = np.zeros((num_rows,num_fi))
  *     cdef long fi_ptr = 0
- *     cdef np.ndarray[long] coarse_ptr_arr = np.zeros(nt, dtype=np.int64)             # <<<<<<<<<<<<<<
+ *     cdef np.ndarray[long] coarse_ptr_arr = np.zeros(nt, dtype=np.int_)             # <<<<<<<<<<<<<<
  *     cdef long row_ptr = 0
  * 
  */
@@ -18980,7 +18980,7 @@ static PyObject *__pyx_pf_14structureboost_8coarsage_12tensor_result_sum_fine(CY
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_n_s_np); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 740, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_int64); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 740, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_int); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 740, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
   if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_dtype, __pyx_t_2) < 0) __PYX_ERR(0, 740, __pyx_L1_error)
@@ -19006,7 +19006,7 @@ static PyObject *__pyx_pf_14structureboost_8coarsage_12tensor_result_sum_fine(CY
 
   /* "structureboost/coarsage.pyx":741
  *     cdef long fi_ptr = 0
- *     cdef np.ndarray[long] coarse_ptr_arr = np.zeros(nt, dtype=np.int64)
+ *     cdef np.ndarray[long] coarse_ptr_arr = np.zeros(nt, dtype=np.int_)
  *     cdef long row_ptr = 0             # <<<<<<<<<<<<<<
  * 
  *     for fi_ptr in range(num_fi):
@@ -20507,7 +20507,7 @@ static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {&__pyx_n_s_initial_growth_steps, __pyx_k_initial_growth_steps, sizeof(__pyx_k_initial_growth_steps), 0, 0, 1, 1},
   {&__pyx_n_s_initial_model, __pyx_k_initial_model, sizeof(__pyx_k_initial_model), 0, 0, 1, 1},
   {&__pyx_n_s_initial_pred, __pyx_k_initial_pred, sizeof(__pyx_k_initial_pred), 0, 0, 1, 1},
-  {&__pyx_n_s_int64, __pyx_k_int64, sizeof(__pyx_k_int64), 0, 0, 1, 1},
+  {&__pyx_n_s_int, __pyx_k_int, sizeof(__pyx_k_int), 0, 0, 1, 1},
   {&__pyx_n_s_inv_cti, __pyx_k_inv_cti, sizeof(__pyx_k_inv_cti), 0, 0, 1, 1},
   {&__pyx_n_s_isin, __pyx_k_isin, sizeof(__pyx_k_isin), 0, 0, 1, 1},
   {&__pyx_n_s_isnan, __pyx_k_isnan, sizeof(__pyx_k_isnan), 0, 0, 1, 1},

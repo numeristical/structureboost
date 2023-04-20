@@ -251,7 +251,7 @@ class StructureBoostMulti(StructureBoost):
     def _create_rpt_from_list(self, partition_list):
         num_part = len(partition_list)
         max_part_size = np.max(np.array([len(qq) for qq in partition_list]))
-        rpt = np.zeros((num_part, max_part_size, self.num_classes), dtype=np.int64)
+        rpt = np.zeros((num_part, max_part_size, self.num_classes), dtype=np.int_)
         flat_list = [j for sl in partition_list for i in sl for j in i]
         min_val, max_val = np.min(flat_list), np.max(flat_list)
         if (min_val<0) or (max_val>self.num_classes-1):
@@ -266,9 +266,9 @@ class StructureBoostMulti(StructureBoost):
 
     def _process_y_data(self, y_data):
         if type(y_data) == pd.Series:
-            y_data = y_data.to_numpy().astype(np.int64)
+            y_data = y_data.to_numpy().astype(np.int_)
         elif type(y_data) == np.ndarray:
-            y_data = y_data.astype(np.int64)
+            y_data = y_data.astype(np.int_)
         #y_data = get_one_hot_mat(y_data, self.num_classes)
         return(y_data)
 
@@ -415,7 +415,7 @@ class StructureBoostMulti(StructureBoost):
             cat_size = np.max(np.array([dt.get_max_split_size() for dt in self.dec_tree_list]))
             num_dt = len(self.dec_tree_list)
             max_nodes = np.max(np.array([dt.num_nodes for dt in self.dec_tree_list]))
-            self.pred_tens_int = np.zeros((num_dt, max_nodes, cat_size+6), dtype=np.int64)-1
+            self.pred_tens_int = np.zeros((num_dt, max_nodes, cat_size+6), dtype=np.int_)-1
             self.pred_tens_float = np.zeros((num_dt, max_nodes, self.num_classes+2))
             for i in range(num_dt):
                 self.convert_dt_to_matrix(i)
@@ -536,15 +536,11 @@ def predict_with_tensor_c_mc(np.ndarray[double, ndim=3] dtm_float,
     return(res_tens)
 
 
-ctypedef np.int64_t dtype_int64_t 
-
-
-
 @cython.boundscheck(False)  # Deactivate bounds checking
 @cython.wraparound(False)   # Deactivate negative indexing.
 @cython.nonecheck(False)
 @cython.cdivision(True)
-def c_entropy_link_der_12_vec_sp(np.ndarray[dtype_int64_t] y_true,
+def c_entropy_link_der_12_vec_sp(np.ndarray[np.int_t] y_true,
                          double[:,:] exp_phi_pred,
                          double[:] exp_phi_sum_vec):
     """In this variant, y_true is just a vector of correct classes (not one hot)"""
@@ -567,11 +563,11 @@ def c_entropy_link_der_12_vec_sp(np.ndarray[dtype_int64_t] y_true,
 @cython.wraparound(False)   # Deactivate negative indexing.
 @cython.nonecheck(False)
 @cython.cdivision(True)
-def c_str_entropy_link_der_12_vec_sp(np.ndarray[dtype_int64_t] y_true,
+def c_str_entropy_link_der_12_vec_sp(np.ndarray[np.int_t] y_true,
                                  double[:,:] exp_phi_pred,
                                  double[:] exp_phi_sum_vec, 
                                  double[:] weight_vec, 
-                                 dtype_int64_t[:,:,:] rp_tensor):
+                                 long[:,:,:] rp_tensor):
     cdef long N = len(y_true)
     cdef long m = exp_phi_pred.shape[1]
     cdef long ind = 0
@@ -617,10 +613,10 @@ def c_str_entropy_link_der_12_vec_sp(np.ndarray[dtype_int64_t] y_true,
 @cython.wraparound(False)   # Deactivate negative indexing.
 @cython.nonecheck(False)
 @cython.cdivision(True)
-def get_one_hot_mat(np.ndarray[dtype_int64_t] y_true,
+def get_one_hot_mat(np.ndarray[np.int_t] y_true,
                          int num_classes):
     cdef int N = y_true.shape[0]
-    cdef np.ndarray[dtype_int64_t, ndim=2] Y = np.zeros((N,num_classes), dtype=np.int64)
+    cdef np.ndarray[np.int_t, ndim=2] Y = np.zeros((N,num_classes), dtype=np.int_)
     
     for i in range(N):
         Y[i,y_true[i]]= 1

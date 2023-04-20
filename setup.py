@@ -22,7 +22,7 @@ setup(
     license="MIT",
     license_files=['LICENSE'],
     description="StructureBoost is a Python package for gradient boosting using categorical structure.  See documentation at: https://structureboost.readthedocs.io/",
-    version='0.4.0',
+    version='0.4.1',
     long_description=README,
     zip_safe=False,
     url='https://github.com/numeristical/structureboost',

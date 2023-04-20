@@ -371,7 +371,7 @@ class StructureRF(object):
             cat_size = np.max(np.array([dt.get_max_split_size() for dt in self.dec_tree_list]))
             num_dt = len(self.dec_tree_list)
             max_nodes = np.max(np.array([dt.num_nodes for dt in self.dec_tree_list]))
-            self.pred_tens_int = np.zeros((num_dt, max_nodes, cat_size+6), dtype=np.int64)-1
+            self.pred_tens_int = np.zeros((num_dt, max_nodes, cat_size+6), dtype=np.int_)-1
             self.pred_tens_float = np.zeros((num_dt, max_nodes, 3))
             for i in range(num_dt):
                 self.convert_dt_to_matrix(i)
@@ -455,7 +455,7 @@ def randomize_node_na_dir_weighted(curr_node):
 @cython.boundscheck(False)
 @cython.wraparound(False)
 def predict_with_tensor_c(np.ndarray[double, ndim=3] dtm_float,
-                      np.ndarray[long, ndim=3] dtm,
+                      np.ndarray[np.int_t, ndim=3] dtm,
                       np.ndarray[double, ndim=2] feat_array):
     
     cdef long cat_vals_end

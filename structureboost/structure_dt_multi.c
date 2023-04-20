@@ -1212,15 +1212,6 @@ typedef npy_double __pyx_t_5numpy_double_t;
  * ctypedef npy_cfloat      cfloat_t
  */
 typedef npy_longdouble __pyx_t_5numpy_longdouble_t;
-
-/* "structureboost/structure_dt_multi.pyx":19
- * cimport cython
- * 
- * ctypedef np.int64_t dtype_int64_t             # <<<<<<<<<<<<<<
- * 
- * class StructureDecisionTreeMulti(StructureDecisionTree):
- */
-typedef __pyx_t_5numpy_int64_t __pyx_t_14structureboost_18structure_dt_multi_dtype_int64_t;
 /* Declarations.proto */
 #if CYTHON_CCOMPLEX
   #ifdef __cplusplus
@@ -2233,7 +2224,7 @@ static PyTypeObject *__pyx_ptype_5numpy_ufunc = 0;
 
 /* Module declarations from 'structureboost.structure_dt_multi' */
 static __Pyx_TypeInfo __Pyx_TypeInfo_double = { "double", NULL, sizeof(double), { 0 }, 0, 'R', 0, 0 };
-static __Pyx_TypeInfo __Pyx_TypeInfo_nn___pyx_t_14structureboost_18structure_dt_multi_dtype_int64_t = { "dtype_int64_t", NULL, sizeof(__pyx_t_14structureboost_18structure_dt_multi_dtype_int64_t), { 0 }, 0, IS_UNSIGNED(__pyx_t_14structureboost_18structure_dt_multi_dtype_int64_t) ? 'U' : 'I', IS_UNSIGNED(__pyx_t_14structureboost_18structure_dt_multi_dtype_int64_t), 0 };
+static __Pyx_TypeInfo __Pyx_TypeInfo_nn___pyx_t_5numpy_int_t = { "int_t", NULL, sizeof(__pyx_t_5numpy_int_t), { 0 }, 0, IS_UNSIGNED(__pyx_t_5numpy_int_t) ? 'U' : 'I', IS_UNSIGNED(__pyx_t_5numpy_int_t), 0 };
 #define __Pyx_MODULE_NAME "structureboost.structure_dt_multi"
 extern int __pyx_module_is_main_structureboost__structure_dt_multi;
 int __pyx_module_is_main_structureboost__structure_dt_multi = 0;
@@ -2251,6 +2242,7 @@ static const char __pyx_k_sp[] = "sp";
 static const char __pyx_k_doc[] = "__doc__";
 static const char __pyx_k_ind[] = "ind";
 static const char __pyx_k_inf[] = "inf";
+static const char __pyx_k_int[] = "int_";
 static const char __pyx_k_lni[] = "lni";
 static const char __pyx_k_lvi[] = "lvi";
 static const char __pyx_k_sum[] = "sum";
@@ -2273,7 +2265,6 @@ static const char __pyx_k_g_vec[] = "g_vec";
 static const char __pyx_k_gamma[] = "gamma";
 static const char __pyx_k_h_sum[] = "h_sum";
 static const char __pyx_k_h_vec[] = "h_vec";
-static const char __pyx_k_int64[] = "int64";
 static const char __pyx_k_isnan[] = "isnan";
 static const char __pyx_k_limit[] = "limit";
 static const char __pyx_k_lsize[] = "lsize";
@@ -2496,7 +2487,7 @@ static PyObject *__pyx_n_s_ind_subset_left;
 static PyObject *__pyx_n_s_ind_subset_right;
 static PyObject *__pyx_n_s_inf;
 static PyObject *__pyx_n_s_init;
-static PyObject *__pyx_n_s_int64;
+static PyObject *__pyx_n_s_int;
 static PyObject *__pyx_n_s_isnan;
 static PyObject *__pyx_n_s_j;
 static PyObject *__pyx_n_u_leaf;
@@ -2623,7 +2614,7 @@ static PyObject *__pyx_codeobj__17;
 static PyObject *__pyx_codeobj__18;
 /* Late includes */
 
-/* "structureboost/structure_dt_multi.pyx":27
+/* "structureboost/structure_dt_multi.pyx":26
  *     """
  * 
  *     def __init__(self, feature_configs, feature_graphs, num_classes,             # <<<<<<<<<<<<<<
@@ -2692,19 +2683,19 @@ static PyObject *__pyx_pw_14structureboost_18structure_dt_multi_26StructureDecis
         case  1:
         if (likely((values[1] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_feature_configs)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("__init__", 0, 4, 9, 1); __PYX_ERR(0, 27, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("__init__", 0, 4, 9, 1); __PYX_ERR(0, 26, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  2:
         if (likely((values[2] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_feature_graphs)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("__init__", 0, 4, 9, 2); __PYX_ERR(0, 27, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("__init__", 0, 4, 9, 2); __PYX_ERR(0, 26, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  3:
         if (likely((values[3] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_num_classes)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("__init__", 0, 4, 9, 3); __PYX_ERR(0, 27, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("__init__", 0, 4, 9, 3); __PYX_ERR(0, 26, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  4:
@@ -2738,7 +2729,7 @@ static PyObject *__pyx_pw_14structureboost_18structure_dt_multi_26StructureDecis
         }
       }
       if (unlikely(kw_args > 0)) {
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "__init__") < 0)) __PYX_ERR(0, 27, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "__init__") < 0)) __PYX_ERR(0, 26, __pyx_L3_error)
       }
     } else {
       switch (PyTuple_GET_SIZE(__pyx_args)) {
@@ -2772,7 +2763,7 @@ static PyObject *__pyx_pw_14structureboost_18structure_dt_multi_26StructureDecis
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("__init__", 0, 4, 9, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 27, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("__init__", 0, 4, 9, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 26, __pyx_L3_error)
   __pyx_L3_error:;
   __Pyx_AddTraceback("structureboost.structure_dt_multi.StructureDecisionTreeMulti.__init__", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
@@ -2797,9 +2788,9 @@ static PyObject *__pyx_pf_14structureboost_18structure_dt_multi_26StructureDecis
   int __pyx_clineno = 0;
   __Pyx_TraceFrameInit(__pyx_codeobj_)
   __Pyx_RefNannySetupContext("__init__", 0);
-  __Pyx_TraceCall("__init__", __pyx_f[0], 27, 0, __PYX_ERR(0, 27, __pyx_L1_error));
+  __Pyx_TraceCall("__init__", __pyx_f[0], 26, 0, __PYX_ERR(0, 26, __pyx_L1_error));
 
-  /* "structureboost/structure_dt_multi.pyx":31
+  /* "structureboost/structure_dt_multi.pyx":30
  *                  max_depth=3, gamma=0, feat_sample_by_node=1,
  *                  reg_lambda=1):
  *         super().__init__(feature_configs=feature_configs,             # <<<<<<<<<<<<<<
@@ -2807,9 +2798,9 @@ static PyObject *__pyx_pf_14structureboost_18structure_dt_multi_26StructureDecis
  *                          max_depth=max_depth, gamma=gamma,
  */
   __pyx_t_1 = __Pyx_CyFunction_GetClassObj(__pyx_self);
-  if (!__pyx_t_1) { PyErr_SetString(PyExc_SystemError, "super(): empty __class__ cell"); __PYX_ERR(0, 31, __pyx_L1_error) }
+  if (!__pyx_t_1) { PyErr_SetString(PyExc_SystemError, "super(): empty __class__ cell"); __PYX_ERR(0, 30, __pyx_L1_error) }
   __Pyx_INCREF(__pyx_t_1);
-  __pyx_t_2 = PyTuple_New(2); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 31, __pyx_L1_error)
+  __pyx_t_2 = PyTuple_New(2); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 30, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_GIVEREF(__pyx_t_1);
   PyTuple_SET_ITEM(__pyx_t_2, 0, __pyx_t_1);
@@ -2817,85 +2808,85 @@ static PyObject *__pyx_pf_14structureboost_18structure_dt_multi_26StructureDecis
   __Pyx_GIVEREF(__pyx_v_self);
   PyTuple_SET_ITEM(__pyx_t_2, 1, __pyx_v_self);
   __pyx_t_1 = 0;
-  __pyx_t_1 = __Pyx_PyObject_Call(__pyx_builtin_super, __pyx_t_2, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 31, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_Call(__pyx_builtin_super, __pyx_t_2, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 30, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_init); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 31, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_init); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 30, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_t_1 = __Pyx_PyDict_NewPresized(7); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 31, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyDict_NewPresized(7); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 30, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_feature_configs, __pyx_v_feature_configs) < 0) __PYX_ERR(0, 31, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_feature_configs, __pyx_v_feature_configs) < 0) __PYX_ERR(0, 30, __pyx_L1_error)
 
-  /* "structureboost/structure_dt_multi.pyx":32
+  /* "structureboost/structure_dt_multi.pyx":31
  *                  reg_lambda=1):
  *         super().__init__(feature_configs=feature_configs,
  *                          min_size_split=min_size_split,             # <<<<<<<<<<<<<<
  *                          max_depth=max_depth, gamma=gamma,
  *                          feat_sample_by_node=feat_sample_by_node,
  */
-  if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_min_size_split, __pyx_v_min_size_split) < 0) __PYX_ERR(0, 31, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_min_size_split, __pyx_v_min_size_split) < 0) __PYX_ERR(0, 30, __pyx_L1_error)
 
-  /* "structureboost/structure_dt_multi.pyx":33
+  /* "structureboost/structure_dt_multi.pyx":32
  *         super().__init__(feature_configs=feature_configs,
  *                          min_size_split=min_size_split,
  *                          max_depth=max_depth, gamma=gamma,             # <<<<<<<<<<<<<<
  *                          feat_sample_by_node=feat_sample_by_node,
  *                          reg_lambda=reg_lambda,
  */
-  if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_max_depth, __pyx_v_max_depth) < 0) __PYX_ERR(0, 31, __pyx_L1_error)
-  if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_gamma, __pyx_v_gamma) < 0) __PYX_ERR(0, 31, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_max_depth, __pyx_v_max_depth) < 0) __PYX_ERR(0, 30, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_gamma, __pyx_v_gamma) < 0) __PYX_ERR(0, 30, __pyx_L1_error)
 
-  /* "structureboost/structure_dt_multi.pyx":34
+  /* "structureboost/structure_dt_multi.pyx":33
  *                          min_size_split=min_size_split,
  *                          max_depth=max_depth, gamma=gamma,
  *                          feat_sample_by_node=feat_sample_by_node,             # <<<<<<<<<<<<<<
  *                          reg_lambda=reg_lambda,
  *                          feature_graphs=feature_graphs)
  */
-  if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_feat_sample_by_node, __pyx_v_feat_sample_by_node) < 0) __PYX_ERR(0, 31, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_feat_sample_by_node, __pyx_v_feat_sample_by_node) < 0) __PYX_ERR(0, 30, __pyx_L1_error)
 
-  /* "structureboost/structure_dt_multi.pyx":35
+  /* "structureboost/structure_dt_multi.pyx":34
  *                          max_depth=max_depth, gamma=gamma,
  *                          feat_sample_by_node=feat_sample_by_node,
  *                          reg_lambda=reg_lambda,             # <<<<<<<<<<<<<<
  *                          feature_graphs=feature_graphs)
  *         self.num_classes = num_classes
  */
-  if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_reg_lambda, __pyx_v_reg_lambda) < 0) __PYX_ERR(0, 31, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_reg_lambda, __pyx_v_reg_lambda) < 0) __PYX_ERR(0, 30, __pyx_L1_error)
 
-  /* "structureboost/structure_dt_multi.pyx":36
+  /* "structureboost/structure_dt_multi.pyx":35
  *                          feat_sample_by_node=feat_sample_by_node,
  *                          reg_lambda=reg_lambda,
  *                          feature_graphs=feature_graphs)             # <<<<<<<<<<<<<<
  *         self.num_classes = num_classes
  * 
  */
-  if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_feature_graphs, __pyx_v_feature_graphs) < 0) __PYX_ERR(0, 31, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_feature_graphs, __pyx_v_feature_graphs) < 0) __PYX_ERR(0, 30, __pyx_L1_error)
 
-  /* "structureboost/structure_dt_multi.pyx":31
+  /* "structureboost/structure_dt_multi.pyx":30
  *                  max_depth=3, gamma=0, feat_sample_by_node=1,
  *                  reg_lambda=1):
  *         super().__init__(feature_configs=feature_configs,             # <<<<<<<<<<<<<<
  *                          min_size_split=min_size_split,
  *                          max_depth=max_depth, gamma=gamma,
  */
-  __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_empty_tuple, __pyx_t_1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 31, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_empty_tuple, __pyx_t_1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 30, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-  /* "structureboost/structure_dt_multi.pyx":37
+  /* "structureboost/structure_dt_multi.pyx":36
  *                          reg_lambda=reg_lambda,
  *                          feature_graphs=feature_graphs)
  *         self.num_classes = num_classes             # <<<<<<<<<<<<<<
  * 
  *     def _node_summary_gh(self, g_h_mat):
  */
-  if (__Pyx_PyObject_SetAttrStr(__pyx_v_self, __pyx_n_s_num_classes, __pyx_v_num_classes) < 0) __PYX_ERR(0, 37, __pyx_L1_error)
+  if (__Pyx_PyObject_SetAttrStr(__pyx_v_self, __pyx_n_s_num_classes, __pyx_v_num_classes) < 0) __PYX_ERR(0, 36, __pyx_L1_error)
 
-  /* "structureboost/structure_dt_multi.pyx":27
+  /* "structureboost/structure_dt_multi.pyx":26
  *     """
  * 
  *     def __init__(self, feature_configs, feature_graphs, num_classes,             # <<<<<<<<<<<<<<
@@ -2919,7 +2910,7 @@ static PyObject *__pyx_pf_14structureboost_18structure_dt_multi_26StructureDecis
   return __pyx_r;
 }
 
-/* "structureboost/structure_dt_multi.pyx":39
+/* "structureboost/structure_dt_multi.pyx":38
  *         self.num_classes = num_classes
  * 
  *     def _node_summary_gh(self, g_h_mat):             # <<<<<<<<<<<<<<
@@ -2962,11 +2953,11 @@ static PyObject *__pyx_pw_14structureboost_18structure_dt_multi_26StructureDecis
         case  1:
         if (likely((values[1] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_g_h_mat)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("_node_summary_gh", 1, 2, 2, 1); __PYX_ERR(0, 39, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("_node_summary_gh", 1, 2, 2, 1); __PYX_ERR(0, 38, __pyx_L3_error)
         }
       }
       if (unlikely(kw_args > 0)) {
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "_node_summary_gh") < 0)) __PYX_ERR(0, 39, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "_node_summary_gh") < 0)) __PYX_ERR(0, 38, __pyx_L3_error)
       }
     } else if (PyTuple_GET_SIZE(__pyx_args) != 2) {
       goto __pyx_L5_argtuple_error;
@@ -2979,7 +2970,7 @@ static PyObject *__pyx_pw_14structureboost_18structure_dt_multi_26StructureDecis
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("_node_summary_gh", 1, 2, 2, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 39, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("_node_summary_gh", 1, 2, 2, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 38, __pyx_L3_error)
   __pyx_L3_error:;
   __Pyx_AddTraceback("structureboost.structure_dt_multi.StructureDecisionTreeMulti._node_summary_gh", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
@@ -3009,28 +3000,28 @@ static PyObject *__pyx_pf_14structureboost_18structure_dt_multi_26StructureDecis
   int __pyx_clineno = 0;
   __Pyx_TraceFrameInit(__pyx_codeobj__2)
   __Pyx_RefNannySetupContext("_node_summary_gh", 0);
-  __Pyx_TraceCall("_node_summary_gh", __pyx_f[0], 39, 0, __PYX_ERR(0, 39, __pyx_L1_error));
+  __Pyx_TraceCall("_node_summary_gh", __pyx_f[0], 38, 0, __PYX_ERR(0, 38, __pyx_L1_error));
 
-  /* "structureboost/structure_dt_multi.pyx":40
+  /* "structureboost/structure_dt_multi.pyx":39
  * 
  *     def _node_summary_gh(self, g_h_mat):
  *         if (g_h_mat.shape[0] == 0):             # <<<<<<<<<<<<<<
  *             return np.zeros(self.num_classes)
  *         else:
  */
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_g_h_mat, __pyx_n_s_shape); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 40, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_g_h_mat, __pyx_n_s_shape); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 39, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = __Pyx_GetItemInt(__pyx_t_1, 0, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 40, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_GetItemInt(__pyx_t_1, 0, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 39, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_t_1 = __Pyx_PyInt_EqObjC(__pyx_t_2, __pyx_int_0, 0, 0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 40, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyInt_EqObjC(__pyx_t_2, __pyx_int_0, 0, 0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 39, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __pyx_t_3 = __Pyx_PyObject_IsTrue(__pyx_t_1); if (unlikely(__pyx_t_3 < 0)) __PYX_ERR(0, 40, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyObject_IsTrue(__pyx_t_1); if (unlikely(__pyx_t_3 < 0)) __PYX_ERR(0, 39, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   if (__pyx_t_3) {
 
-    /* "structureboost/structure_dt_multi.pyx":41
+    /* "structureboost/structure_dt_multi.pyx":40
  *     def _node_summary_gh(self, g_h_mat):
  *         if (g_h_mat.shape[0] == 0):
  *             return np.zeros(self.num_classes)             # <<<<<<<<<<<<<<
@@ -3038,12 +3029,12 @@ static PyObject *__pyx_pf_14structureboost_18structure_dt_multi_26StructureDecis
  *             g_vec = np.sum(g_h_mat[:,:self.num_classes], axis=0)
  */
     __Pyx_XDECREF(__pyx_r);
-    __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_np); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 41, __pyx_L1_error)
+    __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_np); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 40, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
-    __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_zeros); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 41, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_zeros); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 40, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-    __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_num_classes); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 41, __pyx_L1_error)
+    __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_num_classes); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 40, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
     __pyx_t_5 = NULL;
     if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_4))) {
@@ -3058,14 +3049,14 @@ static PyObject *__pyx_pf_14structureboost_18structure_dt_multi_26StructureDecis
     __pyx_t_1 = (__pyx_t_5) ? __Pyx_PyObject_Call2Args(__pyx_t_4, __pyx_t_5, __pyx_t_2) : __Pyx_PyObject_CallOneArg(__pyx_t_4, __pyx_t_2);
     __Pyx_XDECREF(__pyx_t_5); __pyx_t_5 = 0;
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-    if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 41, __pyx_L1_error)
+    if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 40, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
     __pyx_r = __pyx_t_1;
     __pyx_t_1 = 0;
     goto __pyx_L0;
 
-    /* "structureboost/structure_dt_multi.pyx":40
+    /* "structureboost/structure_dt_multi.pyx":39
  * 
  *     def _node_summary_gh(self, g_h_mat):
  *         if (g_h_mat.shape[0] == 0):             # <<<<<<<<<<<<<<
@@ -3074,7 +3065,7 @@ static PyObject *__pyx_pf_14structureboost_18structure_dt_multi_26StructureDecis
  */
   }
 
-  /* "structureboost/structure_dt_multi.pyx":43
+  /* "structureboost/structure_dt_multi.pyx":42
  *             return np.zeros(self.num_classes)
  *         else:
  *             g_vec = np.sum(g_h_mat[:,:self.num_classes], axis=0)             # <<<<<<<<<<<<<<
@@ -3082,17 +3073,17 @@ static PyObject *__pyx_pf_14structureboost_18structure_dt_multi_26StructureDecis
  *             out_val = -(g_vec/(h_vec+self.reg_lambda))
  */
   /*else*/ {
-    __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_np); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 43, __pyx_L1_error)
+    __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_np); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 42, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
-    __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_sum); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 43, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_sum); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 42, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-    __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_num_classes); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 43, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_num_classes); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 42, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
-    __pyx_t_2 = PySlice_New(Py_None, __pyx_t_1, Py_None); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 43, __pyx_L1_error)
+    __pyx_t_2 = PySlice_New(Py_None, __pyx_t_1, Py_None); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 42, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-    __pyx_t_1 = PyTuple_New(2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 43, __pyx_L1_error)
+    __pyx_t_1 = PyTuple_New(2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 42, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_INCREF(__pyx_slice__3);
     __Pyx_GIVEREF(__pyx_slice__3);
@@ -3100,18 +3091,18 @@ static PyObject *__pyx_pf_14structureboost_18structure_dt_multi_26StructureDecis
     __Pyx_GIVEREF(__pyx_t_2);
     PyTuple_SET_ITEM(__pyx_t_1, 1, __pyx_t_2);
     __pyx_t_2 = 0;
-    __pyx_t_2 = __Pyx_PyObject_GetItem(__pyx_v_g_h_mat, __pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 43, __pyx_L1_error)
+    __pyx_t_2 = __Pyx_PyObject_GetItem(__pyx_v_g_h_mat, __pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 42, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-    __pyx_t_1 = PyTuple_New(1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 43, __pyx_L1_error)
+    __pyx_t_1 = PyTuple_New(1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 42, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_GIVEREF(__pyx_t_2);
     PyTuple_SET_ITEM(__pyx_t_1, 0, __pyx_t_2);
     __pyx_t_2 = 0;
-    __pyx_t_2 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 43, __pyx_L1_error)
+    __pyx_t_2 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 42, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
-    if (PyDict_SetItem(__pyx_t_2, __pyx_n_s_axis, __pyx_int_0) < 0) __PYX_ERR(0, 43, __pyx_L1_error)
-    __pyx_t_5 = __Pyx_PyObject_Call(__pyx_t_4, __pyx_t_1, __pyx_t_2); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 43, __pyx_L1_error)
+    if (PyDict_SetItem(__pyx_t_2, __pyx_n_s_axis, __pyx_int_0) < 0) __PYX_ERR(0, 42, __pyx_L1_error)
+    __pyx_t_5 = __Pyx_PyObject_Call(__pyx_t_4, __pyx_t_1, __pyx_t_2); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 42, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_5);
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
@@ -3119,30 +3110,30 @@ static PyObject *__pyx_pf_14structureboost_18structure_dt_multi_26StructureDecis
     __pyx_v_g_vec = __pyx_t_5;
     __pyx_t_5 = 0;
 
-    /* "structureboost/structure_dt_multi.pyx":44
+    /* "structureboost/structure_dt_multi.pyx":43
  *         else:
  *             g_vec = np.sum(g_h_mat[:,:self.num_classes], axis=0)
  *             h_vec = np.sum(g_h_mat[:,self.num_classes:2*self.num_classes], axis=0)             # <<<<<<<<<<<<<<
  *             out_val = -(g_vec/(h_vec+self.reg_lambda))
  *             return(out_val)
  */
-    __Pyx_GetModuleGlobalName(__pyx_t_5, __pyx_n_s_np); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 44, __pyx_L1_error)
+    __Pyx_GetModuleGlobalName(__pyx_t_5, __pyx_n_s_np); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 43, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_5);
-    __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_5, __pyx_n_s_sum); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 44, __pyx_L1_error)
+    __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_5, __pyx_n_s_sum); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 43, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-    __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_num_classes); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 44, __pyx_L1_error)
+    __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_num_classes); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 43, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_5);
-    __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_num_classes); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 44, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_num_classes); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 43, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
-    __pyx_t_4 = PyNumber_Multiply(__pyx_int_2, __pyx_t_1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 44, __pyx_L1_error)
+    __pyx_t_4 = PyNumber_Multiply(__pyx_int_2, __pyx_t_1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 43, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-    __pyx_t_1 = PySlice_New(__pyx_t_5, __pyx_t_4, Py_None); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 44, __pyx_L1_error)
+    __pyx_t_1 = PySlice_New(__pyx_t_5, __pyx_t_4, Py_None); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 43, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-    __pyx_t_4 = PyTuple_New(2); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 44, __pyx_L1_error)
+    __pyx_t_4 = PyTuple_New(2); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 43, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
     __Pyx_INCREF(__pyx_slice__3);
     __Pyx_GIVEREF(__pyx_slice__3);
@@ -3150,18 +3141,18 @@ static PyObject *__pyx_pf_14structureboost_18structure_dt_multi_26StructureDecis
     __Pyx_GIVEREF(__pyx_t_1);
     PyTuple_SET_ITEM(__pyx_t_4, 1, __pyx_t_1);
     __pyx_t_1 = 0;
-    __pyx_t_1 = __Pyx_PyObject_GetItem(__pyx_v_g_h_mat, __pyx_t_4); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 44, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyObject_GetItem(__pyx_v_g_h_mat, __pyx_t_4); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 43, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-    __pyx_t_4 = PyTuple_New(1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 44, __pyx_L1_error)
+    __pyx_t_4 = PyTuple_New(1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 43, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
     __Pyx_GIVEREF(__pyx_t_1);
     PyTuple_SET_ITEM(__pyx_t_4, 0, __pyx_t_1);
     __pyx_t_1 = 0;
-    __pyx_t_1 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 44, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 43, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
-    if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_axis, __pyx_int_0) < 0) __PYX_ERR(0, 44, __pyx_L1_error)
-    __pyx_t_5 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_4, __pyx_t_1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 44, __pyx_L1_error)
+    if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_axis, __pyx_int_0) < 0) __PYX_ERR(0, 43, __pyx_L1_error)
+    __pyx_t_5 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_4, __pyx_t_1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 43, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_5);
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
@@ -3169,28 +3160,28 @@ static PyObject *__pyx_pf_14structureboost_18structure_dt_multi_26StructureDecis
     __pyx_v_h_vec = __pyx_t_5;
     __pyx_t_5 = 0;
 
-    /* "structureboost/structure_dt_multi.pyx":45
+    /* "structureboost/structure_dt_multi.pyx":44
  *             g_vec = np.sum(g_h_mat[:,:self.num_classes], axis=0)
  *             h_vec = np.sum(g_h_mat[:,self.num_classes:2*self.num_classes], axis=0)
  *             out_val = -(g_vec/(h_vec+self.reg_lambda))             # <<<<<<<<<<<<<<
  *             return(out_val)
  * 
  */
-    __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_reg_lambda); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 45, __pyx_L1_error)
+    __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_reg_lambda); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 44, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_5);
-    __pyx_t_1 = PyNumber_Add(__pyx_v_h_vec, __pyx_t_5); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 45, __pyx_L1_error)
+    __pyx_t_1 = PyNumber_Add(__pyx_v_h_vec, __pyx_t_5); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 44, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-    __pyx_t_5 = __Pyx_PyNumber_Divide(__pyx_v_g_vec, __pyx_t_1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 45, __pyx_L1_error)
+    __pyx_t_5 = __Pyx_PyNumber_Divide(__pyx_v_g_vec, __pyx_t_1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 44, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_5);
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-    __pyx_t_1 = PyNumber_Negative(__pyx_t_5); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 45, __pyx_L1_error)
+    __pyx_t_1 = PyNumber_Negative(__pyx_t_5); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 44, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
     __pyx_v_out_val = __pyx_t_1;
     __pyx_t_1 = 0;
 
-    /* "structureboost/structure_dt_multi.pyx":46
+    /* "structureboost/structure_dt_multi.pyx":45
  *             h_vec = np.sum(g_h_mat[:,self.num_classes:2*self.num_classes], axis=0)
  *             out_val = -(g_vec/(h_vec+self.reg_lambda))
  *             return(out_val)             # <<<<<<<<<<<<<<
@@ -3203,7 +3194,7 @@ static PyObject *__pyx_pf_14structureboost_18structure_dt_multi_26StructureDecis
     goto __pyx_L0;
   }
 
-  /* "structureboost/structure_dt_multi.pyx":39
+  /* "structureboost/structure_dt_multi.pyx":38
  *         self.num_classes = num_classes
  * 
  *     def _node_summary_gh(self, g_h_mat):             # <<<<<<<<<<<<<<
@@ -3229,7 +3220,7 @@ static PyObject *__pyx_pf_14structureboost_18structure_dt_multi_26StructureDecis
   return __pyx_r;
 }
 
-/* "structureboost/structure_dt_multi.pyx":48
+/* "structureboost/structure_dt_multi.pyx":47
  *             return(out_val)
  * 
  *     def _evaluate_numerical_splits(self, feature_vec, g_h_mat,             # <<<<<<<<<<<<<<
@@ -3278,23 +3269,23 @@ static PyObject *__pyx_pw_14structureboost_18structure_dt_multi_26StructureDecis
         case  1:
         if (likely((values[1] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_feature_vec)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("_evaluate_numerical_splits", 1, 4, 4, 1); __PYX_ERR(0, 48, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("_evaluate_numerical_splits", 1, 4, 4, 1); __PYX_ERR(0, 47, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  2:
         if (likely((values[2] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_g_h_mat)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("_evaluate_numerical_splits", 1, 4, 4, 2); __PYX_ERR(0, 48, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("_evaluate_numerical_splits", 1, 4, 4, 2); __PYX_ERR(0, 47, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  3:
         if (likely((values[3] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_split_vec)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("_evaluate_numerical_splits", 1, 4, 4, 3); __PYX_ERR(0, 48, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("_evaluate_numerical_splits", 1, 4, 4, 3); __PYX_ERR(0, 47, __pyx_L3_error)
         }
       }
       if (unlikely(kw_args > 0)) {
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "_evaluate_numerical_splits") < 0)) __PYX_ERR(0, 48, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "_evaluate_numerical_splits") < 0)) __PYX_ERR(0, 47, __pyx_L3_error)
       }
     } else if (PyTuple_GET_SIZE(__pyx_args) != 4) {
       goto __pyx_L5_argtuple_error;
@@ -3311,7 +3302,7 @@ static PyObject *__pyx_pw_14structureboost_18structure_dt_multi_26StructureDecis
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("_evaluate_numerical_splits", 1, 4, 4, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 48, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("_evaluate_numerical_splits", 1, 4, 4, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 47, __pyx_L3_error)
   __pyx_L3_error:;
   __Pyx_AddTraceback("structureboost.structure_dt_multi.StructureDecisionTreeMulti._evaluate_numerical_splits", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
@@ -3364,21 +3355,21 @@ static PyObject *__pyx_pf_14structureboost_18structure_dt_multi_26StructureDecis
   int __pyx_clineno = 0;
   __Pyx_TraceFrameInit(__pyx_codeobj__4)
   __Pyx_RefNannySetupContext("_evaluate_numerical_splits", 0);
-  __Pyx_TraceCall("_evaluate_numerical_splits", __pyx_f[0], 48, 0, __PYX_ERR(0, 48, __pyx_L1_error));
+  __Pyx_TraceCall("_evaluate_numerical_splits", __pyx_f[0], 47, 0, __PYX_ERR(0, 47, __pyx_L1_error));
 
-  /* "structureboost/structure_dt_multi.pyx":51
+  /* "structureboost/structure_dt_multi.pyx":50
  *                                    split_vec):
  * 
  *         has_na_vals = np.isnan(split_vec[-1])             # <<<<<<<<<<<<<<
  *         bin_result_vec = np.searchsorted(split_vec,
  *                                          feature_vec,
  */
-  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_np); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 51, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_np); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 50, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_isnan); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 51, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_isnan); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 50, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __pyx_t_2 = __Pyx_GetItemInt(__pyx_v_split_vec, -1L, long, 1, __Pyx_PyInt_From_long, 0, 1, 1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 51, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_GetItemInt(__pyx_v_split_vec, -1L, long, 1, __Pyx_PyInt_From_long, 0, 1, 1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 50, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __pyx_t_4 = NULL;
   if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_3))) {
@@ -3393,33 +3384,33 @@ static PyObject *__pyx_pf_14structureboost_18structure_dt_multi_26StructureDecis
   __pyx_t_1 = (__pyx_t_4) ? __Pyx_PyObject_Call2Args(__pyx_t_3, __pyx_t_4, __pyx_t_2) : __Pyx_PyObject_CallOneArg(__pyx_t_3, __pyx_t_2);
   __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 51, __pyx_L1_error)
+  if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 50, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   __pyx_v_has_na_vals = __pyx_t_1;
   __pyx_t_1 = 0;
 
-  /* "structureboost/structure_dt_multi.pyx":52
+  /* "structureboost/structure_dt_multi.pyx":51
  * 
  *         has_na_vals = np.isnan(split_vec[-1])
  *         bin_result_vec = np.searchsorted(split_vec,             # <<<<<<<<<<<<<<
  *                                          feature_vec,
- *                                          side='right').astype(np.int64)
+ *                                          side='right').astype(np.int_)
  */
-  __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_n_s_np); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 52, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_n_s_np); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 51, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_searchsorted); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 52, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_searchsorted); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 51, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-  /* "structureboost/structure_dt_multi.pyx":53
+  /* "structureboost/structure_dt_multi.pyx":52
  *         has_na_vals = np.isnan(split_vec[-1])
  *         bin_result_vec = np.searchsorted(split_vec,
  *                                          feature_vec,             # <<<<<<<<<<<<<<
- *                                          side='right').astype(np.int64)
+ *                                          side='right').astype(np.int_)
  *         g_sum_bins, h_sum_bins = get_bin_sums_c_mc(g_h_mat,
  */
-  __pyx_t_3 = PyTuple_New(2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 52, __pyx_L1_error)
+  __pyx_t_3 = PyTuple_New(2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 51, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_INCREF(__pyx_v_split_vec);
   __Pyx_GIVEREF(__pyx_v_split_vec);
@@ -3428,43 +3419,43 @@ static PyObject *__pyx_pf_14structureboost_18structure_dt_multi_26StructureDecis
   __Pyx_GIVEREF(__pyx_v_feature_vec);
   PyTuple_SET_ITEM(__pyx_t_3, 1, __pyx_v_feature_vec);
 
-  /* "structureboost/structure_dt_multi.pyx":54
+  /* "structureboost/structure_dt_multi.pyx":53
  *         bin_result_vec = np.searchsorted(split_vec,
  *                                          feature_vec,
- *                                          side='right').astype(np.int64)             # <<<<<<<<<<<<<<
+ *                                          side='right').astype(np.int_)             # <<<<<<<<<<<<<<
  *         g_sum_bins, h_sum_bins = get_bin_sums_c_mc(g_h_mat,
  *                                                 bin_result_vec,
  */
-  __pyx_t_4 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 54, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 53, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
-  if (PyDict_SetItem(__pyx_t_4, __pyx_n_s_side, __pyx_n_u_right) < 0) __PYX_ERR(0, 54, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_4, __pyx_n_s_side, __pyx_n_u_right) < 0) __PYX_ERR(0, 53, __pyx_L1_error)
 
-  /* "structureboost/structure_dt_multi.pyx":52
+  /* "structureboost/structure_dt_multi.pyx":51
  * 
  *         has_na_vals = np.isnan(split_vec[-1])
  *         bin_result_vec = np.searchsorted(split_vec,             # <<<<<<<<<<<<<<
  *                                          feature_vec,
- *                                          side='right').astype(np.int64)
+ *                                          side='right').astype(np.int_)
  */
-  __pyx_t_5 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_3, __pyx_t_4); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 52, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_3, __pyx_t_4); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 51, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
 
-  /* "structureboost/structure_dt_multi.pyx":54
+  /* "structureboost/structure_dt_multi.pyx":53
  *         bin_result_vec = np.searchsorted(split_vec,
  *                                          feature_vec,
- *                                          side='right').astype(np.int64)             # <<<<<<<<<<<<<<
+ *                                          side='right').astype(np.int_)             # <<<<<<<<<<<<<<
  *         g_sum_bins, h_sum_bins = get_bin_sums_c_mc(g_h_mat,
  *                                                 bin_result_vec,
  */
-  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_5, __pyx_n_s_astype); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 54, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_5, __pyx_n_s_astype); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 53, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-  __Pyx_GetModuleGlobalName(__pyx_t_5, __pyx_n_s_np); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 54, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_5, __pyx_n_s_np); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 53, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
-  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_5, __pyx_n_s_int64); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 54, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_5, __pyx_n_s_int); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 53, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
   __pyx_t_5 = NULL;
@@ -3480,33 +3471,33 @@ static PyObject *__pyx_pf_14structureboost_18structure_dt_multi_26StructureDecis
   __pyx_t_1 = (__pyx_t_5) ? __Pyx_PyObject_Call2Args(__pyx_t_4, __pyx_t_5, __pyx_t_3) : __Pyx_PyObject_CallOneArg(__pyx_t_4, __pyx_t_3);
   __Pyx_XDECREF(__pyx_t_5); __pyx_t_5 = 0;
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 54, __pyx_L1_error)
+  if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 53, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
   __pyx_v_bin_result_vec = __pyx_t_1;
   __pyx_t_1 = 0;
 
-  /* "structureboost/structure_dt_multi.pyx":55
+  /* "structureboost/structure_dt_multi.pyx":54
  *                                          feature_vec,
- *                                          side='right').astype(np.int64)
+ *                                          side='right').astype(np.int_)
  *         g_sum_bins, h_sum_bins = get_bin_sums_c_mc(g_h_mat,             # <<<<<<<<<<<<<<
  *                                                 bin_result_vec,
  *                                                 len(split_vec)+1, self.num_classes)
  */
-  __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_n_s_get_bin_sums_c_mc); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 55, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_n_s_get_bin_sums_c_mc); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 54, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
 
-  /* "structureboost/structure_dt_multi.pyx":57
+  /* "structureboost/structure_dt_multi.pyx":56
  *         g_sum_bins, h_sum_bins = get_bin_sums_c_mc(g_h_mat,
  *                                                 bin_result_vec,
  *                                                 len(split_vec)+1, self.num_classes)             # <<<<<<<<<<<<<<
  *         g_sum_total, g_sum_left, g_sum_right = get_left_right_sums_mc(g_sum_bins)
  *         h_sum_total, h_sum_left, h_sum_right = get_left_right_sums_mc(h_sum_bins)
  */
-  __pyx_t_6 = PyObject_Length(__pyx_v_split_vec); if (unlikely(__pyx_t_6 == ((Py_ssize_t)-1))) __PYX_ERR(0, 57, __pyx_L1_error)
-  __pyx_t_3 = PyInt_FromSsize_t((__pyx_t_6 + 1)); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 57, __pyx_L1_error)
+  __pyx_t_6 = PyObject_Length(__pyx_v_split_vec); if (unlikely(__pyx_t_6 == ((Py_ssize_t)-1))) __PYX_ERR(0, 56, __pyx_L1_error)
+  __pyx_t_3 = PyInt_FromSsize_t((__pyx_t_6 + 1)); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 56, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_num_classes); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 57, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_num_classes); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 56, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
   __pyx_t_2 = NULL;
   __pyx_t_7 = 0;
@@ -3523,7 +3514,7 @@ static PyObject *__pyx_pf_14structureboost_18structure_dt_multi_26StructureDecis
   #if CYTHON_FAST_PYCALL
   if (PyFunction_Check(__pyx_t_4)) {
     PyObject *__pyx_temp[5] = {__pyx_t_2, __pyx_v_g_h_mat, __pyx_v_bin_result_vec, __pyx_t_3, __pyx_t_5};
-    __pyx_t_1 = __Pyx_PyFunction_FastCall(__pyx_t_4, __pyx_temp+1-__pyx_t_7, 4+__pyx_t_7); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 55, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyFunction_FastCall(__pyx_t_4, __pyx_temp+1-__pyx_t_7, 4+__pyx_t_7); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 54, __pyx_L1_error)
     __Pyx_XDECREF(__pyx_t_2); __pyx_t_2 = 0;
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
@@ -3533,7 +3524,7 @@ static PyObject *__pyx_pf_14structureboost_18structure_dt_multi_26StructureDecis
   #if CYTHON_FAST_PYCCALL
   if (__Pyx_PyFastCFunction_Check(__pyx_t_4)) {
     PyObject *__pyx_temp[5] = {__pyx_t_2, __pyx_v_g_h_mat, __pyx_v_bin_result_vec, __pyx_t_3, __pyx_t_5};
-    __pyx_t_1 = __Pyx_PyCFunction_FastCall(__pyx_t_4, __pyx_temp+1-__pyx_t_7, 4+__pyx_t_7); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 55, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyCFunction_FastCall(__pyx_t_4, __pyx_temp+1-__pyx_t_7, 4+__pyx_t_7); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 54, __pyx_L1_error)
     __Pyx_XDECREF(__pyx_t_2); __pyx_t_2 = 0;
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
@@ -3541,7 +3532,7 @@ static PyObject *__pyx_pf_14structureboost_18structure_dt_multi_26StructureDecis
   } else
   #endif
   {
-    __pyx_t_8 = PyTuple_New(4+__pyx_t_7); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 55, __pyx_L1_error)
+    __pyx_t_8 = PyTuple_New(4+__pyx_t_7); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 54, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_8);
     if (__pyx_t_2) {
       __Pyx_GIVEREF(__pyx_t_2); PyTuple_SET_ITEM(__pyx_t_8, 0, __pyx_t_2); __pyx_t_2 = NULL;
@@ -3558,7 +3549,7 @@ static PyObject *__pyx_pf_14structureboost_18structure_dt_multi_26StructureDecis
     PyTuple_SET_ITEM(__pyx_t_8, 3+__pyx_t_7, __pyx_t_5);
     __pyx_t_3 = 0;
     __pyx_t_5 = 0;
-    __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_4, __pyx_t_8, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 55, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_4, __pyx_t_8, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 54, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
   }
@@ -3569,7 +3560,7 @@ static PyObject *__pyx_pf_14structureboost_18structure_dt_multi_26StructureDecis
     if (unlikely(size != 2)) {
       if (size > 2) __Pyx_RaiseTooManyValuesError(2);
       else if (size >= 0) __Pyx_RaiseNeedMoreValuesError(size);
-      __PYX_ERR(0, 55, __pyx_L1_error)
+      __PYX_ERR(0, 54, __pyx_L1_error)
     }
     #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
     if (likely(PyTuple_CheckExact(sequence))) {
@@ -3582,15 +3573,15 @@ static PyObject *__pyx_pf_14structureboost_18structure_dt_multi_26StructureDecis
     __Pyx_INCREF(__pyx_t_4);
     __Pyx_INCREF(__pyx_t_8);
     #else
-    __pyx_t_4 = PySequence_ITEM(sequence, 0); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 55, __pyx_L1_error)
+    __pyx_t_4 = PySequence_ITEM(sequence, 0); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 54, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
-    __pyx_t_8 = PySequence_ITEM(sequence, 1); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 55, __pyx_L1_error)
+    __pyx_t_8 = PySequence_ITEM(sequence, 1); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 54, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_8);
     #endif
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   } else {
     Py_ssize_t index = -1;
-    __pyx_t_5 = PyObject_GetIter(__pyx_t_1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 55, __pyx_L1_error)
+    __pyx_t_5 = PyObject_GetIter(__pyx_t_1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 54, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_5);
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
     __pyx_t_9 = Py_TYPE(__pyx_t_5)->tp_iternext;
@@ -3598,7 +3589,7 @@ static PyObject *__pyx_pf_14structureboost_18structure_dt_multi_26StructureDecis
     __Pyx_GOTREF(__pyx_t_4);
     index = 1; __pyx_t_8 = __pyx_t_9(__pyx_t_5); if (unlikely(!__pyx_t_8)) goto __pyx_L3_unpacking_failed;
     __Pyx_GOTREF(__pyx_t_8);
-    if (__Pyx_IternextUnpackEndCheck(__pyx_t_9(__pyx_t_5), 2) < 0) __PYX_ERR(0, 55, __pyx_L1_error)
+    if (__Pyx_IternextUnpackEndCheck(__pyx_t_9(__pyx_t_5), 2) < 0) __PYX_ERR(0, 54, __pyx_L1_error)
     __pyx_t_9 = NULL;
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
     goto __pyx_L4_unpacking_done;
@@ -3606,13 +3597,13 @@ static PyObject *__pyx_pf_14structureboost_18structure_dt_multi_26StructureDecis
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
     __pyx_t_9 = NULL;
     if (__Pyx_IterFinish() == 0) __Pyx_RaiseNeedMoreValuesError(index);
-    __PYX_ERR(0, 55, __pyx_L1_error)
+    __PYX_ERR(0, 54, __pyx_L1_error)
     __pyx_L4_unpacking_done:;
   }
 
-  /* "structureboost/structure_dt_multi.pyx":55
+  /* "structureboost/structure_dt_multi.pyx":54
  *                                          feature_vec,
- *                                          side='right').astype(np.int64)
+ *                                          side='right').astype(np.int_)
  *         g_sum_bins, h_sum_bins = get_bin_sums_c_mc(g_h_mat,             # <<<<<<<<<<<<<<
  *                                                 bin_result_vec,
  *                                                 len(split_vec)+1, self.num_classes)
@@ -3622,14 +3613,14 @@ static PyObject *__pyx_pf_14structureboost_18structure_dt_multi_26StructureDecis
   __pyx_v_h_sum_bins = __pyx_t_8;
   __pyx_t_8 = 0;
 
-  /* "structureboost/structure_dt_multi.pyx":58
+  /* "structureboost/structure_dt_multi.pyx":57
  *                                                 bin_result_vec,
  *                                                 len(split_vec)+1, self.num_classes)
  *         g_sum_total, g_sum_left, g_sum_right = get_left_right_sums_mc(g_sum_bins)             # <<<<<<<<<<<<<<
  *         h_sum_total, h_sum_left, h_sum_right = get_left_right_sums_mc(h_sum_bins)
  *         score_vec = (-1)*_get_gh_score_array_mc(g_sum_left, g_sum_right,
  */
-  __Pyx_GetModuleGlobalName(__pyx_t_8, __pyx_n_s_get_left_right_sums_mc); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 58, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_8, __pyx_n_s_get_left_right_sums_mc); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 57, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_8);
   __pyx_t_4 = NULL;
   if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_8))) {
@@ -3643,7 +3634,7 @@ static PyObject *__pyx_pf_14structureboost_18structure_dt_multi_26StructureDecis
   }
   __pyx_t_1 = (__pyx_t_4) ? __Pyx_PyObject_Call2Args(__pyx_t_8, __pyx_t_4, __pyx_v_g_sum_bins) : __Pyx_PyObject_CallOneArg(__pyx_t_8, __pyx_v_g_sum_bins);
   __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
-  if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 58, __pyx_L1_error)
+  if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 57, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
   if ((likely(PyTuple_CheckExact(__pyx_t_1))) || (PyList_CheckExact(__pyx_t_1))) {
@@ -3652,7 +3643,7 @@ static PyObject *__pyx_pf_14structureboost_18structure_dt_multi_26StructureDecis
     if (unlikely(size != 3)) {
       if (size > 3) __Pyx_RaiseTooManyValuesError(3);
       else if (size >= 0) __Pyx_RaiseNeedMoreValuesError(size);
-      __PYX_ERR(0, 58, __pyx_L1_error)
+      __PYX_ERR(0, 57, __pyx_L1_error)
     }
     #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
     if (likely(PyTuple_CheckExact(sequence))) {
@@ -3668,17 +3659,17 @@ static PyObject *__pyx_pf_14structureboost_18structure_dt_multi_26StructureDecis
     __Pyx_INCREF(__pyx_t_4);
     __Pyx_INCREF(__pyx_t_5);
     #else
-    __pyx_t_8 = PySequence_ITEM(sequence, 0); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 58, __pyx_L1_error)
+    __pyx_t_8 = PySequence_ITEM(sequence, 0); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 57, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_8);
-    __pyx_t_4 = PySequence_ITEM(sequence, 1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 58, __pyx_L1_error)
+    __pyx_t_4 = PySequence_ITEM(sequence, 1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 57, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
-    __pyx_t_5 = PySequence_ITEM(sequence, 2); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 58, __pyx_L1_error)
+    __pyx_t_5 = PySequence_ITEM(sequence, 2); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 57, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_5);
     #endif
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   } else {
     Py_ssize_t index = -1;
-    __pyx_t_3 = PyObject_GetIter(__pyx_t_1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 58, __pyx_L1_error)
+    __pyx_t_3 = PyObject_GetIter(__pyx_t_1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 57, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
     __pyx_t_9 = Py_TYPE(__pyx_t_3)->tp_iternext;
@@ -3688,7 +3679,7 @@ static PyObject *__pyx_pf_14structureboost_18structure_dt_multi_26StructureDecis
     __Pyx_GOTREF(__pyx_t_4);
     index = 2; __pyx_t_5 = __pyx_t_9(__pyx_t_3); if (unlikely(!__pyx_t_5)) goto __pyx_L5_unpacking_failed;
     __Pyx_GOTREF(__pyx_t_5);
-    if (__Pyx_IternextUnpackEndCheck(__pyx_t_9(__pyx_t_3), 3) < 0) __PYX_ERR(0, 58, __pyx_L1_error)
+    if (__Pyx_IternextUnpackEndCheck(__pyx_t_9(__pyx_t_3), 3) < 0) __PYX_ERR(0, 57, __pyx_L1_error)
     __pyx_t_9 = NULL;
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
     goto __pyx_L6_unpacking_done;
@@ -3696,7 +3687,7 @@ static PyObject *__pyx_pf_14structureboost_18structure_dt_multi_26StructureDecis
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
     __pyx_t_9 = NULL;
     if (__Pyx_IterFinish() == 0) __Pyx_RaiseNeedMoreValuesError(index);
-    __PYX_ERR(0, 58, __pyx_L1_error)
+    __PYX_ERR(0, 57, __pyx_L1_error)
     __pyx_L6_unpacking_done:;
   }
   __pyx_v_g_sum_total = __pyx_t_8;
@@ -3706,14 +3697,14 @@ static PyObject *__pyx_pf_14structureboost_18structure_dt_multi_26StructureDecis
   __pyx_v_g_sum_right = __pyx_t_5;
   __pyx_t_5 = 0;
 
-  /* "structureboost/structure_dt_multi.pyx":59
+  /* "structureboost/structure_dt_multi.pyx":58
  *                                                 len(split_vec)+1, self.num_classes)
  *         g_sum_total, g_sum_left, g_sum_right = get_left_right_sums_mc(g_sum_bins)
  *         h_sum_total, h_sum_left, h_sum_right = get_left_right_sums_mc(h_sum_bins)             # <<<<<<<<<<<<<<
  *         score_vec = (-1)*_get_gh_score_array_mc(g_sum_left, g_sum_right,
  *                                              h_sum_left, h_sum_right,
  */
-  __Pyx_GetModuleGlobalName(__pyx_t_5, __pyx_n_s_get_left_right_sums_mc); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 59, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_5, __pyx_n_s_get_left_right_sums_mc); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 58, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
   __pyx_t_4 = NULL;
   if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_5))) {
@@ -3727,7 +3718,7 @@ static PyObject *__pyx_pf_14structureboost_18structure_dt_multi_26StructureDecis
   }
   __pyx_t_1 = (__pyx_t_4) ? __Pyx_PyObject_Call2Args(__pyx_t_5, __pyx_t_4, __pyx_v_h_sum_bins) : __Pyx_PyObject_CallOneArg(__pyx_t_5, __pyx_v_h_sum_bins);
   __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
-  if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 59, __pyx_L1_error)
+  if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 58, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
   if ((likely(PyTuple_CheckExact(__pyx_t_1))) || (PyList_CheckExact(__pyx_t_1))) {
@@ -3736,7 +3727,7 @@ static PyObject *__pyx_pf_14structureboost_18structure_dt_multi_26StructureDecis
     if (unlikely(size != 3)) {
       if (size > 3) __Pyx_RaiseTooManyValuesError(3);
       else if (size >= 0) __Pyx_RaiseNeedMoreValuesError(size);
-      __PYX_ERR(0, 59, __pyx_L1_error)
+      __PYX_ERR(0, 58, __pyx_L1_error)
     }
     #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
     if (likely(PyTuple_CheckExact(sequence))) {
@@ -3752,17 +3743,17 @@ static PyObject *__pyx_pf_14structureboost_18structure_dt_multi_26StructureDecis
     __Pyx_INCREF(__pyx_t_4);
     __Pyx_INCREF(__pyx_t_8);
     #else
-    __pyx_t_5 = PySequence_ITEM(sequence, 0); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 59, __pyx_L1_error)
+    __pyx_t_5 = PySequence_ITEM(sequence, 0); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 58, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_5);
-    __pyx_t_4 = PySequence_ITEM(sequence, 1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 59, __pyx_L1_error)
+    __pyx_t_4 = PySequence_ITEM(sequence, 1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 58, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
-    __pyx_t_8 = PySequence_ITEM(sequence, 2); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 59, __pyx_L1_error)
+    __pyx_t_8 = PySequence_ITEM(sequence, 2); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 58, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_8);
     #endif
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   } else {
     Py_ssize_t index = -1;
-    __pyx_t_3 = PyObject_GetIter(__pyx_t_1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 59, __pyx_L1_error)
+    __pyx_t_3 = PyObject_GetIter(__pyx_t_1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 58, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
     __pyx_t_9 = Py_TYPE(__pyx_t_3)->tp_iternext;
@@ -3772,7 +3763,7 @@ static PyObject *__pyx_pf_14structureboost_18structure_dt_multi_26StructureDecis
     __Pyx_GOTREF(__pyx_t_4);
     index = 2; __pyx_t_8 = __pyx_t_9(__pyx_t_3); if (unlikely(!__pyx_t_8)) goto __pyx_L7_unpacking_failed;
     __Pyx_GOTREF(__pyx_t_8);
-    if (__Pyx_IternextUnpackEndCheck(__pyx_t_9(__pyx_t_3), 3) < 0) __PYX_ERR(0, 59, __pyx_L1_error)
+    if (__Pyx_IternextUnpackEndCheck(__pyx_t_9(__pyx_t_3), 3) < 0) __PYX_ERR(0, 58, __pyx_L1_error)
     __pyx_t_9 = NULL;
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
     goto __pyx_L8_unpacking_done;
@@ -3780,7 +3771,7 @@ static PyObject *__pyx_pf_14structureboost_18structure_dt_multi_26StructureDecis
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
     __pyx_t_9 = NULL;
     if (__Pyx_IterFinish() == 0) __Pyx_RaiseNeedMoreValuesError(index);
-    __PYX_ERR(0, 59, __pyx_L1_error)
+    __PYX_ERR(0, 58, __pyx_L1_error)
     __pyx_L8_unpacking_done:;
   }
   __pyx_v_h_sum_total = __pyx_t_5;
@@ -3790,26 +3781,26 @@ static PyObject *__pyx_pf_14structureboost_18structure_dt_multi_26StructureDecis
   __pyx_v_h_sum_right = __pyx_t_8;
   __pyx_t_8 = 0;
 
-  /* "structureboost/structure_dt_multi.pyx":60
+  /* "structureboost/structure_dt_multi.pyx":59
  *         g_sum_total, g_sum_left, g_sum_right = get_left_right_sums_mc(g_sum_bins)
  *         h_sum_total, h_sum_left, h_sum_right = get_left_right_sums_mc(h_sum_bins)
  *         score_vec = (-1)*_get_gh_score_array_mc(g_sum_left, g_sum_right,             # <<<<<<<<<<<<<<
  *                                              h_sum_left, h_sum_right,
  *                                              self.gamma, self.reg_lambda)
  */
-  __Pyx_GetModuleGlobalName(__pyx_t_8, __pyx_n_s_get_gh_score_array_mc); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 60, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_8, __pyx_n_s_get_gh_score_array_mc); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 59, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_8);
 
-  /* "structureboost/structure_dt_multi.pyx":62
+  /* "structureboost/structure_dt_multi.pyx":61
  *         score_vec = (-1)*_get_gh_score_array_mc(g_sum_left, g_sum_right,
  *                                              h_sum_left, h_sum_right,
  *                                              self.gamma, self.reg_lambda)             # <<<<<<<<<<<<<<
  * 
  *         best_loss, best_split_val = stdt._get_best_vals(score_vec, split_vec)
  */
-  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_gamma); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 62, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_gamma); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 61, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
-  __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_reg_lambda); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 62, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_reg_lambda); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 61, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
   __pyx_t_3 = NULL;
   __pyx_t_7 = 0;
@@ -3826,7 +3817,7 @@ static PyObject *__pyx_pf_14structureboost_18structure_dt_multi_26StructureDecis
   #if CYTHON_FAST_PYCALL
   if (PyFunction_Check(__pyx_t_8)) {
     PyObject *__pyx_temp[7] = {__pyx_t_3, __pyx_v_g_sum_left, __pyx_v_g_sum_right, __pyx_v_h_sum_left, __pyx_v_h_sum_right, __pyx_t_4, __pyx_t_5};
-    __pyx_t_1 = __Pyx_PyFunction_FastCall(__pyx_t_8, __pyx_temp+1-__pyx_t_7, 6+__pyx_t_7); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 60, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyFunction_FastCall(__pyx_t_8, __pyx_temp+1-__pyx_t_7, 6+__pyx_t_7); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 59, __pyx_L1_error)
     __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
@@ -3836,7 +3827,7 @@ static PyObject *__pyx_pf_14structureboost_18structure_dt_multi_26StructureDecis
   #if CYTHON_FAST_PYCCALL
   if (__Pyx_PyFastCFunction_Check(__pyx_t_8)) {
     PyObject *__pyx_temp[7] = {__pyx_t_3, __pyx_v_g_sum_left, __pyx_v_g_sum_right, __pyx_v_h_sum_left, __pyx_v_h_sum_right, __pyx_t_4, __pyx_t_5};
-    __pyx_t_1 = __Pyx_PyCFunction_FastCall(__pyx_t_8, __pyx_temp+1-__pyx_t_7, 6+__pyx_t_7); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 60, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyCFunction_FastCall(__pyx_t_8, __pyx_temp+1-__pyx_t_7, 6+__pyx_t_7); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 59, __pyx_L1_error)
     __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
@@ -3844,7 +3835,7 @@ static PyObject *__pyx_pf_14structureboost_18structure_dt_multi_26StructureDecis
   } else
   #endif
   {
-    __pyx_t_2 = PyTuple_New(6+__pyx_t_7); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 60, __pyx_L1_error)
+    __pyx_t_2 = PyTuple_New(6+__pyx_t_7); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 59, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
     if (__pyx_t_3) {
       __Pyx_GIVEREF(__pyx_t_3); PyTuple_SET_ITEM(__pyx_t_2, 0, __pyx_t_3); __pyx_t_3 = NULL;
@@ -3867,35 +3858,35 @@ static PyObject *__pyx_pf_14structureboost_18structure_dt_multi_26StructureDecis
     PyTuple_SET_ITEM(__pyx_t_2, 5+__pyx_t_7, __pyx_t_5);
     __pyx_t_4 = 0;
     __pyx_t_5 = 0;
-    __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_8, __pyx_t_2, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 60, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_8, __pyx_t_2, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 59, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   }
   __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
 
-  /* "structureboost/structure_dt_multi.pyx":60
+  /* "structureboost/structure_dt_multi.pyx":59
  *         g_sum_total, g_sum_left, g_sum_right = get_left_right_sums_mc(g_sum_bins)
  *         h_sum_total, h_sum_left, h_sum_right = get_left_right_sums_mc(h_sum_bins)
  *         score_vec = (-1)*_get_gh_score_array_mc(g_sum_left, g_sum_right,             # <<<<<<<<<<<<<<
  *                                              h_sum_left, h_sum_right,
  *                                              self.gamma, self.reg_lambda)
  */
-  __pyx_t_8 = PyNumber_Multiply(__pyx_int_neg_1, __pyx_t_1); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 60, __pyx_L1_error)
+  __pyx_t_8 = PyNumber_Multiply(__pyx_int_neg_1, __pyx_t_1); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 59, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_8);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __pyx_v_score_vec = __pyx_t_8;
   __pyx_t_8 = 0;
 
-  /* "structureboost/structure_dt_multi.pyx":64
+  /* "structureboost/structure_dt_multi.pyx":63
  *                                              self.gamma, self.reg_lambda)
  * 
  *         best_loss, best_split_val = stdt._get_best_vals(score_vec, split_vec)             # <<<<<<<<<<<<<<
  *         if has_na_vals and (len(split_vec) > 2):
  *             g_sum_left_nal = (g_sum_left + (g_sum_total - g_sum_left[-1,:]))[:-1,:]
  */
-  __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_stdt); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 64, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_stdt); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 63, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_get_best_vals); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 64, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_get_best_vals); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 63, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __pyx_t_1 = NULL;
@@ -3913,7 +3904,7 @@ static PyObject *__pyx_pf_14structureboost_18structure_dt_multi_26StructureDecis
   #if CYTHON_FAST_PYCALL
   if (PyFunction_Check(__pyx_t_2)) {
     PyObject *__pyx_temp[3] = {__pyx_t_1, __pyx_v_score_vec, __pyx_v_split_vec};
-    __pyx_t_8 = __Pyx_PyFunction_FastCall(__pyx_t_2, __pyx_temp+1-__pyx_t_7, 2+__pyx_t_7); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 64, __pyx_L1_error)
+    __pyx_t_8 = __Pyx_PyFunction_FastCall(__pyx_t_2, __pyx_temp+1-__pyx_t_7, 2+__pyx_t_7); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 63, __pyx_L1_error)
     __Pyx_XDECREF(__pyx_t_1); __pyx_t_1 = 0;
     __Pyx_GOTREF(__pyx_t_8);
   } else
@@ -3921,13 +3912,13 @@ static PyObject *__pyx_pf_14structureboost_18structure_dt_multi_26StructureDecis
   #if CYTHON_FAST_PYCCALL
   if (__Pyx_PyFastCFunction_Check(__pyx_t_2)) {
     PyObject *__pyx_temp[3] = {__pyx_t_1, __pyx_v_score_vec, __pyx_v_split_vec};
-    __pyx_t_8 = __Pyx_PyCFunction_FastCall(__pyx_t_2, __pyx_temp+1-__pyx_t_7, 2+__pyx_t_7); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 64, __pyx_L1_error)
+    __pyx_t_8 = __Pyx_PyCFunction_FastCall(__pyx_t_2, __pyx_temp+1-__pyx_t_7, 2+__pyx_t_7); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 63, __pyx_L1_error)
     __Pyx_XDECREF(__pyx_t_1); __pyx_t_1 = 0;
     __Pyx_GOTREF(__pyx_t_8);
   } else
   #endif
   {
-    __pyx_t_5 = PyTuple_New(2+__pyx_t_7); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 64, __pyx_L1_error)
+    __pyx_t_5 = PyTuple_New(2+__pyx_t_7); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 63, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_5);
     if (__pyx_t_1) {
       __Pyx_GIVEREF(__pyx_t_1); PyTuple_SET_ITEM(__pyx_t_5, 0, __pyx_t_1); __pyx_t_1 = NULL;
@@ -3938,7 +3929,7 @@ static PyObject *__pyx_pf_14structureboost_18structure_dt_multi_26StructureDecis
     __Pyx_INCREF(__pyx_v_split_vec);
     __Pyx_GIVEREF(__pyx_v_split_vec);
     PyTuple_SET_ITEM(__pyx_t_5, 1+__pyx_t_7, __pyx_v_split_vec);
-    __pyx_t_8 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_5, NULL); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 64, __pyx_L1_error)
+    __pyx_t_8 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_5, NULL); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 63, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_8);
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
   }
@@ -3949,7 +3940,7 @@ static PyObject *__pyx_pf_14structureboost_18structure_dt_multi_26StructureDecis
     if (unlikely(size != 2)) {
       if (size > 2) __Pyx_RaiseTooManyValuesError(2);
       else if (size >= 0) __Pyx_RaiseNeedMoreValuesError(size);
-      __PYX_ERR(0, 64, __pyx_L1_error)
+      __PYX_ERR(0, 63, __pyx_L1_error)
     }
     #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
     if (likely(PyTuple_CheckExact(sequence))) {
@@ -3962,15 +3953,15 @@ static PyObject *__pyx_pf_14structureboost_18structure_dt_multi_26StructureDecis
     __Pyx_INCREF(__pyx_t_2);
     __Pyx_INCREF(__pyx_t_5);
     #else
-    __pyx_t_2 = PySequence_ITEM(sequence, 0); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 64, __pyx_L1_error)
+    __pyx_t_2 = PySequence_ITEM(sequence, 0); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 63, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
-    __pyx_t_5 = PySequence_ITEM(sequence, 1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 64, __pyx_L1_error)
+    __pyx_t_5 = PySequence_ITEM(sequence, 1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 63, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_5);
     #endif
     __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
   } else {
     Py_ssize_t index = -1;
-    __pyx_t_1 = PyObject_GetIter(__pyx_t_8); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 64, __pyx_L1_error)
+    __pyx_t_1 = PyObject_GetIter(__pyx_t_8); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 63, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
     __pyx_t_9 = Py_TYPE(__pyx_t_1)->tp_iternext;
@@ -3978,7 +3969,7 @@ static PyObject *__pyx_pf_14structureboost_18structure_dt_multi_26StructureDecis
     __Pyx_GOTREF(__pyx_t_2);
     index = 1; __pyx_t_5 = __pyx_t_9(__pyx_t_1); if (unlikely(!__pyx_t_5)) goto __pyx_L9_unpacking_failed;
     __Pyx_GOTREF(__pyx_t_5);
-    if (__Pyx_IternextUnpackEndCheck(__pyx_t_9(__pyx_t_1), 2) < 0) __PYX_ERR(0, 64, __pyx_L1_error)
+    if (__Pyx_IternextUnpackEndCheck(__pyx_t_9(__pyx_t_1), 2) < 0) __PYX_ERR(0, 63, __pyx_L1_error)
     __pyx_t_9 = NULL;
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
     goto __pyx_L10_unpacking_done;
@@ -3986,7 +3977,7 @@ static PyObject *__pyx_pf_14structureboost_18structure_dt_multi_26StructureDecis
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
     __pyx_t_9 = NULL;
     if (__Pyx_IterFinish() == 0) __Pyx_RaiseNeedMoreValuesError(index);
-    __PYX_ERR(0, 64, __pyx_L1_error)
+    __PYX_ERR(0, 63, __pyx_L1_error)
     __pyx_L10_unpacking_done:;
   }
   __pyx_v_best_loss = __pyx_t_2;
@@ -3994,111 +3985,111 @@ static PyObject *__pyx_pf_14structureboost_18structure_dt_multi_26StructureDecis
   __pyx_v_best_split_val = __pyx_t_5;
   __pyx_t_5 = 0;
 
-  /* "structureboost/structure_dt_multi.pyx":65
+  /* "structureboost/structure_dt_multi.pyx":64
  * 
  *         best_loss, best_split_val = stdt._get_best_vals(score_vec, split_vec)
  *         if has_na_vals and (len(split_vec) > 2):             # <<<<<<<<<<<<<<
  *             g_sum_left_nal = (g_sum_left + (g_sum_total - g_sum_left[-1,:]))[:-1,:]
  *             h_sum_left_nal = (h_sum_left + (h_sum_total - h_sum_left[-1,:]))[:-1,:]
  */
-  __pyx_t_11 = __Pyx_PyObject_IsTrue(__pyx_v_has_na_vals); if (unlikely(__pyx_t_11 < 0)) __PYX_ERR(0, 65, __pyx_L1_error)
+  __pyx_t_11 = __Pyx_PyObject_IsTrue(__pyx_v_has_na_vals); if (unlikely(__pyx_t_11 < 0)) __PYX_ERR(0, 64, __pyx_L1_error)
   if (__pyx_t_11) {
   } else {
     __pyx_t_10 = __pyx_t_11;
     goto __pyx_L12_bool_binop_done;
   }
-  __pyx_t_6 = PyObject_Length(__pyx_v_split_vec); if (unlikely(__pyx_t_6 == ((Py_ssize_t)-1))) __PYX_ERR(0, 65, __pyx_L1_error)
+  __pyx_t_6 = PyObject_Length(__pyx_v_split_vec); if (unlikely(__pyx_t_6 == ((Py_ssize_t)-1))) __PYX_ERR(0, 64, __pyx_L1_error)
   __pyx_t_11 = ((__pyx_t_6 > 2) != 0);
   __pyx_t_10 = __pyx_t_11;
   __pyx_L12_bool_binop_done:;
   if (__pyx_t_10) {
 
-    /* "structureboost/structure_dt_multi.pyx":66
+    /* "structureboost/structure_dt_multi.pyx":65
  *         best_loss, best_split_val = stdt._get_best_vals(score_vec, split_vec)
  *         if has_na_vals and (len(split_vec) > 2):
  *             g_sum_left_nal = (g_sum_left + (g_sum_total - g_sum_left[-1,:]))[:-1,:]             # <<<<<<<<<<<<<<
  *             h_sum_left_nal = (h_sum_left + (h_sum_total - h_sum_left[-1,:]))[:-1,:]
  *             g_sum_right_nal = g_sum_total - g_sum_left_nal
  */
-    __pyx_t_8 = __Pyx_PyObject_GetItem(__pyx_v_g_sum_left, __pyx_tuple__5); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 66, __pyx_L1_error)
+    __pyx_t_8 = __Pyx_PyObject_GetItem(__pyx_v_g_sum_left, __pyx_tuple__5); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 65, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_8);
-    __pyx_t_5 = PyNumber_Subtract(__pyx_v_g_sum_total, __pyx_t_8); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 66, __pyx_L1_error)
+    __pyx_t_5 = PyNumber_Subtract(__pyx_v_g_sum_total, __pyx_t_8); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 65, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_5);
     __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
-    __pyx_t_8 = PyNumber_Add(__pyx_v_g_sum_left, __pyx_t_5); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 66, __pyx_L1_error)
+    __pyx_t_8 = PyNumber_Add(__pyx_v_g_sum_left, __pyx_t_5); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 65, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_8);
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-    __pyx_t_5 = __Pyx_PyObject_GetItem(__pyx_t_8, __pyx_tuple__7); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 66, __pyx_L1_error)
+    __pyx_t_5 = __Pyx_PyObject_GetItem(__pyx_t_8, __pyx_tuple__7); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 65, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_5);
     __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
     __pyx_v_g_sum_left_nal = __pyx_t_5;
     __pyx_t_5 = 0;
 
-    /* "structureboost/structure_dt_multi.pyx":67
+    /* "structureboost/structure_dt_multi.pyx":66
  *         if has_na_vals and (len(split_vec) > 2):
  *             g_sum_left_nal = (g_sum_left + (g_sum_total - g_sum_left[-1,:]))[:-1,:]
  *             h_sum_left_nal = (h_sum_left + (h_sum_total - h_sum_left[-1,:]))[:-1,:]             # <<<<<<<<<<<<<<
  *             g_sum_right_nal = g_sum_total - g_sum_left_nal
  *             h_sum_right_nal = h_sum_total - h_sum_left_nal
  */
-    __pyx_t_5 = __Pyx_PyObject_GetItem(__pyx_v_h_sum_left, __pyx_tuple__5); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 67, __pyx_L1_error)
+    __pyx_t_5 = __Pyx_PyObject_GetItem(__pyx_v_h_sum_left, __pyx_tuple__5); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 66, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_5);
-    __pyx_t_8 = PyNumber_Subtract(__pyx_v_h_sum_total, __pyx_t_5); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 67, __pyx_L1_error)
+    __pyx_t_8 = PyNumber_Subtract(__pyx_v_h_sum_total, __pyx_t_5); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 66, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_8);
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-    __pyx_t_5 = PyNumber_Add(__pyx_v_h_sum_left, __pyx_t_8); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 67, __pyx_L1_error)
+    __pyx_t_5 = PyNumber_Add(__pyx_v_h_sum_left, __pyx_t_8); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 66, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_5);
     __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
-    __pyx_t_8 = __Pyx_PyObject_GetItem(__pyx_t_5, __pyx_tuple__7); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 67, __pyx_L1_error)
+    __pyx_t_8 = __Pyx_PyObject_GetItem(__pyx_t_5, __pyx_tuple__7); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 66, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_8);
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
     __pyx_v_h_sum_left_nal = __pyx_t_8;
     __pyx_t_8 = 0;
 
-    /* "structureboost/structure_dt_multi.pyx":68
+    /* "structureboost/structure_dt_multi.pyx":67
  *             g_sum_left_nal = (g_sum_left + (g_sum_total - g_sum_left[-1,:]))[:-1,:]
  *             h_sum_left_nal = (h_sum_left + (h_sum_total - h_sum_left[-1,:]))[:-1,:]
  *             g_sum_right_nal = g_sum_total - g_sum_left_nal             # <<<<<<<<<<<<<<
  *             h_sum_right_nal = h_sum_total - h_sum_left_nal
  * 
  */
-    __pyx_t_8 = PyNumber_Subtract(__pyx_v_g_sum_total, __pyx_v_g_sum_left_nal); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 68, __pyx_L1_error)
+    __pyx_t_8 = PyNumber_Subtract(__pyx_v_g_sum_total, __pyx_v_g_sum_left_nal); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 67, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_8);
     __pyx_v_g_sum_right_nal = __pyx_t_8;
     __pyx_t_8 = 0;
 
-    /* "structureboost/structure_dt_multi.pyx":69
+    /* "structureboost/structure_dt_multi.pyx":68
  *             h_sum_left_nal = (h_sum_left + (h_sum_total - h_sum_left[-1,:]))[:-1,:]
  *             g_sum_right_nal = g_sum_total - g_sum_left_nal
  *             h_sum_right_nal = h_sum_total - h_sum_left_nal             # <<<<<<<<<<<<<<
  * 
  *             score_vec_nal = (-1)*_get_gh_score_array_mc(g_sum_left_nal,
  */
-    __pyx_t_8 = PyNumber_Subtract(__pyx_v_h_sum_total, __pyx_v_h_sum_left_nal); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 69, __pyx_L1_error)
+    __pyx_t_8 = PyNumber_Subtract(__pyx_v_h_sum_total, __pyx_v_h_sum_left_nal); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 68, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_8);
     __pyx_v_h_sum_right_nal = __pyx_t_8;
     __pyx_t_8 = 0;
 
-    /* "structureboost/structure_dt_multi.pyx":71
+    /* "structureboost/structure_dt_multi.pyx":70
  *             h_sum_right_nal = h_sum_total - h_sum_left_nal
  * 
  *             score_vec_nal = (-1)*_get_gh_score_array_mc(g_sum_left_nal,             # <<<<<<<<<<<<<<
  *                                                      g_sum_right_nal,
  *                                                      h_sum_left_nal,
  */
-    __Pyx_GetModuleGlobalName(__pyx_t_5, __pyx_n_s_get_gh_score_array_mc); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 71, __pyx_L1_error)
+    __Pyx_GetModuleGlobalName(__pyx_t_5, __pyx_n_s_get_gh_score_array_mc); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 70, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_5);
 
-    /* "structureboost/structure_dt_multi.pyx":75
+    /* "structureboost/structure_dt_multi.pyx":74
  *                                                      h_sum_left_nal,
  *                                                      h_sum_right_nal,
  *                                                      self.gamma, self.reg_lambda)             # <<<<<<<<<<<<<<
  *             best_loss_nal, best_split_val_nal = stdt._get_best_vals(score_vec_nal,
  *                                                                split_vec)
  */
-    __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_gamma); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 75, __pyx_L1_error)
+    __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_gamma); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 74, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
-    __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_reg_lambda); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 75, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_reg_lambda); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 74, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __pyx_t_4 = NULL;
     __pyx_t_7 = 0;
@@ -4115,7 +4106,7 @@ static PyObject *__pyx_pf_14structureboost_18structure_dt_multi_26StructureDecis
     #if CYTHON_FAST_PYCALL
     if (PyFunction_Check(__pyx_t_5)) {
       PyObject *__pyx_temp[7] = {__pyx_t_4, __pyx_v_g_sum_left_nal, __pyx_v_g_sum_right_nal, __pyx_v_h_sum_left_nal, __pyx_v_h_sum_right_nal, __pyx_t_2, __pyx_t_1};
-      __pyx_t_8 = __Pyx_PyFunction_FastCall(__pyx_t_5, __pyx_temp+1-__pyx_t_7, 6+__pyx_t_7); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 71, __pyx_L1_error)
+      __pyx_t_8 = __Pyx_PyFunction_FastCall(__pyx_t_5, __pyx_temp+1-__pyx_t_7, 6+__pyx_t_7); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 70, __pyx_L1_error)
       __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
       __Pyx_GOTREF(__pyx_t_8);
       __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
@@ -4125,7 +4116,7 @@ static PyObject *__pyx_pf_14structureboost_18structure_dt_multi_26StructureDecis
     #if CYTHON_FAST_PYCCALL
     if (__Pyx_PyFastCFunction_Check(__pyx_t_5)) {
       PyObject *__pyx_temp[7] = {__pyx_t_4, __pyx_v_g_sum_left_nal, __pyx_v_g_sum_right_nal, __pyx_v_h_sum_left_nal, __pyx_v_h_sum_right_nal, __pyx_t_2, __pyx_t_1};
-      __pyx_t_8 = __Pyx_PyCFunction_FastCall(__pyx_t_5, __pyx_temp+1-__pyx_t_7, 6+__pyx_t_7); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 71, __pyx_L1_error)
+      __pyx_t_8 = __Pyx_PyCFunction_FastCall(__pyx_t_5, __pyx_temp+1-__pyx_t_7, 6+__pyx_t_7); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 70, __pyx_L1_error)
       __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
       __Pyx_GOTREF(__pyx_t_8);
       __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
@@ -4133,7 +4124,7 @@ static PyObject *__pyx_pf_14structureboost_18structure_dt_multi_26StructureDecis
     } else
     #endif
     {
-      __pyx_t_3 = PyTuple_New(6+__pyx_t_7); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 71, __pyx_L1_error)
+      __pyx_t_3 = PyTuple_New(6+__pyx_t_7); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 70, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_3);
       if (__pyx_t_4) {
         __Pyx_GIVEREF(__pyx_t_4); PyTuple_SET_ITEM(__pyx_t_3, 0, __pyx_t_4); __pyx_t_4 = NULL;
@@ -4156,39 +4147,39 @@ static PyObject *__pyx_pf_14structureboost_18structure_dt_multi_26StructureDecis
       PyTuple_SET_ITEM(__pyx_t_3, 5+__pyx_t_7, __pyx_t_1);
       __pyx_t_2 = 0;
       __pyx_t_1 = 0;
-      __pyx_t_8 = __Pyx_PyObject_Call(__pyx_t_5, __pyx_t_3, NULL); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 71, __pyx_L1_error)
+      __pyx_t_8 = __Pyx_PyObject_Call(__pyx_t_5, __pyx_t_3, NULL); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 70, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_8);
       __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
     }
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
 
-    /* "structureboost/structure_dt_multi.pyx":71
+    /* "structureboost/structure_dt_multi.pyx":70
  *             h_sum_right_nal = h_sum_total - h_sum_left_nal
  * 
  *             score_vec_nal = (-1)*_get_gh_score_array_mc(g_sum_left_nal,             # <<<<<<<<<<<<<<
  *                                                      g_sum_right_nal,
  *                                                      h_sum_left_nal,
  */
-    __pyx_t_5 = PyNumber_Multiply(__pyx_int_neg_1, __pyx_t_8); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 71, __pyx_L1_error)
+    __pyx_t_5 = PyNumber_Multiply(__pyx_int_neg_1, __pyx_t_8); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 70, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_5);
     __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
     __pyx_v_score_vec_nal = __pyx_t_5;
     __pyx_t_5 = 0;
 
-    /* "structureboost/structure_dt_multi.pyx":76
+    /* "structureboost/structure_dt_multi.pyx":75
  *                                                      h_sum_right_nal,
  *                                                      self.gamma, self.reg_lambda)
  *             best_loss_nal, best_split_val_nal = stdt._get_best_vals(score_vec_nal,             # <<<<<<<<<<<<<<
  *                                                                split_vec)
  *             if best_loss_nal < best_loss:
  */
-    __Pyx_GetModuleGlobalName(__pyx_t_8, __pyx_n_s_stdt); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 76, __pyx_L1_error)
+    __Pyx_GetModuleGlobalName(__pyx_t_8, __pyx_n_s_stdt); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 75, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_8);
-    __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_8, __pyx_n_s_get_best_vals); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 76, __pyx_L1_error)
+    __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_8, __pyx_n_s_get_best_vals); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 75, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
     __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
 
-    /* "structureboost/structure_dt_multi.pyx":77
+    /* "structureboost/structure_dt_multi.pyx":76
  *                                                      self.gamma, self.reg_lambda)
  *             best_loss_nal, best_split_val_nal = stdt._get_best_vals(score_vec_nal,
  *                                                                split_vec)             # <<<<<<<<<<<<<<
@@ -4210,7 +4201,7 @@ static PyObject *__pyx_pf_14structureboost_18structure_dt_multi_26StructureDecis
     #if CYTHON_FAST_PYCALL
     if (PyFunction_Check(__pyx_t_3)) {
       PyObject *__pyx_temp[3] = {__pyx_t_8, __pyx_v_score_vec_nal, __pyx_v_split_vec};
-      __pyx_t_5 = __Pyx_PyFunction_FastCall(__pyx_t_3, __pyx_temp+1-__pyx_t_7, 2+__pyx_t_7); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 76, __pyx_L1_error)
+      __pyx_t_5 = __Pyx_PyFunction_FastCall(__pyx_t_3, __pyx_temp+1-__pyx_t_7, 2+__pyx_t_7); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 75, __pyx_L1_error)
       __Pyx_XDECREF(__pyx_t_8); __pyx_t_8 = 0;
       __Pyx_GOTREF(__pyx_t_5);
     } else
@@ -4218,13 +4209,13 @@ static PyObject *__pyx_pf_14structureboost_18structure_dt_multi_26StructureDecis
     #if CYTHON_FAST_PYCCALL
     if (__Pyx_PyFastCFunction_Check(__pyx_t_3)) {
       PyObject *__pyx_temp[3] = {__pyx_t_8, __pyx_v_score_vec_nal, __pyx_v_split_vec};
-      __pyx_t_5 = __Pyx_PyCFunction_FastCall(__pyx_t_3, __pyx_temp+1-__pyx_t_7, 2+__pyx_t_7); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 76, __pyx_L1_error)
+      __pyx_t_5 = __Pyx_PyCFunction_FastCall(__pyx_t_3, __pyx_temp+1-__pyx_t_7, 2+__pyx_t_7); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 75, __pyx_L1_error)
       __Pyx_XDECREF(__pyx_t_8); __pyx_t_8 = 0;
       __Pyx_GOTREF(__pyx_t_5);
     } else
     #endif
     {
-      __pyx_t_1 = PyTuple_New(2+__pyx_t_7); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 76, __pyx_L1_error)
+      __pyx_t_1 = PyTuple_New(2+__pyx_t_7); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 75, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
       if (__pyx_t_8) {
         __Pyx_GIVEREF(__pyx_t_8); PyTuple_SET_ITEM(__pyx_t_1, 0, __pyx_t_8); __pyx_t_8 = NULL;
@@ -4235,7 +4226,7 @@ static PyObject *__pyx_pf_14structureboost_18structure_dt_multi_26StructureDecis
       __Pyx_INCREF(__pyx_v_split_vec);
       __Pyx_GIVEREF(__pyx_v_split_vec);
       PyTuple_SET_ITEM(__pyx_t_1, 1+__pyx_t_7, __pyx_v_split_vec);
-      __pyx_t_5 = __Pyx_PyObject_Call(__pyx_t_3, __pyx_t_1, NULL); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 76, __pyx_L1_error)
+      __pyx_t_5 = __Pyx_PyObject_Call(__pyx_t_3, __pyx_t_1, NULL); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 75, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_5);
       __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
     }
@@ -4246,7 +4237,7 @@ static PyObject *__pyx_pf_14structureboost_18structure_dt_multi_26StructureDecis
       if (unlikely(size != 2)) {
         if (size > 2) __Pyx_RaiseTooManyValuesError(2);
         else if (size >= 0) __Pyx_RaiseNeedMoreValuesError(size);
-        __PYX_ERR(0, 76, __pyx_L1_error)
+        __PYX_ERR(0, 75, __pyx_L1_error)
       }
       #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
       if (likely(PyTuple_CheckExact(sequence))) {
@@ -4259,15 +4250,15 @@ static PyObject *__pyx_pf_14structureboost_18structure_dt_multi_26StructureDecis
       __Pyx_INCREF(__pyx_t_3);
       __Pyx_INCREF(__pyx_t_1);
       #else
-      __pyx_t_3 = PySequence_ITEM(sequence, 0); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 76, __pyx_L1_error)
+      __pyx_t_3 = PySequence_ITEM(sequence, 0); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 75, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_3);
-      __pyx_t_1 = PySequence_ITEM(sequence, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 76, __pyx_L1_error)
+      __pyx_t_1 = PySequence_ITEM(sequence, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 75, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
       #endif
       __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
     } else {
       Py_ssize_t index = -1;
-      __pyx_t_8 = PyObject_GetIter(__pyx_t_5); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 76, __pyx_L1_error)
+      __pyx_t_8 = PyObject_GetIter(__pyx_t_5); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 75, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_8);
       __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
       __pyx_t_9 = Py_TYPE(__pyx_t_8)->tp_iternext;
@@ -4275,7 +4266,7 @@ static PyObject *__pyx_pf_14structureboost_18structure_dt_multi_26StructureDecis
       __Pyx_GOTREF(__pyx_t_3);
       index = 1; __pyx_t_1 = __pyx_t_9(__pyx_t_8); if (unlikely(!__pyx_t_1)) goto __pyx_L14_unpacking_failed;
       __Pyx_GOTREF(__pyx_t_1);
-      if (__Pyx_IternextUnpackEndCheck(__pyx_t_9(__pyx_t_8), 2) < 0) __PYX_ERR(0, 76, __pyx_L1_error)
+      if (__Pyx_IternextUnpackEndCheck(__pyx_t_9(__pyx_t_8), 2) < 0) __PYX_ERR(0, 75, __pyx_L1_error)
       __pyx_t_9 = NULL;
       __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
       goto __pyx_L15_unpacking_done;
@@ -4283,11 +4274,11 @@ static PyObject *__pyx_pf_14structureboost_18structure_dt_multi_26StructureDecis
       __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
       __pyx_t_9 = NULL;
       if (__Pyx_IterFinish() == 0) __Pyx_RaiseNeedMoreValuesError(index);
-      __PYX_ERR(0, 76, __pyx_L1_error)
+      __PYX_ERR(0, 75, __pyx_L1_error)
       __pyx_L15_unpacking_done:;
     }
 
-    /* "structureboost/structure_dt_multi.pyx":76
+    /* "structureboost/structure_dt_multi.pyx":75
  *                                                      h_sum_right_nal,
  *                                                      self.gamma, self.reg_lambda)
  *             best_loss_nal, best_split_val_nal = stdt._get_best_vals(score_vec_nal,             # <<<<<<<<<<<<<<
@@ -4299,19 +4290,19 @@ static PyObject *__pyx_pf_14structureboost_18structure_dt_multi_26StructureDecis
     __pyx_v_best_split_val_nal = __pyx_t_1;
     __pyx_t_1 = 0;
 
-    /* "structureboost/structure_dt_multi.pyx":78
+    /* "structureboost/structure_dt_multi.pyx":77
  *             best_loss_nal, best_split_val_nal = stdt._get_best_vals(score_vec_nal,
  *                                                                split_vec)
  *             if best_loss_nal < best_loss:             # <<<<<<<<<<<<<<
  *                 # NAs go left by design
  *                 return best_loss_nal, best_split_val_nal, 1, 0
  */
-    __pyx_t_5 = PyObject_RichCompare(__pyx_v_best_loss_nal, __pyx_v_best_loss, Py_LT); __Pyx_XGOTREF(__pyx_t_5); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 78, __pyx_L1_error)
-    __pyx_t_10 = __Pyx_PyObject_IsTrue(__pyx_t_5); if (unlikely(__pyx_t_10 < 0)) __PYX_ERR(0, 78, __pyx_L1_error)
+    __pyx_t_5 = PyObject_RichCompare(__pyx_v_best_loss_nal, __pyx_v_best_loss, Py_LT); __Pyx_XGOTREF(__pyx_t_5); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 77, __pyx_L1_error)
+    __pyx_t_10 = __Pyx_PyObject_IsTrue(__pyx_t_5); if (unlikely(__pyx_t_10 < 0)) __PYX_ERR(0, 77, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
     if (__pyx_t_10) {
 
-      /* "structureboost/structure_dt_multi.pyx":80
+      /* "structureboost/structure_dt_multi.pyx":79
  *             if best_loss_nal < best_loss:
  *                 # NAs go left by design
  *                 return best_loss_nal, best_split_val_nal, 1, 0             # <<<<<<<<<<<<<<
@@ -4319,7 +4310,7 @@ static PyObject *__pyx_pf_14structureboost_18structure_dt_multi_26StructureDecis
  *                 # NAs go right by design
  */
       __Pyx_XDECREF(__pyx_r);
-      __pyx_t_5 = PyTuple_New(4); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 80, __pyx_L1_error)
+      __pyx_t_5 = PyTuple_New(4); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 79, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_5);
       __Pyx_INCREF(__pyx_v_best_loss_nal);
       __Pyx_GIVEREF(__pyx_v_best_loss_nal);
@@ -4337,7 +4328,7 @@ static PyObject *__pyx_pf_14structureboost_18structure_dt_multi_26StructureDecis
       __pyx_t_5 = 0;
       goto __pyx_L0;
 
-      /* "structureboost/structure_dt_multi.pyx":78
+      /* "structureboost/structure_dt_multi.pyx":77
  *             best_loss_nal, best_split_val_nal = stdt._get_best_vals(score_vec_nal,
  *                                                                split_vec)
  *             if best_loss_nal < best_loss:             # <<<<<<<<<<<<<<
@@ -4346,7 +4337,7 @@ static PyObject *__pyx_pf_14structureboost_18structure_dt_multi_26StructureDecis
  */
     }
 
-    /* "structureboost/structure_dt_multi.pyx":83
+    /* "structureboost/structure_dt_multi.pyx":82
  *             else:
  *                 # NAs go right by design
  *                 return best_loss, best_split_val, 0, 0             # <<<<<<<<<<<<<<
@@ -4355,7 +4346,7 @@ static PyObject *__pyx_pf_14structureboost_18structure_dt_multi_26StructureDecis
  */
     /*else*/ {
       __Pyx_XDECREF(__pyx_r);
-      __pyx_t_5 = PyTuple_New(4); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 83, __pyx_L1_error)
+      __pyx_t_5 = PyTuple_New(4); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 82, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_5);
       __Pyx_INCREF(__pyx_v_best_loss);
       __Pyx_GIVEREF(__pyx_v_best_loss);
@@ -4374,7 +4365,7 @@ static PyObject *__pyx_pf_14structureboost_18structure_dt_multi_26StructureDecis
       goto __pyx_L0;
     }
 
-    /* "structureboost/structure_dt_multi.pyx":65
+    /* "structureboost/structure_dt_multi.pyx":64
  * 
  *         best_loss, best_split_val = stdt._get_best_vals(score_vec, split_vec)
  *         if has_na_vals and (len(split_vec) > 2):             # <<<<<<<<<<<<<<
@@ -4383,7 +4374,7 @@ static PyObject *__pyx_pf_14structureboost_18structure_dt_multi_26StructureDecis
  */
   }
 
-  /* "structureboost/structure_dt_multi.pyx":87
+  /* "structureboost/structure_dt_multi.pyx":86
  *             # If no NAs at training, randomly choose side for NAs at this node
  *             # adjust here if we want coin flip to be other than .5
  *             return best_loss, best_split_val, int(random.random() < .5), 1             # <<<<<<<<<<<<<<
@@ -4392,9 +4383,9 @@ static PyObject *__pyx_pf_14structureboost_18structure_dt_multi_26StructureDecis
  */
   /*else*/ {
     __Pyx_XDECREF(__pyx_r);
-    __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_random); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 87, __pyx_L1_error)
+    __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_random); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 86, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
-    __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_random); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 87, __pyx_L1_error)
+    __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_random); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 86, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
     __pyx_t_1 = NULL;
@@ -4409,15 +4400,15 @@ static PyObject *__pyx_pf_14structureboost_18structure_dt_multi_26StructureDecis
     }
     __pyx_t_5 = (__pyx_t_1) ? __Pyx_PyObject_CallOneArg(__pyx_t_3, __pyx_t_1) : __Pyx_PyObject_CallNoArg(__pyx_t_3);
     __Pyx_XDECREF(__pyx_t_1); __pyx_t_1 = 0;
-    if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 87, __pyx_L1_error)
+    if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 86, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_5);
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-    __pyx_t_3 = PyObject_RichCompare(__pyx_t_5, __pyx_float__5, Py_LT); __Pyx_XGOTREF(__pyx_t_3); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 87, __pyx_L1_error)
+    __pyx_t_3 = PyObject_RichCompare(__pyx_t_5, __pyx_float__5, Py_LT); __Pyx_XGOTREF(__pyx_t_3); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 86, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-    __pyx_t_5 = __Pyx_PyNumber_Int(__pyx_t_3); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 87, __pyx_L1_error)
+    __pyx_t_5 = __Pyx_PyNumber_Int(__pyx_t_3); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 86, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_5);
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-    __pyx_t_3 = PyTuple_New(4); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 87, __pyx_L1_error)
+    __pyx_t_3 = PyTuple_New(4); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 86, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
     __Pyx_INCREF(__pyx_v_best_loss);
     __Pyx_GIVEREF(__pyx_v_best_loss);
@@ -4436,7 +4427,7 @@ static PyObject *__pyx_pf_14structureboost_18structure_dt_multi_26StructureDecis
     goto __pyx_L0;
   }
 
-  /* "structureboost/structure_dt_multi.pyx":48
+  /* "structureboost/structure_dt_multi.pyx":47
  *             return(out_val)
  * 
  *     def _evaluate_numerical_splits(self, feature_vec, g_h_mat,             # <<<<<<<<<<<<<<
@@ -4481,7 +4472,7 @@ static PyObject *__pyx_pf_14structureboost_18structure_dt_multi_26StructureDecis
   return __pyx_r;
 }
 
-/* "structureboost/structure_dt_multi.pyx":90
+/* "structureboost/structure_dt_multi.pyx":89
  * 
  * 
  *     def get_gh_val_mat(self, feature_vec_node,g_h_train_node,             # <<<<<<<<<<<<<<
@@ -4530,23 +4521,23 @@ static PyObject *__pyx_pw_14structureboost_18structure_dt_multi_26StructureDecis
         case  1:
         if (likely((values[1] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_feature_vec_node)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("get_gh_val_mat", 1, 4, 4, 1); __PYX_ERR(0, 90, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("get_gh_val_mat", 1, 4, 4, 1); __PYX_ERR(0, 89, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  2:
         if (likely((values[2] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_g_h_train_node)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("get_gh_val_mat", 1, 4, 4, 2); __PYX_ERR(0, 90, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("get_gh_val_mat", 1, 4, 4, 2); __PYX_ERR(0, 89, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  3:
         if (likely((values[3] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_max_num_vertices)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("get_gh_val_mat", 1, 4, 4, 3); __PYX_ERR(0, 90, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("get_gh_val_mat", 1, 4, 4, 3); __PYX_ERR(0, 89, __pyx_L3_error)
         }
       }
       if (unlikely(kw_args > 0)) {
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "get_gh_val_mat") < 0)) __PYX_ERR(0, 90, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "get_gh_val_mat") < 0)) __PYX_ERR(0, 89, __pyx_L3_error)
       }
     } else if (PyTuple_GET_SIZE(__pyx_args) != 4) {
       goto __pyx_L5_argtuple_error;
@@ -4563,7 +4554,7 @@ static PyObject *__pyx_pw_14structureboost_18structure_dt_multi_26StructureDecis
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("get_gh_val_mat", 1, 4, 4, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 90, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("get_gh_val_mat", 1, 4, 4, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 89, __pyx_L3_error)
   __pyx_L3_error:;
   __Pyx_AddTraceback("structureboost.structure_dt_multi.StructureDecisionTreeMulti.get_gh_val_mat", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
@@ -4593,26 +4584,26 @@ static PyObject *__pyx_pf_14structureboost_18structure_dt_multi_26StructureDecis
   int __pyx_clineno = 0;
   __Pyx_TraceFrameInit(__pyx_codeobj__8)
   __Pyx_RefNannySetupContext("get_gh_val_mat", 0);
-  __Pyx_TraceCall("get_gh_val_mat", __pyx_f[0], 90, 0, __PYX_ERR(0, 90, __pyx_L1_error));
+  __Pyx_TraceCall("get_gh_val_mat", __pyx_f[0], 89, 0, __PYX_ERR(0, 89, __pyx_L1_error));
 
-  /* "structureboost/structure_dt_multi.pyx":92
+  /* "structureboost/structure_dt_multi.pyx":91
  *     def get_gh_val_mat(self, feature_vec_node,g_h_train_node,
  *                        max_num_vertices):
  *         g_h_val_arr = np.zeros((max_num_vertices,2*self.num_classes))             # <<<<<<<<<<<<<<
  *         g_h_val_arr = get_g_h_feature_sum_matrix(
- *                                         feature_vec_node.astype(np.int64),
+ *                                         feature_vec_node.astype(np.int_),
  */
-  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_np); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 92, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_np); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 91, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_zeros); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 92, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_zeros); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 91, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_num_classes); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 92, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_num_classes); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 91, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_4 = PyNumber_Multiply(__pyx_int_2, __pyx_t_2); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 92, __pyx_L1_error)
+  __pyx_t_4 = PyNumber_Multiply(__pyx_int_2, __pyx_t_2); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 91, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __pyx_t_2 = PyTuple_New(2); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 92, __pyx_L1_error)
+  __pyx_t_2 = PyTuple_New(2); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 91, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_INCREF(__pyx_v_max_num_vertices);
   __Pyx_GIVEREF(__pyx_v_max_num_vertices);
@@ -4633,34 +4624,34 @@ static PyObject *__pyx_pf_14structureboost_18structure_dt_multi_26StructureDecis
   __pyx_t_1 = (__pyx_t_4) ? __Pyx_PyObject_Call2Args(__pyx_t_3, __pyx_t_4, __pyx_t_2) : __Pyx_PyObject_CallOneArg(__pyx_t_3, __pyx_t_2);
   __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 92, __pyx_L1_error)
+  if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 91, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   __pyx_v_g_h_val_arr = __pyx_t_1;
   __pyx_t_1 = 0;
 
-  /* "structureboost/structure_dt_multi.pyx":93
+  /* "structureboost/structure_dt_multi.pyx":92
  *                        max_num_vertices):
  *         g_h_val_arr = np.zeros((max_num_vertices,2*self.num_classes))
  *         g_h_val_arr = get_g_h_feature_sum_matrix(             # <<<<<<<<<<<<<<
- *                                         feature_vec_node.astype(np.int64),
+ *                                         feature_vec_node.astype(np.int_),
  *                                         g_h_train_node,
  */
-  __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_n_s_get_g_h_feature_sum_matrix); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 93, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_n_s_get_g_h_feature_sum_matrix); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 92, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
 
-  /* "structureboost/structure_dt_multi.pyx":94
+  /* "structureboost/structure_dt_multi.pyx":93
  *         g_h_val_arr = np.zeros((max_num_vertices,2*self.num_classes))
  *         g_h_val_arr = get_g_h_feature_sum_matrix(
- *                                         feature_vec_node.astype(np.int64),             # <<<<<<<<<<<<<<
+ *                                         feature_vec_node.astype(np.int_),             # <<<<<<<<<<<<<<
  *                                         g_h_train_node,
  *                                         g_h_val_arr, self.num_classes)
  */
-  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_feature_vec_node, __pyx_n_s_astype); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 94, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_feature_vec_node, __pyx_n_s_astype); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 93, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
-  __Pyx_GetModuleGlobalName(__pyx_t_5, __pyx_n_s_np); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 94, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_5, __pyx_n_s_np); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 93, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
-  __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_t_5, __pyx_n_s_int64); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 94, __pyx_L1_error)
+  __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_t_5, __pyx_n_s_int); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 93, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_6);
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
   __pyx_t_5 = NULL;
@@ -4676,18 +4667,18 @@ static PyObject *__pyx_pf_14structureboost_18structure_dt_multi_26StructureDecis
   __pyx_t_2 = (__pyx_t_5) ? __Pyx_PyObject_Call2Args(__pyx_t_4, __pyx_t_5, __pyx_t_6) : __Pyx_PyObject_CallOneArg(__pyx_t_4, __pyx_t_6);
   __Pyx_XDECREF(__pyx_t_5); __pyx_t_5 = 0;
   __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
-  if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 94, __pyx_L1_error)
+  if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 93, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
 
-  /* "structureboost/structure_dt_multi.pyx":96
- *                                         feature_vec_node.astype(np.int64),
+  /* "structureboost/structure_dt_multi.pyx":95
+ *                                         feature_vec_node.astype(np.int_),
  *                                         g_h_train_node,
  *                                         g_h_val_arr, self.num_classes)             # <<<<<<<<<<<<<<
  *         return g_h_val_arr
  * 
  */
-  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_num_classes); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 96, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_num_classes); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 95, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __pyx_t_6 = NULL;
   __pyx_t_7 = 0;
@@ -4704,7 +4695,7 @@ static PyObject *__pyx_pf_14structureboost_18structure_dt_multi_26StructureDecis
   #if CYTHON_FAST_PYCALL
   if (PyFunction_Check(__pyx_t_3)) {
     PyObject *__pyx_temp[5] = {__pyx_t_6, __pyx_t_2, __pyx_v_g_h_train_node, __pyx_v_g_h_val_arr, __pyx_t_4};
-    __pyx_t_1 = __Pyx_PyFunction_FastCall(__pyx_t_3, __pyx_temp+1-__pyx_t_7, 4+__pyx_t_7); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 93, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyFunction_FastCall(__pyx_t_3, __pyx_temp+1-__pyx_t_7, 4+__pyx_t_7); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 92, __pyx_L1_error)
     __Pyx_XDECREF(__pyx_t_6); __pyx_t_6 = 0;
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
@@ -4714,7 +4705,7 @@ static PyObject *__pyx_pf_14structureboost_18structure_dt_multi_26StructureDecis
   #if CYTHON_FAST_PYCCALL
   if (__Pyx_PyFastCFunction_Check(__pyx_t_3)) {
     PyObject *__pyx_temp[5] = {__pyx_t_6, __pyx_t_2, __pyx_v_g_h_train_node, __pyx_v_g_h_val_arr, __pyx_t_4};
-    __pyx_t_1 = __Pyx_PyCFunction_FastCall(__pyx_t_3, __pyx_temp+1-__pyx_t_7, 4+__pyx_t_7); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 93, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyCFunction_FastCall(__pyx_t_3, __pyx_temp+1-__pyx_t_7, 4+__pyx_t_7); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 92, __pyx_L1_error)
     __Pyx_XDECREF(__pyx_t_6); __pyx_t_6 = 0;
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
@@ -4722,7 +4713,7 @@ static PyObject *__pyx_pf_14structureboost_18structure_dt_multi_26StructureDecis
   } else
   #endif
   {
-    __pyx_t_5 = PyTuple_New(4+__pyx_t_7); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 93, __pyx_L1_error)
+    __pyx_t_5 = PyTuple_New(4+__pyx_t_7); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 92, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_5);
     if (__pyx_t_6) {
       __Pyx_GIVEREF(__pyx_t_6); PyTuple_SET_ITEM(__pyx_t_5, 0, __pyx_t_6); __pyx_t_6 = NULL;
@@ -4739,7 +4730,7 @@ static PyObject *__pyx_pf_14structureboost_18structure_dt_multi_26StructureDecis
     PyTuple_SET_ITEM(__pyx_t_5, 3+__pyx_t_7, __pyx_t_4);
     __pyx_t_2 = 0;
     __pyx_t_4 = 0;
-    __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_3, __pyx_t_5, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 93, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_3, __pyx_t_5, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 92, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
   }
@@ -4747,7 +4738,7 @@ static PyObject *__pyx_pf_14structureboost_18structure_dt_multi_26StructureDecis
   __Pyx_DECREF_SET(__pyx_v_g_h_val_arr, __pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "structureboost/structure_dt_multi.pyx":97
+  /* "structureboost/structure_dt_multi.pyx":96
  *                                         g_h_train_node,
  *                                         g_h_val_arr, self.num_classes)
  *         return g_h_val_arr             # <<<<<<<<<<<<<<
@@ -4759,7 +4750,7 @@ static PyObject *__pyx_pf_14structureboost_18structure_dt_multi_26StructureDecis
   __pyx_r = __pyx_v_g_h_val_arr;
   goto __pyx_L0;
 
-  /* "structureboost/structure_dt_multi.pyx":90
+  /* "structureboost/structure_dt_multi.pyx":89
  * 
  * 
  *     def get_gh_val_mat(self, feature_vec_node,g_h_train_node,             # <<<<<<<<<<<<<<
@@ -4785,7 +4776,7 @@ static PyObject *__pyx_pf_14structureboost_18structure_dt_multi_26StructureDecis
   return __pyx_r;
 }
 
-/* "structureboost/structure_dt_multi.pyx":101
+/* "structureboost/structure_dt_multi.pyx":100
  *     @cython.boundscheck(False)  # Deactivate bounds checking
  *     @cython.wraparound(False)   # Deactivate negative indexing.
  *     def update_g_h_accum(self, np.ndarray[double, ndim=2] g_h_accum_array,             # <<<<<<<<<<<<<<
@@ -4834,23 +4825,23 @@ static PyObject *__pyx_pw_14structureboost_18structure_dt_multi_26StructureDecis
         case  1:
         if (likely((values[1] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_g_h_accum_array)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("update_g_h_accum", 1, 4, 4, 1); __PYX_ERR(0, 101, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("update_g_h_accum", 1, 4, 4, 1); __PYX_ERR(0, 100, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  2:
         if (likely((values[2] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_lni)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("update_g_h_accum", 1, 4, 4, 2); __PYX_ERR(0, 101, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("update_g_h_accum", 1, 4, 4, 2); __PYX_ERR(0, 100, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  3:
         if (likely((values[3] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_lvi)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("update_g_h_accum", 1, 4, 4, 3); __PYX_ERR(0, 101, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("update_g_h_accum", 1, 4, 4, 3); __PYX_ERR(0, 100, __pyx_L3_error)
         }
       }
       if (unlikely(kw_args > 0)) {
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "update_g_h_accum") < 0)) __PYX_ERR(0, 101, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "update_g_h_accum") < 0)) __PYX_ERR(0, 100, __pyx_L3_error)
       }
     } else if (PyTuple_GET_SIZE(__pyx_args) != 4) {
       goto __pyx_L5_argtuple_error;
@@ -4862,18 +4853,18 @@ static PyObject *__pyx_pw_14structureboost_18structure_dt_multi_26StructureDecis
     }
     __pyx_v_self = values[0];
     __pyx_v_g_h_accum_array = ((PyArrayObject *)values[1]);
-    __pyx_v_lni = __Pyx_PyInt_As_long(values[2]); if (unlikely((__pyx_v_lni == (long)-1) && PyErr_Occurred())) __PYX_ERR(0, 102, __pyx_L3_error)
-    __pyx_v_lvi = __Pyx_PyInt_As_long(values[3]); if (unlikely((__pyx_v_lvi == (long)-1) && PyErr_Occurred())) __PYX_ERR(0, 102, __pyx_L3_error)
+    __pyx_v_lni = __Pyx_PyInt_As_long(values[2]); if (unlikely((__pyx_v_lni == (long)-1) && PyErr_Occurred())) __PYX_ERR(0, 101, __pyx_L3_error)
+    __pyx_v_lvi = __Pyx_PyInt_As_long(values[3]); if (unlikely((__pyx_v_lvi == (long)-1) && PyErr_Occurred())) __PYX_ERR(0, 101, __pyx_L3_error)
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("update_g_h_accum", 1, 4, 4, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 101, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("update_g_h_accum", 1, 4, 4, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 100, __pyx_L3_error)
   __pyx_L3_error:;
   __Pyx_AddTraceback("structureboost.structure_dt_multi.StructureDecisionTreeMulti.update_g_h_accum", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_g_h_accum_array), __pyx_ptype_5numpy_ndarray, 1, "g_h_accum_array", 0))) __PYX_ERR(0, 101, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_g_h_accum_array), __pyx_ptype_5numpy_ndarray, 1, "g_h_accum_array", 0))) __PYX_ERR(0, 100, __pyx_L1_error)
   __pyx_r = __pyx_pf_14structureboost_18structure_dt_multi_26StructureDecisionTreeMulti_8update_g_h_accum(__pyx_self, __pyx_v_self, __pyx_v_g_h_accum_array, __pyx_v_lni, __pyx_v_lvi);
 
   /* function exit code */
@@ -4907,52 +4898,52 @@ static PyObject *__pyx_pf_14structureboost_18structure_dt_multi_26StructureDecis
   int __pyx_clineno = 0;
   __Pyx_TraceFrameInit(__pyx_codeobj__9)
   __Pyx_RefNannySetupContext("update_g_h_accum", 0);
-  __Pyx_TraceCall("update_g_h_accum", __pyx_f[0], 101, 0, __PYX_ERR(0, 101, __pyx_L1_error));
+  __Pyx_TraceCall("update_g_h_accum", __pyx_f[0], 100, 0, __PYX_ERR(0, 100, __pyx_L1_error));
   __pyx_pybuffer_g_h_accum_array.pybuffer.buf = NULL;
   __pyx_pybuffer_g_h_accum_array.refcount = 0;
   __pyx_pybuffernd_g_h_accum_array.data = NULL;
   __pyx_pybuffernd_g_h_accum_array.rcbuffer = &__pyx_pybuffer_g_h_accum_array;
   {
     __Pyx_BufFmt_StackElem __pyx_stack[1];
-    if (unlikely(__Pyx_GetBufferAndValidate(&__pyx_pybuffernd_g_h_accum_array.rcbuffer->pybuffer, (PyObject*)__pyx_v_g_h_accum_array, &__Pyx_TypeInfo_double, PyBUF_FORMAT| PyBUF_STRIDES| PyBUF_WRITABLE, 2, 0, __pyx_stack) == -1)) __PYX_ERR(0, 101, __pyx_L1_error)
+    if (unlikely(__Pyx_GetBufferAndValidate(&__pyx_pybuffernd_g_h_accum_array.rcbuffer->pybuffer, (PyObject*)__pyx_v_g_h_accum_array, &__Pyx_TypeInfo_double, PyBUF_FORMAT| PyBUF_STRIDES| PyBUF_WRITABLE, 2, 0, __pyx_stack) == -1)) __PYX_ERR(0, 100, __pyx_L1_error)
   }
   __pyx_pybuffernd_g_h_accum_array.diminfo[0].strides = __pyx_pybuffernd_g_h_accum_array.rcbuffer->pybuffer.strides[0]; __pyx_pybuffernd_g_h_accum_array.diminfo[0].shape = __pyx_pybuffernd_g_h_accum_array.rcbuffer->pybuffer.shape[0]; __pyx_pybuffernd_g_h_accum_array.diminfo[1].strides = __pyx_pybuffernd_g_h_accum_array.rcbuffer->pybuffer.strides[1]; __pyx_pybuffernd_g_h_accum_array.diminfo[1].shape = __pyx_pybuffernd_g_h_accum_array.rcbuffer->pybuffer.shape[1];
 
-  /* "structureboost/structure_dt_multi.pyx":105
+  /* "structureboost/structure_dt_multi.pyx":104
  *         ## TODO: make this more efficient (cython)
  *         cdef long j
  *         cdef long limit = 2*self.num_classes             # <<<<<<<<<<<<<<
  *         for j in range(2*self.num_classes):
  *             g_h_accum_array[lni,j] +=  g_h_accum_array[lvi,j]
  */
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_num_classes); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 105, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_num_classes); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 104, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = PyNumber_Multiply(__pyx_int_2, __pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 105, __pyx_L1_error)
+  __pyx_t_2 = PyNumber_Multiply(__pyx_int_2, __pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 104, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_t_3 = __Pyx_PyInt_As_long(__pyx_t_2); if (unlikely((__pyx_t_3 == (long)-1) && PyErr_Occurred())) __PYX_ERR(0, 105, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyInt_As_long(__pyx_t_2); if (unlikely((__pyx_t_3 == (long)-1) && PyErr_Occurred())) __PYX_ERR(0, 104, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __pyx_v_limit = __pyx_t_3;
 
-  /* "structureboost/structure_dt_multi.pyx":106
+  /* "structureboost/structure_dt_multi.pyx":105
  *         cdef long j
  *         cdef long limit = 2*self.num_classes
  *         for j in range(2*self.num_classes):             # <<<<<<<<<<<<<<
  *             g_h_accum_array[lni,j] +=  g_h_accum_array[lvi,j]
  *         return g_h_accum_array
  */
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_num_classes); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 106, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_num_classes); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 105, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_1 = PyNumber_Multiply(__pyx_int_2, __pyx_t_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 106, __pyx_L1_error)
+  __pyx_t_1 = PyNumber_Multiply(__pyx_int_2, __pyx_t_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 105, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __pyx_t_3 = __Pyx_PyInt_As_long(__pyx_t_1); if (unlikely((__pyx_t_3 == (long)-1) && PyErr_Occurred())) __PYX_ERR(0, 106, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyInt_As_long(__pyx_t_1); if (unlikely((__pyx_t_3 == (long)-1) && PyErr_Occurred())) __PYX_ERR(0, 105, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __pyx_t_4 = __pyx_t_3;
   for (__pyx_t_5 = 0; __pyx_t_5 < __pyx_t_4; __pyx_t_5+=1) {
     __pyx_v_j = __pyx_t_5;
 
-    /* "structureboost/structure_dt_multi.pyx":107
+    /* "structureboost/structure_dt_multi.pyx":106
  *         cdef long limit = 2*self.num_classes
  *         for j in range(2*self.num_classes):
  *             g_h_accum_array[lni,j] +=  g_h_accum_array[lvi,j]             # <<<<<<<<<<<<<<
@@ -4966,7 +4957,7 @@ static PyObject *__pyx_pf_14structureboost_18structure_dt_multi_26StructureDecis
     *__Pyx_BufPtrStrided2d(double *, __pyx_pybuffernd_g_h_accum_array.rcbuffer->pybuffer.buf, __pyx_t_8, __pyx_pybuffernd_g_h_accum_array.diminfo[0].strides, __pyx_t_9, __pyx_pybuffernd_g_h_accum_array.diminfo[1].strides) += (*__Pyx_BufPtrStrided2d(double *, __pyx_pybuffernd_g_h_accum_array.rcbuffer->pybuffer.buf, __pyx_t_6, __pyx_pybuffernd_g_h_accum_array.diminfo[0].strides, __pyx_t_7, __pyx_pybuffernd_g_h_accum_array.diminfo[1].strides));
   }
 
-  /* "structureboost/structure_dt_multi.pyx":108
+  /* "structureboost/structure_dt_multi.pyx":107
  *         for j in range(2*self.num_classes):
  *             g_h_accum_array[lni,j] +=  g_h_accum_array[lvi,j]
  *         return g_h_accum_array             # <<<<<<<<<<<<<<
@@ -4978,7 +4969,7 @@ static PyObject *__pyx_pf_14structureboost_18structure_dt_multi_26StructureDecis
   __pyx_r = ((PyObject *)__pyx_v_g_h_accum_array);
   goto __pyx_L0;
 
-  /* "structureboost/structure_dt_multi.pyx":101
+  /* "structureboost/structure_dt_multi.pyx":100
  *     @cython.boundscheck(False)  # Deactivate bounds checking
  *     @cython.wraparound(False)   # Deactivate negative indexing.
  *     def update_g_h_accum(self, np.ndarray[double, ndim=2] g_h_accum_array,             # <<<<<<<<<<<<<<
@@ -5008,7 +4999,7 @@ static PyObject *__pyx_pf_14structureboost_18structure_dt_multi_26StructureDecis
   return __pyx_r;
 }
 
-/* "structureboost/structure_dt_multi.pyx":110
+/* "structureboost/structure_dt_multi.pyx":109
  *         return g_h_accum_array
  * 
  *     def get_loss_in_span_tree(self, feature_vec_node, g_h_train_node,             # <<<<<<<<<<<<<<
@@ -5069,47 +5060,47 @@ static PyObject *__pyx_pw_14structureboost_18structure_dt_multi_26StructureDecis
         case  1:
         if (likely((values[1] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_feature_vec_node)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("get_loss_in_span_tree", 1, 8, 8, 1); __PYX_ERR(0, 110, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("get_loss_in_span_tree", 1, 8, 8, 1); __PYX_ERR(0, 109, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  2:
         if (likely((values[2] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_g_h_train_node)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("get_loss_in_span_tree", 1, 8, 8, 2); __PYX_ERR(0, 110, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("get_loss_in_span_tree", 1, 8, 8, 2); __PYX_ERR(0, 109, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  3:
         if (likely((values[3] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_g_h_accum_array)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("get_loss_in_span_tree", 1, 8, 8, 3); __PYX_ERR(0, 110, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("get_loss_in_span_tree", 1, 8, 8, 3); __PYX_ERR(0, 109, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  4:
         if (likely((values[4] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_g_h_sum)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("get_loss_in_span_tree", 1, 8, 8, 4); __PYX_ERR(0, 110, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("get_loss_in_span_tree", 1, 8, 8, 4); __PYX_ERR(0, 109, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  5:
         if (likely((values[5] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_leaf_vertex_ind)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("get_loss_in_span_tree", 1, 8, 8, 5); __PYX_ERR(0, 110, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("get_loss_in_span_tree", 1, 8, 8, 5); __PYX_ERR(0, 109, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  6:
         if (likely((values[6] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_left_feat_values)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("get_loss_in_span_tree", 1, 8, 8, 6); __PYX_ERR(0, 110, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("get_loss_in_span_tree", 1, 8, 8, 6); __PYX_ERR(0, 109, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  7:
         if (likely((values[7] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_feature_type)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("get_loss_in_span_tree", 1, 8, 8, 7); __PYX_ERR(0, 110, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("get_loss_in_span_tree", 1, 8, 8, 7); __PYX_ERR(0, 109, __pyx_L3_error)
         }
       }
       if (unlikely(kw_args > 0)) {
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "get_loss_in_span_tree") < 0)) __PYX_ERR(0, 110, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "get_loss_in_span_tree") < 0)) __PYX_ERR(0, 109, __pyx_L3_error)
       }
     } else if (PyTuple_GET_SIZE(__pyx_args) != 8) {
       goto __pyx_L5_argtuple_error;
@@ -5134,7 +5125,7 @@ static PyObject *__pyx_pw_14structureboost_18structure_dt_multi_26StructureDecis
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("get_loss_in_span_tree", 1, 8, 8, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 110, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("get_loss_in_span_tree", 1, 8, 8, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 109, __pyx_L3_error)
   __pyx_L3_error:;
   __Pyx_AddTraceback("structureboost.structure_dt_multi.StructureDecisionTreeMulti.get_loss_in_span_tree", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
@@ -5170,21 +5161,21 @@ static PyObject *__pyx_pf_14structureboost_18structure_dt_multi_26StructureDecis
   int __pyx_clineno = 0;
   __Pyx_TraceFrameInit(__pyx_codeobj__10)
   __Pyx_RefNannySetupContext("get_loss_in_span_tree", 0);
-  __Pyx_TraceCall("get_loss_in_span_tree", __pyx_f[0], 110, 0, __PYX_ERR(0, 110, __pyx_L1_error));
+  __Pyx_TraceCall("get_loss_in_span_tree", __pyx_f[0], 109, 0, __PYX_ERR(0, 109, __pyx_L1_error));
 
-  /* "structureboost/structure_dt_multi.pyx":113
+  /* "structureboost/structure_dt_multi.pyx":112
  *                               g_h_accum_array, g_h_sum, leaf_vertex_ind,
  *                               left_feat_values, feature_type):
  *         g_left = g_h_accum_array[leaf_vertex_ind,:self.num_classes]             # <<<<<<<<<<<<<<
  *         h_left = g_h_accum_array[leaf_vertex_ind,self.num_classes:2*(self.num_classes)]
  *         g_sum = g_h_sum[:self.num_classes]
  */
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_num_classes); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 113, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_num_classes); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 112, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = PySlice_New(Py_None, __pyx_t_1, Py_None); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 113, __pyx_L1_error)
+  __pyx_t_2 = PySlice_New(Py_None, __pyx_t_1, Py_None); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 112, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_t_1 = PyTuple_New(2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 113, __pyx_L1_error)
+  __pyx_t_1 = PyTuple_New(2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 112, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_INCREF(__pyx_v_leaf_vertex_ind);
   __Pyx_GIVEREF(__pyx_v_leaf_vertex_ind);
@@ -5192,31 +5183,31 @@ static PyObject *__pyx_pf_14structureboost_18structure_dt_multi_26StructureDecis
   __Pyx_GIVEREF(__pyx_t_2);
   PyTuple_SET_ITEM(__pyx_t_1, 1, __pyx_t_2);
   __pyx_t_2 = 0;
-  __pyx_t_2 = __Pyx_PyObject_GetItem(__pyx_v_g_h_accum_array, __pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 113, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_GetItem(__pyx_v_g_h_accum_array, __pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 112, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __pyx_v_g_left = __pyx_t_2;
   __pyx_t_2 = 0;
 
-  /* "structureboost/structure_dt_multi.pyx":114
+  /* "structureboost/structure_dt_multi.pyx":113
  *                               left_feat_values, feature_type):
  *         g_left = g_h_accum_array[leaf_vertex_ind,:self.num_classes]
  *         h_left = g_h_accum_array[leaf_vertex_ind,self.num_classes:2*(self.num_classes)]             # <<<<<<<<<<<<<<
  *         g_sum = g_h_sum[:self.num_classes]
  *         h_sum = g_h_sum[self.num_classes:2*self.num_classes]
  */
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_num_classes); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 114, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_num_classes); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 113, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_num_classes); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 114, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_num_classes); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 113, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_3 = PyNumber_Multiply(__pyx_int_2, __pyx_t_1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 114, __pyx_L1_error)
+  __pyx_t_3 = PyNumber_Multiply(__pyx_int_2, __pyx_t_1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 113, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_t_1 = PySlice_New(__pyx_t_2, __pyx_t_3, Py_None); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 114, __pyx_L1_error)
+  __pyx_t_1 = PySlice_New(__pyx_t_2, __pyx_t_3, Py_None); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 113, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  __pyx_t_3 = PyTuple_New(2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 114, __pyx_L1_error)
+  __pyx_t_3 = PyTuple_New(2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 113, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_INCREF(__pyx_v_leaf_vertex_ind);
   __Pyx_GIVEREF(__pyx_v_leaf_vertex_ind);
@@ -5224,80 +5215,80 @@ static PyObject *__pyx_pf_14structureboost_18structure_dt_multi_26StructureDecis
   __Pyx_GIVEREF(__pyx_t_1);
   PyTuple_SET_ITEM(__pyx_t_3, 1, __pyx_t_1);
   __pyx_t_1 = 0;
-  __pyx_t_1 = __Pyx_PyObject_GetItem(__pyx_v_g_h_accum_array, __pyx_t_3); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 114, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_GetItem(__pyx_v_g_h_accum_array, __pyx_t_3); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 113, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   __pyx_v_h_left = __pyx_t_1;
   __pyx_t_1 = 0;
 
-  /* "structureboost/structure_dt_multi.pyx":115
+  /* "structureboost/structure_dt_multi.pyx":114
  *         g_left = g_h_accum_array[leaf_vertex_ind,:self.num_classes]
  *         h_left = g_h_accum_array[leaf_vertex_ind,self.num_classes:2*(self.num_classes)]
  *         g_sum = g_h_sum[:self.num_classes]             # <<<<<<<<<<<<<<
  *         h_sum = g_h_sum[self.num_classes:2*self.num_classes]
  *         curr_loss = _get_gh_score_num_mc(g_left, g_sum-g_left,
  */
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_num_classes); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 115, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_num_classes); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 114, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_3 = __Pyx_PyObject_GetSlice(__pyx_v_g_h_sum, 0, 0, NULL, &__pyx_t_1, NULL, 0, 0, 1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 115, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyObject_GetSlice(__pyx_v_g_h_sum, 0, 0, NULL, &__pyx_t_1, NULL, 0, 0, 1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 114, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __pyx_v_g_sum = __pyx_t_3;
   __pyx_t_3 = 0;
 
-  /* "structureboost/structure_dt_multi.pyx":116
+  /* "structureboost/structure_dt_multi.pyx":115
  *         h_left = g_h_accum_array[leaf_vertex_ind,self.num_classes:2*(self.num_classes)]
  *         g_sum = g_h_sum[:self.num_classes]
  *         h_sum = g_h_sum[self.num_classes:2*self.num_classes]             # <<<<<<<<<<<<<<
  *         curr_loss = _get_gh_score_num_mc(g_left, g_sum-g_left,
  *                                       h_left, h_sum-h_left,
  */
-  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_num_classes); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 116, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_num_classes); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 115, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_num_classes); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 116, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_num_classes); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 115, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = PyNumber_Multiply(__pyx_int_2, __pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 116, __pyx_L1_error)
+  __pyx_t_2 = PyNumber_Multiply(__pyx_int_2, __pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 115, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_t_1 = __Pyx_PyObject_GetSlice(__pyx_v_g_h_sum, 0, 0, &__pyx_t_3, &__pyx_t_2, NULL, 0, 0, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 116, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_GetSlice(__pyx_v_g_h_sum, 0, 0, &__pyx_t_3, &__pyx_t_2, NULL, 0, 0, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 115, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __pyx_v_h_sum = __pyx_t_1;
   __pyx_t_1 = 0;
 
-  /* "structureboost/structure_dt_multi.pyx":117
+  /* "structureboost/structure_dt_multi.pyx":116
  *         g_sum = g_h_sum[:self.num_classes]
  *         h_sum = g_h_sum[self.num_classes:2*self.num_classes]
  *         curr_loss = _get_gh_score_num_mc(g_left, g_sum-g_left,             # <<<<<<<<<<<<<<
  *                                       h_left, h_sum-h_left,
  *                                       self.gamma, self.reg_lambda)
  */
-  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_get_gh_score_num_mc); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 117, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_get_gh_score_num_mc); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 116, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_3 = PyNumber_Subtract(__pyx_v_g_sum, __pyx_v_g_left); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 117, __pyx_L1_error)
+  __pyx_t_3 = PyNumber_Subtract(__pyx_v_g_sum, __pyx_v_g_left); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 116, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
 
-  /* "structureboost/structure_dt_multi.pyx":118
+  /* "structureboost/structure_dt_multi.pyx":117
  *         h_sum = g_h_sum[self.num_classes:2*self.num_classes]
  *         curr_loss = _get_gh_score_num_mc(g_left, g_sum-g_left,
  *                                       h_left, h_sum-h_left,             # <<<<<<<<<<<<<<
  *                                       self.gamma, self.reg_lambda)
  *         return(curr_loss)
  */
-  __pyx_t_4 = PyNumber_Subtract(__pyx_v_h_sum, __pyx_v_h_left); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 118, __pyx_L1_error)
+  __pyx_t_4 = PyNumber_Subtract(__pyx_v_h_sum, __pyx_v_h_left); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 117, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
 
-  /* "structureboost/structure_dt_multi.pyx":119
+  /* "structureboost/structure_dt_multi.pyx":118
  *         curr_loss = _get_gh_score_num_mc(g_left, g_sum-g_left,
  *                                       h_left, h_sum-h_left,
  *                                       self.gamma, self.reg_lambda)             # <<<<<<<<<<<<<<
  *         return(curr_loss)
  * 
  */
-  __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_gamma); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 119, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_gamma); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 118, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
-  __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_reg_lambda); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 119, __pyx_L1_error)
+  __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_reg_lambda); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 118, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_6);
   __pyx_t_7 = NULL;
   __pyx_t_8 = 0;
@@ -5314,7 +5305,7 @@ static PyObject *__pyx_pf_14structureboost_18structure_dt_multi_26StructureDecis
   #if CYTHON_FAST_PYCALL
   if (PyFunction_Check(__pyx_t_2)) {
     PyObject *__pyx_temp[7] = {__pyx_t_7, __pyx_v_g_left, __pyx_t_3, __pyx_v_h_left, __pyx_t_4, __pyx_t_5, __pyx_t_6};
-    __pyx_t_1 = __Pyx_PyFunction_FastCall(__pyx_t_2, __pyx_temp+1-__pyx_t_8, 6+__pyx_t_8); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 117, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyFunction_FastCall(__pyx_t_2, __pyx_temp+1-__pyx_t_8, 6+__pyx_t_8); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 116, __pyx_L1_error)
     __Pyx_XDECREF(__pyx_t_7); __pyx_t_7 = 0;
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
@@ -5326,7 +5317,7 @@ static PyObject *__pyx_pf_14structureboost_18structure_dt_multi_26StructureDecis
   #if CYTHON_FAST_PYCCALL
   if (__Pyx_PyFastCFunction_Check(__pyx_t_2)) {
     PyObject *__pyx_temp[7] = {__pyx_t_7, __pyx_v_g_left, __pyx_t_3, __pyx_v_h_left, __pyx_t_4, __pyx_t_5, __pyx_t_6};
-    __pyx_t_1 = __Pyx_PyCFunction_FastCall(__pyx_t_2, __pyx_temp+1-__pyx_t_8, 6+__pyx_t_8); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 117, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyCFunction_FastCall(__pyx_t_2, __pyx_temp+1-__pyx_t_8, 6+__pyx_t_8); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 116, __pyx_L1_error)
     __Pyx_XDECREF(__pyx_t_7); __pyx_t_7 = 0;
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
@@ -5336,7 +5327,7 @@ static PyObject *__pyx_pf_14structureboost_18structure_dt_multi_26StructureDecis
   } else
   #endif
   {
-    __pyx_t_9 = PyTuple_New(6+__pyx_t_8); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 117, __pyx_L1_error)
+    __pyx_t_9 = PyTuple_New(6+__pyx_t_8); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 116, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_9);
     if (__pyx_t_7) {
       __Pyx_GIVEREF(__pyx_t_7); PyTuple_SET_ITEM(__pyx_t_9, 0, __pyx_t_7); __pyx_t_7 = NULL;
@@ -5359,7 +5350,7 @@ static PyObject *__pyx_pf_14structureboost_18structure_dt_multi_26StructureDecis
     __pyx_t_4 = 0;
     __pyx_t_5 = 0;
     __pyx_t_6 = 0;
-    __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_9, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 117, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_9, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 116, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
   }
@@ -5367,7 +5358,7 @@ static PyObject *__pyx_pf_14structureboost_18structure_dt_multi_26StructureDecis
   __pyx_v_curr_loss = __pyx_t_1;
   __pyx_t_1 = 0;
 
-  /* "structureboost/structure_dt_multi.pyx":120
+  /* "structureboost/structure_dt_multi.pyx":119
  *                                       h_left, h_sum-h_left,
  *                                       self.gamma, self.reg_lambda)
  *         return(curr_loss)             # <<<<<<<<<<<<<<
@@ -5379,7 +5370,7 @@ static PyObject *__pyx_pf_14structureboost_18structure_dt_multi_26StructureDecis
   __pyx_r = __pyx_v_curr_loss;
   goto __pyx_L0;
 
-  /* "structureboost/structure_dt_multi.pyx":110
+  /* "structureboost/structure_dt_multi.pyx":109
  *         return g_h_accum_array
  * 
  *     def get_loss_in_span_tree(self, feature_vec_node, g_h_train_node,             # <<<<<<<<<<<<<<
@@ -5411,7 +5402,7 @@ static PyObject *__pyx_pf_14structureboost_18structure_dt_multi_26StructureDecis
   return __pyx_r;
 }
 
-/* "structureboost/structure_dt_multi.pyx":123
+/* "structureboost/structure_dt_multi.pyx":122
  * 
  * 
  *     def get_score_of_split(self, g_h_train_node, mask_left, g_h_sum):             # <<<<<<<<<<<<<<
@@ -5460,23 +5451,23 @@ static PyObject *__pyx_pw_14structureboost_18structure_dt_multi_26StructureDecis
         case  1:
         if (likely((values[1] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_g_h_train_node)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("get_score_of_split", 1, 4, 4, 1); __PYX_ERR(0, 123, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("get_score_of_split", 1, 4, 4, 1); __PYX_ERR(0, 122, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  2:
         if (likely((values[2] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_mask_left)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("get_score_of_split", 1, 4, 4, 2); __PYX_ERR(0, 123, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("get_score_of_split", 1, 4, 4, 2); __PYX_ERR(0, 122, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  3:
         if (likely((values[3] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_g_h_sum)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("get_score_of_split", 1, 4, 4, 3); __PYX_ERR(0, 123, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("get_score_of_split", 1, 4, 4, 3); __PYX_ERR(0, 122, __pyx_L3_error)
         }
       }
       if (unlikely(kw_args > 0)) {
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "get_score_of_split") < 0)) __PYX_ERR(0, 123, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "get_score_of_split") < 0)) __PYX_ERR(0, 122, __pyx_L3_error)
       }
     } else if (PyTuple_GET_SIZE(__pyx_args) != 4) {
       goto __pyx_L5_argtuple_error;
@@ -5493,7 +5484,7 @@ static PyObject *__pyx_pw_14structureboost_18structure_dt_multi_26StructureDecis
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("get_score_of_split", 1, 4, 4, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 123, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("get_score_of_split", 1, 4, 4, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 122, __pyx_L3_error)
   __pyx_L3_error:;
   __Pyx_AddTraceback("structureboost.structure_dt_multi.StructureDecisionTreeMulti.get_score_of_split", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
@@ -5531,16 +5522,16 @@ static PyObject *__pyx_pf_14structureboost_18structure_dt_multi_26StructureDecis
   int __pyx_clineno = 0;
   __Pyx_TraceFrameInit(__pyx_codeobj__11)
   __Pyx_RefNannySetupContext("get_score_of_split", 0);
-  __Pyx_TraceCall("get_score_of_split", __pyx_f[0], 123, 0, __PYX_ERR(0, 123, __pyx_L1_error));
+  __Pyx_TraceCall("get_score_of_split", __pyx_f[0], 122, 0, __PYX_ERR(0, 122, __pyx_L1_error));
 
-  /* "structureboost/structure_dt_multi.pyx":124
+  /* "structureboost/structure_dt_multi.pyx":123
  * 
  *     def get_score_of_split(self, g_h_train_node, mask_left, g_h_sum):
  *         g_h_masked = g_h_train_node[mask_left,:]             # <<<<<<<<<<<<<<
  *         g_h_masked_sum = np.sum(g_h_masked, axis=0)
  *         g_left = g_h_masked_sum[:self.num_classes]
  */
-  __pyx_t_1 = PyTuple_New(2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 124, __pyx_L1_error)
+  __pyx_t_1 = PyTuple_New(2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 123, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_INCREF(__pyx_v_mask_left);
   __Pyx_GIVEREF(__pyx_v_mask_left);
@@ -5548,33 +5539,33 @@ static PyObject *__pyx_pf_14structureboost_18structure_dt_multi_26StructureDecis
   __Pyx_INCREF(__pyx_slice__3);
   __Pyx_GIVEREF(__pyx_slice__3);
   PyTuple_SET_ITEM(__pyx_t_1, 1, __pyx_slice__3);
-  __pyx_t_2 = __Pyx_PyObject_GetItem(__pyx_v_g_h_train_node, __pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 124, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_GetItem(__pyx_v_g_h_train_node, __pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 123, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __pyx_v_g_h_masked = __pyx_t_2;
   __pyx_t_2 = 0;
 
-  /* "structureboost/structure_dt_multi.pyx":125
+  /* "structureboost/structure_dt_multi.pyx":124
  *     def get_score_of_split(self, g_h_train_node, mask_left, g_h_sum):
  *         g_h_masked = g_h_train_node[mask_left,:]
  *         g_h_masked_sum = np.sum(g_h_masked, axis=0)             # <<<<<<<<<<<<<<
  *         g_left = g_h_masked_sum[:self.num_classes]
  *         h_left = g_h_masked_sum[self.num_classes:(2*self.num_classes)]
  */
-  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_np); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 125, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_np); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 124, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_sum); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 125, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_sum); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 124, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __pyx_t_2 = PyTuple_New(1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 125, __pyx_L1_error)
+  __pyx_t_2 = PyTuple_New(1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 124, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_INCREF(__pyx_v_g_h_masked);
   __Pyx_GIVEREF(__pyx_v_g_h_masked);
   PyTuple_SET_ITEM(__pyx_t_2, 0, __pyx_v_g_h_masked);
-  __pyx_t_3 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 125, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 124, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  if (PyDict_SetItem(__pyx_t_3, __pyx_n_s_axis, __pyx_int_0) < 0) __PYX_ERR(0, 125, __pyx_L1_error)
-  __pyx_t_4 = __Pyx_PyObject_Call(__pyx_t_1, __pyx_t_2, __pyx_t_3); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 125, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_3, __pyx_n_s_axis, __pyx_int_0) < 0) __PYX_ERR(0, 124, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyObject_Call(__pyx_t_1, __pyx_t_2, __pyx_t_3); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 124, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
@@ -5582,110 +5573,110 @@ static PyObject *__pyx_pf_14structureboost_18structure_dt_multi_26StructureDecis
   __pyx_v_g_h_masked_sum = __pyx_t_4;
   __pyx_t_4 = 0;
 
-  /* "structureboost/structure_dt_multi.pyx":126
+  /* "structureboost/structure_dt_multi.pyx":125
  *         g_h_masked = g_h_train_node[mask_left,:]
  *         g_h_masked_sum = np.sum(g_h_masked, axis=0)
  *         g_left = g_h_masked_sum[:self.num_classes]             # <<<<<<<<<<<<<<
  *         h_left = g_h_masked_sum[self.num_classes:(2*self.num_classes)]
  *         g_sum = g_h_sum[:self.num_classes]
  */
-  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_num_classes); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 126, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_num_classes); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 125, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
-  __pyx_t_3 = __Pyx_PyObject_GetSlice(__pyx_v_g_h_masked_sum, 0, 0, NULL, &__pyx_t_4, NULL, 0, 0, 1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 126, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyObject_GetSlice(__pyx_v_g_h_masked_sum, 0, 0, NULL, &__pyx_t_4, NULL, 0, 0, 1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 125, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
   __pyx_v_g_left = __pyx_t_3;
   __pyx_t_3 = 0;
 
-  /* "structureboost/structure_dt_multi.pyx":127
+  /* "structureboost/structure_dt_multi.pyx":126
  *         g_h_masked_sum = np.sum(g_h_masked, axis=0)
  *         g_left = g_h_masked_sum[:self.num_classes]
  *         h_left = g_h_masked_sum[self.num_classes:(2*self.num_classes)]             # <<<<<<<<<<<<<<
  *         g_sum = g_h_sum[:self.num_classes]
  *         h_sum = g_h_sum[self.num_classes:(2*self.num_classes)]
  */
-  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_num_classes); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 127, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_num_classes); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 126, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_num_classes); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 127, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_num_classes); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 126, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
-  __pyx_t_2 = PyNumber_Multiply(__pyx_int_2, __pyx_t_4); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 127, __pyx_L1_error)
+  __pyx_t_2 = PyNumber_Multiply(__pyx_int_2, __pyx_t_4); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 126, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-  __pyx_t_4 = __Pyx_PyObject_GetSlice(__pyx_v_g_h_masked_sum, 0, 0, &__pyx_t_3, &__pyx_t_2, NULL, 0, 0, 1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 127, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyObject_GetSlice(__pyx_v_g_h_masked_sum, 0, 0, &__pyx_t_3, &__pyx_t_2, NULL, 0, 0, 1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 126, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __pyx_v_h_left = __pyx_t_4;
   __pyx_t_4 = 0;
 
-  /* "structureboost/structure_dt_multi.pyx":128
+  /* "structureboost/structure_dt_multi.pyx":127
  *         g_left = g_h_masked_sum[:self.num_classes]
  *         h_left = g_h_masked_sum[self.num_classes:(2*self.num_classes)]
  *         g_sum = g_h_sum[:self.num_classes]             # <<<<<<<<<<<<<<
  *         h_sum = g_h_sum[self.num_classes:(2*self.num_classes)]
  *         curr_loss = _get_gh_score_num_mc(g_left, g_sum-g_left,
  */
-  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_num_classes); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 128, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_num_classes); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 127, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
-  __pyx_t_2 = __Pyx_PyObject_GetSlice(__pyx_v_g_h_sum, 0, 0, NULL, &__pyx_t_4, NULL, 0, 0, 1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 128, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_GetSlice(__pyx_v_g_h_sum, 0, 0, NULL, &__pyx_t_4, NULL, 0, 0, 1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 127, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
   __pyx_v_g_sum = __pyx_t_2;
   __pyx_t_2 = 0;
 
-  /* "structureboost/structure_dt_multi.pyx":129
+  /* "structureboost/structure_dt_multi.pyx":128
  *         h_left = g_h_masked_sum[self.num_classes:(2*self.num_classes)]
  *         g_sum = g_h_sum[:self.num_classes]
  *         h_sum = g_h_sum[self.num_classes:(2*self.num_classes)]             # <<<<<<<<<<<<<<
  *         curr_loss = _get_gh_score_num_mc(g_left, g_sum-g_left,
  *                                       h_left, h_sum-h_left,
  */
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_num_classes); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 129, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_num_classes); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 128, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_num_classes); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 129, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_num_classes); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 128, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
-  __pyx_t_3 = PyNumber_Multiply(__pyx_int_2, __pyx_t_4); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 129, __pyx_L1_error)
+  __pyx_t_3 = PyNumber_Multiply(__pyx_int_2, __pyx_t_4); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 128, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-  __pyx_t_4 = __Pyx_PyObject_GetSlice(__pyx_v_g_h_sum, 0, 0, &__pyx_t_2, &__pyx_t_3, NULL, 0, 0, 1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 129, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyObject_GetSlice(__pyx_v_g_h_sum, 0, 0, &__pyx_t_2, &__pyx_t_3, NULL, 0, 0, 1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 128, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   __pyx_v_h_sum = __pyx_t_4;
   __pyx_t_4 = 0;
 
-  /* "structureboost/structure_dt_multi.pyx":130
+  /* "structureboost/structure_dt_multi.pyx":129
  *         g_sum = g_h_sum[:self.num_classes]
  *         h_sum = g_h_sum[self.num_classes:(2*self.num_classes)]
  *         curr_loss = _get_gh_score_num_mc(g_left, g_sum-g_left,             # <<<<<<<<<<<<<<
  *                                       h_left, h_sum-h_left,
  *                                       self.gamma, self.reg_lambda)
  */
-  __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_n_s_get_gh_score_num_mc); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 130, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_n_s_get_gh_score_num_mc); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 129, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_2 = PyNumber_Subtract(__pyx_v_g_sum, __pyx_v_g_left); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 130, __pyx_L1_error)
+  __pyx_t_2 = PyNumber_Subtract(__pyx_v_g_sum, __pyx_v_g_left); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 129, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
 
-  /* "structureboost/structure_dt_multi.pyx":131
+  /* "structureboost/structure_dt_multi.pyx":130
  *         h_sum = g_h_sum[self.num_classes:(2*self.num_classes)]
  *         curr_loss = _get_gh_score_num_mc(g_left, g_sum-g_left,
  *                                       h_left, h_sum-h_left,             # <<<<<<<<<<<<<<
  *                                       self.gamma, self.reg_lambda)
  *         return(curr_loss)
  */
-  __pyx_t_1 = PyNumber_Subtract(__pyx_v_h_sum, __pyx_v_h_left); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 131, __pyx_L1_error)
+  __pyx_t_1 = PyNumber_Subtract(__pyx_v_h_sum, __pyx_v_h_left); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 130, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
 
-  /* "structureboost/structure_dt_multi.pyx":132
+  /* "structureboost/structure_dt_multi.pyx":131
  *         curr_loss = _get_gh_score_num_mc(g_left, g_sum-g_left,
  *                                       h_left, h_sum-h_left,
  *                                       self.gamma, self.reg_lambda)             # <<<<<<<<<<<<<<
  *         return(curr_loss)
  * 
  */
-  __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_gamma); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 132, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_gamma); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 131, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
-  __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_reg_lambda); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 132, __pyx_L1_error)
+  __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_reg_lambda); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 131, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_6);
   __pyx_t_7 = NULL;
   __pyx_t_8 = 0;
@@ -5702,7 +5693,7 @@ static PyObject *__pyx_pf_14structureboost_18structure_dt_multi_26StructureDecis
   #if CYTHON_FAST_PYCALL
   if (PyFunction_Check(__pyx_t_3)) {
     PyObject *__pyx_temp[7] = {__pyx_t_7, __pyx_v_g_left, __pyx_t_2, __pyx_v_h_left, __pyx_t_1, __pyx_t_5, __pyx_t_6};
-    __pyx_t_4 = __Pyx_PyFunction_FastCall(__pyx_t_3, __pyx_temp+1-__pyx_t_8, 6+__pyx_t_8); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 130, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_PyFunction_FastCall(__pyx_t_3, __pyx_temp+1-__pyx_t_8, 6+__pyx_t_8); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 129, __pyx_L1_error)
     __Pyx_XDECREF(__pyx_t_7); __pyx_t_7 = 0;
     __Pyx_GOTREF(__pyx_t_4);
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
@@ -5714,7 +5705,7 @@ static PyObject *__pyx_pf_14structureboost_18structure_dt_multi_26StructureDecis
   #if CYTHON_FAST_PYCCALL
   if (__Pyx_PyFastCFunction_Check(__pyx_t_3)) {
     PyObject *__pyx_temp[7] = {__pyx_t_7, __pyx_v_g_left, __pyx_t_2, __pyx_v_h_left, __pyx_t_1, __pyx_t_5, __pyx_t_6};
-    __pyx_t_4 = __Pyx_PyCFunction_FastCall(__pyx_t_3, __pyx_temp+1-__pyx_t_8, 6+__pyx_t_8); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 130, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_PyCFunction_FastCall(__pyx_t_3, __pyx_temp+1-__pyx_t_8, 6+__pyx_t_8); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 129, __pyx_L1_error)
     __Pyx_XDECREF(__pyx_t_7); __pyx_t_7 = 0;
     __Pyx_GOTREF(__pyx_t_4);
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
@@ -5724,7 +5715,7 @@ static PyObject *__pyx_pf_14structureboost_18structure_dt_multi_26StructureDecis
   } else
   #endif
   {
-    __pyx_t_9 = PyTuple_New(6+__pyx_t_8); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 130, __pyx_L1_error)
+    __pyx_t_9 = PyTuple_New(6+__pyx_t_8); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 129, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_9);
     if (__pyx_t_7) {
       __Pyx_GIVEREF(__pyx_t_7); PyTuple_SET_ITEM(__pyx_t_9, 0, __pyx_t_7); __pyx_t_7 = NULL;
@@ -5747,7 +5738,7 @@ static PyObject *__pyx_pf_14structureboost_18structure_dt_multi_26StructureDecis
     __pyx_t_1 = 0;
     __pyx_t_5 = 0;
     __pyx_t_6 = 0;
-    __pyx_t_4 = __Pyx_PyObject_Call(__pyx_t_3, __pyx_t_9, NULL); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 130, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_PyObject_Call(__pyx_t_3, __pyx_t_9, NULL); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 129, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
     __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
   }
@@ -5755,7 +5746,7 @@ static PyObject *__pyx_pf_14structureboost_18structure_dt_multi_26StructureDecis
   __pyx_v_curr_loss = __pyx_t_4;
   __pyx_t_4 = 0;
 
-  /* "structureboost/structure_dt_multi.pyx":133
+  /* "structureboost/structure_dt_multi.pyx":132
  *                                       h_left, h_sum-h_left,
  *                                       self.gamma, self.reg_lambda)
  *         return(curr_loss)             # <<<<<<<<<<<<<<
@@ -5767,7 +5758,7 @@ static PyObject *__pyx_pf_14structureboost_18structure_dt_multi_26StructureDecis
   __pyx_r = __pyx_v_curr_loss;
   goto __pyx_L0;
 
-  /* "structureboost/structure_dt_multi.pyx":123
+  /* "structureboost/structure_dt_multi.pyx":122
  * 
  * 
  *     def get_score_of_split(self, g_h_train_node, mask_left, g_h_sum):             # <<<<<<<<<<<<<<
@@ -5801,7 +5792,7 @@ static PyObject *__pyx_pf_14structureboost_18structure_dt_multi_26StructureDecis
   return __pyx_r;
 }
 
-/* "structureboost/structure_dt_multi.pyx":136
+/* "structureboost/structure_dt_multi.pyx":135
  * 
  * 
  *     def predict(self, X_test):             # <<<<<<<<<<<<<<
@@ -5844,11 +5835,11 @@ static PyObject *__pyx_pw_14structureboost_18structure_dt_multi_26StructureDecis
         case  1:
         if (likely((values[1] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_X_test)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("predict", 1, 2, 2, 1); __PYX_ERR(0, 136, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("predict", 1, 2, 2, 1); __PYX_ERR(0, 135, __pyx_L3_error)
         }
       }
       if (unlikely(kw_args > 0)) {
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "predict") < 0)) __PYX_ERR(0, 136, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "predict") < 0)) __PYX_ERR(0, 135, __pyx_L3_error)
       }
     } else if (PyTuple_GET_SIZE(__pyx_args) != 2) {
       goto __pyx_L5_argtuple_error;
@@ -5861,7 +5852,7 @@ static PyObject *__pyx_pw_14structureboost_18structure_dt_multi_26StructureDecis
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("predict", 1, 2, 2, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 136, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("predict", 1, 2, 2, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 135, __pyx_L3_error)
   __pyx_L3_error:;
   __Pyx_AddTraceback("structureboost.structure_dt_multi.StructureDecisionTreeMulti.predict", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
@@ -5896,24 +5887,24 @@ static PyObject *__pyx_pf_14structureboost_18structure_dt_multi_26StructureDecis
   int __pyx_clineno = 0;
   __Pyx_TraceFrameInit(__pyx_codeobj__12)
   __Pyx_RefNannySetupContext("predict", 0);
-  __Pyx_TraceCall("predict", __pyx_f[0], 136, 0, __PYX_ERR(0, 136, __pyx_L1_error));
+  __Pyx_TraceCall("predict", __pyx_f[0], 135, 0, __PYX_ERR(0, 135, __pyx_L1_error));
 
-  /* "structureboost/structure_dt_multi.pyx":137
+  /* "structureboost/structure_dt_multi.pyx":136
  * 
  *     def predict(self, X_test):
  *         col_list = list(X_test.columns)             # <<<<<<<<<<<<<<
  *         column_to_int_dict = {col_list[i]: i for i in range(len(col_list))}
  *         return self.get_prediction(self.dec_tree, X_test.to_numpy(),
  */
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_X_test, __pyx_n_s_columns); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 137, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_X_test, __pyx_n_s_columns); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 136, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = PySequence_List(__pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 137, __pyx_L1_error)
+  __pyx_t_2 = PySequence_List(__pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 136, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __pyx_v_col_list = ((PyObject*)__pyx_t_2);
   __pyx_t_2 = 0;
 
-  /* "structureboost/structure_dt_multi.pyx":138
+  /* "structureboost/structure_dt_multi.pyx":137
  *     def predict(self, X_test):
  *         col_list = list(X_test.columns)
  *         column_to_int_dict = {col_list[i]: i for i in range(len(col_list))}             # <<<<<<<<<<<<<<
@@ -5921,17 +5912,17 @@ static PyObject *__pyx_pf_14structureboost_18structure_dt_multi_26StructureDecis
  *                               column_to_int_dict)
  */
   { /* enter inner scope */
-    __pyx_t_2 = PyDict_New(); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 138, __pyx_L1_error)
+    __pyx_t_2 = PyDict_New(); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 137, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
-    __pyx_t_3 = PyList_GET_SIZE(__pyx_v_col_list); if (unlikely(__pyx_t_3 == ((Py_ssize_t)-1))) __PYX_ERR(0, 138, __pyx_L1_error)
+    __pyx_t_3 = PyList_GET_SIZE(__pyx_v_col_list); if (unlikely(__pyx_t_3 == ((Py_ssize_t)-1))) __PYX_ERR(0, 137, __pyx_L1_error)
     __pyx_t_4 = __pyx_t_3;
     for (__pyx_t_5 = 0; __pyx_t_5 < __pyx_t_4; __pyx_t_5+=1) {
       __pyx_7genexpr__pyx_v_i = __pyx_t_5;
-      __pyx_t_1 = __Pyx_GetItemInt_List(__pyx_v_col_list, __pyx_7genexpr__pyx_v_i, Py_ssize_t, 1, PyInt_FromSsize_t, 1, 1, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 138, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_GetItemInt_List(__pyx_v_col_list, __pyx_7genexpr__pyx_v_i, Py_ssize_t, 1, PyInt_FromSsize_t, 1, 1, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 137, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
-      __pyx_t_6 = PyInt_FromSsize_t(__pyx_7genexpr__pyx_v_i); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 138, __pyx_L1_error)
+      __pyx_t_6 = PyInt_FromSsize_t(__pyx_7genexpr__pyx_v_i); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 137, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_6);
-      if (unlikely(PyDict_SetItem(__pyx_t_2, (PyObject*)__pyx_t_1, (PyObject*)__pyx_t_6))) __PYX_ERR(0, 138, __pyx_L1_error)
+      if (unlikely(PyDict_SetItem(__pyx_t_2, (PyObject*)__pyx_t_1, (PyObject*)__pyx_t_6))) __PYX_ERR(0, 137, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
       __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
     }
@@ -5939,7 +5930,7 @@ static PyObject *__pyx_pf_14structureboost_18structure_dt_multi_26StructureDecis
   __pyx_v_column_to_int_dict = ((PyObject*)__pyx_t_2);
   __pyx_t_2 = 0;
 
-  /* "structureboost/structure_dt_multi.pyx":139
+  /* "structureboost/structure_dt_multi.pyx":138
  *         col_list = list(X_test.columns)
  *         column_to_int_dict = {col_list[i]: i for i in range(len(col_list))}
  *         return self.get_prediction(self.dec_tree, X_test.to_numpy(),             # <<<<<<<<<<<<<<
@@ -5947,11 +5938,11 @@ static PyObject *__pyx_pf_14structureboost_18structure_dt_multi_26StructureDecis
  * 
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_get_prediction); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 139, __pyx_L1_error)
+  __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_get_prediction); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 138, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_6);
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_dec_tree); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 139, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_dec_tree); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 138, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_8 = __Pyx_PyObject_GetAttrStr(__pyx_v_X_test, __pyx_n_s_to_numpy); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 139, __pyx_L1_error)
+  __pyx_t_8 = __Pyx_PyObject_GetAttrStr(__pyx_v_X_test, __pyx_n_s_to_numpy); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 138, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_8);
   __pyx_t_9 = NULL;
   if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_8))) {
@@ -5965,11 +5956,11 @@ static PyObject *__pyx_pf_14structureboost_18structure_dt_multi_26StructureDecis
   }
   __pyx_t_7 = (__pyx_t_9) ? __Pyx_PyObject_CallOneArg(__pyx_t_8, __pyx_t_9) : __Pyx_PyObject_CallNoArg(__pyx_t_8);
   __Pyx_XDECREF(__pyx_t_9); __pyx_t_9 = 0;
-  if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 139, __pyx_L1_error)
+  if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 138, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_7);
   __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
 
-  /* "structureboost/structure_dt_multi.pyx":140
+  /* "structureboost/structure_dt_multi.pyx":139
  *         column_to_int_dict = {col_list[i]: i for i in range(len(col_list))}
  *         return self.get_prediction(self.dec_tree, X_test.to_numpy(),
  *                               column_to_int_dict)             # <<<<<<<<<<<<<<
@@ -5991,7 +5982,7 @@ static PyObject *__pyx_pf_14structureboost_18structure_dt_multi_26StructureDecis
   #if CYTHON_FAST_PYCALL
   if (PyFunction_Check(__pyx_t_6)) {
     PyObject *__pyx_temp[4] = {__pyx_t_8, __pyx_t_1, __pyx_t_7, __pyx_v_column_to_int_dict};
-    __pyx_t_2 = __Pyx_PyFunction_FastCall(__pyx_t_6, __pyx_temp+1-__pyx_t_10, 3+__pyx_t_10); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 139, __pyx_L1_error)
+    __pyx_t_2 = __Pyx_PyFunction_FastCall(__pyx_t_6, __pyx_temp+1-__pyx_t_10, 3+__pyx_t_10); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 138, __pyx_L1_error)
     __Pyx_XDECREF(__pyx_t_8); __pyx_t_8 = 0;
     __Pyx_GOTREF(__pyx_t_2);
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
@@ -6001,7 +5992,7 @@ static PyObject *__pyx_pf_14structureboost_18structure_dt_multi_26StructureDecis
   #if CYTHON_FAST_PYCCALL
   if (__Pyx_PyFastCFunction_Check(__pyx_t_6)) {
     PyObject *__pyx_temp[4] = {__pyx_t_8, __pyx_t_1, __pyx_t_7, __pyx_v_column_to_int_dict};
-    __pyx_t_2 = __Pyx_PyCFunction_FastCall(__pyx_t_6, __pyx_temp+1-__pyx_t_10, 3+__pyx_t_10); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 139, __pyx_L1_error)
+    __pyx_t_2 = __Pyx_PyCFunction_FastCall(__pyx_t_6, __pyx_temp+1-__pyx_t_10, 3+__pyx_t_10); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 138, __pyx_L1_error)
     __Pyx_XDECREF(__pyx_t_8); __pyx_t_8 = 0;
     __Pyx_GOTREF(__pyx_t_2);
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
@@ -6009,7 +6000,7 @@ static PyObject *__pyx_pf_14structureboost_18structure_dt_multi_26StructureDecis
   } else
   #endif
   {
-    __pyx_t_9 = PyTuple_New(3+__pyx_t_10); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 139, __pyx_L1_error)
+    __pyx_t_9 = PyTuple_New(3+__pyx_t_10); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 138, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_9);
     if (__pyx_t_8) {
       __Pyx_GIVEREF(__pyx_t_8); PyTuple_SET_ITEM(__pyx_t_9, 0, __pyx_t_8); __pyx_t_8 = NULL;
@@ -6023,7 +6014,7 @@ static PyObject *__pyx_pf_14structureboost_18structure_dt_multi_26StructureDecis
     PyTuple_SET_ITEM(__pyx_t_9, 2+__pyx_t_10, __pyx_v_column_to_int_dict);
     __pyx_t_1 = 0;
     __pyx_t_7 = 0;
-    __pyx_t_2 = __Pyx_PyObject_Call(__pyx_t_6, __pyx_t_9, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 139, __pyx_L1_error)
+    __pyx_t_2 = __Pyx_PyObject_Call(__pyx_t_6, __pyx_t_9, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 138, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
     __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
   }
@@ -6032,7 +6023,7 @@ static PyObject *__pyx_pf_14structureboost_18structure_dt_multi_26StructureDecis
   __pyx_t_2 = 0;
   goto __pyx_L0;
 
-  /* "structureboost/structure_dt_multi.pyx":136
+  /* "structureboost/structure_dt_multi.pyx":135
  * 
  * 
  *     def predict(self, X_test):             # <<<<<<<<<<<<<<
@@ -6059,11 +6050,11 @@ static PyObject *__pyx_pf_14structureboost_18structure_dt_multi_26StructureDecis
   return __pyx_r;
 }
 
-/* "structureboost/structure_dt_multi.pyx":143
+/* "structureboost/structure_dt_multi.pyx":142
  * 
  * 
  *     def get_prediction(self, tree_node, X_te, dict col_to_int_dict):             # <<<<<<<<<<<<<<
- *         cdef np.ndarray[dtype_int64_t] ind_subset_left, ind_subset_right
+ *         cdef np.ndarray[np.int_t] ind_subset_left, ind_subset_right
  *         cdef long vec_len, lsize
  */
 
@@ -6108,23 +6099,23 @@ static PyObject *__pyx_pw_14structureboost_18structure_dt_multi_26StructureDecis
         case  1:
         if (likely((values[1] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_tree_node)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("get_prediction", 1, 4, 4, 1); __PYX_ERR(0, 143, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("get_prediction", 1, 4, 4, 1); __PYX_ERR(0, 142, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  2:
         if (likely((values[2] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_X_te)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("get_prediction", 1, 4, 4, 2); __PYX_ERR(0, 143, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("get_prediction", 1, 4, 4, 2); __PYX_ERR(0, 142, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  3:
         if (likely((values[3] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_col_to_int_dict)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("get_prediction", 1, 4, 4, 3); __PYX_ERR(0, 143, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("get_prediction", 1, 4, 4, 3); __PYX_ERR(0, 142, __pyx_L3_error)
         }
       }
       if (unlikely(kw_args > 0)) {
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "get_prediction") < 0)) __PYX_ERR(0, 143, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "get_prediction") < 0)) __PYX_ERR(0, 142, __pyx_L3_error)
       }
     } else if (PyTuple_GET_SIZE(__pyx_args) != 4) {
       goto __pyx_L5_argtuple_error;
@@ -6141,13 +6132,13 @@ static PyObject *__pyx_pw_14structureboost_18structure_dt_multi_26StructureDecis
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("get_prediction", 1, 4, 4, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 143, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("get_prediction", 1, 4, 4, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 142, __pyx_L3_error)
   __pyx_L3_error:;
   __Pyx_AddTraceback("structureboost.structure_dt_multi.StructureDecisionTreeMulti.get_prediction", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_col_to_int_dict), (&PyDict_Type), 1, "col_to_int_dict", 1))) __PYX_ERR(0, 143, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_col_to_int_dict), (&PyDict_Type), 1, "col_to_int_dict", 1))) __PYX_ERR(0, 142, __pyx_L1_error)
   __pyx_r = __pyx_pf_14structureboost_18structure_dt_multi_26StructureDecisionTreeMulti_16get_prediction(__pyx_self, __pyx_v_self, __pyx_v_tree_node, __pyx_v_X_te, __pyx_v_col_to_int_dict);
 
   /* function exit code */
@@ -6196,7 +6187,7 @@ static PyObject *__pyx_pf_14structureboost_18structure_dt_multi_26StructureDecis
   int __pyx_clineno = 0;
   __Pyx_TraceFrameInit(__pyx_codeobj__13)
   __Pyx_RefNannySetupContext("get_prediction", 0);
-  __Pyx_TraceCall("get_prediction", __pyx_f[0], 143, 0, __PYX_ERR(0, 143, __pyx_L1_error));
+  __Pyx_TraceCall("get_prediction", __pyx_f[0], 142, 0, __PYX_ERR(0, 142, __pyx_L1_error));
   __pyx_pybuffer_ind_subset_left.pybuffer.buf = NULL;
   __pyx_pybuffer_ind_subset_left.refcount = 0;
   __pyx_pybuffernd_ind_subset_left.data = NULL;
@@ -6210,20 +6201,20 @@ static PyObject *__pyx_pf_14structureboost_18structure_dt_multi_26StructureDecis
   __pyx_pybuffernd_next_vec.data = NULL;
   __pyx_pybuffernd_next_vec.rcbuffer = &__pyx_pybuffer_next_vec;
 
-  /* "structureboost/structure_dt_multi.pyx":148
+  /* "structureboost/structure_dt_multi.pyx":147
  *         cdef np.ndarray[double,ndim=2] next_vec
  * 
  *         if tree_node['node_type'] == 'leaf':             # <<<<<<<<<<<<<<
  *             return stdt.get_node_response_leaf(X_te.shape[0], tree_node)
  *         else:
  */
-  __pyx_t_1 = __Pyx_PyObject_Dict_GetItem(__pyx_v_tree_node, __pyx_n_u_node_type); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 148, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_Dict_GetItem(__pyx_v_tree_node, __pyx_n_u_node_type); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 147, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = (__Pyx_PyUnicode_Equals(__pyx_t_1, __pyx_n_u_leaf, Py_EQ)); if (unlikely(__pyx_t_2 < 0)) __PYX_ERR(0, 148, __pyx_L1_error)
+  __pyx_t_2 = (__Pyx_PyUnicode_Equals(__pyx_t_1, __pyx_n_u_leaf, Py_EQ)); if (unlikely(__pyx_t_2 < 0)) __PYX_ERR(0, 147, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   if (__pyx_t_2) {
 
-    /* "structureboost/structure_dt_multi.pyx":149
+    /* "structureboost/structure_dt_multi.pyx":148
  * 
  *         if tree_node['node_type'] == 'leaf':
  *             return stdt.get_node_response_leaf(X_te.shape[0], tree_node)             # <<<<<<<<<<<<<<
@@ -6231,14 +6222,14 @@ static PyObject *__pyx_pf_14structureboost_18structure_dt_multi_26StructureDecis
  *             split_bool = stdt.get_node_response_df_val(X_te, tree_node, col_to_int_dict)
  */
     __Pyx_XDECREF(__pyx_r);
-    __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_n_s_stdt); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 149, __pyx_L1_error)
+    __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_n_s_stdt); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 148, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
-    __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_get_node_response_leaf); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 149, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_get_node_response_leaf); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 148, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-    __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_X_te, __pyx_n_s_shape); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 149, __pyx_L1_error)
+    __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_X_te, __pyx_n_s_shape); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 148, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
-    __pyx_t_5 = __Pyx_GetItemInt(__pyx_t_3, 0, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 149, __pyx_L1_error)
+    __pyx_t_5 = __Pyx_GetItemInt(__pyx_t_3, 0, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 148, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_5);
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
     __pyx_t_3 = NULL;
@@ -6256,7 +6247,7 @@ static PyObject *__pyx_pf_14structureboost_18structure_dt_multi_26StructureDecis
     #if CYTHON_FAST_PYCALL
     if (PyFunction_Check(__pyx_t_4)) {
       PyObject *__pyx_temp[3] = {__pyx_t_3, __pyx_t_5, __pyx_v_tree_node};
-      __pyx_t_1 = __Pyx_PyFunction_FastCall(__pyx_t_4, __pyx_temp+1-__pyx_t_6, 2+__pyx_t_6); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 149, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyFunction_FastCall(__pyx_t_4, __pyx_temp+1-__pyx_t_6, 2+__pyx_t_6); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 148, __pyx_L1_error)
       __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
       __Pyx_GOTREF(__pyx_t_1);
       __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
@@ -6265,14 +6256,14 @@ static PyObject *__pyx_pf_14structureboost_18structure_dt_multi_26StructureDecis
     #if CYTHON_FAST_PYCCALL
     if (__Pyx_PyFastCFunction_Check(__pyx_t_4)) {
       PyObject *__pyx_temp[3] = {__pyx_t_3, __pyx_t_5, __pyx_v_tree_node};
-      __pyx_t_1 = __Pyx_PyCFunction_FastCall(__pyx_t_4, __pyx_temp+1-__pyx_t_6, 2+__pyx_t_6); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 149, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyCFunction_FastCall(__pyx_t_4, __pyx_temp+1-__pyx_t_6, 2+__pyx_t_6); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 148, __pyx_L1_error)
       __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
       __Pyx_GOTREF(__pyx_t_1);
       __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
     } else
     #endif
     {
-      __pyx_t_7 = PyTuple_New(2+__pyx_t_6); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 149, __pyx_L1_error)
+      __pyx_t_7 = PyTuple_New(2+__pyx_t_6); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 148, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_7);
       if (__pyx_t_3) {
         __Pyx_GIVEREF(__pyx_t_3); PyTuple_SET_ITEM(__pyx_t_7, 0, __pyx_t_3); __pyx_t_3 = NULL;
@@ -6283,7 +6274,7 @@ static PyObject *__pyx_pf_14structureboost_18structure_dt_multi_26StructureDecis
       __Pyx_GIVEREF(__pyx_v_tree_node);
       PyTuple_SET_ITEM(__pyx_t_7, 1+__pyx_t_6, __pyx_v_tree_node);
       __pyx_t_5 = 0;
-      __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_4, __pyx_t_7, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 149, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_4, __pyx_t_7, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 148, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
       __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
     }
@@ -6292,7 +6283,7 @@ static PyObject *__pyx_pf_14structureboost_18structure_dt_multi_26StructureDecis
     __pyx_t_1 = 0;
     goto __pyx_L0;
 
-    /* "structureboost/structure_dt_multi.pyx":148
+    /* "structureboost/structure_dt_multi.pyx":147
  *         cdef np.ndarray[double,ndim=2] next_vec
  * 
  *         if tree_node['node_type'] == 'leaf':             # <<<<<<<<<<<<<<
@@ -6301,7 +6292,7 @@ static PyObject *__pyx_pf_14structureboost_18structure_dt_multi_26StructureDecis
  */
   }
 
-  /* "structureboost/structure_dt_multi.pyx":151
+  /* "structureboost/structure_dt_multi.pyx":150
  *             return stdt.get_node_response_leaf(X_te.shape[0], tree_node)
  *         else:
  *             split_bool = stdt.get_node_response_df_val(X_te, tree_node, col_to_int_dict)             # <<<<<<<<<<<<<<
@@ -6309,9 +6300,9 @@ static PyObject *__pyx_pf_14structureboost_18structure_dt_multi_26StructureDecis
  *             next_vec = np.zeros((vec_len,self.num_classes))
  */
   /*else*/ {
-    __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_n_s_stdt); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 151, __pyx_L1_error)
+    __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_n_s_stdt); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 150, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
-    __pyx_t_7 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_get_node_response_df_val); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 151, __pyx_L1_error)
+    __pyx_t_7 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_get_node_response_df_val); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 150, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_7);
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
     __pyx_t_4 = NULL;
@@ -6329,7 +6320,7 @@ static PyObject *__pyx_pf_14structureboost_18structure_dt_multi_26StructureDecis
     #if CYTHON_FAST_PYCALL
     if (PyFunction_Check(__pyx_t_7)) {
       PyObject *__pyx_temp[4] = {__pyx_t_4, __pyx_v_X_te, __pyx_v_tree_node, __pyx_v_col_to_int_dict};
-      __pyx_t_1 = __Pyx_PyFunction_FastCall(__pyx_t_7, __pyx_temp+1-__pyx_t_6, 3+__pyx_t_6); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 151, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyFunction_FastCall(__pyx_t_7, __pyx_temp+1-__pyx_t_6, 3+__pyx_t_6); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 150, __pyx_L1_error)
       __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
       __Pyx_GOTREF(__pyx_t_1);
     } else
@@ -6337,13 +6328,13 @@ static PyObject *__pyx_pf_14structureboost_18structure_dt_multi_26StructureDecis
     #if CYTHON_FAST_PYCCALL
     if (__Pyx_PyFastCFunction_Check(__pyx_t_7)) {
       PyObject *__pyx_temp[4] = {__pyx_t_4, __pyx_v_X_te, __pyx_v_tree_node, __pyx_v_col_to_int_dict};
-      __pyx_t_1 = __Pyx_PyCFunction_FastCall(__pyx_t_7, __pyx_temp+1-__pyx_t_6, 3+__pyx_t_6); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 151, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyCFunction_FastCall(__pyx_t_7, __pyx_temp+1-__pyx_t_6, 3+__pyx_t_6); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 150, __pyx_L1_error)
       __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
       __Pyx_GOTREF(__pyx_t_1);
     } else
     #endif
     {
-      __pyx_t_5 = PyTuple_New(3+__pyx_t_6); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 151, __pyx_L1_error)
+      __pyx_t_5 = PyTuple_New(3+__pyx_t_6); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 150, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_5);
       if (__pyx_t_4) {
         __Pyx_GIVEREF(__pyx_t_4); PyTuple_SET_ITEM(__pyx_t_5, 0, __pyx_t_4); __pyx_t_4 = NULL;
@@ -6357,7 +6348,7 @@ static PyObject *__pyx_pf_14structureboost_18structure_dt_multi_26StructureDecis
       __Pyx_INCREF(__pyx_v_col_to_int_dict);
       __Pyx_GIVEREF(__pyx_v_col_to_int_dict);
       PyTuple_SET_ITEM(__pyx_t_5, 2+__pyx_t_6, __pyx_v_col_to_int_dict);
-      __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_7, __pyx_t_5, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 151, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_7, __pyx_t_5, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 150, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
       __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
     }
@@ -6365,33 +6356,33 @@ static PyObject *__pyx_pf_14structureboost_18structure_dt_multi_26StructureDecis
     __pyx_v_split_bool = __pyx_t_1;
     __pyx_t_1 = 0;
 
-    /* "structureboost/structure_dt_multi.pyx":152
+    /* "structureboost/structure_dt_multi.pyx":151
  *         else:
  *             split_bool = stdt.get_node_response_df_val(X_te, tree_node, col_to_int_dict)
  *             vec_len = len(split_bool)             # <<<<<<<<<<<<<<
  *             next_vec = np.zeros((vec_len,self.num_classes))
- *             ind_subset_left = np.empty(vec_len, dtype=np.int64)
+ *             ind_subset_left = np.empty(vec_len, dtype=np.int_)
  */
-    __pyx_t_8 = PyObject_Length(__pyx_v_split_bool); if (unlikely(__pyx_t_8 == ((Py_ssize_t)-1))) __PYX_ERR(0, 152, __pyx_L1_error)
+    __pyx_t_8 = PyObject_Length(__pyx_v_split_bool); if (unlikely(__pyx_t_8 == ((Py_ssize_t)-1))) __PYX_ERR(0, 151, __pyx_L1_error)
     __pyx_v_vec_len = __pyx_t_8;
 
-    /* "structureboost/structure_dt_multi.pyx":153
+    /* "structureboost/structure_dt_multi.pyx":152
  *             split_bool = stdt.get_node_response_df_val(X_te, tree_node, col_to_int_dict)
  *             vec_len = len(split_bool)
  *             next_vec = np.zeros((vec_len,self.num_classes))             # <<<<<<<<<<<<<<
- *             ind_subset_left = np.empty(vec_len, dtype=np.int64)
- *             ind_subset_right = np.empty(vec_len, dtype=np.int64)
+ *             ind_subset_left = np.empty(vec_len, dtype=np.int_)
+ *             ind_subset_right = np.empty(vec_len, dtype=np.int_)
  */
-    __Pyx_GetModuleGlobalName(__pyx_t_7, __pyx_n_s_np); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 153, __pyx_L1_error)
+    __Pyx_GetModuleGlobalName(__pyx_t_7, __pyx_n_s_np); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 152, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_7);
-    __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_t_7, __pyx_n_s_zeros); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 153, __pyx_L1_error)
+    __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_t_7, __pyx_n_s_zeros); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 152, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_5);
     __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
-    __pyx_t_7 = __Pyx_PyInt_From_long(__pyx_v_vec_len); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 153, __pyx_L1_error)
+    __pyx_t_7 = __Pyx_PyInt_From_long(__pyx_v_vec_len); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 152, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_7);
-    __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_num_classes); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 153, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_num_classes); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 152, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
-    __pyx_t_3 = PyTuple_New(2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 153, __pyx_L1_error)
+    __pyx_t_3 = PyTuple_New(2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 152, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
     __Pyx_GIVEREF(__pyx_t_7);
     PyTuple_SET_ITEM(__pyx_t_3, 0, __pyx_t_7);
@@ -6412,10 +6403,10 @@ static PyObject *__pyx_pf_14structureboost_18structure_dt_multi_26StructureDecis
     __pyx_t_1 = (__pyx_t_4) ? __Pyx_PyObject_Call2Args(__pyx_t_5, __pyx_t_4, __pyx_t_3) : __Pyx_PyObject_CallOneArg(__pyx_t_5, __pyx_t_3);
     __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-    if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 153, __pyx_L1_error)
+    if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 152, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-    if (!(likely(((__pyx_t_1) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_1, __pyx_ptype_5numpy_ndarray))))) __PYX_ERR(0, 153, __pyx_L1_error)
+    if (!(likely(((__pyx_t_1) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_1, __pyx_ptype_5numpy_ndarray))))) __PYX_ERR(0, 152, __pyx_L1_error)
     __pyx_t_9 = ((PyArrayObject *)__pyx_t_1);
     {
       __Pyx_BufFmt_StackElem __pyx_stack[1];
@@ -6432,54 +6423,54 @@ static PyObject *__pyx_pf_14structureboost_18structure_dt_multi_26StructureDecis
         __pyx_t_10 = __pyx_t_11 = __pyx_t_12 = 0;
       }
       __pyx_pybuffernd_next_vec.diminfo[0].strides = __pyx_pybuffernd_next_vec.rcbuffer->pybuffer.strides[0]; __pyx_pybuffernd_next_vec.diminfo[0].shape = __pyx_pybuffernd_next_vec.rcbuffer->pybuffer.shape[0]; __pyx_pybuffernd_next_vec.diminfo[1].strides = __pyx_pybuffernd_next_vec.rcbuffer->pybuffer.strides[1]; __pyx_pybuffernd_next_vec.diminfo[1].shape = __pyx_pybuffernd_next_vec.rcbuffer->pybuffer.shape[1];
-      if (unlikely(__pyx_t_6 < 0)) __PYX_ERR(0, 153, __pyx_L1_error)
+      if (unlikely(__pyx_t_6 < 0)) __PYX_ERR(0, 152, __pyx_L1_error)
     }
     __pyx_t_9 = 0;
     __pyx_v_next_vec = ((PyArrayObject *)__pyx_t_1);
     __pyx_t_1 = 0;
 
-    /* "structureboost/structure_dt_multi.pyx":154
+    /* "structureboost/structure_dt_multi.pyx":153
  *             vec_len = len(split_bool)
  *             next_vec = np.zeros((vec_len,self.num_classes))
- *             ind_subset_left = np.empty(vec_len, dtype=np.int64)             # <<<<<<<<<<<<<<
- *             ind_subset_right = np.empty(vec_len, dtype=np.int64)
+ *             ind_subset_left = np.empty(vec_len, dtype=np.int_)             # <<<<<<<<<<<<<<
+ *             ind_subset_right = np.empty(vec_len, dtype=np.int_)
  *             ind_subset_left, ind_subset_right, lsize = stdt.separate_indices(
  */
-    __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_np); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 154, __pyx_L1_error)
+    __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_np); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 153, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
-    __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_empty); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 154, __pyx_L1_error)
+    __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_empty); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 153, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_5);
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-    __pyx_t_1 = __Pyx_PyInt_From_long(__pyx_v_vec_len); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 154, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyInt_From_long(__pyx_v_vec_len); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 153, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
-    __pyx_t_3 = PyTuple_New(1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 154, __pyx_L1_error)
+    __pyx_t_3 = PyTuple_New(1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 153, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
     __Pyx_GIVEREF(__pyx_t_1);
     PyTuple_SET_ITEM(__pyx_t_3, 0, __pyx_t_1);
     __pyx_t_1 = 0;
-    __pyx_t_1 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 154, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 153, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
-    __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_n_s_np); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 154, __pyx_L1_error)
+    __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_n_s_np); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 153, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
-    __pyx_t_7 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_int64); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 154, __pyx_L1_error)
+    __pyx_t_7 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_int); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 153, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_7);
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-    if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_dtype, __pyx_t_7) < 0) __PYX_ERR(0, 154, __pyx_L1_error)
+    if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_dtype, __pyx_t_7) < 0) __PYX_ERR(0, 153, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
-    __pyx_t_7 = __Pyx_PyObject_Call(__pyx_t_5, __pyx_t_3, __pyx_t_1); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 154, __pyx_L1_error)
+    __pyx_t_7 = __Pyx_PyObject_Call(__pyx_t_5, __pyx_t_3, __pyx_t_1); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 153, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_7);
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-    if (!(likely(((__pyx_t_7) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_7, __pyx_ptype_5numpy_ndarray))))) __PYX_ERR(0, 154, __pyx_L1_error)
+    if (!(likely(((__pyx_t_7) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_7, __pyx_ptype_5numpy_ndarray))))) __PYX_ERR(0, 153, __pyx_L1_error)
     __pyx_t_13 = ((PyArrayObject *)__pyx_t_7);
     {
       __Pyx_BufFmt_StackElem __pyx_stack[1];
       __Pyx_SafeReleaseBuffer(&__pyx_pybuffernd_ind_subset_left.rcbuffer->pybuffer);
-      __pyx_t_6 = __Pyx_GetBufferAndValidate(&__pyx_pybuffernd_ind_subset_left.rcbuffer->pybuffer, (PyObject*)__pyx_t_13, &__Pyx_TypeInfo_nn___pyx_t_14structureboost_18structure_dt_multi_dtype_int64_t, PyBUF_FORMAT| PyBUF_STRIDES, 1, 0, __pyx_stack);
+      __pyx_t_6 = __Pyx_GetBufferAndValidate(&__pyx_pybuffernd_ind_subset_left.rcbuffer->pybuffer, (PyObject*)__pyx_t_13, &__Pyx_TypeInfo_nn___pyx_t_5numpy_int_t, PyBUF_FORMAT| PyBUF_STRIDES, 1, 0, __pyx_stack);
       if (unlikely(__pyx_t_6 < 0)) {
         PyErr_Fetch(&__pyx_t_12, &__pyx_t_11, &__pyx_t_10);
-        if (unlikely(__Pyx_GetBufferAndValidate(&__pyx_pybuffernd_ind_subset_left.rcbuffer->pybuffer, (PyObject*)__pyx_v_ind_subset_left, &__Pyx_TypeInfo_nn___pyx_t_14structureboost_18structure_dt_multi_dtype_int64_t, PyBUF_FORMAT| PyBUF_STRIDES, 1, 0, __pyx_stack) == -1)) {
+        if (unlikely(__Pyx_GetBufferAndValidate(&__pyx_pybuffernd_ind_subset_left.rcbuffer->pybuffer, (PyObject*)__pyx_v_ind_subset_left, &__Pyx_TypeInfo_nn___pyx_t_5numpy_int_t, PyBUF_FORMAT| PyBUF_STRIDES, 1, 0, __pyx_stack) == -1)) {
           Py_XDECREF(__pyx_t_12); Py_XDECREF(__pyx_t_11); Py_XDECREF(__pyx_t_10);
           __Pyx_RaiseBufferFallbackError();
         } else {
@@ -6488,54 +6479,54 @@ static PyObject *__pyx_pf_14structureboost_18structure_dt_multi_26StructureDecis
         __pyx_t_12 = __pyx_t_11 = __pyx_t_10 = 0;
       }
       __pyx_pybuffernd_ind_subset_left.diminfo[0].strides = __pyx_pybuffernd_ind_subset_left.rcbuffer->pybuffer.strides[0]; __pyx_pybuffernd_ind_subset_left.diminfo[0].shape = __pyx_pybuffernd_ind_subset_left.rcbuffer->pybuffer.shape[0];
-      if (unlikely(__pyx_t_6 < 0)) __PYX_ERR(0, 154, __pyx_L1_error)
+      if (unlikely(__pyx_t_6 < 0)) __PYX_ERR(0, 153, __pyx_L1_error)
     }
     __pyx_t_13 = 0;
     __pyx_v_ind_subset_left = ((PyArrayObject *)__pyx_t_7);
     __pyx_t_7 = 0;
 
-    /* "structureboost/structure_dt_multi.pyx":155
+    /* "structureboost/structure_dt_multi.pyx":154
  *             next_vec = np.zeros((vec_len,self.num_classes))
- *             ind_subset_left = np.empty(vec_len, dtype=np.int64)
- *             ind_subset_right = np.empty(vec_len, dtype=np.int64)             # <<<<<<<<<<<<<<
+ *             ind_subset_left = np.empty(vec_len, dtype=np.int_)
+ *             ind_subset_right = np.empty(vec_len, dtype=np.int_)             # <<<<<<<<<<<<<<
  *             ind_subset_left, ind_subset_right, lsize = stdt.separate_indices(
  *                                                     ind_subset_left,
  */
-    __Pyx_GetModuleGlobalName(__pyx_t_7, __pyx_n_s_np); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 155, __pyx_L1_error)
+    __Pyx_GetModuleGlobalName(__pyx_t_7, __pyx_n_s_np); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 154, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_7);
-    __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_7, __pyx_n_s_empty); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 155, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_7, __pyx_n_s_empty); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 154, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
-    __pyx_t_7 = __Pyx_PyInt_From_long(__pyx_v_vec_len); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 155, __pyx_L1_error)
+    __pyx_t_7 = __Pyx_PyInt_From_long(__pyx_v_vec_len); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 154, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_7);
-    __pyx_t_3 = PyTuple_New(1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 155, __pyx_L1_error)
+    __pyx_t_3 = PyTuple_New(1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 154, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
     __Pyx_GIVEREF(__pyx_t_7);
     PyTuple_SET_ITEM(__pyx_t_3, 0, __pyx_t_7);
     __pyx_t_7 = 0;
-    __pyx_t_7 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 155, __pyx_L1_error)
+    __pyx_t_7 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 154, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_7);
-    __Pyx_GetModuleGlobalName(__pyx_t_5, __pyx_n_s_np); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 155, __pyx_L1_error)
+    __Pyx_GetModuleGlobalName(__pyx_t_5, __pyx_n_s_np); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 154, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_5);
-    __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_5, __pyx_n_s_int64); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 155, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_5, __pyx_n_s_int); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 154, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-    if (PyDict_SetItem(__pyx_t_7, __pyx_n_s_dtype, __pyx_t_4) < 0) __PYX_ERR(0, 155, __pyx_L1_error)
+    if (PyDict_SetItem(__pyx_t_7, __pyx_n_s_dtype, __pyx_t_4) < 0) __PYX_ERR(0, 154, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-    __pyx_t_4 = __Pyx_PyObject_Call(__pyx_t_1, __pyx_t_3, __pyx_t_7); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 155, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_PyObject_Call(__pyx_t_1, __pyx_t_3, __pyx_t_7); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 154, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
     __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
-    if (!(likely(((__pyx_t_4) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_4, __pyx_ptype_5numpy_ndarray))))) __PYX_ERR(0, 155, __pyx_L1_error)
+    if (!(likely(((__pyx_t_4) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_4, __pyx_ptype_5numpy_ndarray))))) __PYX_ERR(0, 154, __pyx_L1_error)
     __pyx_t_13 = ((PyArrayObject *)__pyx_t_4);
     {
       __Pyx_BufFmt_StackElem __pyx_stack[1];
       __Pyx_SafeReleaseBuffer(&__pyx_pybuffernd_ind_subset_right.rcbuffer->pybuffer);
-      __pyx_t_6 = __Pyx_GetBufferAndValidate(&__pyx_pybuffernd_ind_subset_right.rcbuffer->pybuffer, (PyObject*)__pyx_t_13, &__Pyx_TypeInfo_nn___pyx_t_14structureboost_18structure_dt_multi_dtype_int64_t, PyBUF_FORMAT| PyBUF_STRIDES, 1, 0, __pyx_stack);
+      __pyx_t_6 = __Pyx_GetBufferAndValidate(&__pyx_pybuffernd_ind_subset_right.rcbuffer->pybuffer, (PyObject*)__pyx_t_13, &__Pyx_TypeInfo_nn___pyx_t_5numpy_int_t, PyBUF_FORMAT| PyBUF_STRIDES, 1, 0, __pyx_stack);
       if (unlikely(__pyx_t_6 < 0)) {
         PyErr_Fetch(&__pyx_t_10, &__pyx_t_11, &__pyx_t_12);
-        if (unlikely(__Pyx_GetBufferAndValidate(&__pyx_pybuffernd_ind_subset_right.rcbuffer->pybuffer, (PyObject*)__pyx_v_ind_subset_right, &__Pyx_TypeInfo_nn___pyx_t_14structureboost_18structure_dt_multi_dtype_int64_t, PyBUF_FORMAT| PyBUF_STRIDES, 1, 0, __pyx_stack) == -1)) {
+        if (unlikely(__Pyx_GetBufferAndValidate(&__pyx_pybuffernd_ind_subset_right.rcbuffer->pybuffer, (PyObject*)__pyx_v_ind_subset_right, &__Pyx_TypeInfo_nn___pyx_t_5numpy_int_t, PyBUF_FORMAT| PyBUF_STRIDES, 1, 0, __pyx_stack) == -1)) {
           Py_XDECREF(__pyx_t_10); Py_XDECREF(__pyx_t_11); Py_XDECREF(__pyx_t_12);
           __Pyx_RaiseBufferFallbackError();
         } else {
@@ -6544,37 +6535,37 @@ static PyObject *__pyx_pf_14structureboost_18structure_dt_multi_26StructureDecis
         __pyx_t_10 = __pyx_t_11 = __pyx_t_12 = 0;
       }
       __pyx_pybuffernd_ind_subset_right.diminfo[0].strides = __pyx_pybuffernd_ind_subset_right.rcbuffer->pybuffer.strides[0]; __pyx_pybuffernd_ind_subset_right.diminfo[0].shape = __pyx_pybuffernd_ind_subset_right.rcbuffer->pybuffer.shape[0];
-      if (unlikely(__pyx_t_6 < 0)) __PYX_ERR(0, 155, __pyx_L1_error)
+      if (unlikely(__pyx_t_6 < 0)) __PYX_ERR(0, 154, __pyx_L1_error)
     }
     __pyx_t_13 = 0;
     __pyx_v_ind_subset_right = ((PyArrayObject *)__pyx_t_4);
     __pyx_t_4 = 0;
 
-    /* "structureboost/structure_dt_multi.pyx":156
- *             ind_subset_left = np.empty(vec_len, dtype=np.int64)
- *             ind_subset_right = np.empty(vec_len, dtype=np.int64)
+    /* "structureboost/structure_dt_multi.pyx":155
+ *             ind_subset_left = np.empty(vec_len, dtype=np.int_)
+ *             ind_subset_right = np.empty(vec_len, dtype=np.int_)
  *             ind_subset_left, ind_subset_right, lsize = stdt.separate_indices(             # <<<<<<<<<<<<<<
  *                                                     ind_subset_left,
  *                                                     ind_subset_right,
  */
-    __Pyx_GetModuleGlobalName(__pyx_t_7, __pyx_n_s_stdt); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 156, __pyx_L1_error)
+    __Pyx_GetModuleGlobalName(__pyx_t_7, __pyx_n_s_stdt); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 155, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_7);
-    __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_7, __pyx_n_s_separate_indices); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 156, __pyx_L1_error)
+    __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_7, __pyx_n_s_separate_indices); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 155, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
     __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
 
-    /* "structureboost/structure_dt_multi.pyx":159
+    /* "structureboost/structure_dt_multi.pyx":158
  *                                                     ind_subset_left,
  *                                                     ind_subset_right,
- *                                                     split_bool.astype(np.int64),             # <<<<<<<<<<<<<<
+ *                                                     split_bool.astype(np.int_),             # <<<<<<<<<<<<<<
  *                                                     vec_len)
  *             ind_subset_left = ind_subset_left[:lsize]
  */
-    __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_split_bool, __pyx_n_s_astype); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 159, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_split_bool, __pyx_n_s_astype); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 158, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
-    __Pyx_GetModuleGlobalName(__pyx_t_5, __pyx_n_s_np); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 159, __pyx_L1_error)
+    __Pyx_GetModuleGlobalName(__pyx_t_5, __pyx_n_s_np); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 158, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_5);
-    __pyx_t_14 = __Pyx_PyObject_GetAttrStr(__pyx_t_5, __pyx_n_s_int64); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 159, __pyx_L1_error)
+    __pyx_t_14 = __Pyx_PyObject_GetAttrStr(__pyx_t_5, __pyx_n_s_int); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 158, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_14);
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
     __pyx_t_5 = NULL;
@@ -6590,18 +6581,18 @@ static PyObject *__pyx_pf_14structureboost_18structure_dt_multi_26StructureDecis
     __pyx_t_7 = (__pyx_t_5) ? __Pyx_PyObject_Call2Args(__pyx_t_1, __pyx_t_5, __pyx_t_14) : __Pyx_PyObject_CallOneArg(__pyx_t_1, __pyx_t_14);
     __Pyx_XDECREF(__pyx_t_5); __pyx_t_5 = 0;
     __Pyx_DECREF(__pyx_t_14); __pyx_t_14 = 0;
-    if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 159, __pyx_L1_error)
+    if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 158, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_7);
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-    /* "structureboost/structure_dt_multi.pyx":160
+    /* "structureboost/structure_dt_multi.pyx":159
  *                                                     ind_subset_right,
- *                                                     split_bool.astype(np.int64),
+ *                                                     split_bool.astype(np.int_),
  *                                                     vec_len)             # <<<<<<<<<<<<<<
  *             ind_subset_left = ind_subset_left[:lsize]
  *             ind_subset_right = ind_subset_right[:(vec_len-lsize)]
  */
-    __pyx_t_1 = __Pyx_PyInt_From_long(__pyx_v_vec_len); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 160, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyInt_From_long(__pyx_v_vec_len); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 159, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __pyx_t_14 = NULL;
     __pyx_t_6 = 0;
@@ -6618,7 +6609,7 @@ static PyObject *__pyx_pf_14structureboost_18structure_dt_multi_26StructureDecis
     #if CYTHON_FAST_PYCALL
     if (PyFunction_Check(__pyx_t_3)) {
       PyObject *__pyx_temp[5] = {__pyx_t_14, ((PyObject *)__pyx_v_ind_subset_left), ((PyObject *)__pyx_v_ind_subset_right), __pyx_t_7, __pyx_t_1};
-      __pyx_t_4 = __Pyx_PyFunction_FastCall(__pyx_t_3, __pyx_temp+1-__pyx_t_6, 4+__pyx_t_6); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 156, __pyx_L1_error)
+      __pyx_t_4 = __Pyx_PyFunction_FastCall(__pyx_t_3, __pyx_temp+1-__pyx_t_6, 4+__pyx_t_6); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 155, __pyx_L1_error)
       __Pyx_XDECREF(__pyx_t_14); __pyx_t_14 = 0;
       __Pyx_GOTREF(__pyx_t_4);
       __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
@@ -6628,7 +6619,7 @@ static PyObject *__pyx_pf_14structureboost_18structure_dt_multi_26StructureDecis
     #if CYTHON_FAST_PYCCALL
     if (__Pyx_PyFastCFunction_Check(__pyx_t_3)) {
       PyObject *__pyx_temp[5] = {__pyx_t_14, ((PyObject *)__pyx_v_ind_subset_left), ((PyObject *)__pyx_v_ind_subset_right), __pyx_t_7, __pyx_t_1};
-      __pyx_t_4 = __Pyx_PyCFunction_FastCall(__pyx_t_3, __pyx_temp+1-__pyx_t_6, 4+__pyx_t_6); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 156, __pyx_L1_error)
+      __pyx_t_4 = __Pyx_PyCFunction_FastCall(__pyx_t_3, __pyx_temp+1-__pyx_t_6, 4+__pyx_t_6); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 155, __pyx_L1_error)
       __Pyx_XDECREF(__pyx_t_14); __pyx_t_14 = 0;
       __Pyx_GOTREF(__pyx_t_4);
       __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
@@ -6636,7 +6627,7 @@ static PyObject *__pyx_pf_14structureboost_18structure_dt_multi_26StructureDecis
     } else
     #endif
     {
-      __pyx_t_5 = PyTuple_New(4+__pyx_t_6); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 156, __pyx_L1_error)
+      __pyx_t_5 = PyTuple_New(4+__pyx_t_6); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 155, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_5);
       if (__pyx_t_14) {
         __Pyx_GIVEREF(__pyx_t_14); PyTuple_SET_ITEM(__pyx_t_5, 0, __pyx_t_14); __pyx_t_14 = NULL;
@@ -6653,7 +6644,7 @@ static PyObject *__pyx_pf_14structureboost_18structure_dt_multi_26StructureDecis
       PyTuple_SET_ITEM(__pyx_t_5, 3+__pyx_t_6, __pyx_t_1);
       __pyx_t_7 = 0;
       __pyx_t_1 = 0;
-      __pyx_t_4 = __Pyx_PyObject_Call(__pyx_t_3, __pyx_t_5, NULL); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 156, __pyx_L1_error)
+      __pyx_t_4 = __Pyx_PyObject_Call(__pyx_t_3, __pyx_t_5, NULL); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 155, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_4);
       __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
     }
@@ -6664,7 +6655,7 @@ static PyObject *__pyx_pf_14structureboost_18structure_dt_multi_26StructureDecis
       if (unlikely(size != 3)) {
         if (size > 3) __Pyx_RaiseTooManyValuesError(3);
         else if (size >= 0) __Pyx_RaiseNeedMoreValuesError(size);
-        __PYX_ERR(0, 156, __pyx_L1_error)
+        __PYX_ERR(0, 155, __pyx_L1_error)
       }
       #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
       if (likely(PyTuple_CheckExact(sequence))) {
@@ -6680,17 +6671,17 @@ static PyObject *__pyx_pf_14structureboost_18structure_dt_multi_26StructureDecis
       __Pyx_INCREF(__pyx_t_5);
       __Pyx_INCREF(__pyx_t_1);
       #else
-      __pyx_t_3 = PySequence_ITEM(sequence, 0); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 156, __pyx_L1_error)
+      __pyx_t_3 = PySequence_ITEM(sequence, 0); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 155, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_3);
-      __pyx_t_5 = PySequence_ITEM(sequence, 1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 156, __pyx_L1_error)
+      __pyx_t_5 = PySequence_ITEM(sequence, 1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 155, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_5);
-      __pyx_t_1 = PySequence_ITEM(sequence, 2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 156, __pyx_L1_error)
+      __pyx_t_1 = PySequence_ITEM(sequence, 2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 155, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
       #endif
       __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
     } else {
       Py_ssize_t index = -1;
-      __pyx_t_7 = PyObject_GetIter(__pyx_t_4); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 156, __pyx_L1_error)
+      __pyx_t_7 = PyObject_GetIter(__pyx_t_4); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 155, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_7);
       __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
       __pyx_t_15 = Py_TYPE(__pyx_t_7)->tp_iternext;
@@ -6700,7 +6691,7 @@ static PyObject *__pyx_pf_14structureboost_18structure_dt_multi_26StructureDecis
       __Pyx_GOTREF(__pyx_t_5);
       index = 2; __pyx_t_1 = __pyx_t_15(__pyx_t_7); if (unlikely(!__pyx_t_1)) goto __pyx_L4_unpacking_failed;
       __Pyx_GOTREF(__pyx_t_1);
-      if (__Pyx_IternextUnpackEndCheck(__pyx_t_15(__pyx_t_7), 3) < 0) __PYX_ERR(0, 156, __pyx_L1_error)
+      if (__Pyx_IternextUnpackEndCheck(__pyx_t_15(__pyx_t_7), 3) < 0) __PYX_ERR(0, 155, __pyx_L1_error)
       __pyx_t_15 = NULL;
       __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
       goto __pyx_L5_unpacking_done;
@@ -6708,29 +6699,29 @@ static PyObject *__pyx_pf_14structureboost_18structure_dt_multi_26StructureDecis
       __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
       __pyx_t_15 = NULL;
       if (__Pyx_IterFinish() == 0) __Pyx_RaiseNeedMoreValuesError(index);
-      __PYX_ERR(0, 156, __pyx_L1_error)
+      __PYX_ERR(0, 155, __pyx_L1_error)
       __pyx_L5_unpacking_done:;
     }
 
-    /* "structureboost/structure_dt_multi.pyx":156
- *             ind_subset_left = np.empty(vec_len, dtype=np.int64)
- *             ind_subset_right = np.empty(vec_len, dtype=np.int64)
+    /* "structureboost/structure_dt_multi.pyx":155
+ *             ind_subset_left = np.empty(vec_len, dtype=np.int_)
+ *             ind_subset_right = np.empty(vec_len, dtype=np.int_)
  *             ind_subset_left, ind_subset_right, lsize = stdt.separate_indices(             # <<<<<<<<<<<<<<
  *                                                     ind_subset_left,
  *                                                     ind_subset_right,
  */
-    if (!(likely(((__pyx_t_3) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_3, __pyx_ptype_5numpy_ndarray))))) __PYX_ERR(0, 156, __pyx_L1_error)
-    if (!(likely(((__pyx_t_5) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_5, __pyx_ptype_5numpy_ndarray))))) __PYX_ERR(0, 156, __pyx_L1_error)
-    __pyx_t_16 = __Pyx_PyInt_As_long(__pyx_t_1); if (unlikely((__pyx_t_16 == (long)-1) && PyErr_Occurred())) __PYX_ERR(0, 156, __pyx_L1_error)
+    if (!(likely(((__pyx_t_3) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_3, __pyx_ptype_5numpy_ndarray))))) __PYX_ERR(0, 155, __pyx_L1_error)
+    if (!(likely(((__pyx_t_5) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_5, __pyx_ptype_5numpy_ndarray))))) __PYX_ERR(0, 155, __pyx_L1_error)
+    __pyx_t_16 = __Pyx_PyInt_As_long(__pyx_t_1); if (unlikely((__pyx_t_16 == (long)-1) && PyErr_Occurred())) __PYX_ERR(0, 155, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
     __pyx_t_13 = ((PyArrayObject *)__pyx_t_3);
     {
       __Pyx_BufFmt_StackElem __pyx_stack[1];
       __Pyx_SafeReleaseBuffer(&__pyx_pybuffernd_ind_subset_left.rcbuffer->pybuffer);
-      __pyx_t_6 = __Pyx_GetBufferAndValidate(&__pyx_pybuffernd_ind_subset_left.rcbuffer->pybuffer, (PyObject*)__pyx_t_13, &__Pyx_TypeInfo_nn___pyx_t_14structureboost_18structure_dt_multi_dtype_int64_t, PyBUF_FORMAT| PyBUF_STRIDES, 1, 0, __pyx_stack);
+      __pyx_t_6 = __Pyx_GetBufferAndValidate(&__pyx_pybuffernd_ind_subset_left.rcbuffer->pybuffer, (PyObject*)__pyx_t_13, &__Pyx_TypeInfo_nn___pyx_t_5numpy_int_t, PyBUF_FORMAT| PyBUF_STRIDES, 1, 0, __pyx_stack);
       if (unlikely(__pyx_t_6 < 0)) {
         PyErr_Fetch(&__pyx_t_12, &__pyx_t_11, &__pyx_t_10);
-        if (unlikely(__Pyx_GetBufferAndValidate(&__pyx_pybuffernd_ind_subset_left.rcbuffer->pybuffer, (PyObject*)__pyx_v_ind_subset_left, &__Pyx_TypeInfo_nn___pyx_t_14structureboost_18structure_dt_multi_dtype_int64_t, PyBUF_FORMAT| PyBUF_STRIDES, 1, 0, __pyx_stack) == -1)) {
+        if (unlikely(__Pyx_GetBufferAndValidate(&__pyx_pybuffernd_ind_subset_left.rcbuffer->pybuffer, (PyObject*)__pyx_v_ind_subset_left, &__Pyx_TypeInfo_nn___pyx_t_5numpy_int_t, PyBUF_FORMAT| PyBUF_STRIDES, 1, 0, __pyx_stack) == -1)) {
           Py_XDECREF(__pyx_t_12); Py_XDECREF(__pyx_t_11); Py_XDECREF(__pyx_t_10);
           __Pyx_RaiseBufferFallbackError();
         } else {
@@ -6739,7 +6730,7 @@ static PyObject *__pyx_pf_14structureboost_18structure_dt_multi_26StructureDecis
         __pyx_t_12 = __pyx_t_11 = __pyx_t_10 = 0;
       }
       __pyx_pybuffernd_ind_subset_left.diminfo[0].strides = __pyx_pybuffernd_ind_subset_left.rcbuffer->pybuffer.strides[0]; __pyx_pybuffernd_ind_subset_left.diminfo[0].shape = __pyx_pybuffernd_ind_subset_left.rcbuffer->pybuffer.shape[0];
-      if (unlikely(__pyx_t_6 < 0)) __PYX_ERR(0, 156, __pyx_L1_error)
+      if (unlikely(__pyx_t_6 < 0)) __PYX_ERR(0, 155, __pyx_L1_error)
     }
     __pyx_t_13 = 0;
     __Pyx_DECREF_SET(__pyx_v_ind_subset_left, ((PyArrayObject *)__pyx_t_3));
@@ -6748,10 +6739,10 @@ static PyObject *__pyx_pf_14structureboost_18structure_dt_multi_26StructureDecis
     {
       __Pyx_BufFmt_StackElem __pyx_stack[1];
       __Pyx_SafeReleaseBuffer(&__pyx_pybuffernd_ind_subset_right.rcbuffer->pybuffer);
-      __pyx_t_6 = __Pyx_GetBufferAndValidate(&__pyx_pybuffernd_ind_subset_right.rcbuffer->pybuffer, (PyObject*)__pyx_t_13, &__Pyx_TypeInfo_nn___pyx_t_14structureboost_18structure_dt_multi_dtype_int64_t, PyBUF_FORMAT| PyBUF_STRIDES, 1, 0, __pyx_stack);
+      __pyx_t_6 = __Pyx_GetBufferAndValidate(&__pyx_pybuffernd_ind_subset_right.rcbuffer->pybuffer, (PyObject*)__pyx_t_13, &__Pyx_TypeInfo_nn___pyx_t_5numpy_int_t, PyBUF_FORMAT| PyBUF_STRIDES, 1, 0, __pyx_stack);
       if (unlikely(__pyx_t_6 < 0)) {
         PyErr_Fetch(&__pyx_t_10, &__pyx_t_11, &__pyx_t_12);
-        if (unlikely(__Pyx_GetBufferAndValidate(&__pyx_pybuffernd_ind_subset_right.rcbuffer->pybuffer, (PyObject*)__pyx_v_ind_subset_right, &__Pyx_TypeInfo_nn___pyx_t_14structureboost_18structure_dt_multi_dtype_int64_t, PyBUF_FORMAT| PyBUF_STRIDES, 1, 0, __pyx_stack) == -1)) {
+        if (unlikely(__Pyx_GetBufferAndValidate(&__pyx_pybuffernd_ind_subset_right.rcbuffer->pybuffer, (PyObject*)__pyx_v_ind_subset_right, &__Pyx_TypeInfo_nn___pyx_t_5numpy_int_t, PyBUF_FORMAT| PyBUF_STRIDES, 1, 0, __pyx_stack) == -1)) {
           Py_XDECREF(__pyx_t_10); Py_XDECREF(__pyx_t_11); Py_XDECREF(__pyx_t_12);
           __Pyx_RaiseBufferFallbackError();
         } else {
@@ -6760,37 +6751,37 @@ static PyObject *__pyx_pf_14structureboost_18structure_dt_multi_26StructureDecis
         __pyx_t_10 = __pyx_t_11 = __pyx_t_12 = 0;
       }
       __pyx_pybuffernd_ind_subset_right.diminfo[0].strides = __pyx_pybuffernd_ind_subset_right.rcbuffer->pybuffer.strides[0]; __pyx_pybuffernd_ind_subset_right.diminfo[0].shape = __pyx_pybuffernd_ind_subset_right.rcbuffer->pybuffer.shape[0];
-      if (unlikely(__pyx_t_6 < 0)) __PYX_ERR(0, 156, __pyx_L1_error)
+      if (unlikely(__pyx_t_6 < 0)) __PYX_ERR(0, 155, __pyx_L1_error)
     }
     __pyx_t_13 = 0;
     __Pyx_DECREF_SET(__pyx_v_ind_subset_right, ((PyArrayObject *)__pyx_t_5));
     __pyx_t_5 = 0;
     __pyx_v_lsize = __pyx_t_16;
 
-    /* "structureboost/structure_dt_multi.pyx":161
- *                                                     split_bool.astype(np.int64),
+    /* "structureboost/structure_dt_multi.pyx":160
+ *                                                     split_bool.astype(np.int_),
  *                                                     vec_len)
  *             ind_subset_left = ind_subset_left[:lsize]             # <<<<<<<<<<<<<<
  *             ind_subset_right = ind_subset_right[:(vec_len-lsize)]
  * 
  */
-    __pyx_t_4 = __Pyx_PyInt_From_long(__pyx_v_lsize); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 161, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_PyInt_From_long(__pyx_v_lsize); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 160, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
-    __pyx_t_1 = PySlice_New(Py_None, __pyx_t_4, Py_None); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 161, __pyx_L1_error)
+    __pyx_t_1 = PySlice_New(Py_None, __pyx_t_4, Py_None); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 160, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-    __pyx_t_4 = __Pyx_PyObject_GetItem(((PyObject *)__pyx_v_ind_subset_left), __pyx_t_1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 161, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_PyObject_GetItem(((PyObject *)__pyx_v_ind_subset_left), __pyx_t_1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 160, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-    if (!(likely(((__pyx_t_4) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_4, __pyx_ptype_5numpy_ndarray))))) __PYX_ERR(0, 161, __pyx_L1_error)
+    if (!(likely(((__pyx_t_4) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_4, __pyx_ptype_5numpy_ndarray))))) __PYX_ERR(0, 160, __pyx_L1_error)
     __pyx_t_13 = ((PyArrayObject *)__pyx_t_4);
     {
       __Pyx_BufFmt_StackElem __pyx_stack[1];
       __Pyx_SafeReleaseBuffer(&__pyx_pybuffernd_ind_subset_left.rcbuffer->pybuffer);
-      __pyx_t_6 = __Pyx_GetBufferAndValidate(&__pyx_pybuffernd_ind_subset_left.rcbuffer->pybuffer, (PyObject*)__pyx_t_13, &__Pyx_TypeInfo_nn___pyx_t_14structureboost_18structure_dt_multi_dtype_int64_t, PyBUF_FORMAT| PyBUF_STRIDES, 1, 0, __pyx_stack);
+      __pyx_t_6 = __Pyx_GetBufferAndValidate(&__pyx_pybuffernd_ind_subset_left.rcbuffer->pybuffer, (PyObject*)__pyx_t_13, &__Pyx_TypeInfo_nn___pyx_t_5numpy_int_t, PyBUF_FORMAT| PyBUF_STRIDES, 1, 0, __pyx_stack);
       if (unlikely(__pyx_t_6 < 0)) {
         PyErr_Fetch(&__pyx_t_12, &__pyx_t_11, &__pyx_t_10);
-        if (unlikely(__Pyx_GetBufferAndValidate(&__pyx_pybuffernd_ind_subset_left.rcbuffer->pybuffer, (PyObject*)__pyx_v_ind_subset_left, &__Pyx_TypeInfo_nn___pyx_t_14structureboost_18structure_dt_multi_dtype_int64_t, PyBUF_FORMAT| PyBUF_STRIDES, 1, 0, __pyx_stack) == -1)) {
+        if (unlikely(__Pyx_GetBufferAndValidate(&__pyx_pybuffernd_ind_subset_left.rcbuffer->pybuffer, (PyObject*)__pyx_v_ind_subset_left, &__Pyx_TypeInfo_nn___pyx_t_5numpy_int_t, PyBUF_FORMAT| PyBUF_STRIDES, 1, 0, __pyx_stack) == -1)) {
           Py_XDECREF(__pyx_t_12); Py_XDECREF(__pyx_t_11); Py_XDECREF(__pyx_t_10);
           __Pyx_RaiseBufferFallbackError();
         } else {
@@ -6799,36 +6790,36 @@ static PyObject *__pyx_pf_14structureboost_18structure_dt_multi_26StructureDecis
         __pyx_t_12 = __pyx_t_11 = __pyx_t_10 = 0;
       }
       __pyx_pybuffernd_ind_subset_left.diminfo[0].strides = __pyx_pybuffernd_ind_subset_left.rcbuffer->pybuffer.strides[0]; __pyx_pybuffernd_ind_subset_left.diminfo[0].shape = __pyx_pybuffernd_ind_subset_left.rcbuffer->pybuffer.shape[0];
-      if (unlikely(__pyx_t_6 < 0)) __PYX_ERR(0, 161, __pyx_L1_error)
+      if (unlikely(__pyx_t_6 < 0)) __PYX_ERR(0, 160, __pyx_L1_error)
     }
     __pyx_t_13 = 0;
     __Pyx_DECREF_SET(__pyx_v_ind_subset_left, ((PyArrayObject *)__pyx_t_4));
     __pyx_t_4 = 0;
 
-    /* "structureboost/structure_dt_multi.pyx":162
+    /* "structureboost/structure_dt_multi.pyx":161
  *                                                     vec_len)
  *             ind_subset_left = ind_subset_left[:lsize]
  *             ind_subset_right = ind_subset_right[:(vec_len-lsize)]             # <<<<<<<<<<<<<<
  * 
  *             if lsize > 0:
  */
-    __pyx_t_4 = __Pyx_PyInt_From_long((__pyx_v_vec_len - __pyx_v_lsize)); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 162, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_PyInt_From_long((__pyx_v_vec_len - __pyx_v_lsize)); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 161, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
-    __pyx_t_1 = PySlice_New(Py_None, __pyx_t_4, Py_None); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 162, __pyx_L1_error)
+    __pyx_t_1 = PySlice_New(Py_None, __pyx_t_4, Py_None); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 161, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-    __pyx_t_4 = __Pyx_PyObject_GetItem(((PyObject *)__pyx_v_ind_subset_right), __pyx_t_1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 162, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_PyObject_GetItem(((PyObject *)__pyx_v_ind_subset_right), __pyx_t_1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 161, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-    if (!(likely(((__pyx_t_4) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_4, __pyx_ptype_5numpy_ndarray))))) __PYX_ERR(0, 162, __pyx_L1_error)
+    if (!(likely(((__pyx_t_4) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_4, __pyx_ptype_5numpy_ndarray))))) __PYX_ERR(0, 161, __pyx_L1_error)
     __pyx_t_13 = ((PyArrayObject *)__pyx_t_4);
     {
       __Pyx_BufFmt_StackElem __pyx_stack[1];
       __Pyx_SafeReleaseBuffer(&__pyx_pybuffernd_ind_subset_right.rcbuffer->pybuffer);
-      __pyx_t_6 = __Pyx_GetBufferAndValidate(&__pyx_pybuffernd_ind_subset_right.rcbuffer->pybuffer, (PyObject*)__pyx_t_13, &__Pyx_TypeInfo_nn___pyx_t_14structureboost_18structure_dt_multi_dtype_int64_t, PyBUF_FORMAT| PyBUF_STRIDES, 1, 0, __pyx_stack);
+      __pyx_t_6 = __Pyx_GetBufferAndValidate(&__pyx_pybuffernd_ind_subset_right.rcbuffer->pybuffer, (PyObject*)__pyx_t_13, &__Pyx_TypeInfo_nn___pyx_t_5numpy_int_t, PyBUF_FORMAT| PyBUF_STRIDES, 1, 0, __pyx_stack);
       if (unlikely(__pyx_t_6 < 0)) {
         PyErr_Fetch(&__pyx_t_10, &__pyx_t_11, &__pyx_t_12);
-        if (unlikely(__Pyx_GetBufferAndValidate(&__pyx_pybuffernd_ind_subset_right.rcbuffer->pybuffer, (PyObject*)__pyx_v_ind_subset_right, &__Pyx_TypeInfo_nn___pyx_t_14structureboost_18structure_dt_multi_dtype_int64_t, PyBUF_FORMAT| PyBUF_STRIDES, 1, 0, __pyx_stack) == -1)) {
+        if (unlikely(__Pyx_GetBufferAndValidate(&__pyx_pybuffernd_ind_subset_right.rcbuffer->pybuffer, (PyObject*)__pyx_v_ind_subset_right, &__Pyx_TypeInfo_nn___pyx_t_5numpy_int_t, PyBUF_FORMAT| PyBUF_STRIDES, 1, 0, __pyx_stack) == -1)) {
           Py_XDECREF(__pyx_t_10); Py_XDECREF(__pyx_t_11); Py_XDECREF(__pyx_t_12);
           __Pyx_RaiseBufferFallbackError();
         } else {
@@ -6837,13 +6828,13 @@ static PyObject *__pyx_pf_14structureboost_18structure_dt_multi_26StructureDecis
         __pyx_t_10 = __pyx_t_11 = __pyx_t_12 = 0;
       }
       __pyx_pybuffernd_ind_subset_right.diminfo[0].strides = __pyx_pybuffernd_ind_subset_right.rcbuffer->pybuffer.strides[0]; __pyx_pybuffernd_ind_subset_right.diminfo[0].shape = __pyx_pybuffernd_ind_subset_right.rcbuffer->pybuffer.shape[0];
-      if (unlikely(__pyx_t_6 < 0)) __PYX_ERR(0, 162, __pyx_L1_error)
+      if (unlikely(__pyx_t_6 < 0)) __PYX_ERR(0, 161, __pyx_L1_error)
     }
     __pyx_t_13 = 0;
     __Pyx_DECREF_SET(__pyx_v_ind_subset_right, ((PyArrayObject *)__pyx_t_4));
     __pyx_t_4 = 0;
 
-    /* "structureboost/structure_dt_multi.pyx":164
+    /* "structureboost/structure_dt_multi.pyx":163
  *             ind_subset_right = ind_subset_right[:(vec_len-lsize)]
  * 
  *             if lsize > 0:             # <<<<<<<<<<<<<<
@@ -6853,26 +6844,26 @@ static PyObject *__pyx_pf_14structureboost_18structure_dt_multi_26StructureDecis
     __pyx_t_2 = ((__pyx_v_lsize > 0) != 0);
     if (__pyx_t_2) {
 
-      /* "structureboost/structure_dt_multi.pyx":165
+      /* "structureboost/structure_dt_multi.pyx":164
  * 
  *             if lsize > 0:
  *                 next_vec[ind_subset_left,:] = self.get_prediction(tree_node['left_child'],             # <<<<<<<<<<<<<<
  *                                                            X_te[
  *                                                            ind_subset_left, :],
  */
-      __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_get_prediction); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 165, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_get_prediction); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 164, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
-      __pyx_t_5 = __Pyx_PyObject_Dict_GetItem(__pyx_v_tree_node, __pyx_n_u_left_child); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 165, __pyx_L1_error)
+      __pyx_t_5 = __Pyx_PyObject_Dict_GetItem(__pyx_v_tree_node, __pyx_n_u_left_child); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 164, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_5);
 
-      /* "structureboost/structure_dt_multi.pyx":166
+      /* "structureboost/structure_dt_multi.pyx":165
  *             if lsize > 0:
  *                 next_vec[ind_subset_left,:] = self.get_prediction(tree_node['left_child'],
  *                                                            X_te[             # <<<<<<<<<<<<<<
  *                                                            ind_subset_left, :],
  *                                                            col_to_int_dict)
  */
-      __pyx_t_3 = PyTuple_New(2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 166, __pyx_L1_error)
+      __pyx_t_3 = PyTuple_New(2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 165, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_3);
       __Pyx_INCREF(((PyObject *)__pyx_v_ind_subset_left));
       __Pyx_GIVEREF(((PyObject *)__pyx_v_ind_subset_left));
@@ -6880,11 +6871,11 @@ static PyObject *__pyx_pf_14structureboost_18structure_dt_multi_26StructureDecis
       __Pyx_INCREF(__pyx_slice__3);
       __Pyx_GIVEREF(__pyx_slice__3);
       PyTuple_SET_ITEM(__pyx_t_3, 1, __pyx_slice__3);
-      __pyx_t_7 = __Pyx_PyObject_GetItem(__pyx_v_X_te, __pyx_t_3); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 166, __pyx_L1_error)
+      __pyx_t_7 = __Pyx_PyObject_GetItem(__pyx_v_X_te, __pyx_t_3); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 165, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_7);
       __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-      /* "structureboost/structure_dt_multi.pyx":168
+      /* "structureboost/structure_dt_multi.pyx":167
  *                                                            X_te[
  *                                                            ind_subset_left, :],
  *                                                            col_to_int_dict)             # <<<<<<<<<<<<<<
@@ -6906,7 +6897,7 @@ static PyObject *__pyx_pf_14structureboost_18structure_dt_multi_26StructureDecis
       #if CYTHON_FAST_PYCALL
       if (PyFunction_Check(__pyx_t_1)) {
         PyObject *__pyx_temp[4] = {__pyx_t_3, __pyx_t_5, __pyx_t_7, __pyx_v_col_to_int_dict};
-        __pyx_t_4 = __Pyx_PyFunction_FastCall(__pyx_t_1, __pyx_temp+1-__pyx_t_6, 3+__pyx_t_6); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 165, __pyx_L1_error)
+        __pyx_t_4 = __Pyx_PyFunction_FastCall(__pyx_t_1, __pyx_temp+1-__pyx_t_6, 3+__pyx_t_6); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 164, __pyx_L1_error)
         __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
         __Pyx_GOTREF(__pyx_t_4);
         __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
@@ -6916,7 +6907,7 @@ static PyObject *__pyx_pf_14structureboost_18structure_dt_multi_26StructureDecis
       #if CYTHON_FAST_PYCCALL
       if (__Pyx_PyFastCFunction_Check(__pyx_t_1)) {
         PyObject *__pyx_temp[4] = {__pyx_t_3, __pyx_t_5, __pyx_t_7, __pyx_v_col_to_int_dict};
-        __pyx_t_4 = __Pyx_PyCFunction_FastCall(__pyx_t_1, __pyx_temp+1-__pyx_t_6, 3+__pyx_t_6); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 165, __pyx_L1_error)
+        __pyx_t_4 = __Pyx_PyCFunction_FastCall(__pyx_t_1, __pyx_temp+1-__pyx_t_6, 3+__pyx_t_6); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 164, __pyx_L1_error)
         __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
         __Pyx_GOTREF(__pyx_t_4);
         __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
@@ -6924,7 +6915,7 @@ static PyObject *__pyx_pf_14structureboost_18structure_dt_multi_26StructureDecis
       } else
       #endif
       {
-        __pyx_t_14 = PyTuple_New(3+__pyx_t_6); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 165, __pyx_L1_error)
+        __pyx_t_14 = PyTuple_New(3+__pyx_t_6); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 164, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_14);
         if (__pyx_t_3) {
           __Pyx_GIVEREF(__pyx_t_3); PyTuple_SET_ITEM(__pyx_t_14, 0, __pyx_t_3); __pyx_t_3 = NULL;
@@ -6938,20 +6929,20 @@ static PyObject *__pyx_pf_14structureboost_18structure_dt_multi_26StructureDecis
         PyTuple_SET_ITEM(__pyx_t_14, 2+__pyx_t_6, __pyx_v_col_to_int_dict);
         __pyx_t_5 = 0;
         __pyx_t_7 = 0;
-        __pyx_t_4 = __Pyx_PyObject_Call(__pyx_t_1, __pyx_t_14, NULL); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 165, __pyx_L1_error)
+        __pyx_t_4 = __Pyx_PyObject_Call(__pyx_t_1, __pyx_t_14, NULL); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 164, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_4);
         __Pyx_DECREF(__pyx_t_14); __pyx_t_14 = 0;
       }
       __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-      /* "structureboost/structure_dt_multi.pyx":165
+      /* "structureboost/structure_dt_multi.pyx":164
  * 
  *             if lsize > 0:
  *                 next_vec[ind_subset_left,:] = self.get_prediction(tree_node['left_child'],             # <<<<<<<<<<<<<<
  *                                                            X_te[
  *                                                            ind_subset_left, :],
  */
-      __pyx_t_1 = PyTuple_New(2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 165, __pyx_L1_error)
+      __pyx_t_1 = PyTuple_New(2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 164, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
       __Pyx_INCREF(((PyObject *)__pyx_v_ind_subset_left));
       __Pyx_GIVEREF(((PyObject *)__pyx_v_ind_subset_left));
@@ -6959,11 +6950,11 @@ static PyObject *__pyx_pf_14structureboost_18structure_dt_multi_26StructureDecis
       __Pyx_INCREF(__pyx_slice__3);
       __Pyx_GIVEREF(__pyx_slice__3);
       PyTuple_SET_ITEM(__pyx_t_1, 1, __pyx_slice__3);
-      if (unlikely(PyObject_SetItem(((PyObject *)__pyx_v_next_vec), __pyx_t_1, __pyx_t_4) < 0)) __PYX_ERR(0, 165, __pyx_L1_error)
+      if (unlikely(PyObject_SetItem(((PyObject *)__pyx_v_next_vec), __pyx_t_1, __pyx_t_4) < 0)) __PYX_ERR(0, 164, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
       __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
 
-      /* "structureboost/structure_dt_multi.pyx":164
+      /* "structureboost/structure_dt_multi.pyx":163
  *             ind_subset_right = ind_subset_right[:(vec_len-lsize)]
  * 
  *             if lsize > 0:             # <<<<<<<<<<<<<<
@@ -6972,7 +6963,7 @@ static PyObject *__pyx_pf_14structureboost_18structure_dt_multi_26StructureDecis
  */
     }
 
-    /* "structureboost/structure_dt_multi.pyx":170
+    /* "structureboost/structure_dt_multi.pyx":169
  *                                                            col_to_int_dict)
  * 
  *             if lsize < vec_len:             # <<<<<<<<<<<<<<
@@ -6982,34 +6973,34 @@ static PyObject *__pyx_pf_14structureboost_18structure_dt_multi_26StructureDecis
     __pyx_t_2 = ((__pyx_v_lsize < __pyx_v_vec_len) != 0);
     if (__pyx_t_2) {
 
-      /* "structureboost/structure_dt_multi.pyx":171
+      /* "structureboost/structure_dt_multi.pyx":170
  * 
  *             if lsize < vec_len:
  *                 next_vec[ind_subset_right,:] = self.get_prediction(             # <<<<<<<<<<<<<<
  *                                                 tree_node['right_child'],
  *                                                 X_te[ind_subset_right, :],
  */
-      __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_get_prediction); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 171, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_get_prediction); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 170, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
 
-      /* "structureboost/structure_dt_multi.pyx":172
+      /* "structureboost/structure_dt_multi.pyx":171
  *             if lsize < vec_len:
  *                 next_vec[ind_subset_right,:] = self.get_prediction(
  *                                                 tree_node['right_child'],             # <<<<<<<<<<<<<<
  *                                                 X_te[ind_subset_right, :],
  *                                                 col_to_int_dict)
  */
-      __pyx_t_14 = __Pyx_PyObject_Dict_GetItem(__pyx_v_tree_node, __pyx_n_u_right_child); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 172, __pyx_L1_error)
+      __pyx_t_14 = __Pyx_PyObject_Dict_GetItem(__pyx_v_tree_node, __pyx_n_u_right_child); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 171, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_14);
 
-      /* "structureboost/structure_dt_multi.pyx":173
+      /* "structureboost/structure_dt_multi.pyx":172
  *                 next_vec[ind_subset_right,:] = self.get_prediction(
  *                                                 tree_node['right_child'],
  *                                                 X_te[ind_subset_right, :],             # <<<<<<<<<<<<<<
  *                                                 col_to_int_dict)
  *             return next_vec
  */
-      __pyx_t_7 = PyTuple_New(2); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 173, __pyx_L1_error)
+      __pyx_t_7 = PyTuple_New(2); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 172, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_7);
       __Pyx_INCREF(((PyObject *)__pyx_v_ind_subset_right));
       __Pyx_GIVEREF(((PyObject *)__pyx_v_ind_subset_right));
@@ -7017,11 +7008,11 @@ static PyObject *__pyx_pf_14structureboost_18structure_dt_multi_26StructureDecis
       __Pyx_INCREF(__pyx_slice__3);
       __Pyx_GIVEREF(__pyx_slice__3);
       PyTuple_SET_ITEM(__pyx_t_7, 1, __pyx_slice__3);
-      __pyx_t_5 = __Pyx_PyObject_GetItem(__pyx_v_X_te, __pyx_t_7); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 173, __pyx_L1_error)
+      __pyx_t_5 = __Pyx_PyObject_GetItem(__pyx_v_X_te, __pyx_t_7); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 172, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_5);
       __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
 
-      /* "structureboost/structure_dt_multi.pyx":174
+      /* "structureboost/structure_dt_multi.pyx":173
  *                                                 tree_node['right_child'],
  *                                                 X_te[ind_subset_right, :],
  *                                                 col_to_int_dict)             # <<<<<<<<<<<<<<
@@ -7043,7 +7034,7 @@ static PyObject *__pyx_pf_14structureboost_18structure_dt_multi_26StructureDecis
       #if CYTHON_FAST_PYCALL
       if (PyFunction_Check(__pyx_t_1)) {
         PyObject *__pyx_temp[4] = {__pyx_t_7, __pyx_t_14, __pyx_t_5, __pyx_v_col_to_int_dict};
-        __pyx_t_4 = __Pyx_PyFunction_FastCall(__pyx_t_1, __pyx_temp+1-__pyx_t_6, 3+__pyx_t_6); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 171, __pyx_L1_error)
+        __pyx_t_4 = __Pyx_PyFunction_FastCall(__pyx_t_1, __pyx_temp+1-__pyx_t_6, 3+__pyx_t_6); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 170, __pyx_L1_error)
         __Pyx_XDECREF(__pyx_t_7); __pyx_t_7 = 0;
         __Pyx_GOTREF(__pyx_t_4);
         __Pyx_DECREF(__pyx_t_14); __pyx_t_14 = 0;
@@ -7053,7 +7044,7 @@ static PyObject *__pyx_pf_14structureboost_18structure_dt_multi_26StructureDecis
       #if CYTHON_FAST_PYCCALL
       if (__Pyx_PyFastCFunction_Check(__pyx_t_1)) {
         PyObject *__pyx_temp[4] = {__pyx_t_7, __pyx_t_14, __pyx_t_5, __pyx_v_col_to_int_dict};
-        __pyx_t_4 = __Pyx_PyCFunction_FastCall(__pyx_t_1, __pyx_temp+1-__pyx_t_6, 3+__pyx_t_6); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 171, __pyx_L1_error)
+        __pyx_t_4 = __Pyx_PyCFunction_FastCall(__pyx_t_1, __pyx_temp+1-__pyx_t_6, 3+__pyx_t_6); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 170, __pyx_L1_error)
         __Pyx_XDECREF(__pyx_t_7); __pyx_t_7 = 0;
         __Pyx_GOTREF(__pyx_t_4);
         __Pyx_DECREF(__pyx_t_14); __pyx_t_14 = 0;
@@ -7061,7 +7052,7 @@ static PyObject *__pyx_pf_14structureboost_18structure_dt_multi_26StructureDecis
       } else
       #endif
       {
-        __pyx_t_3 = PyTuple_New(3+__pyx_t_6); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 171, __pyx_L1_error)
+        __pyx_t_3 = PyTuple_New(3+__pyx_t_6); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 170, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_3);
         if (__pyx_t_7) {
           __Pyx_GIVEREF(__pyx_t_7); PyTuple_SET_ITEM(__pyx_t_3, 0, __pyx_t_7); __pyx_t_7 = NULL;
@@ -7075,20 +7066,20 @@ static PyObject *__pyx_pf_14structureboost_18structure_dt_multi_26StructureDecis
         PyTuple_SET_ITEM(__pyx_t_3, 2+__pyx_t_6, __pyx_v_col_to_int_dict);
         __pyx_t_14 = 0;
         __pyx_t_5 = 0;
-        __pyx_t_4 = __Pyx_PyObject_Call(__pyx_t_1, __pyx_t_3, NULL); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 171, __pyx_L1_error)
+        __pyx_t_4 = __Pyx_PyObject_Call(__pyx_t_1, __pyx_t_3, NULL); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 170, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_4);
         __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
       }
       __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-      /* "structureboost/structure_dt_multi.pyx":171
+      /* "structureboost/structure_dt_multi.pyx":170
  * 
  *             if lsize < vec_len:
  *                 next_vec[ind_subset_right,:] = self.get_prediction(             # <<<<<<<<<<<<<<
  *                                                 tree_node['right_child'],
  *                                                 X_te[ind_subset_right, :],
  */
-      __pyx_t_1 = PyTuple_New(2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 171, __pyx_L1_error)
+      __pyx_t_1 = PyTuple_New(2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 170, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
       __Pyx_INCREF(((PyObject *)__pyx_v_ind_subset_right));
       __Pyx_GIVEREF(((PyObject *)__pyx_v_ind_subset_right));
@@ -7096,11 +7087,11 @@ static PyObject *__pyx_pf_14structureboost_18structure_dt_multi_26StructureDecis
       __Pyx_INCREF(__pyx_slice__3);
       __Pyx_GIVEREF(__pyx_slice__3);
       PyTuple_SET_ITEM(__pyx_t_1, 1, __pyx_slice__3);
-      if (unlikely(PyObject_SetItem(((PyObject *)__pyx_v_next_vec), __pyx_t_1, __pyx_t_4) < 0)) __PYX_ERR(0, 171, __pyx_L1_error)
+      if (unlikely(PyObject_SetItem(((PyObject *)__pyx_v_next_vec), __pyx_t_1, __pyx_t_4) < 0)) __PYX_ERR(0, 170, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
       __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
 
-      /* "structureboost/structure_dt_multi.pyx":170
+      /* "structureboost/structure_dt_multi.pyx":169
  *                                                            col_to_int_dict)
  * 
  *             if lsize < vec_len:             # <<<<<<<<<<<<<<
@@ -7109,7 +7100,7 @@ static PyObject *__pyx_pf_14structureboost_18structure_dt_multi_26StructureDecis
  */
     }
 
-    /* "structureboost/structure_dt_multi.pyx":175
+    /* "structureboost/structure_dt_multi.pyx":174
  *                                                 X_te[ind_subset_right, :],
  *                                                 col_to_int_dict)
  *             return next_vec             # <<<<<<<<<<<<<<
@@ -7122,11 +7113,11 @@ static PyObject *__pyx_pf_14structureboost_18structure_dt_multi_26StructureDecis
     goto __pyx_L0;
   }
 
-  /* "structureboost/structure_dt_multi.pyx":143
+  /* "structureboost/structure_dt_multi.pyx":142
  * 
  * 
  *     def get_prediction(self, tree_node, X_te, dict col_to_int_dict):             # <<<<<<<<<<<<<<
- *         cdef np.ndarray[dtype_int64_t] ind_subset_left, ind_subset_right
+ *         cdef np.ndarray[np.int_t] ind_subset_left, ind_subset_right
  *         cdef long vec_len, lsize
  */
 
@@ -7164,10 +7155,10 @@ static PyObject *__pyx_pf_14structureboost_18structure_dt_multi_26StructureDecis
   return __pyx_r;
 }
 
-/* "structureboost/structure_dt_multi.pyx":180
+/* "structureboost/structure_dt_multi.pyx":179
  * @cython.boundscheck(False)  # Deactivate bounds checking
  * @cython.wraparound(False)   # Deactivate negative indexing.
- * def get_g_h_feature_sum_matrix(np.ndarray[dtype_int64_t] feature_vec_node,             # <<<<<<<<<<<<<<
+ * def get_g_h_feature_sum_matrix(np.ndarray[np.int_t] feature_vec_node,             # <<<<<<<<<<<<<<
  *                                np.ndarray[double, ndim=2] g_h_train_node,
  *                                np.ndarray[double, ndim=2] g_h_val_arr,
  */
@@ -7213,23 +7204,23 @@ static PyObject *__pyx_pw_14structureboost_18structure_dt_multi_1get_g_h_feature
         case  1:
         if (likely((values[1] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_g_h_train_node)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("get_g_h_feature_sum_matrix", 1, 4, 4, 1); __PYX_ERR(0, 180, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("get_g_h_feature_sum_matrix", 1, 4, 4, 1); __PYX_ERR(0, 179, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  2:
         if (likely((values[2] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_g_h_val_arr)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("get_g_h_feature_sum_matrix", 1, 4, 4, 2); __PYX_ERR(0, 180, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("get_g_h_feature_sum_matrix", 1, 4, 4, 2); __PYX_ERR(0, 179, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  3:
         if (likely((values[3] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_num_classes)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("get_g_h_feature_sum_matrix", 1, 4, 4, 3); __PYX_ERR(0, 180, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("get_g_h_feature_sum_matrix", 1, 4, 4, 3); __PYX_ERR(0, 179, __pyx_L3_error)
         }
       }
       if (unlikely(kw_args > 0)) {
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "get_g_h_feature_sum_matrix") < 0)) __PYX_ERR(0, 180, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "get_g_h_feature_sum_matrix") < 0)) __PYX_ERR(0, 179, __pyx_L3_error)
       }
     } else if (PyTuple_GET_SIZE(__pyx_args) != 4) {
       goto __pyx_L5_argtuple_error;
@@ -7242,19 +7233,19 @@ static PyObject *__pyx_pw_14structureboost_18structure_dt_multi_1get_g_h_feature
     __pyx_v_feature_vec_node = ((PyArrayObject *)values[0]);
     __pyx_v_g_h_train_node = ((PyArrayObject *)values[1]);
     __pyx_v_g_h_val_arr = ((PyArrayObject *)values[2]);
-    __pyx_v_num_classes = __Pyx_PyInt_As_long(values[3]); if (unlikely((__pyx_v_num_classes == (long)-1) && PyErr_Occurred())) __PYX_ERR(0, 183, __pyx_L3_error)
+    __pyx_v_num_classes = __Pyx_PyInt_As_long(values[3]); if (unlikely((__pyx_v_num_classes == (long)-1) && PyErr_Occurred())) __PYX_ERR(0, 182, __pyx_L3_error)
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("get_g_h_feature_sum_matrix", 1, 4, 4, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 180, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("get_g_h_feature_sum_matrix", 1, 4, 4, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 179, __pyx_L3_error)
   __pyx_L3_error:;
   __Pyx_AddTraceback("structureboost.structure_dt_multi.get_g_h_feature_sum_matrix", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_feature_vec_node), __pyx_ptype_5numpy_ndarray, 1, "feature_vec_node", 0))) __PYX_ERR(0, 180, __pyx_L1_error)
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_g_h_train_node), __pyx_ptype_5numpy_ndarray, 1, "g_h_train_node", 0))) __PYX_ERR(0, 181, __pyx_L1_error)
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_g_h_val_arr), __pyx_ptype_5numpy_ndarray, 1, "g_h_val_arr", 0))) __PYX_ERR(0, 182, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_feature_vec_node), __pyx_ptype_5numpy_ndarray, 1, "feature_vec_node", 0))) __PYX_ERR(0, 179, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_g_h_train_node), __pyx_ptype_5numpy_ndarray, 1, "g_h_train_node", 0))) __PYX_ERR(0, 180, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_g_h_val_arr), __pyx_ptype_5numpy_ndarray, 1, "g_h_val_arr", 0))) __PYX_ERR(0, 181, __pyx_L1_error)
   __pyx_r = __pyx_pf_14structureboost_18structure_dt_multi_get_g_h_feature_sum_matrix(__pyx_self, __pyx_v_feature_vec_node, __pyx_v_g_h_train_node, __pyx_v_g_h_val_arr, __pyx_v_num_classes);
 
   /* function exit code */
@@ -7296,7 +7287,7 @@ static PyObject *__pyx_pf_14structureboost_18structure_dt_multi_get_g_h_feature_
   int __pyx_clineno = 0;
   __Pyx_TraceFrameInit(__pyx_codeobj__14)
   __Pyx_RefNannySetupContext("get_g_h_feature_sum_matrix", 0);
-  __Pyx_TraceCall("get_g_h_feature_sum_matrix", __pyx_f[0], 180, 0, __PYX_ERR(0, 180, __pyx_L1_error));
+  __Pyx_TraceCall("get_g_h_feature_sum_matrix", __pyx_f[0], 179, 0, __PYX_ERR(0, 179, __pyx_L1_error));
   __pyx_pybuffer_feature_vec_node.pybuffer.buf = NULL;
   __pyx_pybuffer_feature_vec_node.refcount = 0;
   __pyx_pybuffernd_feature_vec_node.data = NULL;
@@ -7311,31 +7302,31 @@ static PyObject *__pyx_pf_14structureboost_18structure_dt_multi_get_g_h_feature_
   __pyx_pybuffernd_g_h_val_arr.rcbuffer = &__pyx_pybuffer_g_h_val_arr;
   {
     __Pyx_BufFmt_StackElem __pyx_stack[1];
-    if (unlikely(__Pyx_GetBufferAndValidate(&__pyx_pybuffernd_feature_vec_node.rcbuffer->pybuffer, (PyObject*)__pyx_v_feature_vec_node, &__Pyx_TypeInfo_nn___pyx_t_14structureboost_18structure_dt_multi_dtype_int64_t, PyBUF_FORMAT| PyBUF_STRIDES, 1, 0, __pyx_stack) == -1)) __PYX_ERR(0, 180, __pyx_L1_error)
+    if (unlikely(__Pyx_GetBufferAndValidate(&__pyx_pybuffernd_feature_vec_node.rcbuffer->pybuffer, (PyObject*)__pyx_v_feature_vec_node, &__Pyx_TypeInfo_nn___pyx_t_5numpy_int_t, PyBUF_FORMAT| PyBUF_STRIDES, 1, 0, __pyx_stack) == -1)) __PYX_ERR(0, 179, __pyx_L1_error)
   }
   __pyx_pybuffernd_feature_vec_node.diminfo[0].strides = __pyx_pybuffernd_feature_vec_node.rcbuffer->pybuffer.strides[0]; __pyx_pybuffernd_feature_vec_node.diminfo[0].shape = __pyx_pybuffernd_feature_vec_node.rcbuffer->pybuffer.shape[0];
   {
     __Pyx_BufFmt_StackElem __pyx_stack[1];
-    if (unlikely(__Pyx_GetBufferAndValidate(&__pyx_pybuffernd_g_h_train_node.rcbuffer->pybuffer, (PyObject*)__pyx_v_g_h_train_node, &__Pyx_TypeInfo_double, PyBUF_FORMAT| PyBUF_STRIDES, 2, 0, __pyx_stack) == -1)) __PYX_ERR(0, 180, __pyx_L1_error)
+    if (unlikely(__Pyx_GetBufferAndValidate(&__pyx_pybuffernd_g_h_train_node.rcbuffer->pybuffer, (PyObject*)__pyx_v_g_h_train_node, &__Pyx_TypeInfo_double, PyBUF_FORMAT| PyBUF_STRIDES, 2, 0, __pyx_stack) == -1)) __PYX_ERR(0, 179, __pyx_L1_error)
   }
   __pyx_pybuffernd_g_h_train_node.diminfo[0].strides = __pyx_pybuffernd_g_h_train_node.rcbuffer->pybuffer.strides[0]; __pyx_pybuffernd_g_h_train_node.diminfo[0].shape = __pyx_pybuffernd_g_h_train_node.rcbuffer->pybuffer.shape[0]; __pyx_pybuffernd_g_h_train_node.diminfo[1].strides = __pyx_pybuffernd_g_h_train_node.rcbuffer->pybuffer.strides[1]; __pyx_pybuffernd_g_h_train_node.diminfo[1].shape = __pyx_pybuffernd_g_h_train_node.rcbuffer->pybuffer.shape[1];
   {
     __Pyx_BufFmt_StackElem __pyx_stack[1];
-    if (unlikely(__Pyx_GetBufferAndValidate(&__pyx_pybuffernd_g_h_val_arr.rcbuffer->pybuffer, (PyObject*)__pyx_v_g_h_val_arr, &__Pyx_TypeInfo_double, PyBUF_FORMAT| PyBUF_STRIDES| PyBUF_WRITABLE, 2, 0, __pyx_stack) == -1)) __PYX_ERR(0, 180, __pyx_L1_error)
+    if (unlikely(__Pyx_GetBufferAndValidate(&__pyx_pybuffernd_g_h_val_arr.rcbuffer->pybuffer, (PyObject*)__pyx_v_g_h_val_arr, &__Pyx_TypeInfo_double, PyBUF_FORMAT| PyBUF_STRIDES| PyBUF_WRITABLE, 2, 0, __pyx_stack) == -1)) __PYX_ERR(0, 179, __pyx_L1_error)
   }
   __pyx_pybuffernd_g_h_val_arr.diminfo[0].strides = __pyx_pybuffernd_g_h_val_arr.rcbuffer->pybuffer.strides[0]; __pyx_pybuffernd_g_h_val_arr.diminfo[0].shape = __pyx_pybuffernd_g_h_val_arr.rcbuffer->pybuffer.shape[0]; __pyx_pybuffernd_g_h_val_arr.diminfo[1].strides = __pyx_pybuffernd_g_h_val_arr.rcbuffer->pybuffer.strides[1]; __pyx_pybuffernd_g_h_val_arr.diminfo[1].shape = __pyx_pybuffernd_g_h_val_arr.rcbuffer->pybuffer.shape[1];
 
-  /* "structureboost/structure_dt_multi.pyx":185
+  /* "structureboost/structure_dt_multi.pyx":184
  *                                long num_classes):
  *     cdef long i, ind
  *     cdef long array_size = len(feature_vec_node)             # <<<<<<<<<<<<<<
  *     for i in range(array_size):
  *         for j in range(2*num_classes):
  */
-  __pyx_t_1 = PyObject_Length(((PyObject *)__pyx_v_feature_vec_node)); if (unlikely(__pyx_t_1 == ((Py_ssize_t)-1))) __PYX_ERR(0, 185, __pyx_L1_error)
+  __pyx_t_1 = PyObject_Length(((PyObject *)__pyx_v_feature_vec_node)); if (unlikely(__pyx_t_1 == ((Py_ssize_t)-1))) __PYX_ERR(0, 184, __pyx_L1_error)
   __pyx_v_array_size = __pyx_t_1;
 
-  /* "structureboost/structure_dt_multi.pyx":186
+  /* "structureboost/structure_dt_multi.pyx":185
  *     cdef long i, ind
  *     cdef long array_size = len(feature_vec_node)
  *     for i in range(array_size):             # <<<<<<<<<<<<<<
@@ -7347,7 +7338,7 @@ static PyObject *__pyx_pf_14structureboost_18structure_dt_multi_get_g_h_feature_
   for (__pyx_t_4 = 0; __pyx_t_4 < __pyx_t_3; __pyx_t_4+=1) {
     __pyx_v_i = __pyx_t_4;
 
-    /* "structureboost/structure_dt_multi.pyx":187
+    /* "structureboost/structure_dt_multi.pyx":186
  *     cdef long array_size = len(feature_vec_node)
  *     for i in range(array_size):
  *         for j in range(2*num_classes):             # <<<<<<<<<<<<<<
@@ -7359,7 +7350,7 @@ static PyObject *__pyx_pf_14structureboost_18structure_dt_multi_get_g_h_feature_
     for (__pyx_t_7 = 0; __pyx_t_7 < __pyx_t_6; __pyx_t_7+=1) {
       __pyx_v_j = __pyx_t_7;
 
-      /* "structureboost/structure_dt_multi.pyx":188
+      /* "structureboost/structure_dt_multi.pyx":187
  *     for i in range(array_size):
  *         for j in range(2*num_classes):
  *             ind = feature_vec_node[i]             # <<<<<<<<<<<<<<
@@ -7367,9 +7358,9 @@ static PyObject *__pyx_pf_14structureboost_18structure_dt_multi_get_g_h_feature_
  *     return g_h_val_arr
  */
       __pyx_t_8 = __pyx_v_i;
-      __pyx_v_ind = (*__Pyx_BufPtrStrided1d(__pyx_t_14structureboost_18structure_dt_multi_dtype_int64_t *, __pyx_pybuffernd_feature_vec_node.rcbuffer->pybuffer.buf, __pyx_t_8, __pyx_pybuffernd_feature_vec_node.diminfo[0].strides));
+      __pyx_v_ind = (*__Pyx_BufPtrStrided1d(__pyx_t_5numpy_int_t *, __pyx_pybuffernd_feature_vec_node.rcbuffer->pybuffer.buf, __pyx_t_8, __pyx_pybuffernd_feature_vec_node.diminfo[0].strides));
 
-      /* "structureboost/structure_dt_multi.pyx":189
+      /* "structureboost/structure_dt_multi.pyx":188
  *         for j in range(2*num_classes):
  *             ind = feature_vec_node[i]
  *             g_h_val_arr[ind,j] += g_h_train_node[i,j]             # <<<<<<<<<<<<<<
@@ -7384,7 +7375,7 @@ static PyObject *__pyx_pf_14structureboost_18structure_dt_multi_get_g_h_feature_
     }
   }
 
-  /* "structureboost/structure_dt_multi.pyx":190
+  /* "structureboost/structure_dt_multi.pyx":189
  *             ind = feature_vec_node[i]
  *             g_h_val_arr[ind,j] += g_h_train_node[i,j]
  *     return g_h_val_arr             # <<<<<<<<<<<<<<
@@ -7396,10 +7387,10 @@ static PyObject *__pyx_pf_14structureboost_18structure_dt_multi_get_g_h_feature_
   __pyx_r = ((PyObject *)__pyx_v_g_h_val_arr);
   goto __pyx_L0;
 
-  /* "structureboost/structure_dt_multi.pyx":180
+  /* "structureboost/structure_dt_multi.pyx":179
  * @cython.boundscheck(False)  # Deactivate bounds checking
  * @cython.wraparound(False)   # Deactivate negative indexing.
- * def get_g_h_feature_sum_matrix(np.ndarray[dtype_int64_t] feature_vec_node,             # <<<<<<<<<<<<<<
+ * def get_g_h_feature_sum_matrix(np.ndarray[np.int_t] feature_vec_node,             # <<<<<<<<<<<<<<
  *                                np.ndarray[double, ndim=2] g_h_train_node,
  *                                np.ndarray[double, ndim=2] g_h_val_arr,
  */
@@ -7428,7 +7419,7 @@ static PyObject *__pyx_pf_14structureboost_18structure_dt_multi_get_g_h_feature_
   return __pyx_r;
 }
 
-/* "structureboost/structure_dt_multi.pyx":193
+/* "structureboost/structure_dt_multi.pyx":192
  * 
  * 
  * def _get_gh_score_num_mc(np.ndarray[double] g_left,             # <<<<<<<<<<<<<<
@@ -7486,31 +7477,31 @@ static PyObject *__pyx_pw_14structureboost_18structure_dt_multi_3_get_gh_score_n
         case  1:
         if (likely((values[1] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_g_right)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("_get_gh_score_num_mc", 0, 6, 7, 1); __PYX_ERR(0, 193, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("_get_gh_score_num_mc", 0, 6, 7, 1); __PYX_ERR(0, 192, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  2:
         if (likely((values[2] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_h_left)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("_get_gh_score_num_mc", 0, 6, 7, 2); __PYX_ERR(0, 193, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("_get_gh_score_num_mc", 0, 6, 7, 2); __PYX_ERR(0, 192, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  3:
         if (likely((values[3] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_h_right)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("_get_gh_score_num_mc", 0, 6, 7, 3); __PYX_ERR(0, 193, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("_get_gh_score_num_mc", 0, 6, 7, 3); __PYX_ERR(0, 192, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  4:
         if (likely((values[4] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_gamma)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("_get_gh_score_num_mc", 0, 6, 7, 4); __PYX_ERR(0, 193, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("_get_gh_score_num_mc", 0, 6, 7, 4); __PYX_ERR(0, 192, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  5:
         if (likely((values[5] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_reg_lambda)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("_get_gh_score_num_mc", 0, 6, 7, 5); __PYX_ERR(0, 193, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("_get_gh_score_num_mc", 0, 6, 7, 5); __PYX_ERR(0, 192, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  6:
@@ -7520,7 +7511,7 @@ static PyObject *__pyx_pw_14structureboost_18structure_dt_multi_3_get_gh_score_n
         }
       }
       if (unlikely(kw_args > 0)) {
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "_get_gh_score_num_mc") < 0)) __PYX_ERR(0, 193, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "_get_gh_score_num_mc") < 0)) __PYX_ERR(0, 192, __pyx_L3_error)
       }
     } else {
       switch (PyTuple_GET_SIZE(__pyx_args)) {
@@ -7540,26 +7531,26 @@ static PyObject *__pyx_pw_14structureboost_18structure_dt_multi_3_get_gh_score_n
     __pyx_v_g_right = ((PyArrayObject *)values[1]);
     __pyx_v_h_left = ((PyArrayObject *)values[2]);
     __pyx_v_h_right = ((PyArrayObject *)values[3]);
-    __pyx_v_gamma = __pyx_PyFloat_AsDouble(values[4]); if (unlikely((__pyx_v_gamma == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 197, __pyx_L3_error)
-    __pyx_v_reg_lambda = __pyx_PyFloat_AsDouble(values[5]); if (unlikely((__pyx_v_reg_lambda == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 197, __pyx_L3_error)
+    __pyx_v_gamma = __pyx_PyFloat_AsDouble(values[4]); if (unlikely((__pyx_v_gamma == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 196, __pyx_L3_error)
+    __pyx_v_reg_lambda = __pyx_PyFloat_AsDouble(values[5]); if (unlikely((__pyx_v_reg_lambda == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 196, __pyx_L3_error)
     if (values[6]) {
-      __pyx_v_tol = __pyx_PyFloat_AsDouble(values[6]); if (unlikely((__pyx_v_tol == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 197, __pyx_L3_error)
+      __pyx_v_tol = __pyx_PyFloat_AsDouble(values[6]); if (unlikely((__pyx_v_tol == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 196, __pyx_L3_error)
     } else {
       __pyx_v_tol = ((double)1e-12);
     }
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("_get_gh_score_num_mc", 0, 6, 7, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 193, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("_get_gh_score_num_mc", 0, 6, 7, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 192, __pyx_L3_error)
   __pyx_L3_error:;
   __Pyx_AddTraceback("structureboost.structure_dt_multi._get_gh_score_num_mc", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_g_left), __pyx_ptype_5numpy_ndarray, 1, "g_left", 0))) __PYX_ERR(0, 193, __pyx_L1_error)
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_g_right), __pyx_ptype_5numpy_ndarray, 1, "g_right", 0))) __PYX_ERR(0, 194, __pyx_L1_error)
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_h_left), __pyx_ptype_5numpy_ndarray, 1, "h_left", 0))) __PYX_ERR(0, 195, __pyx_L1_error)
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_h_right), __pyx_ptype_5numpy_ndarray, 1, "h_right", 0))) __PYX_ERR(0, 196, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_g_left), __pyx_ptype_5numpy_ndarray, 1, "g_left", 0))) __PYX_ERR(0, 192, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_g_right), __pyx_ptype_5numpy_ndarray, 1, "g_right", 0))) __PYX_ERR(0, 193, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_h_left), __pyx_ptype_5numpy_ndarray, 1, "h_left", 0))) __PYX_ERR(0, 194, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_h_right), __pyx_ptype_5numpy_ndarray, 1, "h_right", 0))) __PYX_ERR(0, 195, __pyx_L1_error)
   __pyx_r = __pyx_pf_14structureboost_18structure_dt_multi_2_get_gh_score_num_mc(__pyx_self, __pyx_v_g_left, __pyx_v_g_right, __pyx_v_h_left, __pyx_v_h_right, __pyx_v_gamma, __pyx_v_reg_lambda, __pyx_v_tol);
 
   /* function exit code */
@@ -7597,7 +7588,7 @@ static PyObject *__pyx_pf_14structureboost_18structure_dt_multi_2_get_gh_score_n
   int __pyx_clineno = 0;
   __Pyx_TraceFrameInit(__pyx_codeobj__15)
   __Pyx_RefNannySetupContext("_get_gh_score_num_mc", 0);
-  __Pyx_TraceCall("_get_gh_score_num_mc", __pyx_f[0], 193, 0, __PYX_ERR(0, 193, __pyx_L1_error));
+  __Pyx_TraceCall("_get_gh_score_num_mc", __pyx_f[0], 192, 0, __PYX_ERR(0, 192, __pyx_L1_error));
   __pyx_pybuffer_g_left.pybuffer.buf = NULL;
   __pyx_pybuffer_g_left.refcount = 0;
   __pyx_pybuffernd_g_left.data = NULL;
@@ -7616,157 +7607,157 @@ static PyObject *__pyx_pf_14structureboost_18structure_dt_multi_2_get_gh_score_n
   __pyx_pybuffernd_h_right.rcbuffer = &__pyx_pybuffer_h_right;
   {
     __Pyx_BufFmt_StackElem __pyx_stack[1];
-    if (unlikely(__Pyx_GetBufferAndValidate(&__pyx_pybuffernd_g_left.rcbuffer->pybuffer, (PyObject*)__pyx_v_g_left, &__Pyx_TypeInfo_double, PyBUF_FORMAT| PyBUF_STRIDES, 1, 0, __pyx_stack) == -1)) __PYX_ERR(0, 193, __pyx_L1_error)
+    if (unlikely(__Pyx_GetBufferAndValidate(&__pyx_pybuffernd_g_left.rcbuffer->pybuffer, (PyObject*)__pyx_v_g_left, &__Pyx_TypeInfo_double, PyBUF_FORMAT| PyBUF_STRIDES, 1, 0, __pyx_stack) == -1)) __PYX_ERR(0, 192, __pyx_L1_error)
   }
   __pyx_pybuffernd_g_left.diminfo[0].strides = __pyx_pybuffernd_g_left.rcbuffer->pybuffer.strides[0]; __pyx_pybuffernd_g_left.diminfo[0].shape = __pyx_pybuffernd_g_left.rcbuffer->pybuffer.shape[0];
   {
     __Pyx_BufFmt_StackElem __pyx_stack[1];
-    if (unlikely(__Pyx_GetBufferAndValidate(&__pyx_pybuffernd_g_right.rcbuffer->pybuffer, (PyObject*)__pyx_v_g_right, &__Pyx_TypeInfo_double, PyBUF_FORMAT| PyBUF_STRIDES, 1, 0, __pyx_stack) == -1)) __PYX_ERR(0, 193, __pyx_L1_error)
+    if (unlikely(__Pyx_GetBufferAndValidate(&__pyx_pybuffernd_g_right.rcbuffer->pybuffer, (PyObject*)__pyx_v_g_right, &__Pyx_TypeInfo_double, PyBUF_FORMAT| PyBUF_STRIDES, 1, 0, __pyx_stack) == -1)) __PYX_ERR(0, 192, __pyx_L1_error)
   }
   __pyx_pybuffernd_g_right.diminfo[0].strides = __pyx_pybuffernd_g_right.rcbuffer->pybuffer.strides[0]; __pyx_pybuffernd_g_right.diminfo[0].shape = __pyx_pybuffernd_g_right.rcbuffer->pybuffer.shape[0];
   {
     __Pyx_BufFmt_StackElem __pyx_stack[1];
-    if (unlikely(__Pyx_GetBufferAndValidate(&__pyx_pybuffernd_h_left.rcbuffer->pybuffer, (PyObject*)__pyx_v_h_left, &__Pyx_TypeInfo_double, PyBUF_FORMAT| PyBUF_STRIDES, 1, 0, __pyx_stack) == -1)) __PYX_ERR(0, 193, __pyx_L1_error)
+    if (unlikely(__Pyx_GetBufferAndValidate(&__pyx_pybuffernd_h_left.rcbuffer->pybuffer, (PyObject*)__pyx_v_h_left, &__Pyx_TypeInfo_double, PyBUF_FORMAT| PyBUF_STRIDES, 1, 0, __pyx_stack) == -1)) __PYX_ERR(0, 192, __pyx_L1_error)
   }
   __pyx_pybuffernd_h_left.diminfo[0].strides = __pyx_pybuffernd_h_left.rcbuffer->pybuffer.strides[0]; __pyx_pybuffernd_h_left.diminfo[0].shape = __pyx_pybuffernd_h_left.rcbuffer->pybuffer.shape[0];
   {
     __Pyx_BufFmt_StackElem __pyx_stack[1];
-    if (unlikely(__Pyx_GetBufferAndValidate(&__pyx_pybuffernd_h_right.rcbuffer->pybuffer, (PyObject*)__pyx_v_h_right, &__Pyx_TypeInfo_double, PyBUF_FORMAT| PyBUF_STRIDES, 1, 0, __pyx_stack) == -1)) __PYX_ERR(0, 193, __pyx_L1_error)
+    if (unlikely(__Pyx_GetBufferAndValidate(&__pyx_pybuffernd_h_right.rcbuffer->pybuffer, (PyObject*)__pyx_v_h_right, &__Pyx_TypeInfo_double, PyBUF_FORMAT| PyBUF_STRIDES, 1, 0, __pyx_stack) == -1)) __PYX_ERR(0, 192, __pyx_L1_error)
   }
   __pyx_pybuffernd_h_right.diminfo[0].strides = __pyx_pybuffernd_h_right.rcbuffer->pybuffer.strides[0]; __pyx_pybuffernd_h_right.diminfo[0].shape = __pyx_pybuffernd_h_right.rcbuffer->pybuffer.shape[0];
 
-  /* "structureboost/structure_dt_multi.pyx":198
+  /* "structureboost/structure_dt_multi.pyx":197
  *                       np.ndarray[double] h_right,
  *                       double gamma, double reg_lambda, double tol=1e-12):
  *     loss_val = -1.0 * np.sum(.5*(((g_left*g_left)/(h_left+reg_lambda)) +             # <<<<<<<<<<<<<<
  *                        ((g_right*g_right)/(h_right+reg_lambda)) -
  *                    (((g_left + g_right)*(g_left + g_right)) /
  */
-  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_np); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 198, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_np); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 197, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_sum); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 198, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_sum); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 197, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __pyx_t_2 = PyNumber_Multiply(((PyObject *)__pyx_v_g_left), ((PyObject *)__pyx_v_g_left)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 198, __pyx_L1_error)
+  __pyx_t_2 = PyNumber_Multiply(((PyObject *)__pyx_v_g_left), ((PyObject *)__pyx_v_g_left)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 197, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_4 = PyFloat_FromDouble(__pyx_v_reg_lambda); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 198, __pyx_L1_error)
+  __pyx_t_4 = PyFloat_FromDouble(__pyx_v_reg_lambda); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 197, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
-  __pyx_t_5 = PyNumber_Add(((PyObject *)__pyx_v_h_left), __pyx_t_4); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 198, __pyx_L1_error)
+  __pyx_t_5 = PyNumber_Add(((PyObject *)__pyx_v_h_left), __pyx_t_4); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 197, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-  __pyx_t_4 = __Pyx_PyNumber_Divide(__pyx_t_2, __pyx_t_5); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 198, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyNumber_Divide(__pyx_t_2, __pyx_t_5); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 197, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
 
-  /* "structureboost/structure_dt_multi.pyx":199
+  /* "structureboost/structure_dt_multi.pyx":198
  *                       double gamma, double reg_lambda, double tol=1e-12):
  *     loss_val = -1.0 * np.sum(.5*(((g_left*g_left)/(h_left+reg_lambda)) +
  *                        ((g_right*g_right)/(h_right+reg_lambda)) -             # <<<<<<<<<<<<<<
  *                    (((g_left + g_right)*(g_left + g_right)) /
  *                     (h_left + h_right+reg_lambda)))-gamma)
  */
-  __pyx_t_5 = PyNumber_Multiply(((PyObject *)__pyx_v_g_right), ((PyObject *)__pyx_v_g_right)); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 199, __pyx_L1_error)
+  __pyx_t_5 = PyNumber_Multiply(((PyObject *)__pyx_v_g_right), ((PyObject *)__pyx_v_g_right)); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 198, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
-  __pyx_t_2 = PyFloat_FromDouble(__pyx_v_reg_lambda); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 199, __pyx_L1_error)
+  __pyx_t_2 = PyFloat_FromDouble(__pyx_v_reg_lambda); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 198, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_6 = PyNumber_Add(((PyObject *)__pyx_v_h_right), __pyx_t_2); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 199, __pyx_L1_error)
+  __pyx_t_6 = PyNumber_Add(((PyObject *)__pyx_v_h_right), __pyx_t_2); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 198, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_6);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __pyx_t_2 = __Pyx_PyNumber_Divide(__pyx_t_5, __pyx_t_6); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 199, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyNumber_Divide(__pyx_t_5, __pyx_t_6); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 198, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
   __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
 
-  /* "structureboost/structure_dt_multi.pyx":198
+  /* "structureboost/structure_dt_multi.pyx":197
  *                       np.ndarray[double] h_right,
  *                       double gamma, double reg_lambda, double tol=1e-12):
  *     loss_val = -1.0 * np.sum(.5*(((g_left*g_left)/(h_left+reg_lambda)) +             # <<<<<<<<<<<<<<
  *                        ((g_right*g_right)/(h_right+reg_lambda)) -
  *                    (((g_left + g_right)*(g_left + g_right)) /
  */
-  __pyx_t_6 = PyNumber_Add(__pyx_t_4, __pyx_t_2); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 198, __pyx_L1_error)
+  __pyx_t_6 = PyNumber_Add(__pyx_t_4, __pyx_t_2); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 197, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_6);
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "structureboost/structure_dt_multi.pyx":200
+  /* "structureboost/structure_dt_multi.pyx":199
  *     loss_val = -1.0 * np.sum(.5*(((g_left*g_left)/(h_left+reg_lambda)) +
  *                        ((g_right*g_right)/(h_right+reg_lambda)) -
  *                    (((g_left + g_right)*(g_left + g_right)) /             # <<<<<<<<<<<<<<
  *                     (h_left + h_right+reg_lambda)))-gamma)
  *     if loss_val >= -tol:
  */
-  __pyx_t_2 = PyNumber_Add(((PyObject *)__pyx_v_g_left), ((PyObject *)__pyx_v_g_right)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 200, __pyx_L1_error)
+  __pyx_t_2 = PyNumber_Add(((PyObject *)__pyx_v_g_left), ((PyObject *)__pyx_v_g_right)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 199, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_4 = PyNumber_Add(((PyObject *)__pyx_v_g_left), ((PyObject *)__pyx_v_g_right)); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 200, __pyx_L1_error)
+  __pyx_t_4 = PyNumber_Add(((PyObject *)__pyx_v_g_left), ((PyObject *)__pyx_v_g_right)); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 199, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
-  __pyx_t_5 = PyNumber_Multiply(__pyx_t_2, __pyx_t_4); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 200, __pyx_L1_error)
+  __pyx_t_5 = PyNumber_Multiply(__pyx_t_2, __pyx_t_4); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 199, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
 
-  /* "structureboost/structure_dt_multi.pyx":201
+  /* "structureboost/structure_dt_multi.pyx":200
  *                        ((g_right*g_right)/(h_right+reg_lambda)) -
  *                    (((g_left + g_right)*(g_left + g_right)) /
  *                     (h_left + h_right+reg_lambda)))-gamma)             # <<<<<<<<<<<<<<
  *     if loss_val >= -tol:
  *         loss_val = np.inf
  */
-  __pyx_t_4 = PyNumber_Add(((PyObject *)__pyx_v_h_left), ((PyObject *)__pyx_v_h_right)); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 201, __pyx_L1_error)
+  __pyx_t_4 = PyNumber_Add(((PyObject *)__pyx_v_h_left), ((PyObject *)__pyx_v_h_right)); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 200, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
-  __pyx_t_2 = PyFloat_FromDouble(__pyx_v_reg_lambda); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 201, __pyx_L1_error)
+  __pyx_t_2 = PyFloat_FromDouble(__pyx_v_reg_lambda); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 200, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_7 = PyNumber_Add(__pyx_t_4, __pyx_t_2); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 201, __pyx_L1_error)
+  __pyx_t_7 = PyNumber_Add(__pyx_t_4, __pyx_t_2); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 200, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_7);
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "structureboost/structure_dt_multi.pyx":200
+  /* "structureboost/structure_dt_multi.pyx":199
  *     loss_val = -1.0 * np.sum(.5*(((g_left*g_left)/(h_left+reg_lambda)) +
  *                        ((g_right*g_right)/(h_right+reg_lambda)) -
  *                    (((g_left + g_right)*(g_left + g_right)) /             # <<<<<<<<<<<<<<
  *                     (h_left + h_right+reg_lambda)))-gamma)
  *     if loss_val >= -tol:
  */
-  __pyx_t_2 = __Pyx_PyNumber_Divide(__pyx_t_5, __pyx_t_7); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 200, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyNumber_Divide(__pyx_t_5, __pyx_t_7); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 199, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
   __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
 
-  /* "structureboost/structure_dt_multi.pyx":199
+  /* "structureboost/structure_dt_multi.pyx":198
  *                       double gamma, double reg_lambda, double tol=1e-12):
  *     loss_val = -1.0 * np.sum(.5*(((g_left*g_left)/(h_left+reg_lambda)) +
  *                        ((g_right*g_right)/(h_right+reg_lambda)) -             # <<<<<<<<<<<<<<
  *                    (((g_left + g_right)*(g_left + g_right)) /
  *                     (h_left + h_right+reg_lambda)))-gamma)
  */
-  __pyx_t_7 = PyNumber_Subtract(__pyx_t_6, __pyx_t_2); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 199, __pyx_L1_error)
+  __pyx_t_7 = PyNumber_Subtract(__pyx_t_6, __pyx_t_2); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 198, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_7);
   __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "structureboost/structure_dt_multi.pyx":198
+  /* "structureboost/structure_dt_multi.pyx":197
  *                       np.ndarray[double] h_right,
  *                       double gamma, double reg_lambda, double tol=1e-12):
  *     loss_val = -1.0 * np.sum(.5*(((g_left*g_left)/(h_left+reg_lambda)) +             # <<<<<<<<<<<<<<
  *                        ((g_right*g_right)/(h_right+reg_lambda)) -
  *                    (((g_left + g_right)*(g_left + g_right)) /
  */
-  __pyx_t_2 = PyNumber_Multiply(__pyx_float__5, __pyx_t_7); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 198, __pyx_L1_error)
+  __pyx_t_2 = PyNumber_Multiply(__pyx_float__5, __pyx_t_7); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 197, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
 
-  /* "structureboost/structure_dt_multi.pyx":201
+  /* "structureboost/structure_dt_multi.pyx":200
  *                        ((g_right*g_right)/(h_right+reg_lambda)) -
  *                    (((g_left + g_right)*(g_left + g_right)) /
  *                     (h_left + h_right+reg_lambda)))-gamma)             # <<<<<<<<<<<<<<
  *     if loss_val >= -tol:
  *         loss_val = np.inf
  */
-  __pyx_t_7 = PyFloat_FromDouble(__pyx_v_gamma); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 201, __pyx_L1_error)
+  __pyx_t_7 = PyFloat_FromDouble(__pyx_v_gamma); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 200, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_7);
-  __pyx_t_6 = PyNumber_Subtract(__pyx_t_2, __pyx_t_7); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 201, __pyx_L1_error)
+  __pyx_t_6 = PyNumber_Subtract(__pyx_t_2, __pyx_t_7); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 200, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_6);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
@@ -7783,54 +7774,54 @@ static PyObject *__pyx_pf_14structureboost_18structure_dt_multi_2_get_gh_score_n
   __pyx_t_1 = (__pyx_t_7) ? __Pyx_PyObject_Call2Args(__pyx_t_3, __pyx_t_7, __pyx_t_6) : __Pyx_PyObject_CallOneArg(__pyx_t_3, __pyx_t_6);
   __Pyx_XDECREF(__pyx_t_7); __pyx_t_7 = 0;
   __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
-  if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 198, __pyx_L1_error)
+  if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 197, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-  /* "structureboost/structure_dt_multi.pyx":198
+  /* "structureboost/structure_dt_multi.pyx":197
  *                       np.ndarray[double] h_right,
  *                       double gamma, double reg_lambda, double tol=1e-12):
  *     loss_val = -1.0 * np.sum(.5*(((g_left*g_left)/(h_left+reg_lambda)) +             # <<<<<<<<<<<<<<
  *                        ((g_right*g_right)/(h_right+reg_lambda)) -
  *                    (((g_left + g_right)*(g_left + g_right)) /
  */
-  __pyx_t_3 = PyNumber_Multiply(__pyx_float_neg_1_0, __pyx_t_1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 198, __pyx_L1_error)
+  __pyx_t_3 = PyNumber_Multiply(__pyx_float_neg_1_0, __pyx_t_1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 197, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __pyx_v_loss_val = __pyx_t_3;
   __pyx_t_3 = 0;
 
-  /* "structureboost/structure_dt_multi.pyx":202
+  /* "structureboost/structure_dt_multi.pyx":201
  *                    (((g_left + g_right)*(g_left + g_right)) /
  *                     (h_left + h_right+reg_lambda)))-gamma)
  *     if loss_val >= -tol:             # <<<<<<<<<<<<<<
  *         loss_val = np.inf
  *     return(loss_val)
  */
-  __pyx_t_3 = PyFloat_FromDouble((-__pyx_v_tol)); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 202, __pyx_L1_error)
+  __pyx_t_3 = PyFloat_FromDouble((-__pyx_v_tol)); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 201, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_1 = PyObject_RichCompare(__pyx_v_loss_val, __pyx_t_3, Py_GE); __Pyx_XGOTREF(__pyx_t_1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 202, __pyx_L1_error)
+  __pyx_t_1 = PyObject_RichCompare(__pyx_v_loss_val, __pyx_t_3, Py_GE); __Pyx_XGOTREF(__pyx_t_1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 201, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  __pyx_t_8 = __Pyx_PyObject_IsTrue(__pyx_t_1); if (unlikely(__pyx_t_8 < 0)) __PYX_ERR(0, 202, __pyx_L1_error)
+  __pyx_t_8 = __Pyx_PyObject_IsTrue(__pyx_t_1); if (unlikely(__pyx_t_8 < 0)) __PYX_ERR(0, 201, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   if (__pyx_t_8) {
 
-    /* "structureboost/structure_dt_multi.pyx":203
+    /* "structureboost/structure_dt_multi.pyx":202
  *                     (h_left + h_right+reg_lambda)))-gamma)
  *     if loss_val >= -tol:
  *         loss_val = np.inf             # <<<<<<<<<<<<<<
  *     return(loss_val)
  * 
  */
-    __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_np); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 203, __pyx_L1_error)
+    __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_np); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 202, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
-    __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_inf); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 203, __pyx_L1_error)
+    __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_inf); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 202, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
     __Pyx_DECREF_SET(__pyx_v_loss_val, __pyx_t_3);
     __pyx_t_3 = 0;
 
-    /* "structureboost/structure_dt_multi.pyx":202
+    /* "structureboost/structure_dt_multi.pyx":201
  *                    (((g_left + g_right)*(g_left + g_right)) /
  *                     (h_left + h_right+reg_lambda)))-gamma)
  *     if loss_val >= -tol:             # <<<<<<<<<<<<<<
@@ -7839,7 +7830,7 @@ static PyObject *__pyx_pf_14structureboost_18structure_dt_multi_2_get_gh_score_n
  */
   }
 
-  /* "structureboost/structure_dt_multi.pyx":204
+  /* "structureboost/structure_dt_multi.pyx":203
  *     if loss_val >= -tol:
  *         loss_val = np.inf
  *     return(loss_val)             # <<<<<<<<<<<<<<
@@ -7851,7 +7842,7 @@ static PyObject *__pyx_pf_14structureboost_18structure_dt_multi_2_get_gh_score_n
   __pyx_r = __pyx_v_loss_val;
   goto __pyx_L0;
 
-  /* "structureboost/structure_dt_multi.pyx":193
+  /* "structureboost/structure_dt_multi.pyx":192
  * 
  * 
  * def _get_gh_score_num_mc(np.ndarray[double] g_left,             # <<<<<<<<<<<<<<
@@ -7893,7 +7884,7 @@ static PyObject *__pyx_pf_14structureboost_18structure_dt_multi_2_get_gh_score_n
   return __pyx_r;
 }
 
-/* "structureboost/structure_dt_multi.pyx":207
+/* "structureboost/structure_dt_multi.pyx":206
  * 
  * 
  * def _get_gh_score_array_mc(np.ndarray[double, ndim=2] g_left,             # <<<<<<<<<<<<<<
@@ -7948,35 +7939,35 @@ static PyObject *__pyx_pw_14structureboost_18structure_dt_multi_5_get_gh_score_a
         case  1:
         if (likely((values[1] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_g_right)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("_get_gh_score_array_mc", 1, 6, 6, 1); __PYX_ERR(0, 207, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("_get_gh_score_array_mc", 1, 6, 6, 1); __PYX_ERR(0, 206, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  2:
         if (likely((values[2] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_h_left)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("_get_gh_score_array_mc", 1, 6, 6, 2); __PYX_ERR(0, 207, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("_get_gh_score_array_mc", 1, 6, 6, 2); __PYX_ERR(0, 206, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  3:
         if (likely((values[3] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_h_right)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("_get_gh_score_array_mc", 1, 6, 6, 3); __PYX_ERR(0, 207, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("_get_gh_score_array_mc", 1, 6, 6, 3); __PYX_ERR(0, 206, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  4:
         if (likely((values[4] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_gamma)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("_get_gh_score_array_mc", 1, 6, 6, 4); __PYX_ERR(0, 207, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("_get_gh_score_array_mc", 1, 6, 6, 4); __PYX_ERR(0, 206, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  5:
         if (likely((values[5] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_reg_lambda)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("_get_gh_score_array_mc", 1, 6, 6, 5); __PYX_ERR(0, 207, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("_get_gh_score_array_mc", 1, 6, 6, 5); __PYX_ERR(0, 206, __pyx_L3_error)
         }
       }
       if (unlikely(kw_args > 0)) {
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "_get_gh_score_array_mc") < 0)) __PYX_ERR(0, 207, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "_get_gh_score_array_mc") < 0)) __PYX_ERR(0, 206, __pyx_L3_error)
       }
     } else if (PyTuple_GET_SIZE(__pyx_args) != 6) {
       goto __pyx_L5_argtuple_error;
@@ -7992,21 +7983,21 @@ static PyObject *__pyx_pw_14structureboost_18structure_dt_multi_5_get_gh_score_a
     __pyx_v_g_right = ((PyArrayObject *)values[1]);
     __pyx_v_h_left = ((PyArrayObject *)values[2]);
     __pyx_v_h_right = ((PyArrayObject *)values[3]);
-    __pyx_v_gamma = __pyx_PyFloat_AsDouble(values[4]); if (unlikely((__pyx_v_gamma == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 211, __pyx_L3_error)
-    __pyx_v_reg_lambda = __pyx_PyFloat_AsDouble(values[5]); if (unlikely((__pyx_v_reg_lambda == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 211, __pyx_L3_error)
+    __pyx_v_gamma = __pyx_PyFloat_AsDouble(values[4]); if (unlikely((__pyx_v_gamma == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 210, __pyx_L3_error)
+    __pyx_v_reg_lambda = __pyx_PyFloat_AsDouble(values[5]); if (unlikely((__pyx_v_reg_lambda == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 210, __pyx_L3_error)
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("_get_gh_score_array_mc", 1, 6, 6, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 207, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("_get_gh_score_array_mc", 1, 6, 6, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 206, __pyx_L3_error)
   __pyx_L3_error:;
   __Pyx_AddTraceback("structureboost.structure_dt_multi._get_gh_score_array_mc", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_g_left), __pyx_ptype_5numpy_ndarray, 1, "g_left", 0))) __PYX_ERR(0, 207, __pyx_L1_error)
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_g_right), __pyx_ptype_5numpy_ndarray, 1, "g_right", 0))) __PYX_ERR(0, 208, __pyx_L1_error)
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_h_left), __pyx_ptype_5numpy_ndarray, 1, "h_left", 0))) __PYX_ERR(0, 209, __pyx_L1_error)
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_h_right), __pyx_ptype_5numpy_ndarray, 1, "h_right", 0))) __PYX_ERR(0, 210, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_g_left), __pyx_ptype_5numpy_ndarray, 1, "g_left", 0))) __PYX_ERR(0, 206, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_g_right), __pyx_ptype_5numpy_ndarray, 1, "g_right", 0))) __PYX_ERR(0, 207, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_h_left), __pyx_ptype_5numpy_ndarray, 1, "h_left", 0))) __PYX_ERR(0, 208, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_h_right), __pyx_ptype_5numpy_ndarray, 1, "h_right", 0))) __PYX_ERR(0, 209, __pyx_L1_error)
   __pyx_r = __pyx_pf_14structureboost_18structure_dt_multi_4_get_gh_score_array_mc(__pyx_self, __pyx_v_g_left, __pyx_v_g_right, __pyx_v_h_left, __pyx_v_h_right, __pyx_v_gamma, __pyx_v_reg_lambda);
 
   /* function exit code */
@@ -8041,7 +8032,7 @@ static PyObject *__pyx_pf_14structureboost_18structure_dt_multi_4_get_gh_score_a
   int __pyx_clineno = 0;
   __Pyx_TraceFrameInit(__pyx_codeobj__16)
   __Pyx_RefNannySetupContext("_get_gh_score_array_mc", 0);
-  __Pyx_TraceCall("_get_gh_score_array_mc", __pyx_f[0], 207, 0, __PYX_ERR(0, 207, __pyx_L1_error));
+  __Pyx_TraceCall("_get_gh_score_array_mc", __pyx_f[0], 206, 0, __PYX_ERR(0, 206, __pyx_L1_error));
   __pyx_pybuffer_g_left.pybuffer.buf = NULL;
   __pyx_pybuffer_g_left.refcount = 0;
   __pyx_pybuffernd_g_left.data = NULL;
@@ -8060,26 +8051,26 @@ static PyObject *__pyx_pf_14structureboost_18structure_dt_multi_4_get_gh_score_a
   __pyx_pybuffernd_h_right.rcbuffer = &__pyx_pybuffer_h_right;
   {
     __Pyx_BufFmt_StackElem __pyx_stack[1];
-    if (unlikely(__Pyx_GetBufferAndValidate(&__pyx_pybuffernd_g_left.rcbuffer->pybuffer, (PyObject*)__pyx_v_g_left, &__Pyx_TypeInfo_double, PyBUF_FORMAT| PyBUF_STRIDES, 2, 0, __pyx_stack) == -1)) __PYX_ERR(0, 207, __pyx_L1_error)
+    if (unlikely(__Pyx_GetBufferAndValidate(&__pyx_pybuffernd_g_left.rcbuffer->pybuffer, (PyObject*)__pyx_v_g_left, &__Pyx_TypeInfo_double, PyBUF_FORMAT| PyBUF_STRIDES, 2, 0, __pyx_stack) == -1)) __PYX_ERR(0, 206, __pyx_L1_error)
   }
   __pyx_pybuffernd_g_left.diminfo[0].strides = __pyx_pybuffernd_g_left.rcbuffer->pybuffer.strides[0]; __pyx_pybuffernd_g_left.diminfo[0].shape = __pyx_pybuffernd_g_left.rcbuffer->pybuffer.shape[0]; __pyx_pybuffernd_g_left.diminfo[1].strides = __pyx_pybuffernd_g_left.rcbuffer->pybuffer.strides[1]; __pyx_pybuffernd_g_left.diminfo[1].shape = __pyx_pybuffernd_g_left.rcbuffer->pybuffer.shape[1];
   {
     __Pyx_BufFmt_StackElem __pyx_stack[1];
-    if (unlikely(__Pyx_GetBufferAndValidate(&__pyx_pybuffernd_g_right.rcbuffer->pybuffer, (PyObject*)__pyx_v_g_right, &__Pyx_TypeInfo_double, PyBUF_FORMAT| PyBUF_STRIDES, 2, 0, __pyx_stack) == -1)) __PYX_ERR(0, 207, __pyx_L1_error)
+    if (unlikely(__Pyx_GetBufferAndValidate(&__pyx_pybuffernd_g_right.rcbuffer->pybuffer, (PyObject*)__pyx_v_g_right, &__Pyx_TypeInfo_double, PyBUF_FORMAT| PyBUF_STRIDES, 2, 0, __pyx_stack) == -1)) __PYX_ERR(0, 206, __pyx_L1_error)
   }
   __pyx_pybuffernd_g_right.diminfo[0].strides = __pyx_pybuffernd_g_right.rcbuffer->pybuffer.strides[0]; __pyx_pybuffernd_g_right.diminfo[0].shape = __pyx_pybuffernd_g_right.rcbuffer->pybuffer.shape[0]; __pyx_pybuffernd_g_right.diminfo[1].strides = __pyx_pybuffernd_g_right.rcbuffer->pybuffer.strides[1]; __pyx_pybuffernd_g_right.diminfo[1].shape = __pyx_pybuffernd_g_right.rcbuffer->pybuffer.shape[1];
   {
     __Pyx_BufFmt_StackElem __pyx_stack[1];
-    if (unlikely(__Pyx_GetBufferAndValidate(&__pyx_pybuffernd_h_left.rcbuffer->pybuffer, (PyObject*)__pyx_v_h_left, &__Pyx_TypeInfo_double, PyBUF_FORMAT| PyBUF_STRIDES, 2, 0, __pyx_stack) == -1)) __PYX_ERR(0, 207, __pyx_L1_error)
+    if (unlikely(__Pyx_GetBufferAndValidate(&__pyx_pybuffernd_h_left.rcbuffer->pybuffer, (PyObject*)__pyx_v_h_left, &__Pyx_TypeInfo_double, PyBUF_FORMAT| PyBUF_STRIDES, 2, 0, __pyx_stack) == -1)) __PYX_ERR(0, 206, __pyx_L1_error)
   }
   __pyx_pybuffernd_h_left.diminfo[0].strides = __pyx_pybuffernd_h_left.rcbuffer->pybuffer.strides[0]; __pyx_pybuffernd_h_left.diminfo[0].shape = __pyx_pybuffernd_h_left.rcbuffer->pybuffer.shape[0]; __pyx_pybuffernd_h_left.diminfo[1].strides = __pyx_pybuffernd_h_left.rcbuffer->pybuffer.strides[1]; __pyx_pybuffernd_h_left.diminfo[1].shape = __pyx_pybuffernd_h_left.rcbuffer->pybuffer.shape[1];
   {
     __Pyx_BufFmt_StackElem __pyx_stack[1];
-    if (unlikely(__Pyx_GetBufferAndValidate(&__pyx_pybuffernd_h_right.rcbuffer->pybuffer, (PyObject*)__pyx_v_h_right, &__Pyx_TypeInfo_double, PyBUF_FORMAT| PyBUF_STRIDES, 2, 0, __pyx_stack) == -1)) __PYX_ERR(0, 207, __pyx_L1_error)
+    if (unlikely(__Pyx_GetBufferAndValidate(&__pyx_pybuffernd_h_right.rcbuffer->pybuffer, (PyObject*)__pyx_v_h_right, &__Pyx_TypeInfo_double, PyBUF_FORMAT| PyBUF_STRIDES, 2, 0, __pyx_stack) == -1)) __PYX_ERR(0, 206, __pyx_L1_error)
   }
   __pyx_pybuffernd_h_right.diminfo[0].strides = __pyx_pybuffernd_h_right.rcbuffer->pybuffer.strides[0]; __pyx_pybuffernd_h_right.diminfo[0].shape = __pyx_pybuffernd_h_right.rcbuffer->pybuffer.shape[0]; __pyx_pybuffernd_h_right.diminfo[1].strides = __pyx_pybuffernd_h_right.rcbuffer->pybuffer.strides[1]; __pyx_pybuffernd_h_right.diminfo[1].shape = __pyx_pybuffernd_h_right.rcbuffer->pybuffer.shape[1];
 
-  /* "structureboost/structure_dt_multi.pyx":212
+  /* "structureboost/structure_dt_multi.pyx":211
  *                         np.ndarray[double, ndim=2] h_right,
  *                         double gamma, double reg_lambda):
  *     return(np.sum(.5*(((g_left*g_left)/(h_left+reg_lambda)) +             # <<<<<<<<<<<<<<
@@ -8087,167 +8078,167 @@ static PyObject *__pyx_pf_14structureboost_18structure_dt_multi_4_get_gh_score_a
  *                (((g_left+g_right) * (g_left+g_right)) /
  */
   __Pyx_XDECREF(__pyx_r);
-  __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_np); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 212, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_np); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 211, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_sum); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 212, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_sum); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 211, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_t_1 = PyNumber_Multiply(((PyObject *)__pyx_v_g_left), ((PyObject *)__pyx_v_g_left)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 212, __pyx_L1_error)
+  __pyx_t_1 = PyNumber_Multiply(((PyObject *)__pyx_v_g_left), ((PyObject *)__pyx_v_g_left)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 211, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_3 = PyFloat_FromDouble(__pyx_v_reg_lambda); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 212, __pyx_L1_error)
+  __pyx_t_3 = PyFloat_FromDouble(__pyx_v_reg_lambda); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 211, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_4 = PyNumber_Add(((PyObject *)__pyx_v_h_left), __pyx_t_3); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 212, __pyx_L1_error)
+  __pyx_t_4 = PyNumber_Add(((PyObject *)__pyx_v_h_left), __pyx_t_3); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 211, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  __pyx_t_3 = __Pyx_PyNumber_Divide(__pyx_t_1, __pyx_t_4); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 212, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyNumber_Divide(__pyx_t_1, __pyx_t_4); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 211, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
 
-  /* "structureboost/structure_dt_multi.pyx":213
+  /* "structureboost/structure_dt_multi.pyx":212
  *                         double gamma, double reg_lambda):
  *     return(np.sum(.5*(((g_left*g_left)/(h_left+reg_lambda)) +
  *                ((g_right*g_right)/(h_right+reg_lambda)) -             # <<<<<<<<<<<<<<
  *                (((g_left+g_right) * (g_left+g_right)) /
  *                 (h_left+h_right+reg_lambda)))-gamma, axis=1))
  */
-  __pyx_t_4 = PyNumber_Multiply(((PyObject *)__pyx_v_g_right), ((PyObject *)__pyx_v_g_right)); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 213, __pyx_L1_error)
+  __pyx_t_4 = PyNumber_Multiply(((PyObject *)__pyx_v_g_right), ((PyObject *)__pyx_v_g_right)); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 212, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
-  __pyx_t_1 = PyFloat_FromDouble(__pyx_v_reg_lambda); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 213, __pyx_L1_error)
+  __pyx_t_1 = PyFloat_FromDouble(__pyx_v_reg_lambda); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 212, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_5 = PyNumber_Add(((PyObject *)__pyx_v_h_right), __pyx_t_1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 213, __pyx_L1_error)
+  __pyx_t_5 = PyNumber_Add(((PyObject *)__pyx_v_h_right), __pyx_t_1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 212, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_t_1 = __Pyx_PyNumber_Divide(__pyx_t_4, __pyx_t_5); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 213, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyNumber_Divide(__pyx_t_4, __pyx_t_5); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 212, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
 
-  /* "structureboost/structure_dt_multi.pyx":212
+  /* "structureboost/structure_dt_multi.pyx":211
  *                         np.ndarray[double, ndim=2] h_right,
  *                         double gamma, double reg_lambda):
  *     return(np.sum(.5*(((g_left*g_left)/(h_left+reg_lambda)) +             # <<<<<<<<<<<<<<
  *                ((g_right*g_right)/(h_right+reg_lambda)) -
  *                (((g_left+g_right) * (g_left+g_right)) /
  */
-  __pyx_t_5 = PyNumber_Add(__pyx_t_3, __pyx_t_1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 212, __pyx_L1_error)
+  __pyx_t_5 = PyNumber_Add(__pyx_t_3, __pyx_t_1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 211, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "structureboost/structure_dt_multi.pyx":214
+  /* "structureboost/structure_dt_multi.pyx":213
  *     return(np.sum(.5*(((g_left*g_left)/(h_left+reg_lambda)) +
  *                ((g_right*g_right)/(h_right+reg_lambda)) -
  *                (((g_left+g_right) * (g_left+g_right)) /             # <<<<<<<<<<<<<<
  *                 (h_left+h_right+reg_lambda)))-gamma, axis=1))
  * 
  */
-  __pyx_t_1 = PyNumber_Add(((PyObject *)__pyx_v_g_left), ((PyObject *)__pyx_v_g_right)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 214, __pyx_L1_error)
+  __pyx_t_1 = PyNumber_Add(((PyObject *)__pyx_v_g_left), ((PyObject *)__pyx_v_g_right)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 213, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_3 = PyNumber_Add(((PyObject *)__pyx_v_g_left), ((PyObject *)__pyx_v_g_right)); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 214, __pyx_L1_error)
+  __pyx_t_3 = PyNumber_Add(((PyObject *)__pyx_v_g_left), ((PyObject *)__pyx_v_g_right)); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 213, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_4 = PyNumber_Multiply(__pyx_t_1, __pyx_t_3); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 214, __pyx_L1_error)
+  __pyx_t_4 = PyNumber_Multiply(__pyx_t_1, __pyx_t_3); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 213, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-  /* "structureboost/structure_dt_multi.pyx":215
+  /* "structureboost/structure_dt_multi.pyx":214
  *                ((g_right*g_right)/(h_right+reg_lambda)) -
  *                (((g_left+g_right) * (g_left+g_right)) /
  *                 (h_left+h_right+reg_lambda)))-gamma, axis=1))             # <<<<<<<<<<<<<<
  * 
  * 
  */
-  __pyx_t_3 = PyNumber_Add(((PyObject *)__pyx_v_h_left), ((PyObject *)__pyx_v_h_right)); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 215, __pyx_L1_error)
+  __pyx_t_3 = PyNumber_Add(((PyObject *)__pyx_v_h_left), ((PyObject *)__pyx_v_h_right)); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 214, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_1 = PyFloat_FromDouble(__pyx_v_reg_lambda); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 215, __pyx_L1_error)
+  __pyx_t_1 = PyFloat_FromDouble(__pyx_v_reg_lambda); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 214, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_6 = PyNumber_Add(__pyx_t_3, __pyx_t_1); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 215, __pyx_L1_error)
+  __pyx_t_6 = PyNumber_Add(__pyx_t_3, __pyx_t_1); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 214, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_6);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "structureboost/structure_dt_multi.pyx":214
+  /* "structureboost/structure_dt_multi.pyx":213
  *     return(np.sum(.5*(((g_left*g_left)/(h_left+reg_lambda)) +
  *                ((g_right*g_right)/(h_right+reg_lambda)) -
  *                (((g_left+g_right) * (g_left+g_right)) /             # <<<<<<<<<<<<<<
  *                 (h_left+h_right+reg_lambda)))-gamma, axis=1))
  * 
  */
-  __pyx_t_1 = __Pyx_PyNumber_Divide(__pyx_t_4, __pyx_t_6); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 214, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyNumber_Divide(__pyx_t_4, __pyx_t_6); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 213, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
   __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
 
-  /* "structureboost/structure_dt_multi.pyx":213
+  /* "structureboost/structure_dt_multi.pyx":212
  *                         double gamma, double reg_lambda):
  *     return(np.sum(.5*(((g_left*g_left)/(h_left+reg_lambda)) +
  *                ((g_right*g_right)/(h_right+reg_lambda)) -             # <<<<<<<<<<<<<<
  *                (((g_left+g_right) * (g_left+g_right)) /
  *                 (h_left+h_right+reg_lambda)))-gamma, axis=1))
  */
-  __pyx_t_6 = PyNumber_Subtract(__pyx_t_5, __pyx_t_1); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 213, __pyx_L1_error)
+  __pyx_t_6 = PyNumber_Subtract(__pyx_t_5, __pyx_t_1); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 212, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_6);
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "structureboost/structure_dt_multi.pyx":212
+  /* "structureboost/structure_dt_multi.pyx":211
  *                         np.ndarray[double, ndim=2] h_right,
  *                         double gamma, double reg_lambda):
  *     return(np.sum(.5*(((g_left*g_left)/(h_left+reg_lambda)) +             # <<<<<<<<<<<<<<
  *                ((g_right*g_right)/(h_right+reg_lambda)) -
  *                (((g_left+g_right) * (g_left+g_right)) /
  */
-  __pyx_t_1 = PyNumber_Multiply(__pyx_float__5, __pyx_t_6); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 212, __pyx_L1_error)
+  __pyx_t_1 = PyNumber_Multiply(__pyx_float__5, __pyx_t_6); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 211, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
 
-  /* "structureboost/structure_dt_multi.pyx":215
+  /* "structureboost/structure_dt_multi.pyx":214
  *                ((g_right*g_right)/(h_right+reg_lambda)) -
  *                (((g_left+g_right) * (g_left+g_right)) /
  *                 (h_left+h_right+reg_lambda)))-gamma, axis=1))             # <<<<<<<<<<<<<<
  * 
  * 
  */
-  __pyx_t_6 = PyFloat_FromDouble(__pyx_v_gamma); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 215, __pyx_L1_error)
+  __pyx_t_6 = PyFloat_FromDouble(__pyx_v_gamma); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 214, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_6);
-  __pyx_t_5 = PyNumber_Subtract(__pyx_t_1, __pyx_t_6); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 215, __pyx_L1_error)
+  __pyx_t_5 = PyNumber_Subtract(__pyx_t_1, __pyx_t_6); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 214, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
 
-  /* "structureboost/structure_dt_multi.pyx":212
+  /* "structureboost/structure_dt_multi.pyx":211
  *                         np.ndarray[double, ndim=2] h_right,
  *                         double gamma, double reg_lambda):
  *     return(np.sum(.5*(((g_left*g_left)/(h_left+reg_lambda)) +             # <<<<<<<<<<<<<<
  *                ((g_right*g_right)/(h_right+reg_lambda)) -
  *                (((g_left+g_right) * (g_left+g_right)) /
  */
-  __pyx_t_6 = PyTuple_New(1); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 212, __pyx_L1_error)
+  __pyx_t_6 = PyTuple_New(1); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 211, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_6);
   __Pyx_GIVEREF(__pyx_t_5);
   PyTuple_SET_ITEM(__pyx_t_6, 0, __pyx_t_5);
   __pyx_t_5 = 0;
 
-  /* "structureboost/structure_dt_multi.pyx":215
+  /* "structureboost/structure_dt_multi.pyx":214
  *                ((g_right*g_right)/(h_right+reg_lambda)) -
  *                (((g_left+g_right) * (g_left+g_right)) /
  *                 (h_left+h_right+reg_lambda)))-gamma, axis=1))             # <<<<<<<<<<<<<<
  * 
  * 
  */
-  __pyx_t_5 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 215, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 214, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
-  if (PyDict_SetItem(__pyx_t_5, __pyx_n_s_axis, __pyx_int_1) < 0) __PYX_ERR(0, 215, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_5, __pyx_n_s_axis, __pyx_int_1) < 0) __PYX_ERR(0, 214, __pyx_L1_error)
 
-  /* "structureboost/structure_dt_multi.pyx":212
+  /* "structureboost/structure_dt_multi.pyx":211
  *                         np.ndarray[double, ndim=2] h_right,
  *                         double gamma, double reg_lambda):
  *     return(np.sum(.5*(((g_left*g_left)/(h_left+reg_lambda)) +             # <<<<<<<<<<<<<<
  *                ((g_right*g_right)/(h_right+reg_lambda)) -
  *                (((g_left+g_right) * (g_left+g_right)) /
  */
-  __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_6, __pyx_t_5); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 212, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_6, __pyx_t_5); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 211, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
@@ -8256,7 +8247,7 @@ static PyObject *__pyx_pf_14structureboost_18structure_dt_multi_4_get_gh_score_a
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "structureboost/structure_dt_multi.pyx":207
+  /* "structureboost/structure_dt_multi.pyx":206
  * 
  * 
  * def _get_gh_score_array_mc(np.ndarray[double, ndim=2] g_left,             # <<<<<<<<<<<<<<
@@ -8296,11 +8287,11 @@ static PyObject *__pyx_pf_14structureboost_18structure_dt_multi_4_get_gh_score_a
   return __pyx_r;
 }
 
-/* "structureboost/structure_dt_multi.pyx":220
+/* "structureboost/structure_dt_multi.pyx":219
  * @cython.boundscheck(False)  # Deactivate bounds checking
  * @cython.wraparound(False)   # Deactivate negative indexing.
  * def get_bin_sums_c_mc(np.ndarray[double, ndim=2] g_h_mat,             # <<<<<<<<<<<<<<
- *                    np.ndarray[dtype_int64_t] bin_result_vec,
+ *                    np.ndarray[np.int_t] bin_result_vec,
  *                    long out_vec_size, long num_classes):
  */
 
@@ -8345,23 +8336,23 @@ static PyObject *__pyx_pw_14structureboost_18structure_dt_multi_7get_bin_sums_c_
         case  1:
         if (likely((values[1] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_bin_result_vec)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("get_bin_sums_c_mc", 1, 4, 4, 1); __PYX_ERR(0, 220, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("get_bin_sums_c_mc", 1, 4, 4, 1); __PYX_ERR(0, 219, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  2:
         if (likely((values[2] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_out_vec_size)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("get_bin_sums_c_mc", 1, 4, 4, 2); __PYX_ERR(0, 220, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("get_bin_sums_c_mc", 1, 4, 4, 2); __PYX_ERR(0, 219, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  3:
         if (likely((values[3] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_num_classes)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("get_bin_sums_c_mc", 1, 4, 4, 3); __PYX_ERR(0, 220, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("get_bin_sums_c_mc", 1, 4, 4, 3); __PYX_ERR(0, 219, __pyx_L3_error)
         }
       }
       if (unlikely(kw_args > 0)) {
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "get_bin_sums_c_mc") < 0)) __PYX_ERR(0, 220, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "get_bin_sums_c_mc") < 0)) __PYX_ERR(0, 219, __pyx_L3_error)
       }
     } else if (PyTuple_GET_SIZE(__pyx_args) != 4) {
       goto __pyx_L5_argtuple_error;
@@ -8373,19 +8364,19 @@ static PyObject *__pyx_pw_14structureboost_18structure_dt_multi_7get_bin_sums_c_
     }
     __pyx_v_g_h_mat = ((PyArrayObject *)values[0]);
     __pyx_v_bin_result_vec = ((PyArrayObject *)values[1]);
-    __pyx_v_out_vec_size = __Pyx_PyInt_As_long(values[2]); if (unlikely((__pyx_v_out_vec_size == (long)-1) && PyErr_Occurred())) __PYX_ERR(0, 222, __pyx_L3_error)
-    __pyx_v_num_classes = __Pyx_PyInt_As_long(values[3]); if (unlikely((__pyx_v_num_classes == (long)-1) && PyErr_Occurred())) __PYX_ERR(0, 222, __pyx_L3_error)
+    __pyx_v_out_vec_size = __Pyx_PyInt_As_long(values[2]); if (unlikely((__pyx_v_out_vec_size == (long)-1) && PyErr_Occurred())) __PYX_ERR(0, 221, __pyx_L3_error)
+    __pyx_v_num_classes = __Pyx_PyInt_As_long(values[3]); if (unlikely((__pyx_v_num_classes == (long)-1) && PyErr_Occurred())) __PYX_ERR(0, 221, __pyx_L3_error)
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("get_bin_sums_c_mc", 1, 4, 4, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 220, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("get_bin_sums_c_mc", 1, 4, 4, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 219, __pyx_L3_error)
   __pyx_L3_error:;
   __Pyx_AddTraceback("structureboost.structure_dt_multi.get_bin_sums_c_mc", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_g_h_mat), __pyx_ptype_5numpy_ndarray, 1, "g_h_mat", 0))) __PYX_ERR(0, 220, __pyx_L1_error)
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_bin_result_vec), __pyx_ptype_5numpy_ndarray, 1, "bin_result_vec", 0))) __PYX_ERR(0, 221, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_g_h_mat), __pyx_ptype_5numpy_ndarray, 1, "g_h_mat", 0))) __PYX_ERR(0, 219, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_bin_result_vec), __pyx_ptype_5numpy_ndarray, 1, "bin_result_vec", 0))) __PYX_ERR(0, 220, __pyx_L1_error)
   __pyx_r = __pyx_pf_14structureboost_18structure_dt_multi_6get_bin_sums_c_mc(__pyx_self, __pyx_v_g_h_mat, __pyx_v_bin_result_vec, __pyx_v_out_vec_size, __pyx_v_num_classes);
 
   /* function exit code */
@@ -8430,14 +8421,14 @@ static PyObject *__pyx_pf_14structureboost_18structure_dt_multi_6get_bin_sums_c_
   Py_ssize_t __pyx_t_14;
   Py_ssize_t __pyx_t_15;
   Py_ssize_t __pyx_t_16;
-  __pyx_t_14structureboost_18structure_dt_multi_dtype_int64_t __pyx_t_17;
+  Py_ssize_t __pyx_t_17;
   Py_ssize_t __pyx_t_18;
   int __pyx_lineno = 0;
   const char *__pyx_filename = NULL;
   int __pyx_clineno = 0;
   __Pyx_TraceFrameInit(__pyx_codeobj__17)
   __Pyx_RefNannySetupContext("get_bin_sums_c_mc", 0);
-  __Pyx_TraceCall("get_bin_sums_c_mc", __pyx_f[0], 220, 0, __PYX_ERR(0, 220, __pyx_L1_error));
+  __Pyx_TraceCall("get_bin_sums_c_mc", __pyx_f[0], 219, 0, __PYX_ERR(0, 219, __pyx_L1_error));
   __pyx_pybuffer_g_sum_bins.pybuffer.buf = NULL;
   __pyx_pybuffer_g_sum_bins.refcount = 0;
   __pyx_pybuffernd_g_sum_bins.data = NULL;
@@ -8456,16 +8447,16 @@ static PyObject *__pyx_pf_14structureboost_18structure_dt_multi_6get_bin_sums_c_
   __pyx_pybuffernd_bin_result_vec.rcbuffer = &__pyx_pybuffer_bin_result_vec;
   {
     __Pyx_BufFmt_StackElem __pyx_stack[1];
-    if (unlikely(__Pyx_GetBufferAndValidate(&__pyx_pybuffernd_g_h_mat.rcbuffer->pybuffer, (PyObject*)__pyx_v_g_h_mat, &__Pyx_TypeInfo_double, PyBUF_FORMAT| PyBUF_STRIDES, 2, 0, __pyx_stack) == -1)) __PYX_ERR(0, 220, __pyx_L1_error)
+    if (unlikely(__Pyx_GetBufferAndValidate(&__pyx_pybuffernd_g_h_mat.rcbuffer->pybuffer, (PyObject*)__pyx_v_g_h_mat, &__Pyx_TypeInfo_double, PyBUF_FORMAT| PyBUF_STRIDES, 2, 0, __pyx_stack) == -1)) __PYX_ERR(0, 219, __pyx_L1_error)
   }
   __pyx_pybuffernd_g_h_mat.diminfo[0].strides = __pyx_pybuffernd_g_h_mat.rcbuffer->pybuffer.strides[0]; __pyx_pybuffernd_g_h_mat.diminfo[0].shape = __pyx_pybuffernd_g_h_mat.rcbuffer->pybuffer.shape[0]; __pyx_pybuffernd_g_h_mat.diminfo[1].strides = __pyx_pybuffernd_g_h_mat.rcbuffer->pybuffer.strides[1]; __pyx_pybuffernd_g_h_mat.diminfo[1].shape = __pyx_pybuffernd_g_h_mat.rcbuffer->pybuffer.shape[1];
   {
     __Pyx_BufFmt_StackElem __pyx_stack[1];
-    if (unlikely(__Pyx_GetBufferAndValidate(&__pyx_pybuffernd_bin_result_vec.rcbuffer->pybuffer, (PyObject*)__pyx_v_bin_result_vec, &__Pyx_TypeInfo_nn___pyx_t_14structureboost_18structure_dt_multi_dtype_int64_t, PyBUF_FORMAT| PyBUF_STRIDES, 1, 0, __pyx_stack) == -1)) __PYX_ERR(0, 220, __pyx_L1_error)
+    if (unlikely(__Pyx_GetBufferAndValidate(&__pyx_pybuffernd_bin_result_vec.rcbuffer->pybuffer, (PyObject*)__pyx_v_bin_result_vec, &__Pyx_TypeInfo_nn___pyx_t_5numpy_int_t, PyBUF_FORMAT| PyBUF_STRIDES, 1, 0, __pyx_stack) == -1)) __PYX_ERR(0, 219, __pyx_L1_error)
   }
   __pyx_pybuffernd_bin_result_vec.diminfo[0].strides = __pyx_pybuffernd_bin_result_vec.rcbuffer->pybuffer.strides[0]; __pyx_pybuffernd_bin_result_vec.diminfo[0].shape = __pyx_pybuffernd_bin_result_vec.rcbuffer->pybuffer.shape[0];
 
-  /* "structureboost/structure_dt_multi.pyx":224
+  /* "structureboost/structure_dt_multi.pyx":223
  *                    long out_vec_size, long num_classes):
  *     cdef int i,j
  *     cdef int m = bin_result_vec.shape[0]             # <<<<<<<<<<<<<<
@@ -8474,23 +8465,23 @@ static PyObject *__pyx_pf_14structureboost_18structure_dt_multi_6get_bin_sums_c_
  */
   __pyx_v_m = (__pyx_v_bin_result_vec->dimensions[0]);
 
-  /* "structureboost/structure_dt_multi.pyx":226
+  /* "structureboost/structure_dt_multi.pyx":225
  *     cdef int m = bin_result_vec.shape[0]
  * 
  *     cdef np.ndarray[double, ndim=2] g_sum_bins = np.zeros((out_vec_size, num_classes))             # <<<<<<<<<<<<<<
  *     cdef np.ndarray[double, ndim=2] h_sum_bins = np.zeros((out_vec_size, num_classes))
  * 
  */
-  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_np); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 226, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_np); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 225, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_zeros); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 226, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_zeros); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 225, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __pyx_t_2 = __Pyx_PyInt_From_long(__pyx_v_out_vec_size); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 226, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyInt_From_long(__pyx_v_out_vec_size); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 225, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_4 = __Pyx_PyInt_From_long(__pyx_v_num_classes); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 226, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyInt_From_long(__pyx_v_num_classes); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 225, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
-  __pyx_t_5 = PyTuple_New(2); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 226, __pyx_L1_error)
+  __pyx_t_5 = PyTuple_New(2); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 225, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
   __Pyx_GIVEREF(__pyx_t_2);
   PyTuple_SET_ITEM(__pyx_t_5, 0, __pyx_t_2);
@@ -8511,16 +8502,16 @@ static PyObject *__pyx_pf_14structureboost_18structure_dt_multi_6get_bin_sums_c_
   __pyx_t_1 = (__pyx_t_4) ? __Pyx_PyObject_Call2Args(__pyx_t_3, __pyx_t_4, __pyx_t_5) : __Pyx_PyObject_CallOneArg(__pyx_t_3, __pyx_t_5);
   __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-  if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 226, __pyx_L1_error)
+  if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 225, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  if (!(likely(((__pyx_t_1) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_1, __pyx_ptype_5numpy_ndarray))))) __PYX_ERR(0, 226, __pyx_L1_error)
+  if (!(likely(((__pyx_t_1) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_1, __pyx_ptype_5numpy_ndarray))))) __PYX_ERR(0, 225, __pyx_L1_error)
   __pyx_t_6 = ((PyArrayObject *)__pyx_t_1);
   {
     __Pyx_BufFmt_StackElem __pyx_stack[1];
     if (unlikely(__Pyx_GetBufferAndValidate(&__pyx_pybuffernd_g_sum_bins.rcbuffer->pybuffer, (PyObject*)__pyx_t_6, &__Pyx_TypeInfo_double, PyBUF_FORMAT| PyBUF_STRIDES| PyBUF_WRITABLE, 2, 0, __pyx_stack) == -1)) {
       __pyx_v_g_sum_bins = ((PyArrayObject *)Py_None); __Pyx_INCREF(Py_None); __pyx_pybuffernd_g_sum_bins.rcbuffer->pybuffer.buf = NULL;
-      __PYX_ERR(0, 226, __pyx_L1_error)
+      __PYX_ERR(0, 225, __pyx_L1_error)
     } else {__pyx_pybuffernd_g_sum_bins.diminfo[0].strides = __pyx_pybuffernd_g_sum_bins.rcbuffer->pybuffer.strides[0]; __pyx_pybuffernd_g_sum_bins.diminfo[0].shape = __pyx_pybuffernd_g_sum_bins.rcbuffer->pybuffer.shape[0]; __pyx_pybuffernd_g_sum_bins.diminfo[1].strides = __pyx_pybuffernd_g_sum_bins.rcbuffer->pybuffer.strides[1]; __pyx_pybuffernd_g_sum_bins.diminfo[1].shape = __pyx_pybuffernd_g_sum_bins.rcbuffer->pybuffer.shape[1];
     }
   }
@@ -8528,23 +8519,23 @@ static PyObject *__pyx_pf_14structureboost_18structure_dt_multi_6get_bin_sums_c_
   __pyx_v_g_sum_bins = ((PyArrayObject *)__pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "structureboost/structure_dt_multi.pyx":227
+  /* "structureboost/structure_dt_multi.pyx":226
  * 
  *     cdef np.ndarray[double, ndim=2] g_sum_bins = np.zeros((out_vec_size, num_classes))
  *     cdef np.ndarray[double, ndim=2] h_sum_bins = np.zeros((out_vec_size, num_classes))             # <<<<<<<<<<<<<<
  * 
  *     for i in range(m):
  */
-  __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_n_s_np); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 227, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_n_s_np); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 226, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_zeros); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 227, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_zeros); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 226, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  __pyx_t_3 = __Pyx_PyInt_From_long(__pyx_v_out_vec_size); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 227, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyInt_From_long(__pyx_v_out_vec_size); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 226, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_4 = __Pyx_PyInt_From_long(__pyx_v_num_classes); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 227, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyInt_From_long(__pyx_v_num_classes); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 226, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
-  __pyx_t_2 = PyTuple_New(2); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 227, __pyx_L1_error)
+  __pyx_t_2 = PyTuple_New(2); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 226, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_GIVEREF(__pyx_t_3);
   PyTuple_SET_ITEM(__pyx_t_2, 0, __pyx_t_3);
@@ -8565,16 +8556,16 @@ static PyObject *__pyx_pf_14structureboost_18structure_dt_multi_6get_bin_sums_c_
   __pyx_t_1 = (__pyx_t_4) ? __Pyx_PyObject_Call2Args(__pyx_t_5, __pyx_t_4, __pyx_t_2) : __Pyx_PyObject_CallOneArg(__pyx_t_5, __pyx_t_2);
   __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 227, __pyx_L1_error)
+  if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 226, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-  if (!(likely(((__pyx_t_1) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_1, __pyx_ptype_5numpy_ndarray))))) __PYX_ERR(0, 227, __pyx_L1_error)
+  if (!(likely(((__pyx_t_1) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_1, __pyx_ptype_5numpy_ndarray))))) __PYX_ERR(0, 226, __pyx_L1_error)
   __pyx_t_7 = ((PyArrayObject *)__pyx_t_1);
   {
     __Pyx_BufFmt_StackElem __pyx_stack[1];
     if (unlikely(__Pyx_GetBufferAndValidate(&__pyx_pybuffernd_h_sum_bins.rcbuffer->pybuffer, (PyObject*)__pyx_t_7, &__Pyx_TypeInfo_double, PyBUF_FORMAT| PyBUF_STRIDES| PyBUF_WRITABLE, 2, 0, __pyx_stack) == -1)) {
       __pyx_v_h_sum_bins = ((PyArrayObject *)Py_None); __Pyx_INCREF(Py_None); __pyx_pybuffernd_h_sum_bins.rcbuffer->pybuffer.buf = NULL;
-      __PYX_ERR(0, 227, __pyx_L1_error)
+      __PYX_ERR(0, 226, __pyx_L1_error)
     } else {__pyx_pybuffernd_h_sum_bins.diminfo[0].strides = __pyx_pybuffernd_h_sum_bins.rcbuffer->pybuffer.strides[0]; __pyx_pybuffernd_h_sum_bins.diminfo[0].shape = __pyx_pybuffernd_h_sum_bins.rcbuffer->pybuffer.shape[0]; __pyx_pybuffernd_h_sum_bins.diminfo[1].strides = __pyx_pybuffernd_h_sum_bins.rcbuffer->pybuffer.strides[1]; __pyx_pybuffernd_h_sum_bins.diminfo[1].shape = __pyx_pybuffernd_h_sum_bins.rcbuffer->pybuffer.shape[1];
     }
   }
@@ -8582,7 +8573,7 @@ static PyObject *__pyx_pf_14structureboost_18structure_dt_multi_6get_bin_sums_c_
   __pyx_v_h_sum_bins = ((PyArrayObject *)__pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "structureboost/structure_dt_multi.pyx":229
+  /* "structureboost/structure_dt_multi.pyx":228
  *     cdef np.ndarray[double, ndim=2] h_sum_bins = np.zeros((out_vec_size, num_classes))
  * 
  *     for i in range(m):             # <<<<<<<<<<<<<<
@@ -8594,7 +8585,7 @@ static PyObject *__pyx_pf_14structureboost_18structure_dt_multi_6get_bin_sums_c_
   for (__pyx_t_10 = 0; __pyx_t_10 < __pyx_t_9; __pyx_t_10+=1) {
     __pyx_v_i = __pyx_t_10;
 
-    /* "structureboost/structure_dt_multi.pyx":230
+    /* "structureboost/structure_dt_multi.pyx":229
  * 
  *     for i in range(m):
  *         for j in range(num_classes):             # <<<<<<<<<<<<<<
@@ -8606,7 +8597,7 @@ static PyObject *__pyx_pf_14structureboost_18structure_dt_multi_6get_bin_sums_c_
     for (__pyx_t_13 = 0; __pyx_t_13 < __pyx_t_12; __pyx_t_13+=1) {
       __pyx_v_j = __pyx_t_13;
 
-      /* "structureboost/structure_dt_multi.pyx":231
+      /* "structureboost/structure_dt_multi.pyx":230
  *     for i in range(m):
  *         for j in range(num_classes):
  *             g_sum_bins[bin_result_vec[i],j] += g_h_mat[i,j]             # <<<<<<<<<<<<<<
@@ -8616,11 +8607,11 @@ static PyObject *__pyx_pf_14structureboost_18structure_dt_multi_6get_bin_sums_c_
       __pyx_t_14 = __pyx_v_i;
       __pyx_t_15 = __pyx_v_j;
       __pyx_t_16 = __pyx_v_i;
-      __pyx_t_17 = (*__Pyx_BufPtrStrided1d(__pyx_t_14structureboost_18structure_dt_multi_dtype_int64_t *, __pyx_pybuffernd_bin_result_vec.rcbuffer->pybuffer.buf, __pyx_t_16, __pyx_pybuffernd_bin_result_vec.diminfo[0].strides));
+      __pyx_t_17 = (*__Pyx_BufPtrStrided1d(__pyx_t_5numpy_int_t *, __pyx_pybuffernd_bin_result_vec.rcbuffer->pybuffer.buf, __pyx_t_16, __pyx_pybuffernd_bin_result_vec.diminfo[0].strides));
       __pyx_t_18 = __pyx_v_j;
       *__Pyx_BufPtrStrided2d(double *, __pyx_pybuffernd_g_sum_bins.rcbuffer->pybuffer.buf, __pyx_t_17, __pyx_pybuffernd_g_sum_bins.diminfo[0].strides, __pyx_t_18, __pyx_pybuffernd_g_sum_bins.diminfo[1].strides) += (*__Pyx_BufPtrStrided2d(double *, __pyx_pybuffernd_g_h_mat.rcbuffer->pybuffer.buf, __pyx_t_14, __pyx_pybuffernd_g_h_mat.diminfo[0].strides, __pyx_t_15, __pyx_pybuffernd_g_h_mat.diminfo[1].strides));
 
-      /* "structureboost/structure_dt_multi.pyx":232
+      /* "structureboost/structure_dt_multi.pyx":231
  *         for j in range(num_classes):
  *             g_sum_bins[bin_result_vec[i],j] += g_h_mat[i,j]
  *             h_sum_bins[bin_result_vec[i],j] += g_h_mat[i,num_classes+j]             # <<<<<<<<<<<<<<
@@ -8630,13 +8621,13 @@ static PyObject *__pyx_pf_14structureboost_18structure_dt_multi_6get_bin_sums_c_
       __pyx_t_15 = __pyx_v_i;
       __pyx_t_14 = (__pyx_v_num_classes + __pyx_v_j);
       __pyx_t_16 = __pyx_v_i;
-      __pyx_t_17 = (*__Pyx_BufPtrStrided1d(__pyx_t_14structureboost_18structure_dt_multi_dtype_int64_t *, __pyx_pybuffernd_bin_result_vec.rcbuffer->pybuffer.buf, __pyx_t_16, __pyx_pybuffernd_bin_result_vec.diminfo[0].strides));
-      __pyx_t_18 = __pyx_v_j;
-      *__Pyx_BufPtrStrided2d(double *, __pyx_pybuffernd_h_sum_bins.rcbuffer->pybuffer.buf, __pyx_t_17, __pyx_pybuffernd_h_sum_bins.diminfo[0].strides, __pyx_t_18, __pyx_pybuffernd_h_sum_bins.diminfo[1].strides) += (*__Pyx_BufPtrStrided2d(double *, __pyx_pybuffernd_g_h_mat.rcbuffer->pybuffer.buf, __pyx_t_15, __pyx_pybuffernd_g_h_mat.diminfo[0].strides, __pyx_t_14, __pyx_pybuffernd_g_h_mat.diminfo[1].strides));
+      __pyx_t_18 = (*__Pyx_BufPtrStrided1d(__pyx_t_5numpy_int_t *, __pyx_pybuffernd_bin_result_vec.rcbuffer->pybuffer.buf, __pyx_t_16, __pyx_pybuffernd_bin_result_vec.diminfo[0].strides));
+      __pyx_t_17 = __pyx_v_j;
+      *__Pyx_BufPtrStrided2d(double *, __pyx_pybuffernd_h_sum_bins.rcbuffer->pybuffer.buf, __pyx_t_18, __pyx_pybuffernd_h_sum_bins.diminfo[0].strides, __pyx_t_17, __pyx_pybuffernd_h_sum_bins.diminfo[1].strides) += (*__Pyx_BufPtrStrided2d(double *, __pyx_pybuffernd_g_h_mat.rcbuffer->pybuffer.buf, __pyx_t_15, __pyx_pybuffernd_g_h_mat.diminfo[0].strides, __pyx_t_14, __pyx_pybuffernd_g_h_mat.diminfo[1].strides));
     }
   }
 
-  /* "structureboost/structure_dt_multi.pyx":233
+  /* "structureboost/structure_dt_multi.pyx":232
  *             g_sum_bins[bin_result_vec[i],j] += g_h_mat[i,j]
  *             h_sum_bins[bin_result_vec[i],j] += g_h_mat[i,num_classes+j]
  *     return g_sum_bins, h_sum_bins             # <<<<<<<<<<<<<<
@@ -8644,7 +8635,7 @@ static PyObject *__pyx_pf_14structureboost_18structure_dt_multi_6get_bin_sums_c_
  * def get_left_right_sums_mc(bin_sums):
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = PyTuple_New(2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 233, __pyx_L1_error)
+  __pyx_t_1 = PyTuple_New(2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 232, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_INCREF(((PyObject *)__pyx_v_g_sum_bins));
   __Pyx_GIVEREF(((PyObject *)__pyx_v_g_sum_bins));
@@ -8656,11 +8647,11 @@ static PyObject *__pyx_pf_14structureboost_18structure_dt_multi_6get_bin_sums_c_
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "structureboost/structure_dt_multi.pyx":220
+  /* "structureboost/structure_dt_multi.pyx":219
  * @cython.boundscheck(False)  # Deactivate bounds checking
  * @cython.wraparound(False)   # Deactivate negative indexing.
  * def get_bin_sums_c_mc(np.ndarray[double, ndim=2] g_h_mat,             # <<<<<<<<<<<<<<
- *                    np.ndarray[dtype_int64_t] bin_result_vec,
+ *                    np.ndarray[np.int_t] bin_result_vec,
  *                    long out_vec_size, long num_classes):
  */
 
@@ -8697,7 +8688,7 @@ static PyObject *__pyx_pf_14structureboost_18structure_dt_multi_6get_bin_sums_c_
   return __pyx_r;
 }
 
-/* "structureboost/structure_dt_multi.pyx":235
+/* "structureboost/structure_dt_multi.pyx":234
  *     return g_sum_bins, h_sum_bins
  * 
  * def get_left_right_sums_mc(bin_sums):             # <<<<<<<<<<<<<<
@@ -8735,29 +8726,29 @@ static PyObject *__pyx_pf_14structureboost_18structure_dt_multi_8get_left_right_
   int __pyx_clineno = 0;
   __Pyx_TraceFrameInit(__pyx_codeobj__18)
   __Pyx_RefNannySetupContext("get_left_right_sums_mc", 0);
-  __Pyx_TraceCall("get_left_right_sums_mc", __pyx_f[0], 235, 0, __PYX_ERR(0, 235, __pyx_L1_error));
+  __Pyx_TraceCall("get_left_right_sums_mc", __pyx_f[0], 234, 0, __PYX_ERR(0, 234, __pyx_L1_error));
 
-  /* "structureboost/structure_dt_multi.pyx":236
+  /* "structureboost/structure_dt_multi.pyx":235
  * 
  * def get_left_right_sums_mc(bin_sums):
  *     sum_left = np.cumsum(bin_sums, axis=0)             # <<<<<<<<<<<<<<
  *     sum_total = sum_left[-1,:]
  *     sum_left = sum_left[:-1,:]
  */
-  __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_np); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 236, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_np); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 235, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_cumsum); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 236, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_cumsum); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 235, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_t_1 = PyTuple_New(1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 236, __pyx_L1_error)
+  __pyx_t_1 = PyTuple_New(1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 235, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_INCREF(__pyx_v_bin_sums);
   __Pyx_GIVEREF(__pyx_v_bin_sums);
   PyTuple_SET_ITEM(__pyx_t_1, 0, __pyx_v_bin_sums);
-  __pyx_t_3 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 236, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 235, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  if (PyDict_SetItem(__pyx_t_3, __pyx_n_s_axis, __pyx_int_0) < 0) __PYX_ERR(0, 236, __pyx_L1_error)
-  __pyx_t_4 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_1, __pyx_t_3); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 236, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_3, __pyx_n_s_axis, __pyx_int_0) < 0) __PYX_ERR(0, 235, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_1, __pyx_t_3); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 235, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
@@ -8765,43 +8756,43 @@ static PyObject *__pyx_pf_14structureboost_18structure_dt_multi_8get_left_right_
   __pyx_v_sum_left = __pyx_t_4;
   __pyx_t_4 = 0;
 
-  /* "structureboost/structure_dt_multi.pyx":237
+  /* "structureboost/structure_dt_multi.pyx":236
  * def get_left_right_sums_mc(bin_sums):
  *     sum_left = np.cumsum(bin_sums, axis=0)
  *     sum_total = sum_left[-1,:]             # <<<<<<<<<<<<<<
  *     sum_left = sum_left[:-1,:]
  *     sum_right = sum_total - sum_left
  */
-  __pyx_t_4 = __Pyx_PyObject_GetItem(__pyx_v_sum_left, __pyx_tuple__5); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 237, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyObject_GetItem(__pyx_v_sum_left, __pyx_tuple__5); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 236, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __pyx_v_sum_total = __pyx_t_4;
   __pyx_t_4 = 0;
 
-  /* "structureboost/structure_dt_multi.pyx":238
+  /* "structureboost/structure_dt_multi.pyx":237
  *     sum_left = np.cumsum(bin_sums, axis=0)
  *     sum_total = sum_left[-1,:]
  *     sum_left = sum_left[:-1,:]             # <<<<<<<<<<<<<<
  *     sum_right = sum_total - sum_left
  *     return sum_total, sum_left, sum_right
  */
-  __pyx_t_4 = __Pyx_PyObject_GetItem(__pyx_v_sum_left, __pyx_tuple__7); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 238, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyObject_GetItem(__pyx_v_sum_left, __pyx_tuple__7); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 237, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_DECREF_SET(__pyx_v_sum_left, __pyx_t_4);
   __pyx_t_4 = 0;
 
-  /* "structureboost/structure_dt_multi.pyx":239
+  /* "structureboost/structure_dt_multi.pyx":238
  *     sum_total = sum_left[-1,:]
  *     sum_left = sum_left[:-1,:]
  *     sum_right = sum_total - sum_left             # <<<<<<<<<<<<<<
  *     return sum_total, sum_left, sum_right
  * 
  */
-  __pyx_t_4 = PyNumber_Subtract(__pyx_v_sum_total, __pyx_v_sum_left); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 239, __pyx_L1_error)
+  __pyx_t_4 = PyNumber_Subtract(__pyx_v_sum_total, __pyx_v_sum_left); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 238, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __pyx_v_sum_right = __pyx_t_4;
   __pyx_t_4 = 0;
 
-  /* "structureboost/structure_dt_multi.pyx":240
+  /* "structureboost/structure_dt_multi.pyx":239
  *     sum_left = sum_left[:-1,:]
  *     sum_right = sum_total - sum_left
  *     return sum_total, sum_left, sum_right             # <<<<<<<<<<<<<<
@@ -8809,7 +8800,7 @@ static PyObject *__pyx_pf_14structureboost_18structure_dt_multi_8get_left_right_
  * 
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_4 = PyTuple_New(3); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 240, __pyx_L1_error)
+  __pyx_t_4 = PyTuple_New(3); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 239, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_INCREF(__pyx_v_sum_total);
   __Pyx_GIVEREF(__pyx_v_sum_total);
@@ -8824,7 +8815,7 @@ static PyObject *__pyx_pf_14structureboost_18structure_dt_multi_8get_left_right_
   __pyx_t_4 = 0;
   goto __pyx_L0;
 
-  /* "structureboost/structure_dt_multi.pyx":235
+  /* "structureboost/structure_dt_multi.pyx":234
  *     return g_sum_bins, h_sum_bins
  * 
  * def get_left_right_sums_mc(bin_sums):             # <<<<<<<<<<<<<<
@@ -10102,7 +10093,7 @@ static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {&__pyx_n_s_ind_subset_right, __pyx_k_ind_subset_right, sizeof(__pyx_k_ind_subset_right), 0, 0, 1, 1},
   {&__pyx_n_s_inf, __pyx_k_inf, sizeof(__pyx_k_inf), 0, 0, 1, 1},
   {&__pyx_n_s_init, __pyx_k_init, sizeof(__pyx_k_init), 0, 0, 1, 1},
-  {&__pyx_n_s_int64, __pyx_k_int64, sizeof(__pyx_k_int64), 0, 0, 1, 1},
+  {&__pyx_n_s_int, __pyx_k_int, sizeof(__pyx_k_int), 0, 0, 1, 1},
   {&__pyx_n_s_isnan, __pyx_k_isnan, sizeof(__pyx_k_isnan), 0, 0, 1, 1},
   {&__pyx_n_s_j, __pyx_k_j, sizeof(__pyx_k_j), 0, 0, 1, 1},
   {&__pyx_n_u_leaf, __pyx_k_leaf, sizeof(__pyx_k_leaf), 0, 1, 0, 1},
@@ -10174,8 +10165,8 @@ static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {0, 0, 0, 0, 0, 0, 0}
 };
 static CYTHON_SMALL_CODE int __Pyx_InitCachedBuiltins(void) {
-  __pyx_builtin_super = __Pyx_GetBuiltinName(__pyx_n_s_super); if (!__pyx_builtin_super) __PYX_ERR(0, 31, __pyx_L1_error)
-  __pyx_builtin_range = __Pyx_GetBuiltinName(__pyx_n_s_range); if (!__pyx_builtin_range) __PYX_ERR(0, 106, __pyx_L1_error)
+  __pyx_builtin_super = __Pyx_GetBuiltinName(__pyx_n_s_super); if (!__pyx_builtin_super) __PYX_ERR(0, 30, __pyx_L1_error)
+  __pyx_builtin_range = __Pyx_GetBuiltinName(__pyx_n_s_range); if (!__pyx_builtin_range) __PYX_ERR(0, 105, __pyx_L1_error)
   __pyx_builtin_ImportError = __Pyx_GetBuiltinName(__pyx_n_s_ImportError); if (!__pyx_builtin_ImportError) __PYX_ERR(1, 944, __pyx_L1_error)
   return 0;
   __pyx_L1_error:;
@@ -10186,31 +10177,31 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__Pyx_InitCachedConstants", 0);
 
-  /* "structureboost/structure_dt_multi.pyx":43
+  /* "structureboost/structure_dt_multi.pyx":42
  *             return np.zeros(self.num_classes)
  *         else:
  *             g_vec = np.sum(g_h_mat[:,:self.num_classes], axis=0)             # <<<<<<<<<<<<<<
  *             h_vec = np.sum(g_h_mat[:,self.num_classes:2*self.num_classes], axis=0)
  *             out_val = -(g_vec/(h_vec+self.reg_lambda))
  */
-  __pyx_slice__3 = PySlice_New(Py_None, Py_None, Py_None); if (unlikely(!__pyx_slice__3)) __PYX_ERR(0, 43, __pyx_L1_error)
+  __pyx_slice__3 = PySlice_New(Py_None, Py_None, Py_None); if (unlikely(!__pyx_slice__3)) __PYX_ERR(0, 42, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_slice__3);
   __Pyx_GIVEREF(__pyx_slice__3);
 
-  /* "structureboost/structure_dt_multi.pyx":66
+  /* "structureboost/structure_dt_multi.pyx":65
  *         best_loss, best_split_val = stdt._get_best_vals(score_vec, split_vec)
  *         if has_na_vals and (len(split_vec) > 2):
  *             g_sum_left_nal = (g_sum_left + (g_sum_total - g_sum_left[-1,:]))[:-1,:]             # <<<<<<<<<<<<<<
  *             h_sum_left_nal = (h_sum_left + (h_sum_total - h_sum_left[-1,:]))[:-1,:]
  *             g_sum_right_nal = g_sum_total - g_sum_left_nal
  */
-  __pyx_tuple__5 = PyTuple_Pack(2, __pyx_int_neg_1, __pyx_slice__3); if (unlikely(!__pyx_tuple__5)) __PYX_ERR(0, 66, __pyx_L1_error)
+  __pyx_tuple__5 = PyTuple_Pack(2, __pyx_int_neg_1, __pyx_slice__3); if (unlikely(!__pyx_tuple__5)) __PYX_ERR(0, 65, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__5);
   __Pyx_GIVEREF(__pyx_tuple__5);
-  __pyx_slice__6 = PySlice_New(Py_None, __pyx_int_neg_1, Py_None); if (unlikely(!__pyx_slice__6)) __PYX_ERR(0, 66, __pyx_L1_error)
+  __pyx_slice__6 = PySlice_New(Py_None, __pyx_int_neg_1, Py_None); if (unlikely(!__pyx_slice__6)) __PYX_ERR(0, 65, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_slice__6);
   __Pyx_GIVEREF(__pyx_slice__6);
-  __pyx_tuple__7 = PyTuple_Pack(2, __pyx_slice__6, __pyx_slice__3); if (unlikely(!__pyx_tuple__7)) __PYX_ERR(0, 66, __pyx_L1_error)
+  __pyx_tuple__7 = PyTuple_Pack(2, __pyx_slice__6, __pyx_slice__3); if (unlikely(!__pyx_tuple__7)) __PYX_ERR(0, 65, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__7);
   __Pyx_GIVEREF(__pyx_tuple__7);
 
@@ -10236,176 +10227,176 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
   __Pyx_GOTREF(__pyx_tuple__20);
   __Pyx_GIVEREF(__pyx_tuple__20);
 
-  /* "structureboost/structure_dt_multi.pyx":27
+  /* "structureboost/structure_dt_multi.pyx":26
  *     """
  * 
  *     def __init__(self, feature_configs, feature_graphs, num_classes,             # <<<<<<<<<<<<<<
  *                  min_size_split=2,
  *                  max_depth=3, gamma=0, feat_sample_by_node=1,
  */
-  __pyx_tuple__21 = PyTuple_Pack(9, __pyx_n_s_self, __pyx_n_s_feature_configs, __pyx_n_s_feature_graphs, __pyx_n_s_num_classes, __pyx_n_s_min_size_split, __pyx_n_s_max_depth, __pyx_n_s_gamma, __pyx_n_s_feat_sample_by_node, __pyx_n_s_reg_lambda); if (unlikely(!__pyx_tuple__21)) __PYX_ERR(0, 27, __pyx_L1_error)
+  __pyx_tuple__21 = PyTuple_Pack(9, __pyx_n_s_self, __pyx_n_s_feature_configs, __pyx_n_s_feature_graphs, __pyx_n_s_num_classes, __pyx_n_s_min_size_split, __pyx_n_s_max_depth, __pyx_n_s_gamma, __pyx_n_s_feat_sample_by_node, __pyx_n_s_reg_lambda); if (unlikely(!__pyx_tuple__21)) __PYX_ERR(0, 26, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__21);
   __Pyx_GIVEREF(__pyx_tuple__21);
-  __pyx_codeobj_ = (PyObject*)__Pyx_PyCode_New(9, 0, 9, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__21, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_structure_dt_multi_pyx, __pyx_n_s_init, 27, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj_)) __PYX_ERR(0, 27, __pyx_L1_error)
-  __pyx_tuple__22 = PyTuple_Pack(5, ((PyObject *)__pyx_int_2), ((PyObject *)__pyx_int_3), ((PyObject *)__pyx_int_0), ((PyObject *)__pyx_int_1), ((PyObject *)__pyx_int_1)); if (unlikely(!__pyx_tuple__22)) __PYX_ERR(0, 27, __pyx_L1_error)
+  __pyx_codeobj_ = (PyObject*)__Pyx_PyCode_New(9, 0, 9, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__21, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_structure_dt_multi_pyx, __pyx_n_s_init, 26, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj_)) __PYX_ERR(0, 26, __pyx_L1_error)
+  __pyx_tuple__22 = PyTuple_Pack(5, ((PyObject *)__pyx_int_2), ((PyObject *)__pyx_int_3), ((PyObject *)__pyx_int_0), ((PyObject *)__pyx_int_1), ((PyObject *)__pyx_int_1)); if (unlikely(!__pyx_tuple__22)) __PYX_ERR(0, 26, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__22);
   __Pyx_GIVEREF(__pyx_tuple__22);
 
-  /* "structureboost/structure_dt_multi.pyx":39
+  /* "structureboost/structure_dt_multi.pyx":38
  *         self.num_classes = num_classes
  * 
  *     def _node_summary_gh(self, g_h_mat):             # <<<<<<<<<<<<<<
  *         if (g_h_mat.shape[0] == 0):
  *             return np.zeros(self.num_classes)
  */
-  __pyx_tuple__23 = PyTuple_Pack(5, __pyx_n_s_self, __pyx_n_s_g_h_mat, __pyx_n_s_g_vec, __pyx_n_s_h_vec, __pyx_n_s_out_val); if (unlikely(!__pyx_tuple__23)) __PYX_ERR(0, 39, __pyx_L1_error)
+  __pyx_tuple__23 = PyTuple_Pack(5, __pyx_n_s_self, __pyx_n_s_g_h_mat, __pyx_n_s_g_vec, __pyx_n_s_h_vec, __pyx_n_s_out_val); if (unlikely(!__pyx_tuple__23)) __PYX_ERR(0, 38, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__23);
   __Pyx_GIVEREF(__pyx_tuple__23);
-  __pyx_codeobj__2 = (PyObject*)__Pyx_PyCode_New(2, 0, 5, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__23, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_structure_dt_multi_pyx, __pyx_n_s_node_summary_gh, 39, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__2)) __PYX_ERR(0, 39, __pyx_L1_error)
+  __pyx_codeobj__2 = (PyObject*)__Pyx_PyCode_New(2, 0, 5, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__23, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_structure_dt_multi_pyx, __pyx_n_s_node_summary_gh, 38, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__2)) __PYX_ERR(0, 38, __pyx_L1_error)
 
-  /* "structureboost/structure_dt_multi.pyx":48
+  /* "structureboost/structure_dt_multi.pyx":47
  *             return(out_val)
  * 
  *     def _evaluate_numerical_splits(self, feature_vec, g_h_mat,             # <<<<<<<<<<<<<<
  *                                    split_vec):
  * 
  */
-  __pyx_tuple__24 = PyTuple_Pack(24, __pyx_n_s_self, __pyx_n_s_feature_vec, __pyx_n_s_g_h_mat, __pyx_n_s_split_vec, __pyx_n_s_has_na_vals, __pyx_n_s_bin_result_vec, __pyx_n_s_g_sum_bins, __pyx_n_s_h_sum_bins, __pyx_n_s_g_sum_total, __pyx_n_s_g_sum_left, __pyx_n_s_g_sum_right, __pyx_n_s_h_sum_total, __pyx_n_s_h_sum_left, __pyx_n_s_h_sum_right, __pyx_n_s_score_vec, __pyx_n_s_best_loss, __pyx_n_s_best_split_val, __pyx_n_s_g_sum_left_nal, __pyx_n_s_h_sum_left_nal, __pyx_n_s_g_sum_right_nal, __pyx_n_s_h_sum_right_nal, __pyx_n_s_score_vec_nal, __pyx_n_s_best_loss_nal, __pyx_n_s_best_split_val_nal); if (unlikely(!__pyx_tuple__24)) __PYX_ERR(0, 48, __pyx_L1_error)
+  __pyx_tuple__24 = PyTuple_Pack(24, __pyx_n_s_self, __pyx_n_s_feature_vec, __pyx_n_s_g_h_mat, __pyx_n_s_split_vec, __pyx_n_s_has_na_vals, __pyx_n_s_bin_result_vec, __pyx_n_s_g_sum_bins, __pyx_n_s_h_sum_bins, __pyx_n_s_g_sum_total, __pyx_n_s_g_sum_left, __pyx_n_s_g_sum_right, __pyx_n_s_h_sum_total, __pyx_n_s_h_sum_left, __pyx_n_s_h_sum_right, __pyx_n_s_score_vec, __pyx_n_s_best_loss, __pyx_n_s_best_split_val, __pyx_n_s_g_sum_left_nal, __pyx_n_s_h_sum_left_nal, __pyx_n_s_g_sum_right_nal, __pyx_n_s_h_sum_right_nal, __pyx_n_s_score_vec_nal, __pyx_n_s_best_loss_nal, __pyx_n_s_best_split_val_nal); if (unlikely(!__pyx_tuple__24)) __PYX_ERR(0, 47, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__24);
   __Pyx_GIVEREF(__pyx_tuple__24);
-  __pyx_codeobj__4 = (PyObject*)__Pyx_PyCode_New(4, 0, 24, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__24, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_structure_dt_multi_pyx, __pyx_n_s_evaluate_numerical_splits, 48, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__4)) __PYX_ERR(0, 48, __pyx_L1_error)
+  __pyx_codeobj__4 = (PyObject*)__Pyx_PyCode_New(4, 0, 24, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__24, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_structure_dt_multi_pyx, __pyx_n_s_evaluate_numerical_splits, 47, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__4)) __PYX_ERR(0, 47, __pyx_L1_error)
 
-  /* "structureboost/structure_dt_multi.pyx":90
+  /* "structureboost/structure_dt_multi.pyx":89
  * 
  * 
  *     def get_gh_val_mat(self, feature_vec_node,g_h_train_node,             # <<<<<<<<<<<<<<
  *                        max_num_vertices):
  *         g_h_val_arr = np.zeros((max_num_vertices,2*self.num_classes))
  */
-  __pyx_tuple__25 = PyTuple_Pack(5, __pyx_n_s_self, __pyx_n_s_feature_vec_node, __pyx_n_s_g_h_train_node, __pyx_n_s_max_num_vertices, __pyx_n_s_g_h_val_arr); if (unlikely(!__pyx_tuple__25)) __PYX_ERR(0, 90, __pyx_L1_error)
+  __pyx_tuple__25 = PyTuple_Pack(5, __pyx_n_s_self, __pyx_n_s_feature_vec_node, __pyx_n_s_g_h_train_node, __pyx_n_s_max_num_vertices, __pyx_n_s_g_h_val_arr); if (unlikely(!__pyx_tuple__25)) __PYX_ERR(0, 89, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__25);
   __Pyx_GIVEREF(__pyx_tuple__25);
-  __pyx_codeobj__8 = (PyObject*)__Pyx_PyCode_New(4, 0, 5, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__25, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_structure_dt_multi_pyx, __pyx_n_s_get_gh_val_mat, 90, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__8)) __PYX_ERR(0, 90, __pyx_L1_error)
+  __pyx_codeobj__8 = (PyObject*)__Pyx_PyCode_New(4, 0, 5, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__25, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_structure_dt_multi_pyx, __pyx_n_s_get_gh_val_mat, 89, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__8)) __PYX_ERR(0, 89, __pyx_L1_error)
 
-  /* "structureboost/structure_dt_multi.pyx":101
+  /* "structureboost/structure_dt_multi.pyx":100
  *     @cython.boundscheck(False)  # Deactivate bounds checking
  *     @cython.wraparound(False)   # Deactivate negative indexing.
  *     def update_g_h_accum(self, np.ndarray[double, ndim=2] g_h_accum_array,             # <<<<<<<<<<<<<<
  *         long lni, long lvi):
  *         ## TODO: make this more efficient (cython)
  */
-  __pyx_tuple__26 = PyTuple_Pack(6, __pyx_n_s_self, __pyx_n_s_g_h_accum_array, __pyx_n_s_lni, __pyx_n_s_lvi, __pyx_n_s_j, __pyx_n_s_limit); if (unlikely(!__pyx_tuple__26)) __PYX_ERR(0, 101, __pyx_L1_error)
+  __pyx_tuple__26 = PyTuple_Pack(6, __pyx_n_s_self, __pyx_n_s_g_h_accum_array, __pyx_n_s_lni, __pyx_n_s_lvi, __pyx_n_s_j, __pyx_n_s_limit); if (unlikely(!__pyx_tuple__26)) __PYX_ERR(0, 100, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__26);
   __Pyx_GIVEREF(__pyx_tuple__26);
-  __pyx_codeobj__9 = (PyObject*)__Pyx_PyCode_New(4, 0, 6, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__26, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_structure_dt_multi_pyx, __pyx_n_s_update_g_h_accum, 101, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__9)) __PYX_ERR(0, 101, __pyx_L1_error)
+  __pyx_codeobj__9 = (PyObject*)__Pyx_PyCode_New(4, 0, 6, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__26, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_structure_dt_multi_pyx, __pyx_n_s_update_g_h_accum, 100, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__9)) __PYX_ERR(0, 100, __pyx_L1_error)
 
-  /* "structureboost/structure_dt_multi.pyx":110
+  /* "structureboost/structure_dt_multi.pyx":109
  *         return g_h_accum_array
  * 
  *     def get_loss_in_span_tree(self, feature_vec_node, g_h_train_node,             # <<<<<<<<<<<<<<
  *                               g_h_accum_array, g_h_sum, leaf_vertex_ind,
  *                               left_feat_values, feature_type):
  */
-  __pyx_tuple__27 = PyTuple_Pack(13, __pyx_n_s_self, __pyx_n_s_feature_vec_node, __pyx_n_s_g_h_train_node, __pyx_n_s_g_h_accum_array, __pyx_n_s_g_h_sum, __pyx_n_s_leaf_vertex_ind, __pyx_n_s_left_feat_values, __pyx_n_s_feature_type, __pyx_n_s_g_left, __pyx_n_s_h_left, __pyx_n_s_g_sum, __pyx_n_s_h_sum, __pyx_n_s_curr_loss); if (unlikely(!__pyx_tuple__27)) __PYX_ERR(0, 110, __pyx_L1_error)
+  __pyx_tuple__27 = PyTuple_Pack(13, __pyx_n_s_self, __pyx_n_s_feature_vec_node, __pyx_n_s_g_h_train_node, __pyx_n_s_g_h_accum_array, __pyx_n_s_g_h_sum, __pyx_n_s_leaf_vertex_ind, __pyx_n_s_left_feat_values, __pyx_n_s_feature_type, __pyx_n_s_g_left, __pyx_n_s_h_left, __pyx_n_s_g_sum, __pyx_n_s_h_sum, __pyx_n_s_curr_loss); if (unlikely(!__pyx_tuple__27)) __PYX_ERR(0, 109, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__27);
   __Pyx_GIVEREF(__pyx_tuple__27);
-  __pyx_codeobj__10 = (PyObject*)__Pyx_PyCode_New(8, 0, 13, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__27, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_structure_dt_multi_pyx, __pyx_n_s_get_loss_in_span_tree, 110, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__10)) __PYX_ERR(0, 110, __pyx_L1_error)
+  __pyx_codeobj__10 = (PyObject*)__Pyx_PyCode_New(8, 0, 13, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__27, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_structure_dt_multi_pyx, __pyx_n_s_get_loss_in_span_tree, 109, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__10)) __PYX_ERR(0, 109, __pyx_L1_error)
 
-  /* "structureboost/structure_dt_multi.pyx":123
+  /* "structureboost/structure_dt_multi.pyx":122
  * 
  * 
  *     def get_score_of_split(self, g_h_train_node, mask_left, g_h_sum):             # <<<<<<<<<<<<<<
  *         g_h_masked = g_h_train_node[mask_left,:]
  *         g_h_masked_sum = np.sum(g_h_masked, axis=0)
  */
-  __pyx_tuple__28 = PyTuple_Pack(11, __pyx_n_s_self, __pyx_n_s_g_h_train_node, __pyx_n_s_mask_left, __pyx_n_s_g_h_sum, __pyx_n_s_g_h_masked, __pyx_n_s_g_h_masked_sum, __pyx_n_s_g_left, __pyx_n_s_h_left, __pyx_n_s_g_sum, __pyx_n_s_h_sum, __pyx_n_s_curr_loss); if (unlikely(!__pyx_tuple__28)) __PYX_ERR(0, 123, __pyx_L1_error)
+  __pyx_tuple__28 = PyTuple_Pack(11, __pyx_n_s_self, __pyx_n_s_g_h_train_node, __pyx_n_s_mask_left, __pyx_n_s_g_h_sum, __pyx_n_s_g_h_masked, __pyx_n_s_g_h_masked_sum, __pyx_n_s_g_left, __pyx_n_s_h_left, __pyx_n_s_g_sum, __pyx_n_s_h_sum, __pyx_n_s_curr_loss); if (unlikely(!__pyx_tuple__28)) __PYX_ERR(0, 122, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__28);
   __Pyx_GIVEREF(__pyx_tuple__28);
-  __pyx_codeobj__11 = (PyObject*)__Pyx_PyCode_New(4, 0, 11, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__28, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_structure_dt_multi_pyx, __pyx_n_s_get_score_of_split, 123, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__11)) __PYX_ERR(0, 123, __pyx_L1_error)
+  __pyx_codeobj__11 = (PyObject*)__Pyx_PyCode_New(4, 0, 11, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__28, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_structure_dt_multi_pyx, __pyx_n_s_get_score_of_split, 122, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__11)) __PYX_ERR(0, 122, __pyx_L1_error)
 
-  /* "structureboost/structure_dt_multi.pyx":136
+  /* "structureboost/structure_dt_multi.pyx":135
  * 
  * 
  *     def predict(self, X_test):             # <<<<<<<<<<<<<<
  *         col_list = list(X_test.columns)
  *         column_to_int_dict = {col_list[i]: i for i in range(len(col_list))}
  */
-  __pyx_tuple__29 = PyTuple_Pack(5, __pyx_n_s_self, __pyx_n_s_X_test, __pyx_n_s_col_list, __pyx_n_s_column_to_int_dict, __pyx_n_s_i); if (unlikely(!__pyx_tuple__29)) __PYX_ERR(0, 136, __pyx_L1_error)
+  __pyx_tuple__29 = PyTuple_Pack(5, __pyx_n_s_self, __pyx_n_s_X_test, __pyx_n_s_col_list, __pyx_n_s_column_to_int_dict, __pyx_n_s_i); if (unlikely(!__pyx_tuple__29)) __PYX_ERR(0, 135, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__29);
   __Pyx_GIVEREF(__pyx_tuple__29);
-  __pyx_codeobj__12 = (PyObject*)__Pyx_PyCode_New(2, 0, 5, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__29, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_structure_dt_multi_pyx, __pyx_n_s_predict, 136, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__12)) __PYX_ERR(0, 136, __pyx_L1_error)
+  __pyx_codeobj__12 = (PyObject*)__Pyx_PyCode_New(2, 0, 5, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__29, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_structure_dt_multi_pyx, __pyx_n_s_predict, 135, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__12)) __PYX_ERR(0, 135, __pyx_L1_error)
 
-  /* "structureboost/structure_dt_multi.pyx":143
+  /* "structureboost/structure_dt_multi.pyx":142
  * 
  * 
  *     def get_prediction(self, tree_node, X_te, dict col_to_int_dict):             # <<<<<<<<<<<<<<
- *         cdef np.ndarray[dtype_int64_t] ind_subset_left, ind_subset_right
+ *         cdef np.ndarray[np.int_t] ind_subset_left, ind_subset_right
  *         cdef long vec_len, lsize
  */
-  __pyx_tuple__30 = PyTuple_Pack(10, __pyx_n_s_self, __pyx_n_s_tree_node, __pyx_n_s_X_te, __pyx_n_s_col_to_int_dict, __pyx_n_s_ind_subset_left, __pyx_n_s_ind_subset_right, __pyx_n_s_vec_len, __pyx_n_s_lsize, __pyx_n_s_next_vec, __pyx_n_s_split_bool); if (unlikely(!__pyx_tuple__30)) __PYX_ERR(0, 143, __pyx_L1_error)
+  __pyx_tuple__30 = PyTuple_Pack(10, __pyx_n_s_self, __pyx_n_s_tree_node, __pyx_n_s_X_te, __pyx_n_s_col_to_int_dict, __pyx_n_s_ind_subset_left, __pyx_n_s_ind_subset_right, __pyx_n_s_vec_len, __pyx_n_s_lsize, __pyx_n_s_next_vec, __pyx_n_s_split_bool); if (unlikely(!__pyx_tuple__30)) __PYX_ERR(0, 142, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__30);
   __Pyx_GIVEREF(__pyx_tuple__30);
-  __pyx_codeobj__13 = (PyObject*)__Pyx_PyCode_New(4, 0, 10, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__30, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_structure_dt_multi_pyx, __pyx_n_s_get_prediction, 143, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__13)) __PYX_ERR(0, 143, __pyx_L1_error)
+  __pyx_codeobj__13 = (PyObject*)__Pyx_PyCode_New(4, 0, 10, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__30, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_structure_dt_multi_pyx, __pyx_n_s_get_prediction, 142, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__13)) __PYX_ERR(0, 142, __pyx_L1_error)
 
-  /* "structureboost/structure_dt_multi.pyx":180
+  /* "structureboost/structure_dt_multi.pyx":179
  * @cython.boundscheck(False)  # Deactivate bounds checking
  * @cython.wraparound(False)   # Deactivate negative indexing.
- * def get_g_h_feature_sum_matrix(np.ndarray[dtype_int64_t] feature_vec_node,             # <<<<<<<<<<<<<<
+ * def get_g_h_feature_sum_matrix(np.ndarray[np.int_t] feature_vec_node,             # <<<<<<<<<<<<<<
  *                                np.ndarray[double, ndim=2] g_h_train_node,
  *                                np.ndarray[double, ndim=2] g_h_val_arr,
  */
-  __pyx_tuple__31 = PyTuple_Pack(8, __pyx_n_s_feature_vec_node, __pyx_n_s_g_h_train_node, __pyx_n_s_g_h_val_arr, __pyx_n_s_num_classes, __pyx_n_s_i, __pyx_n_s_ind, __pyx_n_s_array_size, __pyx_n_s_j); if (unlikely(!__pyx_tuple__31)) __PYX_ERR(0, 180, __pyx_L1_error)
+  __pyx_tuple__31 = PyTuple_Pack(8, __pyx_n_s_feature_vec_node, __pyx_n_s_g_h_train_node, __pyx_n_s_g_h_val_arr, __pyx_n_s_num_classes, __pyx_n_s_i, __pyx_n_s_ind, __pyx_n_s_array_size, __pyx_n_s_j); if (unlikely(!__pyx_tuple__31)) __PYX_ERR(0, 179, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__31);
   __Pyx_GIVEREF(__pyx_tuple__31);
-  __pyx_codeobj__14 = (PyObject*)__Pyx_PyCode_New(4, 0, 8, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__31, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_structure_dt_multi_pyx, __pyx_n_s_get_g_h_feature_sum_matrix, 180, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__14)) __PYX_ERR(0, 180, __pyx_L1_error)
+  __pyx_codeobj__14 = (PyObject*)__Pyx_PyCode_New(4, 0, 8, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__31, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_structure_dt_multi_pyx, __pyx_n_s_get_g_h_feature_sum_matrix, 179, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__14)) __PYX_ERR(0, 179, __pyx_L1_error)
 
-  /* "structureboost/structure_dt_multi.pyx":193
+  /* "structureboost/structure_dt_multi.pyx":192
  * 
  * 
  * def _get_gh_score_num_mc(np.ndarray[double] g_left,             # <<<<<<<<<<<<<<
  *                       np.ndarray[double] g_right,
  *                       np.ndarray[double] h_left,
  */
-  __pyx_tuple__32 = PyTuple_Pack(8, __pyx_n_s_g_left, __pyx_n_s_g_right, __pyx_n_s_h_left, __pyx_n_s_h_right, __pyx_n_s_gamma, __pyx_n_s_reg_lambda, __pyx_n_s_tol, __pyx_n_s_loss_val); if (unlikely(!__pyx_tuple__32)) __PYX_ERR(0, 193, __pyx_L1_error)
+  __pyx_tuple__32 = PyTuple_Pack(8, __pyx_n_s_g_left, __pyx_n_s_g_right, __pyx_n_s_h_left, __pyx_n_s_h_right, __pyx_n_s_gamma, __pyx_n_s_reg_lambda, __pyx_n_s_tol, __pyx_n_s_loss_val); if (unlikely(!__pyx_tuple__32)) __PYX_ERR(0, 192, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__32);
   __Pyx_GIVEREF(__pyx_tuple__32);
-  __pyx_codeobj__15 = (PyObject*)__Pyx_PyCode_New(7, 0, 8, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__32, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_structure_dt_multi_pyx, __pyx_n_s_get_gh_score_num_mc, 193, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__15)) __PYX_ERR(0, 193, __pyx_L1_error)
+  __pyx_codeobj__15 = (PyObject*)__Pyx_PyCode_New(7, 0, 8, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__32, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_structure_dt_multi_pyx, __pyx_n_s_get_gh_score_num_mc, 192, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__15)) __PYX_ERR(0, 192, __pyx_L1_error)
 
-  /* "structureboost/structure_dt_multi.pyx":207
+  /* "structureboost/structure_dt_multi.pyx":206
  * 
  * 
  * def _get_gh_score_array_mc(np.ndarray[double, ndim=2] g_left,             # <<<<<<<<<<<<<<
  *                         np.ndarray[double, ndim=2] g_right,
  *                         np.ndarray[double, ndim=2] h_left,
  */
-  __pyx_tuple__33 = PyTuple_Pack(6, __pyx_n_s_g_left, __pyx_n_s_g_right, __pyx_n_s_h_left, __pyx_n_s_h_right, __pyx_n_s_gamma, __pyx_n_s_reg_lambda); if (unlikely(!__pyx_tuple__33)) __PYX_ERR(0, 207, __pyx_L1_error)
+  __pyx_tuple__33 = PyTuple_Pack(6, __pyx_n_s_g_left, __pyx_n_s_g_right, __pyx_n_s_h_left, __pyx_n_s_h_right, __pyx_n_s_gamma, __pyx_n_s_reg_lambda); if (unlikely(!__pyx_tuple__33)) __PYX_ERR(0, 206, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__33);
   __Pyx_GIVEREF(__pyx_tuple__33);
-  __pyx_codeobj__16 = (PyObject*)__Pyx_PyCode_New(6, 0, 6, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__33, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_structure_dt_multi_pyx, __pyx_n_s_get_gh_score_array_mc, 207, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__16)) __PYX_ERR(0, 207, __pyx_L1_error)
+  __pyx_codeobj__16 = (PyObject*)__Pyx_PyCode_New(6, 0, 6, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__33, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_structure_dt_multi_pyx, __pyx_n_s_get_gh_score_array_mc, 206, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__16)) __PYX_ERR(0, 206, __pyx_L1_error)
 
-  /* "structureboost/structure_dt_multi.pyx":220
+  /* "structureboost/structure_dt_multi.pyx":219
  * @cython.boundscheck(False)  # Deactivate bounds checking
  * @cython.wraparound(False)   # Deactivate negative indexing.
  * def get_bin_sums_c_mc(np.ndarray[double, ndim=2] g_h_mat,             # <<<<<<<<<<<<<<
- *                    np.ndarray[dtype_int64_t] bin_result_vec,
+ *                    np.ndarray[np.int_t] bin_result_vec,
  *                    long out_vec_size, long num_classes):
  */
-  __pyx_tuple__34 = PyTuple_Pack(9, __pyx_n_s_g_h_mat, __pyx_n_s_bin_result_vec, __pyx_n_s_out_vec_size, __pyx_n_s_num_classes, __pyx_n_s_i, __pyx_n_s_j, __pyx_n_s_m, __pyx_n_s_g_sum_bins, __pyx_n_s_h_sum_bins); if (unlikely(!__pyx_tuple__34)) __PYX_ERR(0, 220, __pyx_L1_error)
+  __pyx_tuple__34 = PyTuple_Pack(9, __pyx_n_s_g_h_mat, __pyx_n_s_bin_result_vec, __pyx_n_s_out_vec_size, __pyx_n_s_num_classes, __pyx_n_s_i, __pyx_n_s_j, __pyx_n_s_m, __pyx_n_s_g_sum_bins, __pyx_n_s_h_sum_bins); if (unlikely(!__pyx_tuple__34)) __PYX_ERR(0, 219, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__34);
   __Pyx_GIVEREF(__pyx_tuple__34);
-  __pyx_codeobj__17 = (PyObject*)__Pyx_PyCode_New(4, 0, 9, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__34, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_structure_dt_multi_pyx, __pyx_n_s_get_bin_sums_c_mc, 220, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__17)) __PYX_ERR(0, 220, __pyx_L1_error)
+  __pyx_codeobj__17 = (PyObject*)__Pyx_PyCode_New(4, 0, 9, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__34, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_structure_dt_multi_pyx, __pyx_n_s_get_bin_sums_c_mc, 219, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__17)) __PYX_ERR(0, 219, __pyx_L1_error)
 
-  /* "structureboost/structure_dt_multi.pyx":235
+  /* "structureboost/structure_dt_multi.pyx":234
  *     return g_sum_bins, h_sum_bins
  * 
  * def get_left_right_sums_mc(bin_sums):             # <<<<<<<<<<<<<<
  *     sum_left = np.cumsum(bin_sums, axis=0)
  *     sum_total = sum_left[-1,:]
  */
-  __pyx_tuple__35 = PyTuple_Pack(4, __pyx_n_s_bin_sums, __pyx_n_s_sum_left, __pyx_n_s_sum_total, __pyx_n_s_sum_right); if (unlikely(!__pyx_tuple__35)) __PYX_ERR(0, 235, __pyx_L1_error)
+  __pyx_tuple__35 = PyTuple_Pack(4, __pyx_n_s_bin_sums, __pyx_n_s_sum_left, __pyx_n_s_sum_total, __pyx_n_s_sum_right); if (unlikely(!__pyx_tuple__35)) __PYX_ERR(0, 234, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__35);
   __Pyx_GIVEREF(__pyx_tuple__35);
-  __pyx_codeobj__18 = (PyObject*)__Pyx_PyCode_New(1, 0, 4, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__35, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_structure_dt_multi_pyx, __pyx_n_s_get_left_right_sums_mc, 235, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__18)) __PYX_ERR(0, 235, __pyx_L1_error)
+  __pyx_codeobj__18 = (PyObject*)__Pyx_PyCode_New(1, 0, 4, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__35, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_structure_dt_multi_pyx, __pyx_n_s_get_left_right_sums_mc, 234, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__18)) __PYX_ERR(0, 234, __pyx_L1_error)
   __Pyx_RefNannyFinishContext();
   return 0;
   __pyx_L1_error:;
@@ -10866,214 +10857,214 @@ if (!__Pyx_RefNanny) {
   if (PyDict_SetItem(__pyx_d, __pyx_n_s_stdt, __pyx_t_2) < 0) __PYX_ERR(0, 15, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "structureboost/structure_dt_multi.pyx":21
- * ctypedef np.int64_t dtype_int64_t
+  /* "structureboost/structure_dt_multi.pyx":20
+ * 
  * 
  * class StructureDecisionTreeMulti(StructureDecisionTree):             # <<<<<<<<<<<<<<
  *     """Multi class Decision Tree using graphical structure.
  * 
  */
-  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_StructureDecisionTree); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 21, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_StructureDecisionTree); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 20, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_1 = PyTuple_New(1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 21, __pyx_L1_error)
+  __pyx_t_1 = PyTuple_New(1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 20, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_GIVEREF(__pyx_t_2);
   PyTuple_SET_ITEM(__pyx_t_1, 0, __pyx_t_2);
   __pyx_t_2 = 0;
-  __pyx_t_2 = __Pyx_CalculateMetaclass(NULL, __pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 21, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_CalculateMetaclass(NULL, __pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 20, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_3 = __Pyx_Py3MetaclassPrepare(__pyx_t_2, __pyx_t_1, __pyx_n_s_StructureDecisionTreeMulti, __pyx_n_s_StructureDecisionTreeMulti, (PyObject *) NULL, __pyx_n_s_structureboost_structure_dt_mult, __pyx_kp_s_Multi_class_Decision_Tree_using); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 21, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_Py3MetaclassPrepare(__pyx_t_2, __pyx_t_1, __pyx_n_s_StructureDecisionTreeMulti, __pyx_n_s_StructureDecisionTreeMulti, (PyObject *) NULL, __pyx_n_s_structureboost_structure_dt_mult, __pyx_kp_s_Multi_class_Decision_Tree_using); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 20, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_4 = PyList_New(0); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 21, __pyx_L1_error)
+  __pyx_t_4 = PyList_New(0); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 20, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
 
-  /* "structureboost/structure_dt_multi.pyx":27
+  /* "structureboost/structure_dt_multi.pyx":26
  *     """
  * 
  *     def __init__(self, feature_configs, feature_graphs, num_classes,             # <<<<<<<<<<<<<<
  *                  min_size_split=2,
  *                  max_depth=3, gamma=0, feat_sample_by_node=1,
  */
-  __pyx_t_5 = __Pyx_CyFunction_New(&__pyx_mdef_14structureboost_18structure_dt_multi_26StructureDecisionTreeMulti_1__init__, 0, __pyx_n_s_StructureDecisionTreeMulti___ini, NULL, __pyx_n_s_structureboost_structure_dt_mult, __pyx_d, ((PyObject *)__pyx_codeobj_)); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 27, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_CyFunction_New(&__pyx_mdef_14structureboost_18structure_dt_multi_26StructureDecisionTreeMulti_1__init__, 0, __pyx_n_s_StructureDecisionTreeMulti___ini, NULL, __pyx_n_s_structureboost_structure_dt_mult, __pyx_d, ((PyObject *)__pyx_codeobj_)); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 26, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
   __Pyx_INCREF(__pyx_t_5);
   PyList_Append(__pyx_t_4, __pyx_t_5);
   __Pyx_GIVEREF(__pyx_t_5);
   __Pyx_CyFunction_SetDefaultsTuple(__pyx_t_5, __pyx_tuple__22);
-  if (__Pyx_SetNameInClass(__pyx_t_3, __pyx_n_s_init, __pyx_t_5) < 0) __PYX_ERR(0, 27, __pyx_L1_error)
+  if (__Pyx_SetNameInClass(__pyx_t_3, __pyx_n_s_init, __pyx_t_5) < 0) __PYX_ERR(0, 26, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
 
-  /* "structureboost/structure_dt_multi.pyx":39
+  /* "structureboost/structure_dt_multi.pyx":38
  *         self.num_classes = num_classes
  * 
  *     def _node_summary_gh(self, g_h_mat):             # <<<<<<<<<<<<<<
  *         if (g_h_mat.shape[0] == 0):
  *             return np.zeros(self.num_classes)
  */
-  __pyx_t_5 = __Pyx_CyFunction_New(&__pyx_mdef_14structureboost_18structure_dt_multi_26StructureDecisionTreeMulti_3_node_summary_gh, 0, __pyx_n_s_StructureDecisionTreeMulti__node, NULL, __pyx_n_s_structureboost_structure_dt_mult, __pyx_d, ((PyObject *)__pyx_codeobj__2)); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 39, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_CyFunction_New(&__pyx_mdef_14structureboost_18structure_dt_multi_26StructureDecisionTreeMulti_3_node_summary_gh, 0, __pyx_n_s_StructureDecisionTreeMulti__node, NULL, __pyx_n_s_structureboost_structure_dt_mult, __pyx_d, ((PyObject *)__pyx_codeobj__2)); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 38, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
-  if (__Pyx_SetNameInClass(__pyx_t_3, __pyx_n_s_node_summary_gh, __pyx_t_5) < 0) __PYX_ERR(0, 39, __pyx_L1_error)
+  if (__Pyx_SetNameInClass(__pyx_t_3, __pyx_n_s_node_summary_gh, __pyx_t_5) < 0) __PYX_ERR(0, 38, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
 
-  /* "structureboost/structure_dt_multi.pyx":48
+  /* "structureboost/structure_dt_multi.pyx":47
  *             return(out_val)
  * 
  *     def _evaluate_numerical_splits(self, feature_vec, g_h_mat,             # <<<<<<<<<<<<<<
  *                                    split_vec):
  * 
  */
-  __pyx_t_5 = __Pyx_CyFunction_New(&__pyx_mdef_14structureboost_18structure_dt_multi_26StructureDecisionTreeMulti_5_evaluate_numerical_splits, 0, __pyx_n_s_StructureDecisionTreeMulti__eval, NULL, __pyx_n_s_structureboost_structure_dt_mult, __pyx_d, ((PyObject *)__pyx_codeobj__4)); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 48, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_CyFunction_New(&__pyx_mdef_14structureboost_18structure_dt_multi_26StructureDecisionTreeMulti_5_evaluate_numerical_splits, 0, __pyx_n_s_StructureDecisionTreeMulti__eval, NULL, __pyx_n_s_structureboost_structure_dt_mult, __pyx_d, ((PyObject *)__pyx_codeobj__4)); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 47, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
-  if (__Pyx_SetNameInClass(__pyx_t_3, __pyx_n_s_evaluate_numerical_splits, __pyx_t_5) < 0) __PYX_ERR(0, 48, __pyx_L1_error)
+  if (__Pyx_SetNameInClass(__pyx_t_3, __pyx_n_s_evaluate_numerical_splits, __pyx_t_5) < 0) __PYX_ERR(0, 47, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
 
-  /* "structureboost/structure_dt_multi.pyx":90
+  /* "structureboost/structure_dt_multi.pyx":89
  * 
  * 
  *     def get_gh_val_mat(self, feature_vec_node,g_h_train_node,             # <<<<<<<<<<<<<<
  *                        max_num_vertices):
  *         g_h_val_arr = np.zeros((max_num_vertices,2*self.num_classes))
  */
-  __pyx_t_5 = __Pyx_CyFunction_New(&__pyx_mdef_14structureboost_18structure_dt_multi_26StructureDecisionTreeMulti_7get_gh_val_mat, 0, __pyx_n_s_StructureDecisionTreeMulti_get_g, NULL, __pyx_n_s_structureboost_structure_dt_mult, __pyx_d, ((PyObject *)__pyx_codeobj__8)); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 90, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_CyFunction_New(&__pyx_mdef_14structureboost_18structure_dt_multi_26StructureDecisionTreeMulti_7get_gh_val_mat, 0, __pyx_n_s_StructureDecisionTreeMulti_get_g, NULL, __pyx_n_s_structureboost_structure_dt_mult, __pyx_d, ((PyObject *)__pyx_codeobj__8)); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 89, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
-  if (__Pyx_SetNameInClass(__pyx_t_3, __pyx_n_s_get_gh_val_mat, __pyx_t_5) < 0) __PYX_ERR(0, 90, __pyx_L1_error)
+  if (__Pyx_SetNameInClass(__pyx_t_3, __pyx_n_s_get_gh_val_mat, __pyx_t_5) < 0) __PYX_ERR(0, 89, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
 
-  /* "structureboost/structure_dt_multi.pyx":101
+  /* "structureboost/structure_dt_multi.pyx":100
  *     @cython.boundscheck(False)  # Deactivate bounds checking
  *     @cython.wraparound(False)   # Deactivate negative indexing.
  *     def update_g_h_accum(self, np.ndarray[double, ndim=2] g_h_accum_array,             # <<<<<<<<<<<<<<
  *         long lni, long lvi):
  *         ## TODO: make this more efficient (cython)
  */
-  __pyx_t_5 = __Pyx_CyFunction_New(&__pyx_mdef_14structureboost_18structure_dt_multi_26StructureDecisionTreeMulti_9update_g_h_accum, 0, __pyx_n_s_StructureDecisionTreeMulti_updat, NULL, __pyx_n_s_structureboost_structure_dt_mult, __pyx_d, ((PyObject *)__pyx_codeobj__9)); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 101, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_CyFunction_New(&__pyx_mdef_14structureboost_18structure_dt_multi_26StructureDecisionTreeMulti_9update_g_h_accum, 0, __pyx_n_s_StructureDecisionTreeMulti_updat, NULL, __pyx_n_s_structureboost_structure_dt_mult, __pyx_d, ((PyObject *)__pyx_codeobj__9)); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 100, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
-  if (__Pyx_SetNameInClass(__pyx_t_3, __pyx_n_s_update_g_h_accum, __pyx_t_5) < 0) __PYX_ERR(0, 101, __pyx_L1_error)
+  if (__Pyx_SetNameInClass(__pyx_t_3, __pyx_n_s_update_g_h_accum, __pyx_t_5) < 0) __PYX_ERR(0, 100, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
 
-  /* "structureboost/structure_dt_multi.pyx":110
+  /* "structureboost/structure_dt_multi.pyx":109
  *         return g_h_accum_array
  * 
  *     def get_loss_in_span_tree(self, feature_vec_node, g_h_train_node,             # <<<<<<<<<<<<<<
  *                               g_h_accum_array, g_h_sum, leaf_vertex_ind,
  *                               left_feat_values, feature_type):
  */
-  __pyx_t_5 = __Pyx_CyFunction_New(&__pyx_mdef_14structureboost_18structure_dt_multi_26StructureDecisionTreeMulti_11get_loss_in_span_tree, 0, __pyx_n_s_StructureDecisionTreeMulti_get_l, NULL, __pyx_n_s_structureboost_structure_dt_mult, __pyx_d, ((PyObject *)__pyx_codeobj__10)); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 110, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_CyFunction_New(&__pyx_mdef_14structureboost_18structure_dt_multi_26StructureDecisionTreeMulti_11get_loss_in_span_tree, 0, __pyx_n_s_StructureDecisionTreeMulti_get_l, NULL, __pyx_n_s_structureboost_structure_dt_mult, __pyx_d, ((PyObject *)__pyx_codeobj__10)); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 109, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
-  if (__Pyx_SetNameInClass(__pyx_t_3, __pyx_n_s_get_loss_in_span_tree, __pyx_t_5) < 0) __PYX_ERR(0, 110, __pyx_L1_error)
+  if (__Pyx_SetNameInClass(__pyx_t_3, __pyx_n_s_get_loss_in_span_tree, __pyx_t_5) < 0) __PYX_ERR(0, 109, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
 
-  /* "structureboost/structure_dt_multi.pyx":123
+  /* "structureboost/structure_dt_multi.pyx":122
  * 
  * 
  *     def get_score_of_split(self, g_h_train_node, mask_left, g_h_sum):             # <<<<<<<<<<<<<<
  *         g_h_masked = g_h_train_node[mask_left,:]
  *         g_h_masked_sum = np.sum(g_h_masked, axis=0)
  */
-  __pyx_t_5 = __Pyx_CyFunction_New(&__pyx_mdef_14structureboost_18structure_dt_multi_26StructureDecisionTreeMulti_13get_score_of_split, 0, __pyx_n_s_StructureDecisionTreeMulti_get_s, NULL, __pyx_n_s_structureboost_structure_dt_mult, __pyx_d, ((PyObject *)__pyx_codeobj__11)); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 123, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_CyFunction_New(&__pyx_mdef_14structureboost_18structure_dt_multi_26StructureDecisionTreeMulti_13get_score_of_split, 0, __pyx_n_s_StructureDecisionTreeMulti_get_s, NULL, __pyx_n_s_structureboost_structure_dt_mult, __pyx_d, ((PyObject *)__pyx_codeobj__11)); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 122, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
-  if (__Pyx_SetNameInClass(__pyx_t_3, __pyx_n_s_get_score_of_split, __pyx_t_5) < 0) __PYX_ERR(0, 123, __pyx_L1_error)
+  if (__Pyx_SetNameInClass(__pyx_t_3, __pyx_n_s_get_score_of_split, __pyx_t_5) < 0) __PYX_ERR(0, 122, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
 
-  /* "structureboost/structure_dt_multi.pyx":136
+  /* "structureboost/structure_dt_multi.pyx":135
  * 
  * 
  *     def predict(self, X_test):             # <<<<<<<<<<<<<<
  *         col_list = list(X_test.columns)
  *         column_to_int_dict = {col_list[i]: i for i in range(len(col_list))}
  */
-  __pyx_t_5 = __Pyx_CyFunction_New(&__pyx_mdef_14structureboost_18structure_dt_multi_26StructureDecisionTreeMulti_15predict, 0, __pyx_n_s_StructureDecisionTreeMulti_predi, NULL, __pyx_n_s_structureboost_structure_dt_mult, __pyx_d, ((PyObject *)__pyx_codeobj__12)); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 136, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_CyFunction_New(&__pyx_mdef_14structureboost_18structure_dt_multi_26StructureDecisionTreeMulti_15predict, 0, __pyx_n_s_StructureDecisionTreeMulti_predi, NULL, __pyx_n_s_structureboost_structure_dt_mult, __pyx_d, ((PyObject *)__pyx_codeobj__12)); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 135, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
-  if (__Pyx_SetNameInClass(__pyx_t_3, __pyx_n_s_predict, __pyx_t_5) < 0) __PYX_ERR(0, 136, __pyx_L1_error)
+  if (__Pyx_SetNameInClass(__pyx_t_3, __pyx_n_s_predict, __pyx_t_5) < 0) __PYX_ERR(0, 135, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
 
-  /* "structureboost/structure_dt_multi.pyx":143
+  /* "structureboost/structure_dt_multi.pyx":142
  * 
  * 
  *     def get_prediction(self, tree_node, X_te, dict col_to_int_dict):             # <<<<<<<<<<<<<<
- *         cdef np.ndarray[dtype_int64_t] ind_subset_left, ind_subset_right
+ *         cdef np.ndarray[np.int_t] ind_subset_left, ind_subset_right
  *         cdef long vec_len, lsize
  */
-  __pyx_t_5 = __Pyx_CyFunction_New(&__pyx_mdef_14structureboost_18structure_dt_multi_26StructureDecisionTreeMulti_17get_prediction, 0, __pyx_n_s_StructureDecisionTreeMulti_get_p, NULL, __pyx_n_s_structureboost_structure_dt_mult, __pyx_d, ((PyObject *)__pyx_codeobj__13)); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 143, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_CyFunction_New(&__pyx_mdef_14structureboost_18structure_dt_multi_26StructureDecisionTreeMulti_17get_prediction, 0, __pyx_n_s_StructureDecisionTreeMulti_get_p, NULL, __pyx_n_s_structureboost_structure_dt_mult, __pyx_d, ((PyObject *)__pyx_codeobj__13)); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 142, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
-  if (__Pyx_SetNameInClass(__pyx_t_3, __pyx_n_s_get_prediction, __pyx_t_5) < 0) __PYX_ERR(0, 143, __pyx_L1_error)
+  if (__Pyx_SetNameInClass(__pyx_t_3, __pyx_n_s_get_prediction, __pyx_t_5) < 0) __PYX_ERR(0, 142, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
 
-  /* "structureboost/structure_dt_multi.pyx":21
- * ctypedef np.int64_t dtype_int64_t
+  /* "structureboost/structure_dt_multi.pyx":20
+ * 
  * 
  * class StructureDecisionTreeMulti(StructureDecisionTree):             # <<<<<<<<<<<<<<
  *     """Multi class Decision Tree using graphical structure.
  * 
  */
-  __pyx_t_5 = __Pyx_Py3ClassCreate(__pyx_t_2, __pyx_n_s_StructureDecisionTreeMulti, __pyx_t_1, __pyx_t_3, NULL, 0, 0); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 21, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_Py3ClassCreate(__pyx_t_2, __pyx_n_s_StructureDecisionTreeMulti, __pyx_t_1, __pyx_t_3, NULL, 0, 0); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 20, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
-  if (__Pyx_CyFunction_InitClassCell(__pyx_t_4, __pyx_t_5) < 0) __PYX_ERR(0, 21, __pyx_L1_error)
+  if (__Pyx_CyFunction_InitClassCell(__pyx_t_4, __pyx_t_5) < 0) __PYX_ERR(0, 20, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_StructureDecisionTreeMulti, __pyx_t_5) < 0) __PYX_ERR(0, 21, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_StructureDecisionTreeMulti, __pyx_t_5) < 0) __PYX_ERR(0, 20, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "structureboost/structure_dt_multi.pyx":180
+  /* "structureboost/structure_dt_multi.pyx":179
  * @cython.boundscheck(False)  # Deactivate bounds checking
  * @cython.wraparound(False)   # Deactivate negative indexing.
- * def get_g_h_feature_sum_matrix(np.ndarray[dtype_int64_t] feature_vec_node,             # <<<<<<<<<<<<<<
+ * def get_g_h_feature_sum_matrix(np.ndarray[np.int_t] feature_vec_node,             # <<<<<<<<<<<<<<
  *                                np.ndarray[double, ndim=2] g_h_train_node,
  *                                np.ndarray[double, ndim=2] g_h_val_arr,
  */
-  __pyx_t_1 = PyCFunction_NewEx(&__pyx_mdef_14structureboost_18structure_dt_multi_1get_g_h_feature_sum_matrix, NULL, __pyx_n_s_structureboost_structure_dt_mult); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 180, __pyx_L1_error)
+  __pyx_t_1 = PyCFunction_NewEx(&__pyx_mdef_14structureboost_18structure_dt_multi_1get_g_h_feature_sum_matrix, NULL, __pyx_n_s_structureboost_structure_dt_mult); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 179, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_get_g_h_feature_sum_matrix, __pyx_t_1) < 0) __PYX_ERR(0, 180, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_get_g_h_feature_sum_matrix, __pyx_t_1) < 0) __PYX_ERR(0, 179, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "structureboost/structure_dt_multi.pyx":193
+  /* "structureboost/structure_dt_multi.pyx":192
  * 
  * 
  * def _get_gh_score_num_mc(np.ndarray[double] g_left,             # <<<<<<<<<<<<<<
  *                       np.ndarray[double] g_right,
  *                       np.ndarray[double] h_left,
  */
-  __pyx_t_1 = PyCFunction_NewEx(&__pyx_mdef_14structureboost_18structure_dt_multi_3_get_gh_score_num_mc, NULL, __pyx_n_s_structureboost_structure_dt_mult); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 193, __pyx_L1_error)
+  __pyx_t_1 = PyCFunction_NewEx(&__pyx_mdef_14structureboost_18structure_dt_multi_3_get_gh_score_num_mc, NULL, __pyx_n_s_structureboost_structure_dt_mult); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 192, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_get_gh_score_num_mc, __pyx_t_1) < 0) __PYX_ERR(0, 193, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_get_gh_score_num_mc, __pyx_t_1) < 0) __PYX_ERR(0, 192, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "structureboost/structure_dt_multi.pyx":207
+  /* "structureboost/structure_dt_multi.pyx":206
  * 
  * 
  * def _get_gh_score_array_mc(np.ndarray[double, ndim=2] g_left,             # <<<<<<<<<<<<<<
  *                         np.ndarray[double, ndim=2] g_right,
  *                         np.ndarray[double, ndim=2] h_left,
  */
-  __pyx_t_1 = PyCFunction_NewEx(&__pyx_mdef_14structureboost_18structure_dt_multi_5_get_gh_score_array_mc, NULL, __pyx_n_s_structureboost_structure_dt_mult); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 207, __pyx_L1_error)
+  __pyx_t_1 = PyCFunction_NewEx(&__pyx_mdef_14structureboost_18structure_dt_multi_5_get_gh_score_array_mc, NULL, __pyx_n_s_structureboost_structure_dt_mult); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 206, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_get_gh_score_array_mc, __pyx_t_1) < 0) __PYX_ERR(0, 207, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_get_gh_score_array_mc, __pyx_t_1) < 0) __PYX_ERR(0, 206, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "structureboost/structure_dt_multi.pyx":220
+  /* "structureboost/structure_dt_multi.pyx":219
  * @cython.boundscheck(False)  # Deactivate bounds checking
  * @cython.wraparound(False)   # Deactivate negative indexing.
  * def get_bin_sums_c_mc(np.ndarray[double, ndim=2] g_h_mat,             # <<<<<<<<<<<<<<
- *                    np.ndarray[dtype_int64_t] bin_result_vec,
+ *                    np.ndarray[np.int_t] bin_result_vec,
  *                    long out_vec_size, long num_classes):
  */
-  __pyx_t_1 = PyCFunction_NewEx(&__pyx_mdef_14structureboost_18structure_dt_multi_7get_bin_sums_c_mc, NULL, __pyx_n_s_structureboost_structure_dt_mult); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 220, __pyx_L1_error)
+  __pyx_t_1 = PyCFunction_NewEx(&__pyx_mdef_14structureboost_18structure_dt_multi_7get_bin_sums_c_mc, NULL, __pyx_n_s_structureboost_structure_dt_mult); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 219, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_get_bin_sums_c_mc, __pyx_t_1) < 0) __PYX_ERR(0, 220, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_get_bin_sums_c_mc, __pyx_t_1) < 0) __PYX_ERR(0, 219, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "structureboost/structure_dt_multi.pyx":235
+  /* "structureboost/structure_dt_multi.pyx":234
  *     return g_sum_bins, h_sum_bins
  * 
  * def get_left_right_sums_mc(bin_sums):             # <<<<<<<<<<<<<<
  *     sum_left = np.cumsum(bin_sums, axis=0)
  *     sum_total = sum_left[-1,:]
  */
-  __pyx_t_1 = PyCFunction_NewEx(&__pyx_mdef_14structureboost_18structure_dt_multi_9get_left_right_sums_mc, NULL, __pyx_n_s_structureboost_structure_dt_mult); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 235, __pyx_L1_error)
+  __pyx_t_1 = PyCFunction_NewEx(&__pyx_mdef_14structureboost_18structure_dt_multi_9get_left_right_sums_mc, NULL, __pyx_n_s_structureboost_structure_dt_mult); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 234, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_get_left_right_sums_mc, __pyx_t_1) < 0) __PYX_ERR(0, 235, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_get_left_right_sums_mc, __pyx_t_1) < 0) __PYX_ERR(0, 234, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
   /* "structureboost/structure_dt_multi.pyx":1

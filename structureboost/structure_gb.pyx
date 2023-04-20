@@ -17,8 +17,6 @@ from libc.math cimport exp
 cimport numpy as np
 cimport cython
 
-ctypedef np.int64_t dtype_int64_t
-
 
 class StructureBoost(object):
     """Gradient Boosting model allowing categorical structure.
@@ -747,7 +745,7 @@ class StructureBoost(object):
             cat_size = np.max(np.array([dt.get_max_split_size() for dt in self.dec_tree_list]))
             num_dt = len(self.dec_tree_list)
             max_nodes = np.max(np.array([dt.num_nodes for dt in self.dec_tree_list]))
-            self.pred_tens_int = np.zeros((num_dt, max_nodes, cat_size+6), dtype=np.int64)-1
+            self.pred_tens_int = np.zeros((num_dt, max_nodes, cat_size+6), dtype=np.int_)-1
             self.pred_tens_float = np.zeros((num_dt, max_nodes, 3))
             for i in range(num_dt):
                 self.convert_dt_to_matrix(i)
@@ -945,7 +943,7 @@ def predict_with_tensor_c(np.ndarray[double, ndim=3] dtm_float,
 @cython.boundscheck(False)  # Deactivate bounds checking
 @cython.wraparound(False)   # Deactivate negative indexing.
 @cython.cdivision(True)
-cdef extend_path(np.ndarray[dtype_int64_t] feature_indexes, 
+cdef extend_path(np.ndarray[long] feature_indexes, 
                 np.ndarray[double] zero_fractions,
                 np.ndarray[double] one_fractions, 
                 np.ndarray[double] pweights,
@@ -971,7 +969,7 @@ cdef extend_path(np.ndarray[dtype_int64_t] feature_indexes,
 @cython.boundscheck(False)  # Deactivate bounds checking
 @cython.wraparound(False)   # Deactivate negative indexing.
 @cython.cdivision(True)
-cdef unwind_path(np.ndarray[dtype_int64_t] feature_indexes,
+cdef unwind_path(np.ndarray[long] feature_indexes,
                 np.ndarray[double] zero_fractions,
                 np.ndarray[double] one_fractions, 
                 np.ndarray[double] pweights,
@@ -1001,7 +999,7 @@ cdef unwind_path(np.ndarray[dtype_int64_t] feature_indexes,
 # we unwound a previous extension in the decision path
 @cython.boundscheck(False)  # Deactivate bounds checking
 @cython.wraparound(False)   # Deactivate negative indexing.
-cdef double unwound_path_sum(np.ndarray[dtype_int64_t] feature_indexes, 
+cdef double unwound_path_sum(np.ndarray[long] feature_indexes, 
                      np.ndarray[double] zero_fractions, 
                      np.ndarray[double] one_fractions, 
                      np.ndarray[double] pweights, 
@@ -1031,13 +1029,13 @@ cdef double unwound_path_sum(np.ndarray[dtype_int64_t] feature_indexes,
 @cython.boundscheck(False)  # Deactivate bounds checking
 @cython.wraparound(False)   # Deactivate negative indexing.
 @cython.cdivision(True)
-cdef tree_shap_recursive(np.ndarray[dtype_int64_t] children_left, 
-                        np.ndarray[dtype_int64_t] children_right, 
-                        np.ndarray[dtype_int64_t] children_default, 
-                        np.ndarray[dtype_int64_t] features, 
-                        np.ndarray[dtype_int64_t] node_type_vec, 
-                        np.ndarray[dtype_int64_t] num_cat_vals_vec, 
-                        np.ndarray[dtype_int64_t, ndim=2] cat_vals_mat, 
+cdef tree_shap_recursive(np.ndarray[long] children_left, 
+                        np.ndarray[long] children_right, 
+                        np.ndarray[long] children_default, 
+                        np.ndarray[long] features, 
+                        np.ndarray[long] node_type_vec, 
+                        np.ndarray[long] num_cat_vals_vec, 
+                        np.ndarray[long, ndim=2] cat_vals_mat, 
                         np.ndarray[double] thresholds,
                         np.ndarray[double] values,
                         np.ndarray[double] node_sample_weight,
@@ -1046,7 +1044,7 @@ cdef tree_shap_recursive(np.ndarray[dtype_int64_t] children_left,
                         np.ndarray[double] phi, 
                         long node_index, 
                         long unique_depth, 
-                        np.ndarray[dtype_int64_t] parent_feature_indexes,
+                        np.ndarray[long] parent_feature_indexes,
                         np.ndarray[double] parent_zero_fractions, 
                         np.ndarray[double] parent_one_fractions, 
                         np.ndarray[double] parent_pweights,
@@ -1058,7 +1056,7 @@ cdef tree_shap_recursive(np.ndarray[dtype_int64_t] children_left,
                         double condition_fraction):
 
     cdef long pfi_len = len(parent_feature_indexes)
-    cdef np.ndarray[dtype_int64_t] feature_indexes = np.zeros(pfi_len, dtype=np.int64)
+    cdef np.ndarray[long] feature_indexes = np.zeros(pfi_len, dtype=np.int_)
     cdef np.ndarray[double] zero_fractions = np.zeros(pfi_len, dtype=np.float64)
     cdef np.ndarray[double] one_fractions = np.zeros(pfi_len, dtype=np.float64)
     cdef np.ndarray[double] pweights = np.zeros(pfi_len, dtype=np.float64)
@@ -1201,7 +1199,7 @@ def tree_shap_single_pt(dt_mat_int, dt_mat_float,  dt_max_depth, X_in, condition
 
     # Initialize tracking vectors
     s = (dt_max_depth+2)*(dt_max_depth+1)
-    feature_indexes = np.zeros(s, dtype=np.int64)
+    feature_indexes = np.zeros(s, dtype=np.int_)
     zero_fractions = np.zeros(s, dtype=np.float64)
     one_fractions = np.zeros(s, dtype=np.float64)
     pweights = np.zeros(s, dtype=np.float64)

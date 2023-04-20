@@ -1212,15 +1212,6 @@ typedef npy_double __pyx_t_5numpy_double_t;
  * ctypedef npy_cfloat      cfloat_t
  */
 typedef npy_longdouble __pyx_t_5numpy_longdouble_t;
-
-/* "structureboost/structure_rfdt.pyx":18
- * cimport cython
- * 
- * ctypedef np.int64_t dtype_int64_t             # <<<<<<<<<<<<<<
- * 
- * class StructureRFDecisionTree(StructureDecisionTree):
- */
-typedef __pyx_t_5numpy_int64_t __pyx_t_14structureboost_14structure_rfdt_dtype_int64_t;
 /* Declarations.proto */
 #if CYTHON_CCOMPLEX
   #ifdef __cplusplus
@@ -2244,7 +2235,7 @@ static PyTypeObject *__pyx_ptype_5numpy_ufunc = 0;
 
 /* Module declarations from 'structureboost.structure_rfdt' */
 static __Pyx_TypeInfo __Pyx_TypeInfo_double = { "double", NULL, sizeof(double), { 0 }, 0, 'R', 0, 0 };
-static __Pyx_TypeInfo __Pyx_TypeInfo_nn___pyx_t_14structureboost_14structure_rfdt_dtype_int64_t = { "dtype_int64_t", NULL, sizeof(__pyx_t_14structureboost_14structure_rfdt_dtype_int64_t), { 0 }, 0, IS_UNSIGNED(__pyx_t_14structureboost_14structure_rfdt_dtype_int64_t) ? 'U' : 'I', IS_UNSIGNED(__pyx_t_14structureboost_14structure_rfdt_dtype_int64_t), 0 };
+static __Pyx_TypeInfo __Pyx_TypeInfo_nn___pyx_t_5numpy_int_t = { "int_t", NULL, sizeof(__pyx_t_5numpy_int_t), { 0 }, 0, IS_UNSIGNED(__pyx_t_5numpy_int_t) ? 'U' : 'I', IS_UNSIGNED(__pyx_t_5numpy_int_t), 0 };
 #define __Pyx_MODULE_NAME "structureboost.structure_rfdt"
 extern int __pyx_module_is_main_structureboost__structure_rfdt;
 int __pyx_module_is_main_structureboost__structure_rfdt = 0;
@@ -2267,6 +2258,7 @@ static const char __pyx_k_cbt[] = "cbt";
 static const char __pyx_k_doc[] = "__doc__";
 static const char __pyx_k_eps[] = "eps";
 static const char __pyx_k_inf[] = "inf";
+static const char __pyx_k_int[] = "int_";
 static const char __pyx_k_log[] = "log";
 static const char __pyx_k_mls[] = "mls";
 static const char __pyx_k_sum[] = "sum";
@@ -2292,7 +2284,6 @@ static const char __pyx_k_array[] = "array";
 static const char __pyx_k_depth[] = "depth";
 static const char __pyx_k_dtype[] = "dtype";
 static const char __pyx_k_gamma[] = "gamma";
-static const char __pyx_k_int64[] = "int64";
 static const char __pyx_k_isnan[] = "isnan";
 static const char __pyx_k_numpy[] = "numpy";
 static const char __pyx_k_range[] = "range";
@@ -2505,7 +2496,7 @@ static PyObject *__pyx_n_s_i;
 static PyObject *__pyx_n_s_import;
 static PyObject *__pyx_n_s_inf;
 static PyObject *__pyx_n_s_init;
-static PyObject *__pyx_n_s_int64;
+static PyObject *__pyx_n_s_int;
 static PyObject *__pyx_n_s_isnan;
 static PyObject *__pyx_n_s_j;
 static PyObject *__pyx_n_s_leaf_vertex_ind;
@@ -3682,7 +3673,7 @@ static PyObject *__pyx_pf_14structureboost_14structure_rfdt_23StructureRFDecisio
  *         has_na_vals = np.isnan(split_vec[-1])
  *         bin_result_vec = np.searchsorted(split_vec,             # <<<<<<<<<<<<<<
  *                                          feature_vec,
- *                                          side='right').astype(np.int64)
+ *                                          side='right').astype(np.int_)
  */
   __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_n_s_np); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 65, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
@@ -3694,7 +3685,7 @@ static PyObject *__pyx_pf_14structureboost_14structure_rfdt_23StructureRFDecisio
  *         has_na_vals = np.isnan(split_vec[-1])
  *         bin_result_vec = np.searchsorted(split_vec,
  *                                          feature_vec,             # <<<<<<<<<<<<<<
- *                                          side='right').astype(np.int64)
+ *                                          side='right').astype(np.int_)
  *         y_sum_bins, count_in_bins = get_bin_sums_c_rfbin(y_c_mat[:,0],
  */
   __pyx_t_3 = PyTuple_New(2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 65, __pyx_L1_error)
@@ -3709,7 +3700,7 @@ static PyObject *__pyx_pf_14structureboost_14structure_rfdt_23StructureRFDecisio
   /* "structureboost/structure_rfdt.pyx":67
  *         bin_result_vec = np.searchsorted(split_vec,
  *                                          feature_vec,
- *                                          side='right').astype(np.int64)             # <<<<<<<<<<<<<<
+ *                                          side='right').astype(np.int_)             # <<<<<<<<<<<<<<
  *         y_sum_bins, count_in_bins = get_bin_sums_c_rfbin(y_c_mat[:,0],
  *                                                 bin_result_vec,
  */
@@ -3722,7 +3713,7 @@ static PyObject *__pyx_pf_14structureboost_14structure_rfdt_23StructureRFDecisio
  *         has_na_vals = np.isnan(split_vec[-1])
  *         bin_result_vec = np.searchsorted(split_vec,             # <<<<<<<<<<<<<<
  *                                          feature_vec,
- *                                          side='right').astype(np.int64)
+ *                                          side='right').astype(np.int_)
  */
   __pyx_t_5 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_3, __pyx_t_4); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 65, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
@@ -3733,7 +3724,7 @@ static PyObject *__pyx_pf_14structureboost_14structure_rfdt_23StructureRFDecisio
   /* "structureboost/structure_rfdt.pyx":67
  *         bin_result_vec = np.searchsorted(split_vec,
  *                                          feature_vec,
- *                                          side='right').astype(np.int64)             # <<<<<<<<<<<<<<
+ *                                          side='right').astype(np.int_)             # <<<<<<<<<<<<<<
  *         y_sum_bins, count_in_bins = get_bin_sums_c_rfbin(y_c_mat[:,0],
  *                                                 bin_result_vec,
  */
@@ -3742,7 +3733,7 @@ static PyObject *__pyx_pf_14structureboost_14structure_rfdt_23StructureRFDecisio
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
   __Pyx_GetModuleGlobalName(__pyx_t_5, __pyx_n_s_np); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 67, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
-  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_5, __pyx_n_s_int64); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 67, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_5, __pyx_n_s_int); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 67, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
   __pyx_t_5 = NULL;
@@ -3766,7 +3757,7 @@ static PyObject *__pyx_pf_14structureboost_14structure_rfdt_23StructureRFDecisio
 
   /* "structureboost/structure_rfdt.pyx":68
  *                                          feature_vec,
- *                                          side='right').astype(np.int64)
+ *                                          side='right').astype(np.int_)
  *         y_sum_bins, count_in_bins = get_bin_sums_c_rfbin(y_c_mat[:,0],             # <<<<<<<<<<<<<<
  *                                                 bin_result_vec,
  *                                                 len(split_vec)+1)
@@ -3887,7 +3878,7 @@ static PyObject *__pyx_pf_14structureboost_14structure_rfdt_23StructureRFDecisio
 
   /* "structureboost/structure_rfdt.pyx":68
  *                                          feature_vec,
- *                                          side='right').astype(np.int64)
+ *                                          side='right').astype(np.int_)
  *         y_sum_bins, count_in_bins = get_bin_sums_c_rfbin(y_c_mat[:,0],             # <<<<<<<<<<<<<<
  *                                                 bin_result_vec,
  *                                                 len(split_vec)+1)
@@ -5836,7 +5827,7 @@ static PyObject *__pyx_pf_14structureboost_14structure_rfdt_23StructureRFDecisio
  *                                             float(self.min_leaf_size))
  *             elif feature_type in ['categorical_int','graphical_voronoi']:             # <<<<<<<<<<<<<<
  *                 fs_array = np.fromiter(left_feat_values, int,
- *                 len(left_feat_values)).astype(np.int64)
+ *                 len(left_feat_values)).astype(np.int_)
  */
     __Pyx_INCREF(__pyx_v_feature_type);
     __pyx_t_1 = __pyx_v_feature_type;
@@ -5857,7 +5848,7 @@ static PyObject *__pyx_pf_14structureboost_14structure_rfdt_23StructureRFDecisio
  *                                             float(self.min_leaf_size))
  *             elif feature_type in ['categorical_int','graphical_voronoi']:
  *                 fs_array = np.fromiter(left_feat_values, int,             # <<<<<<<<<<<<<<
- *                 len(left_feat_values)).astype(np.int64)
+ *                 len(left_feat_values)).astype(np.int_)
  *                 vec_len = len(feature_vec_node)
  */
       __Pyx_GetModuleGlobalName(__pyx_t_10, __pyx_n_s_np); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 139, __pyx_L1_error)
@@ -5869,7 +5860,7 @@ static PyObject *__pyx_pf_14structureboost_14structure_rfdt_23StructureRFDecisio
       /* "structureboost/structure_rfdt.pyx":140
  *             elif feature_type in ['categorical_int','graphical_voronoi']:
  *                 fs_array = np.fromiter(left_feat_values, int,
- *                 len(left_feat_values)).astype(np.int64)             # <<<<<<<<<<<<<<
+ *                 len(left_feat_values)).astype(np.int_)             # <<<<<<<<<<<<<<
  *                 vec_len = len(feature_vec_node)
  *                 lsplit_len = len(fs_array)
  */
@@ -5931,7 +5922,7 @@ static PyObject *__pyx_pf_14structureboost_14structure_rfdt_23StructureRFDecisio
       __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
       __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_np); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 140, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_2);
-      __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_int64); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 140, __pyx_L1_error)
+      __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_int); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 140, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_6);
       __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
       __pyx_t_2 = NULL;
@@ -5955,20 +5946,20 @@ static PyObject *__pyx_pf_14structureboost_14structure_rfdt_23StructureRFDecisio
 
       /* "structureboost/structure_rfdt.pyx":141
  *                 fs_array = np.fromiter(left_feat_values, int,
- *                 len(left_feat_values)).astype(np.int64)
+ *                 len(left_feat_values)).astype(np.int_)
  *                 vec_len = len(feature_vec_node)             # <<<<<<<<<<<<<<
  *                 lsplit_len = len(fs_array)
- *                 mask = np.zeros(vec_len, dtype=np.int64)
+ *                 mask = np.zeros(vec_len, dtype=np.int_)
  */
       __pyx_t_12 = PyObject_Length(__pyx_v_feature_vec_node); if (unlikely(__pyx_t_12 == ((Py_ssize_t)-1))) __PYX_ERR(0, 141, __pyx_L1_error)
       __pyx_v_vec_len = __pyx_t_12;
 
       /* "structureboost/structure_rfdt.pyx":142
- *                 len(left_feat_values)).astype(np.int64)
+ *                 len(left_feat_values)).astype(np.int_)
  *                 vec_len = len(feature_vec_node)
  *                 lsplit_len = len(fs_array)             # <<<<<<<<<<<<<<
- *                 mask = np.zeros(vec_len, dtype=np.int64)
- *                 mask = get_mask_int_c(feature_vec_node.astype(np.int64),
+ *                 mask = np.zeros(vec_len, dtype=np.int_)
+ *                 mask = get_mask_int_c(feature_vec_node.astype(np.int_),
  */
       __pyx_t_12 = PyObject_Length(__pyx_v_fs_array); if (unlikely(__pyx_t_12 == ((Py_ssize_t)-1))) __PYX_ERR(0, 142, __pyx_L1_error)
       __pyx_v_lsplit_len = __pyx_t_12;
@@ -5976,8 +5967,8 @@ static PyObject *__pyx_pf_14structureboost_14structure_rfdt_23StructureRFDecisio
       /* "structureboost/structure_rfdt.pyx":143
  *                 vec_len = len(feature_vec_node)
  *                 lsplit_len = len(fs_array)
- *                 mask = np.zeros(vec_len, dtype=np.int64)             # <<<<<<<<<<<<<<
- *                 mask = get_mask_int_c(feature_vec_node.astype(np.int64),
+ *                 mask = np.zeros(vec_len, dtype=np.int_)             # <<<<<<<<<<<<<<
+ *                 mask = get_mask_int_c(feature_vec_node.astype(np.int_),
  *                                fs_array, vec_len, lsplit_len,
  */
       __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_np); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 143, __pyx_L1_error)
@@ -5996,7 +5987,7 @@ static PyObject *__pyx_pf_14structureboost_14structure_rfdt_23StructureRFDecisio
       __Pyx_GOTREF(__pyx_t_1);
       __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_np); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 143, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_2);
-      __pyx_t_10 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_int64); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 143, __pyx_L1_error)
+      __pyx_t_10 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_int); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 143, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_10);
       __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
       if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_dtype, __pyx_t_10) < 0) __PYX_ERR(0, 143, __pyx_L1_error)
@@ -6011,8 +6002,8 @@ static PyObject *__pyx_pf_14structureboost_14structure_rfdt_23StructureRFDecisio
 
       /* "structureboost/structure_rfdt.pyx":144
  *                 lsplit_len = len(fs_array)
- *                 mask = np.zeros(vec_len, dtype=np.int64)
- *                 mask = get_mask_int_c(feature_vec_node.astype(np.int64),             # <<<<<<<<<<<<<<
+ *                 mask = np.zeros(vec_len, dtype=np.int_)
+ *                 mask = get_mask_int_c(feature_vec_node.astype(np.int_),             # <<<<<<<<<<<<<<
  *                                fs_array, vec_len, lsplit_len,
  *                                mask)
  */
@@ -6022,7 +6013,7 @@ static PyObject *__pyx_pf_14structureboost_14structure_rfdt_23StructureRFDecisio
       __Pyx_GOTREF(__pyx_t_4);
       __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_np); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 144, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_2);
-      __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_int64); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 144, __pyx_L1_error)
+      __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_int); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 144, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_5);
       __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
       __pyx_t_2 = NULL;
@@ -6043,8 +6034,8 @@ static PyObject *__pyx_pf_14structureboost_14structure_rfdt_23StructureRFDecisio
       __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
 
       /* "structureboost/structure_rfdt.pyx":145
- *                 mask = np.zeros(vec_len, dtype=np.int64)
- *                 mask = get_mask_int_c(feature_vec_node.astype(np.int64),
+ *                 mask = np.zeros(vec_len, dtype=np.int_)
+ *                 mask = get_mask_int_c(feature_vec_node.astype(np.int_),
  *                                fs_array, vec_len, lsplit_len,             # <<<<<<<<<<<<<<
  *                                mask)
  * 
@@ -6055,7 +6046,7 @@ static PyObject *__pyx_pf_14structureboost_14structure_rfdt_23StructureRFDecisio
       __Pyx_GOTREF(__pyx_t_5);
 
       /* "structureboost/structure_rfdt.pyx":146
- *                 mask = get_mask_int_c(feature_vec_node.astype(np.int64),
+ *                 mask = get_mask_int_c(feature_vec_node.astype(np.int_),
  *                                fs_array, vec_len, lsplit_len,
  *                                mask)             # <<<<<<<<<<<<<<
  * 
@@ -6250,7 +6241,7 @@ static PyObject *__pyx_pf_14structureboost_14structure_rfdt_23StructureRFDecisio
  *                                             float(self.min_leaf_size))
  *             elif feature_type in ['categorical_int','graphical_voronoi']:             # <<<<<<<<<<<<<<
  *                 fs_array = np.fromiter(left_feat_values, int,
- *                 len(left_feat_values)).astype(np.int64)
+ *                 len(left_feat_values)).astype(np.int_)
  */
     }
     __pyx_L4:;
@@ -6819,7 +6810,7 @@ static PyObject *__pyx_pf_14structureboost_14structure_rfdt_23StructureRFDecisio
  * @cython.boundscheck(False)  # Deactivate bounds checking
  * @cython.wraparound(False)   # Deactivate negative indexing.
  * def get_bin_sums_c_rfbin(np.ndarray[double] y_vec,             # <<<<<<<<<<<<<<
- *                    np.ndarray[dtype_int64_t] bin_result_vec, long out_vec_size):
+ *                    np.ndarray[np.int_t] bin_result_vec, long out_vec_size):
  *     cdef int i
  */
 
@@ -6932,7 +6923,7 @@ static PyObject *__pyx_pf_14structureboost_14structure_rfdt_get_bin_sums_c_rfbin
   int __pyx_t_9;
   Py_ssize_t __pyx_t_10;
   Py_ssize_t __pyx_t_11;
-  __pyx_t_14structureboost_14structure_rfdt_dtype_int64_t __pyx_t_12;
+  Py_ssize_t __pyx_t_12;
   int __pyx_lineno = 0;
   const char *__pyx_filename = NULL;
   int __pyx_clineno = 0;
@@ -6962,12 +6953,12 @@ static PyObject *__pyx_pf_14structureboost_14structure_rfdt_get_bin_sums_c_rfbin
   __pyx_pybuffernd_y_vec.diminfo[0].strides = __pyx_pybuffernd_y_vec.rcbuffer->pybuffer.strides[0]; __pyx_pybuffernd_y_vec.diminfo[0].shape = __pyx_pybuffernd_y_vec.rcbuffer->pybuffer.shape[0];
   {
     __Pyx_BufFmt_StackElem __pyx_stack[1];
-    if (unlikely(__Pyx_GetBufferAndValidate(&__pyx_pybuffernd_bin_result_vec.rcbuffer->pybuffer, (PyObject*)__pyx_v_bin_result_vec, &__Pyx_TypeInfo_nn___pyx_t_14structureboost_14structure_rfdt_dtype_int64_t, PyBUF_FORMAT| PyBUF_STRIDES, 1, 0, __pyx_stack) == -1)) __PYX_ERR(0, 175, __pyx_L1_error)
+    if (unlikely(__Pyx_GetBufferAndValidate(&__pyx_pybuffernd_bin_result_vec.rcbuffer->pybuffer, (PyObject*)__pyx_v_bin_result_vec, &__Pyx_TypeInfo_nn___pyx_t_5numpy_int_t, PyBUF_FORMAT| PyBUF_STRIDES, 1, 0, __pyx_stack) == -1)) __PYX_ERR(0, 175, __pyx_L1_error)
   }
   __pyx_pybuffernd_bin_result_vec.diminfo[0].strides = __pyx_pybuffernd_bin_result_vec.rcbuffer->pybuffer.strides[0]; __pyx_pybuffernd_bin_result_vec.diminfo[0].shape = __pyx_pybuffernd_bin_result_vec.rcbuffer->pybuffer.shape[0];
 
   /* "structureboost/structure_rfdt.pyx":178
- *                    np.ndarray[dtype_int64_t] bin_result_vec, long out_vec_size):
+ *                    np.ndarray[np.int_t] bin_result_vec, long out_vec_size):
  *     cdef int i
  *     cdef int m = bin_result_vec.shape[0]             # <<<<<<<<<<<<<<
  * 
@@ -7084,7 +7075,7 @@ static PyObject *__pyx_pf_14structureboost_14structure_rfdt_get_bin_sums_c_rfbin
  */
     __pyx_t_10 = __pyx_v_i;
     __pyx_t_11 = __pyx_v_i;
-    __pyx_t_12 = (*__Pyx_BufPtrStrided1d(__pyx_t_14structureboost_14structure_rfdt_dtype_int64_t *, __pyx_pybuffernd_bin_result_vec.rcbuffer->pybuffer.buf, __pyx_t_11, __pyx_pybuffernd_bin_result_vec.diminfo[0].strides));
+    __pyx_t_12 = (*__Pyx_BufPtrStrided1d(__pyx_t_5numpy_int_t *, __pyx_pybuffernd_bin_result_vec.rcbuffer->pybuffer.buf, __pyx_t_11, __pyx_pybuffernd_bin_result_vec.diminfo[0].strides));
     *__Pyx_BufPtrStrided1d(double *, __pyx_pybuffernd_y_sum_bins.rcbuffer->pybuffer.buf, __pyx_t_12, __pyx_pybuffernd_y_sum_bins.diminfo[0].strides) += (*__Pyx_BufPtrStrided1d(double *, __pyx_pybuffernd_y_vec.rcbuffer->pybuffer.buf, __pyx_t_10, __pyx_pybuffernd_y_vec.diminfo[0].strides));
 
     /* "structureboost/structure_rfdt.pyx":185
@@ -7095,8 +7086,8 @@ static PyObject *__pyx_pf_14structureboost_14structure_rfdt_get_bin_sums_c_rfbin
  * 
  */
     __pyx_t_10 = __pyx_v_i;
-    __pyx_t_12 = (*__Pyx_BufPtrStrided1d(__pyx_t_14structureboost_14structure_rfdt_dtype_int64_t *, __pyx_pybuffernd_bin_result_vec.rcbuffer->pybuffer.buf, __pyx_t_10, __pyx_pybuffernd_bin_result_vec.diminfo[0].strides));
-    *__Pyx_BufPtrStrided1d(double *, __pyx_pybuffernd_count_in_bins.rcbuffer->pybuffer.buf, __pyx_t_12, __pyx_pybuffernd_count_in_bins.diminfo[0].strides) += 1.0;
+    __pyx_t_11 = (*__Pyx_BufPtrStrided1d(__pyx_t_5numpy_int_t *, __pyx_pybuffernd_bin_result_vec.rcbuffer->pybuffer.buf, __pyx_t_10, __pyx_pybuffernd_bin_result_vec.diminfo[0].strides));
+    *__Pyx_BufPtrStrided1d(double *, __pyx_pybuffernd_count_in_bins.rcbuffer->pybuffer.buf, __pyx_t_11, __pyx_pybuffernd_count_in_bins.diminfo[0].strides) += 1.0;
   }
 
   /* "structureboost/structure_rfdt.pyx":186
@@ -7123,7 +7114,7 @@ static PyObject *__pyx_pf_14structureboost_14structure_rfdt_get_bin_sums_c_rfbin
  * @cython.boundscheck(False)  # Deactivate bounds checking
  * @cython.wraparound(False)   # Deactivate negative indexing.
  * def get_bin_sums_c_rfbin(np.ndarray[double] y_vec,             # <<<<<<<<<<<<<<
- *                    np.ndarray[dtype_int64_t] bin_result_vec, long out_vec_size):
+ *                    np.ndarray[np.int_t] bin_result_vec, long out_vec_size):
  *     cdef int i
  */
 
@@ -8717,7 +8708,7 @@ static PyObject *__pyx_pf_14structureboost_14structure_rfdt_6_get_score_binary_e
  * @cython.nonecheck(False)
  * @cython.cdivision(True)
  * def _get_score_array_mse(np.ndarray[double] y_vec,             # <<<<<<<<<<<<<<
- *                         np.ndarray[dtype_int64_t] bin_result_vec,
+ *                         np.ndarray[np.int_t] bin_result_vec,
  *                         np.ndarray[double] ysl,
  */
 
@@ -8945,7 +8936,7 @@ static PyObject *__pyx_pf_14structureboost_14structure_rfdt_8_get_score_array_ms
   __pyx_pybuffernd_y_vec.diminfo[0].strides = __pyx_pybuffernd_y_vec.rcbuffer->pybuffer.strides[0]; __pyx_pybuffernd_y_vec.diminfo[0].shape = __pyx_pybuffernd_y_vec.rcbuffer->pybuffer.shape[0];
   {
     __Pyx_BufFmt_StackElem __pyx_stack[1];
-    if (unlikely(__Pyx_GetBufferAndValidate(&__pyx_pybuffernd_bin_result_vec.rcbuffer->pybuffer, (PyObject*)__pyx_v_bin_result_vec, &__Pyx_TypeInfo_nn___pyx_t_14structureboost_14structure_rfdt_dtype_int64_t, PyBUF_FORMAT| PyBUF_STRIDES, 1, 0, __pyx_stack) == -1)) __PYX_ERR(0, 252, __pyx_L1_error)
+    if (unlikely(__Pyx_GetBufferAndValidate(&__pyx_pybuffernd_bin_result_vec.rcbuffer->pybuffer, (PyObject*)__pyx_v_bin_result_vec, &__Pyx_TypeInfo_nn___pyx_t_5numpy_int_t, PyBUF_FORMAT| PyBUF_STRIDES, 1, 0, __pyx_stack) == -1)) __PYX_ERR(0, 252, __pyx_L1_error)
   }
   __pyx_pybuffernd_bin_result_vec.diminfo[0].strides = __pyx_pybuffernd_bin_result_vec.rcbuffer->pybuffer.strides[0]; __pyx_pybuffernd_bin_result_vec.diminfo[0].shape = __pyx_pybuffernd_bin_result_vec.rcbuffer->pybuffer.shape[0];
   {
@@ -9113,7 +9104,7 @@ static PyObject *__pyx_pf_14structureboost_14structure_rfdt_8_get_score_array_ms
  *             else:
  */
       __pyx_t_10 = __pyx_v_j;
-      __pyx_t_15 = (((*__Pyx_BufPtrStrided1d(__pyx_t_14structureboost_14structure_rfdt_dtype_int64_t *, __pyx_pybuffernd_bin_result_vec.rcbuffer->pybuffer.buf, __pyx_t_10, __pyx_pybuffernd_bin_result_vec.diminfo[0].strides)) <= __pyx_v_i) != 0);
+      __pyx_t_15 = (((*__Pyx_BufPtrStrided1d(__pyx_t_5numpy_int_t *, __pyx_pybuffernd_bin_result_vec.rcbuffer->pybuffer.buf, __pyx_t_10, __pyx_pybuffernd_bin_result_vec.diminfo[0].strides)) <= __pyx_v_i) != 0);
       if (__pyx_t_15) {
 
         /* "structureboost/structure_rfdt.pyx":269
@@ -9204,7 +9195,7 @@ static PyObject *__pyx_pf_14structureboost_14structure_rfdt_8_get_score_array_ms
  * @cython.nonecheck(False)
  * @cython.cdivision(True)
  * def _get_score_array_mse(np.ndarray[double] y_vec,             # <<<<<<<<<<<<<<
- *                         np.ndarray[dtype_int64_t] bin_result_vec,
+ *                         np.ndarray[np.int_t] bin_result_vec,
  *                         np.ndarray[double] ysl,
  */
 
@@ -9649,8 +9640,8 @@ static PyObject *__pyx_pf_14structureboost_14structure_rfdt_12get_mask(CYTHON_UN
 /* "structureboost/structure_rfdt.pyx":314
  * @cython.boundscheck(False)  # Deactivate bounds checking
  * @cython.wraparound(False)   # Deactivate negative indexing.
- * def get_mask_int_c(np.ndarray[dtype_int64_t] feature_vec_node,             # <<<<<<<<<<<<<<
- *                    np.ndarray[dtype_int64_t] left_split,
+ * def get_mask_int_c(np.ndarray[np.int_t] feature_vec_node,             # <<<<<<<<<<<<<<
+ *                    np.ndarray[np.int_t] left_split,
  *                    long vec_len, long lsplit_len,
  */
 
@@ -9803,22 +9794,22 @@ static PyObject *__pyx_pf_14structureboost_14structure_rfdt_14get_mask_int_c(CYT
   __pyx_pybuffernd_mask_vec.rcbuffer = &__pyx_pybuffer_mask_vec;
   {
     __Pyx_BufFmt_StackElem __pyx_stack[1];
-    if (unlikely(__Pyx_GetBufferAndValidate(&__pyx_pybuffernd_feature_vec_node.rcbuffer->pybuffer, (PyObject*)__pyx_v_feature_vec_node, &__Pyx_TypeInfo_nn___pyx_t_14structureboost_14structure_rfdt_dtype_int64_t, PyBUF_FORMAT| PyBUF_STRIDES, 1, 0, __pyx_stack) == -1)) __PYX_ERR(0, 314, __pyx_L1_error)
+    if (unlikely(__Pyx_GetBufferAndValidate(&__pyx_pybuffernd_feature_vec_node.rcbuffer->pybuffer, (PyObject*)__pyx_v_feature_vec_node, &__Pyx_TypeInfo_nn___pyx_t_5numpy_int_t, PyBUF_FORMAT| PyBUF_STRIDES, 1, 0, __pyx_stack) == -1)) __PYX_ERR(0, 314, __pyx_L1_error)
   }
   __pyx_pybuffernd_feature_vec_node.diminfo[0].strides = __pyx_pybuffernd_feature_vec_node.rcbuffer->pybuffer.strides[0]; __pyx_pybuffernd_feature_vec_node.diminfo[0].shape = __pyx_pybuffernd_feature_vec_node.rcbuffer->pybuffer.shape[0];
   {
     __Pyx_BufFmt_StackElem __pyx_stack[1];
-    if (unlikely(__Pyx_GetBufferAndValidate(&__pyx_pybuffernd_left_split.rcbuffer->pybuffer, (PyObject*)__pyx_v_left_split, &__Pyx_TypeInfo_nn___pyx_t_14structureboost_14structure_rfdt_dtype_int64_t, PyBUF_FORMAT| PyBUF_STRIDES, 1, 0, __pyx_stack) == -1)) __PYX_ERR(0, 314, __pyx_L1_error)
+    if (unlikely(__Pyx_GetBufferAndValidate(&__pyx_pybuffernd_left_split.rcbuffer->pybuffer, (PyObject*)__pyx_v_left_split, &__Pyx_TypeInfo_nn___pyx_t_5numpy_int_t, PyBUF_FORMAT| PyBUF_STRIDES, 1, 0, __pyx_stack) == -1)) __PYX_ERR(0, 314, __pyx_L1_error)
   }
   __pyx_pybuffernd_left_split.diminfo[0].strides = __pyx_pybuffernd_left_split.rcbuffer->pybuffer.strides[0]; __pyx_pybuffernd_left_split.diminfo[0].shape = __pyx_pybuffernd_left_split.rcbuffer->pybuffer.shape[0];
   {
     __Pyx_BufFmt_StackElem __pyx_stack[1];
-    if (unlikely(__Pyx_GetBufferAndValidate(&__pyx_pybuffernd_mask_vec.rcbuffer->pybuffer, (PyObject*)__pyx_v_mask_vec, &__Pyx_TypeInfo_nn___pyx_t_14structureboost_14structure_rfdt_dtype_int64_t, PyBUF_FORMAT| PyBUF_STRIDES| PyBUF_WRITABLE, 1, 0, __pyx_stack) == -1)) __PYX_ERR(0, 314, __pyx_L1_error)
+    if (unlikely(__Pyx_GetBufferAndValidate(&__pyx_pybuffernd_mask_vec.rcbuffer->pybuffer, (PyObject*)__pyx_v_mask_vec, &__Pyx_TypeInfo_nn___pyx_t_5numpy_int_t, PyBUF_FORMAT| PyBUF_STRIDES| PyBUF_WRITABLE, 1, 0, __pyx_stack) == -1)) __PYX_ERR(0, 314, __pyx_L1_error)
   }
   __pyx_pybuffernd_mask_vec.diminfo[0].strides = __pyx_pybuffernd_mask_vec.rcbuffer->pybuffer.strides[0]; __pyx_pybuffernd_mask_vec.diminfo[0].shape = __pyx_pybuffernd_mask_vec.rcbuffer->pybuffer.shape[0];
 
   /* "structureboost/structure_rfdt.pyx":319
- *                    np.ndarray[dtype_int64_t] mask_vec):
+ *                    np.ndarray[np.int_t] mask_vec):
  *     cdef int i, j
  *     for i in range(vec_len):             # <<<<<<<<<<<<<<
  *         for j in range(lsplit_len):
@@ -9850,7 +9841,7 @@ static PyObject *__pyx_pf_14structureboost_14structure_rfdt_14get_mask_int_c(CYT
  */
       __pyx_t_7 = __pyx_v_i;
       __pyx_t_8 = __pyx_v_j;
-      __pyx_t_9 = (((*__Pyx_BufPtrStrided1d(__pyx_t_14structureboost_14structure_rfdt_dtype_int64_t *, __pyx_pybuffernd_feature_vec_node.rcbuffer->pybuffer.buf, __pyx_t_7, __pyx_pybuffernd_feature_vec_node.diminfo[0].strides)) == (*__Pyx_BufPtrStrided1d(__pyx_t_14structureboost_14structure_rfdt_dtype_int64_t *, __pyx_pybuffernd_left_split.rcbuffer->pybuffer.buf, __pyx_t_8, __pyx_pybuffernd_left_split.diminfo[0].strides))) != 0);
+      __pyx_t_9 = (((*__Pyx_BufPtrStrided1d(__pyx_t_5numpy_int_t *, __pyx_pybuffernd_feature_vec_node.rcbuffer->pybuffer.buf, __pyx_t_7, __pyx_pybuffernd_feature_vec_node.diminfo[0].strides)) == (*__Pyx_BufPtrStrided1d(__pyx_t_5numpy_int_t *, __pyx_pybuffernd_left_split.rcbuffer->pybuffer.buf, __pyx_t_8, __pyx_pybuffernd_left_split.diminfo[0].strides))) != 0);
       if (__pyx_t_9) {
 
         /* "structureboost/structure_rfdt.pyx":322
@@ -9861,7 +9852,7 @@ static PyObject *__pyx_pf_14structureboost_14structure_rfdt_14get_mask_int_c(CYT
  *     return mask_vec.astype(bool)
  */
         __pyx_t_8 = __pyx_v_i;
-        *__Pyx_BufPtrStrided1d(__pyx_t_14structureboost_14structure_rfdt_dtype_int64_t *, __pyx_pybuffernd_mask_vec.rcbuffer->pybuffer.buf, __pyx_t_8, __pyx_pybuffernd_mask_vec.diminfo[0].strides) = 1;
+        *__Pyx_BufPtrStrided1d(__pyx_t_5numpy_int_t *, __pyx_pybuffernd_mask_vec.rcbuffer->pybuffer.buf, __pyx_t_8, __pyx_pybuffernd_mask_vec.diminfo[0].strides) = 1;
 
         /* "structureboost/structure_rfdt.pyx":323
  *             if feature_vec_node[i] == left_split[j]:
@@ -9916,8 +9907,8 @@ static PyObject *__pyx_pf_14structureboost_14structure_rfdt_14get_mask_int_c(CYT
   /* "structureboost/structure_rfdt.pyx":314
  * @cython.boundscheck(False)  # Deactivate bounds checking
  * @cython.wraparound(False)   # Deactivate negative indexing.
- * def get_mask_int_c(np.ndarray[dtype_int64_t] feature_vec_node,             # <<<<<<<<<<<<<<
- *                    np.ndarray[dtype_int64_t] left_split,
+ * def get_mask_int_c(np.ndarray[np.int_t] feature_vec_node,             # <<<<<<<<<<<<<<
+ *                    np.ndarray[np.int_t] left_split,
  *                    long vec_len, long lsplit_len,
  */
 
@@ -11600,7 +11591,7 @@ static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {&__pyx_n_s_import, __pyx_k_import, sizeof(__pyx_k_import), 0, 0, 1, 1},
   {&__pyx_n_s_inf, __pyx_k_inf, sizeof(__pyx_k_inf), 0, 0, 1, 1},
   {&__pyx_n_s_init, __pyx_k_init, sizeof(__pyx_k_init), 0, 0, 1, 1},
-  {&__pyx_n_s_int64, __pyx_k_int64, sizeof(__pyx_k_int64), 0, 0, 1, 1},
+  {&__pyx_n_s_int, __pyx_k_int, sizeof(__pyx_k_int), 0, 0, 1, 1},
   {&__pyx_n_s_isnan, __pyx_k_isnan, sizeof(__pyx_k_isnan), 0, 0, 1, 1},
   {&__pyx_n_s_j, __pyx_k_j, sizeof(__pyx_k_j), 0, 0, 1, 1},
   {&__pyx_n_s_leaf_vertex_ind, __pyx_k_leaf_vertex_ind, sizeof(__pyx_k_leaf_vertex_ind), 0, 0, 1, 1},
@@ -11844,7 +11835,7 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
  * @cython.boundscheck(False)  # Deactivate bounds checking
  * @cython.wraparound(False)   # Deactivate negative indexing.
  * def get_bin_sums_c_rfbin(np.ndarray[double] y_vec,             # <<<<<<<<<<<<<<
- *                    np.ndarray[dtype_int64_t] bin_result_vec, long out_vec_size):
+ *                    np.ndarray[np.int_t] bin_result_vec, long out_vec_size):
  *     cdef int i
  */
   __pyx_tuple__30 = PyTuple_Pack(7, __pyx_n_s_y_vec, __pyx_n_s_bin_result_vec, __pyx_n_s_out_vec_size, __pyx_n_s_i, __pyx_n_s_m, __pyx_n_s_y_sum_bins, __pyx_n_s_count_in_bins); if (unlikely(!__pyx_tuple__30)) __PYX_ERR(0, 175, __pyx_L1_error)
@@ -11892,7 +11883,7 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
  * @cython.nonecheck(False)
  * @cython.cdivision(True)
  * def _get_score_array_mse(np.ndarray[double] y_vec,             # <<<<<<<<<<<<<<
- *                         np.ndarray[dtype_int64_t] bin_result_vec,
+ *                         np.ndarray[np.int_t] bin_result_vec,
  *                         np.ndarray[double] ysl,
  */
   __pyx_tuple__34 = PyTuple_Pack(13, __pyx_n_s_y_vec, __pyx_n_s_bin_result_vec, __pyx_n_s_ysl, __pyx_n_s_ysr, __pyx_n_s_cbl, __pyx_n_s_cbr, __pyx_n_s_eps, __pyx_n_s_score_vec, __pyx_n_s_adj_y_vec, __pyx_n_s_i, __pyx_n_s_j, __pyx_n_s_left_mean, __pyx_n_s_right_mean); if (unlikely(!__pyx_tuple__34)) __PYX_ERR(0, 252, __pyx_L1_error)
@@ -11927,8 +11918,8 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
   /* "structureboost/structure_rfdt.pyx":314
  * @cython.boundscheck(False)  # Deactivate bounds checking
  * @cython.wraparound(False)   # Deactivate negative indexing.
- * def get_mask_int_c(np.ndarray[dtype_int64_t] feature_vec_node,             # <<<<<<<<<<<<<<
- *                    np.ndarray[dtype_int64_t] left_split,
+ * def get_mask_int_c(np.ndarray[np.int_t] feature_vec_node,             # <<<<<<<<<<<<<<
+ *                    np.ndarray[np.int_t] left_split,
  *                    long vec_len, long lsplit_len,
  */
   __pyx_tuple__37 = PyTuple_Pack(7, __pyx_n_s_feature_vec_node, __pyx_n_s_left_split, __pyx_n_s_vec_len, __pyx_n_s_lsplit_len, __pyx_n_s_mask_vec, __pyx_n_s_i, __pyx_n_s_j); if (unlikely(!__pyx_tuple__37)) __PYX_ERR(0, 314, __pyx_L1_error)
@@ -12397,7 +12388,7 @@ if (!__Pyx_RefNanny) {
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
   /* "structureboost/structure_rfdt.pyx":20
- * ctypedef np.int64_t dtype_int64_t
+ * # ctypedef np.int64_t dtype_int64_t
  * 
  * class StructureRFDecisionTree(StructureDecisionTree):             # <<<<<<<<<<<<<<
  *     """Decision Tree using graphical structure: variant for Random Forest
@@ -12506,7 +12497,7 @@ if (!__Pyx_RefNanny) {
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
 
   /* "structureboost/structure_rfdt.pyx":20
- * ctypedef np.int64_t dtype_int64_t
+ * # ctypedef np.int64_t dtype_int64_t
  * 
  * class StructureRFDecisionTree(StructureDecisionTree):             # <<<<<<<<<<<<<<
  *     """Decision Tree using graphical structure: variant for Random Forest
@@ -12526,7 +12517,7 @@ if (!__Pyx_RefNanny) {
  * @cython.boundscheck(False)  # Deactivate bounds checking
  * @cython.wraparound(False)   # Deactivate negative indexing.
  * def get_bin_sums_c_rfbin(np.ndarray[double] y_vec,             # <<<<<<<<<<<<<<
- *                    np.ndarray[dtype_int64_t] bin_result_vec, long out_vec_size):
+ *                    np.ndarray[np.int_t] bin_result_vec, long out_vec_size):
  *     cdef int i
  */
   __pyx_t_1 = PyCFunction_NewEx(&__pyx_mdef_14structureboost_14structure_rfdt_1get_bin_sums_c_rfbin, NULL, __pyx_n_s_structureboost_structure_rfdt); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 175, __pyx_L1_error)
@@ -12574,7 +12565,7 @@ if (!__Pyx_RefNanny) {
  * @cython.nonecheck(False)
  * @cython.cdivision(True)
  * def _get_score_array_mse(np.ndarray[double] y_vec,             # <<<<<<<<<<<<<<
- *                         np.ndarray[dtype_int64_t] bin_result_vec,
+ *                         np.ndarray[np.int_t] bin_result_vec,
  *                         np.ndarray[double] ysl,
  */
   __pyx_t_1 = PyCFunction_NewEx(&__pyx_mdef_14structureboost_14structure_rfdt_9_get_score_array_mse, NULL, __pyx_n_s_structureboost_structure_rfdt); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 252, __pyx_L1_error)
@@ -12609,8 +12600,8 @@ if (!__Pyx_RefNanny) {
   /* "structureboost/structure_rfdt.pyx":314
  * @cython.boundscheck(False)  # Deactivate bounds checking
  * @cython.wraparound(False)   # Deactivate negative indexing.
- * def get_mask_int_c(np.ndarray[dtype_int64_t] feature_vec_node,             # <<<<<<<<<<<<<<
- *                    np.ndarray[dtype_int64_t] left_split,
+ * def get_mask_int_c(np.ndarray[np.int_t] feature_vec_node,             # <<<<<<<<<<<<<<
+ *                    np.ndarray[np.int_t] left_split,
  *                    long vec_len, long lsplit_len,
  */
   __pyx_t_1 = PyCFunction_NewEx(&__pyx_mdef_14structureboost_14structure_rfdt_15get_mask_int_c, NULL, __pyx_n_s_structureboost_structure_rfdt); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 314, __pyx_L1_error)

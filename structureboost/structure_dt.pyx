@@ -14,7 +14,7 @@ from libc.math cimport isnan
 cimport numpy as np
 cimport cython
 
-ctypedef np.int64_t dtype_int64_t
+# ctypedef np.int64_t dtype_int64_t
 
 class StructureDecisionTree(object):
     """Decision Tree using graphical structure.
@@ -310,17 +310,17 @@ class StructureDecisionTree(object):
         data_array = self.X_train.to_numpy()[:, subfeature_indices]
         num_query_pts = data_array.shape[0]
         num_vor_dims = data_array.shape[1]
-        feat_vec = np.zeros(num_query_pts,dtype=np.int64)
+        feat_vec = np.zeros(num_query_pts,dtype=np.int_)
         feat_vec = map_to_nn_point_index(best_split_dict['vor_pts'],
                                          data_array,
                                          feat_vec,
                                          best_split_dict['vor_pts'].shape[0],
                                          num_query_pts, num_vor_dims)
         fs_array = np.fromiter(best_split_dict['left_split'], int,
-                               len(best_split_dict['left_split'])).astype(np.int64)
+                               len(best_split_dict['left_split'])).astype(np.int_)
         vec_len = len(feat_vec)
         lsplit_len = len(fs_array)
-        left_mask = np.zeros(vec_len, dtype=np.int64)
+        left_mask = np.zeros(vec_len, dtype=np.int_)
         left_mask = get_mask_int_c(feat_vec, fs_array, vec_len,
                                    lsplit_len, left_mask)
 
@@ -437,7 +437,7 @@ class StructureDecisionTree(object):
         has_na_vals = np.isnan(split_vec[-1])
         bin_result_vec = np.searchsorted(split_vec,
                                          feature_vec,
-                                         side='right').astype(np.int64)
+                                         side='right').astype(np.int_)
         g_sum_bins, h_sum_bins = get_bin_sums_c(g_h_mat,
                                                 bin_result_vec,
                                                 len(split_vec)+1)
@@ -504,11 +504,11 @@ class StructureDecisionTree(object):
             right_split = curr_partition[1]
             if is_integer_valued:
                 fs_array = np.fromiter(left_split, int,
-                                       len(left_split)).astype(np.int64)
+                                       len(left_split)).astype(np.int_)
                 vec_len = len(feature_vec_node)
                 lsplit_len = len(fs_array)
-                mask_left = np.zeros(vec_len, dtype=np.int64)
-                mask_left = get_mask_int_c(feature_vec_node.astype(np.int64),
+                mask_left = np.zeros(vec_len, dtype=np.int_)
+                mask_left = get_mask_int_c(feature_vec_node.astype(np.int_),
                                                fs_array, vec_len, lsplit_len,
                                                mask_left)
             else:
@@ -559,7 +559,7 @@ class StructureDecisionTree(object):
 
         num_query_pts = data_array.shape[0]
         num_vor_dims = data_array.shape[1]
-        feature_vec_node = np.zeros(num_query_pts,dtype=np.int64)
+        feature_vec_node = np.zeros(num_query_pts,dtype=np.int_)
         feature_vec_node = map_to_nn_point_index(vor_pts,
                                          data_array,
                                          feature_vec_node,
@@ -639,7 +639,7 @@ class StructureDecisionTree(object):
                        max_num_vertices):
         g_h_val_arr = np.zeros((max_num_vertices,2))
         g_h_val_arr = get_g_h_feature_sum_arrays(
-                                            feature_vec_node.astype(np.int64),
+                                            feature_vec_node.astype(np.int_),
                                             g_h_train_node,
                                             g_h_val_arr)
         return g_h_val_arr
@@ -765,7 +765,7 @@ class StructureDecisionTree(object):
 
 
     def get_prediction(self, tree_node, X_te, dict col_to_int_dict):
-        cdef np.ndarray[dtype_int64_t] ind_subset_left, ind_subset_right
+        cdef np.ndarray[np.int_t] ind_subset_left, ind_subset_right
         cdef long vec_len, lsize
         cdef np.ndarray[double] next_vec
 
@@ -775,12 +775,12 @@ class StructureDecisionTree(object):
             split_bool = get_node_response_df_val(X_te, tree_node, col_to_int_dict)
             vec_len = len(split_bool)
             next_vec = np.zeros(vec_len)
-            ind_subset_left = np.empty(vec_len, dtype=np.int64)
-            ind_subset_right = np.empty(vec_len, dtype=np.int64)
+            ind_subset_left = np.empty(vec_len, dtype=np.int_)
+            ind_subset_right = np.empty(vec_len, dtype=np.int_)
             ind_subset_left, ind_subset_right, lsize = separate_indices(
                                                     ind_subset_left,
                                                     ind_subset_right,
-                                                    split_bool.astype(np.int64),
+                                                    split_bool.astype(np.int_),
                                                     vec_len)
             ind_subset_left = ind_subset_left[:lsize]
             ind_subset_right = ind_subset_right[:(vec_len-lsize)]
@@ -896,7 +896,7 @@ def _get_best_vals(score_vec, split_vec):
 @cython.boundscheck(False)  # Deactivate bounds checking
 @cython.wraparound(False)   # Deactivate negative indexing.
 def get_bin_sums_c(np.ndarray[double, ndim=2] g_h_mat,
-                   np.ndarray[dtype_int64_t] bin_result_vec, long out_vec_size):
+                   np.ndarray[np.int_t] bin_result_vec, long out_vec_size):
     cdef int i
     cdef int m = bin_result_vec.shape[0]
 
@@ -972,7 +972,7 @@ def get_voronoi_obj(voronoi_sample_mat):
 
 @cython.boundscheck(False)  # Deactivate bounds checking
 @cython.wraparound(False)   # Deactivate negative indexing.
-def get_g_h_feature_sum_arrays(np.ndarray[dtype_int64_t] feature_vec_node,
+def get_g_h_feature_sum_arrays(np.ndarray[np.int_t] feature_vec_node,
                                np.ndarray[double, ndim=2] g_h_train_node,
                                np.ndarray[double, ndim=2] g_h_val_arr):
     cdef long i, ind
@@ -1042,10 +1042,10 @@ def get_mask(feature_vec_node, left_split):
 
 @cython.boundscheck(False)  # Deactivate bounds checking
 @cython.wraparound(False)   # Deactivate negative indexing.
-def get_mask_int_c(np.ndarray[dtype_int64_t] feature_vec_node,
-                   np.ndarray[dtype_int64_t] left_split,
+def get_mask_int_c(np.ndarray[np.int_t] feature_vec_node,
+                   np.ndarray[np.int_t] left_split,
                    long vec_len, long lsplit_len,
-                   np.ndarray[dtype_int64_t] mask_vec):
+                   np.ndarray[np.int_t] mask_vec):
     cdef int i, j
     for i in range(vec_len):
         for j in range(lsplit_len):
@@ -1057,8 +1057,8 @@ def get_mask_int_c(np.ndarray[dtype_int64_t] feature_vec_node,
 
 @cython.boundscheck(False)
 @cython.wraparound(False)
-def separate_indices(np.ndarray[dtype_int64_t] a, np.ndarray[dtype_int64_t] b,
-                     np.ndarray[dtype_int64_t] c, long vec_len):
+def separate_indices(np.ndarray[np.int_t] a, np.ndarray[np.int_t] b,
+                     np.ndarray[np.int_t] c, long vec_len):
     cdef long ind_a = 0, ind_b = 0, i
     for i in range(vec_len):
         if c[i] == 0:
@@ -1071,15 +1071,15 @@ def separate_indices(np.ndarray[dtype_int64_t] a, np.ndarray[dtype_int64_t] b,
 
 
 def get_node_response_graphical_int(feature_vec, node):
-    # fs_array = np.array(list(node['left_split'])).astype(np.int64)
+    # fs_array = np.array(list(node['left_split'])).astype(np.int_)
     cdef int vec_len, lsplit_len
 
     fs_array = np.fromiter(node['left_split'], int,
-                           len(node['left_split'])).astype(np.int64)
+                           len(node['left_split'])).astype(np.int_)
     vec_len = len(feature_vec)
     lsplit_len = len(fs_array)
-    mask_vec = np.zeros(vec_len, dtype=np.int64)
-    mask_vec = get_mask_int_c(feature_vec.astype(np.int64),
+    mask_vec = np.zeros(vec_len, dtype=np.int_)
+    mask_vec = get_mask_int_c(feature_vec.astype(np.int_),
                               fs_array, vec_len,
                               lsplit_len, mask_vec)
     return mask_vec
@@ -1088,7 +1088,7 @@ def get_node_response_graphical_int(feature_vec, node):
 def get_node_response_graphical_vor(feature_mat, node):
     num_query_pts = feature_mat.shape[0]
     num_vor_dims = feature_mat.shape[1]
-    feature_vec = np.zeros(num_query_pts,dtype=np.int64)
+    feature_vec = np.zeros(num_query_pts,dtype=np.int_)
     feature_vec = map_to_nn_point_index(node['vor_pts'],
                                         feature_mat,
                                         feature_vec,
@@ -1163,7 +1163,7 @@ def ridge_points_to_edge_set(rpl):
 @cython.boundscheck(False)  # Deactivate bounds checking
 @cython.wraparound(False)   # Deactivate negative indexing.
 def map_to_nn_point_index(double[:,:] core_pts, double[:,:] query_pts,
-                          np.ndarray[dtype_int64_t] out_mat, long num_core_pts,
+                          np.ndarray[np.int_t] out_mat, long num_core_pts,
                           long num_query_pts, long ndim):
     cdef double curr_dist, tnum, best_dist
     cdef int i,j, best_j
