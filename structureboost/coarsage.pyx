@@ -626,9 +626,9 @@ def expand_result_mat(np.ndarray[double] coarse_interval_pts,
 @cython.boundscheck(False)
 @cython.wraparound(False)
 def predict_with_tensor_c_mc(np.ndarray[double, ndim=3] dtm_float,
-                      np.ndarray[long, ndim=3] dtm,
+                      np.ndarray[np.int_t, ndim=3] dtm,
                       np.ndarray[double, ndim=2] feat_array,
-                      np.ndarray[long] num_classes_arr):
+                      np.ndarray[np.int_t] num_classes_arr):
     """This is the same as the structure_gb_multi version except for num_classes.
 
     Specifically, this permits that different trees may have a different 
@@ -641,7 +641,7 @@ def predict_with_tensor_c_mc(np.ndarray[double, ndim=3] dtm_float,
     cdef long cn, ri, ind, j, k, q
     cdef double curr_val, ind_doub
     cdef bint at_leaf, found_val
-    cdef np.ndarray[long, ndim=2] isnan_array = np.isnan(feat_array).astype(int)
+    cdef np.ndarray[np.int_t, ndim=2] isnan_array = np.isnan(feat_array).astype(int)
     
     # These are in dtm_float
     cdef long THRESH = 0
@@ -737,7 +737,7 @@ def tensor_result_sum_fine(np.ndarray[double, ndim=3] coarse_pred,
     cdef long num_fi = fine_binpts.shape[0]-1
     cdef np.ndarray[double, ndim=2] outmat = np.zeros((num_rows,num_fi))
     cdef long fi_ptr = 0
-    cdef np.ndarray[long] coarse_ptr_arr = np.zeros(nt, dtype=np.int_)
+    cdef np.ndarray[np.int_t] coarse_ptr_arr = np.zeros(nt, dtype=np.int_)
     cdef long row_ptr = 0
 
     for fi_ptr in range(num_fi):

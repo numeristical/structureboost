@@ -474,7 +474,7 @@ class StructureBoostMulti(StructureBoost):
 @cython.boundscheck(False)
 @cython.wraparound(False)
 def predict_with_tensor_c_mc(np.ndarray[double, ndim=3] dtm_float,
-                      np.ndarray[long, ndim=3] dtm,
+                      np.ndarray[np.int_t, ndim=3] dtm,
                       np.ndarray[double, ndim=2] feat_array,
                       long num_classes):
     
@@ -484,7 +484,7 @@ def predict_with_tensor_c_mc(np.ndarray[double, ndim=3] dtm_float,
     cdef long cn, ri, ind, j, k, q
     cdef double curr_val, ind_doub
     cdef bint at_leaf, found_val
-    cdef np.ndarray[long, ndim=2] isnan_array = np.isnan(feat_array).astype(int)
+    cdef np.ndarray[np.int_t, ndim=2] isnan_array = np.isnan(feat_array).astype(int)
     
     # These are in dtm_float
     cdef long THRESH = 0

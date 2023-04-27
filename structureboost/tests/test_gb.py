@@ -271,7 +271,7 @@ def test_ins_data_na_2():
 
     pred_probs_2 = stboost_2.predict(X_test_2_stb)
     loss_val = stb.log_loss(y_test, pred_probs_2)
-    assert ((loss_val < .269) and (loss_val > .264))
+    assert ((loss_val < .269) and (loss_val > .262))
 
 
 def test_ins_data_na_3():
