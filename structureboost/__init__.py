@@ -14,4 +14,4 @@ from pdf_discrete import PdfDiscrete, average_densities
 from pdf_group import PdfGroup, log_loss_pdf, test_between_quantiles_pdf, test_in_pred_regions
 from .utils import get_basic_config, apply_defaults, default_config_dict, ice_plot, log_loss
 
-__version__ = '0.4.2'
+__version__ = '0.4.3'

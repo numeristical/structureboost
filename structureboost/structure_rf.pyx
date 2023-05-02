@@ -371,7 +371,7 @@ class StructureRF(object):
             cat_size = np.max(np.array([dt.get_max_split_size() for dt in self.dec_tree_list]))
             num_dt = len(self.dec_tree_list)
             max_nodes = np.max(np.array([dt.num_nodes for dt in self.dec_tree_list]))
-            self.pred_tens_int = np.zeros((num_dt, max_nodes, cat_size+6), dtype=np.int_)-1
+            self.pred_tens_int = np.zeros((num_dt, max_nodes, cat_size+6), dtype=np.int32)-1
             self.pred_tens_float = np.zeros((num_dt, max_nodes, 3))
             for i in range(num_dt):
                 self.convert_dt_to_matrix(i)
@@ -416,7 +416,7 @@ class StructureRF(object):
                 self.pred_tens_int[dt_num, ni, 0]= 1
             elif node['feature_type']=='categorical_int':
                 setlen = len(node['left_split'])
-                self.pred_tens_int[dt_num, ni, 6:6+setlen] = np.fromiter(node['left_split'], int, setlen)
+                self.pred_tens_int[dt_num, ni, 6:6+setlen] = np.fromiter(node['left_split'], np.int32, setlen)
                 self.pred_tens_int[dt_num, ni, 0]= 2
                 self.pred_tens_int[dt_num, ni, 5]= setlen
             self.pred_tens_int[dt_num, ni, 1]=self.column_to_int_dict[node['split_feature']]
@@ -455,7 +455,7 @@ def randomize_node_na_dir_weighted(curr_node):
 @cython.boundscheck(False)
 @cython.wraparound(False)
 def predict_with_tensor_c(np.ndarray[double, ndim=3] dtm_float,
-                      np.ndarray[np.int_t, ndim=3] dtm,
+                      np.ndarray[np.int32_t, ndim=3] dtm,
                       np.ndarray[double, ndim=2] feat_array):
     
     cdef long cat_vals_end

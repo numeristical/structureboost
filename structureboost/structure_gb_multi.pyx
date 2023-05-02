@@ -251,7 +251,7 @@ class StructureBoostMulti(StructureBoost):
     def _create_rpt_from_list(self, partition_list):
         num_part = len(partition_list)
         max_part_size = np.max(np.array([len(qq) for qq in partition_list]))
-        rpt = np.zeros((num_part, max_part_size, self.num_classes), dtype=np.int_)
+        rpt = np.zeros((num_part, max_part_size, self.num_classes), dtype=np.int32)
         flat_list = [j for sl in partition_list for i in sl for j in i]
         min_val, max_val = np.min(flat_list), np.max(flat_list)
         if (min_val<0) or (max_val>self.num_classes-1):
@@ -266,9 +266,9 @@ class StructureBoostMulti(StructureBoost):
 
     def _process_y_data(self, y_data):
         if type(y_data) == pd.Series:
-            y_data = y_data.to_numpy().astype(np.int_)
+            y_data = y_data.to_numpy().astype(np.int32)
         elif type(y_data) == np.ndarray:
-            y_data = y_data.astype(np.int_)
+            y_data = y_data.astype(np.int32)
         #y_data = get_one_hot_mat(y_data, self.num_classes)
         return(y_data)
 
@@ -415,7 +415,7 @@ class StructureBoostMulti(StructureBoost):
             cat_size = np.max(np.array([dt.get_max_split_size() for dt in self.dec_tree_list]))
             num_dt = len(self.dec_tree_list)
             max_nodes = np.max(np.array([dt.num_nodes for dt in self.dec_tree_list]))
-            self.pred_tens_int = np.zeros((num_dt, max_nodes, cat_size+6), dtype=np.int_)-1
+            self.pred_tens_int = np.zeros((num_dt, max_nodes, cat_size+6), dtype=np.int32)-1
             self.pred_tens_float = np.zeros((num_dt, max_nodes, self.num_classes+2))
             for i in range(num_dt):
                 self.convert_dt_to_matrix(i)
@@ -461,7 +461,7 @@ class StructureBoostMulti(StructureBoost):
                 self.pred_tens_int[dt_num, ni, 0]= 1
             elif node['feature_type']=='categorical_int':
                 setlen = len(node['left_split'])
-                self.pred_tens_int[dt_num, ni, 6:6+setlen] = np.fromiter(node['left_split'], int, setlen)
+                self.pred_tens_int[dt_num, ni, 6:6+setlen] = np.fromiter(node['left_split'], np.int32, setlen)
                 self.pred_tens_int[dt_num, ni, 0]= 2
                 self.pred_tens_int[dt_num, ni, 5]= setlen
             self.pred_tens_int[dt_num, ni, 1]=self.column_to_int_dict[node['split_feature']]
@@ -474,7 +474,7 @@ class StructureBoostMulti(StructureBoost):
 @cython.boundscheck(False)
 @cython.wraparound(False)
 def predict_with_tensor_c_mc(np.ndarray[double, ndim=3] dtm_float,
-                      np.ndarray[np.int_t, ndim=3] dtm,
+                      np.ndarray[np.int32_t, ndim=3] dtm,
                       np.ndarray[double, ndim=2] feat_array,
                       long num_classes):
     
@@ -484,7 +484,7 @@ def predict_with_tensor_c_mc(np.ndarray[double, ndim=3] dtm_float,
     cdef long cn, ri, ind, j, k, q
     cdef double curr_val, ind_doub
     cdef bint at_leaf, found_val
-    cdef np.ndarray[np.int_t, ndim=2] isnan_array = np.isnan(feat_array).astype(int)
+    cdef np.ndarray[np.int32_t, ndim=2] isnan_array = np.isnan(feat_array).astype(np.int32)
     
     # These are in dtm_float
     cdef long THRESH = 0
@@ -540,7 +540,7 @@ def predict_with_tensor_c_mc(np.ndarray[double, ndim=3] dtm_float,
 @cython.wraparound(False)   # Deactivate negative indexing.
 @cython.nonecheck(False)
 @cython.cdivision(True)
-def c_entropy_link_der_12_vec_sp(np.ndarray[np.int_t] y_true,
+def c_entropy_link_der_12_vec_sp(np.ndarray[np.int32_t] y_true,
                          double[:,:] exp_phi_pred,
                          double[:] exp_phi_sum_vec):
     """In this variant, y_true is just a vector of correct classes (not one hot)"""
@@ -563,11 +563,11 @@ def c_entropy_link_der_12_vec_sp(np.ndarray[np.int_t] y_true,
 @cython.wraparound(False)   # Deactivate negative indexing.
 @cython.nonecheck(False)
 @cython.cdivision(True)
-def c_str_entropy_link_der_12_vec_sp(np.ndarray[np.int_t] y_true,
+def c_str_entropy_link_der_12_vec_sp(np.ndarray[np.int32_t] y_true,
                                  double[:,:] exp_phi_pred,
                                  double[:] exp_phi_sum_vec, 
                                  double[:] weight_vec, 
-                                 long[:,:,:] rp_tensor):
+                                 np.int32_t[:,:,:] rp_tensor):
     cdef long N = len(y_true)
     cdef long m = exp_phi_pred.shape[1]
     cdef long ind = 0
@@ -613,10 +613,10 @@ def c_str_entropy_link_der_12_vec_sp(np.ndarray[np.int_t] y_true,
 @cython.wraparound(False)   # Deactivate negative indexing.
 @cython.nonecheck(False)
 @cython.cdivision(True)
-def get_one_hot_mat(np.ndarray[np.int_t] y_true,
+def get_one_hot_mat(np.ndarray[np.int32_t] y_true,
                          int num_classes):
     cdef int N = y_true.shape[0]
-    cdef np.ndarray[np.int_t, ndim=2] Y = np.zeros((N,num_classes), dtype=np.int_)
+    cdef np.ndarray[np.int32_t, ndim=2] Y = np.zeros((N,num_classes), dtype=np.int32)
     
     for i in range(N):
         Y[i,y_true[i]]= 1

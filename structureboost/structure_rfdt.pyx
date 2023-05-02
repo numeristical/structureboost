@@ -64,7 +64,7 @@ class StructureRFDecisionTree(StructureDecisionTree):
         has_na_vals = np.isnan(split_vec[-1])
         bin_result_vec = np.searchsorted(split_vec,
                                          feature_vec,
-                                         side='right').astype(np.int_)
+                                         side='right').astype(np.int32)
         y_sum_bins, count_in_bins = get_bin_sums_c_rfbin(y_c_mat[:,0],
                                                 bin_result_vec,
                                                 len(split_vec)+1)
@@ -136,12 +136,12 @@ class StructureRFDecisionTree(StructureDecisionTree):
                                             c_left, y_c_sum[1]-c_left,
                                             float(self.min_leaf_size))
             elif feature_type in ['categorical_int','graphical_voronoi']:
-                fs_array = np.fromiter(left_feat_values, int,
-                len(left_feat_values)).astype(np.int_)
+                fs_array = np.fromiter(left_feat_values, np.int32,
+                len(left_feat_values)).astype(np.int32)
                 vec_len = len(feature_vec_node)
                 lsplit_len = len(fs_array)
-                mask = np.zeros(vec_len, dtype=np.int_)
-                mask = get_mask_int_c(feature_vec_node.astype(np.int_),
+                mask = np.zeros(vec_len, dtype=np.int32)
+                mask = get_mask_int_c(feature_vec_node.astype(np.int32),
                                fs_array, vec_len, lsplit_len,
                                mask)
 
@@ -173,7 +173,7 @@ class StructureRFDecisionTree(StructureDecisionTree):
 @cython.boundscheck(False)  # Deactivate bounds checking
 @cython.wraparound(False)   # Deactivate negative indexing.
 def get_bin_sums_c_rfbin(np.ndarray[double] y_vec,
-                   np.ndarray[np.int_t] bin_result_vec, long out_vec_size):
+                   np.ndarray[np.int32_t] bin_result_vec, long out_vec_size):
     cdef int i
     cdef int m = bin_result_vec.shape[0]
 
@@ -250,7 +250,7 @@ def _get_score_binary_entropy(double ysl,
 @cython.nonecheck(False)
 @cython.cdivision(True)
 def _get_score_array_mse(np.ndarray[double] y_vec, 
-                        np.ndarray[np.int_t] bin_result_vec, 
+                        np.ndarray[np.int32_t] bin_result_vec, 
                         np.ndarray[double] ysl, 
                         np.ndarray[double] ysr, 
                         np.ndarray[double] cbl, 
@@ -311,10 +311,10 @@ def get_mask(feature_vec_node, left_split):
 
 @cython.boundscheck(False)  # Deactivate bounds checking
 @cython.wraparound(False)   # Deactivate negative indexing.
-def get_mask_int_c(np.ndarray[np.int_t] feature_vec_node,
-                   np.ndarray[np.int_t] left_split,
+def get_mask_int_c(np.ndarray[np.int32_t] feature_vec_node,
+                   np.ndarray[np.int32_t] left_split,
                    long vec_len, long lsplit_len,
-                   np.ndarray[np.int_t] mask_vec):
+                   np.ndarray[np.int32_t] mask_vec):
     cdef int i, j
     for i in range(vec_len):
         for j in range(lsplit_len):

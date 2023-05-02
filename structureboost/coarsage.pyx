@@ -262,7 +262,7 @@ class Coarsage(StructureBoostMulti):
         curr_binpts = self.binpt_vec_list[index]
         curr_num_classes = len(curr_binpts)-1
         y_bin = (np.digitize(y_train, curr_binpts) -1 
-                    -(y_train==curr_binpts[-1]))
+                    -(y_train==curr_binpts[-1])).astype(np.int32)
         curr_answer_bin_probs = curr_answer.bins_to_probs(curr_binpts)
         if not self.structured_loss:
             self.ts_dict = None
@@ -294,7 +294,7 @@ class Coarsage(StructureBoostMulti):
     def _create_rpt_from_list(self, partition_list, num_classes):
         num_part = len(partition_list)
         max_part_size = np.max(np.array([len(qq) for qq in partition_list]))
-        rpt = np.zeros((num_part, max_part_size, num_classes), dtype=np.int_)
+        rpt = np.zeros((num_part, max_part_size, num_classes), dtype=np.int32)
         flat_list = [j for sl in partition_list for i in sl for j in i]
         min_val, max_val = np.min(flat_list), np.max(flat_list)
         if (min_val<0) or (max_val>num_classes-1):
@@ -326,7 +326,7 @@ class Coarsage(StructureBoostMulti):
             num_dt = len(self.dec_tree_list)
             max_nodes = np.max(np.array([dt.num_nodes for dt in self.dec_tree_list]))
             max_num_classes = np.max(self.num_classes)
-            self.pred_tens_int = np.zeros((num_dt, max_nodes, cat_size+6), dtype=np.int_)-1
+            self.pred_tens_int = np.zeros((num_dt, max_nodes, cat_size+6), dtype=np.int32)-1
             self.pred_tens_float = np.zeros((num_dt, max_nodes, max_num_classes+2))
             for i in range(num_dt):
                 self.convert_dt_to_matrix(i)
@@ -417,7 +417,7 @@ class Coarsage(StructureBoostMulti):
             self.binpt_vec_list.append(curr_binpt_vec.copy())
             self.num_classes.append(len(curr_binpt_vec)-1)
             i+=1
-        self.num_classes=np.array(self.num_classes, dtype=np.int_)
+        self.num_classes=np.array(self.num_classes, dtype=np.int32)
 
         super().fit(X_train, y_train, eval_set=eval_set, eval_freq=eval_freq,
             early_stop_past_steps=early_stop_past_steps, 
@@ -626,9 +626,9 @@ def expand_result_mat(np.ndarray[double] coarse_interval_pts,
 @cython.boundscheck(False)
 @cython.wraparound(False)
 def predict_with_tensor_c_mc(np.ndarray[double, ndim=3] dtm_float,
-                      np.ndarray[np.int_t, ndim=3] dtm,
+                      np.ndarray[np.int32_t, ndim=3] dtm,
                       np.ndarray[double, ndim=2] feat_array,
-                      np.ndarray[np.int_t] num_classes_arr):
+                      np.ndarray[np.int32_t] num_classes_arr):
     """This is the same as the structure_gb_multi version except for num_classes.
 
     Specifically, this permits that different trees may have a different 
@@ -641,7 +641,7 @@ def predict_with_tensor_c_mc(np.ndarray[double, ndim=3] dtm_float,
     cdef long cn, ri, ind, j, k, q
     cdef double curr_val, ind_doub
     cdef bint at_leaf, found_val
-    cdef np.ndarray[np.int_t, ndim=2] isnan_array = np.isnan(feat_array).astype(int)
+    cdef np.ndarray[np.int32_t, ndim=2] isnan_array = np.isnan(feat_array).astype(np.int32)
     
     # These are in dtm_float
     cdef long THRESH = 0
@@ -737,7 +737,7 @@ def tensor_result_sum_fine(np.ndarray[double, ndim=3] coarse_pred,
     cdef long num_fi = fine_binpts.shape[0]-1
     cdef np.ndarray[double, ndim=2] outmat = np.zeros((num_rows,num_fi))
     cdef long fi_ptr = 0
-    cdef np.ndarray[np.int_t] coarse_ptr_arr = np.zeros(nt, dtype=np.int_)
+    cdef np.ndarray[np.int32_t] coarse_ptr_arr = np.zeros(nt, dtype=np.int32)
     cdef long row_ptr = 0
 
     for fi_ptr in range(num_fi):
