@@ -13,6 +13,7 @@ from structure_dt import StructureDecisionTree
 from libc.math cimport log as clog
 from libc.math cimport isnan
 cimport numpy as np
+np.import_array()
 cimport cython
 
 # ctypedef np.int64_t dtype_int64_t

@@ -15,6 +15,7 @@ import random
 from libc.math cimport log as clog
 from libc.math cimport exp
 cimport numpy as np
+np.import_array()
 cimport cython
 
 

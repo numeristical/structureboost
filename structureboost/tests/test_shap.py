@@ -92,8 +92,8 @@ def test_categ_shap1():
     feature_configs_month['feature_type'] = 'categorical_int'
     feature_configs_month['graph'] = month_graph
     feature_configs_month['split_method'] = 'contraction'
-    feature_configs_month['contraction_size'] = np.Inf
-    feature_configs_month['max_splits_to_search'] = np.Inf
+    feature_configs_month['contraction_size'] = np.inf
+    feature_configs_month['max_splits_to_search'] = np.inf
     feature_configs = {}
     feature_configs['county_int'] = feature_configs_county
     feature_configs['month'] = feature_configs_month

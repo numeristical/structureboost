@@ -12,6 +12,7 @@ import pandas as pd
 import warnings
 
 cimport numpy as np
+np.import_array()
 cimport cython
 from libc.math cimport log as clog
 

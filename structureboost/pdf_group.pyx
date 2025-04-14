@@ -6,6 +6,7 @@ from pdf_discrete import PdfDiscrete
 import warnings
 
 cimport numpy as np
+np.import_array()
 cimport cython
 
 class PdfGroup(object):

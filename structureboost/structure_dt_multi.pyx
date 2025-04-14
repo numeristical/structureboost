@@ -14,6 +14,7 @@ from libc.math cimport isnan
 from structure_dt import StructureDecisionTree
 import structure_dt as stdt
 cimport numpy as np
+np.import_array()
 cimport cython
 
 

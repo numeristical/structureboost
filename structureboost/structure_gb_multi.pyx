@@ -14,6 +14,7 @@ from libc.math cimport exp
 from structure_dt_multi import StructureDecisionTreeMulti
 from scipy.special import softmax
 cimport numpy as np
+np.import_array()
 cimport cython
 
 

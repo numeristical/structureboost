@@ -12,6 +12,7 @@ import pandas as pd
 from libc.math cimport log as clog
 from libc.math cimport isnan
 cimport numpy as np
+np.import_array()
 cimport cython
 
 # ctypedef np.int64_t dtype_int64_t
@@ -693,7 +694,7 @@ class StructureDecisionTree(object):
                                                    feature_type)
             left_prob = .5
             na_left, na_rnd = int(random.random() < left_prob), 1
-            curr_loss_nal = np.Inf
+            curr_loss_nal = np.inf
 
             if curr_loss < best_split_of_feat['loss_score']:
                 best_split_of_feat['loss_score'] = curr_loss
@@ -742,7 +743,7 @@ class StructureDecisionTree(object):
 
         feature_type = feature_config['feature_type']
         best_split_of_feat = {}
-        best_split_of_feat['loss_score'] = np.Inf
+        best_split_of_feat['loss_score'] = np.inf
         if len(pd.unique(feature_vec_node)) <= 1:
             return(best_split_of_feat)
         g_h_sum = np.sum(g_h_train_node, axis=0)
@@ -863,7 +864,7 @@ def _get_gh_score_array(np.ndarray[double] g_left,
 def _subset_splits(splits_to_eval, feature_config):
     split_res = (feature_config['max_splits_to_search']
                  if 'max_splits_to_search' in feature_config.keys()
-                    else np.Inf)
+                    else np.inf)
     split_count = len(splits_to_eval)
     if split_res < split_count:
         split_indices = np.random.choice(split_count, size=split_res)
