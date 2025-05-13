@@ -12,6 +12,8 @@ from prob_regressor import PrestoBoost
 from coarsage import Coarsage
 from pdf_discrete import PdfDiscrete, average_densities
 from pdf_group import PdfGroup, log_loss_pdf, test_between_quantiles_pdf, test_in_pred_regions
+from pdf_set import PdfSet
+from pdf_conformal import PdfConformalizer
 from .utils import get_basic_config, apply_defaults, default_config_dict, ice_plot, log_loss
 
-__version__ = '0.6.0'
+__version__ = '0.7.0'

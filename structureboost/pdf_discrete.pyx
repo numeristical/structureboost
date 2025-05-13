@@ -64,16 +64,20 @@ class PdfDiscrete(object):
 
     def calculate_cum_prob(self):
         self.cum_prob = np.concatenate(([0],np.cumsum(self.probvec)))
+        self.cum_prob_x_dict = {self.binvec[i]: self.cum_prob[i] for i in range(len(self.binvec))}
 
     def mean(self):
         val = np.sum(self.bin_midpts*self.probvec)
         return(val)
 
     def quantile(self, qval):
+        if qval==0:
+            return(self.binvec[0])
+        if qval==1:
+            return(self.binvec[-1])
         if self.cum_prob is None:
             self.calculate_cum_prob()
         bin_lp = np.digitize(qval, self.cum_prob)-1
-        
         if bin_lp>=len(self.binvec)-1:
             bin_lp = len(self.binvec)-2
         binpt_left = self.binvec[bin_lp]
@@ -113,6 +117,14 @@ class PdfDiscrete(object):
         remainder_x[np.isinf(remainder_x)] = 0
         out_vec = aug_cum_prob[bin_ind] +  remainder_x * aug_densities[bin_ind]
         return(out_vec)
+
+    def cdf_single_val(self, x_val):
+        if self.cum_prob is None:
+            self.calculate_cum_prob()
+        if x_val in self.cum_prob_x_dict.keys():
+            return(self.cum_prob_x_dict[x_val])
+        else:
+            return(self.cdf([x_val])[0])
 
     def add_binpts(self, binpts_to_add):
         new_binvec = np.unique(np.concatenate((self.binvec, binpts_to_add)))
@@ -204,6 +216,9 @@ class PdfDiscrete(object):
     def pred_interval(self, coverage):
         return((self.quantile((1-coverage)/2), self.quantile(1-((1-coverage)/2))))
 
+    def crps_single_pt(self, val):
+        return(crps_single_pt(val, self))
+
 def get_part(nc, blocksize, start_val):
     list1=[]
     num_full_blocks = int((nc-start_val)/blocksize)
@@ -266,4 +281,41 @@ def get_bin_probs_from_data(binvec, value_vec, eps=1e-16):
 def get_pdf_from_data(binvec, value_vec):
     pv = get_bin_probs_from_data(binvec,value_vec)
     return(PdfDiscrete(binvec, pv))
+
+def crps_interval_left(cdf_left, density, interval_width):
+    """Use this when the interval is to the left of the test value"""
+    term1 = cdf_left*cdf_left*interval_width
+    term2 = cdf_left*density*interval_width*interval_width
+    term3 = (1/3)*density*density*interval_width*interval_width*interval_width
+    return(term1+term2+term3)
+
+def crps_interval_right(cdf_left, density, interval_width):
+    """Use this when the interval is to the right of the test value"""
+    term1 = (1-cdf_left)*(1-cdf_left)*interval_width
+    term2 = -(1-cdf_left)*density*interval_width*interval_width
+    term3 = (1/3)*density*density*interval_width*interval_width*interval_width
+    return(term1+term2+term3)
+
+def crps_single_pt(test_val, pdf):
+    """Returns the CRPS (Continuous Ranked Probability Score) between an actual value and predicted distribution."""
+    # First handles cases where test_val not in support of distribution
+    if (test_val<=pdf.binvec[0]):
+        test_val_loc=-1
+        pdf1=pdf
+    elif (test_val>=pdf.binvec[-1]):
+        test_val_loc = len(pdf.binvec)-1
+        pdf1=pdf
+    else:
+        pdf1 = pdf.add_binpts([test_val])
+        test_val_loc = np.where(pdf1.binvec==test_val)[0][0]
+    curr_sum=0
+    if test_val_loc>0:
+        # Add up components where the interval lies to the left of test_val
+        for i in range(test_val_loc):
+            curr_sum+=crps_interval_left(pdf1.cdf_single_val(pdf1.binvec[i]), pdf1.densityvec[i], pdf1.bin_widths[i])
+    if test_val_loc<(len(pdf1.binvec)-1):
+        # Add up components where the interval lies to the right of test_val
+        for i in range(test_val_loc,len(pdf1.binvec)-1):
+            curr_sum+=crps_interval_right(pdf1.cdf_single_val(pdf1.binvec[i]), pdf1.densityvec[i], pdf1.bin_widths[i])
+    return(curr_sum)
 

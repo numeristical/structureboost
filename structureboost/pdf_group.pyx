@@ -87,7 +87,10 @@ class PdfGroup(object):
                          for i in range(self.probmat.shape[0])]
 
     def __getitem__(self, arg):
-        return(PdfDiscrete(self.binvec, self.probmat[arg,:]))
+        if self.pdf_list is None:
+            return(PdfDiscrete(self.binvec, self.probmat[arg,:]))
+        else:
+            return(self.pdf_list[arg])
 
     def log_loss(self, y_test, eps=1e-16):
         """Computes the log-loss (Negative log likelihood) based on prob density."""
@@ -101,6 +104,18 @@ class PdfGroup(object):
             [pdf.density([y_test[i]]) for i,pdf in enumerate(self.pdf_list)])
         density_vals = np.maximum(density_vals, eps)
         return(-np.mean(np.log(density_vals)))
+
+    def crps_mean(self, y_test, eps=1e-16):
+        """Computes the log-loss (Negative log likelihood) based on prob density."""
+        if type(y_test)!= np.ndarray:
+            y_test = np.array(y_test)
+        if self.densitymat.shape[0]!=len(y_test):
+            warnings.warn("Length of y_test != number of pdfs")
+        if self.pdf_list is None:
+            self.make_pdf_list()
+        crps_vals = np.array(
+            [pdf.crps_single_pt(y_test[i]) for i,pdf in enumerate(self.pdf_list)])
+        return(np.mean(crps_vals))
 
     def mean(self):
         "Returns an array of means of the associated pdfs"
@@ -185,6 +200,9 @@ def log_loss_pdf(y_true, pdf_set):
     """This computes the log loss for a truth set and a DensitySet object"""
     return pdf_set.log_loss(y_true)
 
+def crps_mean(y_true, pdf_set):
+    """This computes the log loss for a truth set and a DensitySet object"""
+    return pdf_set.crps_mean(y_true)
 
 def size_of_pred_region(pr):
     return(np.sum([x[1]-x[0] for x in pr]))

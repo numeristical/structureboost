@@ -16,7 +16,7 @@ from scipy.special import softmax
 cimport numpy as np
 np.import_array()
 cimport cython
-
+from libc.math cimport fabs
 
 class StructureBoostMulti(StructureBoost):
     """Gradient Boosting model allowing categorical structure in both
@@ -535,6 +535,41 @@ def predict_with_tensor_c_mc(np.ndarray[double, ndim=3] dtm_float,
                             j+=1
                     cn = dtm[k,cn, LEFT_CHILD] if found_val else dtm[k,cn, RIGHT_CHILD]
     return(res_tens)
+    
+
+@cython.boundscheck(False)  # Deactivate bounds checking
+@cython.wraparound(False)   # Deactivate negative indexing.
+@cython.nonecheck(False)
+@cython.cdivision(True)
+def c_crps_disc_link_der_12_vec_sp(np.ndarray[np.int32_t] y_true,
+                         double[:,:] exp_phi_pred,
+                         double[:] bin_midpts):
+    cdef long N = len(y_true)
+    cdef long m = exp_phi_pred.shape[1]
+    cdef double[:,:] gh = np.empty((N,m+m))
+    cdef double[:,:] dist_mat = np.empty((m,m))
+    cdef long i,j,l
+    cdef double yt, crps_der, expmae_der, expdiff_der
+
+    for i in range(m):
+        for j in range(m):
+            dist_mat[i,j] = fabs(bin_midpts[i]-bin_midpts[j])
+
+    for l in range(N):
+        # yt = bin_midpts[y_true[l]]
+        crps_der = 0
+        expmae_der = 0
+        expdiff_der = 0
+        for i in range(m):
+            expmae_der = dist_mat[i,y_true[l]]*exp_phi_pred[l,i]
+            expdiff_der = 0
+            for j in range(m):
+                expdiff_der += dist_mat[i,j]*exp_phi_pred[l,j]
+            expdiff_der = expdiff_der
+            # print(expmae_der, expdiff_der, expdiff_der*exp_phi_pred[l,i])
+            gh[l,i] = expmae_der - expdiff_der*exp_phi_pred[l,i]
+            gh[l,i+m] = fabs(gh[l,i])
+    return(np.asarray(gh))
 
 
 @cython.boundscheck(False)  # Deactivate bounds checking

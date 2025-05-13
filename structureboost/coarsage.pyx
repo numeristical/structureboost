@@ -1,11 +1,11 @@
 # cython: profile=True
 # cython: language_level=3
 
-from structure_gb_multi import StructureBoostMulti, get_one_hot_mat
+from structure_gb_multi import StructureBoostMulti, get_one_hot_mat, c_crps_disc_link_der_12_vec_sp
 from structure_gb_multi import c_str_entropy_link_der_12_vec_sp, c_entropy_link_der_12_vec_sp
 from structure_dt_multi import StructureDecisionTreeMulti
 from pdf_discrete import PdfDiscrete, get_part, chain_partition, get_pdf_from_data
-from pdf_group import PdfGroup, log_loss_pdf
+from pdf_group import PdfGroup, log_loss_pdf, crps_mean
 from structure_gb import get_basic_config, default_config_dict
 import numpy as np
 import pandas as pd
@@ -56,20 +56,26 @@ class Coarsage(StructureBoostMulti):
         The number of points to use in creating intervals for the coarse
         learners.  Ignored if the `binpt_method` is 'fixed'.
 
-    structured_loss : bool, Default is True
-        Whether or not to use a structured entropy loss function. The
-        structured entropy loss helps regularize by recognizing that the
-        numerical target has an ordinal structure.  It is configured with
+    loss_fn : str, Default is 'log_loss_str'
+        The loss function to use for the gradients. Options are `log_loss',
+        'log_loss_str' and 'crps_disc'.  Default is 'log_loss_str' which 
+        ues a "structured entropy" loss that helps regularize by recognizing 
+        that the numerical target has an ordinal structure.  It is configured with
         two parameters, the 'singleton_weight' and the 'structure_block_size'.
+        Option 'log_loss' will use the standard log loss wherein all incorrect
+        bins are treated identically.  Option 'crps_disc' uses a discrete version
+        of the Continuous Ranked Probability Score, where the distribution is
+        treated as having point masses at the midpoints of each interval.
 
-    singleton_weight : float, default is 0.5
+    singleton_weight : float, default is 0.4
         When using structured entropy loss, how much to weight the singleton 
         partition.  Numbers closer to 1 give less "partial credit" for being close.
-        Setting this equal to 1 reverts to the standard cross-entropy loss. This
-        parameter is ignored if `structured_loss` is False. Default is 0.5.
+        Setting this equal to 1 reverts to the standard cross-entropy loss. Used
+        only if loss_fn = 'log_loss_str'. Default is 0.4.
 
     structure_block_size : int, default is None
-        When using structured entropy loss, this determines how far away the
+        Used only if loss_fn = 'log_loss_str'. When using structured entropy loss,
+        this determines how far away the
         "partial credit" kicks in (similar to a kernel width).  Smaller values
         will behave closer to the standard cross-entropy and larger values
         will begin to give "partial credit" further away.  The min value is 2
@@ -134,7 +140,8 @@ class Coarsage(StructureBoostMulti):
                  binpt_method='auto',
                  binpt_vec=None,
                  num_coarse_bins=40,
-                 structured_loss=True,
+                 loss_fn=None,
+                 loss_for_stopping=None,
                  structure_block_size=None,
                  singleton_weight=.4,
                  max_resolution=3000,
@@ -158,7 +165,15 @@ class Coarsage(StructureBoostMulti):
         self.binpt_method = binpt_method
         self.bin_interp = bin_interp
         self.binpt_vec = binpt_vec
-        self.structured_loss=structured_loss
+        self.loss_fn = 'log_loss_str' if loss_fn is None else loss_fn
+        if self.loss_fn not in ['crps_disc','log_loss','log_loss_str']:
+            warnings.warn("Loss fn not recognized")
+        if loss_for_stopping is None:
+            self.loss_for_stopping = 'crps' if self.loss_fn=='crps_disc' else 'log_loss'
+        else:
+            self.loss_for_stopping = loss_for_stopping
+        if self.loss_for_stopping not in ['log_loss','crps']:
+            warnings.warn("Loss for stopping must be 'log_loss' or 'crps'")
         self.structure_block_size=structure_block_size
         self.singleton_weight=singleton_weight
         self.max_resolution=max_resolution
@@ -256,7 +271,10 @@ class Coarsage(StructureBoostMulti):
         return curr_answer
 
     def _compute_loss(self, y_true, pred):
-        return(log_loss_pdf(y_true, pred))
+        if self.loss_for_stopping=='crps':
+            return(crps_mean(y_true, pred))
+        else:
+            return(log_loss_pdf(y_true, pred))
 
     def compute_gh_mat(self, y_train, curr_answer, index):
         # Bin the y-values according to the bins for this specific tree
@@ -265,12 +283,19 @@ class Coarsage(StructureBoostMulti):
         y_bin = (np.digitize(y_train, curr_binpts) -1 
                     -(y_train==curr_binpts[-1])).astype(np.int32)
         curr_answer_bin_probs = curr_answer.bins_to_probs(curr_binpts)
-        if not self.structured_loss:
+        
+        if self.loss_fn=='crps_disc':
+            curr_bin_midpts = (curr_binpts[1:] + curr_binpts[:-1])/2
+            y_g_h_mat = c_crps_disc_link_der_12_vec_sp(y_bin, curr_answer_bin_probs,
+                                                curr_bin_midpts)
+            return y_g_h_mat
+
+        elif self.loss_fn=='log_loss':
             self.ts_dict = None
             y_g_h_mat = c_entropy_link_der_12_vec_sp(y_bin, curr_answer_bin_probs,
                                                 np.ones(len(y_train)))
             return y_g_h_mat
-        else:
+        elif self.loss_fn=='log_loss_str':
             self.stride_list = list(range(self.structure_block_size, self.structure_block_size+1))
             pl = []
             for i in self.stride_list:
@@ -291,6 +316,8 @@ class Coarsage(StructureBoostMulti):
                                                 np.ones(len(y_train)))
                 y_g_h_mat = y_g_h_mat + self.singleton_weight*y_g_h_mat_reg
             return y_g_h_mat
+        else:
+            warnings.warn(f"Loss fn: {self.loss_fn} not recognized")
 
     def _create_rpt_from_list(self, partition_list, num_classes):
         num_part = len(partition_list)
@@ -482,6 +509,44 @@ class Coarsage(StructureBoostMulti):
         out_mat = init_logprobmat_fine + out_mat
         probmat = self.softmax_mat(out_mat)
         return(PdfGroup(fine_binpts, probmat=probmat))
+
+    def predict_proba(self, X_test, num_trees_to_use=-1, same_col_pos=True):
+        """Returns a matrix of bin probabilities.
+
+        This is equivalent to calling `predict_distributions` and then returning
+        the associated `probmat` attribute.
+
+        Parameters
+        ----------
+
+        X_test : DataFrame
+            A dataframe containing the features.  StructureBoost uses the
+            column names rather than position to locate the features.  The
+            set of features is determined by the feature_configs only.
+            Consequently, it is OK to pass in extra columns to X_test that
+            are not used by the particular model.
+
+        num_trees_to_use: int, default is -1
+            By default, model will use the "num_trees_for_prediction"
+            attribute to determine how many trees to use.  However,
+            you can specify to use only the first k trees by setting
+            num_trees_to_use to the value k.  This is useful for understanding
+            model performance as a function of model_size.
+
+        same_col_ps: boolean, default is True
+            This should only be set to False if you are unsure whether the
+            columns of X_test are in the same position as they were during
+            training time and you wish for the predict call to index by name.
+            It will result in a slower prediction speed.
+
+        Returns
+        -------
+
+        out_mat : array-like
+            Returns a numpy array shape n x m, where n is the number of rows
+            in X-test and m is the final number of bins in the PdfGroup.
+        """
+        return(self.predict_distributions(X_test, num_trees_to_use, same_col_pos).probmat)
 
     def get_fine_binpts(self, num_trees_to_use):
         fbp = np.concatenate([self.binpt_vec_list[i] 
